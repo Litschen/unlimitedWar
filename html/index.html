@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="import" href="header.html">
-
+    <link rel="import" href="headerAndFooter.html">
     <meta charset="UTF-8">
     <title>Willkommen zu Unlimited War</title>
 </head>
@@ -12,5 +11,9 @@
     document.body.appendChild(content.cloneNode(true));
 </script>
 tests
+<script>
+    var content = document.querySelector('link[rel="import"]').import.querySelector('footer');
+    document.body.appendChild(content.cloneNode(true));
+</script>
 </body>
 </html>
