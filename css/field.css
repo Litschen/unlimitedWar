@@ -3,15 +3,28 @@
     min-width: 600px;
     max-width: 1300px;
     margin: 20px auto;
-    background-color: #fff;
 }
 
 .field {
     width: 350px;
     height: 200px;
     position: relative;
+    display: inline-block;
     background-color: #fff;
     border: 1px #000 solid;
+}
+
+aside {
+    width: 200px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.player-color {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    border-radius: 15px;
 }
 
 .country {
@@ -20,6 +33,7 @@
     height: 30px;
     padding-top: 5px;
     text-align: center;
+    box-sizing: content-box;
     font: bold 24px 'Arial', sans-serif;
 }
 
