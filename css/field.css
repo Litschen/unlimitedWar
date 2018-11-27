@@ -1,0 +1,121 @@
+.wrapper {
+    width: 50%;
+    min-width: 600px;
+    max-width: 1300px;
+    margin: 20px auto;
+    background-color: #fff;
+}
+
+.field {
+    width: 350px;
+    height: 200px;
+    position: relative;
+    background-color: #fff;
+    border: 1px #000 solid;
+}
+
+.country {
+    position: absolute;
+    width: 35px;
+    height: 30px;
+    padding-top: 5px;
+    text-align: center;
+    font: bold 24px 'Arial', sans-serif;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.green {
+    background-color: green;
+}
+
+/* country positions */
+.country-1 {
+    bottom: 20px;
+    left: 40px;
+}
+
+.country-2 {
+    bottom: 40px;
+    left: 75px;
+}
+
+.country-3 {
+    bottom: 50px;
+    left: 110px;
+}
+
+.country-4 {
+    bottom: 30px;
+    left: 145px;
+}
+
+.country-5 {
+    top: 45px;
+    left: 15px;
+}
+
+.country-6 {
+    top: 10px;
+    left: 45px;
+}
+
+.country-7 {
+    top: 45px;
+    left: 50px;
+}
+
+.country-8 {
+    top: 10px;
+    left: 80px;
+}
+
+.country-9 {
+    top: 85px;
+    right: 75px;
+}
+
+.country-10 {
+    top: 50px;
+    right: 65px;
+}
+
+.country-11 {
+    top: 15px;
+    right: 85px;
+}
+
+.country-12 {
+    top: 15px;
+    right: 50px;
+}
+
+.country-13 {
+    top: 15px;
+    right: 15px;
+}
+
+.country-14 {
+    top: 50px;
+    right: 30px;
+}
+
+.country-15 {
+    bottom: 15px;
+    right: 55px;
+}
+
+.country-16 {
+    bottom: 35px;
+    right: 20px;
+}
