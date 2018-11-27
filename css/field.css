@@ -17,6 +17,7 @@
 aside {
     width: 200px;
     margin-left: 20px;
+    position: absolute;
     display: inline-block;
 }
 
