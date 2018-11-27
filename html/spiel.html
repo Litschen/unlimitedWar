@@ -4,40 +4,45 @@
     <meta charset="UTF-8">
     <title>Unlimited War - Spiel</title>
     <link rel="import" href="headerAndFooter.html">
+    <link type="text/css" rel="stylesheet" href="./../css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="./../css/stylesheet.css">
     <link type="text/css" rel="stylesheet" href="./../css/field.css">
 </head>
 <body>
 <div class="wrapper">
+    <script src="../js/includeHeader.js"></script>
+
     <div class="field">
         <span class="country country-1 red">2</span>
         <span class="country country-2 blue">5</span>
         <span class="country country-3 yellow">1</span>
         <span class="country country-4 red">6</span>
-        <br />
+        <br/>
         <span class="country country-5 green">10</span>
         <span class="country country-6 red">1</span>
         <span class="country country-7 yellow">5</span>
         <span class="country country-8 red">13</span>
-        <br />
+        <br/>
         <span class="country country-9 blue">7</span>
         <span class="country country-10 red">2</span>
         <span class="country country-11 blue">9</span>
         <span class="country country-12 yellow">7</span>
-        <br />
+        <br/>
         <span class="country country-13 green">3</span>
         <span class="country country-14 red">8</span>
         <span class="country country-15 yellow">5</span>
         <span class="country country-16 blue">1</span>
     </div>
     <aside>
-        <ul>
-            <li>Player 1</li>
-            <li>Player 2</li>
-            <li>Player 3</li>
-            <li>Player 4</li>
+        <ul class="card">
+            <li class="list-group-item"><span class="player-color red"></span> Player 1</li>
+            <li class="list-group-item"><span class="player-color blue"></span> Player 2</li>
+            <li class="list-group-item"><span class="player-color green"></span> Player 3</li>
+            <li class="list-group-item"><span class="player-color yellow"></span> Player 4</li>
         </ul>
     </aside>
+
+    <script src="../js/includeFooter.js"></script>
 </div>
 </body>
 </html>
