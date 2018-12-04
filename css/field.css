@@ -39,19 +39,19 @@ aside {
 }
 
 .red {
-    background-color: red;
+    background-color: #dc3545;
 }
 
 .blue {
-    background-color: blue;
+    background-color: #007bff;
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: #ffc107;
 }
 
 .green {
-    background-color: green;
+    background-color: #28a745;
 }
 
 /* country positions */
