@@ -3,9 +3,14 @@
     margin: 0;
 }
 
-body{
-    width: 100%;
+html {
     height: 100%;
+    Width: 100%;
+}
+
+body{
+    height: 100%;
+    Width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url("../Images/Weltkarte (3).jpeg");
