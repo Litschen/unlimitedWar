@@ -22,6 +22,14 @@ h1 {
     height: 50px;
 }
 
+.dropdown-item {
+    padding-right: 1rem;
+}
+
+.menu-icon {
+    height: 24px;
+}
+
 .user {
     width: 30px;
     height: 30px;
