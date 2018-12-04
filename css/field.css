@@ -1,7 +1,5 @@
 .wrapper {
-    width: 50%;
-    min-width: 600px;
-    max-width: 1300px;
+    width: 600px;
     margin: 20px auto;
 }
 
@@ -16,7 +14,7 @@
 
 aside {
     width: 200px;
-    margin-left: 20px;
+    margin-left: 40px;
     position: absolute;
     display: inline-block;
 }
