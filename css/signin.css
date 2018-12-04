@@ -1,30 +1,22 @@
 h1.h3 mb-3 font-weight-normal {
-
     margin-left: 200px;
     margin-right: 200px;
-
 }
 
 div.checkbox-anmelden {
-
     width: 200px;
     margin: auto;
-
 }
 
 button.btn.btn-lg.btn-primary.btn-block {
-
     width: 200px;
     margin: auto;
 }
 
 div.homeBox {
-
-    margin-left: 500px;
-    margin-right: 500px;
+    margin: 20px auto;
     position: relative;
     border: 2px solid;
-    margin-top: 100px;
     width: 400px;
     height: 300px;
     padding-top: 20px;
