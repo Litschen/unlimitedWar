@@ -5,16 +5,22 @@
 
 html {
     height: 100%;
-    Width: 100%;
+    width: 100%;
 }
 
 body{
+    width: 100%;
     height: 100%;
-    Width: 100%;
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    background-image: url("../Images/Weltkarte (3).jpeg");
+    background-image: url("../Images/Weltkarte (1).jpeg");
 }
+
+.bg-color-white {
+    background-color: rgba(252, 252, 252, .5) !important;
+}
+
 /* ---------- header ---------- */
 header,
 footer {
@@ -36,6 +42,7 @@ h1 {
 
 .dropdown:hover .dropdown-menu {
     display: block;
+    background-color: rgba(256, 256, 256, 0.8);;
 }
 
 .dropdown-item {
