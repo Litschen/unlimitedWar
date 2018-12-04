@@ -66,9 +66,6 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url("../Images/Weltkarte (3).jpeg");
 }
 
 [tabindex="-1"]:focus {

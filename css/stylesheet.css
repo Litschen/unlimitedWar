@@ -3,6 +3,11 @@
     margin: 0;
 }
 
+body{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../Images/Weltkarte (3).jpeg");
+}
 /* ---------- header ---------- */
 header,
 footer {
