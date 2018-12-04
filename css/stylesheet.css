@@ -4,8 +4,10 @@
 }
 
 body{
-    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
     background-size: cover;
+    background-repeat: no-repeat;
     background-image: url("../Images/Weltkarte (3).jpeg");
 }
 /* ---------- header ---------- */
