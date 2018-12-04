@@ -22,6 +22,10 @@ h1 {
     height: 50px;
 }
 
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 .dropdown-item {
     padding-right: 1rem;
 }
