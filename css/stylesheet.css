@@ -14,11 +14,11 @@ body{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("../Images/Weltkarte (1).jpeg");
+    background-image: url("../Images/World_Map5.jpg");
 }
 
 .bg-color-white {
-    background-color: rgba(252, 252, 252, .5) !important;
+    background-color: #fff !important;
 }
 
 /* ---------- header ---------- */
