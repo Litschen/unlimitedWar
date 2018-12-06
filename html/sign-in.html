@@ -9,15 +9,12 @@
 <script src="../js/includeHeader.js"></script>
 <div class="homeBox border rounded">
     <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
-    <form class="form-signin">
+    <form class="form-signin mb-3" action="./index.html">
         <input type="email" id="inputEmail" class="mb-3 form-control" placeholder="Email address" required autofocus>
         <input type="password" id="inputPassword" class="mb-3 form-control" placeholder="Password" required>
-        <div class="mb-3">
-            <label for="checkRemember">Remember me</label>
-            <input id="checkRemember" type="checkbox" value="remember-me">
-        </div>
         <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
     </form>
+    <button class="btn btn-lg btn-block" onclick="window.location.href='./register.html'">Register</button>
 </div>
 <script src="../js/includeFooter.js"></script>
 </body>

@@ -1,0 +1,24 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <link rel="import" href="headerAndFooter.html">
+    <link rel="stylesheet" href="../css/signin.css">
+</head>
+
+<body class="text-center">
+<script src="../js/includeHeader.js"></script>
+<div class="homeBox border rounded">
+    <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+    <form class="mb-3" action="./index.html">
+        <input type="text" id="inputName" class="mb-3 form-control" placeholder="Username" required autofocus>
+        <input type="email" id="inputEmail" class="mb-3 form-control" placeholder="Email address" required>
+        <input type="date" id="inputBirthday" class="mb-3 form-control" placeholder="Birthday" required>
+        <input type="password" id="inputPassword" class="mb-3 form-control" placeholder="Password" required>
+        <input type="password" id="inputConfirmPassword" class="mb-3 form-control" placeholder="Confirm Password" required>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+    </form>
+    <button class="btn btn-lg btn-block" onclick="window.location.href='./sign-in.html'">Cancel</button>
+</div>
+<script src="../js/includeFooter.js"></script>
+</body>
+</html>
