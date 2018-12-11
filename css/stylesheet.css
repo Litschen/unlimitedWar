@@ -42,7 +42,7 @@ h1 {
 
 .dropdown:hover .dropdown-menu {
     display: block;
-    background-color: rgba(256, 256, 256, 0.8);;
+    background-color: #fff;
 }
 
 .dropdown-item {
