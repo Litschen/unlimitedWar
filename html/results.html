@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="../css/results.css" rel="stylesheet">
-    <link href="headerAndFooter.html" rel="import">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="../css/bootstrap.css" rel="stylesheet">
     <link href="../css/stylesheet.css" rel="stylesheet">
+    <link href="../css/results.css" rel="stylesheet">
 
     <title>Results</title>
 </head>
 <body>
-<script src="../js/includeHeader.js"></script>
+<header class="navbar navbar-dark bg-color-white">
+    <a class="navbar-brand" href="index.html">
+        <img class="logo" rel="icon" src=" ../images/logo_transparent.png" alt="Unlimited War logo">
+    </a>
+    <h1>Unlimited War</h1>
+    <div class="dropdown">
+        <img class="user" rel="icon" src="../images/menu.png" alt="Menu Image"/>
+        <ul class="dropdown-menu dropdown-menu-right">
+            <li>
+                <a class="dropdown-item" href="./index.html">Home <img class="menu-icon float-right" rel="icon" src="../images/home.png" alt="Home"/></a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="./profile.html">Profile <img class="menu-icon float-right" rel="icon" src="../images/user.png" alt="Profile"/></a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="./results.html">Results <img class="menu-icon float-right" rel="icon" src="../images/results.png" alt="Results"/></a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="./sign-in.html">Log out <img class="menu-icon float-right" rel="icon" src="../images/log-out2.png" alt="Logout"/></a>
+            </li>
+        </ul>
+    </div>
+</header>
 <table id="resultsTable" class="table table-striped table-light">
     <thead>
     <tr>
@@ -37,6 +59,9 @@
     </tr>
     </tbody>
 </table>
-<script src="../js/includeFooter.js"></script>
+<footer class="bg-color-white">
+    <p>PSIT Gruppe 02<br/>
+        Crnjac T, Huguenin M, Schreier M</p>
+</footer>
 </body>
 </html>
