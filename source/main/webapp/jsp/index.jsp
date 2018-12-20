@@ -11,7 +11,7 @@
 </head>
 <body>
 <header class="navbar navbar-dark bg-color-white">
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="index.jsp">
         <img class="logo" rel="icon" src="../imageslogo_transparent.png" alt="Unlimited War logo">
     </a>
     <h1>Unlimited War</h1>
@@ -19,24 +19,24 @@
         <img class="user" rel="icon" src="../images/menu.png" alt="Menu Image"/>
         <ul class="dropdown-menu dropdown-menu-right">
             <li>
-                <a class="dropdown-item" href="./index.html"><img class="menu-icon" rel="icon" src="../images/home.png" alt="Home"/>Home</a>
+                <a class="dropdown-item" href="./index.jsp"><img class="menu-icon" rel="icon" src="../images/home.png" alt="Home"/>Home</a>
             </li>
             <li>
-                <a class="dropdown-item" href="profile.html"><img class="menu-icon" rel="icon" src="../images/user.png" alt="Profile"/>Profile</a>
+                <a class="dropdown-item" href="profile.jsp"><img class="menu-icon" rel="icon" src="../images/user.png" alt="Profile"/>Profile</a>
             </li>
             <li>
-                <a class="dropdown-item" href="results.html"><img class="menu-icon" rel="icon" src="../images/results.png" alt="Results"/>Results</a>
+                <a class="dropdown-item" href="results.jsp"><img class="menu-icon" rel="icon" src="../images/results.png" alt="Results"/>Results</a>
             </li>
             <li>
-                <a class="dropdown-item" href="sign-in.html"><img class="menu-icon" rel="icon" src="../images/log-out2.png" alt="Logout"/>Log out</a>
+                <a class="dropdown-item" href="sign-in.jsp"><img class="menu-icon" rel="icon" src="../images/log-out2.png" alt="Logout"/>Log out</a>
             </li>
         </ul>
     </div>
 </header>
 
     <main>
-        <a href="game.html" class="btn btn-primary" role="button">Start game</a>
-        <a href="results.html" class="btn btn-primary" role="button">See results</a>
+        <a href="game.jsp" class="btn btn-primary" role="button">Start game</a>
+        <a href="results.jsp" class="btn btn-primary" role="button">See results</a>
     </main>
 
 <footer class="bg-color-white">

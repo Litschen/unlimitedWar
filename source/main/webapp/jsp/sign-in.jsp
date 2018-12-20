@@ -11,7 +11,7 @@
 
 <body>
 <header class="navbar navbar-dark bg-color-white">
-    <a class="navbar-brand" href="index.html">
+    <a class="navbar-brand" href="index.jsp">
         <img class="logo" rel="icon" src="../imageslogo_transparent.png" alt="Unlimited War logo">
     </a>
     <h1>Unlimited War</h1>
@@ -19,7 +19,7 @@
 
 <div class="homeBox border rounded">
     <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
-    <form class="form-signin mb-3" action="index.html">
+    <form class="form-signin mb-3" action="index.jsp">
         <input type="email" id="inputEmail" class="mb-3 form-control" placeholder="Email address" required autofocus>
         <input type="password" id="inputPassword" class="mb-3 form-control" placeholder="Password" required>
         <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
