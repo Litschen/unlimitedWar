@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="src:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="803808f3-abee-44f9-80d1-33868e7743d6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/java/controller/NumberGuessBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/web/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/web/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/java/controller/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/controller/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/java/dao/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/dao/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/java/model/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-grid.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-grid.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-grid.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-grid.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-reboot.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-reboot.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-reboot.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap.min.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/field.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/field.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/results.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/results.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/signin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/signin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/stylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/Weltkarte (1).jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/Weltkarte (1).jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/Weltkarte (2).jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/Weltkarte (2).jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/Weltkarte (3).jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/Weltkarte (3).jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/Weltkarte (4).jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/Weltkarte (4).jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/World_Map5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/World_Map5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/World_Map6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/World_Map6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/game-controller.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/game-controller.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/home.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/home.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/log-out.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/log-out.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/log-out2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/log-out2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/logo_transparent.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/logo_transparent.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/menu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/menu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/results.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/results.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.bundle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.min.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/includeFooter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/includeFooter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/includeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/includeHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/game.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/game.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/headerAndFooter.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/headerAndFooter.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/register.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/results.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/sign-in.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/sign-in.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/test/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/README.md" afterDir="false" />
+    </list>
+    <list id="b0b1db5b-6cea-4ddb-8c14-5f4c2cdb0fc4" name="dont commit" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/src_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -12,6 +78,10 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="autoscrollToSource" value="true" />
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-193963189">
@@ -49,9 +119,61 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1709722697">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+          <entry key="jsp" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+          <entry key="JSP" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="jsp" value="11" />
+          <entry key="txt" value="13" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JSP" value="11" />
+          <entry key="PLAIN_TEXT" value="13" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/web/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="83">
+              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/controller/NumberGuessBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -60,6 +182,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/images/file.html" />
+        <option value="$PROJECT_DIR$/src/web/index.jsp" />
       </list>
     </option>
   </component>
@@ -69,39 +192,50 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="122" />
-    <option name="y" value="344" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1435" />
+    <option name="width" value="2420" />
+    <option name="height" value="2075" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="ProjektMiniWebSide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjektMiniWebSide" type="462c0819:PsiDirectoryNode" />
+              <item name="Unlimited_War" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Unlimited_War" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ProjektMiniWebSide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjektMiniWebSide" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="Unlimited_War" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Unlimited_War" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ProjektMiniWebSide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjektMiniWebSide" type="462c0819:PsiDirectoryNode" />
-              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="Unlimited_War" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Unlimited_War" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ProjektMiniWebSide" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjektMiniWebSide" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="Unlimited_War" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Unlimited_War" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -111,129 +245,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\src\controller" />
+      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web" />
+      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src" />
       <recent name="C:\Users\MacKenzie\Daten Aphra\workspace\workspace_WebStorm\ProjektMiniWebSide\html" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/spiel.html</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/headerAndFooter.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/index.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/images/logo.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/includeFooter.js</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/js/includeHeader.js</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/footer.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/html/header.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/images/file.html</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -247,6 +271,79 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="App" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.34" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="src:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Tomcat_8_5_34_Unlimited_War_2" />
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="52923" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="src:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -258,6 +355,7 @@
       <option name="presentableId" value="Default" />
       <updated>1542725076836</updated>
       <workItem from="1542725078215" duration="2609000" />
+      <workItem from="1545319097717" duration="131000" />
     </task>
     <task id="LOCAL-00001" summary="Test Tina">
       <created>1542725188900</created>
@@ -291,25 +389,36 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2609000" />
+    <option name="totallyTimeSpent" value="4039000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="34" width="1381" height="885" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24981412" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2568746" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" sideWeight="0.49962825" visible="true" weight="0.32891247" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" sideWeight="0.50037175" side_tool="true" weight="0.32891247" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Web" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" weight="0.32956153" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32956153" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49962825" weight="0.26449788" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50037175" side_tool="true" weight="0.32891247" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" show_stripe_button="false" weight="0.32956153" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -328,34 +437,106 @@
     <option name="LAST_COMMIT_MESSAGE" value="loginseite eingefügt" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/html/file.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/file.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/header.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/html/file.html" />
+    <entry file="file://$PROJECT_DIR$/images/file.html" />
+    <entry file="file://$PROJECT_DIR$/html/header.html" />
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/headerAndFooter.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html/login.html">
+    <entry file="file://$PROJECT_DIR$/html/headerAndFooter.html" />
+    <entry file="file://$PROJECT_DIR$/images/logo.png" />
+    <entry file="file://$PROJECT_DIR$/html/login.html" />
+    <entry file="file://$PROJECT_DIR$/uW/web/index.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        <state relative-caret-position="83">
+          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/NumberGuessBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>src:war exploded</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Detection</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>src</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
