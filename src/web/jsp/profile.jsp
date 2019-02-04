@@ -1,35 +1,13 @@
-<!Doctype html>
 <html lang="en">
 <head>
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="../css/stylesheet.css">
     <link rel="stylesheet" href="../css/signin.css">
+    <title>Profile</title>
 </head>
 
 <body>
-<header class="navbar navbar-dark bg-color-white">
-    <a class="navbar-brand" href="index.jsp">
-        <img class="logo" rel="icon" src="../imageslogo_transparent.png" alt="Unlimited War logo">
-    </a>
-    <h1>Unlimited War</h1>
-    <div class="dropdown">
-        <img class="user" rel="icon" src="../images/menu.png" alt="Menu Image"/>
-        <ul class="dropdown-menu dropdown-menu-right">
-            <li>
-                <a class="dropdown-item" href="index.jsp"><img class="menu-icon" rel="icon" src="../images/home.png" alt="Home"/>Home</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="./profile.jsp"><img class="menu-icon" rel="icon" src="../images/user.png" alt="Profile"/>Profile</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="results.jsp"><img class="menu-icon" rel="icon" src="../images/results.png" alt="Results"/>Results</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="sign-in.jsp"><img class="menu-icon" rel="icon" src="../images/log-out2.png" alt="Logout"/>Log out</a>
-            </li>
-        </ul>
-    </div>
-</header>
+<%@include file="snippets/header.jsp" %>
 
 <div class="homeBox border rounded">
     <h1 class="h3 mb-3 font-weight-normal">Edit Profile</h1>
@@ -44,9 +22,6 @@
     </form>
 </div>
 
-<footer class="bg-color-white">
-    <p>PSIT Gruppe 02<br/>
-        Crnjac T, Huguenin M, Schreier M</p>
-</footer>
+<%@include file="snippets/footer.jsp" %>
 </body>
 </html>

@@ -4,12 +4,13 @@
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="../css/stylesheet.css">
     <link rel="stylesheet" href="../css/signin.css">
+    <title>Register for Unlimited War</title>
 </head>
 
 <body>
 <header class="navbar navbar-dark bg-color-white">
     <a class="navbar-brand" href="index.jsp">
-        <img class="logo" rel="icon" src="../imageslogo_transparent.png" alt="Unlimited War logo">
+        <img class="logo" rel="icon" src="../images/logo_transparent.png" alt="Unlimited War logo">
     </a>
     <h1>Unlimited War</h1>
 </header>
@@ -27,9 +28,6 @@
     <button class="btn btn-lg btn-block" onclick="window.location.href='sign-in.jsp'">Cancel</button>
 </div>
 
-<footer class="bg-color-white">
-    <p>PSIT Gruppe 02<br/>
-        Crnjac T, Huguenin M, Schreier M</p>
-</footer>
+<%@include file="snippets/footer.jsp" %>
 </body>
 </html>

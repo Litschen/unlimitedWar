@@ -1,46 +1,28 @@
-<!DOCTYPE html>
+<%@ page import = "controller.Board" %>
+
+<jsp:useBean id="board" class="controller.Board"/>
+<jsp:setProperty name="board" property="*"/>
 <html lang="en">
 <head>
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="../css/stylesheet.css">
     <link type="text/css" rel="stylesheet" href="../css/field.css">
+    <title>Play Unlimited War</title>
 </head>
 <body>
-<header class="navbar navbar-dark bg-color-white">
-    <a class="navbar-brand" href="index.jsp">
-        <img class="logo" rel="icon" src="../imageslogo_transparent.png" alt="Unlimited War logo">
-    </a>
-    <h1>Unlimited War</h1>
-    <div class="dropdown">
-        <img class="user" rel="icon" src="../images/menu.png" alt="Menu Image"/>
-        <ul class="dropdown-menu dropdown-menu-right">
-            <li>
-                <a class="dropdown-item" href="index.jsp"><img class="menu-icon" rel="icon" src="../images/home.png" alt="Home"/>Home</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="profile.jsp"><img class="menu-icon" rel="icon" src="../images/user.png" alt="Profile"/>Profile</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="results.jsp"><img class="menu-icon" rel="icon" src="../images/results.png" alt="Results"/>Results</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="sign-in.jsp"><img class="menu-icon" rel="icon" src="../images/log-out2.png" alt="Logout"/>Log out</a>
-            </li>
-        </ul>
-    </div>
-</header>
+<%@include file="snippets/header.jsp" %>
 
 <div class="wrapper">
     <div class="field border rounded">
         <span class="country country-1 red">2</span>
         <span class="country country-2 blue">5</span>
         <span class="country country-3 yellow">1</span>
-        <span class="country country-4 red">6</span>
+        <span class="country country-4 green">6</span>
         <br/>
         <span class="country country-5 green">10</span>
         <span class="country country-6 red">1</span>
         <span class="country country-7 yellow">5</span>
-        <span class="country country-8 red">13</span>
+        <span class="country country-8 green">13</span>
         <br/>
         <span class="country country-9 blue">7</span>
         <span class="country country-10 red">2</span>
@@ -54,10 +36,22 @@
     </div>
     <aside>
         <ul class="card">
-            <li class="list-group-item"><span class="player-color red"></span> Player 1</li>
-            <li class="list-group-item"><span class="player-color blue"></span> Player 2</li>
-            <li class="list-group-item"><span class="player-color green"></span> Player 3</li>
-            <li class="list-group-item"><span class="player-color yellow"></span> Player 4</li>
+            <li class="list-group-item">
+                <span class="player-color <%= board.getPlayer(0).getPlayerColor() %>"></span>
+                <%= board.getPlayer(0).getPlayerName() %>
+            </li>
+            <li class="list-group-item">
+                <span class="player-color <%= board.getPlayer(1).getPlayerColor() %>"></span>
+                <%= board.getPlayer(1).getPlayerName() %>
+            </li>
+            <li class="list-group-item">
+                <span class="player-color <%= board.getPlayer(2).getPlayerColor() %>"></span>
+                <%= board.getPlayer(2).getPlayerName() %>
+            </li>
+            <li class="list-group-item">
+                <span class="player-color <%= board.getPlayer(3).getPlayerColor() %>"></span>
+                <%= board.getPlayer(3).getPlayerName() %>
+            </li>
         </ul>
     </aside>
 </div>
@@ -71,10 +65,6 @@
         </div>
     </div>
 </div>
-<!--<div class="modal-backdrop fade"></div>-->
-<footer class="bg-color-white">
-    <p>PSIT Gruppe 02<br/>
-        Crnjac T, Huguenin M, Schreier M</p>
-</footer>
+<%@include file="snippets/footer.jsp" %>
 </body>
 </html>
