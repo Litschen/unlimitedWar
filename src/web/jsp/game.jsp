@@ -1,7 +1,7 @@
 <%@ page import="model.Player" %>
 <%@ page import="model.Country" %>
 <%@ page import="java.util.ArrayList" %>
-<jsp:useBean id="board" class="controller.Board"/>
+<jsp:useBean id="board" class="controller.BoardBean"/>
 <jsp:setProperty name="board" property="*"/>
 <html lang="en">
 <head>
@@ -23,7 +23,7 @@
         %>
             <span class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>">
                 <%=currentCountry.getSoldiersCount()%></span>
-            <% if(i % 4 == 0 && i < 16){ %>
+            <% if(i % 4 == 0 && i < board.COUNTRY_COUNT_GENERATION){ %>
                 <br/>
             <% }%>
         <%}%>
