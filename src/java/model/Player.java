@@ -2,6 +2,8 @@ package model;
 
 import model.Interface.IBehavior;
 
+import java.util.ArrayList;
+
 public class Player{
 
     //region data fields
@@ -12,7 +14,7 @@ public class Player{
      * same for all players.
      */
     private IBehavior behavior;
-
+    private ArrayList<Country> ownedCountries;
     //endregion
 
     //region constructor
@@ -20,6 +22,7 @@ public class Player{
         this.color = color;
         this.name = name;
         this.behavior = behavior;
+        this.ownedCountries = new ArrayList<>();
     }
     //endregion
 
@@ -34,6 +37,9 @@ public class Player{
 
     public IBehavior getBehavior(){
         return behavior;
+    }
+
+    public ArrayList<Country> getOwnedCountries() { return ownedCountries;
     }
     //endregion
 

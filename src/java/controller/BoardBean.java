@@ -11,9 +11,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class BoardBean {
 
     //region static variables
-    private final static int START_SOLDIER_PER_PLAYER = 16;
-    private final static int MIN_SOLDIER_GENERATION = 0;
-    private final static int COUNTRY_COUNT_GENERATION = 16;
+    public final static int START_SOLDIER_PER_PLAYER = 16;
+    public final static int MIN_SOLDIER_GENERATION = 0;
+    public final static int COUNTRY_COUNT_GENERATION = 16;
     //endregion
 
     //region data fields
@@ -56,6 +56,7 @@ public class BoardBean {
                 } else {
                     countries.add(new Country("test", solidersToDistribute + 1, currentPlayer));
                 }
+                currentPlayer.getOwnedCountries().add(countries.get(countries.size() - 1));
             }
         }
         Collections.shuffle(countries);
@@ -67,5 +68,17 @@ public class BoardBean {
         players.add(new Player("red", "Hotler", new RandomBehavior()));
         players.add(new Player("green", "Stalout", new RandomBehavior()));
         players.add(new Player("yellow", "Darfolini", new RandomBehavior()));
+    }
+
+    public void executeTurn(){
+        //TODO test this
+        turnCount++;
+        for(Player currentPlayer : players){
+            if(currentPlayer.getOwnedCountries().size() > 0){
+                currentPlayer.getBehavior().placeSoldiers();
+                currentPlayer.getBehavior().attackCountry();
+                currentPlayer.getBehavior().moveSoldiers();
+            }
+        }
     }
 }
