@@ -21,7 +21,7 @@
                 Country currentCountry = allCountries.get(i - 1);
 
         %>
-            <span class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>">
+            <span class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
                 <%=currentCountry.getSoldiersCount()%></span>
             <% if(i % 4 == 0 && i < board.COUNTRY_COUNT_GENERATION){ %>
                 <br/>
