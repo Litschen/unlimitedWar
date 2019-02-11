@@ -27,6 +27,11 @@
                 <br/>
             <% }%>
         <%}%>
+        <%-- continent connectors --%>
+        <span class="connector1 lineThrough rTol"></span>
+        <span class="connector2 lineThrough rTol"></span>
+        <span class="connector3 lineThrough rTol"></span>
+        <span class="connector4 lineThrough rTol"></span>
     </div>
     <aside>
         <ul class="card">

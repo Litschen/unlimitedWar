@@ -132,3 +132,41 @@ aside {
     bottom: 35px;
     right: 20px;
 }
+
+
+/* continent connectors */
+.lineThrough.lTor {
+    background: linear-gradient(to bottom right, transparent 49%, black 49%, black 50%, transparent 50%);
+}
+.lineThrough.rTol {
+    background: linear-gradient(to bottom left, transparent 49%, black 49%, black 50%, transparent 50%);
+}
+.connector1 {
+    width: 25px;
+    height: 44px;
+    position: absolute;
+    bottom: 74px;
+    left: 70px;
+}
+.connector2 {
+    width: 80px;
+    height: 15px;
+    position: absolute;
+    bottom: 30px;
+    left: 180px;
+}
+.connector3 {
+    width: 35px;
+    height: 25px;
+    position: absolute;
+    bottom: 70px;
+    right: 40px;
+}
+.connector4 {
+    width: 115px;
+    height: 1px;
+    position: absolute;
+    top: 30px;
+    left: 114px;
+    background-color: black !important;
+}
