@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class Player{
 
+    //region static variables
+    public static final int COUNTRY_WEIGHT = 3;
+    //endregion
+
     //region data fields
     private String color;
     private String name;
@@ -39,8 +43,12 @@ public class Player{
         return behavior;
     }
 
-    public ArrayList<Country> getOwnedCountries() { return ownedCountries;
-    }
+    public ArrayList<Country> getOwnedCountries() { return ownedCountries; }
     //endregion
+
+
+    public int calculateSoldiersToPlace() {
+        return Math.max(COUNTRY_WEIGHT, getOwnedCountries().size() / COUNTRY_WEIGHT);
+    }
 
 }

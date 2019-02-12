@@ -70,14 +70,15 @@ public class BoardBean {
         players.add(new Player("yellow", "Darfolini", new RandomBehavior()));
     }
 
-    public void executeTurn(){
+    public void executeTurn() {
         //TODO test this
         turnCount++;
-        for(Player currentPlayer : players){
-            if(currentPlayer.getOwnedCountries().size() > 0){
-                currentPlayer.getBehavior().placeSoldiers();
-                currentPlayer.getBehavior().attackCountry();
-                currentPlayer.getBehavior().moveSoldiers();
+        for (Player currentPlayer : players) {
+            if (currentPlayer.getOwnedCountries().size() > 0) {
+                currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(),
+                        currentPlayer.calculateSoldiersToPlace());
+                currentPlayer.getBehavior().attackCountry(countries, currentPlayer.getOwnedCountries());
+                currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
             }
         }
     }
