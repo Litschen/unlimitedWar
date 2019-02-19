@@ -9,26 +9,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerTest {
 
-    private Player toTest;
+    private Player testPlayer;
 
     @BeforeEach
     void setUp(){
-        toTest = new Player("blue", "testPlayer", new RandomBehavior());
+        testPlayer = new Player("blue", "testPlayer", new RandomBehavior());
     }
 
     @Test
     void calculateSoldiersToPlaceTestMin() {
         //owned countries = 0
-        assertEquals(Player.COUNTRY_WEIGHT, toTest.calculateSoldiersToPlace());
+        assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace());
     }
 
     @Test
     void calculateSoldiersToPlaceTest() {
-        ArrayList<Country> owned = toTest.getOwnedCountries();
+        ArrayList<Country> owned = testPlayer.getOwnedCountries();
         for(int i = 0; i < 15 ; i++){
-            owned.add(new Country("test", 1, toTest));
+            owned.add(new Country("test", 1, testPlayer));
         }
-        assertEquals(15 / Player.COUNTRY_WEIGHT, toTest.calculateSoldiersToPlace());
+        assertEquals(15 / Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace());
     }
 
 }

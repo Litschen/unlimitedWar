@@ -1,5 +1,6 @@
-package controller;
+package model;
 
+import model.BoardBean;
 import model.Country;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,17 +10,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BoardBeanTest {
 
-    private BoardBean toTest;
+    private BoardBean testBoard;
 
     @BeforeEach
     void setUp() {
-        toTest = new BoardBean();
+        testBoard = new BoardBean();
     }
 
     @Test
     void testGenerateCountries(){
-        int ownedCountriesPrevious = toTest.getPlayers().get(0).getOwnedCountries().size();
-        for(Player currentPlayer : toTest.getPlayers()){
+        int ownedCountriesPrevious = testBoard.getPlayers().get(0).getOwnedCountries().size();
+        for(Player currentPlayer : testBoard.getPlayers()){
             assertEquals(ownedCountriesPrevious, currentPlayer.getOwnedCountries().size());
             int soldierCount = 0;
             for(Country country : currentPlayer.getOwnedCountries())
