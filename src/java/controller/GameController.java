@@ -12,7 +12,7 @@ import java.io.IOException;
 
 @WebServlet(
         name = "GameController",
-        urlPatterns = "/testing/*")
+        urlPatterns = "/Game/*")
 public class GameController extends HttpServlet {
 
     @Override

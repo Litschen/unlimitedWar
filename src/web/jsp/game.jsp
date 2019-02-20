@@ -49,9 +49,9 @@
         </ul>
     </aside>
 </div>
-<form method="post" action="<%=request.getContextPath()%>/testing">
+<form method="post" action="<%=request.getContextPath()%>/Game/">
     <% session.setAttribute("board", board); %>
-    <button type="submit" name="nextTurn" value="execute">test</button>
+    <button type="submit" name="nextTurn" value="execute">next Turn</button>
 </form>
 <div class="modal fade">
     <div class="modal-dialog modal-content">

@@ -6,18 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="193c442f-c3ef-42fb-a9c2-956af0ec55a0" name="Default Changelist" comment="-implemented rudimentary Controller,made necessary changes in header and game.jsp, fixed placeSoldier in Randombehavior">
-      <change afterPath="$PROJECT_DIR$/src/java/controller/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ps_18_gruppe02.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="193c442f-c3ef-42fb-a9c2-956af0ec55a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/model/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/Country.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/java/model/RandomBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/RandomBehavior.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/controller/GameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/web/jsp/game.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/game.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/web/jsp/snippets/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/snippets/header.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/controller/GameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="238">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -102,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/web/jsp/game.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
+            <state relative-caret-position="187">
+              <caret line="53" column="67" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -116,11 +108,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/web/jsp/snippets/header.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="15" column="193" selection-start-line="15" selection-start-column="193" selection-end-line="15" selection-end-column="193" />
             </state>
           </provider>
         </entry>
@@ -140,10 +132,10 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/java/model/Country.java" />
-        <option value="$PROJECT_DIR$/src/web/jsp/game.jsp" />
-        <option value="$PROJECT_DIR$/src/java/controller/GameController.java" />
         <option value="$PROJECT_DIR$/src/java/model/RandomBehavior.java" />
         <option value="$PROJECT_DIR$/src/web/jsp/snippets/header.jsp" />
+        <option value="$PROJECT_DIR$/src/java/controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/web/jsp/game.jsp" />
       </list>
     </option>
   </component>
@@ -257,7 +249,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550665179593" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550666516390" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -327,7 +319,7 @@
       </method>
     </configuration>
     <configuration name="Tomcat 8.5.34" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.34" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/unlimitedWar/jsp/index.jsp" />
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/unlimitedWar/Game" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="unlimitedWar">
@@ -411,7 +403,7 @@
       <option name="presentableId" value="Default" />
       <updated>1550590023639</updated>
       <workItem from="1550590027428" duration="6827000" />
-      <workItem from="1550645423493" duration="7946000" />
+      <workItem from="1550645423493" duration="9278000" />
     </task>
     <task id="LOCAL-00001" summary="-excluded directory .idea">
       <created>1550591423794</created>
@@ -420,11 +412,25 @@
       <option name="project" value="LOCAL" />
       <updated>1550591423794</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="-implemented rudimentary Controller,made necessary changes in header and game.jsp, fixed placeSoldier in Randombehavior">
+      <created>1550665205429</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1550665205429</updated>
+    </task>
+    <task id="LOCAL-00003" summary="-execute Turn now only fires if button is clicked">
+      <created>1550666385842</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1550666385842</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14773000" />
+    <option name="totallyTimeSpent" value="16105000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -440,7 +446,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Web" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2590604" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14362416" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -450,7 +456,7 @@
       <window_info anchor="bottom" id="Java Enterprise" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798658" weight="0.33002833" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731544" visible="true" weight="0.33002833" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4986577" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -458,8 +464,8 @@
       <window_info anchor="bottom" id="Application Servers" order="7" weight="0.32909605" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32909605" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" visible="true" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" sideWeight="0.49932885" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026846" side_tool="true" visible="true" weight="0.33002833" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49932885" weight="0.101983" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49932885" weight="0.5736544" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -479,25 +485,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-excluded directory .idea" />
     <MESSAGE value="-implemented rudimentary Controller,made necessary changes in header and game.jsp, fixed placeSoldier in Randombehavior" />
-    <option name="LAST_COMMIT_MESSAGE" value="-implemented rudimentary Controller,made necessary changes in header and game.jsp, fixed placeSoldier in Randombehavior" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/controller/GameController.java</url>
-          <line>20</line>
-          <properties />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/controller/GameController.java</url>
-          <line>26</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="-execute Turn now only fires if button is clicked" />
+    <option name="LAST_COMMIT_MESSAGE" value="-execute Turn now only fires if button is clicked" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/artifacts/unlimitedWar.xml">
@@ -553,23 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/web/jsp/game.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controller/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/model/Dice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -593,8 +565,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/web/jsp/snippets/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="255">
+          <caret line="15" column="193" selection-start-line="15" selection-start-column="193" selection-end-line="15" selection-end-column="193" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/game.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="53" column="67" selection-start-line="53" selection-start-column="67" selection-end-line="53" selection-end-column="67" />
         </state>
       </provider>
     </entry>
