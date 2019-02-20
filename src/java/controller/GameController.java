@@ -16,22 +16,24 @@ import java.io.IOException;
 public class GameController extends HttpServlet {
 
     @Override
-    protected void doPost (HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            processRequest(request, response);
+        processRequest(request, response);
     }
 
     @Override
-    protected void doGet (HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            processRequest(request, response);
+        processRequest(request, response);
     }
 
-    private  void processRequest(HttpServletRequest request, HttpServletResponse response){
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/game.jsp");
         try {
-            BoardBean board = (BoardBean) request.getSession().getAttribute("board");
-            board.executeTurn();
+            if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
+                BoardBean board = (BoardBean) request.getSession().getAttribute("board");
+                board.executeTurn();
+            }
             dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();

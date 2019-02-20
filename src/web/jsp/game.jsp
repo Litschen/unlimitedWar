@@ -51,7 +51,7 @@
 </div>
 <form method="post" action="<%=request.getContextPath()%>/testing">
     <% session.setAttribute("board", board); %>
-    <button type="submit">test</button>
+    <button type="submit" name="nextTurn" value="execute">test</button>
 </form>
 <div class="modal fade">
     <div class="modal-dialog modal-content">
