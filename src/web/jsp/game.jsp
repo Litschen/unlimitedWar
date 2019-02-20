@@ -6,10 +6,10 @@
 <jsp:setProperty name="board" property="*"/>
 <html lang="en">
 <head>
-    <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
-    <link type="text/css" rel="stylesheet" href="../css/stylesheet.css">
-    <link type="text/css" rel="stylesheet" href="../css/field.css">
-    <link rel="shortcut icon" type="image" href="../images/logo_transparent.png">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/stylesheet.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/field.css">
+    <link rel="shortcut icon" type="image" href="${pageContext.request.contextPath}/images/logo_transparent.png">
     <title>Play Unlimited War</title>
 </head>
 <body>
@@ -49,6 +49,10 @@
         </ul>
     </aside>
 </div>
+<form method="post" action="<%=request.getContextPath()%>/testing">
+    <% session.setAttribute("board", board); %>
+    <button type="submit">test</button>
+</form>
 <div class="modal fade">
     <div class="modal-dialog modal-content">
         <h1 class="modal-header modal-title">You Win :D</h1>
