@@ -1,7 +1,6 @@
 package model.Interface;
 
 import model.Country;
-import model.Player;
 
 import java.util.ArrayList;
 

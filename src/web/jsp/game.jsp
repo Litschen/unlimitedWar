@@ -1,13 +1,15 @@
 <%@ page import="model.Player" %>
 <%@ page import="model.Country" %>
 <%@ page import="java.util.ArrayList" %>
-<jsp:useBean id="board" class="controller.BoardBean"/>
+<%@ page import="model.BoardBean" %>
+<jsp:useBean id="board" class="model.BoardBean" scope="session"/>
 <jsp:setProperty name="board" property="*"/>
 <html lang="en">
 <head>
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="../css/stylesheet.css">
     <link type="text/css" rel="stylesheet" href="../css/field.css">
+    <link rel="shortcut icon" type="image" href="../images/logo_transparent.png">
     <title>Play Unlimited War</title>
 </head>
 <body>
@@ -23,15 +25,16 @@
         %>
             <button class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
                 <%=currentCountry.getSoldiersCount()%></button>
-            <% if(i % 4 == 0 && i < board.COUNTRY_COUNT_GENERATION){ %>
+            <% if(i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION){ %>
                 <br/>
             <% }%>
         <%}%>
         <%-- continent connectors --%>
-        <span class="connector1 lineThrough rTol"></span>
-        <span class="connector2 lineThrough rTol"></span>
-        <span class="connector3 lineThrough rTol"></span>
-        <span class="connector4 lineThrough rTol"></span>
+        <%
+            for(int i = 1; i <=4; i++){
+        %>
+        <span class="connector<%=i%> lineThrough rTol"></span>
+        <% }%>
     </div>
     <aside>
         <ul class="card">
@@ -46,7 +49,6 @@
         </ul>
     </aside>
 </div>
-
 <div class="modal fade">
     <div class="modal-dialog modal-content">
         <h1 class="modal-header modal-title">You Win :D</h1>

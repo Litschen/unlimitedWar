@@ -2,74 +2,25 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="src:war exploded" />
+      <artifact name="ps_18_gruppe021:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="803808f3-abee-44f9-80d1-33868e7743d6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/java/controller/NumberGuessBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/web/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/web/index.jsp" afterDir="false" />
+    <list default="true" id="803808f3-abee-44f9-80d1-33868e7743d6" name="Default Changelist" comment="-moved BoardBean to model package">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Java_EE_6_Java_EE_6.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/java/controller/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/controller/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/java/dao/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/dao/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/java/model/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-grid.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-grid.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-grid.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-grid.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-grid.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-grid.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-reboot.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-reboot.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-reboot.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-reboot.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap-reboot.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/bootstrap.min.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/bootstrap.min.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/field.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/field.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/results.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/results.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/signin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/signin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/css/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/css/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/Weltkarte (1).jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/Weltkarte (1).jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/Weltkarte (2).jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/Weltkarte (2).jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/Weltkarte (3).jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/Weltkarte (3).jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/Weltkarte (4).jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/Weltkarte (4).jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/World_Map5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/World_Map5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/World_Map6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/World_Map6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/game-controller.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/game-controller.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/home.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/home.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/log-out.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/log-out.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/log-out2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/log-out2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/logo_transparent.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/logo_transparent.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/menu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/menu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/results.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/results.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/images/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/images/user.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.bundle.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/includeFooter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/includeFooter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/js/includeHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/js/includeHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/game.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/game.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/headerAndFooter.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/headerAndFooter.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/register.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/register.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/results.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/main/webapp/jsp/sign-in.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/sign-in.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/test/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/README.md" afterDir="false" />
-    </list>
-    <list id="b0b1db5b-6cea-4ddb-8c14-5f4c2cdb0fc4" name="dont commit" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/src_war_exploded.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ps_18_gruppe02.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ps_18_gruppe02.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/java/controller/BoardBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/controller/BoardBeanTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/controller/BoardBeanTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/model/BoardBeanTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/model/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/model/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/jsp/game.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/game.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/web/jsp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/web/jsp/index.jsp" afterDir="false" />
     </list>
+    <list id="b0b1db5b-6cea-4ddb-8c14-5f4c2cdb0fc4" name="dont commit" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -79,87 +30,61 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="ErrorTreeViewConfiguration">
     <option name="autoscrollToSource" value="true" />
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-193963189">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="html" value="5" />
-          <entry key="png" value="1" />
-          <entry key="xml" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="HTML" value="5" />
-          <entry key="Image" value="1" />
-          <entry key="XML" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="html" value="12" />
-          <entry key="txt" value="33" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="HTML" value="12" />
-          <entry key="PLAIN_TEXT" value="33" />
-        </counts>
-      </usages-collector>
-    </session>
-    <session id="1709722697">
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="java" value="1" />
-          <entry key="jsp" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="1" />
-          <entry key="JSP" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="jsp" value="11" />
-          <entry key="txt" value="13" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JSP" value="11" />
-          <entry key="PLAIN_TEXT" value="13" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.11" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/web/index.jsp">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/model/BoardBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+            <state relative-caret-position="459">
+              <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/model/BoardBeanTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/model/PlayerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -167,13 +92,71 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/controller/NumberGuessBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+            <state relative-caret-position="647">
+              <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#1873#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/model/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;field#behavior#0;class#Player#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/web/jsp/index.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/web/jsp/game.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/web/jsp/snippets/header.jsp">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/web/jsp/profile.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Jsp File" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -183,14 +166,35 @@
       <list>
         <option value="$PROJECT_DIR$/images/file.html" />
         <option value="$PROJECT_DIR$/src/web/index.jsp" />
+        <option value="$PROJECT_DIR$/src/java/model/IAiPlayer.java" />
+        <option value="$PROJECT_DIR$/src/java/model/test.java" />
+        <option value="$PROJECT_DIR$/src/java/model/Board.java" />
+        <option value="$PROJECT_DIR$/src/web/jsp/footer.jsp" />
+        <option value="$PROJECT_DIR$/src/web/jsp/results.jsp" />
+        <option value="$PROJECT_DIR$/src/web/jsp/sign-in.jsp" />
+        <option value="$PROJECT_DIR$/src/java/model/IPlayer.java" />
+        <option value="$PROJECT_DIR$/src/java/model/RandomPlayer.java" />
+        <option value="$PROJECT_DIR$/src/java/model/IBehavior.java" />
+        <option value="$PROJECT_DIR$/src/web/jsp/profile.jsp" />
+        <option value="$PROJECT_DIR$/src/web/jsp/register.jsp" />
+        <option value="$PROJECT_DIR$/src/web/jsp/snippets/footer.jsp" />
+        <option value="$PROJECT_DIR$/src/java/model/Country.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/Board.java" />
+        <option value="$PROJECT_DIR$/src/java/model/Interface/IBehavior.java" />
+        <option value="$PROJECT_DIR$/src/java/model/Player.java" />
+        <option value="$PROJECT_DIR$/src/web/jsp/snippets/header.jsp" />
+        <option value="$PROJECT_DIR$/src/web/jsp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/java/model/RandomBehavior.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/BoardBean.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/GameServlet.java" />
+        <option value="$PROJECT_DIR$/src/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/test/controller/BoardBeanTest.java" />
+        <option value="$PROJECT_DIR$/src/test/model/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/java/model/BoardBean.java" />
+        <option value="$PROJECT_DIR$/src/web/jsp/game.jsp" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -199,60 +203,125 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1435" />
-    <option name="width" value="2420" />
-    <option name="height" value="2075" />
+    <option name="x" value="-210" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <showExcludedFiles Scope="false" ProjectPane="false" />
       <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Unlimited_War" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Unlimited_War" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Unlimited_War" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Unlimited_War" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Unlimited_War" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Unlimited_War" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Unlimited_War" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Unlimited_War" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="jsp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550566226308" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="controller" />
+      <recent name="model" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="model" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Manuel\Documents\_ZHAW\Dokumente\_PSIT1\code\ps_18_gruppe02\src\web\jsp\snippets" />
       <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\src\controller" />
       <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web" />
       <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src" />
@@ -271,24 +340,66 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.BoardBeanTest">
+    <configuration name="All in ps_18_gruppe021" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ps_18_gruppe021" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardBeanTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ps_18_gruppe021" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.BoardBeanTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ps_18_gruppe021" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.PlayerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="game.jsp" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8080/ps_18_gruppe021_war_exploded/jsp/game.jsp">
+      <method v="2" />
+    </configuration>
     <configuration name="App" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.34" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ps_18_gruppe021_war_exploded/" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="src:war exploded">
+        <artifact name="ps_18_gruppe021:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/" />
+            <option name="CONTEXT_PATH" value="/ps_18_gruppe021_war_exploded" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Tomcat_8_5_34_Unlimited_War_2" />
       </server-settings>
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="52923" />
       </RunnerSettings>
@@ -340,9 +451,91 @@
       <method v="2">
         <option name="BuildArtifacts" enabled="true">
           <artifact name="src:war exploded" />
+          <artifact name="ps_18_gruppe021:war exploded" />
         </option>
       </method>
     </configuration>
+    <configuration name="game.jsp" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" temporary="true" APPLICATION_SERVER_NAME="Tomcat 8.5.34" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/jsp/game.jsp" />
+      <deployment>
+        <artifact name="ps_18_gruppe021:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ps_18_gruppe021_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="game_jsp_ps_18_gruppe02" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50410" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ps_18_gruppe021:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BoardBeanTest" />
+        <item itemvalue="JUnit.All in ps_18_gruppe021" />
+        <item itemvalue="JUnit.PlayerTest" />
+        <item itemvalue="JavaScript Debug.game.jsp" />
+        <item itemvalue="Tomcat Server.game.jsp" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -356,6 +549,19 @@
       <updated>1542725076836</updated>
       <workItem from="1542725078215" duration="2609000" />
       <workItem from="1545319097717" duration="131000" />
+      <workItem from="1545319502830" duration="876000" />
+      <workItem from="1549285145393" duration="163000" />
+      <workItem from="1549285654127" duration="7624000" />
+      <workItem from="1549636430290" duration="649000" />
+      <workItem from="1549637435537" duration="6011000" />
+      <workItem from="1549706715633" duration="4541000" />
+      <workItem from="1549891375584" duration="2112000" />
+      <workItem from="1549973588791" duration="3673000" />
+      <workItem from="1550059619119" duration="4521000" />
+      <workItem from="1550173287611" duration="2145000" />
+      <workItem from="1550472648445" duration="613000" />
+      <workItem from="1550496403135" duration="245000" />
+      <workItem from="1550562471809" duration="3058000" />
     </task>
     <task id="LOCAL-00001" summary="Test Tina">
       <created>1542725188900</created>
@@ -385,56 +591,140 @@
       <option name="project" value="LOCAL" />
       <updated>1542731949970</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Updated websites to correctly use jsp include, updated game.jsp binding, created and started to implement country.java, player.java, RandomBehavior.java and Interface IBehavior">
+      <created>1549292751504</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1549292751504</updated>
+    </task>
+    <task id="LOCAL-00006" summary="-Add Aufwanderfassung Schreier Manuel">
+      <created>1549293294854</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1549293294854</updated>
+    </task>
+    <task id="LOCAL-00007" summary="-Updated game.jsp to reduce code redundancy, implemented code to randomly generated game board and countries, gets newly generated upon reload though">
+      <created>1549640450266</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1549640450266</updated>
+    </task>
+    <task id="LOCAL-00008" summary="-Made country generation fair, renamed board to boardbean">
+      <created>1549892121761</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1549892121762</updated>
+    </task>
+    <task id="LOCAL-00009" summary="-added dummy turn method, added owned countries datafield to player">
+      <created>1549893490495</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1549893490495</updated>
+    </task>
+    <task id="LOCAL-00010" summary="-updated Behavior method signatures, implemented tests for Board and Player, implemented place soldiers for random behavior">
+      <created>1549977027373</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1549977027373</updated>
+    </task>
+    <task id="LOCAL-00011" summary="-updated Aufwanderfassung">
+      <created>1549977278361</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1549977278361</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="PlayerTest - 2019.02.12 at 13h 42m 03s.xml">
+      <configuration name="PlayerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PlayerTest - 2019.02.12 at 13h 42m 25s.xml">
+      <configuration name="PlayerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_ps_18_gruppe021 - 2019.02.12 at 13h 53m 33s.xml">
+      <configuration name="All in ps_18_gruppe021" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardBeanTest - 2019.02.19 at 09h 48m 44s.xml">
+      <configuration name="BoardBeanTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4039000" />
+    <option name="totallyTimeSpent" value="40270000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2568746" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.497479" visible="true" weight="0.15167785" />
+      <window_info id="Structure" order="1" sideWeight="0.5021097" side_tool="true" weight="0.26912752" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="Web" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" weight="0.32956153" />
+      <window_info id="Web" order="3" sideWeight="0.50252104" side_tool="true" weight="0.31879196" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32956153" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.04249292" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.2407932" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32719547" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49962825" weight="0.26449788" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49962825" weight="0.26203966" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50037175" side_tool="true" weight="0.32891247" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50067115" side_tool="true" weight="0.3286119" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" show_stripe_button="false" weight="0.32956153" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" id="Messages" order="13" sideWeight="0.49932885" visible="true" weight="0.35977337" />
+      <window_info anchor="bottom" id="Application Servers" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Maven" order="8" visible="true" weight="0.053020135" />
+      <window_info anchor="right" id="Database" order="9" weight="0.3295302" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test Tina" />
     <MESSAGE value="Loginseite eingefügt" />
     <MESSAGE value="loginseite eingefügt" />
-    <option name="LAST_COMMIT_MESSAGE" value="loginseite eingefügt" />
+    <MESSAGE value="- Updated websites to correctly use jsp include, updated game.jsp binding, created and started to implement country.java, player.java, RandomBehavior.java and Interface IBehavior" />
+    <MESSAGE value="-Add Aufwanderfassung Schreier Manuel" />
+    <MESSAGE value="-Updated game.jsp for reduced code redundancy, implemented code to randomly generated game board and countries, gets newly generated upon reload though" />
+    <MESSAGE value="-Updated game.jsp to reduce code redundancy, implemented code to randomly generated game board and countries, gets newly generated upon reload though" />
+    <MESSAGE value="-Made country generation fair, renamed board to boardbean" />
+    <MESSAGE value="-added dummy turn method, added owned countries datafield to player" />
+    <MESSAGE value="-updated Behavior method signatures, implemented tests for Board and Player, implemented place soldiers for random behavior" />
+    <MESSAGE value="-updated Aufwanderfassung" />
+    <MESSAGE value="-moved BoardBean to model package" />
+    <option name="LAST_COMMIT_MESSAGE" value="-moved BoardBean to model package" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/html/file.html" />
@@ -447,17 +737,198 @@
     <entry file="file://$PROJECT_DIR$/images/logo.png" />
     <entry file="file://$PROJECT_DIR$/html/login.html" />
     <entry file="file://$PROJECT_DIR$/uW/web/index.jsp" />
+    <entry file="file://$PROJECT_DIR$/desktop.ini" />
+    <entry file="file://$PROJECT_DIR$/src/java/desktop.ini" />
+    <entry file="file://$PROJECT_DIR$/src/ps_18_gruppe021.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/results.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/sign-in.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/test.java" />
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="37" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/snippets/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.1/lib/src.zip!/java.base/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10217">
+          <caret line="657" selection-start-line="657" selection-end-line="657" />
+          <folding>
+            <element signature="e#24581#24582#0" expanded="true" />
+            <element signature="e#129105#129106#0" expanded="true" />
+            <element signature="e#129159#129160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/css/field.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/Interface/IBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state relative-caret-position="187">
+          <caret line="11" column="45" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+          <folding>
+            <element signature="n#!!doc;n#getName#0;n#Country#0" />
+            <marker date="1549291859389" expanded="true" signature="69:146" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/images/log-out2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/images/log-out.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/RandomBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/GameServlet.java" />
+    <entry file="file://$PROJECT_DIR$/src/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/images/logo.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/images/logo_transparent.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;field#behavior#0;class#Player#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/snippets/header.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/profile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/NumberGuessBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+        <state relative-caret-position="647">
+          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#1873#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/model/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/BoardBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="24" lean-forward="true" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/model/BoardBeanTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="33" column="1" lean-forward="true" selection-start-line="33" selection-start-column="1" selection-end-line="33" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/web/jsp/game.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="27" column="45" selection-start-line="27" selection-start-column="45" selection-end-line="27" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -467,7 +938,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>src:war exploded</last-edited>
+          <last-edited>ps_18_gruppe021:war exploded</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -492,6 +963,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>lib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -503,7 +975,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -515,7 +987,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>src</last-edited>
+          <last-edited>ps_18_gruppe021</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -1,8 +1,4 @@
-package controller;
-
-import model.Country;
-import model.Player;
-import model.RandomBehavior;
+package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
