@@ -20,7 +20,7 @@ public class RandomBehavior implements IBehavior {
     public void placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
         while(soldiersToPlace > 0){
             Country country = ownedCountries.get(ThreadLocalRandom.current()
-                    .nextInt(0, ownedCountries.size() + 1));
+                    .nextInt(0, ownedCountries.size()));
             int placedSoldiers = ThreadLocalRandom.current()
                     .nextInt(0, soldiersToPlace + 1);
             country.setSoldiersCount(country.getSoldiersCount() + placedSoldiers);

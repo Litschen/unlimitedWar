@@ -1,5 +1,7 @@
 package model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Country {
 
     //region data fields
@@ -9,7 +11,7 @@ public class Country {
     //endregion
 
     //region constructors
-    public Country(String name, int soldiersCount, Player owner) {
+    public Country(String name, int soldiersCount, @NotNull Player owner) {
         Name = name;
         SoldiersCount = soldiersCount;
         Owner = owner;
@@ -37,7 +39,7 @@ public class Country {
         return Owner;
     }
 
-    public void setOwner(Player owner) {
+    public void setOwner(@NotNull Player owner) {
         Owner = owner;
     }
     //endregion
