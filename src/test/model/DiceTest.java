@@ -2,8 +2,7 @@ package model;
 
 public class DiceTest {
 
-
-    @Test
-    public int rollTheDice(int wert) {
-    return 0;}
+    @org.junit.Test
+    public void rollTheDice1() {
+    }
 }
