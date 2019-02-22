@@ -50,6 +50,7 @@
     </aside>
 </div>
 <form method="post" action="<%=request.getContextPath()%>/Game/">
+    <%--Saves the board in the session --%>
     <% session.setAttribute("board", board); %>
     <button type="submit" name="nextTurn" value="execute">next Turn</button>
 </form>

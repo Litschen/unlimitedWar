@@ -36,6 +36,7 @@ public class GameController extends HttpServlet {
             }
             dispatcher.forward(request, response);
         } catch (ServletException e) {
+            //TODO message the User?
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();

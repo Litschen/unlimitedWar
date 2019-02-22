@@ -1,8 +1,10 @@
 package model;
 
+import org.junit.jupiter.api.Test;
+
 public class DiceTest {
 
-    @org.junit.Test
+    @Test
     public void rollTheDice1() {
     }
-}
+    }

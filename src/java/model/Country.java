@@ -1,5 +1,6 @@
 package model;
 
+
 import org.jetbrains.annotations.NotNull;
 
 public class Country {
@@ -44,7 +45,7 @@ public class Country {
     }
     //endregion
 
-    public boolean isBordering(Country country){
+    public boolean isBordering(@NotNull Country country){
         //TODO
         return true;
     }
