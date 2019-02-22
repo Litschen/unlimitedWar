@@ -7,9 +7,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class BoardBean {
 
     //region static variables
-    public final static int START_SOLDIER_PER_PLAYER = 16;
+    public final static int START_SOLDIER_PER_PLAYER = 12;
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
+    private final static int TIME_INBETWEEN_AI_ACTIONS_MS = 1000;
     //endregion
 
     //region data fields
@@ -36,7 +37,6 @@ public class BoardBean {
     public ArrayList<Country> getCountries() {
         return countries;
     }
-
     //endregion
 
     private void generateCountries() {
@@ -73,9 +73,18 @@ public class BoardBean {
             if (currentPlayer.getOwnedCountries().size() > 0) {
                 currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(),
                         currentPlayer.calculateSoldiersToPlace());
+                pause();
                 currentPlayer.getBehavior().attackCountry(countries, currentPlayer.getOwnedCountries());
                 currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
             }
+        }
+    }
+
+    private void pause() {
+        try {
+            Thread.sleep(TIME_INBETWEEN_AI_ACTIONS_MS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

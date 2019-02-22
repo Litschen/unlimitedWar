@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Player{
 
     //region static variables
+    //Countries needed to get a Soldier to place
     public static final int COUNTRY_WEIGHT = 3;
     //endregion
 

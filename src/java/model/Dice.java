@@ -2,9 +2,11 @@ package model;
 
 public class Dice {
 
+    //region static variables
     public static final int MAX_VALUE = 6;
     public static final int MIN_VALUE = 1;
     public static final int MAX_THROWS = 10;
+    //endregion
 
     /**
      *
