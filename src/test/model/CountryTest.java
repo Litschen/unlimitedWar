@@ -24,9 +24,9 @@ class CountryTest {
 
     @Test
     void maxAmountDiceThrowsAttackerTest() {
-        assertEquals(invadingCountry.maxAmountDiceThrowsAttacker(), Country.ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER);
+        assertEquals(Country.ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER, invadingCountry.maxAmountDiceThrowsAttacker());
         invadingCountry.setSoldiersCount(Country.MIN_SOLDIERS_TO_INVADE);
-        assertEquals(invadingCountry.maxAmountDiceThrowsAttacker(), 1);
+        assertEquals(1, invadingCountry.maxAmountDiceThrowsAttacker());
     }
 
     @Test
@@ -40,28 +40,28 @@ class CountryTest {
     @Test
     void calculateCasualtiesInvaderVictoryTest() {
         Casualties casualties = invadingCountry.calculateCasualties(new int[]{6,6,6}, new int[]{1,1});
-        assertEquals(casualties.getCasualtiesAttacker(), 0);
-        assertEquals(casualties.getCasualtiesDefender(), 3);
+        assertEquals(0, casualties.getCasualtiesAttacker());
+        assertEquals(3, casualties.getCasualtiesDefender());
     }
 
     @Test
     void calculateCasualtiesDefenderVictoryTest() {
         Casualties casualties = invadingCountry.calculateCasualties(new int[]{1,1,1}, new int[]{6,6});
-        assertEquals(casualties.getCasualtiesAttacker(), 2);
-        assertEquals(casualties.getCasualtiesDefender(), 0);
+        assertEquals(2, casualties.getCasualtiesAttacker());
+        assertEquals( 0,casualties.getCasualtiesDefender());
     }
 
     @Test
     void calculateCasualtiesStalemateTest() {
         Casualties casualties = invadingCountry.calculateCasualties(new int[]{6,6,6}, new int[]{6,6});
-        assertEquals(casualties.getCasualtiesAttacker(), 2);
-        assertEquals(casualties.getCasualtiesDefender(), 0);
+        assertEquals(2, casualties.getCasualtiesAttacker());
+        assertEquals(0, casualties.getCasualtiesDefender() );
     }
 
     @Test
     void calculateCasualtiesOneDefenderTest() {
         Casualties casualties = invadingCountry.calculateCasualties(new int[]{1,1,1}, new int[]{6});
-        assertEquals(casualties.getCasualtiesAttacker(), 1);
-        assertEquals(casualties.getCasualtiesDefender(), 0);
+        assertEquals(1,casualties.getCasualtiesAttacker());
+        assertEquals(0,casualties.getCasualtiesDefender());
     }
 }
