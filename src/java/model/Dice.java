@@ -2,6 +2,10 @@ package model;
 
 public class Dice {
 
+    public static final int MAX_VALUE = 6;
+    public static final int MIN_VALUE = 1;
+    public static final int MAX_THROWS = 10;
+
     /**
      *
      * @param amountOfDice how many dice should be thrown
