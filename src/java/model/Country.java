@@ -6,7 +6,9 @@ import org.jetbrains.annotations.NotNull;
 public class Country {
 
     //region static variables
-    private static final int MIN_SOLDIERS_TO_INVADE = 2;
+    public static final int MIN_SOLDIERS_TO_INVADE = 2;
+    public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
+    public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
     public static final int METHOD_NOT_IMPELEMENTED_RETURN_VALUE = -1;
     //endregion
 
@@ -52,7 +54,7 @@ public class Country {
 
     public boolean isBordering(@NotNull Country country){
         //TODO
-        return true;
+        return false;
     }
     public void invade(Country country){
         if(this.canInvade()){
@@ -60,18 +62,18 @@ public class Country {
         }
     }
 
-    private Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender){
+    public int maxAmountDiceThrowsAttacker(){
+        return METHOD_NOT_IMPELEMENTED_RETURN_VALUE;
+    }
+
+    public int amountDiceThrowsDefender(int amountAttacker){
+        return METHOD_NOT_IMPELEMENTED_RETURN_VALUE;
+    }
+
+
+    public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender){
         return new Casualties(METHOD_NOT_IMPELEMENTED_RETURN_VALUE, METHOD_NOT_IMPELEMENTED_RETURN_VALUE);
     }
-
-    private int amountDiceThrowsAttacker(){
-        return METHOD_NOT_IMPELEMENTED_RETURN_VALUE;
-    }
-
-    private int amountDiceThrowsDefender(int amountAttacker){
-        return METHOD_NOT_IMPELEMENTED_RETURN_VALUE;
-    }
-
 
     private boolean canInvade(){
         return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE;
