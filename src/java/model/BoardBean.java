@@ -85,9 +85,13 @@ public class BoardBean {
     }
 
     // /F0350/ Würfelanzahl bestimmen Angreifer
-    public int maxAttackerDiceCount(Country country) {
+    public int maxAttackerDiceCount(Country country) throws Exception {
         int count = country.getSoldiersCount() - 1;
-        return count > 3 ? 3 : count;
+        if (count > 0) {
+            return count > 3 ? 3 : count;
+        } else {
+            throw new Exception("could not calculate maxAttackerDiceCount");
+        }
     }
 
     //  /F0340/ Land angreifen
