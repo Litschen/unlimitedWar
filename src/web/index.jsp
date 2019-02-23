@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="refresh" content="0; ./jsp/index.jsp">
     <script type="text/javascript">
-        window.location.href = "./jsp/index.jsp"
+        window.location.href = "./jsp/game.jsp"
     </script>
     <title>Page Redirection</title>
 </head>

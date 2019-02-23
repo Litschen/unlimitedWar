@@ -62,6 +62,7 @@
         </div>
     </div>
 </div>
+<%@include file="modals/attackRoll.jsp" %>
 <%@include file="snippets/footer.jsp" %>
 </body>
 </html>

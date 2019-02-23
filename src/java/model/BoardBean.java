@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BoardBean {
@@ -78,4 +79,26 @@ public class BoardBean {
             }
         }
     }
+
+    // /F0350/ Würfelanzahl bestimmen Angreifer
+    public boolean rollDice(Map<String, String[]> parameterMap){
+        System.out.println("roll");
+
+        return false;
+    }
+
+    public void selectCountry(int soldiersCount){
+        int attackerDice = this.getDiceCount(3);
+        int defenderDice = this.getDiceCount(2);
+    }
+
+    private int getDiceCount(int soldiersCount) {
+        if(soldiersCount >= 3) {
+            return 3;
+        } else {
+            return soldiersCount;
+        }
+    }
+
+
 }
