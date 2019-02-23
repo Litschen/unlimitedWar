@@ -1,24 +1,5 @@
-<jsp:useBean id="dice" class="controller.BoardBean"/>
+<jsp:useBean id="dice" class="controller.GameController"/>
 <jsp:setProperty name="dice" property="*"/>
-<script>
-    function toggleDice(elem) {
-        if(elem.classList.contains('filled')){
-            elem.classList.remove('filled');
-            elem.innerHTML = 'OFF';
-        } else {
-            elem.classList.add('filled');
-            elem.innerHTML = 'ON';
-        }
-    }
-
-    function x(soldiersCount) {
-        return 2;
-    }
-
-    function attack() {
-        // roll dice
-    }
-</script>
 
 <div class="modal show" role="dialog">
     <form class="modal-dialog modal-content">
@@ -31,13 +12,15 @@
         <div class="modal-body row">
             <div class="col">
                 <h6>Attacker</h6>
+                <input type="checkbox" class="dice" checked>
+                <input type="checkbox" class="dice">
+                <input type="checkbox" class="dice" disabled>
             </div>
             <div class="col">
                 <h6>Defender</h6>
-                <label class="switch">
-                    <input type="checkbox dice" checked>
-                    <span class="slider round"></span>
-                </label>
+                <input type="checkbox" class="dice" checked>
+                <input type="checkbox" class="dice">
+                <input type="checkbox" class="dice" disabled>
             </div>
         </div>
         <div class="modal-footer">
