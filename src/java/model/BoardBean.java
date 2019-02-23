@@ -94,6 +94,19 @@ public class BoardBean {
         }
     }
 
+    // /F0351/ Würfelanzahl bestimmen Verteidiger
+    public int maxDefenderDiceCount(Country country, int attackerDiceCount) {
+        int count = attackerDiceCount - 1;
+        int soldiers = country.getSoldiersCount();
+
+        if (count == 0) {
+            return 1;
+        } else if (soldiers <= count) {
+            return soldiers;
+        }
+        return count;
+    }
+
     //  /F0340/ Land angreifen
     public void attackRoll(HttpServletRequest request, HttpServletResponse response) {
         int attackDiceCount = 0;
