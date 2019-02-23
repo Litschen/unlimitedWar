@@ -24,12 +24,12 @@ public class RandomBehavior implements IBehavior {
             int placedSoldiers = ThreadLocalRandom.current()
                     .nextInt(0, soldiersToPlace + 1);
             country.setSoldiersCount(country.getSoldiersCount() + placedSoldiers);
-            soldiersToPlace -= placedSoldiers;
+            soldiersToPlace = soldiersToPlace - placedSoldiers;
         }
     }
 
     /**
-     * Selects country to be attacked and executes the attack itself.
+     * Selects country to be attacked and executes the attack itself. Might need to change signature
      *
      * @param allCountries on the board
      * @param ownedCountries by current Player
