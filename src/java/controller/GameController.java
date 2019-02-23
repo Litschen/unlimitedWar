@@ -14,6 +14,7 @@ import java.io.IOException;
         name = "GameController",
         urlPatterns = "/Game/*")
 public class GameController extends HttpServlet {
+    private BoardBean board = new BoardBean();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

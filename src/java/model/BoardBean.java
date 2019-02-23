@@ -1,5 +1,7 @@
 package model;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,6 +13,8 @@ public class BoardBean {
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
     private final static int TIME_INBETWEEN_AI_ACTIONS_MS = 1000;
+    private final String ATTACKER_KEY = "attackDice";
+    private final String DEFENDER_KEY = "defendDice";
     //endregion
 
     //region data fields
@@ -85,6 +89,27 @@ public class BoardBean {
         System.out.println("roll");
 
         return false;
+    }
+
+    public void attackRoll(HttpServletRequest request, HttpServletResponse response) {
+        int attackDiceCount = 0;
+        int defendDiceCount = 0;
+
+        for (String key : request.getParameterMap().keySet()) {
+            if (key.contains(ATTACKER_KEY)) {
+                attackDiceCount++;
+            } else if (key.contains(DEFENDER_KEY)) {
+                defendDiceCount++;
+            }
+        }
+        Dice dice = new Dice();
+        int attackerHighestRoll = dice.getHighestRoll(dice.roll(attackDiceCount));
+        int defenderHighestRoll = dice.getHighestRoll(dice.roll(defendDiceCount));
+
+        // TODO call /F0341/
+
+        // if soldiers = 0
+        // call /F0370/
     }
 
     public void selectCountry(int soldiersCount){

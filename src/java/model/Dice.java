@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Dice {
 
     //region static variables
@@ -13,9 +15,15 @@ public class Dice {
      * @param amountOfDice how many dice should be thrown
      * @return int array of results (range 1-6) sorted by by size descending
      */
-    public int[] roll(int amountOfDice) {
+    public List<Integer> roll(int amountOfDice) {
 
        //return  wert = (int) (Math.random() * 6 + 1);
-        return new int[]{-1};
+       // return new int[]{-1};
+       // @Tina List isch eifacher zum sortiere
+        return null;
+    }
+
+    public Integer getHighestRoll(List<Integer> rolls){
+        return null;
     }
 }
