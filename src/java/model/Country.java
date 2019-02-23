@@ -70,6 +70,9 @@ public class Country {
         return METHOD_NOT_IMPELEMENTED_RETURN_VALUE;
     }
 
+    public void addSoldier(){
+        soldiersCount++;
+    }
 
     public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender){
         return new Casualties(METHOD_NOT_IMPELEMENTED_RETURN_VALUE, METHOD_NOT_IMPELEMENTED_RETURN_VALUE);
