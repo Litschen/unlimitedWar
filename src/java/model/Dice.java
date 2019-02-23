@@ -20,7 +20,7 @@ public class Dice {
 
        //return  wert = (int) (Math.random() * 6 + 1);
        // return new int[]{-1};
-       // @Tina List isch eifacher zum sortiere
+       // @schrema8 List isch eifacher zum sortiere
         return null;
     }
 
