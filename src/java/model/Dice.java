@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Dice {
@@ -24,6 +25,8 @@ public class Dice {
     }
 
     public Integer getHighestRoll(List<Integer> rolls){
-        return null;
+        Collections.sort(rolls);
+        Collections.reverse(rolls);
+        return rolls.get(0);
     }
 }
