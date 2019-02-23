@@ -85,12 +85,12 @@ public class BoardBean {
     }
 
     // /F0350/ Würfelanzahl bestimmen Angreifer
-    public boolean rollDice(Map<String, String[]> parameterMap){
-        System.out.println("roll");
-
-        return false;
+    public int maxAttackerDiceCount(Country country) {
+        int count = country.getSoldiersCount() - 1;
+        return count > 3 ? 3 : count;
     }
 
+    //  /F0340/ Land angreifen
     public void attackRoll(HttpServletRequest request, HttpServletResponse response) {
         int attackDiceCount = 0;
         int defendDiceCount = 0;
@@ -112,13 +112,13 @@ public class BoardBean {
         // call /F0370/
     }
 
-    public void selectCountry(int soldiersCount){
+    public void selectCountry(int soldiersCount) {
         int attackerDice = this.getDiceCount(3);
         int defenderDice = this.getDiceCount(2);
     }
 
     private int getDiceCount(int soldiersCount) {
-        if(soldiersCount >= 3) {
+        if (soldiersCount >= 3) {
             return 3;
         } else {
             return soldiersCount;
