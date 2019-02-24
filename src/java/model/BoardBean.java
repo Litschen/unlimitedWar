@@ -2,8 +2,13 @@ package model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BoardBean {
@@ -13,8 +18,8 @@ public class BoardBean {
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
     private final static int TIME_INBETWEEN_AI_ACTIONS_MS = 1000;
-    private final String ATTACKER_KEY = "attackDice";
-    private final String DEFENDER_KEY = "defendDice";
+    private final static String ATTACKER_KEY = "attackDice";
+    private final static String DEFENDER_KEY = "defendDice";
     //endregion
 
     //region data fields
@@ -51,16 +56,44 @@ public class BoardBean {
                 if (i != 1) {
                     int randomSoldierCount = ThreadLocalRandom.current()
                             .nextInt(MIN_SOLDIER_GENERATION, solidersToDistribute + 1);
-                    countries.add(new Country("test", randomSoldierCount + 1, currentPlayer));
+                    countries.add(new Country("", randomSoldierCount + 1, currentPlayer));
                     solidersToDistribute -= randomSoldierCount;
                 } else {
-                    countries.add(new Country("test", solidersToDistribute + 1, currentPlayer));
+                    countries.add(new Country("", solidersToDistribute + 1, currentPlayer));
                 }
                 currentPlayer.getOwnedCountries().add(countries.get(countries.size() - 1));
             }
         }
         Collections.shuffle(countries);
+        setCountryAttributes();
     }
+
+    private void setCountryAttributes(){
+        try {
+            List<String> countryNames = Files.readAllLines(
+                    new File(getClass().getClassLoader().getResource("countryNames.txt").getPath()).toPath(), Charset.defaultCharset());
+            List<String> countryCoordinates = Files.readAllLines(
+                            new File(getClass().getClassLoader().getResource("coordinates.txt").getPath()).toPath(), Charset.defaultCharset());
+            Collections.shuffle(countryNames);
+            for (Country country : countries) {
+                country.setName(countryNames.remove(0));
+                country.setCoordinates(extractCoordinates(countryCoordinates.remove(0)));
+
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    private Coordinates extractCoordinates(String toExtract){
+        String[] stringCord = toExtract.split(",");
+        return new Coordinates(
+                Integer.parseInt(stringCord[0]),
+                Integer.parseInt(stringCord[1]),
+                Integer.parseInt(stringCord[2]),
+                Integer.parseInt(stringCord[3]));
+    }
+
 
     private void generatePlayers() {
         //TODO modify to include User, all Behaviors and color selection
@@ -77,34 +110,10 @@ public class BoardBean {
             if (currentPlayer.getOwnedCountries().size() > 0) {
                 currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(),
                         currentPlayer.calculateSoldiersToPlace());
-                pause();
                 currentPlayer.getBehavior().attackCountry(countries, currentPlayer.getOwnedCountries());
                 currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
             }
         }
-    }
-
-    // /F0350/ Würfelanzahl bestimmen Angreifer
-    public int maxAttackerDiceCount(Country country) throws Exception {
-        int count = country.getSoldiersCount() - 1;
-        if (count > 0) {
-            return count > 3 ? 3 : count;
-        } else {
-            throw new Exception("could not calculate maxAttackerDiceCount");
-        }
-    }
-
-    // /F0351/ Würfelanzahl bestimmen Verteidiger
-    public int maxDefenderDiceCount(Country country, int attackerDiceCount) {
-        int count = attackerDiceCount - 1;
-        int soldiers = country.getSoldiersCount();
-
-        if (count == 0) {
-            return 1;
-        } else if (soldiers <= count) {
-            return soldiers;
-        }
-        return count;
     }
 
     //  /F0340/ Land angreifen
@@ -139,14 +148,6 @@ public class BoardBean {
             return 3;
         } else {
             return soldiersCount;
-        }
-    }
-
-    private void pause() {
-        try {
-            Thread.sleep(TIME_INBETWEEN_AI_ACTIONS_MS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }

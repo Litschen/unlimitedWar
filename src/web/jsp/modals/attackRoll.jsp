@@ -10,6 +10,7 @@
         <div class="modal-body row">
             <div class="col">
                 <h6>Attacker</h6>
+                <%-- TODO use for loop --%>
                 <input type="checkbox" name="attackDice1" class="dice" checked>
                 <input type="checkbox" name="attackDice2" class="dice">
                 <input type="checkbox" name="attackDice3" class="dice" disabled>

@@ -46,7 +46,7 @@ public class RandomBehavior implements IBehavior {
      * @param ownedCountries by current Player
      */
     @Override
-    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
 
         /*while (soldiersToPlace > 1){
             placeSoldiers(allCountries, ownedCountries, soldiersToPlace);

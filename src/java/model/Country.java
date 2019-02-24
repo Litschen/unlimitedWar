@@ -8,13 +8,14 @@ public class Country {
     public static final int MIN_SOLDIERS_TO_INVADE = 2;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
-    public static final int METHOD_NOT_IMPELEMENTED_RETURN_VALUE = -1;
+    public static final int METHOD_NOT_IMPLEMENTED_RETURN_VALUE = -1;
     //endregion
 
     //region data fields
     private String name;
     private int soldiersCount;
     private Player owner;
+    private Coordinates coordinates;
     //endregion
 
     //region constructors
@@ -22,6 +23,13 @@ public class Country {
         this.name = name;
         this.soldiersCount = soldiersCount;
         this.owner = owner;
+    }
+
+    public Country(String name, int soldiersCount, @NotNull Player owner, Coordinates coordinates) {
+        this.name = name;
+        this.soldiersCount = soldiersCount;
+        this.owner = owner;
+        this.coordinates = coordinates;
     }
     //endregion
 
@@ -49,35 +57,56 @@ public class Country {
     public void setOwner(@NotNull Player owner) {
         this.owner = owner;
     }
+
+    public Coordinates getCoordinates() { return coordinates; }
+
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
     //endregion
 
-    public boolean isBordering(@NotNull Country country){
+    public boolean isBordering(@NotNull Country country) {
         //TODO
         return false;
     }
-    public void invade(Country country){
-        if(this.canInvade()){
+
+    public void invade(Country country) {
+        if (this.canInvade()) {
 
         }
     }
 
-    public int maxAmountDiceThrowsAttacker(){
-        return METHOD_NOT_IMPELEMENTED_RETURN_VALUE;
+    // /F0350/ Würfelanzahl bestimmen Angreifer
+    public int maxAmountDiceThrowsAttacker() throws Exception {
+        int count = this.getSoldiersCount() - 1;
+        if (count > 0) {
+            return count > 3 ? 3 : count;
+        } else {
+            throw new Exception("could not calculate maxAttackerDiceCount");
+        }
     }
 
-    public int amountDiceThrowsDefender(int amountAttacker){
-        return METHOD_NOT_IMPELEMENTED_RETURN_VALUE;
+    public int amountDiceThrowsDefender(int amountAttacker) {
+        int count = amountAttacker - 1;
+        int soldiers = this.getSoldiersCount();
+
+        if (count == 0) {
+            return 1;
+        } else if (soldiers <= count) {
+            return soldiers;
+        }
+        return count;
     }
 
-    public void addSoldier(){
+    public void addSoldier() {
         soldiersCount++;
     }
 
-    public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender){
-        return new Casualties(METHOD_NOT_IMPELEMENTED_RETURN_VALUE, METHOD_NOT_IMPELEMENTED_RETURN_VALUE);
+    public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender) {
+        return new Casualties(METHOD_NOT_IMPLEMENTED_RETURN_VALUE, METHOD_NOT_IMPLEMENTED_RETURN_VALUE);
     }
 
-    private boolean canInvade(){
+    private boolean canInvade() {
         return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE;
     }
 }
