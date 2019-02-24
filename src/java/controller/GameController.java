@@ -14,13 +14,29 @@ import java.io.IOException;
         name = "GameController",
         urlPatterns = "/Game/*")
 public class GameController extends HttpServlet {
+
     private BoardBean board = new BoardBean();
 
+    /**
+     * TEXT
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
+
+    /**
+     * TEXT
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,6 +44,10 @@ public class GameController extends HttpServlet {
         processRequest(request, response);
     }
 
+    /** Process the Request
+     * @param request
+     * @param response
+     */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/game.jsp");
         try {
