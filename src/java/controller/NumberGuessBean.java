@@ -27,29 +27,49 @@ public class NumberGuessBean {
 	private int numGuesses;
 	private Random ramdon;
 
+	/**
+	 * Constructor from NumberGuessBean
+	 */
 	public NumberGuessBean() {
 		this.ramdon = new Random();
 		this.reset();
 	}
 
+	/**
+	 * @return String with ah hint
+	 */
 	public String getHint() {
 		return "" + this.hint;
 	}
 
+	/**
+	 * @return a guesses number
+	 */
 	public int getNumGuesses() {
 		return this.numGuesses;
 	}
 
+
+	/**
+	 * @return Indicates if you have success
+	 */
 	public boolean getSuccess() {
 		return this.success;
 	}
 
+	/**
+	 * TEXT
+	 */
 	public void reset() {
 		this.answer = Math.abs(this.ramdon.nextInt() % 100) + 1;
 		this.success = false;
 		this.numGuesses = 0;
 	}
 
+	/**
+	 * TEXT
+	 * @param guess
+	 */
 	public void setGuess(String guess) {
 		this.numGuesses++;
 
