@@ -1,6 +1,7 @@
-package test.model;
+package model;
 
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class GenerateOpponentsTest {
 
