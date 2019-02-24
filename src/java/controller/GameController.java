@@ -1,6 +1,6 @@
-package controller;
+package java.controller;
 
-import model.BoardBean;
+import java.model.BoardBean;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
