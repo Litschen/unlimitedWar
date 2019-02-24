@@ -12,23 +12,23 @@ class PlayerTest {
     private Player testPlayer;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         testPlayer = new Player("blue", "testPlayer", new RandomBehavior());
     }
 
     @Test
-    void calculateSoldiersToPlaceTestMin() {
-        //owned countries = 0
-        assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace());
-    }
-
-    @Test
-    void calculateSoldiersToPlaceTest() {
+    void testCalculateSoldiersToPlace() {
         ArrayList<Country> owned = testPlayer.getOwnedCountries();
-        for(int i = 0; i < 15 ; i++){
+        for (int i = 0; i < 15; i++) {
             owned.add(new Country("test", 1, testPlayer));
         }
         assertEquals(15 / Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace());
+    }
+
+    @Test
+    void testCalculateSoldiersToPlaceMin() {
+        //owned countries = 0
+        assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace());
     }
 
 }
