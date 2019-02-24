@@ -1,7 +1,7 @@
-package model;
+package java.model;
 
 
-import model.Interface.IBehavior;
+import java.model.Interface.IBehavior;
 
 import java.util.ArrayList;
 

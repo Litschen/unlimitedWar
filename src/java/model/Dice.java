@@ -1,6 +1,6 @@
-package model;
+package java.model;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Dice {
@@ -14,19 +14,19 @@ public class Dice {
     /**
      *
      * @param amountOfDice how many dice should be thrown
-     * @return int arraylist of results (range 1-6) sorted by by size descending
+     * @return int array of results (range 1-6) sorted by by size descending
      */
-    public ArrayList<Integer> roll(int amountOfDice) {
+    public List<Integer> roll(int amountOfDice) {
 
        //return  wert = (int) (Math.random() * 6 + 1);
        // return new int[]{-1};
-       // @Tina List isch eifacher zum sortiere
-        //@All ich wett das no bespreche
-        return new ArrayList<>();
+       // @schrema8 List isch eifacher zum sortiere
+        return null;
     }
 
-    //isch da nid härt unnötig? es isch einfach s erste element?
     public Integer getHighestRoll(List<Integer> rolls){
-        return null;
+        Collections.sort(rolls);
+        Collections.reverse(rolls);
+        return rolls.get(0);
     }
 }

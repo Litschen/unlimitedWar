@@ -1,6 +1,6 @@
-package model.Interface;
+package java.model.Interface;
 
-import model.Country;
+import java.model.Country;
 
 import java.util.ArrayList;
 

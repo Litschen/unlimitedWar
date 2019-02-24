@@ -29,7 +29,7 @@ class BoardBeanTest {
     }
 
     @Test
-    public void maxAttackerDiceCount_Valid() {
+    public void testMaxAttackerDiceCount_Valid() {
         try {
             Country c = new Country("c", 2, testBoard.getPlayers().get(0));
             assertEquals(testBoard.maxAttackerDiceCount(c), 1);
@@ -50,9 +50,28 @@ class BoardBeanTest {
     }
 
     @Test
-    public void maxAttackerDiceCount_Invalid() {
+    public void testMaxAttackerDiceCount_Invalid() {
         Country c = new Country("c", 1, testBoard.getPlayers().get(0));
         Exception exception = assertThrows(Exception.class, () -> testBoard.maxAttackerDiceCount(c));
         assertEquals("could not calculate maxAttackerDiceCount", exception.getMessage());
+    }
+
+    @Test
+    public void testMaxDefenderDiceCount() {
+        Country c = new Country("c", 10, testBoard.getPlayers().get(0));
+        assertEquals(testBoard.maxDefenderDiceCount(c, 1), 1);
+        assertEquals(testBoard.maxDefenderDiceCount(c, 3), 2);
+
+        c.setSoldiersCount(3);
+        assertEquals(testBoard.maxDefenderDiceCount(c, 1), 1);
+        assertEquals(testBoard.maxDefenderDiceCount(c, 3), 2);
+
+        c.setSoldiersCount(2);
+        assertEquals(testBoard.maxDefenderDiceCount(c, 3), 2);
+        assertEquals(testBoard.maxDefenderDiceCount(c, 2), 1);
+
+        c.setSoldiersCount(1);
+        assertEquals(testBoard.maxDefenderDiceCount(c, 1), 1);
+        assertEquals(testBoard.maxDefenderDiceCount(c, 2), 1);
     }
 }

@@ -1,6 +1,6 @@
-package model;
+package java.model;
 
-import model.Interface.IBehavior;
+import java.model.Interface.IBehavior;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -46,8 +46,13 @@ public class RandomBehavior implements IBehavior {
      * @param ownedCountries by current Player
      */
     @Override
-    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-        //TODO
+    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+
+        while (soldiersToPlace > 1){
+            placeSoldiers(allCountries, ownedCountries, soldiersToPlace);
+        }
+
+
     }
 
 
