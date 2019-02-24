@@ -1,6 +1,6 @@
-package java.model;
+package model;
 
-import java.model.Interface.IBehavior;
+import model.Interface.IBehavior;
 
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -48,9 +48,9 @@ public class RandomBehavior implements IBehavior {
     @Override
     public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
 
-        while (soldiersToPlace > 1){
+        /*while (soldiersToPlace > 1){
             placeSoldiers(allCountries, ownedCountries, soldiersToPlace);
-        }
+        }*/
 
 
     }

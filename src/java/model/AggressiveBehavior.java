@@ -1,6 +1,6 @@
-package java.model;
+package model;
 
-import java.model.Interface.IBehavior;
+import model.Interface.IBehavior;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     @Override
-    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
 
     }
 }

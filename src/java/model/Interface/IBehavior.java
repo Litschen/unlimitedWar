@@ -1,6 +1,7 @@
-package java.model.Interface;
+package model.Interface;
 
-import java.model.Country;
+import model.Country;
+
 
 import java.util.ArrayList;
 
@@ -17,5 +18,5 @@ public interface IBehavior {
     /**
      * Doesn't have to be called at the end of each turn. Can be used to move soldiers in between countries.
      */
-    void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries);
+    void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace);
 }
