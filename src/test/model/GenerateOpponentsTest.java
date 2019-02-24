@@ -4,23 +4,34 @@ import org.junit.Test;
 
 public class GenerateOpponentsTest {
 
-    AggressiveBehavior  aggressiveBehavior = new AggressiveBehavior ();
-    UserBehavior userBehavior = new UserBehavior();
-    RandomBehavior randomBehavior = new RandomBehavior();
+    private AggressiveBehavior aggressiveBehavior;
+    private UserBehavior userBehavior;
+    private RandomBehavior randomBehavior;
 
-    @Test
-    public void setUpAggressiveBehavior(){
-        new AggressiveBehavior(null);
+    @BeforeEach
+    void setUp() {
+        this.setUpAggressiveBehavior();
+        this.setUpUserBehavior();
+        this.setUpRandomBehavior();
     }
 
-    @Test
-    public void setUpUserBehavior(){
-        new  UserBehavior(null);
+    //region set up methods
+    private void setUpAggressiveBehavior() {
+        aggressiveBehavior = new AggressiveBehavior();
     }
 
+    private void setUpUserBehavior() {
+        userBehavior = new UserBehavior();
+    }
+
+    private void setUpRandomBehavior() {
+        randomBehavior = new RandomBehavior();
+    }
+    //endregion
+
     @Test
-    public void setUpRandomBehavior(){
-        new  RandomBehavior(null);
+    public void test() {
+
     }
 
 }
