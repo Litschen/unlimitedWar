@@ -67,19 +67,19 @@ class CountryTest {
 
 
     @Test
-    public void testMaxAttackerDiceCount_Valid() {
+    public void testMaxAttackerDiceCount() {
         try {
-            invadingCountry.setSoldiersCount(3);
-            assertEquals(invadingCountry.maxAmountDiceThrowsAttacker(), 1);
+            invadingCountry.setSoldiersCount(2);
+            assertEquals(1, invadingCountry.maxAmountDiceThrowsAttacker());
 
             invadingCountry.setSoldiersCount(3);
-            assertEquals(invadingCountry.maxAmountDiceThrowsAttacker(), 2);
+            assertEquals(2,invadingCountry.maxAmountDiceThrowsAttacker());
 
             invadingCountry.setSoldiersCount(4);
-            assertEquals(invadingCountry.maxAmountDiceThrowsAttacker(), 3);
+            assertEquals(3, invadingCountry.maxAmountDiceThrowsAttacker());
 
             invadingCountry.setSoldiersCount(10);
-            assertEquals(invadingCountry.maxAmountDiceThrowsAttacker(), 3);
+            assertEquals(3, invadingCountry.maxAmountDiceThrowsAttacker());
 
         } catch (Exception e) {
             System.out.println(e);
@@ -88,7 +88,8 @@ class CountryTest {
     }
 
     @Test
-    public void testMaxAttackerDiceCount_Invalid() {
+    public void testMaxAttackerDiceCountException() {
+        invadingCountry.setSoldiersCount(1);
         Exception exception = assertThrows(Exception.class, () -> invadingCountry.maxAmountDiceThrowsAttacker());
         assertEquals("could not calculate maxAttackerDiceCount", exception.getMessage());
     }
@@ -96,20 +97,20 @@ class CountryTest {
     @Test
     public void testMaxDefenderDiceCount() {
         defendingCountry.setSoldiersCount(10);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(1), 1);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(1), 1);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(3), 2);
+        assertEquals(1, defendingCountry.amountDiceThrowsDefender(1));
+        assertEquals(1, defendingCountry.amountDiceThrowsDefender(1));
+        assertEquals(2, defendingCountry.amountDiceThrowsDefender(3));
 
         defendingCountry.setSoldiersCount(3);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(1), 1);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(3), 2);
+        assertEquals(1, defendingCountry.amountDiceThrowsDefender(1));
+        assertEquals(2, defendingCountry.amountDiceThrowsDefender(3));
 
         defendingCountry.setSoldiersCount(2);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(3), 2);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(2), 1);
+        assertEquals(1, defendingCountry.amountDiceThrowsDefender(2));
+        assertEquals(2, defendingCountry.amountDiceThrowsDefender(3));
 
         defendingCountry.setSoldiersCount(1);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(1), 1);
-        assertEquals(defendingCountry.amountDiceThrowsDefender(2), 1);
+        assertEquals(1, defendingCountry.amountDiceThrowsDefender(1));
+        assertEquals(1, defendingCountry.amountDiceThrowsDefender(2));
     }
 }
