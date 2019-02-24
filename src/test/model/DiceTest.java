@@ -20,9 +20,9 @@ class DiceTest {
     }
 
     @Test
-    void rollDefault() {
+    void testRoll() {
         diceResults = dice.roll(4);
-        assertEquals(diceResults.size(), Dice.MAX_THROWS - 1);
+        assertEquals(Dice.MAX_THROWS - 1, diceResults.size());
         int previousResult = Dice.MAX_VALUE;
         for(int result : diceResults){
             assertTrue(result >= Dice.MIN_VALUE && result <= Dice.MAX_VALUE);
@@ -32,15 +32,15 @@ class DiceTest {
     }
 
     @Test
-    void rollNegative(){
+    void testRollNegative(){
         diceResults = dice.roll(-3);
-        assertEquals(diceResults.size(), 0);
+        assertEquals(0, diceResults.size());
     }
 
     @Test
-    void rollMax(){
+    void testRollMax(){
         diceResults = dice.roll(Integer.MAX_VALUE);
-        assertEquals(diceResults.size(),0);
+        assertEquals(0, diceResults.size());
     }
 
     @Test
@@ -56,14 +56,14 @@ class DiceTest {
     }
 
     @Test
-    public void testGetHighestRoll_OneElement(){
+    public void testGetHighestRollOneElement(){
         List<Integer> rolls = new ArrayList<Integer>();
         rolls.add(1);
         assertEquals(1, dice.getHighestRoll(rolls));
     }
 
     @Test
-    public void testGetHighestRoll_SameValues(){
+    public void testGetHighestRollSameValues(){
         List<Integer> rolls = new ArrayList<Integer>();
         rolls.add(3);
         rolls.add(3);
@@ -72,7 +72,7 @@ class DiceTest {
     }
 
     @Test
-    public void testGetHighestRoll_NegativeValues(){
+    public void testGetHighestRollNegativeValues(){
         List<Integer> rolls = new ArrayList<Integer>();
         rolls.add(2);
         rolls.add(-3);
