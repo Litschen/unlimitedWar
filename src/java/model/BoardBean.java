@@ -79,7 +79,7 @@ public class BoardBean {
                         currentPlayer.calculateSoldiersToPlace());
                 pause();
                 currentPlayer.getBehavior().attackCountry(countries, currentPlayer.getOwnedCountries());
-                currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
+                currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries(), 2);
             }
         }
     }
