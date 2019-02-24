@@ -13,8 +13,8 @@ public class BoardBean {
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
     private final static int TIME_INBETWEEN_AI_ACTIONS_MS = 1000;
-    private final String ATTACKER_KEY = "attackDice";
-    private final String DEFENDER_KEY = "defendDice";
+    private final static String ATTACKER_KEY = "attackDice";
+    private final static String DEFENDER_KEY = "defendDice";
     //endregion
 
     //region data fields
@@ -82,29 +82,6 @@ public class BoardBean {
                 currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
             }
         }
-    }
-
-    // /F0350/ Würfelanzahl bestimmen Angreifer
-    public int maxAttackerDiceCount(Country country) throws Exception {
-        int count = country.getSoldiersCount() - 1;
-        if (count > 0) {
-            return count > 3 ? 3 : count;
-        } else {
-            throw new Exception("could not calculate maxAttackerDiceCount");
-        }
-    }
-
-    // /F0351/ Würfelanzahl bestimmen Verteidiger
-    public int maxDefenderDiceCount(Country country, int attackerDiceCount) {
-        int count = attackerDiceCount - 1;
-        int soldiers = country.getSoldiersCount();
-
-        if (count == 0) {
-            return 1;
-        } else if (soldiers <= count) {
-            return soldiers;
-        }
-        return count;
     }
 
     //  /F0340/ Land angreifen
