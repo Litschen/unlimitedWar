@@ -26,7 +26,7 @@ public class UserBehavior implements IBehavior {
     }
 
     @Override
-    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
 
     }
 }

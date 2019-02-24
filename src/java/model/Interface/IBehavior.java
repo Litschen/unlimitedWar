@@ -18,5 +18,5 @@ public interface IBehavior {
     /**
      * Doesn't have to be called at the end of each turn. Can be used to move soldiers in between countries.
      */
-    void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace);
+    void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries);
 }

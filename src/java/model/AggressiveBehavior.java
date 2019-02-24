@@ -18,7 +18,7 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     @Override
-    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
 
     }
 }
