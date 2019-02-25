@@ -6,6 +6,10 @@ public class Casualties {
     private int casualtiesDefender;
     //endregion
 
+    /**
+     * @param casualtiesAttacker
+     * @param casualtiesDefender
+     */
     //region constructors
     public Casualties(int casualtiesAttacker, int casualtiesDefender) {
         this.casualtiesAttacker = casualtiesAttacker;
@@ -13,11 +17,17 @@ public class Casualties {
     }
     //endregion
 
+    /**
+     * @return by Casualties Attacker
+     */
     //region getter setter
     public int getCasualtiesAttacker() {
         return casualtiesAttacker;
     }
 
+    /**
+     * @return by Casualties Defender
+     */
     public int getCasualtiesDefender() {
         return casualtiesDefender;
     }
