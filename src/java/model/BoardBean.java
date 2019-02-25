@@ -48,6 +48,10 @@ public class BoardBean {
     }
     //endregion
 
+    /**
+     * Generate Countries.
+     * The number of sold soldiers is displayed on each country
+     */
     private void generateCountries() {
         for (Player currentPlayer : players) {
             int countriesToGenerate = COUNTRY_COUNT_GENERATION / players.size();
@@ -68,6 +72,9 @@ public class BoardBean {
         setCountryAttributes();
     }
 
+    /**
+     * The playing field colors the countries in the color of the owning player.
+     */
     private void setCountryAttributes(){
         try {
             List<String> countryNames = Files.readAllLines(
@@ -85,6 +92,10 @@ public class BoardBean {
         }
     }
 
+    /** Shows Coordinates
+     * @param toExtract
+     * @return
+     */
     private Coordinates extractCoordinates(String toExtract){
         String[] stringCord = toExtract.split(",");
         return new Coordinates(
@@ -95,6 +106,10 @@ public class BoardBean {
     }
 
 
+    /**
+     * Generates all Player with their respective personalities.
+     * Each computer opponent is randomly assigned a color from the color options.
+     */
     private void generatePlayers() {
         //TODO modify to include User, all Behaviors and color selection
         players.add(new Player("blue", "LMao", new RandomBehavior()));
@@ -103,6 +118,9 @@ public class BoardBean {
         players.add(new Player("yellow", "Darfolini", new StrategicBehavior()));
     }
 
+    /**
+     *Perform the player's move
+     */
     public void executeTurn() {
         //TODO test this
         turnCount++;
@@ -116,6 +134,13 @@ public class BoardBean {
         }
     }
 
+    /**The current player selects one of his countries from which he wants to attack.
+     * At least two soldiers are needed on this land. He then selects which enemy neighbor he attacks.
+     * After each die roll, the attack can be aborted. You can attack any number of countries per turn.
+     * If the defender no longer has any soldiers in the country, this land changes ownership.
+     * @param request
+     * @param response
+     */
     //  /F0340/ Land angreifen
     public void attackRoll(HttpServletRequest request, HttpServletResponse response) {
         int attackDiceCount = 0;
@@ -138,11 +163,18 @@ public class BoardBean {
         // call /F0370/
     }
 
+    /** Select Country
+     * @param soldiersCount
+     */
     public void selectCountry(int soldiersCount) {
         int attackerDice = this.getDiceCount(3);
         int defenderDice = this.getDiceCount(2);
     }
 
+    /**Show the Dice Count
+     * @param soldiersCount
+     * @return
+     */
     private int getDiceCount(int soldiersCount) {
         if (soldiersCount >= 3) {
             return 3;
