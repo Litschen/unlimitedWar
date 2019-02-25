@@ -24,6 +24,10 @@ public class Dice {
         return null;
     }
 
+    /**
+     * @param rolls
+     * @return by Highest Roll
+     */
     public Integer getHighestRoll(List<Integer> rolls){
         Collections.sort(rolls);
         Collections.reverse(rolls);
