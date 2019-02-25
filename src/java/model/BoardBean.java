@@ -98,9 +98,9 @@ public class BoardBean {
     private void generatePlayers() {
         //TODO modify to include User, all Behaviors and color selection
         players.add(new Player("blue", "LMao", new RandomBehavior()));
-        players.add(new Player("red", "Hotler", new RandomBehavior()));
-        players.add(new Player("green", "Stalout", new RandomBehavior()));
-        players.add(new Player("yellow", "Darfolini", new RandomBehavior()));
+        players.add(new Player("red", "Hotler", new AggressiveBehavior()));
+        players.add(new Player("green", "Stalout", new UserBehavior()));
+        players.add(new Player("yellow", "Darfolini", new StrategicBehavior()));
     }
 
     public void executeTurn() {
