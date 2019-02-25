@@ -87,6 +87,12 @@ public class PlayerDAO {
         }
     }
 
+    /** Create connection with the Database
+     * @param sql
+     * @param args
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     private void createConnection(String sql, @NotNull List<String> args) throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection(dbURL, user, pw);
@@ -97,6 +103,9 @@ public class PlayerDAO {
         }
     }
 
+    /** Clode connection with the Database
+     * @throws SQLException
+     */
     private void closeConnection() throws SQLException {
         rs.close();
         st.close();
