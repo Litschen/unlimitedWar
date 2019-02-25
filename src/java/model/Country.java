@@ -1,5 +1,6 @@
 package model;
 
+import com.sun.istack.internal.NotNull;
 import org.jetbrains.annotations.NotNull;
 
 public class Country {
@@ -18,6 +19,11 @@ public class Country {
     private Coordinates coordinates;
     //endregion
 
+    /** Constructor. Create Name of the Country, nummber of soldiers and Player
+     * @param name
+     * @param soldiersCount
+     * @param owner
+     */
     //region constructors
     public Country(String name, int soldiersCount, @NotNull Player owner) {
         this.name = name;
@@ -25,6 +31,12 @@ public class Country {
         this.owner = owner;
     }
 
+    /** Constructor. Create Name of the Country, nummber of soldiers, Player and coordinates
+     * @param name
+     * @param soldiersCount
+     * @param owner
+     * @param coordinates
+     */
     public Country(String name, int soldiersCount, @NotNull Player owner, Coordinates coordinates) {
         this.name = name;
         this.soldiersCount = soldiersCount;
@@ -33,23 +45,38 @@ public class Country {
     }
     //endregion
 
+    /**
+     * @return by Name
+     */
     //region getter setter
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @return by number of Soldiers
+     */
     public int getSoldiersCount() {
         return soldiersCount;
     }
 
+    /**
+     * @param soldiersCount
+     */
     public void setSoldiersCount(int soldiersCount) {
         this.soldiersCount = soldiersCount;
     }
 
+    /**
+     * @return by Owner
+     */
     public Player getOwner() {
         return owner;
     }
@@ -58,24 +85,41 @@ public class Country {
         this.owner = owner;
     }
 
+    /**
+     * @return Coordinates
+     */
     public Coordinates getCoordinates() { return coordinates; }
 
+    /**
+     * @param coordinates
+     */
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
     //endregion
 
+    /**
+     * @param country
+     * @return value is Bordering or not
+     */
     public boolean isBordering(@NotNull Country country) {
         //TODO
         return false;
     }
 
+    /**
+     * @param country
+     */
     public void invade(Country country) {
         if (this.canInvade()) {
 
         }
     }
 
+    /**
+     * @return
+     * @throws Exception
+     */
     // /F0350/ Würfelanzahl bestimmen Angreifer
     public int maxAmountDiceThrowsAttacker() throws Exception {
         int count = this.getSoldiersCount() - 1;
@@ -86,6 +130,10 @@ public class Country {
         }
     }
 
+    /**Number of dice determine attackers
+     * @param amountAttacker
+     * @return by number of count
+     */
     public int amountDiceThrowsDefender(int amountAttacker) {
         int count = amountAttacker - 1;
         int soldiers = this.getSoldiersCount();
@@ -98,14 +146,25 @@ public class Country {
         return count;
     }
 
+    /**
+     * Add Soldier
+     */
     public void addSoldier() {
         soldiersCount++;
     }
 
+    /**
+     * @param diceThrowsAttacker
+     * @param diceThrowsDefender
+     * @return by Casualties
+     */
     public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender) {
         return new Casualties(METHOD_NOT_IMPLEMENTED_RETURN_VALUE, METHOD_NOT_IMPLEMENTED_RETURN_VALUE);
     }
 
+    /**
+     * @return value is Invade or not
+     */
     private boolean canInvade() {
         return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE;
     }
