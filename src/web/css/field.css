@@ -3,11 +3,19 @@
     margin: 20px auto;
 }
 
+.form.vertical {
+    display: inline-block;
+}
+
+.form.vertical > button[type="submit"] {
+    display: block;
+    margin-top: 20px;
+}
+
 .field {
     width: 350px;
     height: 200px;
     position: relative;
-    display: inline-block;
     background-color: #fff;
     border: 1px #000 solid;
 }

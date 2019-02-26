@@ -17,39 +17,42 @@
 <%@include file="snippets/header.jsp" %>
 
 <div class="wrapper">
-    <div class="field border rounded">
-        <%
-            ArrayList<Country> allCountries  = board.getCountries();
-            for(int i = 1; i <= allCountries.size(); i++){
-                Country currentCountry = allCountries.get(i - 1);
-                Coordinates coordinates = currentCountry.getCoordinates();
+    <form action="/Game/selectedCountry" class="form vertical">
+        <div class="field border rounded">
+            <%
+                ArrayList<Country> allCountries  = board.getCountries();
+                for(int i = 1; i <= allCountries.size(); i++){
+                    Country currentCountry = allCountries.get(i - 1);
+                    Coordinates coordinates = currentCountry.getCoordinates();
 
-        %>
+                %>
             <button style="
                     <% if(coordinates.getTop() > 0) {%>
-                    top:    <%= coordinates.getTop()%>px;<%}%>
-                <% if(coordinates.getRight() > 0) {%>
-                    right:  <%= coordinates.getRight()%>px;<%}%>
-                <% if(coordinates.getBottom() > 0) {%>
-                    bottom: <%= coordinates.getBottom()%>px;<%}%>
+                        top:    <%= coordinates.getTop()%>px;<%}%>
+                    <% if(coordinates.getRight() > 0) {%>
+                        right:  <%= coordinates.getRight()%>px;<%}%>
+                    <% if(coordinates.getBottom() > 0) {%>
+                        bottom: <%= coordinates.getBottom()%>px;<%}%>
 
-                <% if(coordinates.getLeft() > 0) {%>
-                    left:   <%= coordinates.getLeft()%>px;<%}%>
-                    width: <%=Country.COUNTRY_PIXEL_WIDTH%> px;
-                    height: <%=Country.COUNTRY_PIXEL_HEIGHT%> px ;"
+                    <% if(coordinates.getLeft() > 0) {%>
+                        left:   <%= coordinates.getLeft()%>px;<%}%>
+                        width: <%=Country.COUNTRY_PIXEL_WIDTH%> px;
+                        height: <%=Country.COUNTRY_PIXEL_HEIGHT%> px ;" name="<%=i%>"
                     class="country country<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
-                <%=currentCountry.getSoldiersCount()%></button>
-            <% if(i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION){ %>
-                <br/>
+                    <%=currentCountry.getSoldiersCount()%></button>
+                <% if(i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION){ %>
+                    <br/>
+                <% }%>
+            <%}%>
+            <%-- continent connectors --%>
+            <%
+                for(int i = 1; i <=4; i++){
+            %>
+            <span class="connector<%=i%> lineThrough rTol"></span>
             <% }%>
-        <%}%>
-        <%-- continent connectors --%>
-        <%
-            for(int i = 1; i <=4; i++){
-        %>
-        <span class="connector<%=i%> lineThrough rTol"></span>
-        <% }%>
-    </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     <aside>
         <ul class="card">
             <% for(Player player : board.getPlayers()){
