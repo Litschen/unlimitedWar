@@ -186,6 +186,7 @@ public class Country {
      * @return value is Invade or not
      */
     private boolean canInvade(Country country) {
-        return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country);
+        return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country) &&
+                this.owner != country.getOwner();
     }
 }
