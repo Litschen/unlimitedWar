@@ -43,7 +43,7 @@ class CountryTest {
     void testCalculateCasualtiesInvaderVictory() {
         Casualties casualties = invadingCountry.calculateCasualties(new int[]{6, 6, 6}, new int[]{1, 1});
         assertEquals(0, casualties.getCasualtiesAttacker());
-        assertEquals(3, casualties.getCasualtiesDefender());
+        assertEquals(2, casualties.getCasualtiesDefender());
     }
 
     @Test

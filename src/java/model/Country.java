@@ -179,7 +179,17 @@ public class Country {
      * @return by Casualties
      */
     public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender) {
-        return new Casualties(METHOD_NOT_IMPLEMENTED_RETURN_VALUE, METHOD_NOT_IMPLEMENTED_RETURN_VALUE);
+        Casualties casualties = new Casualties(0, 0);
+        for(int i = 0; i < diceThrowsDefender.length; i++){
+            if(diceThrowsDefender[i] >= diceThrowsAttacker[i]) {
+                casualties.addCasualtiesAttacker();
+            }
+            else
+            {
+                casualties.addCasualtiesDefender();
+            }
+        }
+        return casualties;
     }
 
     /**

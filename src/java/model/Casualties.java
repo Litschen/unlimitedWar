@@ -31,6 +31,14 @@ public class Casualties {
     public int getCasualtiesDefender() {
         return casualtiesDefender;
     }
+
+    public void addCasualtiesAttacker() {
+        this.casualtiesAttacker += 1;
+    }
+
+    public void addCasualtiesDefender() {
+        this.casualtiesDefender += 1;
+    }
     //endregion
 
 }
