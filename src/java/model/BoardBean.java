@@ -178,4 +178,8 @@ public class BoardBean {
             return soldiersCount;
         }
     }
+
+    private Country getCountryById(int id){
+        return this.countries.get(id);
+    }
 }
