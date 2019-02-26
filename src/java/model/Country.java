@@ -156,14 +156,15 @@ public class Country {
      */
     public int amountDiceThrowsDefender(int amountAttacker) {
         int count = amountAttacker - 1;
+        int amountDefenderDice = count;
         int soldiers = this.getSoldiersCount();
 
         if (count == 0) {
-            return 1;
+            amountDefenderDice = 1;
         } else if (soldiers <= count) {
-            return soldiers;
+            amountDefenderDice = soldiers;
         }
-        return count;
+        return amountDefenderDice;
     }
 
     /**
