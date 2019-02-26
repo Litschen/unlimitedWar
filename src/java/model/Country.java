@@ -6,6 +6,8 @@ public class Country {
 
     //region static variables
     public static final int MIN_SOLDIERS_TO_INVADE = 2;
+    public static final int MIN_SOLDIERS_TO_STAY = 1;
+    public static final int ABSOLUTE_MIN_AMOUNT_THROWS = 1;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
     public static final int METHOD_NOT_IMPLEMENTED_RETURN_VALUE = -1;
@@ -152,9 +154,9 @@ public class Country {
      */
     // /F0350/ Würfelanzahl bestimmen Angreifer
     public int maxAmountDiceThrowsAttacker() throws Exception {
-        int count = this.getSoldiersCount() - 1;
-        if (count > 0) {
-            return count > 3 ? 3 : count;
+        int count = this.getSoldiersCount() - MIN_SOLDIERS_TO_STAY;
+        if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
+            return count > ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER ? ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER : count;
         } else {
             throw new Exception("could not calculate maxAttackerDiceCount");
         }
@@ -167,12 +169,12 @@ public class Country {
      * @return by number of count
      */
     public int amountDiceThrowsDefender(int amountAttacker) {
-        int count = amountAttacker - 1;
+        int count = amountAttacker - MIN_SOLDIERS_TO_STAY;
         int amountDefenderDice = count;
         int soldiers = this.getSoldiersCount();
 
-        if (count == 0) {
-            amountDefenderDice = 1;
+        if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
+            amountDefenderDice = ABSOLUTE_MIN_AMOUNT_THROWS;
         } else if (soldiers <= count) {
             amountDefenderDice = soldiers;
         }
