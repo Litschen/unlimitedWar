@@ -57,10 +57,23 @@ public class GameController extends HttpServlet {
             }
             dispatcher.forward(request, response);
         } catch (ServletException e) {
-            //TODO message the User?
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+// ---------- TODO: /F0310/ ----------
+//    call these function in processRequest();
+    private void setPhase() {
+        // call method to set soldiers on a country
+    }
+
+    private void attackPhase() {
+
+    }
+
+    private void movePhase() {
+
     }
 }
