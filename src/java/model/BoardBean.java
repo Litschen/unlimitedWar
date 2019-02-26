@@ -17,7 +17,9 @@ public class BoardBean {
     public final static int START_SOLDIER_PER_PLAYER = 12;
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
-    private final static int TIME_INBETWEEN_AI_ACTIONS_MS = 1000;
+    public static final int BOARD_PIXEL_WIDTH = 350;
+    public static final int BOARD_PIXEL_HEIGHT = 200;
+    private  static final int[] COUNTRIES_WITH_CONNECTOR_INDEX = new int[] {8, 11, 9, 16, 15, 4, 2, 7};
     private final static String ATTACKER_KEY = "attackDice";
     private final static String DEFENDER_KEY = "defendDice";
     //endregion
@@ -80,14 +82,19 @@ public class BoardBean {
             List<String> countryNames = Files.readAllLines(
                     new File(getClass().getClassLoader().getResource("countryNames.txt").getPath()).toPath(), Charset.defaultCharset());
             List<String> countryCoordinates = Files.readAllLines(
-                            new File(getClass().getClassLoader().getResource("coordinates.txt").getPath()).toPath(), Charset.defaultCharset());
+                    new File(getClass().getClassLoader().getResource("coordinates.txt").getPath()).toPath(), Charset.defaultCharset());
             Collections.shuffle(countryNames);
             for (Country country : countries) {
                 country.setName(countryNames.remove(0));
                 country.setCoordinates(extractCoordinates(countryCoordinates.remove(0)));
 
             }
-        }catch (IOException e){
+
+            for(int i = 0; i < COUNTRIES_WITH_CONNECTOR_INDEX.length; i += 2){
+                countries.get(i).setHasConnector(countries.get(i + 1));
+                countries.get(i + 1).setHasConnector(countries.get(i));
+            }
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
     }

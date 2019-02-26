@@ -27,18 +27,17 @@
         %>
             <button style="
                     <% if(coordinates.getTop() > 0) {%>
-                    top:    <%= coordinates.getTop()%>px;
-                    <%}%>
+                    top:    <%= coordinates.getTop()%>px;<%}%>
                 <% if(coordinates.getRight() > 0) {%>
-                    right:  <%= coordinates.getRight()%>px;
-                <%}%>
+                    right:  <%= coordinates.getRight()%>px;<%}%>
                 <% if(coordinates.getBottom() > 0) {%>
-                    bottom: <%= coordinates.getBottom()%>px;
-                <%}%>
+                    bottom: <%= coordinates.getBottom()%>px;<%}%>
+
                 <% if(coordinates.getLeft() > 0) {%>
-                    left:   <%= coordinates.getLeft()%>px;
-                <%}%>
-                   " class="country <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
+                    left:   <%= coordinates.getLeft()%>px;<%}%>
+                    width: <%=Country.COUNTRY_PIXEL_WIDTH%> px;
+                    height: <%=Country.COUNTRY_PIXEL_HEIGHT%> px ;"
+                    class="country country<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
                 <%=currentCountry.getSoldiersCount()%></button>
             <% if(i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION){ %>
                 <br/>

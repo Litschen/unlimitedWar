@@ -1,6 +1,5 @@
 package model;
 
-import com.sun.istack.internal.NotNull;
 import org.jetbrains.annotations.NotNull;
 
 public class Country {
@@ -10,6 +9,8 @@ public class Country {
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
     public static final int METHOD_NOT_IMPLEMENTED_RETURN_VALUE = -1;
+    public static final int COUNTRY_PIXEL_WIDTH = 35;
+    public static final int COUNTRY_PIXEL_HEIGHT = 30;
     //endregion
 
     //region data fields
@@ -17,6 +18,7 @@ public class Country {
     private int soldiersCount;
     private Player owner;
     private Coordinates coordinates;
+    private Country hasConnectorWith;
     //endregion
 
     /** Constructor. Create Name of the Country, nummber of soldiers and Player
@@ -96,6 +98,8 @@ public class Country {
     public void setCoordinates(Coordinates coordinates) {
         this.coordinates = coordinates;
     }
+
+    public void setHasConnector(Country country) {this.hasConnectorWith = country;}
     //endregion
 
     /**
@@ -103,15 +107,31 @@ public class Country {
      * @return value is Bordering or not
      */
     public boolean isBordering(@NotNull Country country) {
-        //TODO
+        return haveConnector(country) || (touchVertically(country) || touchHorizontal(country));
+    }
+
+    private boolean touchVertically(Country country){
+        Coordinates thisCoordinates = this.getCoordinates();
+        Coordinates countryCoordinates = country.getCoordinates();
+
+        int thisVerticalValue = (thisCoordinates.getTop() > 0) ?
+                BoardBean.BOARD_PIXEL_HEIGHT - thisCoordinates.getTop() : thisCoordinates.getBottom();
+        int countryVerticalValue = (countryCoordinates.getTop() > 0) ?
+                BoardBean.BOARD_PIXEL_HEIGHT - countryCoordinates.getTop() : countryCoordinates.getBottom();
         return false;
     }
+
+    private boolean touchHorizontal(Country country){
+        return false;
+    }
+
+    private boolean haveConnector(Country country){ return this.hasConnectorWith == country; }
 
     /**
      * @param country
      */
     public void invade(Country country) {
-        if (this.canInvade()) {
+        if (this.canInvade(country)) {
 
         }
     }
@@ -165,7 +185,7 @@ public class Country {
     /**
      * @return value is Invade or not
      */
-    private boolean canInvade() {
-        return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE;
+    private boolean canInvade(Country country) {
+        return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country);
     }
 }
