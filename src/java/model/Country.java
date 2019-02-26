@@ -21,7 +21,9 @@ public class Country {
     private Country hasConnectorWith;
     //endregion
 
-    /** Constructor. Create Name of the Country, nummber of soldiers and Player
+    /**
+     * Constructor. Create Name of the Country, nummber of soldiers and Player
+     *
      * @param name
      * @param soldiersCount
      * @param owner
@@ -33,7 +35,9 @@ public class Country {
         this.owner = owner;
     }
 
-    /** Constructor. Create Name of the Country, nummber of soldiers, Player and coordinates
+    /**
+     * Constructor. Create Name of the Country, nummber of soldiers, Player and coordinates
+     *
      * @param name
      * @param soldiersCount
      * @param owner
@@ -90,7 +94,9 @@ public class Country {
     /**
      * @return Coordinates
      */
-    public Coordinates getCoordinates() { return coordinates; }
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 
     /**
      * @param coordinates
@@ -99,7 +105,9 @@ public class Country {
         this.coordinates = coordinates;
     }
 
-    public void setHasConnector(Country country) {this.hasConnectorWith = country;}
+    public void setHasConnector(Country country) {
+        this.hasConnectorWith = country;
+    }
     //endregion
 
     /**
@@ -110,7 +118,7 @@ public class Country {
         return haveConnector(country) || (touchVertically(country) || touchHorizontal(country));
     }
 
-    private boolean touchVertically(Country country){
+    private boolean touchVertically(Country country) {
         Coordinates thisCoordinates = this.getCoordinates();
         Coordinates countryCoordinates = country.getCoordinates();
 
@@ -121,11 +129,13 @@ public class Country {
         return false;
     }
 
-    private boolean touchHorizontal(Country country){
+    private boolean touchHorizontal(Country country) {
         return false;
     }
 
-    private boolean haveConnector(Country country){ return this.hasConnectorWith == country; }
+    private boolean haveConnector(Country country) {
+        return this.hasConnectorWith == country;
+    }
 
     /**
      * @param country
@@ -150,7 +160,9 @@ public class Country {
         }
     }
 
-    /**Number of dice determine attackers
+    /**
+     * Number of dice determine attackers
+     *
      * @param amountAttacker
      * @return by number of count
      */
@@ -181,12 +193,10 @@ public class Country {
      */
     public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender) {
         Casualties casualties = new Casualties(0, 0);
-        for(int i = 0; i < diceThrowsDefender.length; i++){
-            if(diceThrowsDefender[i] >= diceThrowsAttacker[i]) {
+        for (int i = 0; i < diceThrowsDefender.length; i++) {
+            if (diceThrowsDefender[i] >= diceThrowsAttacker[i]) {
                 casualties.addCasualtiesAttacker();
-            }
-            else
-            {
+            } else {
                 casualties.addCasualtiesDefender();
             }
         }
