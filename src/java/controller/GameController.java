@@ -17,6 +17,11 @@ public class GameController extends HttpServlet {
 
     private BoardBean board = new BoardBean();
 
+    //region static variables
+    private final static String ATTACKER_KEY = "attackDice";
+    private final static String DEFENDER_KEY = "defendDice";
+    //enddregion
+
     /**
      * TEXT
      * @param request
@@ -69,7 +74,21 @@ public class GameController extends HttpServlet {
         // call method to set soldiers on a country
     }
 
-    private void attackPhase() {
+    private void attackPhase(HttpServletRequest request, HttpServletResponse response) {
+        if(true){ //TODO @Tina /F0310/
+            int attackDiceCount = 0;
+            int defendDiceCount = 0;
+
+            for (String key : request.getParameterMap().keySet()) {
+                if (key.contains(ATTACKER_KEY)) {
+                    attackDiceCount++;
+                } else if (key.contains(DEFENDER_KEY)) {
+                    defendDiceCount++;
+                }
+            }
+
+            board.attackRoll(attackDiceCount, defendDiceCount);
+        }
 
     }
 

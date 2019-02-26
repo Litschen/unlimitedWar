@@ -20,8 +20,6 @@ public class BoardBean {
     public static final int BOARD_PIXEL_WIDTH = 350;
     public static final int BOARD_PIXEL_HEIGHT = 200;
     private  static final int[] COUNTRIES_WITH_CONNECTOR_INDEX = new int[] {8, 11, 9, 16, 15, 4, 2, 7};
-    private final static String ATTACKER_KEY = "attackDice";
-    private final static String DEFENDER_KEY = "defendDice";
     //endregion
 
     //region data fields
@@ -141,28 +139,19 @@ public class BoardBean {
         }
     }
 
-    /**The current player selects one of his countries from which he wants to attack.
+    /**
+     * TODO: update comment
+     * The current player selects one of his countries from which he wants to attack.
      * At least two soldiers are needed on this land. He then selects which enemy neighbor he attacks.
      * After each die roll, the attack can be aborted. You can attack any number of countries per turn.
      * If the defender no longer has any soldiers in the country, this land changes ownership.
-     * @param request
-     * @param response
+     * @param
+     * @param
      */
     //  /F0340/ Land angreifen
-    public void attackRoll(HttpServletRequest request, HttpServletResponse response) {
-        int attackDiceCount = 0;
-        int defendDiceCount = 0;
-
-        for (String key : request.getParameterMap().keySet()) {
-            if (key.contains(ATTACKER_KEY)) {
-                attackDiceCount++;
-            } else if (key.contains(DEFENDER_KEY)) {
-                defendDiceCount++;
-            }
-        }
-        Dice dice = new Dice();
-        int attackerHighestRoll = dice.getHighestRoll(dice.roll(attackDiceCount));
-        int defenderHighestRoll = dice.getHighestRoll(dice.roll(defendDiceCount));
+    public void attackRoll(int attackDiceCount, int defendDiceCount) {
+//        int attackerHighestRoll = Dice.roll(attackDiceCount);
+//        int defenderHighestRoll = Dice.roll(defendDiceCount);
 
         // TODO call /F0341/
 
