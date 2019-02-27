@@ -1,7 +1,5 @@
 package model;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -24,9 +22,12 @@ public class BoardBean {
 
     //region data fields
     private int turnCount = 0;
+    private Player currentPlayer;
     private ArrayList<Player> players;
     private ArrayList<Country> countries;
     //endregion
+
+    private int soldiersToPlace;
 
     //region constructors
     public BoardBean() {
@@ -139,6 +140,12 @@ public class BoardBean {
         }
     }
 
+    public boolean addSoldiersToCountry(ArrayList<Country> countries){
+        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(),0);
+        soldiersToPlace -= placedSoldiers;
+        return soldiersToPlace == 0;
+    }
+
     /**
      * TODO: update comment
      * The current player selects one of his countries from which he wants to attack.
@@ -179,7 +186,11 @@ public class BoardBean {
         }
     }
 
-    private Country getCountryById(int id){
+    public Country getCountryById(int id){
         return this.countries.get(id);
+    }
+
+    public int getSoldiersToPlace(){
+        return this.soldiersToPlace;
     }
 }

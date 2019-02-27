@@ -1,6 +1,7 @@
 package controller;
 
 import model.BoardBean;
+import model.Country;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(
         name = "GameController",
@@ -59,6 +61,8 @@ public class GameController extends HttpServlet {
             if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                 BoardBean board = (BoardBean) request.getSession().getAttribute("board");
                 board.executeTurn();
+            } else if(true){    // PHASE == PLACE SOLDIERS
+                this.setPhase(request, response);
             }
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -70,8 +74,15 @@ public class GameController extends HttpServlet {
 
 // ---------- TODO: /F0310/ ----------
 //    call these function in processRequest();
-    private void setPhase() {
-        // call method to set soldiers on a country
+    private void setPhase(HttpServletRequest request, HttpServletResponse response) {
+        ArrayList<Country> countries = new ArrayList<>();
+        for (String i : request.getParameterMap().get("country")){
+            countries.add(board.getCountryById(Integer.parseInt(i)));
+        }
+        boolean placeSoldierIsDone = board.addSoldiersToCountry(countries);
+        if (placeSoldierIsDone){
+            // TODO move to next PHASE
+        }
     }
 
     private void attackPhase(HttpServletRequest request, HttpServletResponse response) {
