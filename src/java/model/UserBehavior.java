@@ -16,8 +16,16 @@ public class UserBehavior implements IBehavior {
      * @param soldiersToPlace
      */
     @Override
-    public boolean placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
-        return true;
+    public int placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+        int countAddedSoldiers = 0;
+        for (Country c : allCountries) {
+            if (ownedCountries.contains(c)) {
+                c.addSoldier();
+                countAddedSoldiers++;
+            }
+        }
+
+        return countAddedSoldiers;
     }
 
     @Override

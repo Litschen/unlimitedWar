@@ -10,7 +10,7 @@ public interface IBehavior {
     /**
      * Places all available Soldiers for this Player on the board
      */
-    boolean placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace);
+    int placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace);
     /**
      * Selects country to be attacked and executes the attack itself.
      */

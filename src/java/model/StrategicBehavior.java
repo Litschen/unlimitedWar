@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class StrategicBehavior implements IBehavior {
     @Override
-    public boolean placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
-        return true;
+    public int placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+        return 0;
     }
 
     @Override

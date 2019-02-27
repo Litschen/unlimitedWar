@@ -13,8 +13,8 @@ public class AggressiveBehavior implements IBehavior {
      * @param soldiersToPlace
      */
     @Override
-    public boolean placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
-        return true;
+    public int placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+        return 0;
     }
 
     /**
