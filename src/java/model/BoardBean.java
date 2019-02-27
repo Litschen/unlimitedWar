@@ -28,6 +28,9 @@ public class BoardBean {
     //endregion
 
     private int soldiersToPlace;
+    private Country attackerCountry;
+    private Country defenderCountry;
+    private String modalToShow;
 
     //region constructors
     public BoardBean() {
@@ -118,9 +121,10 @@ public class BoardBean {
      */
     private void generatePlayers() {
         //TODO modify to include User, all Behaviors and color selection
+        this.currentPlayer = new Player("green", "Stalout", new UserBehavior());
+        players.add(this.currentPlayer);
         players.add(new Player("blue", "LMao", new RandomBehavior()));
         players.add(new Player("red", "Hotler", new AggressiveBehavior()));
-        players.add(new Player("green", "Stalout", new UserBehavior()));
         players.add(new Player("yellow", "Darfolini", new StrategicBehavior()));
     }
 
@@ -192,5 +196,33 @@ public class BoardBean {
 
     public int getSoldiersToPlace(){
         return this.soldiersToPlace;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public Country getAttackerCountry() {
+        return attackerCountry;
+    }
+
+    public void setAttackerCountry(Country attackerCountry) {
+        this.attackerCountry = attackerCountry;
+    }
+
+    public Country getDefenderCountry() {
+        return defenderCountry;
+    }
+
+    public void setDefenderCountry(Country defenderCountry) {
+        this.defenderCountry = defenderCountry;
+    }
+
+    public String getModalToShow() {
+        return modalToShow;
+    }
+
+    public void setModalToShow(String modalToShow) {
+        this.modalToShow = modalToShow;
     }
 }

@@ -61,8 +61,10 @@ public class GameController extends HttpServlet {
             if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                 BoardBean board = (BoardBean) request.getSession().getAttribute("board");
                 board.executeTurn();
-            } else if(true){    // PHASE == PLACE SOLDIERS
+            } else if(false){    // PHASE == PLACE SOLDIERS
                 this.setPhase(request, response);
+            } else if (true){    // PHASE == ATTACK
+                this.attackPhase(request, response);
             }
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -86,7 +88,19 @@ public class GameController extends HttpServlet {
     }
 
     private void attackPhase(HttpServletRequest request, HttpServletResponse response) {
-        if(true){ //TODO @Tina /F0310/
+        if (request.getPathInfo().equals("/selectedCountry")) {
+            Country country = board.getCountryById(Integer.parseInt(request.getParameter("country")));
+
+            if (board.getCurrentPlayer().getOwnedCountries().contains(country)) {
+                board.setAttackerCountry(country);
+            } else {
+                board.setDefenderCountry(country);
+            }
+
+            if (board.getAttackerCountry() != null && board.getDefenderCountry() != null){
+                board.setModalToShow("attack");
+            }
+        } else {
             int attackDiceCount = 0;
             int defendDiceCount = 0;
 
@@ -100,7 +114,6 @@ public class GameController extends HttpServlet {
 
             board.attackRoll(attackDiceCount, defendDiceCount);
         }
-
     }
 
     private void movePhase() {

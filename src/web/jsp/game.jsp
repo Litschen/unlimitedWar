@@ -74,7 +74,9 @@
         </div>
     </div>
 </div>
-<%--<%@include file="modals/attackRoll.jsp" %> --%>
+<c:if test='${false}'>
+    <%@include file="modals/attackRoll.jsp" %>
+</c:if>
 <%@include file="snippets/footer.jsp" %>
 </body>
 </html>
