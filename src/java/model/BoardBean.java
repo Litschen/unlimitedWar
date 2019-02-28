@@ -22,7 +22,7 @@ public class BoardBean {
     public final static int COUNTRY_COUNT_GENERATION = 16;
     public static final int BOARD_PIXEL_WIDTH = 350;
     public static final int BOARD_PIXEL_HEIGHT = 200;
-    private  static final int[] COUNTRIES_WITH_CONNECTOR_INDEX = new int[] {8, 11, 9, 16, 15, 4, 2, 7};
+    private static final int[] COUNTRIES_WITH_CONNECTOR_INDEX = new int[]{8, 11, 9, 16, 15, 4, 2, 7};
     //endregion
 
     //region data fields
@@ -56,7 +56,9 @@ public class BoardBean {
         return countries;
     }
 
-    /**Show the Dice Count
+    /**
+     * Show the Dice Count
+     *
      * @param soldiersCount
      * @return
      */
@@ -68,11 +70,11 @@ public class BoardBean {
         }
     }
 
-    public Country getCountryById(int id){
+    public Country getCountryById(int id) {
         return this.countries.get(id);
     }
 
-    public int getSoldiersToPlace(){
+    public int getSoldiersToPlace() {
         return this.soldiersToPlace;
     }
 
@@ -132,7 +134,7 @@ public class BoardBean {
     /**
      * The playing field colors the countries in the color of the owning player.
      */
-    private void setCountryAttributes(){
+    private void setCountryAttributes() {
         try {
             List<String> countryNames = Files.readAllLines(
                     new File(getClass().getClassLoader().getResource("countryNames.txt").getPath()).toPath(), Charset.defaultCharset());
@@ -145,7 +147,7 @@ public class BoardBean {
 
             }
 
-            for(int i = 0; i < COUNTRIES_WITH_CONNECTOR_INDEX.length; i += 2){
+            for (int i = 0; i < COUNTRIES_WITH_CONNECTOR_INDEX.length; i += 2) {
                 countries.get(i).setHasConnector(countries.get(i + 1));
                 countries.get(i + 1).setHasConnector(countries.get(i));
             }
@@ -154,11 +156,13 @@ public class BoardBean {
         }
     }
 
-    /** Shows Coordinates
+    /**
+     * Shows Coordinates
+     *
      * @param toExtract
      * @return
      */
-    private Coordinates extractCoordinates(String toExtract){
+    private Coordinates extractCoordinates(String toExtract) {
         String[] stringCord = toExtract.split(",");
         return new Coordinates(
                 Integer.parseInt(stringCord[0]),
@@ -183,7 +187,7 @@ public class BoardBean {
     }
 
     /**
-     *Perform the player's move
+     * Perform the player's move
      */
     public void executeTurn() {
         //TODO test this
@@ -198,8 +202,8 @@ public class BoardBean {
         }
     }
 
-    public boolean addSoldiersToCountry(ArrayList<Country> countries){
-        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(),0);
+    public boolean addSoldiersToCountry(ArrayList<Country> countries) {
+        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(), 0);
         soldiersToPlace -= placedSoldiers;
         return soldiersToPlace == 0;
     }
@@ -210,6 +214,7 @@ public class BoardBean {
      * At least two soldiers are needed on this land. He then selects which enemy neighbor he attacks.
      * After each die roll, the attack can be aborted. You can attack any number of countries per turn.
      * If the defender no longer has any soldiers in the country, this land changes ownership.
+     *
      * @param
      * @param
      */
@@ -222,7 +227,7 @@ public class BoardBean {
         attackerCountry.removeSoldiers(casualties.getCasualtiesAttacker());
         defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
 
-        if (defenderCountry.getSoldiersCount() <= 0){
+        if (defenderCountry.getSoldiersCount() <= 0) {
             //F0370/ Land erobern
             defenderCountry.setOwner(currentPlayer);
 
@@ -230,7 +235,9 @@ public class BoardBean {
         }
     }
 
-    /** Select Country
+    /**
+     * Select Country
+     *
      * @param soldiersCount
      */
     public void selectCountry(int soldiersCount) {
