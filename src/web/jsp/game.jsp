@@ -2,7 +2,6 @@
 <%@ page import="model.Country" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.BoardBean" %>
-<%@ page import="model.Coordinates" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="board" class="model.BoardBean" scope="session"/>
 <jsp:setProperty name="board" property="*"/>
@@ -24,7 +23,6 @@
                 ArrayList<Country> allCountries  = board.getCountries();
                 for(int i = 1; i <= allCountries.size(); i++){
                     Country currentCountry = allCountries.get(i - 1);
-                    Coordinates coordinates = currentCountry.getCoordinates();
 
                 %>
             <button  name="country" value="<%=i - 1%>"
