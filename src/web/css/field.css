@@ -41,6 +41,8 @@ aside {
     text-align: center;
     box-sizing: content-box;
     font: bold 24px 'Arial', sans-serif;
+    height: 30px;
+    width: 35px;
 }
 
 .red {
