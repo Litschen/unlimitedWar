@@ -59,13 +59,13 @@ public class GameController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/game.jsp");
         try {
             if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
-                BoardBean board = (BoardBean) request.getSession().getAttribute("board");
+                board = (BoardBean) request.getSession().getAttribute("board");
                 board.executeTurn();
-            } else if(false){    // PHASE == PLACE SOLDIERS
+            } /*else if(false){    // PHASE == PLACE SOLDIERS
                 this.setPhase(request, response);
             } else if (true){    // PHASE == ATTACK
                 this.attackPhase(request, response);
-            }
+            }*/
             dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();

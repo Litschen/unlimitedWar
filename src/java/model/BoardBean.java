@@ -1,5 +1,10 @@
 package model;
 
+import model.Behaviors.AggressiveBehavior;
+import model.Behaviors.RandomBehavior;
+import model.Behaviors.StrategicBehavior;
+import model.Behaviors.UserBehavior;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -49,6 +54,54 @@ public class BoardBean {
 
     public ArrayList<Country> getCountries() {
         return countries;
+    }
+
+    /**Show the Dice Count
+     * @param soldiersCount
+     * @return
+     */
+    private int getDiceCount(int soldiersCount) {
+        if (soldiersCount >= 3) {
+            return 3;
+        } else {
+            return soldiersCount;
+        }
+    }
+
+    public Country getCountryById(int id){
+        return this.countries.get(id);
+    }
+
+    public int getSoldiersToPlace(){
+        return this.soldiersToPlace;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public Country getAttackerCountry() {
+        return attackerCountry;
+    }
+
+    public void setAttackerCountry(Country attackerCountry) {
+        this.attackerCountry = attackerCountry;
+    }
+
+    public Country getDefenderCountry() {
+        return defenderCountry;
+    }
+
+    public void setDefenderCountry(Country defenderCountry) {
+        this.defenderCountry = defenderCountry;
+    }
+
+    public String getModalToShow() {
+        return modalToShow;
+    }
+
+    public void setModalToShow(String modalToShow) {
+        this.modalToShow = modalToShow;
     }
     //endregion
 
@@ -125,6 +178,7 @@ public class BoardBean {
         players.add(this.currentPlayer);
         players.add(new Player("blue", "LMao", new RandomBehavior()));
         players.add(new Player("red", "Hotler", new AggressiveBehavior()));
+        players.add(new Player("green", "Stalout", new UserBehavior()));
         players.add(new Player("yellow", "Darfolini", new StrategicBehavior()));
     }
 
@@ -176,53 +230,5 @@ public class BoardBean {
     public void selectCountry(int soldiersCount) {
         int attackerDice = this.getDiceCount(3);
         int defenderDice = this.getDiceCount(2);
-    }
-
-    /**Show the Dice Count
-     * @param soldiersCount
-     * @return
-     */
-    private int getDiceCount(int soldiersCount) {
-        if (soldiersCount >= 3) {
-            return 3;
-        } else {
-            return soldiersCount;
-        }
-    }
-
-    public Country getCountryById(int id){
-        return this.countries.get(id);
-    }
-
-    public int getSoldiersToPlace(){
-        return this.soldiersToPlace;
-    }
-
-    public Player getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public Country getAttackerCountry() {
-        return attackerCountry;
-    }
-
-    public void setAttackerCountry(Country attackerCountry) {
-        this.attackerCountry = attackerCountry;
-    }
-
-    public Country getDefenderCountry() {
-        return defenderCountry;
-    }
-
-    public void setDefenderCountry(Country defenderCountry) {
-        this.defenderCountry = defenderCountry;
-    }
-
-    public String getModalToShow() {
-        return modalToShow;
-    }
-
-    public void setModalToShow(String modalToShow) {
-        this.modalToShow = modalToShow;
     }
 }

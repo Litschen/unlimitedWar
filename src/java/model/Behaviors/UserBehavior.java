@@ -1,6 +1,7 @@
-package model;
+package model.Behaviors;
 
 
+import model.Country;
 import model.Interface.IBehavior;
 
 import java.util.ArrayList;
