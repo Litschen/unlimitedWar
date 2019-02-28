@@ -100,6 +100,10 @@ public class GameController extends HttpServlet {
             if (board.getAttackerCountry() != null && board.getDefenderCountry() != null){
                 board.setModalToShow("attack");
             }
+        } else if (request.getPathInfo().equals("/attack") && request.getParameter("cancel") != null) {
+            board.setAttackerCountry(null);
+            board.setDefenderCountry(null);
+            board.setModalToShow("");
         } else {
             int attackDiceCount = 0;
             int defendDiceCount = 0;
