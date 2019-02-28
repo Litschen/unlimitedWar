@@ -75,9 +75,7 @@ public class GameController extends HttpServlet {
                 this.movePhase(request, response);
             }
             dispatcher.forward(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
     }
