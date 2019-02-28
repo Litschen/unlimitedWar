@@ -2,6 +2,7 @@ package controller;
 
 import model.BoardBean;
 import model.Country;
+import model.Enum.Phase;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class GameController extends HttpServlet {
 
     private BoardBean board = new BoardBean();
+    private Phase currentPhase = Phase.SETTINGPHASE;
 
     //region static variables
     private final static String ATTACKER_KEY = "attackDice";
@@ -61,11 +63,13 @@ public class GameController extends HttpServlet {
             if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                 board = (BoardBean) request.getSession().getAttribute("board");
                 board.executeTurn();
-            } /*else if(false){    // PHASE == PLACE SOLDIERS
+            } else if(currentPhase == Phase.SETTINGPHASE){
                 this.setPhase(request, response);
-            } else if (true){    // PHASE == ATTACK
+            } else if (currentPhase == Phase.ATTACKPHASE){
                 this.attackPhase(request, response);
-            }*/
+            } else if (currentPhase == Phase.MOVINGPHASE){
+                this.movePhase(request, response);
+            }
             dispatcher.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -75,7 +79,6 @@ public class GameController extends HttpServlet {
     }
 
 // ---------- TODO: /F0310/ ----------
-//    call these function in processRequest();
     private void setPhase(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<Country> countries = new ArrayList<>();
         for (String i : request.getParameterMap().get("country")){
@@ -83,7 +86,7 @@ public class GameController extends HttpServlet {
         }
         boolean placeSoldierIsDone = board.addSoldiersToCountry(countries);
         if (placeSoldierIsDone){
-            // TODO move to next PHASE
+            currentPhase = Phase.ATTACKPHASE;
         }
     }
 
@@ -120,7 +123,7 @@ public class GameController extends HttpServlet {
         }
     }
 
-    private void movePhase() {
+    private void movePhase(HttpServletRequest request, HttpServletResponse response) {
 
     }
 }
