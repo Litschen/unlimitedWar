@@ -188,6 +188,10 @@ public class Country {
         soldiersCount++;
     }
 
+    public void removeSoldiers(int amountOfSoldiers){
+        soldiersCount -= amountOfSoldiers;
+    }
+
     /**
      * @param diceThrowsAttacker
      * @param diceThrowsDefender
