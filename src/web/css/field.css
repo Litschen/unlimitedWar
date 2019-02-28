@@ -59,6 +59,17 @@ aside {
     background-color: #28a745;
 }
 
+.country {
+    border: none;
+    position: absolute;
+    width: 35px;
+    height: 30px;
+    padding: 2px 0 3px 0;
+    text-align: center;
+    box-sizing: content-box;
+    font: bold 24px 'Arial', sans-serif;
+}
+
 /* country positions */
 .country-1 {
     bottom: 20px;
