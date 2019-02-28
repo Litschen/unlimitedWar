@@ -24,6 +24,7 @@
         </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Roll</button>
+            <button type="submit" class="btn btn-secondary">Cancel</button>
         </div>
     </form>
 
