@@ -218,10 +218,16 @@ public class BoardBean {
 //        int attackerHighestRoll = Dice.roll(attackDiceCount);
 //        int defenderHighestRoll = Dice.roll(defendDiceCount);
 
-        // TODO call /F0341/
+        Casualties casualties = attackerCountry.calculateCasualties(null, null);
+        attackerCountry.removeSoldiers(casualties.getCasualtiesAttacker());
+        defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
 
-        // if soldiers = 0
-        // call /F0370/
+        if (defenderCountry.getSoldiersCount() <= 0){
+            //F0370/ Land erobern
+            defenderCountry.setOwner(currentPlayer);
+
+            //F0380/ Soldaten verschieben
+        }
     }
 
     /** Select Country
