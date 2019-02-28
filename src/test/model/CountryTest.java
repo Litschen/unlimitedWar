@@ -19,11 +19,20 @@ class CountryTest {
                 new Player("red", "test", new RandomBehavior()));
         defendingCountry = new Country("countryTest", BoardBean.START_SOLDIER_PER_PLAYER,
                 new Player("red", "test", new RandomBehavior()));
+        defendingCountry.getNeighboringCountries().add(invadingCountry);
+        invadingCountry.getNeighboringCountries().add(defendingCountry);
     }
 
     @Test
     void testIsBordering() {
         assertTrue(invadingCountry.isBordering(defendingCountry));
+        BoardBean boardBean = new BoardBean();
+        for(Country country : boardBean.getCountries()){
+            for(Country neighboring : country.getNeighboringCountries()){
+                assertTrue(neighboring.getNeighboringCountries().contains(country));
+                assertTrue(country.getNeighboringCountries().contains(neighboring));
+            }
+        }
     }
 
     @Test

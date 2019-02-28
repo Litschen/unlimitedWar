@@ -2,6 +2,8 @@ package model;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 public class Country {
 
     //region static variables
@@ -11,16 +13,14 @@ public class Country {
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
     public static final int METHOD_NOT_IMPLEMENTED_RETURN_VALUE = -1;
-    public static final int COUNTRY_PIXEL_WIDTH = 35;
-    public static final int COUNTRY_PIXEL_HEIGHT = 30;
+
     //endregion
 
     //region data fields
     private String name;
     private int soldiersCount;
     private Player owner;
-    private Coordinates coordinates;
-    private Country hasConnectorWith;
+    private ArrayList<Country> neighboringCountries;
     //endregion
 
     /**
@@ -35,21 +35,7 @@ public class Country {
         this.name = name;
         this.soldiersCount = soldiersCount;
         this.owner = owner;
-    }
-
-    /**
-     * Constructor. Create Name of the Country, nummber of soldiers, Player and coordinates
-     *
-     * @param name
-     * @param soldiersCount
-     * @param owner
-     * @param coordinates
-     */
-    public Country(String name, int soldiersCount, @NotNull Player owner, Coordinates coordinates) {
-        this.name = name;
-        this.soldiersCount = soldiersCount;
-        this.owner = owner;
-        this.coordinates = coordinates;
+        this.neighboringCountries = new ArrayList<>();
     }
     //endregion
 
@@ -93,23 +79,7 @@ public class Country {
         this.owner = owner;
     }
 
-    /**
-     * @return Coordinates
-     */
-    public Coordinates getCoordinates() {
-        return coordinates;
-    }
-
-    /**
-     * @param coordinates
-     */
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public void setHasConnector(Country country) {
-        this.hasConnectorWith = country;
-    }
+    public ArrayList<Country> getNeighboringCountries(){return neighboringCountries;}
     //endregion
 
     /**
@@ -117,27 +87,10 @@ public class Country {
      * @return value is Bordering or not
      */
     public boolean isBordering(@NotNull Country country) {
-        return haveConnector(country) || (touchVertically(country) || touchHorizontal(country));
+        return this.neighboringCountries.contains(country);
     }
 
-    private boolean touchVertically(Country country) {
-        Coordinates thisCoordinates = this.getCoordinates();
-        Coordinates countryCoordinates = country.getCoordinates();
 
-        int thisVerticalValue = (thisCoordinates.getTop() > 0) ?
-                BoardBean.BOARD_PIXEL_HEIGHT - thisCoordinates.getTop() : thisCoordinates.getBottom();
-        int countryVerticalValue = (countryCoordinates.getTop() > 0) ?
-                BoardBean.BOARD_PIXEL_HEIGHT - countryCoordinates.getTop() : countryCoordinates.getBottom();
-        return false;
-    }
-
-    private boolean touchHorizontal(Country country) {
-        return false;
-    }
-
-    private boolean haveConnector(Country country) {
-        return this.hasConnectorWith == country;
-    }
 
     /**
      * @param country
