@@ -42,6 +42,10 @@ h1 {
     height: 50px;
 }
 
+.dropdown-menu {
+    margin: 0;
+}
+
 .dropdown:hover .dropdown-menu {
     display: block;
     background-color: #fff;
