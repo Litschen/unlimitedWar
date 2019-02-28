@@ -20,9 +20,6 @@ public class BoardBean {
     public final static int START_SOLDIER_PER_PLAYER = 12;
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
-    public static final int BOARD_PIXEL_WIDTH = 350;
-    public static final int BOARD_PIXEL_HEIGHT = 200;
-    private static final int[] COUNTRIES_WITH_CONNECTOR_INDEX = new int[]{8, 11, 9, 16, 15, 4, 2, 7};
     //endregion
 
     //region data fields
@@ -56,9 +53,7 @@ public class BoardBean {
         return countries;
     }
 
-    /**
-     * Show the Dice Count
-     *
+    /**Show the Dice Count
      * @param soldiersCount
      * @return
      */
@@ -138,39 +133,46 @@ public class BoardBean {
         try {
             List<String> countryNames = Files.readAllLines(
                     new File(getClass().getClassLoader().getResource("countryNames.txt").getPath()).toPath(), Charset.defaultCharset());
-            List<String> countryCoordinates = Files.readAllLines(
-                    new File(getClass().getClassLoader().getResource("coordinates.txt").getPath()).toPath(), Charset.defaultCharset());
             Collections.shuffle(countryNames);
             for (Country country : countries) {
                 country.setName(countryNames.remove(0));
-                country.setCoordinates(extractCoordinates(countryCoordinates.remove(0)));
-
             }
+            setNeighbors();
 
-            for (int i = 0; i < COUNTRIES_WITH_CONNECTOR_INDEX.length; i += 2) {
-                countries.get(i).setHasConnector(countries.get(i + 1));
-                countries.get(i + 1).setHasConnector(countries.get(i));
-            }
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * Shows Coordinates
-     *
-     * @param toExtract
-     * @return
-     */
-    private Coordinates extractCoordinates(String toExtract) {
-        String[] stringCord = toExtract.split(",");
-        return new Coordinates(
-                Integer.parseInt(stringCord[0]),
-                Integer.parseInt(stringCord[1]),
-                Integer.parseInt(stringCord[2]),
-                Integer.parseInt(stringCord[3]));
+    private void setNeighbors(){
+        setStaticNeighbors(0, new int[] {1});
+        setStaticNeighbors(1, new int[] {0,6,2});
+        setStaticNeighbors(2, new int[] {1,3});
+        setStaticNeighbors(3, new int[] {2,14});
+        setStaticNeighbors(4, new int[] {6,5});
+        setStaticNeighbors(5, new int[] {4,6,7});
+        setStaticNeighbors(6, new int[] {1,4,5,7});
+        setStaticNeighbors(7, new int[] {5,6,10});
+        setStaticNeighbors(8, new int[] {9,15});
+        setStaticNeighbors(9, new int[] {8,10,11,13});
+        setStaticNeighbors(10, new int[] {7,9,11});
+        setStaticNeighbors(11, new int[] {9,10,12,13});
+        setStaticNeighbors(12, new int[] {11,13});
+        setStaticNeighbors(13, new int[] {12,11,9});
+        setStaticNeighbors(14, new int[] {15,3});
+        setStaticNeighbors(15, new int[] {14,8});
+
+
+
+
+
     }
 
+    private void setStaticNeighbors(int countryIndex, int[] neighborCountryIndex){
+        for(int i : neighborCountryIndex){
+            countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
+        }
+    }
 
     /**
      * Generates all Player with their respective personalities.
