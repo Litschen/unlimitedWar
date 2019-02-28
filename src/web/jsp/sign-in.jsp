@@ -24,7 +24,7 @@
         <input type="password" id="inputPassword" class="mb-3 form-control" placeholder="Password" required>
         <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
     </form>
-    <button class="btn btn-lg btn-block" onclick="window.location.href='register.html'">Register</button>
+    <button class="btn btn-lg btn-block" onclick="window.location.href='register.jsp'">Register</button>
 </div>
 
 <%@include file="snippets/footer.jsp" %>
