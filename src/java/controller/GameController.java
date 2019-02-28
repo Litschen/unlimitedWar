@@ -28,6 +28,7 @@ public class GameController extends HttpServlet {
 
     /**
      * TEXT
+     *
      * @param request
      * @param response
      * @throws ServletException
@@ -41,6 +42,7 @@ public class GameController extends HttpServlet {
 
     /**
      * TEXT
+     *
      * @param request
      * @param response
      * @throws ServletException
@@ -53,7 +55,9 @@ public class GameController extends HttpServlet {
         processRequest(request, response);
     }
 
-    /** Process the Request
+    /**
+     * Process the Request
+     *
      * @param request
      * @param response
      */
@@ -63,11 +67,11 @@ public class GameController extends HttpServlet {
             if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                 board = (BoardBean) request.getSession().getAttribute("board");
                 board.executeTurn();
-            } else if(currentPhase == Phase.SETTINGPHASE){
+            } else if (currentPhase == Phase.SETTINGPHASE) {
                 this.setPhase(request, response);
-            } else if (currentPhase == Phase.ATTACKPHASE){
+            } else if (currentPhase == Phase.ATTACKPHASE) {
                 this.attackPhase(request, response);
-            } else if (currentPhase == Phase.MOVINGPHASE){
+            } else if (currentPhase == Phase.MOVINGPHASE) {
                 this.movePhase(request, response);
             }
             dispatcher.forward(request, response);
@@ -78,14 +82,14 @@ public class GameController extends HttpServlet {
         }
     }
 
-// ---------- TODO: /F0310/ ----------
+    // ---------- TODO: /F0310/ ----------
     private void setPhase(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<Country> countries = new ArrayList<>();
-        for (String i : request.getParameterMap().get("country")){
+        for (String i : request.getParameterMap().get("country")) {
             countries.add(board.getCountryById(Integer.parseInt(i)));
         }
         boolean placeSoldierIsDone = board.addSoldiersToCountry(countries);
-        if (placeSoldierIsDone){
+        if (placeSoldierIsDone) {
             currentPhase = Phase.ATTACKPHASE;
         }
     }
@@ -100,7 +104,7 @@ public class GameController extends HttpServlet {
                 board.setDefenderCountry(country);
             }
 
-            if (board.getAttackerCountry() != null && board.getDefenderCountry() != null){
+            if (board.getAttackerCountry() != null && board.getDefenderCountry() != null) {
                 board.setModalToShow("attack");
             }
         } else if (request.getPathInfo().equals("/attack") && request.getParameter("cancel") != null) {
