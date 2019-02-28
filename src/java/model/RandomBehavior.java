@@ -17,7 +17,7 @@ public class RandomBehavior implements IBehavior {
      * @param soldiersToPlace
      */
     @Override
-    public void placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public int placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
         while(soldiersToPlace > 0){
             Country country = ownedCountries.get(ThreadLocalRandom.current()
                     .nextInt(0, ownedCountries.size()));
@@ -26,6 +26,8 @@ public class RandomBehavior implements IBehavior {
             country.setSoldiersCount(country.getSoldiersCount() + placedSoldiers);
             soldiersToPlace = soldiersToPlace - placedSoldiers;
         }
+
+        return 0;
     }
 
     /**

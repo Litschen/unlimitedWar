@@ -6,6 +6,8 @@ public class Country {
 
     //region static variables
     public static final int MIN_SOLDIERS_TO_INVADE = 2;
+    public static final int MIN_SOLDIERS_TO_STAY = 1;
+    public static final int ABSOLUTE_MIN_AMOUNT_THROWS = 1;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
     public static final int METHOD_NOT_IMPLEMENTED_RETURN_VALUE = -1;
@@ -21,7 +23,9 @@ public class Country {
     private Country hasConnectorWith;
     //endregion
 
-    /** Constructor. Create Name of the Country, nummber of soldiers and Player
+    /**
+     * Constructor. Create Name of the Country, nummber of soldiers and Player
+     *
      * @param name
      * @param soldiersCount
      * @param owner
@@ -33,7 +37,9 @@ public class Country {
         this.owner = owner;
     }
 
-    /** Constructor. Create Name of the Country, nummber of soldiers, Player and coordinates
+    /**
+     * Constructor. Create Name of the Country, nummber of soldiers, Player and coordinates
+     *
      * @param name
      * @param soldiersCount
      * @param owner
@@ -90,7 +96,9 @@ public class Country {
     /**
      * @return Coordinates
      */
-    public Coordinates getCoordinates() { return coordinates; }
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 
     /**
      * @param coordinates
@@ -99,7 +107,9 @@ public class Country {
         this.coordinates = coordinates;
     }
 
-    public void setHasConnector(Country country) {this.hasConnectorWith = country;}
+    public void setHasConnector(Country country) {
+        this.hasConnectorWith = country;
+    }
     //endregion
 
     /**
@@ -110,7 +120,7 @@ public class Country {
         return haveConnector(country) || (touchVertically(country) || touchHorizontal(country));
     }
 
-    private boolean touchVertically(Country country){
+    private boolean touchVertically(Country country) {
         Coordinates thisCoordinates = this.getCoordinates();
         Coordinates countryCoordinates = country.getCoordinates();
 
@@ -121,11 +131,13 @@ public class Country {
         return false;
     }
 
-    private boolean touchHorizontal(Country country){
+    private boolean touchHorizontal(Country country) {
         return false;
     }
 
-    private boolean haveConnector(Country country){ return this.hasConnectorWith == country; }
+    private boolean haveConnector(Country country) {
+        return this.hasConnectorWith == country;
+    }
 
     /**
      * @param country
@@ -142,28 +154,31 @@ public class Country {
      */
     // /F0350/ Würfelanzahl bestimmen Angreifer
     public int maxAmountDiceThrowsAttacker() throws Exception {
-        int count = this.getSoldiersCount() - 1;
-        if (count > 0) {
-            return count > 3 ? 3 : count;
+        int count = this.getSoldiersCount() - MIN_SOLDIERS_TO_STAY;
+        if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
+            return count > ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER ? ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER : count;
         } else {
             throw new Exception("could not calculate maxAttackerDiceCount");
         }
     }
 
-    /**Number of dice determine attackers
+    /**
+     * Number of dice determine attackers
+     *
      * @param amountAttacker
      * @return by number of count
      */
     public int amountDiceThrowsDefender(int amountAttacker) {
-        int count = amountAttacker - 1;
+        int count = amountAttacker - MIN_SOLDIERS_TO_STAY;
+        int amountDefenderDice = count;
         int soldiers = this.getSoldiersCount();
 
-        if (count == 0) {
-            return 1;
+        if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
+            amountDefenderDice = ABSOLUTE_MIN_AMOUNT_THROWS;
         } else if (soldiers <= count) {
-            return soldiers;
+            amountDefenderDice = soldiers;
         }
-        return count;
+        return amountDefenderDice;
     }
 
     /**
@@ -179,7 +194,15 @@ public class Country {
      * @return by Casualties
      */
     public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender) {
-        return new Casualties(METHOD_NOT_IMPLEMENTED_RETURN_VALUE, METHOD_NOT_IMPLEMENTED_RETURN_VALUE);
+        Casualties casualties = new Casualties(0, 0);
+        for (int i = 0; i < diceThrowsDefender.length; i++) {
+            if (diceThrowsDefender[i] >= diceThrowsAttacker[i]) {
+                casualties.addCasualtiesAttacker();
+            } else {
+                casualties.addCasualtiesDefender();
+            }
+        }
+        return casualties;
     }
 
     /**

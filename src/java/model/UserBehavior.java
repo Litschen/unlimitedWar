@@ -6,7 +6,7 @@ import model.Interface.IBehavior;
 import java.util.ArrayList;
 
 public class UserBehavior implements IBehavior {
-
+    private int soldiersToPlace;
 
 
     /**
@@ -16,8 +16,16 @@ public class UserBehavior implements IBehavior {
      * @param soldiersToPlace
      */
     @Override
-    public void placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public int placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+        int countAddedSoldiers = 0;
+        for (Country c : allCountries) {
+            if (ownedCountries.contains(c)) {
+                c.addSoldier();
+                countAddedSoldiers++;
+            }
+        }
 
+        return countAddedSoldiers;
     }
 
     @Override

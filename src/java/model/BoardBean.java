@@ -1,7 +1,5 @@
 package model;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -24,9 +22,15 @@ public class BoardBean {
 
     //region data fields
     private int turnCount = 0;
+    private Player currentPlayer;
     private ArrayList<Player> players;
     private ArrayList<Country> countries;
     //endregion
+
+    private int soldiersToPlace;
+    private Country attackerCountry;
+    private Country defenderCountry;
+    private String modalToShow;
 
     //region constructors
     public BoardBean() {
@@ -117,9 +121,10 @@ public class BoardBean {
      */
     private void generatePlayers() {
         //TODO modify to include User, all Behaviors and color selection
+        this.currentPlayer = new Player("green", "Stalout", new UserBehavior());
+        players.add(this.currentPlayer);
         players.add(new Player("blue", "LMao", new RandomBehavior()));
         players.add(new Player("red", "Hotler", new AggressiveBehavior()));
-        players.add(new Player("green", "Stalout", new UserBehavior()));
         players.add(new Player("yellow", "Darfolini", new StrategicBehavior()));
     }
 
@@ -137,6 +142,12 @@ public class BoardBean {
                 currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
             }
         }
+    }
+
+    public boolean addSoldiersToCountry(ArrayList<Country> countries){
+        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(),0);
+        soldiersToPlace -= placedSoldiers;
+        return soldiersToPlace == 0;
     }
 
     /**
@@ -177,5 +188,41 @@ public class BoardBean {
         } else {
             return soldiersCount;
         }
+    }
+
+    public Country getCountryById(int id){
+        return this.countries.get(id);
+    }
+
+    public int getSoldiersToPlace(){
+        return this.soldiersToPlace;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public Country getAttackerCountry() {
+        return attackerCountry;
+    }
+
+    public void setAttackerCountry(Country attackerCountry) {
+        this.attackerCountry = attackerCountry;
+    }
+
+    public Country getDefenderCountry() {
+        return defenderCountry;
+    }
+
+    public void setDefenderCountry(Country defenderCountry) {
+        this.defenderCountry = defenderCountry;
+    }
+
+    public String getModalToShow() {
+        return modalToShow;
+    }
+
+    public void setModalToShow(String modalToShow) {
+        this.modalToShow = modalToShow;
     }
 }

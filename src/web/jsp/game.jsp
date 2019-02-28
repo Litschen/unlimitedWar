@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.BoardBean" %>
 <%@ page import="model.Coordinates" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="board" class="model.BoardBean" scope="session"/>
 <jsp:setProperty name="board" property="*"/>
 <html lang="en">
@@ -26,19 +27,8 @@
                     Coordinates coordinates = currentCountry.getCoordinates();
 
                 %>
-            <button style="
-                    <% if(coordinates.getTop() > 0) {%>
-                        top:    <%= coordinates.getTop()%>px;<%}%>
-                    <% if(coordinates.getRight() > 0) {%>
-                        right:  <%= coordinates.getRight()%>px;<%}%>
-                    <% if(coordinates.getBottom() > 0) {%>
-                        bottom: <%= coordinates.getBottom()%>px;<%}%>
-
-                    <% if(coordinates.getLeft() > 0) {%>
-                        left:   <%= coordinates.getLeft()%>px;<%}%>
-                        width: <%=Country.COUNTRY_PIXEL_WIDTH%> px;
-                        height: <%=Country.COUNTRY_PIXEL_HEIGHT%> px ;" name="<%=i%>"
-                    class="country country<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
+            <button  name="country" value="<%=i - 1%>"
+                    class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
                     <%=currentCountry.getSoldiersCount()%></button>
                 <% if(i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION){ %>
                     <br/>
@@ -51,6 +41,10 @@
             <span class="connector<%=i%> lineThrough rTol"></span>
             <% }%>
         </div>
+        <c:if test="${true}">
+            <p>Soldiers to place: <c:out value="${board.getSoldiersToPlace()}"/></p>
+        </c:if>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <aside>
@@ -80,7 +74,9 @@
         </div>
     </div>
 </div>
-<%--<%@include file="modals/attackRoll.jsp" %> --%>
+<c:if test='${false}'>
+    <%@include file="modals/attackRoll.jsp" %>
+</c:if>
 <%@include file="snippets/footer.jsp" %>
 </body>
 </html>
