@@ -36,31 +36,19 @@ public class Player{
     }
     //endregion
 
-    /**
-     * @return by Player color
-     */
     //region getter setter
     public String getPlayerColor() {
         return color;
     }
 
-    /**
-     * @return by Player name
-     */
     public String getPlayerName() {
         return name;
     }
 
-    /**
-     * @return by get Behavior
-     */
     public IBehavior getBehavior(){
         return behavior;
     }
 
-    /**
-     * @return by behavior own countries
-     */
     public ArrayList<Country> getOwnedCountries() { return ownedCountries; }
     //endregion
 
