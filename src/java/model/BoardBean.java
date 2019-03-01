@@ -27,12 +27,11 @@ public class BoardBean {
     private Player currentPlayer;
     private ArrayList<Player> players;
     private ArrayList<Country> countries;
-    //endregion
-
     private int soldiersToPlace;
     private Country attackerCountry;
     private Country defenderCountry;
     private String modalToShow;
+    //endregion
 
     //region constructors
     public BoardBean() {
@@ -145,22 +144,22 @@ public class BoardBean {
     }
 
     private void setNeighbors(){
-        setStaticNeighbors(0, new int[] {1});
-        setStaticNeighbors(1, new int[] {0,6,2});
-        setStaticNeighbors(2, new int[] {1,3});
-        setStaticNeighbors(3, new int[] {2,14});
-        setStaticNeighbors(4, new int[] {6,5});
-        setStaticNeighbors(5, new int[] {4,6,7});
-        setStaticNeighbors(6, new int[] {1,4,5,7});
-        setStaticNeighbors(7, new int[] {5,6,10});
-        setStaticNeighbors(8, new int[] {9,15});
-        setStaticNeighbors(9, new int[] {8,10,11,13});
-        setStaticNeighbors(10, new int[] {7,9,11});
-        setStaticNeighbors(11, new int[] {9,10,12,13});
-        setStaticNeighbors(12, new int[] {11,13});
-        setStaticNeighbors(13, new int[] {12,11,9});
-        setStaticNeighbors(14, new int[] {15,3});
-        setStaticNeighbors(15, new int[] {14,8});
+        setfixedNeighbors(0, new int[] {1});
+        setfixedNeighbors(1, new int[] {0,6,2});
+        setfixedNeighbors(2, new int[] {1,3});
+        setfixedNeighbors(3, new int[] {2,14});
+        setfixedNeighbors(4, new int[] {6,5});
+        setfixedNeighbors(5, new int[] {4,6,7});
+        setfixedNeighbors(6, new int[] {1,4,5,7});
+        setfixedNeighbors(7, new int[] {5,6,10});
+        setfixedNeighbors(8, new int[] {9,15});
+        setfixedNeighbors(9, new int[] {8,10,11,13});
+        setfixedNeighbors(10, new int[] {7,9,11});
+        setfixedNeighbors(11, new int[] {9,10,12,13});
+        setfixedNeighbors(12, new int[] {11,13});
+        setfixedNeighbors(13, new int[] {12,11,9});
+        setfixedNeighbors(14, new int[] {15,3});
+        setfixedNeighbors(15, new int[] {14,8});
 
 
 
@@ -168,7 +167,7 @@ public class BoardBean {
 
     }
 
-    private void setStaticNeighbors(int countryIndex, int[] neighborCountryIndex){
+    private void setfixedNeighbors(int countryIndex, int[] neighborCountryIndex){
         for(int i : neighborCountryIndex){
             countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
         }
