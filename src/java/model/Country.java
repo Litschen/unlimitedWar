@@ -175,7 +175,8 @@ public class Country {
 
         if(mountSoldiers < getSoldiersCount() && mountSoldiers > 0){
             int currentNumberOfSoldiers = getSoldiersCount()-mountSoldiers;
-            setSoldiersCount(currentNumberOfSoldiers);
+            destination.removeSoldiers(currentNumberOfSoldiers);
+            destination.setSoldiersCount(currentNumberOfSoldiers);
             return true;
         } else {
             return false;
