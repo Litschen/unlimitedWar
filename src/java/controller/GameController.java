@@ -19,7 +19,6 @@ import java.util.ArrayList;
 public class GameController extends HttpServlet {
 
     private BoardBean board = new BoardBean();
-    private Phase currentPhase = Phase.SETTINGPHASE;
 
     //region static variables
     private final static String ATTACKER_KEY = "attackDice";
@@ -67,11 +66,11 @@ public class GameController extends HttpServlet {
             if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                 board = (BoardBean) request.getSession().getAttribute("board");
                 board.executeTurn();
-            } else if (currentPhase == Phase.SETTINGPHASE) {
+            } else if (board.getCurrentPhase() == Phase.SETTINGPHASE) {
                 this.setPhase(request, response);
-            } else if (currentPhase == Phase.ATTACKPHASE) {
+            } else if (board.getCurrentPhase() == Phase.ATTACKPHASE) {
                 this.attackPhase(request, response);
-            } else if (currentPhase == Phase.MOVINGPHASE) {
+            } else if (board.getCurrentPhase() == Phase.MOVINGPHASE) {
                 this.movePhase(request, response);
             }
             dispatcher.forward(request, response);
@@ -82,46 +81,26 @@ public class GameController extends HttpServlet {
 
     // ---------- TODO: /F0310/ ----------
     private void setPhase(HttpServletRequest request, HttpServletResponse response) {
-        ArrayList<Country> countries = new ArrayList<>();
-        for (String i : request.getParameterMap().get("country")) {
-            countries.add(board.getCountryById(Integer.parseInt(i)));
-        }
-        boolean placeSoldierIsDone = board.addSoldiersToCountry(countries);
-        if (placeSoldierIsDone) {
-            currentPhase = Phase.ATTACKPHASE;
-        }
+        String countryIndex = request.getParameterMap().get("country")[0];
+        board.addSoldiersToCountry(countryIndex);
     }
 
     private void attackPhase(HttpServletRequest request, HttpServletResponse response) {
         if (request.getPathInfo().equals("/selectedCountry")) {
             Country country = board.getCountryById(Integer.parseInt(request.getParameter("country")));
-
-            if (board.getCurrentPlayer().getOwnedCountries().contains(country)) {
-                board.setAttackerCountry(country);
-            } else {
-                board.setDefenderCountry(country);
-            }
-
-            if (board.getAttackerCountry() != null && board.getDefenderCountry() != null) {
-                board.setModalToShow("attack");
-            }
+            board.setAttackAndDefendCountry(country);
         } else if (request.getPathInfo().equals("/attack") && request.getParameter("cancel") != null) {
-            board.setAttackerCountry(null);
-            board.setDefenderCountry(null);
-            board.setModalToShow("");
+            board.cancelAttack();
         } else {
             int attackDiceCount = 0;
-            int defendDiceCount = 0;
 
             for (String key : request.getParameterMap().keySet()) {
                 if (key.contains(ATTACKER_KEY)) {
                     attackDiceCount++;
-                } else if (key.contains(DEFENDER_KEY)) {
-                    defendDiceCount++;
                 }
             }
 
-            board.attackRoll(attackDiceCount, defendDiceCount);
+            board.attackRoll(attackDiceCount);
         }
     }
 

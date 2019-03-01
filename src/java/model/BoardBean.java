@@ -4,6 +4,7 @@ import model.Behaviors.AggressiveBehavior;
 import model.Behaviors.RandomBehavior;
 import model.Behaviors.StrategicBehavior;
 import model.Behaviors.UserBehavior;
+import model.Enum.Phase;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,9 +31,11 @@ public class BoardBean {
     //endregion
 
     private int soldiersToPlace;
+    private int defendDiceCount;
     private Country attackerCountry;
     private Country defenderCountry;
     private String modalToShow;
+    private Phase currentPhase = Phase.SETTINGPHASE;
 
     //region constructors
     public BoardBean() {
@@ -203,10 +206,34 @@ public class BoardBean {
         }
     }
 
-    public boolean addSoldiersToCountry(ArrayList<Country> countries) {
-        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(), 0);
+    public void addSoldiersToCountry(String countryIndex) {
+        ArrayList<Country> countries = new ArrayList<>();
+        countries.add(this.getCountryById(Integer.parseInt(countryIndex)));
+
+        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, this.currentPlayer.getOwnedCountries(), 1);
         soldiersToPlace -= placedSoldiers;
-        return soldiersToPlace == 0;
+
+        if (soldiersToPlace == 0) {
+            this.setCurrentPhase(Phase.ATTACKPHASE);
+        }
+    }
+
+    public void setAttackAndDefendCountry(Country country) {
+        if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
+            this.setAttackerCountry(country);
+        } else {
+            this.setDefenderCountry(country);
+        }
+
+        if (this.getAttackerCountry() != null && this.getDefenderCountry() != null) {
+            this.setModalToShow("attack");
+        }
+    }
+
+    public void cancelAttack() {
+        this.setAttackerCountry(null);
+        this.setDefenderCountry(null);
+        this.setModalToShow("");
     }
 
     /**
@@ -220,7 +247,7 @@ public class BoardBean {
      * @param
      */
     //  /F0340/ Land angreifen
-    public void attackRoll(int attackDiceCount, int defendDiceCount) {
+    public void attackRoll(int attackDiceCount) {
 //        int attackerHighestRoll = Dice.roll(attackDiceCount);
 //        int defenderHighestRoll = Dice.roll(defendDiceCount);
 
@@ -244,5 +271,13 @@ public class BoardBean {
     public void selectCountry(int soldiersCount) {
         int attackerDice = this.getDiceCount(3);
         int defenderDice = this.getDiceCount(2);
+    }
+
+    public Phase getCurrentPhase() {
+        return currentPhase;
+    }
+
+    public void setCurrentPhase(Phase currentPhase) {
+        this.currentPhase = currentPhase;
     }
 }
