@@ -22,7 +22,6 @@ public class GameController extends HttpServlet {
 
     //region static variables
     private final static String ATTACKER_KEY = "attackDice";
-    private final static String DEFENDER_KEY = "defendDice";
     //enddregion
 
     /**
@@ -81,7 +80,7 @@ public class GameController extends HttpServlet {
 
     // ---------- TODO: /F0310/ ----------
     private void setPhase(HttpServletRequest request, HttpServletResponse response) {
-        String countryIndex = request.getParameterMap().get("country")[0];
+        String countryIndex = request.getParameter("country");
         board.addSoldiersToCountry(countryIndex);
     }
 
