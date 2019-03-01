@@ -169,4 +169,20 @@ public class Country {
         return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country) &&
                 this.owner != country.getOwner();
     }
+
+
+    public boolean shiftSoldiers (int mountSoldiers, Country destination){
+
+        if(mountSoldiers < getSoldiersCount() && mountSoldiers > 0){
+            int currentNumberOfSoldiers = getSoldiersCount()-mountSoldiers;
+            setSoldiersCount(currentNumberOfSoldiers);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
+
 }
