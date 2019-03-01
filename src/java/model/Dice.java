@@ -1,7 +1,8 @@
 package model;
 
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Dice {
 
@@ -12,25 +13,37 @@ public class Dice {
     //endregion
 
     /**
-     *
      * @param amountOfDice how many dice should be thrown
      * @return int array of results (range 1-6) sorted by by size descending
      */
-    public List<Integer> roll(int amountOfDice) {
 
-       //return  wert = (int) (Math.random() * 6 + 1);
-       // return new int[]{-1};
-       // @schrema8 List isch eifacher zum sortiere
-        return null;
+    public static int[] roll(int amountOfDice) {
+        int[] dices = new int[amountOfDice];
+        int i = 0;
+        while (i < dices.length) {
+            dices[i] = Dice.roll();
+            i++;
+        }
+        Arrays.sort(dices);
+        Collections.reverse(Arrays.asList(dices));
+        return dices;
     }
 
     /**
-     * @param rolls
-     * @return by Highest Roll
+     * @return Random number between 1 and 6
      */
-    public Integer getHighestRoll(List<Integer> rolls){
-        Collections.sort(rolls);
-        Collections.reverse(rolls);
-        return rolls.get(0);
+    public static int roll() {
+        return roll(MIN_VALUE, MAX_VALUE);
     }
+
+    /**
+     * @param min
+     * @param max
+     * @return number between min and max
+     */
+    public static int roll(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max + 1);
+    }
+
+
 }
