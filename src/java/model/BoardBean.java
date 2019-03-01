@@ -4,6 +4,7 @@ import model.Behaviors.AggressiveBehavior;
 import model.Behaviors.RandomBehavior;
 import model.Behaviors.StrategicBehavior;
 import model.Behaviors.UserBehavior;
+import model.Enum.Phase;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,12 +28,13 @@ public class BoardBean {
     private Player currentPlayer;
     private ArrayList<Player> players;
     private ArrayList<Country> countries;
-    //endregion
-
     private int soldiersToPlace;
+    private int defendDiceCount;
     private Country attackerCountry;
     private Country defenderCountry;
     private String modalToShow;
+    private Phase currentPhase = Phase.SETTINGPHASE;
+    //endregion
 
     //region constructors
     public BoardBean() {
@@ -100,6 +102,14 @@ public class BoardBean {
     public void setModalToShow(String modalToShow) {
         this.modalToShow = modalToShow;
     }
+
+    public Phase getCurrentPhase() {
+        return currentPhase;
+    }
+
+    public void setCurrentPhase(Phase currentPhase) {
+        this.currentPhase = currentPhase;
+    }
     //endregion
 
     /**
@@ -145,22 +155,22 @@ public class BoardBean {
     }
 
     private void setNeighbors(){
-        setStaticNeighbors(0, new int[] {1});
-        setStaticNeighbors(1, new int[] {0,6,2});
-        setStaticNeighbors(2, new int[] {1,3});
-        setStaticNeighbors(3, new int[] {2,14});
-        setStaticNeighbors(4, new int[] {6,5});
-        setStaticNeighbors(5, new int[] {4,6,7});
-        setStaticNeighbors(6, new int[] {1,4,5,7});
-        setStaticNeighbors(7, new int[] {5,6,10});
-        setStaticNeighbors(8, new int[] {9,15});
-        setStaticNeighbors(9, new int[] {8,10,11,13});
-        setStaticNeighbors(10, new int[] {7,9,11});
-        setStaticNeighbors(11, new int[] {9,10,12,13});
-        setStaticNeighbors(12, new int[] {11,13});
-        setStaticNeighbors(13, new int[] {12,11,9});
-        setStaticNeighbors(14, new int[] {15,3});
-        setStaticNeighbors(15, new int[] {14,8});
+        setfixedNeighbors(0, new int[] {1});
+        setfixedNeighbors(1, new int[] {0,6,2});
+        setfixedNeighbors(2, new int[] {1,3});
+        setfixedNeighbors(3, new int[] {2,14});
+        setfixedNeighbors(4, new int[] {6,5});
+        setfixedNeighbors(5, new int[] {4,6,7});
+        setfixedNeighbors(6, new int[] {1,4,5,7});
+        setfixedNeighbors(7, new int[] {5,6,10});
+        setfixedNeighbors(8, new int[] {9,15});
+        setfixedNeighbors(9, new int[] {8,10,11,13});
+        setfixedNeighbors(10, new int[] {7,9,11});
+        setfixedNeighbors(11, new int[] {9,10,12,13});
+        setfixedNeighbors(12, new int[] {11,13});
+        setfixedNeighbors(13, new int[] {12,11,9});
+        setfixedNeighbors(14, new int[] {15,3});
+        setfixedNeighbors(15, new int[] {14,8});
 
 
 
@@ -168,7 +178,7 @@ public class BoardBean {
 
     }
 
-    private void setStaticNeighbors(int countryIndex, int[] neighborCountryIndex){
+    private void setfixedNeighbors(int countryIndex, int[] neighborCountryIndex){
         for(int i : neighborCountryIndex){
             countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
         }
@@ -203,10 +213,34 @@ public class BoardBean {
         }
     }
 
-    public boolean addSoldiersToCountry(ArrayList<Country> countries) {
-        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(), 0);
+    public void addSoldiersToCountry(String countryIndex) {
+        ArrayList<Country> countries = new ArrayList<>();
+        countries.add(this.getCountryById(Integer.parseInt(countryIndex)));
+
+        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, this.currentPlayer.getOwnedCountries(), 1);
         soldiersToPlace -= placedSoldiers;
-        return soldiersToPlace == 0;
+
+        if (soldiersToPlace == 0) {
+            this.setCurrentPhase(Phase.ATTACKPHASE);
+        }
+    }
+
+    public void setAttackAndDefendCountry(Country country) {
+        if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
+            this.setAttackerCountry(country);
+        } else {
+            this.setDefenderCountry(country);
+        }
+
+        if (this.getAttackerCountry() != null && this.getDefenderCountry() != null) {
+            this.setModalToShow("attack");
+        }
+    }
+
+    public void cancelAttack() {
+        this.setAttackerCountry(null);
+        this.setDefenderCountry(null);
+        this.setModalToShow("");
     }
 
     /**
@@ -220,7 +254,7 @@ public class BoardBean {
      * @param
      */
     //  /F0340/ Land angreifen
-    public void attackRoll(int attackDiceCount, int defendDiceCount) {
+    public void attackRoll(int attackDiceCount) {
 //        int attackerHighestRoll = Dice.roll(attackDiceCount);
 //        int defenderHighestRoll = Dice.roll(defendDiceCount);
 
