@@ -184,7 +184,6 @@ public class BoardBean {
         players.add(this.currentPlayer);
         players.add(new Player("blue", "LMao", new RandomBehavior()));
         players.add(new Player("red", "Hotler", new AggressiveBehavior()));
-        players.add(new Player("green", "Stalout", new UserBehavior()));
         players.add(new Player("yellow", "Darfolini", new StrategicBehavior()));
     }
 
