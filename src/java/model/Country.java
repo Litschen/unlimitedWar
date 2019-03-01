@@ -39,38 +39,23 @@ public class Country {
     }
     //endregion
 
-    /**
-     * @return by Name
-     */
     //region getter setter
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return by number of Soldiers
-     */
     public int getSoldiersCount() {
         return soldiersCount;
     }
 
-    /**
-     * @param soldiersCount
-     */
     public void setSoldiersCount(int soldiersCount) {
         this.soldiersCount = soldiersCount;
     }
 
-    /**
-     * @return by Owner
-     */
     public Player getOwner() {
         return owner;
     }
