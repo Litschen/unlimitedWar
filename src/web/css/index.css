@@ -1,4 +1,9 @@
 .modal{
     background-color: rgba(0, 0, 0, .3);
     transition: all ease .5s;
+    display: unset !important;
+}
+
+.modal.show {
+    opacity: 1;
 }

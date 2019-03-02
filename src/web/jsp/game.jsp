@@ -67,17 +67,11 @@
     <% gameController.setBoard(board); %>
     <button type="submit" name="nextTurn" value="execute">next Turn</button>
 </form>
-<div class="modal fade">
-    <div class="modal-dialog modal-content">
-        <h1 class="modal-header modal-title">You Win :D</h1>
-        <div class="modal-footer">
-            <button class="btn btn-primary" data-dismiss="modal" onclick="window.location.href='index.jsp'">Save</button>
-            <button class="btn btn-secondary" data-dismiss="modal" onclick="window.location.href='index.jsp'">Don't save</button>
-        </div>
-    </div>
-</div>
 <c:if test="${board.modalToShow == 'attack'}">
     <%@include file="modals/attackRoll.jsp" %>
+</c:if>
+<c:if test="${board.modalToShow == 'win'}">
+    <%@include file="modals/win.jsp" %>
 </c:if>
 <%@include file="snippets/footer.jsp" %>
 </body>
