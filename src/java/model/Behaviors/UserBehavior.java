@@ -34,6 +34,13 @@ public class UserBehavior implements IBehavior {
 
     @Override
     public void attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+        try {
+            if (ownedCountries.contains(allCountries)) {
+               // currentPlayer;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
