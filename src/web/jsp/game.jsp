@@ -17,7 +17,7 @@
 <%@include file="snippets/header.jsp" %>
 
 <div class="wrapper">
-    <form action="/Game/selectedCountry" class="form vertical">
+    <form action="/Game/selectedCountry" class="form vertical border rounded">
         <div class="field border rounded">
             <%
                 ArrayList<Country> allCountries  = board.getCountries();

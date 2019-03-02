@@ -42,6 +42,8 @@ public class BoardBean {
         generatePlayers();
         generateCountries();
 
+        // Hardcoded value to prevent NullPointerException
+        // will be fixed by /F0210/
         setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
     }
 
