@@ -92,9 +92,7 @@ public class GameController extends HttpServlet {
         if (request.getPathInfo().equals("/selectedCountry")) {
             Country country = board.getCountryByName(request.getParameter("country"));
             board.setAttackAndDefendCountry(country);
-        } else if (request.getPathInfo().equals("/attack") && request.getParameter("cancel") != null) {
-            board.cancelAttack();
-        } else {
+        } else if (request.getPathInfo().equals("/attack") && request.getParameter("roll") != null) {
             int attackDiceCount = 0;
 
             for (String key : request.getParameterMap().keySet()) {
@@ -104,6 +102,8 @@ public class GameController extends HttpServlet {
             }
 
             board.attackRoll(attackDiceCount);
+        } else if (request.getPathInfo().equals("/attack") && request.getParameter("cancel") != null) {
+            board.cancelAttack();
         }
     }
 

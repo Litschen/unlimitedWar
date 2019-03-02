@@ -1,9 +1,8 @@
-<div class="card-img-overlay">
 <div class="modal show" role="dialog">
     <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Game/attack" method="post" name="attackForm">
         <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" />
+            <h5 class="modal-title">Select dices to attack</h5>
+            <button name="cancel" class="close" />
         </div>
         <div class="modal-body row">
             <div class="col">
@@ -21,8 +20,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Roll</button>
-            <button type="submit" class="btn btn-secondary">Cancel</button>
+            <button type="submit" value="roll" class="btn btn-primary">Roll</button>
+            <button name="cancel" class="btn btn-secondary">Cancel</button>
         </div>
     </form>
 </div>
