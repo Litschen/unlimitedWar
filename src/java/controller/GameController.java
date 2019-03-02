@@ -20,7 +20,7 @@ public class GameController extends HttpServlet {
 
     private BoardBean board;
 
-    public void setBoard(BoardBean board){
+    public void setBoard(BoardBean board) {
         this.board = board;
     }
 
@@ -89,10 +89,13 @@ public class GameController extends HttpServlet {
     }
 
     private void attackPhase(HttpServletRequest request, HttpServletResponse response) {
-        if (request.getPathInfo().equals("/selectedCountry")) {
+        String path = request.getPathInfo();
+        if (request.getParameter("end") != null) {
+            board.setCurrentPhase(Phase.MOVINGPHASE);
+        } else if (path.equals("/selectedCountry")) {
             Country country = board.getCountryByName(request.getParameter("country"));
             board.setAttackAndDefendCountry(country);
-        } else if (request.getPathInfo().equals("/attack") && request.getParameter("roll") != null) {
+        } else if (path.equals("/attack") && request.getParameter("roll") != null) {
             int attackDiceCount = 0;
 
             for (String key : request.getParameterMap().keySet()) {
@@ -102,7 +105,7 @@ public class GameController extends HttpServlet {
             }
 
             board.attackRoll(attackDiceCount);
-        } else if (request.getPathInfo().equals("/attack") && request.getParameter("cancel") != null) {
+        } else if (path.equals("/attack") && request.getParameter("cancel") != null) {
             board.cancelAttack();
         }
     }

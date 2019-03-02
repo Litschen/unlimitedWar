@@ -45,7 +45,7 @@
             <p>Soldiers to place: <c:out value="${board.getSoldiersToPlace()}"/></p>
         </c:if>
         <c:if test="${board.currentPhase == 'ATTACKPHASE'}">
-            <button type="submit" class="btn btn-primary">End Attack Phase</button>
+            <button name="end" class="btn btn-primary">End Attack Phase</button>
         </c:if>
     </form>
     <aside>
