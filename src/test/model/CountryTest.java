@@ -125,4 +125,8 @@ class CountryTest {
         assertEquals(1, defendingCountry.amountDiceThrowsDefender(1));
         assertEquals(1, defendingCountry.amountDiceThrowsDefender(2));
     }
+
+    @Test
+    void shiftSoldiers() {
+    }
 }

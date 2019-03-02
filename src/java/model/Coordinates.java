@@ -23,31 +23,19 @@ public class Coordinates {
     }
     //endregion
 
-    /**
-     * @return by top
-     */
     //region getter setter
     public int getTop() {
         return top;
     }
 
-    /**
-     * @return by bottom
-     */
     public int getBottom() {
         return bottom;
     }
 
-    /**
-     * @return by left
-     */
     public int getLeft() {
         return left;
     }
 
-    /**
-     * @return by Right
-     */
     public int getRight() {
         return right;
     }

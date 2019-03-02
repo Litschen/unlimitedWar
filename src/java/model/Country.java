@@ -39,38 +39,23 @@ public class Country {
     }
     //endregion
 
-    /**
-     * @return by Name
-     */
     //region getter setter
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return by number of Soldiers
-     */
     public int getSoldiersCount() {
         return soldiersCount;
     }
 
-    /**
-     * @param soldiersCount
-     */
     public void setSoldiersCount(int soldiersCount) {
         this.soldiersCount = soldiersCount;
     }
 
-    /**
-     * @return by Owner
-     */
     public Player getOwner() {
         return owner;
     }
@@ -169,4 +154,20 @@ public class Country {
         return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country) &&
                 this.owner != country.getOwner();
     }
+
+
+    public boolean shiftSoldiers (int mountSoldiers, Country destination){
+
+        if(mountSoldiers < getSoldiersCount() && mountSoldiers > 0){
+            this.setSoldiersCount(this.getSoldiersCount() - mountSoldiers);;
+            destination.setSoldiersCount(destination.getSoldiersCount() + mountSoldiers);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+
+
 }
