@@ -55,16 +55,14 @@ public class BoardBean {
         return countries;
     }
 
-    /**Show the Dice Count
+    /**
+     * Show the Dice Count
+     *
      * @param soldiersCount
      * @return
      */
     private int getDiceCount(int soldiersCount) {
-        if (soldiersCount >= 3) {
-            return 3;
-        } else {
-            return soldiersCount;
-        }
+        return soldiersCount >= 3 ? 3 : soldiersCount;
     }
 
     public Country getCountryById(int id) {
@@ -154,32 +152,27 @@ public class BoardBean {
         }
     }
 
-    private void setNeighbors(){
-        setfixedNeighbors(0, new int[] {1});
-        setfixedNeighbors(1, new int[] {0,6,2});
-        setfixedNeighbors(2, new int[] {1,3});
-        setfixedNeighbors(3, new int[] {2,14});
-        setfixedNeighbors(4, new int[] {6,5});
-        setfixedNeighbors(5, new int[] {4,6,7});
-        setfixedNeighbors(6, new int[] {1,4,5,7});
-        setfixedNeighbors(7, new int[] {5,6,10});
-        setfixedNeighbors(8, new int[] {9,15});
-        setfixedNeighbors(9, new int[] {8,10,11,13});
-        setfixedNeighbors(10, new int[] {7,9,11});
-        setfixedNeighbors(11, new int[] {9,10,12,13});
-        setfixedNeighbors(12, new int[] {11,13});
-        setfixedNeighbors(13, new int[] {12,11,9});
-        setfixedNeighbors(14, new int[] {15,3});
-        setfixedNeighbors(15, new int[] {14,8});
-
-
-
-
-
+    private void setNeighbors() {
+        setfixedNeighbors(0, new int[]{1});
+        setfixedNeighbors(1, new int[]{0, 6, 2});
+        setfixedNeighbors(2, new int[]{1, 3});
+        setfixedNeighbors(3, new int[]{2, 14});
+        setfixedNeighbors(4, new int[]{6, 5});
+        setfixedNeighbors(5, new int[]{4, 6, 7});
+        setfixedNeighbors(6, new int[]{1, 4, 5, 7});
+        setfixedNeighbors(7, new int[]{5, 6, 10});
+        setfixedNeighbors(8, new int[]{9, 15});
+        setfixedNeighbors(9, new int[]{8, 10, 11, 13});
+        setfixedNeighbors(10, new int[]{7, 9, 11});
+        setfixedNeighbors(11, new int[]{9, 10, 12, 13});
+        setfixedNeighbors(12, new int[]{11, 13});
+        setfixedNeighbors(13, new int[]{12, 11, 9});
+        setfixedNeighbors(14, new int[]{15, 3});
+        setfixedNeighbors(15, new int[]{14, 8});
     }
 
-    private void setfixedNeighbors(int countryIndex, int[] neighborCountryIndex){
-        for(int i : neighborCountryIndex){
+    private void setfixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
+        for (int i : neighborCountryIndex) {
             countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
         }
     }
@@ -225,6 +218,7 @@ public class BoardBean {
         }
     }
 
+    //region method for attack phase
     public void setAttackAndDefendCountry(Country country) {
         if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
             this.setAttackerCountry(country);
@@ -267,14 +261,5 @@ public class BoardBean {
             attackerCountry.shiftSoldiers(attackDiceCount, defenderCountry);
         }
     }
-
-    /**
-     * Select Country
-     *
-     * @param soldiersCount
-     */
-    public void selectCountry(int soldiersCount) {
-        int attackerDice = this.getDiceCount(3);
-        int defenderDice = this.getDiceCount(2);
-    }
+    //endregion
 }

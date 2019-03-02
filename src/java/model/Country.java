@@ -13,7 +13,6 @@ public class Country {
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
     public static final int METHOD_NOT_IMPLEMENTED_RETURN_VALUE = -1;
-
     //endregion
 
     //region data fields
@@ -30,14 +29,12 @@ public class Country {
      * @param soldiersCount
      * @param owner
      */
-    //region constructors
     public Country(String name, int soldiersCount, @NotNull Player owner) {
         this.name = name;
         this.soldiersCount = soldiersCount;
         this.owner = owner;
         this.neighboringCountries = new ArrayList<>();
     }
-    //endregion
 
     //region getter setter
     public String getName() {
@@ -64,7 +61,9 @@ public class Country {
         this.owner = owner;
     }
 
-    public ArrayList<Country> getNeighboringCountries(){return neighboringCountries;}
+    public ArrayList<Country> getNeighboringCountries() {
+        return neighboringCountries;
+    }
     //endregion
 
     /**
@@ -74,7 +73,6 @@ public class Country {
     public boolean isBordering(@NotNull Country country) {
         return this.neighboringCountries.contains(country);
     }
-
 
 
     /**
@@ -155,19 +153,14 @@ public class Country {
                 this.owner != country.getOwner();
     }
 
-
-    public boolean shiftSoldiers (int mountSoldiers, Country destination){
-
-        if(mountSoldiers < getSoldiersCount() && mountSoldiers > 0){
-            this.setSoldiersCount(this.getSoldiersCount() - mountSoldiers);;
+    public boolean shiftSoldiers(int mountSoldiers, Country destination) {
+        if (mountSoldiers < getSoldiersCount() && mountSoldiers > 0) {
+            this.setSoldiersCount(this.getSoldiersCount() - mountSoldiers);
             destination.setSoldiersCount(destination.getSoldiersCount() + mountSoldiers);
             return true;
         } else {
             return false;
         }
-
     }
-
-
 
 }
