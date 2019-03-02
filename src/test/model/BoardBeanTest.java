@@ -39,12 +39,12 @@ class BoardBeanTest {
         int initialSoldiers = countryToSet.getSoldiersCount();
 
         // execute test
-        testBoard.addSoldiersToCountry(countryIndex);
-        testBoard.addSoldiersToCountry(countryIndex);
+        testBoard.addSoldiersToCountry(countryToSet.getName());
+        testBoard.addSoldiersToCountry(countryToSet.getName());
         assertEquals(1, testBoard.getSoldiersToPlace());
         assertEquals(Phase.SETTINGPHASE, testBoard.getCurrentPhase());
 
-        testBoard.addSoldiersToCountry(countryIndex);
+        testBoard.addSoldiersToCountry(countryToSet.getName());
         assertEquals(0, testBoard.getSoldiersToPlace());
         assertEquals(initialSoldiers + 3, countryToSet.getSoldiersCount());
         assertEquals(Phase.ATTACKPHASE, testBoard.getCurrentPhase());
@@ -67,15 +67,17 @@ class BoardBeanTest {
         int initialSoldiers = country.getSoldiersCount();
 
         // execute test
-        testBoard.addSoldiersToCountry(countryIndex);
+        testBoard.addSoldiersToCountry(country.getName());
         assertEquals(3, testBoard.getSoldiersToPlace());
         assertEquals(Phase.SETTINGPHASE, testBoard.getCurrentPhase());
         assertEquals(initialSoldiers, country.getSoldiersCount());
     }
 
     @Test
-    public void testAddSoldiersToCountryNegativeValue() {
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> testBoard.addSoldiersToCountry(-1));
+    public void testAddSoldiersToCountryNotExistingCountry() {
+        testBoard.setSoldiersToPlace(3);
+        testBoard.addSoldiersToCountry("x");
+        assertEquals(3, testBoard.getSoldiersToPlace());
     }
 
 }

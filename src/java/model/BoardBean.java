@@ -70,6 +70,16 @@ public class BoardBean {
         return this.countries.get(id);
     }
 
+    public Country getCountryByName(String countryName) {
+        for (Country country : this.countries) {
+            if (country.getName().equals(countryName)) {
+                return country;
+            }
+        }
+
+        return null;
+    }
+
     public int getSoldiersToPlace() {
         return this.soldiersToPlace;
     }
@@ -216,12 +226,12 @@ public class BoardBean {
     //region methods to handle user interactions
     /**
      * add one soldier to the selected country
-     * @param countryIndex  index of the selected country
+     * @param countryName  name of the selected country
      * */
-    public void addSoldiersToCountry(int countryIndex) {
+    public void addSoldiersToCountry(String countryName) {
         // create List of countries to match interface parameter
         ArrayList<Country> countries = new ArrayList<>();
-        countries.add(this.getCountryById(countryIndex));
+        countries.add(this.getCountryByName(countryName));
 
         int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, this.currentPlayer.getOwnedCountries(), 1);
         soldiersToPlace -= placedSoldiers;

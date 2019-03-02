@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.BoardBean" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="gameController" class="controller.GameController" scope="session"/>
 <jsp:useBean id="board" class="model.BoardBean" scope="session"/>
 <jsp:setProperty name="board" property="*"/>
 <html lang="en">
@@ -25,7 +26,7 @@
                     Country currentCountry = allCountries.get(i - 1);
 
                 %>
-            <button  name="country" value="<%=i - 1%>"
+            <button  name="country" value="<%=currentCountry.getName()%>"
                     class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
                     <%=currentCountry.getSoldiersCount()%></button>
                 <% if(i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION){ %>
@@ -61,6 +62,7 @@
 <form method="post" action="<%=request.getContextPath()%>/Game/">
     <%--Saves the board in the session --%>
     <% session.setAttribute("board", board); %>
+    <% gameController.setBoard(board); %>
     <button type="submit" name="nextTurn" value="execute">next Turn</button>
 </form>
 <div class="modal fade">
