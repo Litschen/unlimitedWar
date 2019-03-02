@@ -4,7 +4,9 @@
 }
 
 .form.vertical {
+    padding: 20px;
     display: inline-block;
+    background: #ffffff;
 }
 
 .form.vertical > button[type="submit"] {

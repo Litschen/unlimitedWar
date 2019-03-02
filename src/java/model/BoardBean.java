@@ -41,6 +41,8 @@ public class BoardBean {
         countries = new ArrayList<>();
         generatePlayers();
         generateCountries();
+
+        setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
     }
 
     //region getter setter
