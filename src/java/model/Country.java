@@ -153,10 +153,10 @@ public class Country {
                 this.owner != country.getOwner();
     }
 
-    public boolean shiftSoldiers(int mountSoldiers, Country destination) {
-        if (mountSoldiers < getSoldiersCount() && mountSoldiers > 0) {
-            this.setSoldiersCount(this.getSoldiersCount() - mountSoldiers);
-            destination.setSoldiersCount(destination.getSoldiersCount() + mountSoldiers);
+    public boolean shiftSoldiers(int amountSoldiers, Country destination) {
+        if (amountSoldiers < getSoldiersCount() && amountSoldiers > 0) {
+            this.setSoldiersCount(this.getSoldiersCount() - amountSoldiers);
+            destination.setSoldiersCount(destination.getSoldiersCount() + amountSoldiers);
             return true;
         } else {
             return false;
