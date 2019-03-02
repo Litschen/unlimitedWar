@@ -36,15 +36,12 @@ public class BoardBean {
     private Phase currentPhase = Phase.SETTINGPHASE;
     //endregion
 
-    //region constructors
     public BoardBean() {
         players = new ArrayList<>();
         countries = new ArrayList<>();
         generatePlayers();
         generateCountries();
-
     }
-    //endregion
 
     //region getter setter
     public ArrayList<Player> getPlayers() {
@@ -114,6 +111,7 @@ public class BoardBean {
     }
     //endregion
 
+    //region methods to generate countries & set their properties
     /**
      * Generate Countries.
      * The number of sold soldiers is displayed on each country
@@ -180,6 +178,7 @@ public class BoardBean {
             countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
         }
     }
+    //endregion
 
     /**
      * Generates all Player with their respective personalities.
@@ -210,6 +209,7 @@ public class BoardBean {
         }
     }
 
+    //region methods to handle user interactions
     /**
      * add one soldier to the selected country
      * @param countryIndex  index of the selected country
@@ -227,7 +227,6 @@ public class BoardBean {
         }
     }
 
-    //region method for attack phase
     public void setAttackAndDefendCountry(Country country) {
         if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
             this.setAttackerCountry(country);
@@ -256,7 +255,6 @@ public class BoardBean {
      * @param
      * @param
      */
-    //  /F0340/ Land angreifen
     public void attackRoll(int attackDiceCount) {
         int[] attackerHighestRoll = Dice.roll(attackDiceCount);
         int[] defenderHighestRoll = Dice.roll(defendDiceCount);
