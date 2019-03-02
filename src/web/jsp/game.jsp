@@ -21,23 +21,19 @@
 <div class="wrapper">
     <form action="/Game/selectedCountry" class="form vertical border rounded" method="post">
         <div class="field border rounded">
-            <%
-                ArrayList<Country> allCountries  = board.getCountries();
-                for(int i = 1; i <= allCountries.size(); i++){
+            <%  ArrayList<Country> allCountries = board.getCountries();
+                for (int i = 1; i <= allCountries.size(); i++) {
                     Country currentCountry = allCountries.get(i - 1);
-
-                %>
-            <button  name="country" value="<%=currentCountry.getName()%>"
+            %>
+            <button name="country" value="<%=currentCountry.getName()%>"
                     class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
                     <%=currentCountry.getSoldiersCount()%></button>
-                <% if(i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION){ %>
+                <% if (i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION) { %>
                     <br/>
-                <% }%>
-            <%}%>
+                <% } %>
+            <% } %>
             <%-- continent connectors --%>
-            <%
-                for(int i = 1; i <=4; i++){
-            %>
+            <% for (int i = 1; i <= 4; i++) { %>
             <span class="connector<%=i%> lineThrough rTol"></span>
             <% }%>
         </div>
@@ -47,12 +43,13 @@
         <c:if test="${board.currentPhase == 'ATTACKPHASE'}">
             <button name="end" class="btn btn-primary">End Attack Phase</button>
         </c:if>
+        <c:if test="${board.currentPhase == 'MOVINGPHASE'}">
+            <button name="end" class="btn btn-primary">Don't Move Soldiers</button>
+        </c:if>
     </form>
     <aside>
         <ul class="card">
-            <% for(Player player : board.getPlayers()){
-
-            %>
+            <% for (Player player : board.getPlayers()) { %>
             <li class="list-group-item">
                 <span class="player-color <%= player.getPlayerColor() %>"></span>
                 <%= player.getPlayerName() %>
