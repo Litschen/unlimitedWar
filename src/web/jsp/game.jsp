@@ -10,6 +10,7 @@
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/stylesheet.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/field.css">
     <link rel="shortcut icon" type="image" href="${pageContext.request.contextPath}/images/logo_transparent.png">
     <title>Play Unlimited War</title>
@@ -18,7 +19,7 @@
 <%@include file="snippets/header.jsp" %>
 
 <div class="wrapper">
-    <form action="/Game/selectedCountry" class="form vertical border rounded">
+    <form action="/Game/selectedCountry" class="form vertical border rounded" method="post">
         <div class="field border rounded">
             <%
                 ArrayList<Country> allCountries  = board.getCountries();
@@ -40,11 +41,12 @@
             <span class="connector<%=i%> lineThrough rTol"></span>
             <% }%>
         </div>
-        <c:if test="${true}">
+        <c:if test="${board.currentPhase == 'SETTINGPHASE'}">
             <p>Soldiers to place: <c:out value="${board.getSoldiersToPlace()}"/></p>
         </c:if>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <c:if test="${board.currentPhase == 'ATTACKPHASE'}">
+            <button type="submit" class="btn btn-primary">End Attack Phase</button>
+        </c:if>
     </form>
     <aside>
         <ul class="card">
@@ -74,7 +76,7 @@
         </div>
     </div>
 </div>
-<c:if test='${false}'>
+<c:if test="${board.modalToShow == 'attack'}">
     <%@include file="modals/attackRoll.jsp" %>
 </c:if>
 <%@include file="snippets/footer.jsp" %>
