@@ -1,6 +1,4 @@
-<jsp:useBean id="dice" class="controller.GameController"/>
-<jsp:setProperty name="dice" property="*"/>
-
+<div class="card-img-overlay">
 <div class="modal show" role="dialog">
     <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Game/attack" method="post" name="attackForm">
         <div class="modal-header">
@@ -27,5 +25,4 @@
             <button type="submit" class="btn btn-secondary">Cancel</button>
         </div>
     </form>
-
 </div>

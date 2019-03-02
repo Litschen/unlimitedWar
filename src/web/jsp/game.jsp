@@ -10,6 +10,7 @@
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/stylesheet.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/field.css">
     <link rel="shortcut icon" type="image" href="${pageContext.request.contextPath}/images/logo_transparent.png">
     <title>Play Unlimited War</title>
