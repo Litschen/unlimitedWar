@@ -9,7 +9,8 @@
     background: #ffffff;
 }
 
-.form.vertical > button[type="submit"] {
+.form.vertical > button,
+.form.vertical > span {
     display: block;
     margin-top: 20px;
 }

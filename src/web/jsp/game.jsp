@@ -38,7 +38,7 @@
             <% }%>
         </div>
         <c:if test="${board.currentPhase == 'SETTINGPHASE'}">
-            <p>Soldiers to place: <c:out value="${board.getSoldiersToPlace()}"/></p>
+            <span>Soldiers to place: <c:out value="${board.getSoldiersToPlace()}"/></span>
         </c:if>
         <c:if test="${board.currentPhase == 'ATTACKPHASE'}">
             <button name="end" class="btn btn-primary">End Attack Phase</button>
