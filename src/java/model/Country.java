@@ -159,9 +159,8 @@ public class Country {
     public boolean shiftSoldiers (int mountSoldiers, Country destination){
 
         if(mountSoldiers < getSoldiersCount() && mountSoldiers > 0){
-            int currentNumberOfSoldiers = getSoldiersCount()-mountSoldiers;
-            destination.removeSoldiers(currentNumberOfSoldiers);
-            destination.setSoldiersCount(currentNumberOfSoldiers);
+            this.setSoldiersCount(this.getSoldiersCount() - mountSoldiers);;
+            destination.setSoldiersCount(destination.getSoldiersCount() + mountSoldiers);
             return true;
         } else {
             return false;
