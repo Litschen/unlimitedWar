@@ -30,11 +30,45 @@ CREATE TABLE Result(
     REFERENCES Player (Email)
 );
 
--- Provisorisch Benutzer eingefügt:
+
+
+-- Provisionally inserted user:
 
 INSERT INTO Player(Username, Email, Password) VALUES ('max01', 'max@gmail.com', '123');
 INSERT INTO Player(Username, Email, Password) VALUES ('lara', 'lara@gmail.com', 'kuchen01');
 INSERT INTO Player(Username, Email, Password) VALUES ('quen', 'quen@gmail.com', '2bbb3');
 
--- Update cascade
+-- Provisional displaying the results
 
+INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (1, 1, '2019-02-12', 'max@gmail.com');
+INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (2, 0, '2019-02-14', 'lara@gmail.com');
+INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (3, 1, '2019-02-20', 'quen@gmail.com');
+INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (4, 0, '2019-02-20', 'max@gmail.com');
+-- Provisional update
+
+-- Change Email
+ALTER TABLE Result;
+DROP CONSTRAINT FK_Result; -- Not valid. Why????
+
+ALTER TABLE Result
+ADD CONSTRAINT FK_Result FOREIGN KEY (REmail)
+REFERENCES Player (Email) ON UPDATE CASCADE;
+
+UPDATE 
+	Player
+SET
+Email = 'quen@sunrise.ch'
+WHERE Email = 'quen@gmail.com';
+
+-- Change username
+UPDATE 
+	Player
+SET
+Username = 'maja'
+WHERE Email = 'lara@gmail.com';
+-- Change Password
+UPDATE 
+	Player
+SET
+Password = '321'
+WHERE Email = 'max@gmail.com';
