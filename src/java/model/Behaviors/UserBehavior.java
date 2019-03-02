@@ -3,14 +3,16 @@ package model.Behaviors;
 
 import model.Country;
 import model.Interface.IBehavior;
+import model.Player;
 
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class UserBehavior implements IBehavior {
 
+
     /**
      * Places all available Soldiers for this Player on the board
-     *
      * @param destinationCountries
      * @param ownedCountries
      * @param soldiersToPlace
@@ -36,5 +38,12 @@ public class UserBehavior implements IBehavior {
     @Override
     public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
 
+       if (ownedCountries.contains(allCountries)){
+
+       }
+
+
+
     }
 }
+

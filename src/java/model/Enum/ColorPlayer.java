@@ -13,5 +13,4 @@ public enum ColorPlayer {
     public static ColorPlayer getRandomColor()  {
         return VALUES[RANDOM.nextInt(SIZE)];
     }
-
 }

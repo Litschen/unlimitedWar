@@ -50,15 +50,5 @@ public class RandomBehavior implements IBehavior {
      */
     @Override
     public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-
-        /*while (soldiersToPlace > 1){
-            placeSoldiers(allCountries, ownedCountries, soldiersToPlace);
-        }*/
-
-
     }
-
-
-
-
 }
