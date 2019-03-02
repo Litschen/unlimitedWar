@@ -10,9 +10,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class UserBehavior implements IBehavior {
 
+    Country currentPlayer;
 
     /**
      * Places all available Soldiers for this Player on the board
+     *
      * @param destinationCountries
      * @param ownedCountries
      * @param soldiersToPlace
@@ -38,10 +40,13 @@ public class UserBehavior implements IBehavior {
     @Override
     public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
 
-       if (ownedCountries.contains(allCountries)){
-
-       }
-
+        try {
+            if (ownedCountries.contains(allCountries)) {
+                currentPlayer.shiftSoldiers(currentPlayer.getSoldiersCount(), currentPlayer);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
