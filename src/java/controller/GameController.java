@@ -18,7 +18,11 @@ import java.util.ArrayList;
         urlPatterns = "/Game/*")
 public class GameController extends HttpServlet {
 
-    private BoardBean board = new BoardBean();
+    private BoardBean board;
+
+    public void setBoard(BoardBean board){
+        this.board = board;
+    }
 
     //region static variables
     private final static String ATTACKER_KEY = "attackDice";
@@ -80,8 +84,8 @@ public class GameController extends HttpServlet {
 
     // ---------- TODO: /F0310/ ----------
     private void setPhase(HttpServletRequest request, HttpServletResponse response) {
-        String countryIndex = request.getParameter("country");
-        board.addSoldiersToCountry(Integer.parseInt(countryIndex));
+        String countryName = request.getParameter("country");
+        board.addSoldiersToCountry(countryName);
     }
 
     private void attackPhase(HttpServletRequest request, HttpServletResponse response) {
