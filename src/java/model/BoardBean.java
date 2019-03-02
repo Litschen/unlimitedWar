@@ -73,6 +73,10 @@ public class BoardBean {
         return this.soldiersToPlace;
     }
 
+    public void setSoldiersToPlace(int soldiersToPlace) {
+        this.soldiersToPlace = soldiersToPlace;
+    }
+
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
@@ -207,6 +211,7 @@ public class BoardBean {
     }
 
     public void addSoldiersToCountry(String countryIndex) {
+        // create List of countries to match interface parameter
         ArrayList<Country> countries = new ArrayList<>();
         countries.add(this.getCountryById(Integer.parseInt(countryIndex)));
 
