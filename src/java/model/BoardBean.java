@@ -210,10 +210,14 @@ public class BoardBean {
         }
     }
 
-    public void addSoldiersToCountry(String countryIndex) {
+    /**
+     * add one soldier to the selected country
+     * @param countryIndex  index of the selected country
+     * */
+    public void addSoldiersToCountry(int countryIndex) {
         // create List of countries to match interface parameter
         ArrayList<Country> countries = new ArrayList<>();
-        countries.add(this.getCountryById(Integer.parseInt(countryIndex)));
+        countries.add(this.getCountryById(countryIndex));
 
         int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, this.currentPlayer.getOwnedCountries(), 1);
         soldiersToPlace -= placedSoldiers;

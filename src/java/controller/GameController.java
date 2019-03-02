@@ -81,7 +81,7 @@ public class GameController extends HttpServlet {
     // ---------- TODO: /F0310/ ----------
     private void setPhase(HttpServletRequest request, HttpServletResponse response) {
         String countryIndex = request.getParameter("country");
-        board.addSoldiersToCountry(countryIndex);
+        board.addSoldiersToCountry(Integer.parseInt(countryIndex));
     }
 
     private void attackPhase(HttpServletRequest request, HttpServletResponse response) {

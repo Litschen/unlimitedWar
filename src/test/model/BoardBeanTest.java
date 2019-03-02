@@ -39,12 +39,12 @@ class BoardBeanTest {
         int initialSoldiers = countryToSet.getSoldiersCount();
 
         // execute test
-        testBoard.addSoldiersToCountry(countryIndex + "");
-        testBoard.addSoldiersToCountry(countryIndex + "");
+        testBoard.addSoldiersToCountry(countryIndex);
+        testBoard.addSoldiersToCountry(countryIndex);
         assertEquals(1, testBoard.getSoldiersToPlace());
         assertEquals(Phase.SETTINGPHASE, testBoard.getCurrentPhase());
 
-        testBoard.addSoldiersToCountry(countryIndex + "");
+        testBoard.addSoldiersToCountry(countryIndex);
         assertEquals(0, testBoard.getSoldiersToPlace());
         assertEquals(initialSoldiers + 3, countryToSet.getSoldiersCount());
         assertEquals(Phase.ATTACKPHASE, testBoard.getCurrentPhase());
@@ -67,7 +67,7 @@ class BoardBeanTest {
         int initialSoldiers = country.getSoldiersCount();
 
         // execute test
-        testBoard.addSoldiersToCountry(countryIndex + "");
+        testBoard.addSoldiersToCountry(countryIndex);
         assertEquals(3, testBoard.getSoldiersToPlace());
         assertEquals(Phase.SETTINGPHASE, testBoard.getCurrentPhase());
         assertEquals(initialSoldiers, country.getSoldiersCount());
@@ -75,7 +75,7 @@ class BoardBeanTest {
 
     @Test
     public void testAddSoldiersToCountryNegativeValue() {
-        assertThrows(ArrayIndexOutOfBoundsException.class, () -> testBoard.addSoldiersToCountry("-1"));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> testBoard.addSoldiersToCountry(-1));
     }
 
 }
