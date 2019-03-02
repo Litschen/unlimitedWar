@@ -10,7 +10,7 @@ public enum ColorPlayer {
     private static final int SIZE = VALUES.length;
     private static final Random RANDOM = new Random();
 
-    public static ColorPlayer getRandomLetter()  {
+    public static ColorPlayer getRandomColor()  {
         return VALUES[RANDOM.nextInt(SIZE)];
     }
 
