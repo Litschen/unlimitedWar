@@ -56,12 +56,6 @@ public class BoardBean {
         return countries;
     }
 
-    /**
-     * Show the Dice Count
-     *
-     * @param soldiersCount
-     * @return
-     */
     private int getDiceCount(int soldiersCount) {
         return soldiersCount >= 3 ? 3 : soldiersCount;
     }
@@ -126,6 +120,7 @@ public class BoardBean {
     //endregion
 
     //region methods to generate countries & set their properties
+
     /**
      * Generate Countries.
      * The number of sold soldiers is displayed on each country
@@ -224,6 +219,7 @@ public class BoardBean {
     }
 
     //region methods to handle user interactions
+
     /**
      * add one soldier to the selected country
      * @param countryName  name of the selected country
