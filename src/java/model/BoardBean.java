@@ -303,10 +303,10 @@ public class BoardBean {
      */
     public void attackRoll(int attackDiceCount) {
         this.modalToShow = "";
-        int[] attackerHighestRoll = Dice.roll(attackDiceCount);
-        int[] defenderHighestRoll = Dice.roll(defendDiceCount);
+        int[] attackerRolls = Dice.roll(attackDiceCount);
+        int[] defenderRolls = Dice.roll(defendDiceCount);
 
-        Casualties casualties = attackerCountry.calculateCasualties(attackerHighestRoll, defenderHighestRoll);
+        Casualties casualties = attackerCountry.calculateCasualties(attackerRolls, defenderRolls);
         attackerCountry.removeSoldiers(casualties.getCasualtiesAttacker());
         defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
 
