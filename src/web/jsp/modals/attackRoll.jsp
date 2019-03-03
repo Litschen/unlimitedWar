@@ -7,20 +7,19 @@
         <div class="modal-body row">
             <div class="col">
                 <h6>Attacker</h6>
-                <%-- TODO use for loop --%>
-                <input type="checkbox" name="attackDice1" class="dice" checked>
-                <input type="checkbox" name="attackDice2" class="dice">
-                <input type="checkbox" name="attackDice3" class="dice" disabled>
+                <% for (int i = 0; i < board.getAttackDiceCount(); i++) { %>
+                    <input type="checkbox" name="attackDice" class="dice" checked>
+                <% } %>
             </div>
             <div class="col">
                 <h6>Defender</h6>
-                <input type="checkbox" name="defendDice1" class="dice" checked>
-                <input type="checkbox" name="defendDice2" class="dice">
-                <input type="checkbox" name="defendDice3" class="dice" disabled>
+                <% for (int i = 0; i < board.getDefendDiceCount(); i++) { %>
+                    <input type="checkbox" name="defendDice" class="dice" checked disabled>
+                <% } %>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="submit" value="roll" class="btn btn-primary">Roll</button>
+            <button type="submit" name="roll" class="btn btn-primary">Roll</button>
             <button name="cancel" class="btn btn-secondary">Cancel</button>
         </div>
     </form>

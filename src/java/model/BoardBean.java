@@ -29,6 +29,7 @@ public class BoardBean {
     private ArrayList<Player> players;
     private ArrayList<Country> countries;
     private int soldiersToPlace;
+    private int attackDiceCount;
     private int defendDiceCount;
     private Country attackerCountry;
     private Country defenderCountry;
@@ -117,6 +118,15 @@ public class BoardBean {
     public void setCurrentPhase(Phase currentPhase) {
         this.currentPhase = currentPhase;
     }
+
+    public int getAttackDiceCount() {
+        return attackDiceCount;
+    }
+
+    public int getDefendDiceCount() {
+        return defendDiceCount;
+    }
+
     //endregion
 
     //region methods to generate countries & set their properties
@@ -245,8 +255,14 @@ public class BoardBean {
             this.setDefenderCountry(country);
         }
 
-        if (this.getAttackerCountry() != null && this.getDefenderCountry() != null) {
+        if (this.attackerCountry != null && this.defenderCountry != null) {
             this.setModalToShow("attack");
+            try {
+                this.attackDiceCount = this.attackerCountry.maxAmountDiceThrowsAttacker();
+                this.defendDiceCount = this.defenderCountry.amountDiceThrowsDefender(this.attackDiceCount);
+            } catch (Exception e) {
+                // TODO @huguemiz show error message on GUI
+            }
         }
     }
 
@@ -286,6 +302,7 @@ public class BoardBean {
      * @param
      */
     public void attackRoll(int attackDiceCount) {
+        this.modalToShow = "";
         int[] attackerHighestRoll = Dice.roll(attackDiceCount);
         int[] defenderHighestRoll = Dice.roll(defendDiceCount);
 
@@ -297,6 +314,8 @@ public class BoardBean {
             defenderCountry.setOwner(currentPlayer);
             attackerCountry.shiftSoldiers(attackDiceCount, defenderCountry);
         }
+
+        this.cancelAttack();
     }
     //endregion
 }
