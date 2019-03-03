@@ -150,7 +150,7 @@ public class Country {
     private boolean canInvade(Country country) {
         return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country) &&
                 this.owner != country.getOwner();
-    }
+}
 
     // this works but could be streamlined
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {

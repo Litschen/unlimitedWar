@@ -4,14 +4,11 @@ package model.Behaviors;
 import model.Country;
 import model.Enum.Phase;
 import model.Interface.IBehavior;
-import model.Player;
 
 import java.util.ArrayList;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class UserBehavior implements IBehavior {
 
-    Country currentPlayer;
 
     /**
      * Places all available Soldiers for this Player on the board
@@ -28,13 +25,9 @@ public class UserBehavior implements IBehavior {
 
     @Override
     public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-        try {
-            if (ownedCountries.contains(allCountries)) {
-               // currentPlayer;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       if(super.equals(allCountries.get(0).getOwner())){
+           allCountries.get(0).invade(allCountries.get(1));
+       }
         return Phase.ATTACKPHASE;
     }
 
@@ -42,9 +35,7 @@ public class UserBehavior implements IBehavior {
     public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
 
         try {
-            if (ownedCountries.contains(allCountries)) {
-                currentPlayer.shiftSoldiers(currentPlayer.getSoldiersCount(), currentPlayer);
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
