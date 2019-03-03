@@ -26,7 +26,7 @@ public class UserBehavior implements IBehavior {
     @Override
     public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
        if(super.equals(allCountries.get(0).getOwner())){
-           allCountries.get(0).invade(allCountries.get(1));
+           // allCountries.get(0).invade(allCountries.get(1));
        }
         return Phase.ATTACKPHASE;
     }

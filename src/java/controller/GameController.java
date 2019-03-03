@@ -1,6 +1,5 @@
 package controller;
 
-import model.Behaviors.UserBehavior;
 import model.BoardBean;
 import model.Country;
 import model.Enum.Phase;
@@ -69,17 +68,12 @@ public class GameController extends HttpServlet {
         try {
             board = (BoardBean) request.getSession().getAttribute("board");
             if (board != null) {
+                Phase currentPhase = board.getCurrentPhase();
+
                 if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                     board.executeTurn();
-                } else if (board.getCurrentPhase() == Phase.SETTINGPHASE) {
-                    this.settingPhase(request, response);
                 } else if (request.getParameter("end") != null) {
-                    if (board.getCurrentPhase() == Phase.ATTACKPHASE) {
-                        board.setCurrentPhase(Phase.MOVINGPHASE);
-                    } else if (board.getCurrentPhase() == Phase.MOVINGPHASE) {
-                        board.setCurrentPhase(Phase.SETTINGPHASE);
-                        board.cyclePlayer();
-                    }
+                    this.moveToNextPhase(currentPhase);
                 } else {
                     this.extractSelectedCountry(request, response);
                 }
@@ -93,34 +87,29 @@ public class GameController extends HttpServlet {
     private void extractSelectedCountry(HttpServletRequest request, HttpServletResponse response) {
         int countryIndex = Integer.parseInt(request.getParameter("country"));
         Country chosenCountry = board.getCountryById(countryIndex);
-        if (board.getFirstSelectedCountry() == null) {
-            board.setFirstSelectedCountry(chosenCountry);
-        } else {
-            if (chosenCountry != board.getFirstSelectedCountry()) {
-                board.setSecondSelectedCountry(chosenCountry);
-            }
+
+        Phase currentPhase = board.getCurrentPhase();
+        if (currentPhase == Phase.SETTINGPHASE) {
+            this.settingPhase(chosenCountry);
+        } else if (currentPhase == Phase.ATTACKPHASE) {
+            this.attackPhase(request, chosenCountry);
+        } else if (currentPhase == Phase.MOVINGPHASE) {
+            this.movePhase(request, response);
         }
     }
 
-    private void settingPhase(HttpServletRequest request, HttpServletResponse response) {
-        int countryIndex = Integer.parseInt(request.getParameter("country"));
-        Country chosenCountry = board.getCountryById(countryIndex);
-        if (chosenCountry.getOwner() == board.getCurrentPlayer()
-                && board.currentPlayerIsUser()
-                && board.getSoldiersToPlace() > 0) {
-
+    private void settingPhase(Country chosenCountry) {
+        if (chosenCountry.getOwner() == board.getCurrentPlayer()) {
             chosenCountry.addSoldier();
             board.setSoldiersToPlace(board.getSoldiersToPlace() - 1);
         }
     }
 
-    private void attackPhase(HttpServletRequest request, HttpServletResponse response) {
+    private void attackPhase(HttpServletRequest request, Country chosenCountry) {
         String path = request.getPathInfo();
-        if (request.getParameter("end") != null) {
-            board.setCurrentPhase(Phase.MOVINGPHASE);
-        } else if (path.equals("/selectedCountry")) {
-            Country country = board.getCountryByName(request.getParameter("country"));
-            board.setAttackAndDefendCountry(country);
+
+        if (path.equals("/selectedCountry")) {
+            board.setAttackAndDefendCountry(chosenCountry);
         } else if (path.equals("/attack") && request.getParameter("roll") != null) {
             int attackDiceCount = request.getParameterMap().get(ATTACKER_KEY).length;
             board.attackRoll(attackDiceCount);
@@ -146,6 +135,15 @@ public class GameController extends HttpServlet {
             }
         } else if (path.equals("/move") && request.getParameter("cancel") != null) {
             board.cancelMove();
+        }
+    }
+
+    private void moveToNextPhase(Phase currentPhase) {
+        if (currentPhase == Phase.ATTACKPHASE) {
+            board.setCurrentPhase(Phase.MOVINGPHASE);
+        } else if (currentPhase == Phase.MOVINGPHASE) {
+            board.setCurrentPhase(Phase.SETTINGPHASE);
+            board.cyclePlayer();
         }
     }
 }

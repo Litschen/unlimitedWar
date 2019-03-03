@@ -32,8 +32,6 @@ public class BoardBean {
     private int soldiersToPlace;
     private int attackDiceCount;
     private int defendDiceCount;
-    private Country attackerCountry;
-    private Country defenderCountry;
     private Country firstSelectedCountry;
     private Country secondSelectedCountry;
     private Boolean userHasSetSoldiers = false;
@@ -89,22 +87,6 @@ public class BoardBean {
 
     public Player getCurrentPlayer() {
         return currentPlayer;
-    }
-
-    public Country getAttackerCountry() {
-        return attackerCountry;
-    }
-
-    public void setAttackerCountry(Country attackerCountry) {
-        this.attackerCountry = attackerCountry;
-    }
-
-    public Country getDefenderCountry() {
-        return defenderCountry;
-    }
-
-    public void setDefenderCountry(Country defenderCountry) {
-        this.defenderCountry = defenderCountry;
     }
 
     public String getModalToShow() {
@@ -346,17 +328,17 @@ public class BoardBean {
     }
 
     public void setAttackAndDefendCountry(Country country) {
-        if (this.getCurrentPlayer().getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
-            this.setAttackerCountry(country);
+        if (this.currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
+            this.setFirstSelectedCountry(country);
         } else {
-            this.setDefenderCountry(country);
+            this.setSecondSelectedCountry(country);
         }
 
-        if (this.attackerCountry != null && this.defenderCountry != null) {
+        if (this.firstSelectedCountry != null && this.secondSelectedCountry != null) {
             this.setModalToShow("attack");
             try {
-                this.attackDiceCount = this.attackerCountry.maxAmountDiceThrowsAttacker();
-                this.defendDiceCount = this.defenderCountry.amountDiceThrowsDefender(this.attackDiceCount);
+                this.attackDiceCount = this.firstSelectedCountry.maxAmountDiceThrowsAttacker();
+                this.defendDiceCount = this.secondSelectedCountry.amountDiceThrowsDefender(this.attackDiceCount);
             } catch (Exception e) {
                 // TODO @huguemiz show error message on GUI
             }
@@ -375,27 +357,13 @@ public class BoardBean {
      */
     public void attackRoll(int attackDiceCount) {
         this.modalToShow = "";
-        int[] attackerRolls = Dice.roll(attackDiceCount);
-        int[] defenderRolls = Dice.roll(defendDiceCount);
-
-        Casualties casualties = attackerCountry.calculateCasualties(attackerRolls, defenderRolls);
-        attackerCountry.removeSoldiers(casualties.getCasualtiesAttacker());
-        defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
-
-        if (defenderCountry.getSoldiersCount() <= 0) {
-            defenderCountry.getOwner().removeOwnedCountry(defenderCountry);
-            defenderCountry.setOwner(currentPlayer);
-            currentPlayer.getOwnedCountries().add(defenderCountry);
-
-            attackerCountry.shiftSoldiers(attackDiceCount, defenderCountry);
-        }
-
+        firstSelectedCountry.invade(secondSelectedCountry, attackDiceCount, defendDiceCount);
         this.cancelAttack();
     }
 
     public void cancelAttack() {
-        this.setAttackerCountry(null);
-        this.setDefenderCountry(null);
+        this.setFirstSelectedCountry(null);
+        this.setSecondSelectedCountry(null);
         this.setModalToShow("");
     }
 
