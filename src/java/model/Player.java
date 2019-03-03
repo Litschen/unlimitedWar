@@ -60,4 +60,16 @@ public class Player{
         return Math.max(COUNTRY_WEIGHT, getOwnedCountries().size() / COUNTRY_WEIGHT);
     }
 
+    public void addOwnedCountry(Country newCountry) {
+        if (!this.ownedCountries.contains(newCountry)) {
+            this.ownedCountries.add(newCountry);
+        }
+    }
+
+    public void removeOwnedCountry(Country country) {
+        if (this.ownedCountries.contains(country)) {
+            this.ownedCountries.remove(country);
+        }
+    }
+
 }

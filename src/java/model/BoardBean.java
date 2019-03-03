@@ -249,7 +249,7 @@ public class BoardBean {
     }
 
     public void setAttackAndDefendCountry(Country country) {
-        if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
+        if (this.getCurrentPlayer().getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
             this.setAttackerCountry(country);
         } else {
             this.setDefenderCountry(country);
@@ -311,7 +311,10 @@ public class BoardBean {
         defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
 
         if (defenderCountry.getSoldiersCount() <= 0) {
+            defenderCountry.getOwner().removeOwnedCountry(defenderCountry);
             defenderCountry.setOwner(currentPlayer);
+            currentPlayer.getOwnedCountries().add(defenderCountry);
+
             attackerCountry.shiftSoldiers(attackDiceCount, defenderCountry);
         }
 

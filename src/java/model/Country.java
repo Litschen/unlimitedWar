@@ -105,16 +105,15 @@ public class Country {
      * @return by number of count
      */
     public int amountDiceThrowsDefender(int amountAttacker) {
-        int count = amountAttacker - MIN_SOLDIERS_TO_STAY;
-        int amountDefenderDice = count;
+        int amountDefender = amountAttacker - 1;
         int soldiers = this.getSoldiersCount();
 
-        if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
-            amountDefenderDice = ABSOLUTE_MIN_AMOUNT_THROWS;
-        } else if (soldiers <= count) {
-            amountDefenderDice = soldiers;
+        if (amountDefender <= ABSOLUTE_MIN_AMOUNT_THROWS) {
+            amountDefender = ABSOLUTE_MIN_AMOUNT_THROWS;
+        } else if (soldiers < amountDefender) {
+            amountDefender = soldiers;
         }
-        return amountDefenderDice;
+        return amountDefender;
     }
 
     /**
