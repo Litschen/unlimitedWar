@@ -71,18 +71,16 @@ public class GameController extends HttpServlet {
             if (board != null) {
                 if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                     board.executeTurn();
-                }
-                else if(request.getParameter("end") != null){
-                    if(board.getCurrentPhase() == Phase.ATTACKPHASE){
+                } else if (board.getCurrentPhase() == Phase.SETTINGPHASE) {
+                    this.settingPhase(request, response);
+                } else if (request.getParameter("end") != null) {
+                    if (board.getCurrentPhase() == Phase.ATTACKPHASE) {
                         board.setCurrentPhase(Phase.MOVINGPHASE);
-                    }
-                    if(board.getCurrentPhase() == Phase.MOVINGPHASE){
+                    } else if (board.getCurrentPhase() == Phase.MOVINGPHASE) {
                         board.setCurrentPhase(Phase.SETTINGPHASE);
                         board.cyclePlayer();
                     }
-
-                }
-                else {
+                } else {
                     this.extractSelectedCountry(request, response);
                 }
             }
@@ -92,26 +90,24 @@ public class GameController extends HttpServlet {
         }
     }
 
-    private void extractSelectedCountry(HttpServletRequest request, HttpServletResponse response){
+    private void extractSelectedCountry(HttpServletRequest request, HttpServletResponse response) {
         int countryIndex = Integer.parseInt(request.getParameter("country"));
         Country chosenCountry = board.getCountryById(countryIndex);
-        if(board.getFirstSelectedCountry() == null){
+        if (board.getFirstSelectedCountry() == null) {
             board.setFirstSelectedCountry(chosenCountry);
-        }
-        else  {
-            if(chosenCountry != board.getFirstSelectedCountry()){
+        } else {
+            if (chosenCountry != board.getFirstSelectedCountry()) {
                 board.setSecondSelectedCountry(chosenCountry);
             }
         }
     }
 
-    // ---------- TODO: /F0310/ ----------
     private void settingPhase(HttpServletRequest request, HttpServletResponse response) {
         int countryIndex = Integer.parseInt(request.getParameter("country"));
         Country chosenCountry = board.getCountryById(countryIndex);
-        if(chosenCountry.getOwner() == board.getCurrentPlayer()
+        if (chosenCountry.getOwner() == board.getCurrentPlayer()
                 && board.currentPlayerIsUser()
-                && board.getSoldiersToPlace() > 0){
+                && board.getSoldiersToPlace() > 0) {
 
             chosenCountry.addSoldier();
             board.setSoldiersToPlace(board.getSoldiersToPlace() - 1);

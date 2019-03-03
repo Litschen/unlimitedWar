@@ -244,68 +244,60 @@ public class BoardBean {
         if (currentPlayer == players.get(0) && currentPhase == Phase.SETTINGPHASE) {
             turnCount++;
         }
-        if(currentPlayerIsUser()){
-            if(!userHasSetSoldiers && currentPlayer.getUserSoldiersToPlace() == 0)
-            {
+        if (currentPlayerIsUser()) {
+            if (!userHasSetSoldiers && currentPlayer.getUserSoldiersToPlace() == 0) {
                 currentPlayer.setUserSoldiersToPlace(soldiersToPlace);
-            }
-            else {
-                if(userHasSetSoldiers && currentPlayer.getUserSoldiersToPlace() == 0){
+            } else {
+                if (userHasSetSoldiers && currentPlayer.getUserSoldiersToPlace() == 0) {
                     currentPhase = Phase.ATTACKPHASE;
                 }
                 currentPlayer.setUserSoldiersToPlace(currentPlayer.getUserSoldiersToPlace() - 1);
                 soldiersToPlace = 1;
             }
-            if(firstSelectedCountry != null && secondSelectedCountry != null){
-
+            if (firstSelectedCountry != null && secondSelectedCountry != null) {
                 currentTurnCountries.add(firstSelectedCountry);
                 currentTurnCountries.add(secondSelectedCountry);
-            }
-            else {
+            } else {
                 executePhase = false;
-                if(currentPhase == Phase.SETTINGPHASE){
-                    if(firstSelectedCountry != null){
+                if (currentPhase == Phase.SETTINGPHASE) {
+                    if (firstSelectedCountry != null) {
                         currentTurnCountries.add(firstSelectedCountry);
-                        if(secondSelectedCountry != null){
+                        if (secondSelectedCountry != null) {
                             currentTurnCountries.add(secondSelectedCountry);
                         }
                         userHasSetSoldiers = true;
                         executePhase = true;
-
                     }
                 }
             }
 
-            if(currentPhase == Phase.SETTINGPHASE && executePhase){
+            if (currentPhase == Phase.SETTINGPHASE && executePhase) {
                 Iterator it = currentTurnCountries.iterator();
                 Collections.reverse(currentTurnCountries);
                 boolean isOwner = false;
-                while(it.hasNext() && !isOwner) {
+                while (it.hasNext() && !isOwner) {
                     Country c = (Country) it.next();
                     isOwner = c.getOwner() == currentPlayer;
-                    if(!isOwner){
+                    if (!isOwner) {
                         it.remove();
                     }
                 }
                 executePhase = currentTurnCountries.size() > 0;
-                if(!executePhase){
+                if (!executePhase) {
                     currentPlayer.setUserSoldiersToPlace(currentPlayer.getUserSoldiersToPlace() + 1);
                 }
             }
-        }
-        else {
+        } else {
             currentTurnCountries = this.countries;
         }
         if (executePhase && currentPlayer.getOwnedCountries().size() > 0) {
-            if(currentPhase == Phase.SETTINGPHASE){
+            if (currentPhase == Phase.SETTINGPHASE) {
                 currentPhase = currentPlayer.getBehavior().placeSoldiers(currentTurnCountries, currentPlayer.getOwnedCountries(), soldiersToPlace
-                        );
-            }
-            if(currentPhase == Phase.ATTACKPHASE){
+                );
+            } else if (currentPhase == Phase.ATTACKPHASE) {
                 currentPhase = currentPlayer.getBehavior().attackCountry(currentTurnCountries, currentPlayer.getOwnedCountries());
                 userHasSetSoldiers = false;
-            }
-            if(currentPhase == Phase.MOVINGPHASE){
+            } else if (currentPhase == Phase.MOVINGPHASE) {
                 currentPhase = currentPlayer.getBehavior().moveSoldiers(currentTurnCountries, currentPlayer.getOwnedCountries());
                 cyclePlayer();
             }
@@ -314,8 +306,8 @@ public class BoardBean {
         }
     }
 
-    public void resetSelectedCountries(){
-        if(firstSelectedCountry != null && secondSelectedCountry != null || currentPhase == Phase.SETTINGPHASE){
+    public void resetSelectedCountries() {
+        if (firstSelectedCountry != null && secondSelectedCountry != null || currentPhase == Phase.SETTINGPHASE) {
             firstSelectedCountry = null;
             secondSelectedCountry = null;
         }
@@ -323,10 +315,14 @@ public class BoardBean {
 
     public void cyclePlayer() {
         int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
-        if(nextPlayerIndex == players.size()){
+        if (nextPlayerIndex == players.size()) {
             nextPlayerIndex = 0;
         }
         currentPlayer = players.get(nextPlayerIndex);
+    }
+
+    public boolean currentPlayerIsUser() {
+        return currentPlayer.getBehavior() instanceof UserBehavior;
     }
 
     //region methods to handle user interactions
@@ -336,17 +332,18 @@ public class BoardBean {
      *
      * @param countryName name of the selected country
      */
-  /*  public void addSoldiersToCountry(String countryName) {
+    public void addSoldiersToCountry(String countryName) {
         // create List of countries to match interface parameter
         ArrayList<Country> countries = new ArrayList<>();
         countries.add(this.getCountryByName(countryName));
-        int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, this.currentPlayer.getOwnedCountries(), 1);
-        soldiersToPlace -= placedSoldiers;
+        // TODO: fix
+        // int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, this.currentPlayer.getOwnedCountries(), 1);
+//        soldiersToPlace -= placedSoldiers;
 
         if (soldiersToPlace == 0) {
             this.setCurrentPhase(Phase.ATTACKPHASE);
         }
-    }*/
+    }
 
     public void setAttackAndDefendCountry(Country country) {
         if (this.getCurrentPlayer().getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
@@ -364,34 +361,6 @@ public class BoardBean {
                 // TODO @huguemiz show error message on GUI
             }
         }
-    }
-
-
-    public void setMoveSoldiersToCountry(Country country, String countryName) {
-        if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
-            this.getCountryByName(countryName);
-        }
-        if (this.getCountryByName(countryName) != null && this.getCountryByName(countryName) != null) {
-            this.setModalToShow("move");
-        }
-        if (soldiersToPlace == 0) {
-            this.setCurrentPhase(Phase.SETTINGPHASE);
-        }
-    }
-
-    public void cancelAttack() {
-        this.setAttackerCountry(null);
-        this.setDefenderCountry(null);
-        this.setModalToShow("");
-    }
-
-    public void cancelMove() {
-        this.getCountryByName(null);
-        this.setModalToShow("");
-    }
-
-    public boolean currentPlayerIsUser() {
-        return currentPlayer.getBehavior() instanceof UserBehavior;
     }
 
     /**
@@ -423,5 +392,29 @@ public class BoardBean {
 
         this.cancelAttack();
     }
+
+    public void cancelAttack() {
+        this.setAttackerCountry(null);
+        this.setDefenderCountry(null);
+        this.setModalToShow("");
+    }
+
+    public void setMoveSoldiersToCountry(Country country, String countryName) {
+        if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
+            this.getCountryByName(countryName);
+        }
+        if (this.getCountryByName(countryName) != null && this.getCountryByName(countryName) != null) {
+            this.setModalToShow("move");
+        }
+        if (soldiersToPlace == 0) {
+            this.setCurrentPhase(Phase.SETTINGPHASE);
+        }
+    }
+
+    public void cancelMove() {
+        this.getCountryByName(null);
+        this.setModalToShow("");
+    }
+
     //endregion
 }
