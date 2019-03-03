@@ -12,6 +12,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -33,6 +34,9 @@ public class BoardBean {
     private int defendDiceCount;
     private Country attackerCountry;
     private Country defenderCountry;
+    private Country firstSelectedCountry;
+    private Country secondSelectedCountry;
+    private Boolean userHasSetSoldiers = false;
     private String modalToShow;
     private Phase currentPhase = Phase.SETTINGPHASE;
     //endregion
@@ -127,6 +131,23 @@ public class BoardBean {
         return defendDiceCount;
     }
 
+    public Country getFirstSelectedCountry() {
+        return firstSelectedCountry;
+    }
+
+    public void setFirstSelectedCountry(Country firstSelectedCountry) {
+        this.firstSelectedCountry = firstSelectedCountry;
+    }
+
+    public Country getSecondSelectedCountry() {
+        return secondSelectedCountry;
+    }
+
+    public void setSecondSelectedCountry(Country secondSelectedCountry) {
+        this.secondSelectedCountry = secondSelectedCountry;
+    }
+
+
     //endregion
 
     //region methods to generate countries & set their properties
@@ -174,25 +195,25 @@ public class BoardBean {
     }
 
     private void setNeighbors() {
-        setfixedNeighbors(0, new int[]{1});
-        setfixedNeighbors(1, new int[]{0, 6, 2});
-        setfixedNeighbors(2, new int[]{1, 3});
-        setfixedNeighbors(3, new int[]{2, 14});
-        setfixedNeighbors(4, new int[]{6, 5});
-        setfixedNeighbors(5, new int[]{4, 6, 7});
-        setfixedNeighbors(6, new int[]{1, 4, 5, 7});
-        setfixedNeighbors(7, new int[]{5, 6, 10});
-        setfixedNeighbors(8, new int[]{9, 15});
-        setfixedNeighbors(9, new int[]{8, 10, 11, 13});
-        setfixedNeighbors(10, new int[]{7, 9, 11});
-        setfixedNeighbors(11, new int[]{9, 10, 12, 13});
-        setfixedNeighbors(12, new int[]{11, 13});
-        setfixedNeighbors(13, new int[]{12, 11, 9});
-        setfixedNeighbors(14, new int[]{15, 3});
-        setfixedNeighbors(15, new int[]{14, 8});
+        setFixedNeighbors(0, new int[]{1});
+        setFixedNeighbors(1, new int[]{0, 6, 2});
+        setFixedNeighbors(2, new int[]{1, 3});
+        setFixedNeighbors(3, new int[]{2, 14});
+        setFixedNeighbors(4, new int[]{6, 5});
+        setFixedNeighbors(5, new int[]{4, 6, 7});
+        setFixedNeighbors(6, new int[]{1, 4, 5, 7});
+        setFixedNeighbors(7, new int[]{5, 6, 10});
+        setFixedNeighbors(8, new int[]{9, 15});
+        setFixedNeighbors(9, new int[]{8, 10, 11, 13});
+        setFixedNeighbors(10, new int[]{7, 9, 11});
+        setFixedNeighbors(11, new int[]{9, 10, 12, 13});
+        setFixedNeighbors(12, new int[]{11, 13});
+        setFixedNeighbors(13, new int[]{12, 11, 9});
+        setFixedNeighbors(14, new int[]{15, 3});
+        setFixedNeighbors(15, new int[]{14, 8});
     }
 
-    private void setfixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
+    private void setFixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
         for (int i : neighborCountryIndex) {
             countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
         }
@@ -217,15 +238,95 @@ public class BoardBean {
      */
     public void executeTurn() {
         //TODO test this
-        turnCount++;
-        for (Player currentPlayer : players) {
-            if (currentPlayer.getOwnedCountries().size() > 0) {
-                currentPlayer.getBehavior().placeSoldiers(countries, currentPlayer.getOwnedCountries(),
-                        currentPlayer.calculateSoldiersToPlace());
-                currentPlayer.getBehavior().attackCountry(countries, currentPlayer.getOwnedCountries());
-                currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
+        ArrayList<Country> currentTurnCountries = new ArrayList<>();
+        Boolean executePhase = true;
+        int soldiersToPlace = currentPlayer.calculateSoldiersToPlace();
+        if (currentPlayer == players.get(0) && currentPhase == Phase.SETTINGPHASE) {
+            turnCount++;
+        }
+        if(currentPlayerIsUser()){
+            if(!userHasSetSoldiers && currentPlayer.getUserSoldiersToPlace() == 0)
+            {
+                currentPlayer.setUserSoldiersToPlace(soldiersToPlace);
+            }
+            else {
+                if(userHasSetSoldiers && currentPlayer.getUserSoldiersToPlace() == 0){
+                    currentPhase = Phase.ATTACKPHASE;
+                }
+                currentPlayer.setUserSoldiersToPlace(currentPlayer.getUserSoldiersToPlace() - 1);
+                soldiersToPlace = 1;
+            }
+            if(firstSelectedCountry != null && secondSelectedCountry != null){
+
+                currentTurnCountries.add(firstSelectedCountry);
+                currentTurnCountries.add(secondSelectedCountry);
+            }
+            else {
+                executePhase = false;
+                if(currentPhase == Phase.SETTINGPHASE){
+                    if(firstSelectedCountry != null){
+                        currentTurnCountries.add(firstSelectedCountry);
+                        if(secondSelectedCountry != null){
+                            currentTurnCountries.add(secondSelectedCountry);
+                        }
+                        userHasSetSoldiers = true;
+                        executePhase = true;
+
+                    }
+                }
+            }
+
+            if(currentPhase == Phase.SETTINGPHASE && executePhase){
+                Iterator it = currentTurnCountries.iterator();
+                Collections.reverse(currentTurnCountries);
+                boolean isOwner = false;
+                while(it.hasNext() && !isOwner) {
+                    Country c = (Country) it.next();
+                    isOwner = c.getOwner() == currentPlayer;
+                    if(!isOwner){
+                        it.remove();
+                    }
+                }
+                executePhase = currentTurnCountries.size() > 0;
+                if(!executePhase){
+                    currentPlayer.setUserSoldiersToPlace(currentPlayer.getUserSoldiersToPlace() + 1);
+                }
             }
         }
+        else {
+            currentTurnCountries = this.countries;
+        }
+        if (executePhase && currentPlayer.getOwnedCountries().size() > 0) {
+            if(currentPhase == Phase.SETTINGPHASE){
+                currentPhase = currentPlayer.getBehavior().placeSoldiers(currentTurnCountries, currentPlayer.getOwnedCountries(), soldiersToPlace
+                        );
+            }
+            if(currentPhase == Phase.ATTACKPHASE){
+                currentPhase = currentPlayer.getBehavior().attackCountry(currentTurnCountries, currentPlayer.getOwnedCountries());
+                userHasSetSoldiers = false;
+            }
+            if(currentPhase == Phase.MOVINGPHASE){
+                currentPhase = currentPlayer.getBehavior().moveSoldiers(currentTurnCountries, currentPlayer.getOwnedCountries());
+                cyclePlayer();
+            }
+
+            resetSelectedCountries();
+        }
+    }
+
+    public void resetSelectedCountries(){
+        if(firstSelectedCountry != null && secondSelectedCountry != null || currentPhase == Phase.SETTINGPHASE){
+            firstSelectedCountry = null;
+            secondSelectedCountry = null;
+        }
+    }
+
+    public void cyclePlayer() {
+        int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
+        if(nextPlayerIndex == players.size()){
+            nextPlayerIndex = 0;
+        }
+        currentPlayer = players.get(nextPlayerIndex);
     }
 
     //region methods to handle user interactions
@@ -235,18 +336,17 @@ public class BoardBean {
      *
      * @param countryName name of the selected country
      */
-    public void addSoldiersToCountry(String countryName) {
+  /*  public void addSoldiersToCountry(String countryName) {
         // create List of countries to match interface parameter
         ArrayList<Country> countries = new ArrayList<>();
         countries.add(this.getCountryByName(countryName));
-
         int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, this.currentPlayer.getOwnedCountries(), 1);
         soldiersToPlace -= placedSoldiers;
 
         if (soldiersToPlace == 0) {
             this.setCurrentPhase(Phase.ATTACKPHASE);
         }
-    }
+    }*/
 
     public void setAttackAndDefendCountry(Country country) {
         if (this.getCurrentPlayer().getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
@@ -290,6 +390,9 @@ public class BoardBean {
         this.setModalToShow("");
     }
 
+    public boolean currentPlayerIsUser() {
+        return currentPlayer.getBehavior() instanceof UserBehavior;
+    }
 
     /**
      * TODO: update comment

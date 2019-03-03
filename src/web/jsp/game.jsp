@@ -1,9 +1,9 @@
 <%@ page import="model.Player" %>
 <%@ page import="model.Country" %>
+<%@page import="model.Enum.Phase" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.BoardBean" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="gameController" class="controller.GameController" scope="session"/>
 <jsp:useBean id="board" class="model.BoardBean" scope="session"/>
 <jsp:setProperty name="board" property="*"/>
 <html lang="en">
@@ -19,13 +19,13 @@
 <%@include file="snippets/header.jsp" %>
 
 <div class="wrapper">
-    <form action="/Game/selectedCountry" class="form vertical border rounded" method="post">
+    <form action="<%=request.getContextPath()%>/Game/selectedCountry" class="form vertical border rounded" method="post">
         <div class="field border rounded">
             <%  ArrayList<Country> allCountries = board.getCountries();
                 for (int i = 1; i <= allCountries.size(); i++) {
                     Country currentCountry = allCountries.get(i - 1);
             %>
-            <button name="country" value="<%=currentCountry.getName()%>"
+            <button name="country" value="<%=i -1%>"
                     class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
                     <%=currentCountry.getSoldiersCount()%></button>
                 <% if (i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION) { %>
@@ -37,14 +37,15 @@
             <span class="connector<%=i%> lineThrough rTol"></span>
             <% }%>
         </div>
-        <c:if test="${board.currentPhase == 'SETTINGPHASE'}">
-            <span>Soldiers to place: <c:out value="${board.getSoldiersToPlace()}"/></span>
+        <% session.setAttribute("board", board); %>
+        <c:if test="${board.currentPhase ==  Phase.SETTINGPHASE}">
+            <span>Soldiers to place: <c:out value="${board.currentPlayer.userSoldiersToPlace}"/></span>
         </c:if>
-        <c:if test="${board.currentPhase == 'ATTACKPHASE'}">
-            <button name="end" class="btn btn-primary">End Attack Phase</button>
+        <c:if test="${board.currentPhase == Phase.ATTACKPHASE}">
+            <button type="submit" name="end" class="btn btn-primary">End Attack Phase</button>
         </c:if>
-        <c:if test="${board.currentPhase == 'MOVINGPHASE'}">
-            <button name="end" class="btn btn-primary">Don't Move Soldiers</button>
+        <c:if test="${board.currentPhase == Phase.MOVINGPHASE}">
+            <button type="submit" name="end" class="btn btn-primary">Don't Move Soldiers</button>
         </c:if>
     </form>
     <aside>
@@ -61,14 +62,14 @@
 <form method="post" action="<%=request.getContextPath()%>/Game/">
     <%--Saves the board in the session --%>
     <% session.setAttribute("board", board); %>
-    <% gameController.setBoard(board); %>
-    <button type="submit" name="nextTurn" value="execute">next Turn</button>
+<%--<% gameController.setBoard(board); %> --%>
+ <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
 </form>
 <c:if test="${board.modalToShow == 'attack'}">
-    <%@include file="modals/attackRoll.jsp" %>
+ <%@include file="modals/attackRoll.jsp" %>
 </c:if>
 <c:if test="${board.modalToShow == 'win'}">
-    <%@include file="modals/win.jsp" %>
+ <%@include file="modals/win.jsp" %>
 </c:if>
 <%@include file="snippets/footer.jsp" %>
 </body>

@@ -2,6 +2,7 @@ package model.Behaviors;
 
 
 import model.Country;
+import model.Enum.Phase;
 import model.Interface.IBehavior;
 import model.Player;
 
@@ -20,20 +21,13 @@ public class UserBehavior implements IBehavior {
      * @param soldiersToPlace
      */
     @Override
-    public int placeSoldiers(ArrayList<Country> destinationCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
-        int countAddedSoldiers = 0;
-        for (Country c : destinationCountries) {
-            if (ownedCountries.contains(c)) {
-                c.addSoldier();
-                countAddedSoldiers++;
-            }
-        }
-
-        return countAddedSoldiers;
+    public Phase placeSoldiers(ArrayList<Country> destinationCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+       destinationCountries.get(0).addSoldier();
+        return Phase.SETTINGPHASE;
     }
 
     @Override
-    public void attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
         try {
             if (ownedCountries.contains(allCountries)) {
                // currentPlayer;
@@ -41,11 +35,11 @@ public class UserBehavior implements IBehavior {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return Phase.ATTACKPHASE;
     }
 
     @Override
-    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
 
         try {
             if (ownedCountries.contains(allCountries)) {
@@ -54,7 +48,7 @@ public class UserBehavior implements IBehavior {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        return Phase.MOVINGPHASE;
 
     }
 }

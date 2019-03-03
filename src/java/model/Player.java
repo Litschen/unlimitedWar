@@ -20,6 +20,7 @@ public class Player{
      */
     private IBehavior behavior;
     private ArrayList<Country> ownedCountries;
+    private int userSoldiersToPlace = 0;
     //endregion
 
     /**Constructor. Create Player with color, name and behavior
@@ -50,8 +51,16 @@ public class Player{
     }
 
     public ArrayList<Country> getOwnedCountries() { return ownedCountries; }
-    //endregion
 
+    public int getUserSoldiersToPlace() {
+        return userSoldiersToPlace;
+    }
+
+    public void setUserSoldiersToPlace(int userSoldiersToPlace) {
+        this.userSoldiersToPlace = userSoldiersToPlace;
+    }
+
+    //endregion0
 
     /**
      * @return by number of soldiers to place

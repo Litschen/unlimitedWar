@@ -152,6 +152,7 @@ public class Country {
                 this.owner != country.getOwner();
     }
 
+    // this works but could be streamlined
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
         if (amountSoldiers < getSoldiersCount() && amountSoldiers > 0) {
             this.setSoldiersCount(this.getSoldiersCount() - amountSoldiers);

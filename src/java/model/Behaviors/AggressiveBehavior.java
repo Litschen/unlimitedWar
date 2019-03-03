@@ -1,6 +1,7 @@
 package model.Behaviors;
 
 import model.Country;
+import model.Enum.Phase;
 import model.Interface.IBehavior;
 
 import java.util.ArrayList;
@@ -14,8 +15,8 @@ public class AggressiveBehavior implements IBehavior {
      * @param soldiersToPlace
      */
     @Override
-    public int placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
-        return 0;
+    public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+        return Phase.ATTACKPHASE;
     }
 
     /**
@@ -23,8 +24,8 @@ public class AggressiveBehavior implements IBehavior {
      * @param ownedCountries
      */
     @Override
-    public void attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-
+    public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+        return Phase.MOVINGPHASE;
     }
 
     /**
@@ -32,7 +33,7 @@ public class AggressiveBehavior implements IBehavior {
      * @param ownedCountries
      */
     @Override
-    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-
+    public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+        return Phase.SETTINGPHASE;
     }
 }

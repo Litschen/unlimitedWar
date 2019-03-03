@@ -1,9 +1,12 @@
 package model.Behaviors;
 
 import model.Country;
+import model.Dice;
+import model.Enum.Phase;
 import model.Interface.IBehavior;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomBehavior implements IBehavior {
@@ -18,7 +21,7 @@ public class RandomBehavior implements IBehavior {
      * @param soldiersToPlace
      */
     @Override
-    public int placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
         while(soldiersToPlace > 0){
             Country country = ownedCountries.get(ThreadLocalRandom.current()
                     .nextInt(0, ownedCountries.size()));
@@ -28,7 +31,7 @@ public class RandomBehavior implements IBehavior {
             soldiersToPlace = soldiersToPlace - placedSoldiers;
         }
 
-        return 0;
+        return Phase.ATTACKPHASE;
     }
 
     /**
@@ -38,8 +41,12 @@ public class RandomBehavior implements IBehavior {
      * @param ownedCountries by current Player
      */
     @Override
-    public void attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-        //TODO
+    public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+        while(willAttack()){
+            Collections.shuffle(ownedCountries);
+            //ownedCountries.get(Dice.roll)
+        }
+        return Phase.MOVINGPHASE;
     }
 
     /**
@@ -49,6 +56,16 @@ public class RandomBehavior implements IBehavior {
      * @param ownedCountries by current Player
      */
     @Override
-    public void moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+        return Phase.SETTINGPHASE;
     }
+
+    private boolean willAttack(){
+        //return Dice.roll()
+        return false;
+    }
+
+
+
+
 }

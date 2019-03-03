@@ -1,5 +1,6 @@
 package controller;
 
+import model.Behaviors.UserBehavior;
 import model.BoardBean;
 import model.Country;
 import model.Enum.Phase;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @WebServlet(
         name = "GameController",
@@ -67,15 +67,24 @@ public class GameController extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/game.jsp");
         try {
-            if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
-                board = (BoardBean) request.getSession().getAttribute("board");
-                board.executeTurn();
-            } else if (board.getCurrentPhase() == Phase.SETTINGPHASE) {
-                this.setPhase(request, response);
-            } else if (board.getCurrentPhase() == Phase.ATTACKPHASE) {
-                this.attackPhase(request, response);
-            } else if (board.getCurrentPhase() == Phase.MOVINGPHASE) {
-                this.movePhase(request, response);
+            board = (BoardBean) request.getSession().getAttribute("board");
+            if (board != null) {
+                if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
+                    board.executeTurn();
+                }
+                else if(request.getParameter("end") != null){
+                    if(board.getCurrentPhase() == Phase.ATTACKPHASE){
+                        board.setCurrentPhase(Phase.MOVINGPHASE);
+                    }
+                    if(board.getCurrentPhase() == Phase.MOVINGPHASE){
+                        board.setCurrentPhase(Phase.SETTINGPHASE);
+                        board.cyclePlayer();
+                    }
+
+                }
+                else {
+                    this.extractSelectedCountry(request, response);
+                }
             }
             dispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
@@ -83,10 +92,30 @@ public class GameController extends HttpServlet {
         }
     }
 
+    private void extractSelectedCountry(HttpServletRequest request, HttpServletResponse response){
+        int countryIndex = Integer.parseInt(request.getParameter("country"));
+        Country chosenCountry = board.getCountryById(countryIndex);
+        if(board.getFirstSelectedCountry() == null){
+            board.setFirstSelectedCountry(chosenCountry);
+        }
+        else  {
+            if(chosenCountry != board.getFirstSelectedCountry()){
+                board.setSecondSelectedCountry(chosenCountry);
+            }
+        }
+    }
+
     // ---------- TODO: /F0310/ ----------
-    private void setPhase(HttpServletRequest request, HttpServletResponse response) {
-        String countryName = request.getParameter("country");
-        board.addSoldiersToCountry(countryName);
+    private void settingPhase(HttpServletRequest request, HttpServletResponse response) {
+        int countryIndex = Integer.parseInt(request.getParameter("country"));
+        Country chosenCountry = board.getCountryById(countryIndex);
+        if(chosenCountry.getOwner() == board.getCurrentPlayer()
+                && board.currentPlayerIsUser()
+                && board.getSoldiersToPlace() > 0){
+
+            chosenCountry.addSoldier();
+            board.setSoldiersToPlace(board.getSoldiersToPlace() - 1);
+        }
     }
 
     private void attackPhase(HttpServletRequest request, HttpServletResponse response) {
@@ -109,11 +138,11 @@ public class GameController extends HttpServlet {
         String path = request.getPathInfo();
         if (request.getParameter("end") != null) {
             board.setCurrentPhase(Phase.SETTINGPHASE);
-       } else if (path.equals("/selectedCountry")) {
-          Country country = board.getCountryByName(request.getParameter("country"));
-          board.setMoveSoldiersToCountry(country, countryName);
-        }else if (path.equals("/move") && request.getParameter("roll") != null) {
-        int moveSoilderCount = 0;
+        } else if (path.equals("/selectedCountry")) {
+            Country country = board.getCountryByName(request.getParameter("country"));
+            board.setMoveSoldiersToCountry(country, countryName);
+        } else if (path.equals("/move") && request.getParameter("roll") != null) {
+            int moveSoilderCount = 0;
             for (String key : request.getParameterMap().keySet()) {
                 if (key.contains(MOVE_KEY)) {
                     moveSoilderCount++;
