@@ -259,6 +259,12 @@ public class BoardBean {
         this.setModalToShow("");
     }
 
+    public void cancelMove() {
+        this.getCountryByName(null);
+        this.setModalToShow("");
+    }
+
+
     /**
      * TODO: update comment
      * The current player selects one of his countries from which he wants to attack.
