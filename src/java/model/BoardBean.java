@@ -222,8 +222,9 @@ public class BoardBean {
 
     /**
      * add one soldier to the selected country
-     * @param countryName  name of the selected country
-     * */
+     *
+     * @param countryName name of the selected country
+     */
     public void addSoldiersToCountry(String countryName) {
         // create List of countries to match interface parameter
         ArrayList<Country> countries = new ArrayList<>();
@@ -246,6 +247,19 @@ public class BoardBean {
 
         if (this.getAttackerCountry() != null && this.getDefenderCountry() != null) {
             this.setModalToShow("attack");
+        }
+    }
+
+
+    public void setMoveSoldiersToCountry(Country country, String countryName) {
+        if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
+            this.getCountryByName(countryName);
+        }
+        if (this.getCountryByName(countryName) != null && this.getCountryByName(countryName) != null) {
+            this.setModalToShow("move");
+        }
+        if (soldiersToPlace == 0) {
+            this.setCurrentPhase(Phase.SETTINGPHASE);
         }
     }
 
