@@ -1,7 +1,9 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Dice {
@@ -18,15 +20,16 @@ public class Dice {
      */
 
     public static int[] roll(int amountOfDice) {
-        int[] dices = new int[amountOfDice];
+        List<Integer> dices = new ArrayList<>();
         int i = 0;
-        while (i < dices.length) {
-            dices[i] = Dice.roll();
+        while (i < amountOfDice) {
+            dices.add(Dice.roll());
             i++;
         }
-        Arrays.sort(dices);
-        Collections.reverse(Arrays.asList(dices));
-        return dices;
+        Collections.sort(dices);
+        Collections.reverse(dices);
+
+        return toIntArray(dices);
     }
 
     /**
@@ -45,5 +48,13 @@ public class Dice {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
+    private static int[] toIntArray(List<Integer> list) {
+        int[] array = new int[list.size()];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = list.get(i);
+        }
+
+        return array;
+    }
 
 }
