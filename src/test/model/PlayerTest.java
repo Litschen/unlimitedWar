@@ -1,6 +1,7 @@
 package model;
 
 import model.Behaviors.RandomBehavior;
+import model.Enum.ColorPlayer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
