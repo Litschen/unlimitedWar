@@ -2,7 +2,10 @@
 *********************************************************************
 Name: MySQL Database Projekt Unlimited War
 *********************************************************************
-Version 2.0
+Version 3.0
+
+- remove E-Mail change
+- Set new primarykey on Result: ID, REmail
 *********************************************************************
 */
 DROP DATABASE IF EXISTS Unlimited_War;
@@ -25,7 +28,7 @@ CREATE TABLE Result(
     Datum date NOT NULL,
 	REmail varchar(50) NOT NULL,
    
-    CONSTRAINT PK_Result PRIMARY KEY (ID),
+    CONSTRAINT PK_Result PRIMARY KEY (ID, REmail),
 	CONSTRAINT FK_Result FOREIGN KEY (REmail)
     REFERENCES Player (Email)
 );
@@ -42,23 +45,11 @@ INSERT INTO Player(Username, Email, Password) VALUES ('quen', 'quen@gmail.com', 
 
 INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (1, 1, '2019-02-12', 'max@gmail.com');
 INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (2, 0, '2019-02-14', 'lara@gmail.com');
-INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (3, 1, '2019-02-20', 'quen@gmail.com');
+INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (1, 1, '2019-02-20', 'quen@gmail.com');
 INSERT INTO Result(ID, Outcome, Datum, REmail) VALUES (4, 0, '2019-02-20', 'max@gmail.com');
+
+
 -- Provisional update
-
--- Change Email
-ALTER TABLE Result;
-DROP CONSTRAINT FK_Result; -- Not valid. Why????
-
-ALTER TABLE Result
-ADD CONSTRAINT FK_Result FOREIGN KEY (REmail)
-REFERENCES Player (Email) ON UPDATE CASCADE;
-
-UPDATE 
-	Player
-SET
-Email = 'quen@sunrise.ch'
-WHERE Email = 'quen@gmail.com';
 
 -- Change username
 UPDATE 
@@ -72,3 +63,6 @@ UPDATE
 SET
 Password = '321'
 WHERE Email = 'max@gmail.com';
+
+
+
