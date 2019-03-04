@@ -12,7 +12,7 @@ public class Player{
     //endregion
 
     //region data fields
-    private String color;
+    private Enum color;
     private String name;
     /**
      * Behavior determines how the player or even the user can act. In  player.java are only methods/field that are the
@@ -29,7 +29,7 @@ public class Player{
      * @param behavior
      */
     //region constructor
-    public Player(String color, String name, IBehavior behavior) {
+    public Player(Enum color, String name, IBehavior behavior) {
         this.color = color;
         this.name = name;
         this.behavior = behavior;
@@ -38,7 +38,7 @@ public class Player{
     //endregion
 
     //region getter setter
-    public String getPlayerColor() {
+    public Enum getPlayerColor() {
         return color;
     }
 

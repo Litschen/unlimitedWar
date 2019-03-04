@@ -4,16 +4,14 @@ import model.Behaviors.AggressiveBehavior;
 import model.Behaviors.RandomBehavior;
 import model.Behaviors.StrategicBehavior;
 import model.Behaviors.UserBehavior;
+import model.Enum.ColorPlayer;
 import model.Enum.Phase;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BoardBean {
@@ -201,18 +199,22 @@ public class BoardBean {
         }
     }
     //endregion
-
+    ColorPlayer cp = ColorPlayer.values()[(int)(Math.random()*ColorPlayer.values().length)];
     /**
      * Generates all Player with their respective personalities.
      * Each computer opponent is randomly assigned a color from the color options.
      */
     private void generatePlayers() {
         //TODO modify to include User, all Behaviors and color selection
-        this.currentPlayer = new Player("green", "Stalout", new UserBehavior());
+        List<ColorPlayer> colorPlayer = new ArrayList<>();
+        colorPlayer.addAll(Arrays.asList(ColorPlayer.values()));
+
+        this.currentPlayer = new Player(colorPlayer.remove(1),"Stalout", new UserBehavior());
         players.add(this.currentPlayer);
-        players.add(new Player("blue", "LMao", new RandomBehavior()));
-        players.add(new Player("red", "Hotler", new AggressiveBehavior()));
-        players.add(new Player("yellow", "Darfolini", new StrategicBehavior()));
+
+        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "LMao", new RandomBehavior()));
+        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "Hotler", new AggressiveBehavior()));
+        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "Darfolini", new StrategicBehavior()));
     }
 
     /**
