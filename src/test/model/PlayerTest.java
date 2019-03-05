@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,7 +17,9 @@ class PlayerTest {
 
     @BeforeEach
     void setUp() {
-        testPlayer = new Player("blue", "testPlayer", new RandomBehavior());
+        List<ColorPlayer> colorPlayer = new ArrayList<>();
+        colorPlayer.addAll(Arrays.asList(ColorPlayer.values()));
+        testPlayer = new Player(colorPlayer.remove(1), "testPlayer", new RandomBehavior());
     }
 
     @Test

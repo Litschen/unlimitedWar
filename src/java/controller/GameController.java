@@ -85,8 +85,13 @@ public class GameController extends HttpServlet {
     }
 
     private void extractSelectedCountry(HttpServletRequest request, HttpServletResponse response) {
-        int countryIndex = Integer.parseInt(request.getParameter("country"));
-        Country chosenCountry = board.getCountryById(countryIndex);
+        Country chosenCountry = board.getFirstSelectedCountry();
+        try {
+            int countryIndex = Integer.parseInt(request.getParameter("country"));
+            chosenCountry = board.getCountryById(countryIndex);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
 
         Phase currentPhase = board.getCurrentPhase();
         if (currentPhase == Phase.SETTINGPHASE) {
@@ -96,12 +101,16 @@ public class GameController extends HttpServlet {
         } else if (currentPhase == Phase.MOVINGPHASE) {
             this.movePhase(request, response);
         }
+
     }
 
     private void settingPhase(Country chosenCountry) {
         if (chosenCountry.getOwner() == board.getCurrentPlayer()) {
             chosenCountry.addSoldier();
-            board.setSoldiersToPlace(board.getSoldiersToPlace() - 1);
+            board.getCurrentPlayer().setUserSoldiersToPlace(board.getCurrentPlayer().getUserSoldiersToPlace() - 1);
+            if (board.getCurrentPlayer().getUserSoldiersToPlace() == 0) {
+                moveToNextPhase(board.getCurrentPhase());
+            }
         }
     }
 
@@ -144,6 +153,8 @@ public class GameController extends HttpServlet {
         } else if (currentPhase == Phase.MOVINGPHASE) {
             board.setCurrentPhase(Phase.SETTINGPHASE);
             board.cyclePlayer();
+        } else if (currentPhase == Phase.SETTINGPHASE) {
+            board.setCurrentPhase(Phase.ATTACKPHASE);
         }
     }
 }

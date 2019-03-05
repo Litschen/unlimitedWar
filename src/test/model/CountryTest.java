@@ -5,9 +5,7 @@ import model.Enum.ColorPlayer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CountryTest {
 
@@ -96,7 +94,7 @@ class CountryTest {
 
         } catch (Exception e) {
             System.out.println(e);
-            assertTrue(false);
+            fail();
         }
     }
 

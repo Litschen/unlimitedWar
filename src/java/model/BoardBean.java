@@ -213,8 +213,8 @@ public class BoardBean {
         players.add(this.currentPlayer);
 
         players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "LMao", new RandomBehavior()));
-        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "Hotler", new AggressiveBehavior()));
-        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "Darfolini", new StrategicBehavior()));
+        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "Hotler", new RandomBehavior()));
+        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "Darfolini", new RandomBehavior()));
     }
 
     /**
@@ -223,7 +223,7 @@ public class BoardBean {
     public void executeTurn() {
         //TODO test this
         ArrayList<Country> currentTurnCountries = new ArrayList<>();
-        Boolean executePhase = true;
+        boolean executePhase = true;
         int soldiersToPlace = currentPlayer.calculateSoldiersToPlace();
         if (currentPlayer == players.get(0) && currentPhase == Phase.SETTINGPHASE) {
             turnCount++;
@@ -276,12 +276,12 @@ public class BoardBean {
         }
         if (executePhase && currentPlayer.getOwnedCountries().size() > 0) {
             if (currentPhase == Phase.SETTINGPHASE) {
-                currentPhase = currentPlayer.getBehavior().placeSoldiers(currentTurnCountries, currentPlayer.getOwnedCountries(), soldiersToPlace
-                );
-            } else if (currentPhase == Phase.ATTACKPHASE) {
+                currentPhase = currentPlayer.getBehavior().placeSoldiers(currentTurnCountries,
+                        currentPlayer.getOwnedCountries(), soldiersToPlace);
+            } if (currentPhase == Phase.ATTACKPHASE) {
                 currentPhase = currentPlayer.getBehavior().attackCountry(currentTurnCountries, currentPlayer.getOwnedCountries());
                 userHasSetSoldiers = false;
-            } else if (currentPhase == Phase.MOVINGPHASE) {
+            } if (currentPhase == Phase.MOVINGPHASE) {
                 currentPhase = currentPlayer.getBehavior().moveSoldiers(currentTurnCountries, currentPlayer.getOwnedCountries());
                 cyclePlayer();
             }
@@ -303,6 +303,10 @@ public class BoardBean {
             nextPlayerIndex = 0;
         }
         currentPlayer = players.get(nextPlayerIndex);
+        if(currentPlayer.getOwnedCountries().size() <= 0){
+            players.remove(currentPlayer);
+            cyclePlayer();
+        }
     }
 
     public boolean currentPlayerIsUser() {
