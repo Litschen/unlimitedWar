@@ -14,11 +14,18 @@ public class Dice {
     public static final int MAX_THROWS = 10;
     //endregion
 
+
+    /**
+     * @return Random number between 1 and 6
+     */
+    public static int roll() {
+        return roll(MIN_VALUE, MAX_VALUE);
+    }
+
     /**
      * @param amountOfDice how many dice should be thrown
      * @return int array of results (range 1-6) sorted by by size descending
      */
-
     public static int[] roll(int amountOfDice) {
         List<Integer> dices = new ArrayList<>();
         int i = 0;
@@ -30,13 +37,6 @@ public class Dice {
         Collections.reverse(dices);
 
         return toIntArray(dices);
-    }
-
-    /**
-     * @return Random number between 1 and 6
-     */
-    public static int roll() {
-        return roll(MIN_VALUE, MAX_VALUE);
     }
 
     /**

@@ -200,7 +200,6 @@ public class BoardBean {
     }
 
     //endregion
-    ColorPlayer cp = ColorPlayer.values()[(int) (Math.random() * ColorPlayer.values().length)];
 
     /**
      * Generates all Player with their respective personalities.
@@ -217,6 +216,10 @@ public class BoardBean {
         players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "LMao", new RandomBehavior()));
         players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "Hotler", new RandomBehavior()));
         players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "Darfolini", new RandomBehavior()));
+    }
+
+    public boolean currentPlayerIsUser() {
+        return currentPlayer.getBehavior() instanceof UserBehavior;
     }
 
     /**
@@ -321,32 +324,6 @@ public class BoardBean {
         }
     }
 
-    // --------------------------------------------------
-
-
-    public void resetSelectedCountries() {
-        setFirstSelectedCountry(null);
-        setSecondSelectedCountry(null);
-        setModalToShow("");
-    }
-
-    public void cyclePlayer() {
-        int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
-        if (nextPlayerIndex == players.size()) {
-            nextPlayerIndex = 0;
-        }
-        currentPlayer = players.get(nextPlayerIndex);
-        if (currentPlayer.getOwnedCountries().size() <= 0) {
-            players.remove(currentPlayer);
-            cyclePlayer();
-        }
-    }
-
-    public boolean currentPlayerIsUser() {
-        return currentPlayer.getBehavior() instanceof UserBehavior;
-    }
-
-    //region methods to handle user interactions
     public void setAttackAndDefendCountry(Country country) {
         if (this.currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
             this.setFirstSelectedCountry(country);
@@ -372,9 +349,42 @@ public class BoardBean {
             this.setSecondSelectedCountry(country);
         }
 
-        if(firstSelectedCountry != null && secondSelectedCountry != null){
+        if (firstSelectedCountry != null && secondSelectedCountry != null) {
             modalToShow = "move";
         }
     }
-    //endregion
+
+
+    public void moveToNextPhase() {
+        Phase currentPhase = getCurrentPhase();
+
+        if (currentPhase == Phase.SETTINGPHASE) {
+            setCurrentPhase(Phase.ATTACKPHASE);
+        } else if (currentPhase == Phase.ATTACKPHASE) {
+            setCurrentPhase(Phase.MOVINGPHASE);
+        } else if (currentPhase == Phase.MOVINGPHASE) {
+            setCurrentPhase(Phase.SETTINGPHASE);
+            cyclePlayer();
+        }
+
+        resetSelectedCountries();
+    }
+
+    public void cyclePlayer() {
+        int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
+        if (nextPlayerIndex == players.size()) {
+            nextPlayerIndex = 0;
+        }
+        currentPlayer = players.get(nextPlayerIndex);
+        if (currentPlayer.getOwnedCountries().size() <= 0) {
+            players.remove(currentPlayer);
+            cyclePlayer();
+        }
+    }
+
+    public void resetSelectedCountries() {
+        setFirstSelectedCountry(null);
+        setSecondSelectedCountry(null);
+        setModalToShow("");
+    }
 }

@@ -12,7 +12,6 @@ public class Country {
     public static final int ABSOLUTE_MIN_AMOUNT_THROWS = 1;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
-    public static final int METHOD_NOT_IMPLEMENTED_RETURN_VALUE = -1;
     //endregion
 
     //region data fields
@@ -22,13 +21,6 @@ public class Country {
     private ArrayList<Country> neighboringCountries;
     //endregion
 
-    /**
-     * Constructor. Create Name of the Country, nummber of soldiers and Player
-     *
-     * @param name
-     * @param soldiersCount
-     * @param owner
-     */
     public Country(String name, int soldiersCount, @NotNull Player owner) {
         this.name = name;
         this.soldiersCount = soldiersCount;
@@ -77,7 +69,6 @@ public class Country {
 
     /**
      * @param defenderCountry
-     *
      */
     public void invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
         if (this.canInvade(defenderCountry)) {
@@ -90,7 +81,7 @@ public class Country {
 
             if (defenderCountry.getSoldiersCount() <= 0) {
                 // switch owner of country
-                defenderCountry.getOwner().removeOwnedCountry(defenderCountry);
+                defenderCountry.getOwner().getOwnedCountries().remove(defenderCountry);
                 defenderCountry.setOwner(this.owner);
                 this.owner.getOwnedCountries().add(defenderCountry);
 
@@ -103,7 +94,6 @@ public class Country {
      * @return
      * @throws Exception
      */
-    // /F0350/ Würfelanzahl bestimmen Angreifer
     public int maxAmountDiceThrowsAttacker() throws Exception {
         int count = this.getSoldiersCount() - MIN_SOLDIERS_TO_STAY;
         if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
@@ -129,13 +119,6 @@ public class Country {
             amountDefender = soldiers;
         }
         return amountDefender;
-    }
-
-    /**
-     * Add Soldier
-     */
-    public void addSoldier() {
-        soldiersCount++;
     }
 
     public void removeSoldiers(int amountOfSoldiers) {
@@ -167,15 +150,13 @@ public class Country {
                 this.owner != country.getOwner();
     }
 
-    // this works but could be streamlined
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
-        if (amountSoldiers < getSoldiersCount() && amountSoldiers > 0) {
+        boolean canShift = amountSoldiers < getSoldiersCount() && amountSoldiers > 0;
+        if (canShift) {
             this.setSoldiersCount(this.getSoldiersCount() - amountSoldiers);
             destination.setSoldiersCount(destination.getSoldiersCount() + amountSoldiers);
-            return true;
-        } else {
-            return false;
         }
+        return canShift;
     }
 
 }

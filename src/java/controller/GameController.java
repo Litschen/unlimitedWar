@@ -19,13 +19,8 @@ public class GameController extends HttpServlet {
 
     private BoardBean board;
 
-    public void setBoard(BoardBean board) {
-        this.board = board;
-    }
-
     //region static variables
     private final static String ATTACKER_KEY = "attackDice";
-    private final static String MOVE_KEY = "moveSoldiers";
     //enddregion
 
     /**
@@ -70,7 +65,7 @@ public class GameController extends HttpServlet {
                 if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                     board.executeTurn();
                 } else if (request.getParameter("end") != null) {
-                    this.moveToNextPhase();
+                    board.moveToNextPhase();
                 } else {
                     Country chosenCountry = this.extractSelectedCountry(request, response);
                     String path = request.getPathInfo();
@@ -103,18 +98,4 @@ public class GameController extends HttpServlet {
         return null;
     }
 
-    private void moveToNextPhase() {
-        Phase currentPhase = board.getCurrentPhase();
-
-        if (currentPhase == Phase.SETTINGPHASE) {
-            board.setCurrentPhase(Phase.ATTACKPHASE);
-        } else if (currentPhase == Phase.ATTACKPHASE) {
-            board.setCurrentPhase(Phase.MOVINGPHASE);
-        } else if (currentPhase == Phase.MOVINGPHASE) {
-            board.setCurrentPhase(Phase.SETTINGPHASE);
-            board.cyclePlayer();
-        }
-
-        board.resetSelectedCountries();
-    }
 }

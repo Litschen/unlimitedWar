@@ -25,7 +25,7 @@ public class UserBehavior implements IBehavior {
         if (ownedCountries.contains(destination)) {
             Player owner = destination.getOwner();
 
-            destination.addSoldier();
+            destination.setSoldiersCount(destination.getSoldiersCount() + 1);
             owner.setUserSoldiersToPlace(owner.getUserSoldiersToPlace() - 1);
             if (owner.getUserSoldiersToPlace() == 0) {
                 return Phase.ATTACKPHASE;
@@ -40,7 +40,7 @@ public class UserBehavior implements IBehavior {
         Country attackCountry = selectedCountries.get(0);
         Country defendCountry = selectedCountries.get(1);
 
-        if (ownedCountries.contains(attackCountry) && attackCountry.canInvade(defendCountry)){
+        if (ownedCountries.contains(attackCountry) && attackCountry.canInvade(defendCountry)) {
             int attackDiceCount = attackCountry.getOwner().getAttackDiceCount();
             int defendDiceCount = defendCountry.amountDiceThrowsDefender(attackDiceCount);
             attackCountry.invade(defendCountry, attackDiceCount, defendDiceCount);

@@ -10,12 +10,10 @@ public class Casualties {
      * @param casualtiesAttacker
      * @param casualtiesDefender
      */
-    //region constructors
     public Casualties(int casualtiesAttacker, int casualtiesDefender) {
         this.casualtiesAttacker = casualtiesAttacker;
         this.casualtiesDefender = casualtiesDefender;
     }
-    //endregion
 
     /**
      * @return by Casualties Attacker
