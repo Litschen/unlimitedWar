@@ -2,7 +2,6 @@ package controller;
 
 import model.BoardBean;
 import model.Country;
-import model.Enum.Phase;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

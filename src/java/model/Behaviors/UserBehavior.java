@@ -1,6 +1,5 @@
 package model.Behaviors;
 
-
 import model.Country;
 import model.Enum.Phase;
 import model.Interface.IBehavior;

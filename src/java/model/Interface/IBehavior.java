@@ -3,7 +3,6 @@ package model.Interface;
 import model.Country;
 import model.Enum.Phase;
 
-
 import java.util.ArrayList;
 
 /**

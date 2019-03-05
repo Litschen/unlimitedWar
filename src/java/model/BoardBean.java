@@ -354,7 +354,6 @@ public class BoardBean {
         }
     }
 
-
     public void moveToNextPhase() {
         Phase currentPhase = getCurrentPhase();
 
