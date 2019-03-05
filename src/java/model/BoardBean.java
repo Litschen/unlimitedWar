@@ -198,8 +198,10 @@ public class BoardBean {
             countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
         }
     }
+
     //endregion
-    ColorPlayer cp = ColorPlayer.values()[(int)(Math.random()*ColorPlayer.values().length)];
+    ColorPlayer cp = ColorPlayer.values()[(int) (Math.random() * ColorPlayer.values().length)];
+
     /**
      * Generates all Player with their respective personalities.
      * Each computer opponent is randomly assigned a color from the color options.
@@ -209,12 +211,12 @@ public class BoardBean {
         List<ColorPlayer> colorPlayer = new ArrayList<>();
         colorPlayer.addAll(Arrays.asList(ColorPlayer.values()));
 
-        this.currentPlayer = new Player(colorPlayer.remove(1),"Stalout", new UserBehavior());
+        this.currentPlayer = new Player(colorPlayer.remove(1), "Stalout", new UserBehavior());
         players.add(this.currentPlayer);
 
-        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "LMao", new RandomBehavior()));
-        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "Hotler", new RandomBehavior()));
-        players.add(new Player(colorPlayer.remove((int)Math.random()*colorPlayer.size()), "Darfolini", new RandomBehavior()));
+        players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "LMao", new RandomBehavior()));
+        players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "Hotler", new RandomBehavior()));
+        players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "Darfolini", new RandomBehavior()));
     }
 
     /**
@@ -290,6 +292,21 @@ public class BoardBean {
         }
     }
 
+    public void executeUserTurn(Country selectedCountry) {
+        if (currentPhase == Phase.SETTINGPHASE) {
+            ArrayList<Country> destination = new ArrayList<>();
+            destination.add(selectedCountry);
+            this.setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
+        } else if (currentPhase == Phase.ATTACKPHASE) {
+//            this.attackPhase(request, chosenCountry);
+        } else if (currentPhase == Phase.MOVINGPHASE) {
+//            this.movePhase(request, response);
+        }
+    }
+
+    // --------------------------------------------------
+
+
     public void resetSelectedCountries() {
         if (firstSelectedCountry != null && secondSelectedCountry != null || currentPhase == Phase.SETTINGPHASE) {
             firstSelectedCountry = null;
@@ -303,7 +320,7 @@ public class BoardBean {
             nextPlayerIndex = 0;
         }
         currentPlayer = players.get(nextPlayerIndex);
-        if(currentPlayer.getOwnedCountries().size() <= 0){
+        if (currentPlayer.getOwnedCountries().size() <= 0) {
             players.remove(currentPlayer);
             cyclePlayer();
         }

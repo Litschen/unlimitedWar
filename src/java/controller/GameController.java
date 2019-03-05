@@ -50,7 +50,6 @@ public class GameController extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -68,14 +67,13 @@ public class GameController extends HttpServlet {
         try {
             board = (BoardBean) request.getSession().getAttribute("board");
             if (board != null) {
-                Phase currentPhase = board.getCurrentPhase();
-
                 if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
                     board.executeTurn();
                 } else if (request.getParameter("end") != null) {
-                    this.moveToNextPhase(currentPhase);
+                    this.moveToNextPhase();
                 } else {
-                    this.extractSelectedCountry(request, response);
+                    Country chosenCountry = this.extractSelectedCountry(request, response);
+                    board.executeUserTurn(chosenCountry);
                 }
             }
             dispatcher.forward(request, response);
@@ -84,34 +82,15 @@ public class GameController extends HttpServlet {
         }
     }
 
-    private void extractSelectedCountry(HttpServletRequest request, HttpServletResponse response) {
-        Country chosenCountry = board.getFirstSelectedCountry();
+    private Country extractSelectedCountry(HttpServletRequest request, HttpServletResponse response) {
         try {
             int countryIndex = Integer.parseInt(request.getParameter("country"));
-            chosenCountry = board.getCountryById(countryIndex);
+            return board.getCountryById(countryIndex);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
 
-        Phase currentPhase = board.getCurrentPhase();
-        if (currentPhase == Phase.SETTINGPHASE) {
-            this.settingPhase(chosenCountry);
-        } else if (currentPhase == Phase.ATTACKPHASE) {
-            this.attackPhase(request, chosenCountry);
-        } else if (currentPhase == Phase.MOVINGPHASE) {
-            this.movePhase(request, response);
-        }
-
-    }
-
-    private void settingPhase(Country chosenCountry) {
-        if (chosenCountry.getOwner() == board.getCurrentPlayer()) {
-            chosenCountry.addSoldier();
-            board.getCurrentPlayer().setUserSoldiersToPlace(board.getCurrentPlayer().getUserSoldiersToPlace() - 1);
-            if (board.getCurrentPlayer().getUserSoldiersToPlace() == 0) {
-                moveToNextPhase(board.getCurrentPhase());
-            }
-        }
+        return null;
     }
 
     private void attackPhase(HttpServletRequest request, Country chosenCountry) {
@@ -147,7 +126,9 @@ public class GameController extends HttpServlet {
         }
     }
 
-    private void moveToNextPhase(Phase currentPhase) {
+    private void moveToNextPhase() {
+        Phase currentPhase = board.getCurrentPhase();
+
         if (currentPhase == Phase.ATTACKPHASE) {
             board.setCurrentPhase(Phase.MOVINGPHASE);
         } else if (currentPhase == Phase.MOVINGPHASE) {

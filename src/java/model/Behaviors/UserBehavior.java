@@ -4,6 +4,7 @@ package model.Behaviors;
 import model.Country;
 import model.Enum.Phase;
 import model.Interface.IBehavior;
+import model.Player;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,18 @@ public class UserBehavior implements IBehavior {
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> destinationCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
-        destinationCountries.get(0).addSoldier();
+        Country destination = destinationCountries.get(0);
+
+        if (ownedCountries.contains(destination)) {
+            Player owner = destination.getOwner();
+
+            destination.addSoldier();
+            owner.setUserSoldiersToPlace(owner.getUserSoldiersToPlace() - 1);
+            if (owner.getUserSoldiersToPlace() == 0) {
+                return Phase.ATTACKPHASE;
+            }
+        }
+
         return Phase.SETTINGPHASE;
     }
 
