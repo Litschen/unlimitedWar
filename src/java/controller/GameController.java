@@ -73,6 +73,16 @@ public class GameController extends HttpServlet {
                     this.moveToNextPhase();
                 } else {
                     Country chosenCountry = this.extractSelectedCountry(request, response);
+                    String path = request.getPathInfo();
+
+                    // handle attack modal
+                    if (path.equals("/attack") && request.getParameter("roll") != null) {
+                        int attackDiceCount = request.getParameterMap().get(ATTACKER_KEY).length;
+                        board.getCurrentPlayer().setAttackDiceCount(attackDiceCount);
+                    } else if (path.equals("/attack") && request.getParameter("cancel") != null) {
+                        board.resetSelectedCountries();
+                    }
+                    // handle phase
                     board.executeUserTurn(chosenCountry);
                 }
             }
@@ -91,19 +101,6 @@ public class GameController extends HttpServlet {
         }
 
         return null;
-    }
-
-    private void attackPhase(HttpServletRequest request, Country chosenCountry) {
-        String path = request.getPathInfo();
-
-        if (path.equals("/selectedCountry")) {
-            board.setAttackAndDefendCountry(chosenCountry);
-        } else if (path.equals("/attack") && request.getParameter("roll") != null) {
-            int attackDiceCount = request.getParameterMap().get(ATTACKER_KEY).length;
-            board.attackRoll(attackDiceCount);
-        } else if (path.equals("/attack") && request.getParameter("cancel") != null) {
-            board.cancelAttack();
-        }
     }
 
     private void movePhase(HttpServletRequest request, HttpServletResponse response) {

@@ -36,16 +36,21 @@ public class UserBehavior implements IBehavior {
     }
 
     @Override
-    public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-        if(super.equals(allCountries.get(0).getOwner())){
-            // allCountries.get(0).invade(allCountries.get(1));
+    public Phase attackCountry(ArrayList<Country> selectedCountries, ArrayList<Country> ownedCountries) {
+        Country attackCountry = selectedCountries.get(0);
+        Country defendCountry = selectedCountries.get(1);
+
+        if (ownedCountries.contains(attackCountry) && attackCountry.canInvade(defendCountry)){
+            int attackDiceCount = attackCountry.getOwner().getAttackDiceCount();
+            int defendDiceCount = defendCountry.amountDiceThrowsDefender(attackDiceCount);
+            attackCountry.invade(defendCountry, attackDiceCount, defendDiceCount);
         }
+
         return Phase.ATTACKPHASE;
     }
 
     @Override
     public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-
         try {
 
         } catch (Exception e) {

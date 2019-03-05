@@ -280,10 +280,12 @@ public class BoardBean {
             if (currentPhase == Phase.SETTINGPHASE) {
                 currentPhase = currentPlayer.getBehavior().placeSoldiers(currentTurnCountries,
                         currentPlayer.getOwnedCountries(), soldiersToPlace);
-            } if (currentPhase == Phase.ATTACKPHASE) {
+            }
+            if (currentPhase == Phase.ATTACKPHASE) {
                 currentPhase = currentPlayer.getBehavior().attackCountry(currentTurnCountries, currentPlayer.getOwnedCountries());
                 userHasSetSoldiers = false;
-            } if (currentPhase == Phase.MOVINGPHASE) {
+            }
+            if (currentPhase == Phase.MOVINGPHASE) {
                 currentPhase = currentPlayer.getBehavior().moveSoldiers(currentTurnCountries, currentPlayer.getOwnedCountries());
                 cyclePlayer();
             }
@@ -298,7 +300,15 @@ public class BoardBean {
             destination.add(selectedCountry);
             this.setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
         } else if (currentPhase == Phase.ATTACKPHASE) {
-//            this.attackPhase(request, chosenCountry);
+            if (firstSelectedCountry != null && secondSelectedCountry != null) {
+                ArrayList<Country> countryList = new ArrayList<>();
+                countryList.add(firstSelectedCountry);
+                countryList.add(secondSelectedCountry);
+                currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries());
+                this.resetSelectedCountries();
+            } else {
+                this.setAttackAndDefendCountry(selectedCountry);
+            }
         } else if (currentPhase == Phase.MOVINGPHASE) {
 //            this.movePhase(request, response);
         }
@@ -308,10 +318,9 @@ public class BoardBean {
 
 
     public void resetSelectedCountries() {
-        if (firstSelectedCountry != null && secondSelectedCountry != null || currentPhase == Phase.SETTINGPHASE) {
-            firstSelectedCountry = null;
-            secondSelectedCountry = null;
-        }
+        setFirstSelectedCountry(null);
+        setSecondSelectedCountry(null);
+        setModalToShow("");
     }
 
     public void cyclePlayer() {
@@ -332,24 +341,6 @@ public class BoardBean {
 
     //region methods to handle user interactions
 
-    /**
-     * add one soldier to the selected country
-     *
-     * @param countryName name of the selected country
-     */
-    public void addSoldiersToCountry(String countryName) {
-        // create List of countries to match interface parameter
-        ArrayList<Country> countries = new ArrayList<>();
-        countries.add(this.getCountryByName(countryName));
-        // TODO: fix
-        // int placedSoldiers = currentPlayer.getBehavior().placeSoldiers(countries, this.currentPlayer.getOwnedCountries(), 1);
-//        soldiersToPlace -= placedSoldiers;
-
-        if (soldiersToPlace == 0) {
-            this.setCurrentPhase(Phase.ATTACKPHASE);
-        }
-    }
-
     public void setAttackAndDefendCountry(Country country) {
         if (this.currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
             this.setFirstSelectedCountry(country);
@@ -357,7 +348,7 @@ public class BoardBean {
             this.setSecondSelectedCountry(country);
         }
 
-        if (this.firstSelectedCountry != null && this.secondSelectedCountry != null) {
+        if (firstSelectedCountry != null && secondSelectedCountry != null && firstSelectedCountry.canInvade(secondSelectedCountry)) {
             this.setModalToShow("attack");
             try {
                 this.attackDiceCount = this.firstSelectedCountry.maxAmountDiceThrowsAttacker();
@@ -366,28 +357,6 @@ public class BoardBean {
                 // TODO @huguemiz show error message on GUI
             }
         }
-    }
-
-    /**
-     * TODO: update comment
-     * The current player selects one of his countries from which he wants to attack.
-     * At least two soldiers are needed on this land. He then selects which enemy neighbor he attacks.
-     * After each die roll, the attack can be aborted. You can attack any number of countries per turn.
-     * If the defender no longer has any soldiers in the country, this land changes ownership.
-     *
-     * @param
-     * @param
-     */
-    public void attackRoll(int attackDiceCount) {
-        this.modalToShow = "";
-        firstSelectedCountry.invade(secondSelectedCountry, attackDiceCount, defendDiceCount);
-        this.cancelAttack();
-    }
-
-    public void cancelAttack() {
-        this.setFirstSelectedCountry(null);
-        this.setSecondSelectedCountry(null);
-        this.setModalToShow("");
     }
 
     public void setMoveSoldiersToCountry(Country country, String countryName) {

@@ -14,6 +14,7 @@ public class Player{
     //region data fields
     private Enum color;
     private String name;
+    private int attackDiceCount;
     /**
      * Behavior determines how the player or even the user can act. In  player.java are only methods/field that are the
      * same for all players.
@@ -58,6 +59,14 @@ public class Player{
 
     public void setUserSoldiersToPlace(int userSoldiersToPlace) {
         this.userSoldiersToPlace = userSoldiersToPlace;
+    }
+
+    public int getAttackDiceCount() {
+        return attackDiceCount;
+    }
+
+    public void setAttackDiceCount(int attackDiceCount) {
+        this.attackDiceCount = attackDiceCount;
     }
 
     //endregion0
