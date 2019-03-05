@@ -103,36 +103,18 @@ public class GameController extends HttpServlet {
         return null;
     }
 
-    private void movePhase(HttpServletRequest request, HttpServletResponse response) {
-        String countryName = request.getParameter("country");
-        String path = request.getPathInfo();
-        if (request.getParameter("end") != null) {
-            board.setCurrentPhase(Phase.SETTINGPHASE);
-        } else if (path.equals("/selectedCountry")) {
-            Country country = board.getCountryByName(request.getParameter("country"));
-            board.setMoveSoldiersToCountry(country, countryName);
-        } else if (path.equals("/move") && request.getParameter("roll") != null) {
-            int moveSoilderCount = 0;
-            for (String key : request.getParameterMap().keySet()) {
-                if (key.contains(MOVE_KEY)) {
-                    moveSoilderCount++;
-                }
-            }
-        } else if (path.equals("/move") && request.getParameter("cancel") != null) {
-            board.cancelMove();
-        }
-    }
-
     private void moveToNextPhase() {
         Phase currentPhase = board.getCurrentPhase();
 
-        if (currentPhase == Phase.ATTACKPHASE) {
+        if (currentPhase == Phase.SETTINGPHASE) {
+            board.setCurrentPhase(Phase.ATTACKPHASE);
+        } else if (currentPhase == Phase.ATTACKPHASE) {
             board.setCurrentPhase(Phase.MOVINGPHASE);
         } else if (currentPhase == Phase.MOVINGPHASE) {
             board.setCurrentPhase(Phase.SETTINGPHASE);
             board.cyclePlayer();
-        } else if (currentPhase == Phase.SETTINGPHASE) {
-            board.setCurrentPhase(Phase.ATTACKPHASE);
         }
+
+        board.resetSelectedCountries();
     }
 }

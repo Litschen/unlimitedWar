@@ -44,6 +44,9 @@
         <c:if test="${board.currentPhase == Phase.ATTACKPHASE}">
             <button type="submit" name="end" class="btn btn-primary">End Attack Phase</button>
         </c:if>
+        <c:if test="${board.currentPhase == Phase.MOVINGPHASE && board.modalToShow == 'move'}">
+            <button type="submit" name="move" class="btn btn-primary">Move a Soldier</button>
+        </c:if>
         <c:if test="${board.currentPhase == Phase.MOVINGPHASE}">
             <button type="submit" name="end" class="btn btn-primary">Don't Move Soldiers</button>
         </c:if>

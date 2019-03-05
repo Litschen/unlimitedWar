@@ -310,7 +310,14 @@ public class BoardBean {
                 this.setAttackAndDefendCountry(selectedCountry);
             }
         } else if (currentPhase == Phase.MOVINGPHASE) {
-//            this.movePhase(request, response);
+            if (firstSelectedCountry == null || secondSelectedCountry == null) {
+                setMovingCountry(selectedCountry);
+            } else {
+                ArrayList<Country> countryList = new ArrayList<>();
+                countryList.add(firstSelectedCountry);
+                countryList.add(secondSelectedCountry);
+                currentPlayer.getBehavior().moveSoldiers(countryList, currentPlayer.getOwnedCountries());
+            }
         }
     }
 
@@ -340,7 +347,6 @@ public class BoardBean {
     }
 
     //region methods to handle user interactions
-
     public void setAttackAndDefendCountry(Country country) {
         if (this.currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
             this.setFirstSelectedCountry(country);
@@ -359,22 +365,16 @@ public class BoardBean {
         }
     }
 
-    public void setMoveSoldiersToCountry(Country country, String countryName) {
-        if (this.getCurrentPlayer().getOwnedCountries().contains(country)) {
-            this.getCountryByName(countryName);
+    public void setMovingCountry(Country country) {
+        if (firstSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
+            this.setFirstSelectedCountry(country);
+        } else if (secondSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country)) {
+            this.setSecondSelectedCountry(country);
         }
-        if (this.getCountryByName(countryName) != null && this.getCountryByName(countryName) != null) {
-            this.setModalToShow("move");
-        }
-        if (soldiersToPlace == 0) {
-            this.setCurrentPhase(Phase.SETTINGPHASE);
+
+        if(firstSelectedCountry != null && secondSelectedCountry != null){
+            modalToShow = "move";
         }
     }
-
-    public void cancelMove() {
-        this.getCountryByName(null);
-        this.setModalToShow("");
-    }
-
     //endregion
 }

@@ -50,12 +50,12 @@ public class UserBehavior implements IBehavior {
     }
 
     @Override
-    public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-        try {
+    public Phase moveSoldiers(ArrayList<Country> selectedCountries, ArrayList<Country> ownedCountries) {
+        // TODO check if neighbour
+        Country sourceCountry = selectedCountries.get(0);
+        Country destinationCountry = selectedCountries.get(1);
+        sourceCountry.shiftSoldiers(1, destinationCountry);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return Phase.MOVINGPHASE;
 
     }
