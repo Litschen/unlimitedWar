@@ -25,8 +25,8 @@ public class UserBehavior implements IBehavior {
             Player owner = destination.getOwner();
 
             destination.setSoldiersCount(destination.getSoldiersCount() + 1);
-            owner.setUserSoldiersToPlace(owner.getUserSoldiersToPlace() - 1);
-            if (owner.getUserSoldiersToPlace() == 0) {
+            owner.setSoldiersToPlace(owner.getSoldiersToPlace() - 1);
+            if (owner.getSoldiersToPlace() == 0) {
                 return Phase.ATTACKPHASE;
             }
         }

@@ -39,7 +39,7 @@
         </div>
         <% session.setAttribute("board", board); %>
         <c:if test="${board.currentPhase ==  Phase.SETTINGPHASE}">
-            <span>Soldiers to place: <c:out value="${board.currentPlayer.userSoldiersToPlace}"/></span>
+            <span>Soldiers to place: <c:out value="${board.currentPlayer.soldiersToPlace}"/></span>
         </c:if>
         <c:if test="${board.currentPhase == Phase.ATTACKPHASE}">
             <button type="submit" name="end" class="btn btn-primary">End Attack Phase</button>
@@ -65,7 +65,6 @@
 <form method="post" action="<%=request.getContextPath()%>/Game/">
     <%--Saves the board in the session --%>
     <% session.setAttribute("board", board); %>
-<%--<% gameController.setBoard(board); %> --%>
  <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
 </form>
 <c:if test="${board.modalToShow == 'attack'}">

@@ -27,12 +27,10 @@ public class BoardBean {
     private Player currentPlayer;
     private ArrayList<Player> players;
     private ArrayList<Country> countries;
-    private int soldiersToPlace;
     private int attackDiceCount;
     private int defendDiceCount;
     private Country firstSelectedCountry;
     private Country secondSelectedCountry;
-    private Boolean userHasSetSoldiers = false;
     private String modalToShow;
     private Phase currentPhase = Phase.SETTINGPHASE;
     //endregion
@@ -42,10 +40,10 @@ public class BoardBean {
         countries = new ArrayList<>();
         generatePlayers();
         generateCountries();
+        if(currentPlayerIsUser()){
+            currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
+        }
 
-        // Hardcoded value to prevent NullPointerException
-        // will be fixed by /F0210/
-        setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
     }
 
     //region getter setter
@@ -73,14 +71,6 @@ public class BoardBean {
         }
 
         return null;
-    }
-
-    public int getSoldiersToPlace() {
-        return this.soldiersToPlace;
-    }
-
-    public void setSoldiersToPlace(int soldiersToPlace) {
-        this.soldiersToPlace = soldiersToPlace;
     }
 
     public Player getCurrentPlayer() {
@@ -226,74 +216,16 @@ public class BoardBean {
      * Perform the player's move
      */
     public void executeTurn() {
-        //TODO test this
-        ArrayList<Country> currentTurnCountries = new ArrayList<>();
-        boolean executePhase = true;
-        int soldiersToPlace = currentPlayer.calculateSoldiersToPlace();
-        if (currentPlayer == players.get(0) && currentPhase == Phase.SETTINGPHASE) {
-            turnCount++;
+        if (currentPhase == Phase.SETTINGPHASE) {
+            currentPhase = currentPlayer.getBehavior().placeSoldiers(countries,
+                    currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace());
         }
-        if (currentPlayerIsUser()) {
-            if (!userHasSetSoldiers && currentPlayer.getUserSoldiersToPlace() == 0) {
-                currentPlayer.setUserSoldiersToPlace(soldiersToPlace);
-            } else {
-                if (userHasSetSoldiers && currentPlayer.getUserSoldiersToPlace() == 0) {
-                    currentPhase = Phase.ATTACKPHASE;
-                }
-                currentPlayer.setUserSoldiersToPlace(currentPlayer.getUserSoldiersToPlace() - 1);
-                soldiersToPlace = 1;
-            }
-            if (firstSelectedCountry != null && secondSelectedCountry != null) {
-                currentTurnCountries.add(firstSelectedCountry);
-                currentTurnCountries.add(secondSelectedCountry);
-            } else {
-                executePhase = false;
-                if (currentPhase == Phase.SETTINGPHASE) {
-                    if (firstSelectedCountry != null) {
-                        currentTurnCountries.add(firstSelectedCountry);
-                        if (secondSelectedCountry != null) {
-                            currentTurnCountries.add(secondSelectedCountry);
-                        }
-                        userHasSetSoldiers = true;
-                        executePhase = true;
-                    }
-                }
-            }
-
-            if (currentPhase == Phase.SETTINGPHASE && executePhase) {
-                Iterator it = currentTurnCountries.iterator();
-                Collections.reverse(currentTurnCountries);
-                boolean isOwner = false;
-                while (it.hasNext() && !isOwner) {
-                    Country c = (Country) it.next();
-                    isOwner = c.getOwner() == currentPlayer;
-                    if (!isOwner) {
-                        it.remove();
-                    }
-                }
-                executePhase = currentTurnCountries.size() > 0;
-                if (!executePhase) {
-                    currentPlayer.setUserSoldiersToPlace(currentPlayer.getUserSoldiersToPlace() + 1);
-                }
-            }
-        } else {
-            currentTurnCountries = this.countries;
+        if (currentPhase == Phase.ATTACKPHASE) {
+            currentPhase = currentPlayer.getBehavior().attackCountry(countries, currentPlayer.getOwnedCountries());
         }
-        if (executePhase && currentPlayer.getOwnedCountries().size() > 0) {
-            if (currentPhase == Phase.SETTINGPHASE) {
-                currentPhase = currentPlayer.getBehavior().placeSoldiers(currentTurnCountries,
-                        currentPlayer.getOwnedCountries(), soldiersToPlace);
-            }
-            if (currentPhase == Phase.ATTACKPHASE) {
-                currentPhase = currentPlayer.getBehavior().attackCountry(currentTurnCountries, currentPlayer.getOwnedCountries());
-                userHasSetSoldiers = false;
-            }
-            if (currentPhase == Phase.MOVINGPHASE) {
-                currentPhase = currentPlayer.getBehavior().moveSoldiers(currentTurnCountries, currentPlayer.getOwnedCountries());
-                cyclePlayer();
-            }
-
-            resetSelectedCountries();
+        if (currentPhase == Phase.MOVINGPHASE) {
+            currentPhase = currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
+            cyclePlayer();
         }
     }
 
@@ -302,6 +234,7 @@ public class BoardBean {
             ArrayList<Country> destination = new ArrayList<>();
             destination.add(selectedCountry);
             this.setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
+            this.resetSelectedCountries();
         } else if (currentPhase == Phase.ATTACKPHASE) {
             if (firstSelectedCountry != null && secondSelectedCountry != null) {
                 ArrayList<Country> countryList = new ArrayList<>();
@@ -371,14 +304,15 @@ public class BoardBean {
 
     public void cyclePlayer() {
         int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
-        if (nextPlayerIndex == players.size()) {
+        players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
+        if (nextPlayerIndex >= players.size()) {
             nextPlayerIndex = 0;
         }
         currentPlayer = players.get(nextPlayerIndex);
-        if (currentPlayer.getOwnedCountries().size() <= 0) {
-            players.remove(currentPlayer);
-            cyclePlayer();
+        if(currentPlayerIsUser()){
+            currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
         }
+        resetSelectedCountries();
     }
 
     public void resetSelectedCountries() {

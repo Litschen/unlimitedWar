@@ -16,7 +16,7 @@ public class Player {
     private int attackDiceCount;
     private IBehavior behavior;
     private ArrayList<Country> ownedCountries;
-    private int userSoldiersToPlace = 0;
+    private int soldiersToPlace = 0;
     //endregion
 
     public Player(Enum color, String name, IBehavior behavior) {
@@ -43,12 +43,12 @@ public class Player {
         return ownedCountries;
     }
 
-    public int getUserSoldiersToPlace() {
-        return userSoldiersToPlace;
+    public int getSoldiersToPlace() {
+        return soldiersToPlace;
     }
 
-    public void setUserSoldiersToPlace(int userSoldiersToPlace) {
-        this.userSoldiersToPlace = userSoldiersToPlace;
+    public void setSoldiersToPlace(int soldiersToPlace) {
+        this.soldiersToPlace = soldiersToPlace;
     }
 
     public int getAttackDiceCount() {
@@ -59,7 +59,7 @@ public class Player {
         this.attackDiceCount = attackDiceCount;
     }
 
-    //endregion0
+    //endregion
 
     /**
      * Countries needed to get a Soldier to place

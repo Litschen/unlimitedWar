@@ -65,7 +65,7 @@ public class GameController extends HttpServlet {
                     board.executeTurn();
                 } else if (request.getParameter("end") != null) {
                     board.moveToNextPhase();
-                } else {
+                } else if(board.currentPlayerIsUser()){
                     Country chosenCountry = this.extractSelectedCountry(request, response);
                     String path = request.getPathInfo();
 
