@@ -1,42 +1,48 @@
 package model;
 
-public class Casualties {
+/**
+ * Class to save casualties for attacker and defender during an invasion of a country
+ */
+class Casualties {
     //region data fields
     private int casualtiesAttacker;
     private int casualtiesDefender;
     //endregion
 
     /**
-     * @param casualtiesAttacker
-     * @param casualtiesDefender
+     * Save casualties for attacker and defender during an invasion of a country in this object
+     *
+     * @param casualtiesAttacker casualties inflicted upon the attacker
+     * @param casualtiesDefender casualties inflicted upon the defender
      */
-    public Casualties(int casualtiesAttacker, int casualtiesDefender) {
+    Casualties(int casualtiesAttacker, int casualtiesDefender) {
         this.casualtiesAttacker = casualtiesAttacker;
         this.casualtiesDefender = casualtiesDefender;
     }
 
-    /**
-     * @return by Casualties Attacker
-     */
     //region getter setter
-    public int getCasualtiesAttacker() {
+    int getCasualtiesAttacker() {
         return casualtiesAttacker;
     }
 
-    /**
-     * @return by Casualties Defender
-     */
-    public int getCasualtiesDefender() {
+    int getCasualtiesDefender() {
         return casualtiesDefender;
     }
+    //endregion
 
-    public void addCasualtiesAttacker() {
+    /**
+     * increase casualties of the attacker by one
+     */
+    void addCasualtiesAttacker() {
         this.casualtiesAttacker += 1;
     }
 
-    public void addCasualtiesDefender() {
+    /**
+     * Increase the casualties of the defender by one
+     */
+    void addCasualtiesDefender() {
         this.casualtiesDefender += 1;
     }
-    //endregion
+
 
 }
