@@ -58,9 +58,11 @@ public class Country {
     }
     //endregion
 
+
     /**
-     * @param country
-     * @return value is Bordering or not
+     * Checks if the parameter country is a neighbor of the country from which this method was called.
+     * @param country to check if is neighbor
+     * @return true if country param is a neighbor otherwise false.
      */
     public boolean isBordering(@NotNull Country country) {
         return this.neighboringCountries.contains(country);
@@ -68,7 +70,13 @@ public class Country {
 
 
     /**
-     * @param defenderCountry
+     * Country invades the param defenderCountry, this method handles everything concerning invasion,
+     * including: Calling calculateCasualties, processing said casualties,
+     * changing ownership of defenderCountry if necessary and shifting soldiers in that case
+     *
+     * @param defenderCountry country to be invaded, it defends itself against the invasion
+     * @param attackDiceCount amount of Dices the attacker is using to attack the defenderCountry
+     * @param defendDiceCount amount of Dices the defender is using to defend
      */
     public void invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
         if (this.canInvade(defenderCountry)) {
@@ -90,9 +98,11 @@ public class Country {
         }
     }
 
+
     /**
-     * @return
-     * @throws Exception
+     * Calculates the maximum of Dices the Attacker can use to invade from this country
+     * @return maximum int of Dices
+     * @throws Exception if the amount of Dices is below minimum allowed < ABSOLUTE_MIN_AMOUNT_THROWS
      */
     public int maxAmountDiceThrowsAttacker() throws Exception {
         int count = this.getSoldiersCount() - MIN_SOLDIERS_TO_STAY;
@@ -103,11 +113,11 @@ public class Country {
         }
     }
 
+
     /**
-     * Number of dice determine attackers
-     *
-     * @param amountAttacker
-     * @return by number of count
+     * Calculates the amount of dices the defender HAS to use to defend his country during an invasion
+     * @param amountAttacker dices the attacker is using to invade
+     * @return amount of dices to use
      */
     public int amountDiceThrowsDefender(int amountAttacker) {
         int amountDefender = amountAttacker - 1;
@@ -121,14 +131,20 @@ public class Country {
         return amountDefender;
     }
 
+    /**
+     * Removes the specified amount of Soldiers from this country
+     * @param amountOfSoldiers the be removed
+     */
     public void removeSoldiers(int amountOfSoldiers) {
         soldiersCount -= amountOfSoldiers;
     }
 
+
     /**
-     * @param diceThrowsAttacker
-     * @param diceThrowsDefender
-     * @return by Casualties
+     * Calculates the casualties inflicted upon the defender and attacker during an country invasion
+     * @param diceThrowsAttacker int[] of the dices thrown by the attacker
+     * @param diceThrowsDefender int[] of the dices thrown by the defender
+     * @return Casualties object with saved casualties inflicted upon both sides
      */
     public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender) {
         Casualties casualties = new Casualties(0, 0);
@@ -142,14 +158,23 @@ public class Country {
         return casualties;
     }
 
+
     /**
-     * @return value is Invade or not
+     * Checks of the specified country can be invaded from calling country.
+     * @param country to check if can be invaded
+     * @return true if invasion is possible
      */
     public boolean canInvade(Country country) {
         return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country) &&
                 this.owner != country.getOwner();
     }
 
+    /**
+     * Shifts the specified amount of soldiers from calling country to destination param country
+     * @param amountSoldiers to be shifted
+     * @param destination country the soldiers should be shifted to
+     * @return true if shifted successful
+     */
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
         boolean canShift = amountSoldiers < getSoldiersCount() && amountSoldiers > 0;
         if (canShift) {
