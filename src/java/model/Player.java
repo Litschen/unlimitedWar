@@ -62,9 +62,9 @@ public class Player {
     //endregion
 
     /**
-     * Countries needed to get a Soldier to place
+     * calculate the amount of soldiers the player has to set on his countries
      *
-     * @return by number of soldiers to place
+     * @return number of soldiers to place
      */
     public int calculateSoldiersToPlace() {
         return Math.max(COUNTRY_WEIGHT, getOwnedCountries().size() / COUNTRY_WEIGHT);
