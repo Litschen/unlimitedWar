@@ -15,7 +15,7 @@ public class PlayerDAO {
     private Connection con;
     private PreparedStatement st;
 
-    private String dbURL = "jdbc:mysql://localhost:3306/UnlimitedWar"; // TODO adjust DB name
+    private String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
     private String user = "root";
     private String pw = "rootroot";
 
@@ -34,7 +34,7 @@ public class PlayerDAO {
             createConnection(INSERT_PLAYER_QUERY, Arrays.asList(username, mail, password));
 
             int row = st.executeUpdate();
-            // TODO
+            // TODO MS3 /F0100/
             this.closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,7 +48,7 @@ public class PlayerDAO {
         try {
             createConnection(SELECT_PLAYER_QUERY, Arrays.asList(mail));
             rs = st.executeQuery();
-            // TODO
+            // TODO MS3 /F0111/
             this.closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class PlayerDAO {
         try {
             createConnection(UPDATE_PLAYER_QUERY, Arrays.asList(username, mailNew, password, mailOld));
             int rows = st.executeUpdate();
-            // TODO
+            // TODO MS3 /F0130/
             this.closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,7 +80,7 @@ public class PlayerDAO {
         try {
             createConnection(DELETE_PLAYER_QUERY, Arrays.asList(mail));
             rs = st.executeQuery();
-            // TODO
+            // TODO MS3 /F0100/
             this.closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
