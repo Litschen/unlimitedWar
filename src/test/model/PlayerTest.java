@@ -1,7 +1,7 @@
 package model;
 
 import model.Behaviors.RandomBehavior;
-import model.Enum.ColorPlayer;
+import model.Enum.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,9 +17,9 @@ class PlayerTest {
 
     @BeforeEach
     public void setUp() {
-        List<ColorPlayer> colorPlayer = new ArrayList<>();
-        colorPlayer.addAll(Arrays.asList(ColorPlayer.values()));
-        testPlayer = new Player(colorPlayer.remove(1), "testPlayer", new RandomBehavior());
+        List<PlayerColor> playerColors = new ArrayList<>();
+        playerColors.addAll(Arrays.asList(PlayerColor.values()));
+        testPlayer = new Player(playerColors.remove(1), "testPlayer", new RandomBehavior());
     }
 
     @Test
