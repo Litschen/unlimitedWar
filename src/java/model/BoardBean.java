@@ -94,12 +94,15 @@ public class BoardBean {
         this.secondSelectedCountry = secondSelectedCountry;
     }
 
-    private int getPlayerColor() {return ((int) Math.random() * playerColor.size());}
+    private int getPlayerColor() {
+        return ((int) Math.random() * playerColor.size());
+    }
 
 
     //endregion
 
     //region methods to generate countries & set their properties
+
 
     /**
      * Generate Countries about the number of Player.
@@ -125,7 +128,7 @@ public class BoardBean {
     }
 
     /**
-     * The playing field colors the countries in the color of the owning player.
+     * Give the countries their names
      */
     private void setCountryAttributes() {
         try {
@@ -142,6 +145,9 @@ public class BoardBean {
         setNeighbors();
     }
 
+    /**
+     * Set the neighboring countries
+     */
     private void setNeighbors() {
         setFixedNeighbors(0, new int[]{1});
         setFixedNeighbors(1, new int[]{0, 6, 2});
@@ -161,6 +167,12 @@ public class BoardBean {
         setFixedNeighbors(15, new int[]{14, 8});
     }
 
+    /**
+     * Fix the adjacent neighbors
+     *
+     * @param countryIndex         position of the own countries
+     * @param neighborCountryIndex position of the neighbors countries
+     */
     private void setFixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
         for (int i : neighborCountryIndex) {
             countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
@@ -170,8 +182,9 @@ public class BoardBean {
     //endregion
 
     /**
-     * Generates all Player with their respective personalities.
-     * Each computer opponent is randomly assigned a color from the color options.
+     * Generates all Player with their respective personalities. The current player can choose a color,
+     * the rest is randomly distributed
+     * (temporarily the current player is fixed)
      */
     private void generatePlayers() {
 
@@ -191,7 +204,7 @@ public class BoardBean {
     }
 
     /**
-     * Perform the player's move
+     * ----
      */
     public void executeTurn() {
         if (currentPhase == Phase.SETTINGPHASE) {
@@ -207,6 +220,11 @@ public class BoardBean {
         }
     }
 
+    /**
+     * ---
+     *
+     * @param selectedCountry
+     */
     public void executeUserTurn(Country selectedCountry) {
         if (currentPhase == Phase.SETTINGPHASE) {
             ArrayList<Country> destination = new ArrayList<>();
@@ -235,6 +253,11 @@ public class BoardBean {
         }
     }
 
+    /**
+     * indicates which country is attacking and which country is being attacked
+     *
+     * @param country
+     */
     private void setAttackAndDefendCountry(Country country) {
         if (this.currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
             this.setFirstSelectedCountry(country);
@@ -253,6 +276,11 @@ public class BoardBean {
         }
     }
 
+    /**
+     * determines the countries between which the soldiers should be able to move
+     *
+     * @param country
+     */
     private void setMovingCountry(Country country) {
         if (firstSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
             this.setFirstSelectedCountry(country);
@@ -265,6 +293,10 @@ public class BoardBean {
         }
     }
 
+
+    /**
+     * indicates the phases of the game: Set, attack and move
+     */
     public void moveToNextPhase() {
         Phase currentPhase = getCurrentPhase();
 
@@ -280,6 +312,9 @@ public class BoardBean {
         resetSelectedCountries();
     }
 
+    /**
+     * after the turn, the next player is taken here
+     */
     private void cyclePlayer() {
         int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
         players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
@@ -293,6 +328,9 @@ public class BoardBean {
         resetSelectedCountries();
     }
 
+    /**
+     * deselects the two selected countries
+     */
     public void resetSelectedCountries() {
         setFirstSelectedCountry(null);
         setSecondSelectedCountry(null);

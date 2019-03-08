@@ -12,17 +12,19 @@ import java.util.ArrayList;
 public interface IBehavior {
 
     /**
-     * Places all available Soldiers for this Player on the board
+     * Can be used to set soldiers on own country. Place as many soldiers as possible on the map
      */
     Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace);
 
     /**
-     * Selects country to be attacked and executes the attack itself.
+     * Can be used to attack other countries. Attack other countries as clever as possible,
+     * until the number of soldiers falls to 1.
      */
     Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries);
 
     /**
-     * Doesn't have to be called at the end of each turn. Can be used to move soldiers in between countries.
+     * Can be used to move own soldiers in between own countries. Move soldiers as clever as possible,
+     * as long as they are greater than 1.
      */
     Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries);
 }
