@@ -27,5 +27,6 @@ class BoardBeanTest {
             }
             assertEquals(BoardBean.START_SOLDIER_PER_PLAYER, soldierCount);
         }
+        assertEquals(BoardBean.COUNTRY_COUNT_GENERATION, testBoard.getCountries().size());
     }
 }
