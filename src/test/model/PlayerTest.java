@@ -1,7 +1,7 @@
 package model;
 
 import model.Behaviors.RandomBehavior;
-import model.Enum.ColorPlayer;
+import model.Enum.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,25 +16,45 @@ class PlayerTest {
     private Player testPlayer;
 
     @BeforeEach
-    void setUp() {
-        List<ColorPlayer> colorPlayer = new ArrayList<>();
-        colorPlayer.addAll(Arrays.asList(ColorPlayer.values()));
-        testPlayer = new Player(colorPlayer.remove(1), "testPlayer", new RandomBehavior());
+    public void setUp() {
+        List<PlayerColor> playerColors = new ArrayList<>();
+        playerColors.addAll(Arrays.asList(PlayerColor.values()));
+        testPlayer = new Player(playerColors.remove(1), "testPlayer", new RandomBehavior());
     }
 
     @Test
-    void testCalculateSoldiersToPlace() {
-        ArrayList<Country> owned = testPlayer.getOwnedCountries();
-        for (int i = 0; i < 15; i++) {
+    public void testCalculateSoldiersToPlace() {
+        addSoldiers(testPlayer.getOwnedCountries(), 1);
+        assertEquals(3, testPlayer.calculateSoldiersToPlace());
+
+        addSoldiers(testPlayer.getOwnedCountries(), 5);
+        assertEquals(3, testPlayer.calculateSoldiersToPlace());
+
+        addSoldiers(testPlayer.getOwnedCountries(), 10);
+        assertEquals(3, testPlayer.calculateSoldiersToPlace());
+
+        addSoldiers(testPlayer.getOwnedCountries(), 12);
+        assertEquals(4, testPlayer.calculateSoldiersToPlace());
+
+        addSoldiers(testPlayer.getOwnedCountries(), 12);
+        assertEquals(4, testPlayer.calculateSoldiersToPlace());
+
+        addSoldiers(testPlayer.getOwnedCountries(), 30);
+        assertEquals(10, testPlayer.calculateSoldiersToPlace());
+    }
+
+    @Test
+    public void testCalculateSoldiersToPlaceMin() {
+        //owned countries = 0
+        assertEquals(3, testPlayer.calculateSoldiersToPlace());
+    }
+
+    private void addSoldiers(ArrayList<Country> owned, int amountOfCountries){
+        owned.clear();
+
+        for (int i = 0; i < amountOfCountries; i++) {
             owned.add(new Country("test", 1, testPlayer));
         }
-        assertEquals(15 / Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace());
-    }
-
-    @Test
-    void testCalculateSoldiersToPlaceMin() {
-        //owned countries = 0
-        assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace());
     }
 
 }

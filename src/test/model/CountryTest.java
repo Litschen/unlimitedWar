@@ -1,7 +1,7 @@
 package model;
 
 import model.Behaviors.RandomBehavior;
-import model.Enum.ColorPlayer;
+import model.Enum.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +16,9 @@ class CountryTest {
     @BeforeEach
     void setUp() {
         invadingCountry = new Country("countryTest", BoardBean.START_SOLDIER_PER_PLAYER,
-                new Player(ColorPlayer.values()[(int)(Math.random()*ColorPlayer.values().length)], "test", new RandomBehavior()));
+                new Player(PlayerColor.values()[(int)(Math.random()*PlayerColor.values().length)], "test", new RandomBehavior()));
         defendingCountry = new Country("countryTest", BoardBean.START_SOLDIER_PER_PLAYER,
-                new Player(ColorPlayer.values()[(int)(Math.random()*ColorPlayer.values().length)], "test", new RandomBehavior()));
+                new Player(PlayerColor.values()[(int)(Math.random()*PlayerColor.values().length)], "test", new RandomBehavior()));
         defendingCountry.getNeighboringCountries().add(invadingCountry);
         invadingCountry.getNeighboringCountries().add(defendingCountry);
     }
