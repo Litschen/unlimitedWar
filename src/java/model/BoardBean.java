@@ -31,6 +31,7 @@ public class BoardBean {
     private Country secondSelectedCountry;
     private String modalToShow;
     private Phase currentPhase = Phase.SETTINGPHASE;
+    private List<PlayerColor> playerColor = new ArrayList<>();
     //endregion
 
     public BoardBean() {
@@ -38,7 +39,7 @@ public class BoardBean {
         countries = new ArrayList<>();
         generatePlayers();
         generateCountries();
-        if(currentPlayerIsUser()){
+        if (currentPlayerIsUser()) {
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
         }
 
@@ -63,12 +64,8 @@ public class BoardBean {
 
     public Country getCountryByName(String countryName) {
         for (Country country : this.countries) {
-            if (country.getName().equals(countryName)) {
-                return country;
-            }
-        }
-
-        return null;
+            if (country.getName().equals(countryName)) { return country; }
+        }return null;
     }
 
     public Player getCurrentPlayer() {
@@ -115,14 +112,15 @@ public class BoardBean {
         this.secondSelectedCountry = secondSelectedCountry;
     }
 
+    private int getPlayerColor() {return ((int) Math.random() * playerColor.size());}
+
 
     //endregion
 
     //region methods to generate countries & set their properties
 
     /**
-     * Generate Countries.
-     * The number of sold soldiers is displayed on each country
+     * Generate Countries about the number of Player.
      */
     private void generateCountries() {
         for (Player currentPlayer : players) {
@@ -194,16 +192,16 @@ public class BoardBean {
      * Each computer opponent is randomly assigned a color from the color options.
      */
     private void generatePlayers() {
-        //TODO modify to include User, all Behaviors and color selection
-        List<PlayerColor> playerColor = new ArrayList<>();
+
+
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
         this.currentPlayer = new Player(playerColor.remove(1), "Stalout", new UserBehavior());
         players.add(this.currentPlayer);
 
-        players.add(new Player(playerColor.remove((int) Math.random() * playerColor.size()), "LMao", new RandomBehavior()));
-        players.add(new Player(playerColor.remove((int) Math.random() * playerColor.size()), "Hotler", new RandomBehavior()));
-        players.add(new Player(playerColor.remove((int) Math.random() * playerColor.size()), "Darfolini", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
     }
 
     public boolean currentPlayerIsUser() {
@@ -307,7 +305,7 @@ public class BoardBean {
             nextPlayerIndex = 0;
         }
         currentPlayer = players.get(nextPlayerIndex);
-        if(currentPlayerIsUser()){
+        if (currentPlayerIsUser()) {
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
         }
         resetSelectedCountries();
