@@ -1,6 +1,6 @@
 package model.Enum;
 
-public enum ColorPlayer {
+public enum PlayerColor {
 
     RED, BLUE, GREEN, YELLOW
 

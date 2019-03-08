@@ -1,10 +1,8 @@
 package model;
 
-import model.Behaviors.AggressiveBehavior;
 import model.Behaviors.RandomBehavior;
-import model.Behaviors.StrategicBehavior;
 import model.Behaviors.UserBehavior;
-import model.Enum.ColorPlayer;
+import model.Enum.PlayerColor;
 import model.Enum.Phase;
 
 import java.io.File;
@@ -197,15 +195,15 @@ public class BoardBean {
      */
     private void generatePlayers() {
         //TODO modify to include User, all Behaviors and color selection
-        List<ColorPlayer> colorPlayer = new ArrayList<>();
-        colorPlayer.addAll(Arrays.asList(ColorPlayer.values()));
+        List<PlayerColor> playerColor = new ArrayList<>();
+        playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
-        this.currentPlayer = new Player(colorPlayer.remove(1), "Stalout", new UserBehavior());
+        this.currentPlayer = new Player(playerColor.remove(1), "Stalout", new UserBehavior());
         players.add(this.currentPlayer);
 
-        players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "LMao", new RandomBehavior()));
-        players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "Hotler", new RandomBehavior()));
-        players.add(new Player(colorPlayer.remove((int) Math.random() * colorPlayer.size()), "Darfolini", new RandomBehavior()));
+        players.add(new Player(playerColor.remove((int) Math.random() * playerColor.size()), "LMao", new RandomBehavior()));
+        players.add(new Player(playerColor.remove((int) Math.random() * playerColor.size()), "Hotler", new RandomBehavior()));
+        players.add(new Player(playerColor.remove((int) Math.random() * playerColor.size()), "Darfolini", new RandomBehavior()));
     }
 
     public boolean currentPlayerIsUser() {
