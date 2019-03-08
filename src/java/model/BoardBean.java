@@ -135,11 +135,11 @@ public class BoardBean {
             for (Country country : countries) {
                 country.setName(countryNames.remove(0));
             }
-            setNeighbors();
 
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();
         }
+        setNeighbors();
     }
 
     private void setNeighbors() {
