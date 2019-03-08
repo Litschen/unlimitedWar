@@ -46,22 +46,44 @@ aside {
     font: bold 24px 'Arial', sans-serif;
     height: 30px;
     width: 35px;
+    transition: all 0.3s ease;
 }
 
 .red {
     background-color: #dc3545;
 }
 
+.red-selected {
+    background-color: #FF5B6B;
+    box-shadow: 0 0 10px #dc3545 inset;
+}
+
 .blue {
     background-color: #007bff;
+}
+
+
+.blue-selected {
+    background-color: #26A1FF;
+    box-shadow: 0 0 10px #007bff inset;
 }
 
 .yellow {
     background-color: #ffc107;
 }
 
+.yellow-selected {
+    background-color: #FFE72D;
+    box-shadow: 0 0 10px #ffc107 inset;
+}
+
 .green {
     background-color: #28a745;
+}
+
+.green-selected {
+    background-color: #4ECD6B;
+    box-shadow: 0 0 10px #28a745 inset;
 }
 
 .country {
