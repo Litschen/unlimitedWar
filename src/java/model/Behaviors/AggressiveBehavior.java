@@ -10,7 +10,7 @@ public class AggressiveBehavior implements IBehavior {
 
 
     /**
-     *
+     *Computer player who puts as many soldiers as possible on the map
      * @param allCountries
      * @param ownedCountries
      * @param soldiersToPlace
@@ -21,6 +21,7 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
+     * Computer player who attacks as often as possible
      * @param allCountries
      * @param ownedCountries
      */
@@ -30,6 +31,7 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
+     * Computer player who moves the soldiers as often as possible
      * @param allCountries
      * @param ownedCountries
      */
