@@ -10,10 +10,12 @@ public class AggressiveBehavior implements IBehavior {
 
 
     /**
-     *Computer player who puts as many soldiers as possible on the map
-     * @param allCountries
-     * @param ownedCountries
-     * @param soldiersToPlace
+     * puts as many soldiers as possible on the map
+     *
+     * @param allCountries all countries in the game
+     * @param ownedCountries countries from current player
+     * @param soldiersToPlace number of soldiers who can the current player set
+     * @return next Phase: attack
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
@@ -21,9 +23,11 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
-     * Computer player who attacks as often as possible
-     * @param allCountries
-     * @param ownedCountries
+     * attacks as often as possible
+     *
+     * @param allCountries all countries in the game
+     * @param ownedCountries countries from current player
+     * @return next Phase: move
      */
     @Override
     public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
@@ -31,9 +35,11 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
-     * Computer player who moves the soldiers as often as possible
-     * @param allCountries
-     * @param ownedCountries
+     * moves the soldiers as often as possible
+     *
+     * @param allCountries all countries in the game
+     * @param ownedCountries countries from current player
+     * @return next Phase: set
      */
     @Override
     public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
