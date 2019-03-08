@@ -235,7 +235,7 @@ public class BoardBean {
         }
     }
 
-    public void setAttackAndDefendCountry(Country country) {
+    private void setAttackAndDefendCountry(Country country) {
         if (this.currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
             this.setFirstSelectedCountry(country);
         } else {
@@ -253,7 +253,7 @@ public class BoardBean {
         }
     }
 
-    public void setMovingCountry(Country country) {
+    private void setMovingCountry(Country country) {
         if (firstSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
             this.setFirstSelectedCountry(country);
         } else if (secondSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country)) {
@@ -280,7 +280,7 @@ public class BoardBean {
         resetSelectedCountries();
     }
 
-    public void cyclePlayer() {
+    private void cyclePlayer() {
         int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
         players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
         if (nextPlayerIndex >= players.size()) {
