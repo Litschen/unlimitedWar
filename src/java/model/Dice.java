@@ -29,6 +29,10 @@ public class Dice {
      * @return int array of results sorted descending
      */
     public static int[] roll(int amountOfDice) {
+        if (amountOfDice < 0) {
+            throw new IllegalArgumentException("amount of dice has to be > 0");
+        }
+
         List<Integer> dices = new ArrayList<>();
         int i = 0;
         while (i < amountOfDice) {

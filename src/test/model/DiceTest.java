@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DiceTest {
@@ -44,8 +45,8 @@ class DiceTest {
 
     @Test
     public void testRollNegativeAmountOfDices() {
-        diceResults = Dice.roll(-5);
-        assertEquals(0, diceResults.length);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> Dice.roll(-5));
+        assertEquals("amount of dice has to be > 0", exception.getMessage());
     }
 
     // ---------- roll(int min, int max) ----------
@@ -60,7 +61,7 @@ class DiceTest {
         Arrays.sort(diceResults);
 
         assertEquals(min, diceResults[0]);
-        assertEquals(max, diceResults[diceResults.length -1]);
+        assertEquals(max, diceResults[diceResults.length - 1]);
     }
 
     @Test
@@ -82,10 +83,14 @@ class DiceTest {
 
     @Test
     public void testRollNegativeRange() {
-        // TODO
         int result;
         result = Dice.roll(-1, -15);
-        result = Dice.roll(1, -20);
+        assertTrue(result <= -1 && result >= -15);
+
+        result = Dice.roll(0, -20);
+        assertTrue(result <= 0 && result >= -20);
+
         result = Dice.roll(-1, 20);
+        assertTrue(result >= -1 && result <= 20);
     }
 }
