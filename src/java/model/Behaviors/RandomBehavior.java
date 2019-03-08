@@ -20,16 +20,18 @@ public class RandomBehavior implements IBehavior {
     private final static int MOVEWILLINGNESS = 8;
     //end region
 
+
     /**
-     * Places all available Soldiers for this Player on the board
+     * Can be used to set soldiers on own country. Place random soldiers on the map
      *
-     * @param allCountries on the board
-     * @param ownedCountries by the current Player
-     * @param soldiersToPlace
+     * @param allCountries    all countries in the game
+     * @param ownedCountries  countries from current player
+     * @param soldiersToPlace number of soldiers which the current player places
+     * @return next Phase: attack
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
-        while(soldiersToPlace > 0){
+        while (soldiersToPlace > 0) {
             Country country = ownedCountries.get(ThreadLocalRandom.current()
                     .nextInt(0, ownedCountries.size()));
             int placedSoldiers = ThreadLocalRandom.current()
@@ -42,24 +44,25 @@ public class RandomBehavior implements IBehavior {
     }
 
     /**
-     * Selects country to be attacked and executes the attack itself. Might need to change signature
+     * Can be used to attack other countries. Attack countries random,
+     * until the number of soldiers falls to 1.
      *
-     * @param allCountries on the board
-     * @param ownedCountries by current Player
+     * @param allCountries   all countries in the game
+     * @param ownedCountries countries from current player
+     * @return next Phase: move
      */
     @Override
     public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-        while(willAttack()){
+        while (willAttack()) {
             Collections.shuffle(ownedCountries);
             Country selectedCountry = ownedCountries.get(Dice.roll(0, ownedCountries.size() - 1));
-            for(Country targetCountry : selectedCountry.getNeighboringCountries()){
+            for (Country targetCountry : selectedCountry.getNeighboringCountries()) {
                 try {
 
-                while(willContinueAttack() && selectedCountry.canInvade(targetCountry))
-                {
-                    int attackerDice = selectedCountry.maxAmountDiceThrowsAttacker();
-                    selectedCountry.invade(targetCountry, attackerDice, targetCountry.amountDiceThrowsDefender(attackerDice));
-                }
+                    while (willContinueAttack() && selectedCountry.canInvade(targetCountry)) {
+                        int attackerDice = selectedCountry.maxAmountDiceThrowsAttacker();
+                        selectedCountry.invade(targetCountry, attackerDice, targetCountry.amountDiceThrowsDefender(attackerDice));
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -68,24 +71,27 @@ public class RandomBehavior implements IBehavior {
         return Phase.MOVINGPHASE;
     }
 
+
     /**
-     * Doesn't have to be called at the end of each turn. Can be used to move soldiers in between countries.
+     * Can be used to move own soldiers in between own countries. Move own solders random,
+     * as long as they are greater than 1.
      *
-     * @param allCountries on the board
-     * @param ownedCountries by current Player
+     * @param allCountries   all countries in the game
+     * @param ownedCountries countries from current player
+     * @return next Phase: set
      */
     @Override
     public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
         boolean hasMovedSoldiers = false;
-        while(willMoveSoldiers() && !hasMovedSoldiers){
+        while (willMoveSoldiers() && !hasMovedSoldiers) {
             Collections.shuffle(ownedCountries);
             Country selectedCountry = ownedCountries.get(Dice.roll(0, ownedCountries.size() - 1));
-            if(selectedCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY){
+            if (selectedCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
                 Country selectedNeighbor = selectedCountry.getNeighboringCountries().get(Dice.roll(0,
                         selectedCountry.getNeighboringCountries().size() - 1));
-                if(selectedCountry.getOwner().getOwnedCountries().contains(selectedNeighbor)){
+                if (selectedCountry.getOwner().getOwnedCountries().contains(selectedNeighbor)) {
                     selectedCountry.shiftSoldiers(Dice.roll(1, selectedCountry.getSoldiersCount() -
-                            Country.MIN_SOLDIERS_TO_STAY),selectedNeighbor);
+                            Country.MIN_SOLDIERS_TO_STAY), selectedNeighbor);
                     hasMovedSoldiers = true;
                 }
             }
@@ -94,18 +100,26 @@ public class RandomBehavior implements IBehavior {
         return Phase.SETTINGPHASE;
     }
 
-    private boolean willAttack(){
+    /**
+     * @return true if dice eyes (between 1 and 10) are fewer than the value of aggressiveness
+     */
+    private boolean willAttack() {
         return Dice.roll(1, 10) <= AGGRESSIVNESS;
     }
-    private boolean willContinueAttack(){
+
+    /**
+     * @return true if dice eyes (between 1 and 10) are fewer than the value of stubbornness
+     */
+    private boolean willContinueAttack() {
         return Dice.roll(1, 10) <= STUBORNESS;
     }
 
-    private boolean willMoveSoldiers(){
+    /**
+     * @return true if dice eyes (between 1 and 10) are fewer than the value of move willingness
+     */
+    private boolean willMoveSoldiers() {
         return Dice.roll(1, 10) <= MOVEWILLINGNESS;
     }
-
-
 
 
 }

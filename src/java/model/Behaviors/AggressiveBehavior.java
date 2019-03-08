@@ -10,11 +10,11 @@ public class AggressiveBehavior implements IBehavior {
 
 
     /**
-     * puts as many soldiers as possible on the map
+     * Can be used to set soldiers on own country. Place as many soldiers as possible on the map
      *
-     * @param allCountries all countries in the game
-     * @param ownedCountries countries from current player
-     * @param soldiersToPlace number of soldiers who can the current player set
+     * @param allCountries    all countries in the game
+     * @param ownedCountries  countries from current player
+     * @param soldiersToPlace number of soldiers which the current player places
      * @return next Phase: attack
      */
     @Override
@@ -23,9 +23,10 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
-     * attacks as often as possible
+     * Can be used to attack other countries. Attack as often as possible,
+     * until the number of soldiers falls to 1.
      *
-     * @param allCountries all countries in the game
+     * @param allCountries   all countries in the game
      * @param ownedCountries countries from current player
      * @return next Phase: move
      */
@@ -35,9 +36,10 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
-     * moves the soldiers as often as possible
+     * Can be used to move own soldiers in between own countries. Move the soldiers as often as possible,
+     * as long as they are greater than 1.
      *
-     * @param allCountries all countries in the game
+     * @param allCountries   all countries in the game
      * @param ownedCountries countries from current player
      * @return next Phase: set
      */
