@@ -54,18 +54,8 @@ public class BoardBean {
         return countries;
     }
 
-    private int getDiceCount(int soldiersCount) {
-        return soldiersCount >= 3 ? 3 : soldiersCount;
-    }
-
     public Country getCountryById(int id) {
         return this.countries.get(id);
-    }
-
-    public Country getCountryByName(String countryName) {
-        for (Country country : this.countries) {
-            if (country.getName().equals(countryName)) { return country; }
-        }return null;
     }
 
     public Player getCurrentPlayer() {
@@ -96,16 +86,8 @@ public class BoardBean {
         return defendDiceCount;
     }
 
-    public Country getFirstSelectedCountry() {
-        return firstSelectedCountry;
-    }
-
     public void setFirstSelectedCountry(Country firstSelectedCountry) {
         this.firstSelectedCountry = firstSelectedCountry;
-    }
-
-    public Country getSecondSelectedCountry() {
-        return secondSelectedCountry;
     }
 
     public void setSecondSelectedCountry(Country secondSelectedCountry) {
