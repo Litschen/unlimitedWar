@@ -38,15 +38,16 @@ aside {
 }
 
 .country {
-    border: none;
+    width: 35px;
+    height: 30px;
     position: absolute;
     padding: 2px 0 3px 0;
-    text-align: center;
     box-sizing: content-box;
     font: bold 24px 'Arial', sans-serif;
-    height: 30px;
-    width: 35px;
-    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: background 0.3s ease;
 }
 
 .red {
