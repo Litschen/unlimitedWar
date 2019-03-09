@@ -11,15 +11,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(
-        name = "GameController",
-        urlPatterns = "/Game/*")
+@WebServlet(name = "GameController", urlPatterns = "/Game/*")
 public class GameController extends HttpServlet {
 
     private BoardBean board;
 
-    //region static variables
-    private final static String ATTACKER_KEY = "attackDice";
+    //region path & param variables
+    private final String PATH_ATTACK = "/attack";
+    private final String PARAM_ATTACK_DICE = "attackDice";
+    private final String PARAM_ROLL = "roll";
+    private final String PARAM_END = "end";
+    private final String PARAM_CANCEL = "cancel";
+    private final String PARAM_COUNTRY = "country";
+    private final String PARAM_NEXT_TURN = "nextTurn";
     //enddregion
 
     /**
@@ -61,19 +65,19 @@ public class GameController extends HttpServlet {
         try {
             board = (BoardBean) request.getSession().getAttribute("board");
             if (board != null) {
-                if (request.getParameter("nextTurn") != null && request.getParameter("nextTurn").equals("execute")) {
+                if (request.getParameter(PARAM_NEXT_TURN) != null) {
                     board.executeTurn();
-                } else if (request.getParameter("end") != null) {
+                } else if (request.getParameter(PARAM_END) != null) {
                     board.moveToNextPhase();
-                } else if(board.currentPlayerIsUser()){
-                    Country chosenCountry = this.extractSelectedCountry(request, response);
+                } else if (board.currentPlayerIsUser()) {
+                    Country chosenCountry = extractSelectedCountry(request, response);
                     String path = request.getPathInfo();
 
                     // handle attack modal
-                    if (path.equals("/attack") && request.getParameter("roll") != null) {
-                        int attackDiceCount = request.getParameterMap().get(ATTACKER_KEY).length;
+                    if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_ROLL) != null) {
+                        int attackDiceCount = request.getParameterMap().get(PARAM_ATTACK_DICE).length;
                         board.getCurrentPlayer().setAttackDiceCount(attackDiceCount);
-                    } else if (path.equals("/attack") && request.getParameter("cancel") != null) {
+                    } else if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_CANCEL) != null) {
                         board.resetSelectedCountries();
                     }
                     // handle phase
@@ -88,7 +92,7 @@ public class GameController extends HttpServlet {
 
     private Country extractSelectedCountry(HttpServletRequest request, HttpServletResponse response) {
         try {
-            int countryIndex = Integer.parseInt(request.getParameter("country"));
+            int countryIndex = Integer.parseInt(request.getParameter(PARAM_COUNTRY));
             return board.getCountryById(countryIndex);
         } catch (NumberFormatException e) {
             e.printStackTrace();

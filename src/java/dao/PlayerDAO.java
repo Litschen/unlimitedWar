@@ -18,6 +18,7 @@ public class PlayerDAO {
     private String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
     private String user = "root";
     private String pw = "rootroot";
+    private String jdbcDriver = "com.mysql.jdbc.Driver";
 
     private final static String INSERT_PLAYER_QUERY = "INSERT INTO player (username, email, passwordUser) VALUES(?, ?, ?);";
     private final static String SELECT_PLAYER_QUERY = "SELECT username, email, passwordUser FROM player WHERE email = ?;";
@@ -35,7 +36,7 @@ public class PlayerDAO {
 
             int row = st.executeUpdate();
             // TODO MS3 /F0100/
-            this.closeConnection();
+            closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +50,7 @@ public class PlayerDAO {
             createConnection(SELECT_PLAYER_QUERY, Arrays.asList(mail));
             rs = st.executeQuery();
             // TODO MS3 /F0111/
-            this.closeConnection();
+            closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +68,7 @@ public class PlayerDAO {
             createConnection(UPDATE_PLAYER_QUERY, Arrays.asList(username, mailNew, password, mailOld));
             int rows = st.executeUpdate();
             // TODO MS3 /F0130/
-            this.closeConnection();
+            closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -81,7 +82,7 @@ public class PlayerDAO {
             createConnection(DELETE_PLAYER_QUERY, Arrays.asList(mail));
             rs = st.executeQuery();
             // TODO MS3 /F0100/
-            this.closeConnection();
+            closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -94,7 +95,7 @@ public class PlayerDAO {
      * @throws ClassNotFoundException
      */
     private void createConnection(String sql, @NotNull List<String> args) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName(jdbcDriver);
         con = DriverManager.getConnection(dbURL, user, pw);
         st = con.prepareStatement(sql);
 
@@ -103,7 +104,7 @@ public class PlayerDAO {
         }
     }
 
-    /** Clode connection with the Database
+    /** Close connection to database
      * @throws SQLException
      */
     private void closeConnection() throws SQLException {

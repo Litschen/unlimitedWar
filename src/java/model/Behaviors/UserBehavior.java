@@ -70,7 +70,9 @@ public class UserBehavior implements IBehavior {
         Country destinationCountry = selectedCountries.get(1);
         sourceCountry.shiftSoldiers(1, destinationCountry);
 
-        return Phase.MOVINGPHASE;
-
+        if (sourceCountry.getSoldiersCount() > 1) {
+            return Phase.MOVINGPHASE;
+        }
+        return Phase.AIPHASE;
     }
 }

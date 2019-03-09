@@ -12,6 +12,7 @@ public class Country {
     public static final int ABSOLUTE_MIN_AMOUNT_THROWS = 1;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
+    public static final String CALCULATION_ERROR = "could not calculate maxAttackerDiceCount";
     //endregion
 
     //region data fields
@@ -61,11 +62,12 @@ public class Country {
 
     /**
      * Checks if the parameter country is a neighbor of the country from which this method was called.
+     *
      * @param country to check if is neighbor
      * @return true if country param is a neighbor otherwise false.
      */
     public boolean isBordering(@NotNull Country country) {
-        return this.neighboringCountries.contains(country);
+        return neighboringCountries.contains(country);
     }
 
 
@@ -79,21 +81,21 @@ public class Country {
      * @param defendDiceCount amount of Dices the defender is using to defend
      */
     public void invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
-        if (this.canInvade(defenderCountry)) {
+        if (canInvade(defenderCountry)) {
             int[] attackerRolls = Dice.roll(attackDiceCount);
             int[] defenderRolls = Dice.roll(defendDiceCount);
 
-            Casualties casualties = this.calculateCasualties(attackerRolls, defenderRolls);
-            this.removeSoldiers(casualties.getCasualtiesAttacker());
+            Casualties casualties = calculateCasualties(attackerRolls, defenderRolls);
+            removeSoldiers(casualties.getCasualtiesAttacker());
             defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
 
             if (defenderCountry.getSoldiersCount() <= 0) {
                 // switch owner of country
                 defenderCountry.getOwner().getOwnedCountries().remove(defenderCountry);
-                defenderCountry.setOwner(this.owner);
-                this.owner.getOwnedCountries().add(defenderCountry);
+                defenderCountry.setOwner(owner);
+                owner.getOwnedCountries().add(defenderCountry);
 
-                this.shiftSoldiers(attackDiceCount, defenderCountry);
+                shiftSoldiers(attackDiceCount, defenderCountry);
             }
         }
     }
@@ -101,27 +103,29 @@ public class Country {
 
     /**
      * Calculates the maximum of Dices the Attacker can use to invade from this country
+     *
      * @return maximum int of Dices
      * @throws Exception if the amount of Dices is below minimum allowed < ABSOLUTE_MIN_AMOUNT_THROWS
      */
     public int maxAmountDiceThrowsAttacker() throws Exception {
-        int count = this.getSoldiersCount() - MIN_SOLDIERS_TO_STAY;
+        int count = getSoldiersCount() - MIN_SOLDIERS_TO_STAY;
         if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
             return count > ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER ? ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER : count;
         } else {
-            throw new Exception("could not calculate maxAttackerDiceCount");
+            throw new Exception(CALCULATION_ERROR);
         }
     }
 
 
     /**
      * Calculates the amount of dices the defender HAS to use to defend his country during an invasion
+     *
      * @param amountAttacker dices the attacker is using to invade
      * @return amount of dices to use
      */
     public int amountDiceThrowsDefender(int amountAttacker) {
         int amountDefender = amountAttacker - 1;
-        int soldiers = this.getSoldiersCount();
+        int soldiers = getSoldiersCount();
 
         if (amountDefender <= ABSOLUTE_MIN_AMOUNT_THROWS) {
             amountDefender = ABSOLUTE_MIN_AMOUNT_THROWS;
@@ -133,6 +137,7 @@ public class Country {
 
     /**
      * Removes the specified amount of Soldiers from this country
+     *
      * @param amountOfSoldiers the be removed
      */
     public void removeSoldiers(int amountOfSoldiers) {
@@ -142,6 +147,7 @@ public class Country {
 
     /**
      * Calculates the casualties inflicted upon the defender and attacker during an country invasion
+     *
      * @param diceThrowsAttacker int[] of the dices thrown by the attacker
      * @param diceThrowsDefender int[] of the dices thrown by the defender
      * @return Casualties object with saved casualties inflicted upon both sides
@@ -161,24 +167,26 @@ public class Country {
 
     /**
      * Checks of the specified country can be invaded from calling country.
+     *
      * @param country to check if can be invaded
      * @return true if invasion is possible
      */
     public boolean canInvade(Country country) {
-        return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country) &&
-                this.owner != country.getOwner();
+        return soldiersCount >= MIN_SOLDIERS_TO_INVADE && isBordering(country) &&
+                owner != country.getOwner();
     }
 
     /**
      * Shifts the specified amount of soldiers from calling country to destination param country
+     *
      * @param amountSoldiers to be shifted
-     * @param destination country the soldiers should be shifted to
+     * @param destination    country the soldiers should be shifted to
      * @return true if shifted successful
      */
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
         boolean canShift = amountSoldiers < getSoldiersCount() && amountSoldiers > 0;
         if (canShift) {
-            this.setSoldiersCount(this.getSoldiersCount() - amountSoldiers);
+            setSoldiersCount(getSoldiersCount() - amountSoldiers);
             destination.setSoldiersCount(destination.getSoldiersCount() + amountSoldiers);
         }
         return canShift;
