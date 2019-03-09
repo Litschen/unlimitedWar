@@ -232,7 +232,10 @@ public class BoardBean {
                 ArrayList<Country> countryList = new ArrayList<>();
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
-                currentPlayer.getBehavior().moveSoldiers(countryList, currentPlayer.getOwnedCountries());
+                Phase finishMove = currentPlayer.getBehavior().moveSoldiers(countryList, currentPlayer.getOwnedCountries());
+                if (finishMove != Phase.MOVINGPHASE){
+                    setFlag(Flag.NONE);
+                }
             }
         }
     }
