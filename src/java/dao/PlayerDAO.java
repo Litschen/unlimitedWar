@@ -104,7 +104,7 @@ public class PlayerDAO {
         }
     }
 
-    /** Clode connection with the Database
+    /** Close connection to database
      * @throws SQLException
      */
     private void closeConnection() throws SQLException {
