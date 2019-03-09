@@ -18,6 +18,7 @@ public class PlayerDAO {
     private String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
     private String user = "root";
     private String pw = "rootroot";
+    private String jdbcDriver = "com.mysql.jdbc.Driver";
 
     private final static String INSERT_PLAYER_QUERY = "INSERT INTO player (username, email, passwordUser) VALUES(?, ?, ?);";
     private final static String SELECT_PLAYER_QUERY = "SELECT username, email, passwordUser FROM player WHERE email = ?;";
@@ -94,7 +95,7 @@ public class PlayerDAO {
      * @throws ClassNotFoundException
      */
     private void createConnection(String sql, @NotNull List<String> args) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName(jdbcDriver);
         con = DriverManager.getConnection(dbURL, user, pw);
         st = con.prepareStatement(sql);
 

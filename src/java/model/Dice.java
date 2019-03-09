@@ -10,6 +10,7 @@ public class Dice {
     //region static variables
     public static final int MAX_VALUE = 6;
     public static final int MIN_VALUE = 1;
+    public static final String INVALID_AMOUNT = "amount of dice has to be > 0";
     //endregion
 
     /**
@@ -30,14 +31,12 @@ public class Dice {
      */
     public static int[] roll(int amountOfDice) {
         if (amountOfDice < 0) {
-            throw new IllegalArgumentException("amount of dice has to be > 0");
+            throw new IllegalArgumentException(INVALID_AMOUNT);
         }
 
         List<Integer> dices = new ArrayList<>();
-        int i = 0;
-        while (i < amountOfDice) {
+        for (int i = 0; i < amountOfDice; i++) {
             dices.add(Dice.roll());
-            i++;
         }
         Collections.sort(dices);
         Collections.reverse(dices);

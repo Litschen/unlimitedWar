@@ -12,6 +12,7 @@ public class Country {
     public static final int ABSOLUTE_MIN_AMOUNT_THROWS = 1;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER = 3;
     public static final int ABSOLUTE_MAX_AMOUNT_THROWS_DEFENDER = 2;
+    public static final String CALCULATION_ERROR = "could not calculate maxAttackerDiceCount";
     //endregion
 
     //region data fields
@@ -61,6 +62,7 @@ public class Country {
 
     /**
      * Checks if the parameter country is a neighbor of the country from which this method was called.
+     *
      * @param country to check if is neighbor
      * @return true if country param is a neighbor otherwise false.
      */
@@ -101,6 +103,7 @@ public class Country {
 
     /**
      * Calculates the maximum of Dices the Attacker can use to invade from this country
+     *
      * @return maximum int of Dices
      * @throws Exception if the amount of Dices is below minimum allowed < ABSOLUTE_MIN_AMOUNT_THROWS
      */
@@ -109,13 +112,14 @@ public class Country {
         if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
             return count > ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER ? ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER : count;
         } else {
-            throw new Exception("could not calculate maxAttackerDiceCount");
+            throw new Exception(CALCULATION_ERROR);
         }
     }
 
 
     /**
      * Calculates the amount of dices the defender HAS to use to defend his country during an invasion
+     *
      * @param amountAttacker dices the attacker is using to invade
      * @return amount of dices to use
      */
@@ -133,6 +137,7 @@ public class Country {
 
     /**
      * Removes the specified amount of Soldiers from this country
+     *
      * @param amountOfSoldiers the be removed
      */
     public void removeSoldiers(int amountOfSoldiers) {
@@ -142,6 +147,7 @@ public class Country {
 
     /**
      * Calculates the casualties inflicted upon the defender and attacker during an country invasion
+     *
      * @param diceThrowsAttacker int[] of the dices thrown by the attacker
      * @param diceThrowsDefender int[] of the dices thrown by the defender
      * @return Casualties object with saved casualties inflicted upon both sides
@@ -161,6 +167,7 @@ public class Country {
 
     /**
      * Checks of the specified country can be invaded from calling country.
+     *
      * @param country to check if can be invaded
      * @return true if invasion is possible
      */
@@ -171,8 +178,9 @@ public class Country {
 
     /**
      * Shifts the specified amount of soldiers from calling country to destination param country
+     *
      * @param amountSoldiers to be shifted
-     * @param destination country the soldiers should be shifted to
+     * @param destination    country the soldiers should be shifted to
      * @return true if shifted successful
      */
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
