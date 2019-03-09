@@ -68,12 +68,9 @@
     <% session.setAttribute("board", board); %>
     <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
 </form>
-<c:if test="${board.flag == Flag.ATTACK}">
-    <%@include file="modals/attackRoll.jsp" %>
-</c:if>
-<c:if test="${board.flag == Flag.GAME_WIN || board.flag == Flag.GAME_LOSE}">
-    <%@include file="modals/resultModal.jsp" %>
-</c:if>
+
+<%@include file="modals/attackRoll.jsp" %>
+<%@include file="modals/resultModal.jsp" %>
 <%@include file="snippets/footer.jsp" %>
 </body>
 </html>
