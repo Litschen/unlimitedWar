@@ -1,6 +1,7 @@
 <%@ page import="model.Player" %>
 <%@ page import="model.Country" %>
 <%@page import="model.Enum.Phase" %>
+<%@page import="model.Enum.Flag" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.BoardBean" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -44,7 +45,7 @@
         <c:if test="${board.currentPhase == Phase.ATTACKPHASE}">
             <button type="submit" name="end" class="btn btn-primary">End Attack Phase</button>
         </c:if>
-        <c:if test="${board.currentPhase == Phase.MOVINGPHASE && board.modalToShow == 'move'}">
+        <c:if test="${board.currentPhase == Phase.MOVINGPHASE && board.flag == Flag.MOVE}">
             <button type="submit" name="move" class="btn btn-primary">Move a Soldier</button>
         </c:if>
         <c:if test="${board.currentPhase == Phase.MOVINGPHASE}">
@@ -67,10 +68,10 @@
     <% session.setAttribute("board", board); %>
     <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
 </form>
-<c:if test="${board.modalToShow == 'attack'}">
+<c:if test="${board.flag == Flag.ATTACK}">
     <%@include file="modals/attackRoll.jsp" %>
 </c:if>
-<c:if test="${board.modalToShow == 'win' || board.modalToShow == 'lose'}">
+<c:if test="${board.flag == Flag.GAME_WIN || board.flag == Flag.GAME_LOSE}">
     <%@include file="modals/resultModal.jsp" %>
 </c:if>
 <%@include file="snippets/footer.jsp" %>

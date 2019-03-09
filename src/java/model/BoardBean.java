@@ -2,6 +2,7 @@ package model;
 
 import model.Behaviors.RandomBehavior;
 import model.Behaviors.UserBehavior;
+import model.Enum.Flag;
 import model.Enum.PlayerColor;
 import model.Enum.Phase;
 
@@ -18,6 +19,7 @@ public class BoardBean {
     public final static int START_SOLDIER_PER_PLAYER = 12;
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
+    public final static String RESOURCE_FILE = "countryNames.txt";
     //endregion
 
     //region data fields
@@ -29,7 +31,7 @@ public class BoardBean {
     private int defendDiceCount;
     private Country firstSelectedCountry;
     private Country secondSelectedCountry;
-    private String modalToShow;
+    private Flag flag;
     private Phase currentPhase = Phase.SETTINGPHASE;
     private List<PlayerColor> playerColor = new ArrayList<>();
     //endregion
@@ -42,7 +44,7 @@ public class BoardBean {
         if (currentPlayerIsUser()) {
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
         }
-
+        setFlag(Flag.NONE);
     }
 
     //region getter setter
@@ -62,12 +64,12 @@ public class BoardBean {
         return currentPlayer;
     }
 
-    public String getModalToShow() {
-        return modalToShow;
+    public Flag getFlag() {
+        return flag;
     }
 
-    public void setModalToShow(String modalToShow) {
-        this.modalToShow = modalToShow;
+    public void setFlag(Flag flag) {
+        this.flag = flag;
     }
 
     public Phase getCurrentPhase() {
@@ -130,7 +132,7 @@ public class BoardBean {
     private void setCountryAttributes() {
         try {
             List<String> countryNames = Files.readAllLines(
-                    new File(getClass().getClassLoader().getResource("countryNames.txt").getPath()).toPath(), Charset.defaultCharset());
+                    new File(getClass().getClassLoader().getResource(RESOURCE_FILE).getPath()).toPath(), Charset.defaultCharset());
             Collections.shuffle(countryNames);
             for (Country country : countries) {
                 country.setName(countryNames.remove(0));
@@ -243,7 +245,7 @@ public class BoardBean {
         }
 
         if (firstSelectedCountry != null && secondSelectedCountry != null && firstSelectedCountry.canInvade(secondSelectedCountry)) {
-            this.setModalToShow("attack");
+            this.setFlag(Flag.ATTACK);
             try {
                 this.attackDiceCount = this.firstSelectedCountry.maxAmountDiceThrowsAttacker();
                 this.defendDiceCount = this.secondSelectedCountry.amountDiceThrowsDefender(this.attackDiceCount);
@@ -261,7 +263,7 @@ public class BoardBean {
         }
 
         if (firstSelectedCountry != null && secondSelectedCountry != null) {
-            modalToShow = "move";
+            setFlag(Flag.MOVE);
         }
     }
 
@@ -296,6 +298,6 @@ public class BoardBean {
     public void resetSelectedCountries() {
         setFirstSelectedCountry(null);
         setSecondSelectedCountry(null);
-        setModalToShow("");
+        setFlag(Flag.NONE);
     }
 }
