@@ -66,7 +66,7 @@ public class GameController extends HttpServlet {
                 } else if (request.getParameter("end") != null) {
                     board.moveToNextPhase();
                 } else if(board.currentPlayerIsUser()){
-                    Country chosenCountry = this.extractSelectedCountry(request, response);
+                    Country chosenCountry = extractSelectedCountry(request, response);
                     String path = request.getPathInfo();
 
                     // handle attack modal

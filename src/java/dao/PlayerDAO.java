@@ -35,7 +35,7 @@ public class PlayerDAO {
 
             int row = st.executeUpdate();
             // TODO MS3 /F0100/
-            this.closeConnection();
+            closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class PlayerDAO {
             createConnection(SELECT_PLAYER_QUERY, Arrays.asList(mail));
             rs = st.executeQuery();
             // TODO MS3 /F0111/
-            this.closeConnection();
+            closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -67,7 +67,7 @@ public class PlayerDAO {
             createConnection(UPDATE_PLAYER_QUERY, Arrays.asList(username, mailNew, password, mailOld));
             int rows = st.executeUpdate();
             // TODO MS3 /F0130/
-            this.closeConnection();
+            closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -81,7 +81,7 @@ public class PlayerDAO {
             createConnection(DELETE_PLAYER_QUERY, Arrays.asList(mail));
             rs = st.executeQuery();
             // TODO MS3 /F0100/
-            this.closeConnection();
+            closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }

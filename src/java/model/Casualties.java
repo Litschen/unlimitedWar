@@ -34,14 +34,14 @@ class Casualties {
      * increase casualties of the attacker by one
      */
     void addCasualtiesAttacker() {
-        this.casualtiesAttacker += 1;
+        casualtiesAttacker += 1;
     }
 
     /**
      * Increase the casualties of the defender by one
      */
     void addCasualtiesDefender() {
-        this.casualtiesDefender += 1;
+        casualtiesDefender += 1;
     }
 
 

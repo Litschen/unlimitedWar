@@ -65,7 +65,7 @@ public class Country {
      * @return true if country param is a neighbor otherwise false.
      */
     public boolean isBordering(@NotNull Country country) {
-        return this.neighboringCountries.contains(country);
+        return neighboringCountries.contains(country);
     }
 
 
@@ -79,21 +79,21 @@ public class Country {
      * @param defendDiceCount amount of Dices the defender is using to defend
      */
     public void invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
-        if (this.canInvade(defenderCountry)) {
+        if (canInvade(defenderCountry)) {
             int[] attackerRolls = Dice.roll(attackDiceCount);
             int[] defenderRolls = Dice.roll(defendDiceCount);
 
-            Casualties casualties = this.calculateCasualties(attackerRolls, defenderRolls);
-            this.removeSoldiers(casualties.getCasualtiesAttacker());
+            Casualties casualties = calculateCasualties(attackerRolls, defenderRolls);
+            removeSoldiers(casualties.getCasualtiesAttacker());
             defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
 
             if (defenderCountry.getSoldiersCount() <= 0) {
                 // switch owner of country
                 defenderCountry.getOwner().getOwnedCountries().remove(defenderCountry);
-                defenderCountry.setOwner(this.owner);
-                this.owner.getOwnedCountries().add(defenderCountry);
+                defenderCountry.setOwner(owner);
+                owner.getOwnedCountries().add(defenderCountry);
 
-                this.shiftSoldiers(attackDiceCount, defenderCountry);
+                shiftSoldiers(attackDiceCount, defenderCountry);
             }
         }
     }
@@ -105,7 +105,7 @@ public class Country {
      * @throws Exception if the amount of Dices is below minimum allowed < ABSOLUTE_MIN_AMOUNT_THROWS
      */
     public int maxAmountDiceThrowsAttacker() throws Exception {
-        int count = this.getSoldiersCount() - MIN_SOLDIERS_TO_STAY;
+        int count = getSoldiersCount() - MIN_SOLDIERS_TO_STAY;
         if (count >= ABSOLUTE_MIN_AMOUNT_THROWS) {
             return count > ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER ? ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER : count;
         } else {
@@ -121,7 +121,7 @@ public class Country {
      */
     public int amountDiceThrowsDefender(int amountAttacker) {
         int amountDefender = amountAttacker - 1;
-        int soldiers = this.getSoldiersCount();
+        int soldiers = getSoldiersCount();
 
         if (amountDefender <= ABSOLUTE_MIN_AMOUNT_THROWS) {
             amountDefender = ABSOLUTE_MIN_AMOUNT_THROWS;
@@ -165,8 +165,8 @@ public class Country {
      * @return true if invasion is possible
      */
     public boolean canInvade(Country country) {
-        return this.soldiersCount >= MIN_SOLDIERS_TO_INVADE && this.isBordering(country) &&
-                this.owner != country.getOwner();
+        return soldiersCount >= MIN_SOLDIERS_TO_INVADE && isBordering(country) &&
+                owner != country.getOwner();
     }
 
     /**
@@ -178,7 +178,7 @@ public class Country {
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
         boolean canShift = amountSoldiers < getSoldiersCount() && amountSoldiers > 0;
         if (canShift) {
-            this.setSoldiersCount(this.getSoldiersCount() - amountSoldiers);
+            setSoldiersCount(getSoldiersCount() - amountSoldiers);
             destination.setSoldiersCount(destination.getSoldiersCount() + amountSoldiers);
         }
         return canShift;

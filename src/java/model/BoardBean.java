@@ -180,8 +180,8 @@ public class BoardBean {
 
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
-        this.currentPlayer = new Player(playerColor.remove(1), "Stalout", new UserBehavior());
-        players.add(this.currentPlayer);
+        currentPlayer = new Player(playerColor.remove(1), "Stalout", new UserBehavior());
+        players.add(currentPlayer);
 
         players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new RandomBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new RandomBehavior()));
@@ -213,17 +213,17 @@ public class BoardBean {
         if (currentPhase == Phase.SETTINGPHASE) {
             ArrayList<Country> destination = new ArrayList<>();
             destination.add(selectedCountry);
-            this.setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
-            this.resetSelectedCountries();
+            setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
+            resetSelectedCountries();
         } else if (currentPhase == Phase.ATTACKPHASE) {
             if (firstSelectedCountry != null && secondSelectedCountry != null) {
                 ArrayList<Country> countryList = new ArrayList<>();
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
                 currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries());
-                this.resetSelectedCountries();
+                resetSelectedCountries();
             } else {
-                this.setAttackAndDefendCountry(selectedCountry);
+                setAttackAndDefendCountry(selectedCountry);
             }
         } else if (currentPhase == Phase.MOVINGPHASE) {
             if (firstSelectedCountry == null || secondSelectedCountry == null) {
@@ -238,17 +238,17 @@ public class BoardBean {
     }
 
     private void setAttackAndDefendCountry(Country country) {
-        if (this.currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
-            this.setFirstSelectedCountry(country);
+        if (currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
+            setFirstSelectedCountry(country);
         } else {
-            this.setSecondSelectedCountry(country);
+            setSecondSelectedCountry(country);
         }
 
         if (firstSelectedCountry != null && secondSelectedCountry != null && firstSelectedCountry.canInvade(secondSelectedCountry)) {
-            this.setFlag(Flag.ATTACK);
+            setFlag(Flag.ATTACK);
             try {
-                this.attackDiceCount = this.firstSelectedCountry.maxAmountDiceThrowsAttacker();
-                this.defendDiceCount = this.secondSelectedCountry.amountDiceThrowsDefender(this.attackDiceCount);
+                attackDiceCount = firstSelectedCountry.maxAmountDiceThrowsAttacker();
+                defendDiceCount = secondSelectedCountry.amountDiceThrowsDefender(attackDiceCount);
             } catch (Exception e) {
                 // TODO @huguemiz show error message on GUI
             }
@@ -257,9 +257,9 @@ public class BoardBean {
 
     private void setMovingCountry(Country country) {
         if (firstSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
-            this.setFirstSelectedCountry(country);
+            setFirstSelectedCountry(country);
         } else if (secondSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country)) {
-            this.setSecondSelectedCountry(country);
+            setSecondSelectedCountry(country);
         }
 
         if (firstSelectedCountry != null && secondSelectedCountry != null) {
