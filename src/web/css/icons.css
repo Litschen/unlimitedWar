@@ -6,6 +6,21 @@
     background-image: url("./../images/close.svg");
 }
 
+/* ---------- Result ---------- */
+.trophy {
+    content: '';
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    display: block;
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-image: url("./../images/trophy.png");
+    outline: none !important;
+    border: none;
+}
+
+
 /* ---------- Dice ---------- */
 input[type="checkbox"].dice:before,
 .dice {

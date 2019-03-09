@@ -65,13 +65,13 @@
 <form method="post" action="<%=request.getContextPath()%>/Game/">
     <%--Saves the board in the session --%>
     <% session.setAttribute("board", board); %>
- <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
+    <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
 </form>
 <c:if test="${board.modalToShow == 'attack'}">
- <%@include file="modals/attackRoll.jsp" %>
+    <%@include file="modals/attackRoll.jsp" %>
 </c:if>
-<c:if test="${board.modalToShow == 'win'}">
- <%@include file="modals/win.jsp" %>
+<c:if test="${board.modalToShow == 'win' || board.modalToShow == 'lose'}">
+    <%@include file="modals/resultModal.jsp" %>
 </c:if>
 <%@include file="snippets/footer.jsp" %>
 </body>
