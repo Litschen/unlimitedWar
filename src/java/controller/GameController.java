@@ -17,13 +17,13 @@ public class GameController extends HttpServlet {
     private BoardBean board;
 
     //region path & param variables
-    private final String PATH_ATTACK = "/attack";
-    private final String PARAM_ATTACK_DICE = "attackDice";
-    private final String PARAM_ROLL = "roll";
-    private final String PARAM_END = "end";
-    private final String PARAM_CANCEL = "cancel";
-    private final String PARAM_COUNTRY = "country";
-    private final String PARAM_NEXT_TURN = "nextTurn";
+    private final static String PATH_ATTACK = "/attack";
+    private final static String PARAM_ATTACK_DICE = "attackDice";
+    private final static String PARAM_ROLL = "roll";
+    private final static String PARAM_END = "end";
+    private final static String PARAM_CANCEL = "cancel";
+    private final static String PARAM_COUNTRY = "country";
+    private final static String PARAM_NEXT_TURN = "nextTurn";
     //enddregion
 
     /**

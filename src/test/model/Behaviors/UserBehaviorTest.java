@@ -76,7 +76,7 @@ class UserBehaviorTest {
 
         assertEquals(Phase.MOVINGPHASE, testUserBehavior.attackCountry(selectedCountries, ownedCountries));
         testCountry.shiftSoldiers(3, testCountry);
-        assertEquals(Phase.AIPHASE, testUserBehavior.attackCountry(selectedCountries, ownedCountries));
+        assertEquals(Phase.SETTINGPHASE, testUserBehavior.attackCountry(selectedCountries, ownedCountries));
 
     }
 }
