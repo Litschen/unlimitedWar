@@ -184,7 +184,8 @@ public class Country {
      * @return true if shifted successful
      */
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
-        boolean canShift = amountSoldiers < getSoldiersCount() && amountSoldiers > 0;
+
+        boolean canShift = amountSoldiers < getSoldiersCount() && amountSoldiers > 0 && isBordering(destination);
         if (canShift) {
             setSoldiersCount(getSoldiersCount() - amountSoldiers);
             destination.setSoldiersCount(destination.getSoldiersCount() + amountSoldiers);
