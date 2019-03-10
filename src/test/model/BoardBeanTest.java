@@ -34,19 +34,6 @@ class BoardBeanTest {
 
     }
 
-
-    @Test
-    void testCurrentPlayerIsUser() {
-    }
-
-    @Test
-    void testExecuteTurn() {
-    }
-
-    @Test
-    void testExecuteUserTurn() {
-    }
-
     @Test
     void testSetAttackAndDefendCountry() {
     }
