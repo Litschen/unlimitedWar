@@ -139,7 +139,8 @@ public class BoardBean {
 
 
     /**
-     * Give the countries their names
+     * Give the countries their names.
+     * Check if you have set the neighbors correctly.
      */
     private void setCountryAttributes() {
         try {
