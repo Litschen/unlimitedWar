@@ -1,7 +1,7 @@
 package model.Behaviors;
 
 import model.Country;
-import org.junit.Assert;
+import model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,11 +10,12 @@ import java.util.ArrayList;
 import model.Enum.Phase;
 
 import static junit.framework.TestCase.assertNotNull;
+import static model.Enum.PlayerColor.BLUE;
 import static org.junit.Assert.assertEquals;
 
 class UserBehaviorTest {
 
-    private UserBehavior testUserBehavior;
+    private Player testplayer;
     private Country testCountry;
     private ArrayList<Country> selectedCountries;
     private ArrayList<Country> ownedCountries;
@@ -22,21 +23,28 @@ class UserBehaviorTest {
 
     @BeforeEach
     public void setUp() {
-        testUserBehavior = new UserBehavior();
+        testplayer = new Player(BLUE, "Jackob", new UserBehavior());
         selectedCountries = new ArrayList<>();
         ownedCountries = new ArrayList<>();
-    }
+        for (int i = 0; i < ownedCountries.size(); i++) {
+            ownedCountries.add(i, new Country("Polen", 1, testplayer));
+
+        for (int j = 0; j < selectedCountries.size(); j++) {
+            selectedCountries.add(i, new Country("Spanien", 1, testplayer));
+        }
+
+    }}
 
     @Test
     void testSelectedCountries() {
 
-        Assert.assertNotNull("List shouldn't be null", selectedCountries);
+        assertNotNull(selectedCountries); // schuat ob nivht null
         assertEquals(0, selectedCountries.size());
     }
 
     @Test
     void testOwnedCountries() {
-
+        assertNotNull(selectedCountries);
         assertNotNull("List shouldn't be null", ownedCountries);
         assertEquals(0, ownedCountries.size());
         assertEquals("Wrong 1st element", "Customer1", ownedCountries.get(0));
