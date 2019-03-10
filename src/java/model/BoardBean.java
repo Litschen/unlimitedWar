@@ -129,6 +129,7 @@ public class BoardBean {
         setCountryAttributes();
     }
 
+
     /**
      * Give the countries their names
      */
@@ -201,12 +202,15 @@ public class BoardBean {
         players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
     }
 
+    /**
+     * @return true: when the current Player ist the current User
+     */
     public boolean currentPlayerIsUser() {
         return currentPlayer.getBehavior() instanceof UserBehavior;
     }
 
     /**
-     * ----
+     * perform a turn
      */
     public void executeTurn() {
         if (currentPhase == Phase.SETTINGPHASE) {
@@ -223,9 +227,9 @@ public class BoardBean {
     }
 
     /**
-     * ---
+     * perform a turn in which phase the player is
      *
-     * @param selectedCountry
+     * @param selectedCountry is the country witch the user clicks
      */
     public void executeUserTurn(Country selectedCountry) {
         if (currentPhase == Phase.SETTINGPHASE) {
@@ -251,7 +255,7 @@ public class BoardBean {
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
                 Phase finishMove = currentPlayer.getBehavior().moveSoldiers(countryList, currentPlayer.getOwnedCountries());
-                if (finishMove != Phase.MOVINGPHASE){
+                if (finishMove != Phase.MOVINGPHASE) {
                     setFlag(Flag.NONE);
                 }
             }
@@ -261,7 +265,7 @@ public class BoardBean {
     /**
      * indicates which country is attacking and which country is being attacked
      *
-     * @param country
+     * @param country is the field who the player selects
      */
     private void setAttackAndDefendCountry(Country country) {
         if (currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
@@ -284,7 +288,7 @@ public class BoardBean {
     /**
      * determines the countries between which the soldiers should be able to move
      *
-     * @param country
+     * @param country is the field who the player selects
      */
     private void setMovingCountry(Country country) {
         if (firstSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
