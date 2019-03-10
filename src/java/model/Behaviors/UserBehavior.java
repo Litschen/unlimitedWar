@@ -73,6 +73,6 @@ public class UserBehavior implements IBehavior {
         if (sourceCountry.getSoldiersCount() > 1) {
             return Phase.MOVINGPHASE;
         }
-        return Phase.AIPHASE;
+        return Phase.SETTINGPHASE;
     }
 }

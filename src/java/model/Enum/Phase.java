@@ -1,7 +1,5 @@
 package model.Enum;
 
 public enum Phase {
-
-    SETTINGPHASE, ATTACKPHASE, MOVINGPHASE, AIPHASE
-
+    SETTINGPHASE, ATTACKPHASE, MOVINGPHASE
 }
