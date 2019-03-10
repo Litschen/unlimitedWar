@@ -1,10 +1,14 @@
 package model;
 
+import model.Enum.Flag;
 import model.Enum.Phase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BoardBeanTest {
 
@@ -41,10 +45,52 @@ class BoardBeanTest {
 
     @Test
     void testMoveToNextPhase() {
+        testBoard.setCurrentPhase(Phase.SETTINGPHASE);
+        Player p = testBoard.getCurrentPlayer();
+        int amountPlayer = testBoard.getPlayers().size();
+
+        testBoard.moveToNextPhase();
+        assertEquals(Phase.ATTACKPHASE, testBoard.getCurrentPhase());
+        assertEquals(p, testBoard.getCurrentPlayer());
+
+        testBoard.moveToNextPhase();
+        assertEquals(Phase.MOVINGPHASE, testBoard.getCurrentPhase());
+        assertEquals(p, testBoard.getCurrentPlayer());
+
+        testBoard.moveToNextPhase();
+        assertEquals(Phase.SETTINGPHASE, testBoard.getCurrentPhase());
+        assertNotEquals(p, testBoard.getCurrentPlayer());
+
+        assertEquals(amountPlayer, testBoard.getPlayers().size());
+    }
+
+    @Test
+    void testMoveToNextPhaseRemoveUser() {
+        ArrayList<Player> players = testBoard.getPlayers();
+        int amountPlayer = players.size();
+        testBoard.setCurrentPhase(Phase.MOVINGPHASE);
+
+        Player curPlayer = testBoard.getCurrentPlayer();
+        Player losePlayer = testBoard.getPlayers().get(1);
+        curPlayer.getOwnedCountries().addAll(losePlayer.getOwnedCountries());
+        losePlayer.getOwnedCountries().clear();
+
+        testBoard.moveToNextPhase();
+
+        assertEquals(amountPlayer - 1, testBoard.getPlayers().size());
     }
 
     @Test
     void testResetSelectedCountries() {
+        Player player = testBoard.getCurrentPlayer();
+        testBoard.setFirstSelectedCountry(new Country("c1", 1, player));
+        testBoard.setSecondSelectedCountry(new Country("c2", 6, player));
+        testBoard.setFlag(Flag.ATTACK);
+
+        testBoard.resetSelectedCountries();
+        assertEquals(null, testBoard.getFirstSelectedCountry());
+        assertEquals(null, testBoard.getSecondSelectedCountry());
+        assertEquals(Flag.NONE, testBoard.getFlag());
     }
 }
 

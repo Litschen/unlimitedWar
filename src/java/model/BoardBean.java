@@ -88,8 +88,16 @@ public class BoardBean {
         return defendDiceCount;
     }
 
+    public Country getFirstSelectedCountry() {
+        return firstSelectedCountry;
+    }
+
     public void setFirstSelectedCountry(Country firstSelectedCountry) {
         this.firstSelectedCountry = firstSelectedCountry;
+    }
+
+    public Country getSecondSelectedCountry() {
+        return secondSelectedCountry;
     }
 
     public void setSecondSelectedCountry(Country secondSelectedCountry) {
