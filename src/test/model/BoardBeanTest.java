@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BoardBeanTest {
 
@@ -29,4 +28,36 @@ class BoardBeanTest {
         }
         assertEquals(BoardBean.COUNTRY_COUNT_GENERATION, testBoard.getCountries().size());
     }
+
+    @Test
+    void testSetCountryAttributes() {
+
+    }
+
+
+    @Test
+    void testCurrentPlayerIsUser() {
+    }
+
+    @Test
+    void testExecuteTurn() {
+    }
+
+    @Test
+    void testExecuteUserTurn() {
+    }
+
+    @Test
+    void testSetAttackAndDefendCountry() {
+    }
+
+
+    @Test
+    void testMoveToNextPhase() {
+    }
+
+    @Test
+    void testResetSelectedCountries() {
+    }
 }
+

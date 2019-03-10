@@ -19,25 +19,16 @@ class UserBehaviorTest {
     private Country testCountry;
     private ArrayList<Country> selectedCountries;
     private ArrayList<Country> ownedCountries;
-    private ArrayList<Country> makeList() {
-        for (int i = 0; i < 10; i++) {
-            ownedCountries.add(i, new Country("Polen", 1, testplayer));
-            return new ArrayList <> ();
-        }
+
 
         @BeforeEach
         public void setUp () {
             testplayer = new Player(BLUE, "Jackob", new UserBehavior());
             selectedCountries = new ArrayList<>();
             ownedCountries = new ArrayList<>();
-
-
-            for (int j = 0; j < 10; j++) {
-                selectedCountries.add(i, new Country("Spanien", 1, testplayer));
             }
 // Aufrug hier generieren
-        }
-    }
+
 
     @Test
     void testSelectedCountries() {
@@ -75,12 +66,13 @@ class UserBehaviorTest {
     }
 
     @Test
-    void testMoveSoldiers() {
+    void testMoveSoldiers(){}
 
 
-        assertEquals(Phase.MOVINGPHASE, testUserBehavior.attackCountry(selectedCountries, ownedCountries));
-        testCountry.shiftSoldiers(3, testCountry);
-        assertEquals(Phase.SETTINGPHASE, testUserBehavior.attackCountry(selectedCountries, ownedCountries));
-
-    }
+    private ArrayList<Country> makeList(int numbersOfListElements) {
+        ArrayList<Country> list = new ArrayList <> ();
+        for (int i = 0; i < numbersOfListElements; i++) {
+            list.add(i, new Country("Polen", 1, testplayer));
+        }
+        return list;}
 }
