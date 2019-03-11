@@ -115,7 +115,7 @@ public class BoardBean {
 
 
     /**
-     * Generate Countries about the number of Player.
+     * generate based on variable a random output and set Country
      */
     private void generateCountries() {
         for (Player currentPlayer : players) {
@@ -139,8 +139,7 @@ public class BoardBean {
 
 
     /**
-     * Give the countries their names.
-     * Check if you have set the neighbors correctly.
+     * gives random names and puts random neighbor
      */
     private void setCountryAttributes() {
         try {
@@ -180,10 +179,10 @@ public class BoardBean {
     }
 
     /**
-     * Fix the adjacent neighbors
+     * Set pre-defined neighbor
      *
-     * @param countryIndex         position of the own countries
-     * @param neighborCountryIndex position of the neighbors countries
+     * @param countryIndex         index from county that the neighbours can set on the county ArrayList
+     * @param neighborCountryIndex array via index from country ArrayList all neighbours from country Index
      */
     private void setFixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
         for (int i : neighborCountryIndex) {
@@ -212,7 +211,7 @@ public class BoardBean {
     }
 
     /**
-     * @return true: when the current Player ist the current User
+     * @return true: when the current Player is a User
      */
     public boolean currentPlayerIsUser() {
         return currentPlayer.getBehavior() instanceof UserBehavior;
@@ -236,9 +235,9 @@ public class BoardBean {
     }
 
     /**
-     * perform a turn in which phase the player is
+     * perform a turn. Countries in ArrayList put in and give over there funktion. User mostly selected countries reseated
      *
-     * @param selectedCountry is the country witch the user clicks
+     * @param selectedCountry is the country in the selected ArrayList
      */
     public void executeUserTurn(Country selectedCountry) {
         if (currentPhase == Phase.SETTINGPHASE) {
@@ -273,8 +272,9 @@ public class BoardBean {
 
     /**
      * indicates which country is attacking and which country is being attacked
+     * happends in the controller section from country
      *
-     * @param country is the field who the player selects
+     * @param country which the player selects
      */
     public void setAttackAndDefendCountry(Country country) {
         if (currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() >= Country.MIN_SOLDIERS_TO_INVADE) {
@@ -295,7 +295,7 @@ public class BoardBean {
     }
 
     /**
-     * determines the countries between which the soldiers should be able to move
+     * save the two selected countries
      *
      * @param country is the field who the player selects
      */
@@ -313,7 +313,8 @@ public class BoardBean {
 
 
     /**
-     * indicates the phases of the game: Set, attack and move
+     * change phases and move to the next Phase
+     * Selectet Countrey resete
      */
     public void moveToNextPhase() {
         Phase currentPhase = getCurrentPhase();
@@ -331,8 +332,9 @@ public class BoardBean {
     }
 
     /**
-     * after the turn, the next player is taken here
+     * change the next player and delete the player without the countrys
      */
+
     private void cyclePlayer() {
         int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
         players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
