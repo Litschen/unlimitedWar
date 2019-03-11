@@ -1,14 +1,15 @@
 package model;
 
+import model.Behaviors.UserBehavior;
 import model.Enum.Flag;
 import model.Enum.Phase;
+import model.Enum.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BoardBeanTest {
 
@@ -33,6 +34,9 @@ class BoardBeanTest {
         assertEquals(BoardBean.COUNTRY_COUNT_GENERATION, testBoard.getCountries().size());
     }
 
+    /**
+     * Only tests name setting, if bordering is set correctly is checked in Countrytest bordering test.
+     */
     @Test
     void testSetCountryAttributes() {
         for(Country currentCountry : testBoard.getCountries()){
@@ -43,6 +47,27 @@ class BoardBeanTest {
 
     @Test
     void testSetAttackAndDefendCountry() {
+        Country testCountry = testBoard.getCurrentPlayer().getOwnedCountries().get(0);
+        testCountry.setSoldiersCount(3);
+
+        Country testCountryDefend = testBoard.getPlayers().get(1).getOwnedCountries().get(1);
+        testCountry.getNeighboringCountries().add(testCountryDefend);
+
+        assertNull(testBoard.getFirstSelectedCountry());
+        assertNull(testBoard.getSecondSelectedCountry());
+        assertSame(Flag.NONE, testBoard.getFlag());
+
+
+        testBoard.setAttackAndDefendCountry(testCountry);
+        assertSame(testCountry, testBoard.getFirstSelectedCountry());
+        assertNull(testBoard.getSecondSelectedCountry());
+        assertSame(testBoard.getFlag(), Flag.NONE);
+
+
+        testBoard.setAttackAndDefendCountry(testCountryDefend);
+        assertSame(testCountry, testBoard.getFirstSelectedCountry());
+        assertSame(testCountryDefend, testBoard.getSecondSelectedCountry());
+        assertSame(Flag.ATTACK, testBoard.getFlag());
     }
 
 
