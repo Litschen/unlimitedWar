@@ -70,6 +70,42 @@ class UserBehaviorTest {
     }
 
     @Test
+    void testAttackCountryOwnCountries() {
+
+        Player ownTestPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
+        Country mockAttackCountry = setUpMockCountry(ownTestPlayer);
+
+        selectedCountries.add(mockAttackCountry);
+        selectedCountries.add(new Country("Spanien", 5, ownTestPlayer));
+        ownedCountries = CountryTest.makeList(1, ownTestPlayer);
+        ownedCountries.add(mockAttackCountry);
+
+        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
+        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
+
+        // 2 Mal Meine Länder
+        //Andere TestMethode
+        //Testattack own country
+    }
+
+    @Test
+    void testAttackCountryNotOwnCountries() {
+        Player testPlayer2 = new Player(BLUE, "testplayer03", new UserBehavior());
+        Country mockAttackCountry = setUpMockCountry(new Player(PlayerColor.GREEN, "Max", new UserBehavior()));
+
+        selectedCountries.add(mockAttackCountry);
+        selectedCountries.add(new Country("Spanien", 5, testPlayer2));
+        ownedCountries = CountryTest.makeList(1, testPlayer2);
+        ownedCountries.add(mockAttackCountry);
+
+        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
+        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
+        // 2 Mal Andere Länder
+        //Andere TestMethode
+        //Testattack own country
+    }
+
+    @Test
     void testMoveSoldiers() {
 
         selectedCountries = CountryTest.makeList(2, testPlayer);
@@ -84,10 +120,12 @@ class UserBehaviorTest {
     }
 
 
-    private ArrayList<Country> makeList(int numbersOfListElements) {
-        ArrayList<Country> list = new ArrayList <> ();
-        for (int i = 0; i < numbersOfListElements; i++) {
-            list.add(i, new Country("Polen", 1, testplayer));
-        }
-        return list;}
+    private Country setUpMockCountry(Player player) {
+        Country mockCountry = mock(Country.class);
+        when(mockCountry.canInvade(anyObject())).thenReturn(true);
+        when(mockCountry.getOwner()).thenReturn(player);
+        when(mockCountry.canInvade(anyObject())).thenReturn(true);
+
+        return mockCountry;
+    }
 }
