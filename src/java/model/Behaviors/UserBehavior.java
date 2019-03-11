@@ -20,19 +20,26 @@ public class UserBehavior implements IBehavior {
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> destinationCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+        Phase phase = Phase.SETTINGPHASE;
         Country destination = destinationCountries.get(0);
+        Player owner = destination.getOwner();
 
-        if (ownedCountries.contains(destination)) {
-            Player owner = destination.getOwner();
+        if (owner.getSoldiersToPlace() > 0) {
 
-            destination.setSoldiersCount(destination.getSoldiersCount() + 1);
-            owner.setSoldiersToPlace(owner.getSoldiersToPlace() - 1);
-            if (owner.getSoldiersToPlace() == 0) {
-                return Phase.ATTACKPHASE;
+            if (ownedCountries.contains(destination)) {
+
+                destination.setSoldiersCount(destination.getSoldiersCount() + 1);
+                owner.setSoldiersToPlace(owner.getSoldiersToPlace() - 1);
+                if (owner.getSoldiersToPlace() == 0) {
+                    phase = Phase.ATTACKPHASE;
+                }
             }
+        } else {
+            phase = Phase.ATTACKPHASE;
         }
 
-        return Phase.SETTINGPHASE;
+
+        return phase;
     }
 
     /**
@@ -70,7 +77,7 @@ public class UserBehavior implements IBehavior {
         Country destinationCountry = selectedCountries.get(1);
         sourceCountry.shiftSoldiers(1, destinationCountry);
 
-        if (sourceCountry.getSoldiersCount() > 1) {
+        if (sourceCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
             return Phase.MOVINGPHASE;
         }
         return Phase.SETTINGPHASE;
