@@ -56,12 +56,32 @@ class UserBehaviorTest {
 
     @Test
     void testAttackCountry() {
+        Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
+        Country mockAttackCountry = setUpMockCountry(testPlayer2);
 
-        assertEquals(Phase.MOVINGPHASE, testUserBehavior.attackCountry(selectedCountries, ownedCountries));
+        selectedCountries.add(mockAttackCountry);
+        selectedCountries.add(new Country("Spanien", 5, testPlayer));
+        ownedCountries = CountryTest.makeList(1, testPlayer);
+        ownedCountries.add(mockAttackCountry);
+
+        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
+        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
+
     }
 
     @Test
-    void testMoveSoldiers(){}
+    void testMoveSoldiers() {
+
+        selectedCountries = CountryTest.makeList(2, testPlayer);
+        ownedCountries = CountryTest.makeList(4, testPlayer);
+        ownedCountries.add(selectedCountries.get(0));
+        ownedCountries.add(selectedCountries.get(1));
+
+
+        testPlayer.calculateSoldiersToPlace();
+        assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
+
+    }
 
 
     private ArrayList<Country> makeList(int numbersOfListElements) {
