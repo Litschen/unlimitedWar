@@ -35,7 +35,10 @@ class BoardBeanTest {
 
     @Test
     void testSetCountryAttributes() {
-
+        for(Country currentCountry : testBoard.getCountries()){
+            assertTrue(!currentCountry.getName().equals(""));
+            assertTrue(currentCountry.getName().length() > 1);
+        }
     }
 
     @Test
