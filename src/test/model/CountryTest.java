@@ -5,9 +5,11 @@ import model.Enum.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class CountryTest {
+public class CountryTest {
 
     private Country invadingCountry;
     private Country defendingCountry;
@@ -220,5 +222,13 @@ class CountryTest {
     private void removeNeighbors() {
         invadingCountry.getNeighboringCountries().remove(defendingCountry);
         defendingCountry.getNeighboringCountries().remove(invadingCountry);
+    }
+
+    public static ArrayList<Country> makeList(int numbersOfListElements, Player testPlayer) {
+        ArrayList<Country> list = new ArrayList<>();
+        for (int i = 0; i < numbersOfListElements; i++) {
+            list.add(i, new Country("Polen", 5, testPlayer));
+        }
+        return list;
     }
 }
