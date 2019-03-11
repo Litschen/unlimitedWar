@@ -27,10 +27,10 @@ public class GameController extends HttpServlet {
     //enddregion
 
     /**
-     * TEXT
+     * ...
      *
-     * @param request
-     * @param response
+     * @param request  http request
+     * @param response http response
      * @throws ServletException
      * @throws IOException
      */
@@ -41,10 +41,10 @@ public class GameController extends HttpServlet {
     }
 
     /**
-     * TEXT
+     * ...
      *
-     * @param request
-     * @param response
+     * @param request  by http
+     * @param response by http
      * @throws ServletException
      * @throws IOException
      */
@@ -55,10 +55,13 @@ public class GameController extends HttpServlet {
     }
 
     /**
-     * Process the Request
      *
-     * @param request
-     * @param response
+     * Edit the following request and set up the appropriated turn. In addition reset the selected countries and
+     * continue to the other methods.
+     *
+     *
+     * @param request  game.jsp
+     * @param response servlet response
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/game.jsp");
@@ -90,6 +93,14 @@ public class GameController extends HttpServlet {
         }
     }
 
+    /**
+     *
+     * take countries, witch where selected by board
+     *
+     * @param request  game.jsp
+     * @param response servlet response
+     * @return selected country
+     */
     private Country extractSelectedCountry(HttpServletRequest request, HttpServletResponse response) {
         try {
             int countryIndex = Integer.parseInt(request.getParameter(PARAM_COUNTRY));

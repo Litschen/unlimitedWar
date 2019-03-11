@@ -25,10 +25,12 @@ public class PlayerDAO {
     private final static String UPDATE_PLAYER_QUERY = "UPDATE player SET username = ?, email = ?, passwordUser = ? WHERE email = ?;";
     private final static String DELETE_PLAYER_QUERY = "DELETE FROM player WHERE email = ?;";
 
-    /** Create a new Player with username, mail and password
-     * @param username
-     * @param mail
-     * @param password
+    /**
+     * Create a new Player with username, mail and password
+     *
+     * @param username is the name from the player
+     * @param mail     is the private mail from player
+     * @param password created by the user himself
      */
     public void createNewPlayer(String username, String mail, String password) {
         try {
@@ -42,9 +44,7 @@ public class PlayerDAO {
         }
     }
 
-    /** Show mail from Player
-     * @param mail
-     */
+
     public void getPlayerByMail(String mail) {
         try {
             createConnection(SELECT_PLAYER_QUERY, Arrays.asList(mail));
@@ -57,15 +57,16 @@ public class PlayerDAO {
     }
 
     /**
-     * Update Infromation about the Player in username, mail and password
-     * @param username
-     * @param mailNew
-     * @param password
-     * @param mailOld
+     * update players information by username and password
+     * Mail cannot be changed
+     *
+     * @param username new username
+     * @param password new password
+     * @param mail     mail from user
      */
-    public void updatePlayer(String username, String mailNew, String password, String mailOld) {
+    public void updatePlayer(String username, String password, String mail) {
         try {
-            createConnection(UPDATE_PLAYER_QUERY, Arrays.asList(username, mailNew, password, mailOld));
+            createConnection(UPDATE_PLAYER_QUERY, Arrays.asList(username, password, mail));
             int rows = st.executeUpdate();
             // TODO MS3 /F0130/
             closeConnection();
@@ -74,8 +75,10 @@ public class PlayerDAO {
         }
     }
 
-    /**Remove Player by Mail
-     * @param mail
+    /**
+     * remove players mail
+     *
+     * @param mail from players, which has to be deleted
      */
     public void deletePlayerByMail(String mail) {
         try {
@@ -88,12 +91,15 @@ public class PlayerDAO {
         }
     }
 
-    /** Create connection with the Database
+    /**
+     * Create connection with the Database ....
+     *
      * @param sql
      * @param args
      * @throws SQLException
      * @throws ClassNotFoundException
      */
+
     private void createConnection(String sql, @NotNull List<String> args) throws SQLException, ClassNotFoundException {
         Class.forName(jdbcDriver);
         con = DriverManager.getConnection(dbURL, user, pw);
@@ -104,7 +110,9 @@ public class PlayerDAO {
         }
     }
 
-    /** Close connection to database
+    /**
+     * Close connection to database
+     *
      * @throws SQLException
      */
     private void closeConnection() throws SQLException {
