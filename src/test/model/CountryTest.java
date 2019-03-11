@@ -158,7 +158,7 @@ class CountryTest {
 
     @Test
     void shiftSoldiersNull() {
-        assertFalse(defendingCountry.shiftSoldiers(soldiersToShift, null));
+        assertThrows(IllegalArgumentException.class, () -> defendingCountry.shiftSoldiers(soldiersToShift, null));
     }
     @Test
     void shiftSoldiersNotNeighboring() {
