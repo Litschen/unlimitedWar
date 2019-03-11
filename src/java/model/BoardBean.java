@@ -276,8 +276,8 @@ public class BoardBean {
      *
      * @param country is the field who the player selects
      */
-    private void setAttackAndDefendCountry(Country country) {
-        if (currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
+    public void setAttackAndDefendCountry(Country country) {
+        if (currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() >= Country.MIN_SOLDIERS_TO_INVADE) {
             setFirstSelectedCountry(country);
         } else {
             setSecondSelectedCountry(country);
