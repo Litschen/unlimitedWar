@@ -141,6 +141,9 @@ public class Country {
      * @param amountOfSoldiers the be removed
      */
     public void removeSoldiers(int amountOfSoldiers) {
+        if(amountOfSoldiers < 0 || amountOfSoldiers > soldiersCount ){
+            throw new IllegalArgumentException("Amount has to be at least 0 and max die amount of soldiers present on this country");
+        }
         soldiersCount -= amountOfSoldiers;
     }
 
@@ -185,7 +188,10 @@ public class Country {
      */
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
 
-        boolean canShift = amountSoldiers < getSoldiersCount() && amountSoldiers > 0 && isBordering(destination);
+        boolean canShift = amountSoldiers < getSoldiersCount()
+                && amountSoldiers > 0
+                && isBordering(destination)
+                && getOwner() == destination.getOwner();
         if (canShift) {
             setSoldiersCount(getSoldiersCount() - amountSoldiers);
             destination.setSoldiersCount(destination.getSoldiersCount() + amountSoldiers);
