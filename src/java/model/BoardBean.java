@@ -10,7 +10,10 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class BoardBean {
@@ -115,7 +118,9 @@ public class BoardBean {
 
 
     /**
-     * generate based on variable a random random distribution of the soldiers and put these soldiers on a country
+     * generates COUNTRY_COUNT_GENERATION countries random distributes
+     * those random to all players and places START_SOLDIER_PER_PLAYER  owned countris of each player
+     * Calls setCountryAttributes
      */
     private void generateCountries() {
         for (Player currentPlayer : players) {
@@ -139,7 +144,7 @@ public class BoardBean {
 
 
     /**
-     * gives countries random names and puts random their neighbor
+     * gives countries random names and sets their neighbor
      */
     private void setCountryAttributes() {
         try {
@@ -179,10 +184,10 @@ public class BoardBean {
     }
 
     /**
-     * Set pre-defined neighbor
+     * Sets pre-defined neighbor
      *
-     * @param countryIndex         index from county that the neighbours can set on the county ArrayList
-     * @param neighborCountryIndex array via index from country ArrayList with all neighbours from country Index
+     * @param countryIndex         index of country to set neighbors from countries Arraylist
+     * @param neighborCountryIndex array of indexes from countries Arraylist of all neighbors of the country above
      */
     private void setFixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
         for (int i : neighborCountryIndex) {
@@ -194,20 +199,20 @@ public class BoardBean {
 
     /**
      * Generates all Player with their respective personalities. The current player can choose a color,
-     * the rest is randomly distributed
-     * (temporarily the current player is fixed)
+     * the rest is randomly assigned
+     * (temporarily the user color is fixed)
      */
     private void generatePlayers() {
 
 
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
-        currentPlayer = new Player(playerColor.remove(1), "Stalout", new UserBehavior());
+        currentPlayer = new Player(playerColor.remove(1), "Holger", new UserBehavior());
         players.add(currentPlayer);
 
-        players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new RandomBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new RandomBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Franz", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Sarah", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Karmen", new RandomBehavior()));
     }
 
     /**
@@ -218,7 +223,7 @@ public class BoardBean {
     }
 
     /**
-     * perform a turn
+     * perform a AI turn, cycles Player in the end
      */
     public void executeTurn() {
         if (currentPhase == Phase.SETTINGPHASE) {
@@ -235,9 +240,9 @@ public class BoardBean {
     }
 
     /**
-     * perform a turn. Put countries in a ArrayList and give over the certain phase. From user mostly selected countries are reseated
+     * execute on user interaction according to current phase.
      *
-     * @param selectedCountry is the country in the selected ArrayList
+     * @param selectedCountry  country selected in gui
      */
     public void executeUserTurn(Country selectedCountry) {
         if (currentPhase == Phase.SETTINGPHASE) {
@@ -272,11 +277,11 @@ public class BoardBean {
 
     /**
      * indicates which country is attacking and which country is being attacked
-     * happens in the controller section from country
+     * called from controller
      *
      * @param country which the player selects
      */
-    public void setAttackAndDefendCountry(Country country) {
+    void setAttackAndDefendCountry(Country country) {
         if (currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() >= Country.MIN_SOLDIERS_TO_INVADE) {
             setFirstSelectedCountry(country);
         } else {
@@ -297,7 +302,7 @@ public class BoardBean {
     /**
      * save the two selected countries
      *
-     * @param country is the field who the player selects
+     * @param country is the country which the player selects on GUI
      */
     private void setMovingCountry(Country country) {
         if (firstSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {
@@ -313,8 +318,8 @@ public class BoardBean {
 
 
     /**
-     * change phases and move to the next Phase
-     * reset the selected countries
+     * Moves to the next Phase
+     * resets the selected countries
      */
     public void moveToNextPhase() {
         Phase currentPhase = getCurrentPhase();
@@ -332,7 +337,7 @@ public class BoardBean {
     }
 
     /**
-     * change the next player and delete the player without the countries
+     * change the next player and delete the player without countries
      */
 
     private void cyclePlayer() {
