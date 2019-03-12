@@ -17,14 +17,16 @@ public class GameController extends HttpServlet {
     private BoardBean board;
 
     //region path & param variables
-    private final static String PATH_ATTACK = "/attack";
-    private final static String PARAM_ATTACK_DICE = "attackDice";
-    private final static String PARAM_ROLL = "roll";
-    private final static String PARAM_END = "end";
-    private final static String PARAM_CANCEL = "cancel";
-    private final static String PARAM_COUNTRY = "country";
-    private final static String PARAM_NEXT_TURN = "nextTurn";
-    //enddregion
+    public final static String PATH_ATTACK = "/attack";
+    public final static String PARAM_ATTACK_DICE = "attackDice";
+    public final static String PARAM_ROLL = "roll";
+    public final static String PARAM_END = "end";
+    public final static String PARAM_CANCEL = "cancel";
+    public final static String PARAM_COUNTRY = "country";
+    public final static String PARAM_NEXT_TURN = "nextTurn";
+    public final static String SESSION_BOARD_NAME = "board";
+    public static final String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/game.jsp";
+    //endregion
 
     /**
      * process post request
@@ -64,16 +66,16 @@ public class GameController extends HttpServlet {
      * @param response servlet response
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/game.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE);
         try {
-            board = (BoardBean) request.getSession().getAttribute("board");
+            board = (BoardBean) request.getSession().getAttribute(SESSION_BOARD_NAME);
             if (board != null) {
                 if (request.getParameter(PARAM_NEXT_TURN) != null) {
                     board.executeTurn();
                 } else if (request.getParameter(PARAM_END) != null) {
                     board.moveToNextPhase();
                 } else if (board.currentPlayerIsUser()) {
-                    Country chosenCountry = extractSelectedCountry(request, response);
+                    Country chosenCountry = extractSelectedCountry(request);
                     String path = request.getPathInfo();
 
                     // handle attack modal
@@ -98,10 +100,9 @@ public class GameController extends HttpServlet {
      * take countries, witch where selected by board
      *
      * @param request  game.jsp
-     * @param response servlet response
      * @return selected country
      */
-    private Country extractSelectedCountry(HttpServletRequest request, HttpServletResponse response) {
+    private Country extractSelectedCountry(HttpServletRequest request) {
         try {
             int countryIndex = Integer.parseInt(request.getParameter(PARAM_COUNTRY));
             return board.getCountryById(countryIndex);
