@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 public class testHelperBehavior {
 
 
-
     public static Country setUpMockCountry(Player player) {
         Country mockCountry = mock(Country.class);
         when(mockCountry.canInvade(anyObject())).thenReturn(true);

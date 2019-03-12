@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static model.Behaviors.testHelperBehavior.setUpMockCountry;
 import static model.Enum.PlayerColor.BLUE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -81,28 +82,22 @@ class UserBehaviorTest {
         ownedCountries.add(mockAttackCountry);
 
         testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
+        verify(mockAttackCountry, times(0)).invade(anyObject(), anyInt(), anyInt());
 
-        // 2 Mal Meine Länder
-        //Andere TestMethode
-        //Testattack own country
     }
 
     @Test
     void testAttackCountryNotOwnCountries() {
-        Player testPlayer2 = new Player(BLUE, "testplayer03", new UserBehavior());
-        Country mockAttackCountry = setUpMockCountry(new Player(PlayerColor.GREEN, "Max", new UserBehavior()));
+        Player opponentPlayer = new Player(BLUE, "opponentPlayer", new UserBehavior());
+        Country mockAttackCountry = setUpMockCountry(opponentPlayer);
 
         selectedCountries.add(mockAttackCountry);
-        selectedCountries.add(new Country("Spanien", 5, testPlayer2));
-        ownedCountries = CountryTest.makeList(1, testPlayer2);
+        selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
+        ownedCountries = CountryTest.makeList(1, opponentPlayer);
         ownedCountries.add(mockAttackCountry);
 
-        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
-        // 2 Mal Andere Länder
-        //Andere TestMethode
-        //Testattack own country
+        testPlayer.getBehavior().attackCountry(selectedCountries, selectedCountries);
+        verify(mockAttackCountry, times(0)).invade(anyObject(), anyInt(), anyInt());
     }
 
     @Test
@@ -113,19 +108,9 @@ class UserBehaviorTest {
         ownedCountries.add(selectedCountries.get(0));
         ownedCountries.add(selectedCountries.get(1));
 
-
-        testPlayer.calculateSoldiersToPlace();
         assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
 
     }
 
 
-    private Country setUpMockCountry(Player player) {
-        Country mockCountry = mock(Country.class);
-        when(mockCountry.canInvade(anyObject())).thenReturn(true);
-        when(mockCountry.getOwner()).thenReturn(player);
-        when(mockCountry.canInvade(anyObject())).thenReturn(true);
-
-        return mockCountry;
-    }
 }
