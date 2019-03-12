@@ -1,21 +1,15 @@
 package model.Behaviors;
 
 import model.Country;
-import model.CountryTest;
-import model.Enum.Phase;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.util.ArrayList;
 
-import static model.Behaviors.TestHelperBehavior.setUpMockCountry;
-import static model.Behaviors.TestHelperBehavior.setUpMockPlayer;
 import static model.Enum.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.*;
 
 class RandomBehaviorTest {
