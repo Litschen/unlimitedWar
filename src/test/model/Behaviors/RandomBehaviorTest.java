@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static model.Behaviors.TestHelperBehavior.setUpMockCountry;
+import static model.Behaviors.TestHelperBehavior.setUpMockPlayer;
 import static model.Enum.PlayerColor.BLUE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyInt;
@@ -31,25 +32,15 @@ class RandomBehaviorTest {
 
     @Test
     void placeSoldiers() {
-        allCountries = TestHelperBehavior.makeList(1, testPlayer);
         ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
-        ownedCountries.add(allCountries.get(0));
+        allCountries.addAll(ownedCountries);
+        allCountries.addAll(TestHelperBehavior.makeList(2, setUpMockPlayer()));
+        allCountries.addAll(TestHelperBehavior.makeList(5, setUpMockPlayer()));
+        allCountries.addAll(TestHelperBehavior.makeList(3, setUpMockPlayer()));
 
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(allCountries, ownedCountries, 3));
+        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(allCountries, ownedCountries, 3));
         assertEquals(6, allCountries.get(0).getSoldiersCount());
         assertEquals(3, testPlayer.getSoldiersToPlace());
-
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(allCountries, ownedCountries, 2));
-        assertEquals(7, allCountries.get(0).getSoldiersCount());
-        assertEquals(2, testPlayer.getSoldiersToPlace());
-
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(allCountries, ownedCountries, 1));
-        assertEquals(8, allCountries.get(0).getSoldiersCount());
-        assertEquals(1, testPlayer.getSoldiersToPlace());
-
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(allCountries, ownedCountries, 0));
-        assertEquals(9, allCountries.get(0).getSoldiersCount());
-        assertEquals(0, testPlayer.getSoldiersToPlace());
     }
 
     @Test
