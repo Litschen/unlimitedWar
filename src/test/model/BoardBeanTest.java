@@ -1,9 +1,7 @@
 package model;
 
-import model.Behaviors.UserBehavior;
 import model.Enum.Flag;
 import model.Enum.Phase;
-import model.Enum.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -35,7 +33,7 @@ class BoardBeanTest {
     }
 
     /**
-     * Only tests name setting, if bordering is set correctly is checked in Countrytest bordering test.
+     * Only tests name setting, if bordering is set correctly is checked in CountrytTest
      */
     @Test
     void testSetCountryAttributes() {
@@ -116,8 +114,8 @@ class BoardBeanTest {
         testBoard.setFlag(Flag.ATTACK);
 
         testBoard.resetSelectedCountries();
-        assertEquals(null, testBoard.getFirstSelectedCountry());
-        assertEquals(null, testBoard.getSecondSelectedCountry());
+        assertNull(testBoard.getFirstSelectedCountry());
+        assertNull(testBoard.getSecondSelectedCountry());
         assertEquals(Flag.NONE, testBoard.getFlag());
     }
 }

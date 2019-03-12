@@ -65,14 +65,14 @@ public class UserBehavior implements IBehavior {
      */
     @Override
     public Phase moveSoldiers(ArrayList<Country> selectedCountries, ArrayList<Country> ownedCountries) {
-
+        Phase newPhase = Phase.SETTINGPHASE;
         Country sourceCountry = selectedCountries.get(0);
         Country destinationCountry = selectedCountries.get(1);
         sourceCountry.shiftSoldiers(1, destinationCountry);
 
         if (sourceCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
-            return Phase.MOVINGPHASE;
+            newPhase = Phase.MOVINGPHASE;
         }
-        return Phase.SETTINGPHASE;
+        return newPhase;
     }
 }

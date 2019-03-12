@@ -10,12 +10,10 @@ import java.util.ArrayList;
 
 import static model.Behaviors.TestHelperBehavior.setUpMockCountry;
 import static model.Enum.PlayerColor.BLUE;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyObject;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 /*
 As information: the strategic behavior is not implemented yet. Therefore, the tests do not success

@@ -1,99 +1,92 @@
 package model.Behaviors;
 
 import model.Country;
+import model.CountryTest;
 import model.Enum.Phase;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import java.util.ArrayList;
 
 import static model.Behaviors.TestHelperBehavior.setUpMockCountry;
 import static model.Behaviors.TestHelperBehavior.setUpMockPlayer;
 import static model.Enum.PlayerColor.BLUE;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyObject;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class RandomBehaviorTest {
 
     private Player testPlayer;
     private ArrayList<Country> allCountries;
     private ArrayList<Country> ownedCountries;
+    private Country invadingCountry;
+    private Country defendingCountry;
+    private Player mockPlayer;
 
     @BeforeEach
     public void setUp() {
         testPlayer = new Player(BLUE, "Lu", new RandomBehavior());
         ownedCountries = new ArrayList<>();
         allCountries = new ArrayList<>();
+        invadingCountry = mock(Country.class);
+        defendingCountry = mock(Country.class);
+        mockPlayer = mock(Player.class);
     }
 
     @Test
     void placeSoldiers() {
-        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
-        allCountries.addAll(ownedCountries);
-        allCountries.addAll(TestHelperBehavior.makeList(2, setUpMockPlayer()));
-        allCountries.addAll(TestHelperBehavior.makeList(5, setUpMockPlayer()));
-        allCountries.addAll(TestHelperBehavior.makeList(3, setUpMockPlayer()));
+        ownedCountries = TestHelperBehavior.makeList(10, testPlayer);
+        int sum = 0;
+        int amountPerCountry = ownedCountries.get(0).getSoldiersCount();
+        testPlayer.getBehavior().placeSoldiers(ownedCountries, ownedCountries, 10);
 
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(allCountries, ownedCountries, 3));
-        assertEquals(6, allCountries.get(0).getSoldiersCount());
-        assertEquals(3, testPlayer.getSoldiersToPlace());
+        for (Country country : ownedCountries) {
+            sum += country.getSoldiersCount();
+        }
+        assertEquals(ownedCountries.size() * amountPerCountry + 10, sum);
     }
 
     @Test
     void testAttackCountry() {
-        Player testPlayer2 = new Player(BLUE, "testplayer02", new RandomBehavior());
-        Country mockAttackCountry = setUpMockCountry(testPlayer2);
+        when(invadingCountry.canInvade(defendingCountry)).thenReturn(true);
+        when(invadingCountry.getSoldiersCount()).thenReturn(10);
 
-        allCountries.add(mockAttackCountry);
-        allCountries.add(new Country("Spanien", 5, testPlayer));
-        ownedCountries = TestHelperBehavior.makeList(1, testPlayer);
-        ownedCountries.add(mockAttackCountry);
+        when(invadingCountry.getNeighboringCountries()).thenReturn(allCountries);
+        when(defendingCountry.getSoldiersCount()).thenReturn(10);
+        allCountries.add(invadingCountry);
+        allCountries.add(defendingCountry);
+        ownedCountries.add(invadingCountry);
 
-        testPlayer.getBehavior().attackCountry(allCountries, ownedCountries);
-        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
-    }
+        for (int i = 0; i < 100; i++) {
+            testPlayer.getBehavior().attackCountry(allCountries, ownedCountries);
+        }
 
-    @Test
-    void testAttackCountryOwnCountries() {
-
-        Player ownTestPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
-        Country mockAttackCountry = setUpMockCountry(ownTestPlayer);
-
-        allCountries.add(mockAttackCountry);
-        allCountries.add(new Country("Spanien", 5, ownTestPlayer));
-        ownedCountries = TestHelperBehavior.makeList(1, ownTestPlayer);
-        ownedCountries.add(mockAttackCountry);
-
-        testPlayer.getBehavior().attackCountry(allCountries, ownedCountries);
-        verify(mockAttackCountry, times(0)).invade(anyObject(), anyInt(), anyInt());
-
-    }
-
-    @Test
-    void testAttackCountryNotOwnCountries() {
-        Player opponentPlayer = new Player(BLUE, "opponentPlayer", new UserBehavior());
-        Country mockAttackCountry = setUpMockCountry(opponentPlayer);
-
-        allCountries.add(mockAttackCountry);
-        allCountries.add(new Country("Spanien", 5, opponentPlayer));
-        ownedCountries = TestHelperBehavior.makeList(1, opponentPlayer);
-        ownedCountries.add(mockAttackCountry);
-
-        testPlayer.getBehavior().attackCountry(allCountries, allCountries);
-        verify(mockAttackCountry, times(0)).invade(anyObject(), anyInt(), anyInt());
+        verify(invadingCountry, atLeastOnce()).invade(any(), anyInt(), anyInt());
     }
 
     @Test
     void moveSoldiers() {
-        allCountries = TestHelperBehavior.makeList(2, testPlayer);
-        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
-        ownedCountries.add(allCountries.get(0));
-        ownedCountries.add(allCountries.get(1));
+        when(invadingCountry.isBordering(defendingCountry)).thenReturn(true);
+        when(invadingCountry.getSoldiersCount()).thenReturn(10);
 
-        assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(allCountries, ownedCountries));
+        when(invadingCountry.getNeighboringCountries()).thenReturn(allCountries);
+        when(defendingCountry.getSoldiersCount()).thenReturn(10);
+
+        when(invadingCountry.getOwner()).thenReturn(mockPlayer);
+        when(defendingCountry.getOwner()).thenReturn(mockPlayer);
+        when(mockPlayer.getOwnedCountries()).thenReturn(allCountries);
+        allCountries.add(invadingCountry);
+        allCountries.add(defendingCountry);
+        ownedCountries.add(invadingCountry);
+
+        for (int i = 0; i < 100; i++) {
+            testPlayer.getBehavior().moveSoldiers(allCountries, ownedCountries);
+        }
+
+        verify(invadingCountry, atLeastOnce()).shiftSoldiers(anyInt(), any());
     }
 }
