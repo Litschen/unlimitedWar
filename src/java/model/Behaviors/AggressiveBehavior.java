@@ -6,18 +6,20 @@ import model.Interface.IBehavior;
 
 import java.util.ArrayList;
 
+/**
+ * TODO in MS2
+ */
 public class AggressiveBehavior implements IBehavior {
 
 
     /**
-     * New soldiers have to be placed on their own countries.
-     * Put one soldiers on one selected country. This is repeated until it has no longer soldiers to place
-     * The AggressiveBehavior set soldiers aggressive
+     * New soldiers are placed on owned countries. The AggressiveBehavior set soldiers aggressive so it can attack as
+     * much as possible
      *
-     * @param allCountries    ArrayList with listed Countries
-     * @param ownedCountries  are countries from current player
-     * @param soldiersToPlace it would never be used
-     * @return phase attack when none solders are to put on
+     * @param allCountries    ArrayList with all countries on the board
+     * @param ownedCountries of the current player
+     * @param soldiersToPlace amount to be placed
+     * @return next Phase: attackphase
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
@@ -25,13 +27,11 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
-     * The StrategicBehavior selects a country and a neighboring country to attack
-     * Only those countries with more than 1 soldier can attack
-     * The AggressiveBehavior attack as long as possible
+     * Decides which country should be attacked. AggressiveBehavior attacks as long and often as possible
      *
-     * @param allCountries   ArrayList with listed Countries
-     * @param ownedCountries are countries from current player
-     * @return next Phase: move
+     * @param allCountries   ArrayList with all countries on the board
+     * @param ownedCountries of the current player
+     * @return next Phase: movingphase
      */
     @Override
     public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
@@ -39,13 +39,12 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
-     * The soldiers are singular being moved from one own country to another own country.
-     * The countries must be both on the same continent. Only those countries with more than 1 soldier can move
-     * The AggressiveBehavior put the soldiers as clever as possible
+     * Moves soldiers in between two ownded countires once per turn. Moves to so that the AggressiveBehavior can attack
+     * in the next turn.
      *
-     * @param allCountries   ArrayList with listed Countries
-     * @param ownedCountries are countries from current player
-     * @return next Phase: set
+     * @param allCountries   ArrayList with all countries on the board
+     * @param ownedCountries of the current player
+     * @return next Phase: settingphase
      */
     @Override
     public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
