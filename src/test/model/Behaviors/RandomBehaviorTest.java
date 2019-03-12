@@ -22,10 +22,9 @@ class RandomBehaviorTest {
     private ArrayList<Country> selectedCountries;
     private ArrayList<Country> ownedCountries;
 
-
     @BeforeEach
     public void setUp() {
-        testPlayer = new Player(BLUE, "Lu", new UserBehavior());
+        testPlayer = new Player(BLUE, "Lu", new RandomBehavior());
         ownedCountries = new ArrayList<>();
         selectedCountries = new ArrayList<>();
     }
@@ -67,7 +66,6 @@ class RandomBehaviorTest {
 
         testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
         verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
-
     }
 
     @Test
@@ -102,12 +100,10 @@ class RandomBehaviorTest {
 
     @Test
     void moveSoldiers() {
-
         selectedCountries = TestHelperBehavior.makeList(2, testPlayer);
         ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
         ownedCountries.add(selectedCountries.get(1));
-
 
         assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
     }
