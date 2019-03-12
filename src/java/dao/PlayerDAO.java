@@ -15,11 +15,10 @@ public class PlayerDAO {
     private Connection con;
     private PreparedStatement st;
 
-    private String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
-    private String user = "root";
-    private String pw = "rootroot";
-    private String jdbcDriver = "com.mysql.jdbc.Driver";
-
+    private final static String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
+    private final static String user = "root";
+    private final static String pw = "rootroot";
+    private final static String jdbcDriver = "com.mysql.jdbc.Driver";
     private final static String INSERT_PLAYER_QUERY = "INSERT INTO player (username, email, passwordUser) VALUES(?, ?, ?);";
     private final static String SELECT_PLAYER_QUERY = "SELECT username, email, passwordUser FROM player WHERE email = ?;";
     private final static String UPDATE_PLAYER_QUERY = "UPDATE player SET username = ?, email = ?, passwordUser = ? WHERE email = ?;";
@@ -82,7 +81,7 @@ public class PlayerDAO {
 
     /**
      * remove player from the database by mail
-     *
+     * TODO: implementation will be done in Milestone 3 /F0130/
      * @param mail of the player
      */
     public void deletePlayerByMail(String mail) {
@@ -101,6 +100,7 @@ public class PlayerDAO {
      *
      * @param sql  SQL-Query with placeholders for the PreparedStatement
      * @param args arguments to fill the placeholder in the SQL-Query
+     * TODO: implementation will be done in Milestone 3 /F0130/
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -117,8 +117,7 @@ public class PlayerDAO {
 
     /**
      * Close connection to database
-     *
-     * @throws SQLException
+     *  @throws SQLException
      */
     private void closeConnection() throws SQLException {
         rs.close();
