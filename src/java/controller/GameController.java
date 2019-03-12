@@ -29,7 +29,7 @@ public class GameController extends HttpServlet {
     //endregion
 
     /**
-     * process post request
+     * process any post requests
      *
      * @param request  game.jsp
      * @param response servlet response
@@ -57,12 +57,9 @@ public class GameController extends HttpServlet {
     }
 
     /**
+     * Decideds whether its the AI or the users turn and calls the appropriate methods accordingly
      *
-     * Edit the following request and set up the appropriated turn. In addition it reset the selected countries and
-     * continue to the other methods.
-     *
-     *
-     * @param request  game.jsp
+     * @param request  from game.jsp
      * @param response servlet response
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -96,21 +93,21 @@ public class GameController extends HttpServlet {
     }
 
     /**
+     * Gets the country from the BoardBean, which was selected on the GUI
      *
-     * take countries, witch where selected by board
-     *
-     * @param request  game.jsp
-     * @return selected country
+     * @param request from game.jsp
+     * @return selected country from BoardBean
      */
     private Country extractSelectedCountry(HttpServletRequest request) {
+        Country toReturn = null;
+
         try {
             int countryIndex = Integer.parseInt(request.getParameter(PARAM_COUNTRY));
-            return board.getCountryById(countryIndex);
+            toReturn = board.getCountryById(countryIndex);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
-
-        return null;
+        return toReturn;
     }
 
 }
