@@ -25,12 +25,16 @@ public class PlayerDAO {
     private final static String UPDATE_PLAYER_QUERY = "UPDATE player SET username = ?, email = ?, passwordUser = ? WHERE email = ?;";
     private final static String DELETE_PLAYER_QUERY = "DELETE FROM player WHERE email = ?;";
 
-
+    /**
+     * get saved profile data of the user by the mail address
+     * TODO: implementation will be done in Milestone 3 /F0111/
+     *
+     * @param mail of the user
+     */
     public void getPlayerByMail(String mail) {
         try {
             createConnection(SELECT_PLAYER_QUERY, Arrays.asList(mail));
             rs = st.executeQuery();
-            // TODO MS3 /F0111/
             closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,18 +43,17 @@ public class PlayerDAO {
 
 
     /**
-     * Create a new Player with username, mail and password
+     * register a new Player with username, mail and password
+     * TODO: implementation will be done in Milestone 3 /F0100/
      *
-     * @param username is the name from the player
-     * @param mail     is the private mail from player
-     * @param password created by the user himself
+     * @param username the user's name
+     * @param mail     the user's mail to log in
+     * @param password the user's password to authenticate
      */
     public void createNewPlayer(String username, String mail, String password) {
         try {
             createConnection(INSERT_PLAYER_QUERY, Arrays.asList(username, mail, password));
-
             int row = st.executeUpdate();
-            // TODO MS3 /F0100/
             closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,18 +62,18 @@ public class PlayerDAO {
 
 
     /**
-     * update players information by username and password
+     * edit players username and / or password
      * Mail cannot be changed
+     * TODO: implementation will be done in Milestone 3 /F0130/
      *
-     * @param username new username
-     * @param password new password
-     * @param mail     mail from user
+     * @param username new username or old username to not change
+     * @param password new password or old password to not change
+     * @param mail     mail of the user
      */
     public void updatePlayer(String username, String password, String mail) {
         try {
             createConnection(UPDATE_PLAYER_QUERY, Arrays.asList(username, password, mail));
             int rows = st.executeUpdate();
-            // TODO MS3 /F0130/
             closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,9 +81,9 @@ public class PlayerDAO {
     }
 
     /**
-     * remove player
+     * remove player from the database by mail
      *
-     * @param mail from players, which has to be deleted
+     * @param mail of the player
      */
     public void deletePlayerByMail(String mail) {
         try {
@@ -94,10 +97,10 @@ public class PlayerDAO {
     }
 
     /**
-     * Create connection with the Database.
+     * Create connection with Database and prepare injection
      *
-     * @param sql
-     * @param args
+     * @param sql  SQL-Query with placeholders for the PreparedStatement
+     * @param args arguments to fill the placeholder in the SQL-Query
      * @throws SQLException
      * @throws ClassNotFoundException
      */
