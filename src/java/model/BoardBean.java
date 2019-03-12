@@ -26,7 +26,7 @@ public class BoardBean {
     //endregion
 
     //region data fields
-    private int turnCount = 0;
+    private int turnCount = 1;
     private Player currentPlayer;
     private ArrayList<Player> players;
     private ArrayList<Country> countries;
@@ -345,6 +345,9 @@ public class BoardBean {
         players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
         if (nextPlayerIndex >= players.size()) {
             nextPlayerIndex = 0;
+        }
+        if(nextPlayerIndex == 0){
+            turnCount++;
         }
         currentPlayer = players.get(nextPlayerIndex);
         if (currentPlayerIsUser()) {
