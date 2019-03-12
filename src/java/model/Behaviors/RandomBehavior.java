@@ -13,23 +13,24 @@ public class RandomBehavior implements IBehavior {
 
     //region static variables
     //will try to attack in x out of 10 cases
-    private final static int AGGRESSIVNESS = 7;
+    private final static int AGGRESSIVENESS = 7;
     //will continue to attack in x out of 10 cases
-    private final static int STUBORNESS = 9;
+    private final static int STUBBORNNESS = 9;
     //will move soldiers in x out of 10 cases
-    private final static int MOVEWILLINGNESS = 8;
+    private final static int MOVE_WILLINGNESS = 8;
+
+    private final static int MIN_DICE_RANGE = 1;
+    private final static int MAX_DICE_RANGE = 10;
     //end region
 
 
     /**
-     * New soldiers have to be placed on their own countries.
-     * Put one soldiers on one selected country. This is repeated until it has no longer soldiers to place
-     * The RandomBehavior set soldiers random
+     * Sets the all soldiers random on owned countries
      *
-     * @param allCountries    ArrayList with listed Countries
-     * @param ownedCountries  countries from current random player
-     * @param soldiersToPlace number of distributing soldiers
-     * @return phase attack
+     * @param allCountries    ArrayList with all Countries on the board
+     * @param ownedCountries  all owned by current player
+     * @param soldiersToPlace number of soldiers to distribute
+     * @return next phase: attack
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
@@ -46,12 +47,10 @@ public class RandomBehavior implements IBehavior {
     }
 
     /**
-     * The StrategicBehavior selects a country and a neighboring country to attack
-     * Only those countries with more than 1 soldier can attack
-     * The RandomBehavior attack random
+     * Decides random which enemy country to attack and if the behavior wants to continue attacking
      *
-     * @param allCountries   ArrayList with listed Countries
-     * @param ownedCountries are countries from current random player
+     * @param allCountries   ArrayList with all Countries on the naord
+     * @param ownedCountries are countries from current player
      * @return next Phase: move
      */
     @Override
@@ -76,12 +75,10 @@ public class RandomBehavior implements IBehavior {
 
 
     /**
-     * The soldiers are singular being moved from one own country to another own country.
-     * The countries must be both on the same continent. Only those countries with more than 1 soldier can move
-     * The RandomBehavior put the soldiers random
+     *Decides random if and in between which countries a random amount of soldiers is moved.
      *
-     * @param allCountries   ArrayList with listed Countries
-     * @param ownedCountries countries from current player
+     * @param allCountries   ArrayList with all countries on the board
+     * @param ownedCountries all countries from current player
      * @return next Phase: set
      */
     @Override
@@ -105,24 +102,24 @@ public class RandomBehavior implements IBehavior {
     }
 
     /**
-     * @return true if dice eyes (between 1 and 10) are fewer or equal than the value of aggressiveness
+     * @return true if behavior wants to attack
      */
     private boolean willAttack() {
-        return Dice.roll(1, 10) <= AGGRESSIVNESS;
+        return Dice.roll(MIN_DICE_RANGE, MAX_DICE_RANGE) <= AGGRESSIVENESS;
     }
 
     /**
-     * @return true if dice eyes (between 1 and 10) are fewer or equal than the value of stubbornness
+     * @return true if behavior wants to continue attacking
      */
     private boolean willContinueAttack() {
-        return Dice.roll(1, 10) <= STUBORNESS;
+        return Dice.roll(MIN_DICE_RANGE, MAX_DICE_RANGE) <= STUBBORNNESS;
     }
 
     /**
-     * @return true if dice eyes (between 1 and 10) are fewer or equal than the value of move willingness
+     * @return true if behavior wants to move soldiers
      */
     private boolean willMoveSoldiers() {
-        return Dice.roll(1, 10) <= MOVEWILLINGNESS;
+        return Dice.roll(MIN_DICE_RANGE, MAX_DICE_RANGE) <= MOVE_WILLINGNESS;
     }
 
 
