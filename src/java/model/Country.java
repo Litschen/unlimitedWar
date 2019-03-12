@@ -188,7 +188,7 @@ public class Country {
      */
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
 
-        boolean canShift = amountSoldiers < getSoldiersCount()
+        boolean canShift = getSoldiersCount() - amountSoldiers >= MIN_SOLDIERS_TO_STAY
                 && amountSoldiers > 0
                 && isBordering(destination)
                 && getOwner() == destination.getOwner();
