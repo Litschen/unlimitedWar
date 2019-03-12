@@ -6,17 +6,17 @@ import model.Interface.IBehavior;
 
 import java.util.ArrayList;
 
+/**
+ * TODO in MS2
+ */
 public class StrategicBehavior implements IBehavior {
     /**
+     * Places the specified amount of soldiers on own countries in way that makes strategic sense.
      *
-     * New soldiers have to be placed on their own countries.
-     * Put one soldiers on one selected country. This is repeated until it has no longer soldiers to place
-     * The StrategicBehavior set soldiers as clever as possible
-     *
-     * @param allCountries    all countries in the game
+     * @param allCountries    all countries on the baord
      * @param ownedCountries  countries from current player
-     * @param soldiersToPlace it would never be used
-     * @return phase attack when none solders are to put on
+     * @param soldiersToPlace  amount to be placed
+     * @return next phase: attack
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
@@ -24,12 +24,10 @@ public class StrategicBehavior implements IBehavior {
     }
 
     /**
-     * The StrategicBehavior selects a country and a neighboring country to attack
-     * Only those countries with more than 1 soldier can attack
-     * The StrategicBehavior attack as clever as possible
+     * Attacks enemy countries as long as it makes strategic sense.
      *
      * @param allCountries  all countries in the game
-     * @param ownedCountries are countries from current player
+     * @param ownedCountries countries from current player
      * @return next Phase: move
      */
     @Override
@@ -38,9 +36,7 @@ public class StrategicBehavior implements IBehavior {
     }
 
     /**
-     * The soldiers are singular being moved from one own country to another own country.
-     * The countries must be both on the same continent. Only those countries with more than 1 soldier can move
-     * The StrategicBehavior put the soldiers as clever as possible
+     * Moves Soldiers in a better position(Country) on the board if necessary
      *
      * @param allCountries   all countries in the game
      * @param ownedCountries are countries from current player
