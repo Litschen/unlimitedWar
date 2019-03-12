@@ -9,8 +9,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static model.Behaviors.testHelperBehavior.setUpMockCountry;
 import static model.Enum.PlayerColor.BLUE;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyObject;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 
 class AggressiveBehaviorTest {
@@ -51,6 +56,51 @@ class AggressiveBehaviorTest {
         assertEquals(8, selectedCountries.get(0).getSoldiersCount());
         assertEquals(0, testPlayer.getSoldiersToPlace());
 
+    }
+
+    @Test
+    void testAttackCountry() {
+        Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
+        Country mockAttackCountry = setUpMockCountry(testPlayer2);
+
+        selectedCountries.add(mockAttackCountry);
+        selectedCountries.add(new Country("Spanien", 5, testPlayer));
+        ownedCountries = CountryTest.makeList(1, testPlayer);
+        ownedCountries.add(mockAttackCountry);
+
+        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
+        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
+
+    }
+
+    @Test
+    void testAttackCountryOwnCountries() {
+
+        Player ownTestPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
+        Country mockAttackCountry = setUpMockCountry(ownTestPlayer);
+
+        selectedCountries.add(mockAttackCountry);
+        selectedCountries.add(new Country("Spanien", 5, ownTestPlayer));
+        ownedCountries = CountryTest.makeList(1, ownTestPlayer);
+        ownedCountries.add(mockAttackCountry);
+
+        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
+        verify(mockAttackCountry, times(0)).invade(anyObject(), anyInt(), anyInt());
+
+    }
+
+    @Test
+    void testAttackCountryNotOwnCountries() {
+        Player opponentPlayer = new Player(BLUE, "opponentPlayer", new UserBehavior());
+        Country mockAttackCountry = setUpMockCountry(opponentPlayer);
+
+        selectedCountries.add(mockAttackCountry);
+        selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
+        ownedCountries = CountryTest.makeList(1, opponentPlayer);
+        ownedCountries.add(mockAttackCountry);
+
+        testPlayer.getBehavior().attackCountry(selectedCountries, selectedCountries);
+        verify(mockAttackCountry, times(0)).invade(anyObject(), anyInt(), anyInt());
     }
 
 
