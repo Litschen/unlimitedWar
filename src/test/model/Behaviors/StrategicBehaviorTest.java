@@ -17,6 +17,10 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+/*
+As information: the strategic behavior is not implemented yet. Therefore, the tests do not success
+ */
+
 class StrategicBehaviorTest {
 
     private Player testPlayer;
