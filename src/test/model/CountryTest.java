@@ -223,12 +223,4 @@ public class CountryTest {
         invadingCountry.getNeighboringCountries().remove(defendingCountry);
         defendingCountry.getNeighboringCountries().remove(invadingCountry);
     }
-
-    public static ArrayList<Country> makeList(int numbersOfListElements, Player testPlayer) {
-        ArrayList<Country> list = new ArrayList<>();
-        for (int i = 0; i < numbersOfListElements; i++) {
-            list.add(i, new Country("Polen", 5, testPlayer));
-        }
-        return list;
-    }
 }

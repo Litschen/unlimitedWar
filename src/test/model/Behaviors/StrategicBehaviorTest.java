@@ -1,7 +1,6 @@
 package model.Behaviors;
 
 import model.Country;
-import model.CountryTest;
 import model.Enum.Phase;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static model.Behaviors.testHelperBehavior.setUpMockCountry;
+import static model.Behaviors.TestHelperBehavior.setUpMockCountry;
 import static model.Enum.PlayerColor.BLUE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyInt;
@@ -34,8 +33,8 @@ class StrategicBehaviorTest {
 
     @Test
     void placeSoldiers() {
-        selectedCountries = CountryTest.makeList(1, testPlayer);
-        ownedCountries = CountryTest.makeList(4, testPlayer);
+        selectedCountries = TestHelperBehavior.makeList(1, testPlayer);
+        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
 
         testPlayer.setSoldiersToPlace(2);
@@ -60,7 +59,7 @@ class StrategicBehaviorTest {
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, testPlayer));
-        ownedCountries = CountryTest.makeList(1, testPlayer);
+        ownedCountries = TestHelperBehavior.makeList(1, testPlayer);
         ownedCountries.add(mockAttackCountry);
 
         testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
@@ -76,7 +75,7 @@ class StrategicBehaviorTest {
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, ownTestPlayer));
-        ownedCountries = CountryTest.makeList(1, ownTestPlayer);
+        ownedCountries = TestHelperBehavior.makeList(1, ownTestPlayer);
         ownedCountries.add(mockAttackCountry);
 
         testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
@@ -91,7 +90,7 @@ class StrategicBehaviorTest {
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
-        ownedCountries = CountryTest.makeList(1, opponentPlayer);
+        ownedCountries = TestHelperBehavior.makeList(1, opponentPlayer);
         ownedCountries.add(mockAttackCountry);
 
         testPlayer.getBehavior().attackCountry(selectedCountries, selectedCountries);
@@ -101,8 +100,8 @@ class StrategicBehaviorTest {
     @Test
     void moveSoldiers() {
 
-        selectedCountries = CountryTest.makeList(2, testPlayer);
-        ownedCountries = CountryTest.makeList(4, testPlayer);
+        selectedCountries = TestHelperBehavior.makeList(2, testPlayer);
+        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
         ownedCountries.add(selectedCountries.get(1));
 

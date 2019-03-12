@@ -1,16 +1,14 @@
 package model.Behaviors;
 
 import model.Country;
-import model.CountryTest;
 import model.Enum.Phase;
-import model.Enum.PlayerColor;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static model.Behaviors.testHelperBehavior.setUpMockCountry;
+import static model.Behaviors.TestHelperBehavior.setUpMockCountry;
 import static model.Enum.PlayerColor.BLUE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
@@ -31,9 +29,8 @@ class UserBehaviorTest {
 
     @Test
     void testPlaceSoldiers() {
-
-        selectedCountries = CountryTest.makeList(1, testPlayer);
-        ownedCountries = CountryTest.makeList(4, testPlayer);
+        selectedCountries = TestHelperBehavior.makeList(1, testPlayer);
+        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
 
         testPlayer.setSoldiersToPlace(3);
@@ -62,12 +59,11 @@ class UserBehaviorTest {
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, testPlayer));
-        ownedCountries = CountryTest.makeList(1, testPlayer);
+        ownedCountries = TestHelperBehavior.makeList(1, testPlayer);
         ownedCountries.add(mockAttackCountry);
 
         testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
         verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
-
     }
 
     @Test
@@ -102,15 +98,12 @@ class UserBehaviorTest {
 
     @Test
     void testMoveSoldiers() {
-
-        selectedCountries = CountryTest.makeList(2, testPlayer);
-        ownedCountries = CountryTest.makeList(4, testPlayer);
+        selectedCountries = TestHelperBehavior.makeList(2, testPlayer);
+        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
         ownedCountries.add(selectedCountries.get(1));
 
         assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
-
     }
-
 
 }

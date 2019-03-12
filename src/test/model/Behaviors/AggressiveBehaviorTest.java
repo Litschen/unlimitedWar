@@ -1,7 +1,6 @@
 package model.Behaviors;
 
 import model.Country;
-import model.CountryTest;
 import model.Enum.Phase;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,8 +28,8 @@ class AggressiveBehaviorTest {
 
     @Test
     void placeSoldiers() {
-        selectedCountries = CountryTest.makeList(1, testPlayer);
-        ownedCountries = CountryTest.makeList(4, testPlayer);
+        selectedCountries = TestHelperBehavior.makeList(1, testPlayer);
+        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
 
         testPlayer.setSoldiersToPlace(3);
@@ -57,8 +56,8 @@ class AggressiveBehaviorTest {
     @Test
     void moveSoldiers() {
 
-        selectedCountries = CountryTest.makeList(2, testPlayer);
-        ownedCountries = CountryTest.makeList(4, testPlayer);
+        selectedCountries = TestHelperBehavior.makeList(2, testPlayer);
+        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
         ownedCountries.add(selectedCountries.get(1));
 
