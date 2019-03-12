@@ -16,6 +16,11 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+
+/*
+As information: the aggressive behavior is not implemented yet. Therefore, the tests do not success
+ */
+
 class AggressiveBehaviorTest {
 
     private Player testPlayer;
