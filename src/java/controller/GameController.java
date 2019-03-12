@@ -27,10 +27,10 @@ public class GameController extends HttpServlet {
     //enddregion
 
     /**
-     * ...
+     * process post request
      *
-     * @param request  http request
-     * @param response http response
+     * @param request  game.jsp
+     * @param response servlet response
      * @throws ServletException
      * @throws IOException
      */
@@ -41,10 +41,10 @@ public class GameController extends HttpServlet {
     }
 
     /**
-     * ...
+     * process get request
      *
-     * @param request  by http
-     * @param response by http
+     * @param request  game.jsp
+     * @param response servlet response
      * @throws ServletException
      * @throws IOException
      */
@@ -56,7 +56,7 @@ public class GameController extends HttpServlet {
 
     /**
      *
-     * Edit the following request and set up the appropriated turn. In addition reset the selected countries and
+     * Edit the following request and set up the appropriated turn. In addition it reset the selected countries and
      * continue to the other methods.
      *
      *

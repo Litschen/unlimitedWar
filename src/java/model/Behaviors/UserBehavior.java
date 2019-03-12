@@ -9,14 +9,13 @@ import java.util.ArrayList;
 
 public class UserBehavior implements IBehavior {
 
-
     /**
-     * Can places given number of Soldiers on the field
+     * Put one soldiers on one selected country
      *
-     * @param destinationCountries Countries that do not belong to the current player
-     * @param ownedCountries
-     * @param soldiersToPlace
-     * @return next Phase: attack when number of soldiers is 0 otherwise set Phase
+     * @param destinationCountries
+     * @param ownedCountries       are countries from current player
+     * @param soldiersToPlace      it would never be used
+     * @return phase set phase as far as it can be to set by soldiers. Or phase attack phase none solders are to put on
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> destinationCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
@@ -43,11 +42,13 @@ public class UserBehavior implements IBehavior {
     }
 
     /**
-     * Can select  different country and attack until the number of soldiers falls to 1.
+     * attack other countries as often as possible,
+     * until the number of own soldiers falls per country to 1.
      *
-     * @param selectedCountries Countries the player has selected
-     * @param ownedCountries    countries from current player
-     * @return next Phase: attack
+     * @param selectedCountries ist an ArrayList from selected countries. Index 0 is the country, witch is been attacked
+     *                          and index 1 it's the country witch has been defended.
+     * @param ownedCountries    are owned by the player
+     * @return replace the next phase  manually
      */
     @Override
     public Phase attackCountry(ArrayList<Country> selectedCountries, ArrayList<Country> ownedCountries) {
@@ -64,11 +65,11 @@ public class UserBehavior implements IBehavior {
     }
 
     /**
-     * Can move the soldiers on their own land as long as they are greater than 1.
+     * Singular movement from the soldiers in their own country
      *
-     * @param selectedCountries Countries the player has selected
-     * @param ownedCountries    countries from current player
-     * @return next Phase: move
+     * @param selectedCountries are countries the player has selected
+     * @param ownedCountries    are countries from current player
+     * @return replace the next phase  manually
      */
     @Override
     public Phase moveSoldiers(ArrayList<Country> selectedCountries, ArrayList<Country> ownedCountries) {

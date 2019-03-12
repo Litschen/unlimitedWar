@@ -25,6 +25,19 @@ public class PlayerDAO {
     private final static String UPDATE_PLAYER_QUERY = "UPDATE player SET username = ?, email = ?, passwordUser = ? WHERE email = ?;";
     private final static String DELETE_PLAYER_QUERY = "DELETE FROM player WHERE email = ?;";
 
+
+    public void getPlayerByMail(String mail) {
+        try {
+            createConnection(SELECT_PLAYER_QUERY, Arrays.asList(mail));
+            rs = st.executeQuery();
+            // TODO MS3 /F0111/
+            closeConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * Create a new Player with username, mail and password
      *
@@ -44,17 +57,6 @@ public class PlayerDAO {
         }
     }
 
-
-    public void getPlayerByMail(String mail) {
-        try {
-            createConnection(SELECT_PLAYER_QUERY, Arrays.asList(mail));
-            rs = st.executeQuery();
-            // TODO MS3 /F0111/
-            closeConnection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * update players information by username and password
@@ -76,7 +78,7 @@ public class PlayerDAO {
     }
 
     /**
-     * remove players mail
+     * remove player
      *
      * @param mail from players, which has to be deleted
      */
@@ -92,7 +94,7 @@ public class PlayerDAO {
     }
 
     /**
-     * Create connection with the Database ....
+     * Create connection with the Database.
      *
      * @param sql
      * @param args

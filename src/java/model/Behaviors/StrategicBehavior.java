@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 public class StrategicBehavior implements IBehavior {
     /**
-     * Can be used to set soldiers on own country. Place soldiers on the map as clever as possible.
+     * Put clever one soldiers on one selected country
      *
      * @param allCountries    all countries in the game
      * @param ownedCountries  countries from current player
-     * @param soldiersToPlace number of soldiers which the current player places
-     * @return next Phase: attack
+     * @param soldiersToPlace it would never be used
+     * @return phase attack when none solders are to put on
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
@@ -21,11 +21,10 @@ public class StrategicBehavior implements IBehavior {
     }
 
     /**
-     * Can be used to attack other countries. Attack other countries as clever as possible,
-     * until the number of soldiers falls to 1.
+     * attack clever other countries as often as possible, until the number of own soldiers falls per country to 1.
      *
-     * @param allCountries   all countries in the game
-     * @param ownedCountries countries from current player
+     * @param allCountries  all countries in the game
+     * @param ownedCountries are countries from current player
      * @return next Phase: move
      */
     @Override
@@ -34,11 +33,10 @@ public class StrategicBehavior implements IBehavior {
     }
 
     /**
-     * Can be used to move own soldiers in between own countries. Move soldiers as clever as possible,
-     * as long as they are greater than 1.
+     * Singular movement from the soldiers in their own country
      *
      * @param allCountries   all countries in the game
-     * @param ownedCountries countries from current player
+     * @param ownedCountries are countries from current player
      * @return next Phase: set
      */
     @Override

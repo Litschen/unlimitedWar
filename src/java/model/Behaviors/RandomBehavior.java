@@ -22,12 +22,12 @@ public class RandomBehavior implements IBehavior {
 
 
     /**
-     * Can be used to set soldiers on own country. Place random soldiers on the map
+     * Put random one soldiers on one selected country
      *
      * @param allCountries    all countries in the game
      * @param ownedCountries  countries from current player
      * @param soldiersToPlace number of soldiers which the current player places
-     * @return next Phase: attack
+     * @return phase attack when none solders are to put on
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
@@ -44,11 +44,10 @@ public class RandomBehavior implements IBehavior {
     }
 
     /**
-     * Can be used to attack other countries. Attack countries random,
-     * until the number of soldiers falls to 1.
+     ** attack random other countries as often as possible, until the number of own soldiers falls per country to 1.
      *
      * @param allCountries   all countries in the game
-     * @param ownedCountries countries from current player
+     * @param ownedCountries are countries from current player
      * @return next Phase: move
      */
     @Override
@@ -73,8 +72,7 @@ public class RandomBehavior implements IBehavior {
 
 
     /**
-     * Can be used to move own soldiers in between own countries. Move own solders random,
-     * as long as they are greater than 1.
+     * Singular movement from the soldiers in their own country
      *
      * @param allCountries   all countries in the game
      * @param ownedCountries countries from current player

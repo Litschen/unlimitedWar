@@ -115,7 +115,7 @@ public class BoardBean {
 
 
     /**
-     * generate based on variable a random output and set Country
+     * generate based on variable a random random distribution of the soldiers and put these soldiers on a country
      */
     private void generateCountries() {
         for (Player currentPlayer : players) {
@@ -139,7 +139,7 @@ public class BoardBean {
 
 
     /**
-     * gives random names and puts random neighbor
+     * gives countries random names and puts random their neighbor
      */
     private void setCountryAttributes() {
         try {
@@ -182,7 +182,7 @@ public class BoardBean {
      * Set pre-defined neighbor
      *
      * @param countryIndex         index from county that the neighbours can set on the county ArrayList
-     * @param neighborCountryIndex array via index from country ArrayList all neighbours from country Index
+     * @param neighborCountryIndex array via index from country ArrayList with all neighbours from country Index
      */
     private void setFixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
         for (int i : neighborCountryIndex) {
@@ -235,7 +235,7 @@ public class BoardBean {
     }
 
     /**
-     * perform a turn. Countries in ArrayList put in and give over there funktion. User mostly selected countries reseated
+     * perform a turn. Put countries in a ArrayList and give over the certain phase. From user mostly selected countries are reseated
      *
      * @param selectedCountry is the country in the selected ArrayList
      */
@@ -272,7 +272,7 @@ public class BoardBean {
 
     /**
      * indicates which country is attacking and which country is being attacked
-     * happends in the controller section from country
+     * happens in the controller section from country
      *
      * @param country which the player selects
      */
@@ -314,7 +314,7 @@ public class BoardBean {
 
     /**
      * change phases and move to the next Phase
-     * Selectet Countrey resete
+     * reset the selected countries
      */
     public void moveToNextPhase() {
         Phase currentPhase = getCurrentPhase();
@@ -332,7 +332,7 @@ public class BoardBean {
     }
 
     /**
-     * change the next player and delete the player without the countrys
+     * change the next player and delete the player without the countries
      */
 
     private void cyclePlayer() {
