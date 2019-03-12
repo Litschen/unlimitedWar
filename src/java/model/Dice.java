@@ -14,16 +14,16 @@ public class Dice {
     //endregion
 
     /**
-     * throw a dice (range 1-6)
+     * throw a dice (range MIN_VALUE - MAX_VALUE)
      *
-     * @return Random number between 1 and 6
+     * @return Random number in above range
      */
     public static int roll() {
         return roll(MIN_VALUE, MAX_VALUE);
     }
 
     /**
-     * throw a given amount of dice (range 1-6) and save the results in an array.
+     * throw a given amount of dice range MIN_VALUE - MAX_VALUE)and save the results in an array.
      * the results are sorted in descending order.
      *
      * @param amountOfDice how many dice should be thrown
