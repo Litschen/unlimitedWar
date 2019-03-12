@@ -22,12 +22,14 @@ public class RandomBehavior implements IBehavior {
 
 
     /**
-     * Put random one soldiers on one selected country
+     * New soldiers have to be placed on their own countries.
+     * Put one soldiers on one selected country. This is repeated until it has no longer soldiers to place
+     * The RandomBehavior set soldiers random
      *
-     * @param allCountries    all countries in the game
-     * @param ownedCountries  countries from current player
-     * @param soldiersToPlace number of soldiers which the current player places
-     * @return phase attack when none solders are to put on
+     * @param allCountries    ArrayList with listed Countries
+     * @param ownedCountries  countries from current random player
+     * @param soldiersToPlace number of distributing soldiers
+     * @return phase attack
      */
     @Override
     public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
@@ -44,10 +46,12 @@ public class RandomBehavior implements IBehavior {
     }
 
     /**
-     ** attack random other countries as often as possible, until the number of own soldiers falls per country to 1.
+     * The StrategicBehavior selects a country and a neighboring country to attack
+     * Only those countries with more than 1 soldier can attack
+     * The RandomBehavior attack random
      *
-     * @param allCountries   all countries in the game
-     * @param ownedCountries are countries from current player
+     * @param allCountries   ArrayList with listed Countries
+     * @param ownedCountries are countries from current random player
      * @return next Phase: move
      */
     @Override
@@ -72,9 +76,11 @@ public class RandomBehavior implements IBehavior {
 
 
     /**
-     * Singular movement from the soldiers in their own country
+     * The soldiers are singular being moved from one own country to another own country.
+     * The countries must be both on the same continent. Only those countries with more than 1 soldier can move
+     * The RandomBehavior put the soldiers random
      *
-     * @param allCountries   all countries in the game
+     * @param allCountries   ArrayList with listed Countries
      * @param ownedCountries countries from current player
      * @return next Phase: set
      */
@@ -99,21 +105,21 @@ public class RandomBehavior implements IBehavior {
     }
 
     /**
-     * @return true if dice eyes (between 1 and 10) are fewer than the value of aggressiveness
+     * @return true if dice eyes (between 1 and 10) are fewer or equal than the value of aggressiveness
      */
     private boolean willAttack() {
         return Dice.roll(1, 10) <= AGGRESSIVNESS;
     }
 
     /**
-     * @return true if dice eyes (between 1 and 10) are fewer than the value of stubbornness
+     * @return true if dice eyes (between 1 and 10) are fewer or equal than the value of stubbornness
      */
     private boolean willContinueAttack() {
         return Dice.roll(1, 10) <= STUBORNESS;
     }
 
     /**
-     * @return true if dice eyes (between 1 and 10) are fewer than the value of move willingness
+     * @return true if dice eyes (between 1 and 10) are fewer or equal than the value of move willingness
      */
     private boolean willMoveSoldiers() {
         return Dice.roll(1, 10) <= MOVEWILLINGNESS;

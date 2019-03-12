@@ -10,7 +10,8 @@ import java.util.ArrayList;
 public class UserBehavior implements IBehavior {
 
     /**
-     * Put one soldiers on one selected country
+     * New soldiers have to be placed on their own countries.
+     * Put one soldiers on one selected country. This is repeated until it has no longer soldiers to place
      *
      * @param destinationCountries
      * @param ownedCountries       are countries from current player
@@ -42,13 +43,13 @@ public class UserBehavior implements IBehavior {
     }
 
     /**
-     * attack other countries as often as possible,
-     * until the number of own soldiers falls per country to 1.
+     * The player selects a country and a neighboring country to attack.
+     * Only those countries with more than 1 soldier can attack
      *
      * @param selectedCountries ist an ArrayList from selected countries. Index 0 is the country, witch is been attacked
      *                          and index 1 it's the country witch has been defended.
      * @param ownedCountries    are owned by the player
-     * @return replace the next phase  manually
+     * @return replace the next phase manually
      */
     @Override
     public Phase attackCountry(ArrayList<Country> selectedCountries, ArrayList<Country> ownedCountries) {
@@ -65,7 +66,8 @@ public class UserBehavior implements IBehavior {
     }
 
     /**
-     * Singular movement from the soldiers in their own country
+     * The soldiers are singular being moved from one own country to another own country.
+     * The countries must both be on the same continent. Only those countries with more than 1 soldier can move
      *
      * @param selectedCountries are countries the player has selected
      * @param ownedCountries    are countries from current player

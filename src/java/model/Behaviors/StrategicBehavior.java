@@ -8,7 +8,10 @@ import java.util.ArrayList;
 
 public class StrategicBehavior implements IBehavior {
     /**
-     * Put clever one soldiers on one selected country
+     *
+     * New soldiers have to be placed on their own countries.
+     * Put one soldiers on one selected country. This is repeated until it has no longer soldiers to place
+     * The StrategicBehavior set soldiers as clever as possible
      *
      * @param allCountries    all countries in the game
      * @param ownedCountries  countries from current player
@@ -21,7 +24,9 @@ public class StrategicBehavior implements IBehavior {
     }
 
     /**
-     * attack clever other countries as often as possible, until the number of own soldiers falls per country to 1.
+     * The StrategicBehavior selects a country and a neighboring country to attack
+     * Only those countries with more than 1 soldier can attack
+     * The StrategicBehavior attack as clever as possible
      *
      * @param allCountries  all countries in the game
      * @param ownedCountries are countries from current player
@@ -33,7 +38,9 @@ public class StrategicBehavior implements IBehavior {
     }
 
     /**
-     * Singular movement from the soldiers in their own country
+     * The soldiers are singular being moved from one own country to another own country.
+     * The countries must be both on the same continent. Only those countries with more than 1 soldier can move
+     * The StrategicBehavior put the soldiers as clever as possible
      *
      * @param allCountries   all countries in the game
      * @param ownedCountries are countries from current player

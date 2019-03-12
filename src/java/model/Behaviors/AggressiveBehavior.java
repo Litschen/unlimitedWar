@@ -10,11 +10,13 @@ public class AggressiveBehavior implements IBehavior {
 
 
     /**
-     * Put aggressive one soldiers on one selected country
+     * New soldiers have to be placed on their own countries.
+     * Put one soldiers on one selected country. This is repeated until it has no longer soldiers to place
+     * The AggressiveBehavior set soldiers aggressive
      *
-     * @param allCountries    all countries in the game
-     * @param ownedCountries  care countries from current player
-     * @param soldiersToPlace number of soldiers which the current player places
+     * @param allCountries    ArrayList with listed Countries
+     * @param ownedCountries  are countries from current player
+     * @param soldiersToPlace it would never be used
      * @return phase attack when none solders are to put on
      */
     @Override
@@ -23,9 +25,11 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
-     * attack aggressive other countries as often as possible, until the number of own soldiers falls per country to 1.
+     * The StrategicBehavior selects a country and a neighboring country to attack
+     * Only those countries with more than 1 soldier can attack
+     * The AggressiveBehavior attack as long as possible
      *
-     * @param allCountries   all countries in the game
+     * @param allCountries   ArrayList with listed Countries
      * @param ownedCountries are countries from current player
      * @return next Phase: move
      */
@@ -35,9 +39,11 @@ public class AggressiveBehavior implements IBehavior {
     }
 
     /**
-     * Singular movement from the soldiers in their own country
+     * The soldiers are singular being moved from one own country to another own country.
+     * The countries must be both on the same continent. Only those countries with more than 1 soldier can move
+     * The AggressiveBehavior put the soldiers as clever as possible
      *
-     * @param allCountries   all countries in the game
+     * @param allCountries   ArrayList with listed Countries
      * @param ownedCountries are countries from current player
      * @return next Phase: set
      */
