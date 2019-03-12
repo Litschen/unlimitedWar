@@ -34,8 +34,8 @@ class AggressiveBehaviorTest {
 
     @Test
     void placeSoldiers() {
-        selectedCountries = TestHelperBehavior.makeList(1, testPlayer);
-        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
+        selectedCountries = TestHelperBehavior.getCountryList(1, testPlayer);
+        ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
 
         testPlayer.setSoldiersToPlace(3);
@@ -64,7 +64,7 @@ class AggressiveBehaviorTest {
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, testPlayer));
-        ownedCountries = TestHelperBehavior.makeList(1, testPlayer);
+        ownedCountries = TestHelperBehavior.getCountryList(1, testPlayer);
         ownedCountries.add(mockAttackCountry);
 
         testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
@@ -86,8 +86,8 @@ class AggressiveBehaviorTest {
 
     @Test
     void moveSoldiers() {
-        selectedCountries = TestHelperBehavior.makeList(2, testPlayer);
-        ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
+        selectedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
+        ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
         ownedCountries.add(selectedCountries.get(1));
 

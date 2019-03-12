@@ -21,7 +21,7 @@ public class TestHelperBehavior {
         return mockCountry;
     }
 
-    public static ArrayList<Country> makeList(int numbersOfListElements, Player testPlayer) {
+    public static ArrayList<Country> getCountryList(int numbersOfListElements, Player testPlayer) {
         ArrayList<Country> list = new ArrayList<>();
         for (int i = 0; i < numbersOfListElements; i++) {
             list.add(i, new Country("Polen", 5, testPlayer));
