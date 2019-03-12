@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static model.Behaviors.TestHelperBehavior.setUpMockCountry;
+import static model.Behaviors.TestHelperBehavior.setUpMockPlayer;
 import static model.Enum.PlayerColor.BLUE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.anyInt;
@@ -19,52 +20,40 @@ import static org.mockito.Mockito.verify;
 class RandomBehaviorTest {
 
     private Player testPlayer;
-    private ArrayList<Country> selectedCountries;
+    private ArrayList<Country> allCountries;
     private ArrayList<Country> ownedCountries;
 
     @BeforeEach
     public void setUp() {
         testPlayer = new Player(BLUE, "Lu", new RandomBehavior());
         ownedCountries = new ArrayList<>();
-        selectedCountries = new ArrayList<>();
+        allCountries = new ArrayList<>();
     }
 
     @Test
     void placeSoldiers() {
-        selectedCountries = TestHelperBehavior.makeList(1, testPlayer);
         ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
-        ownedCountries.add(selectedCountries.get(0));
+        allCountries.addAll(ownedCountries);
+        allCountries.addAll(TestHelperBehavior.makeList(2, setUpMockPlayer()));
+        allCountries.addAll(TestHelperBehavior.makeList(5, setUpMockPlayer()));
+        allCountries.addAll(TestHelperBehavior.makeList(3, setUpMockPlayer()));
 
-        testPlayer.setSoldiersToPlace(4);
-
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(6, selectedCountries.get(0).getSoldiersCount());
+        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(allCountries, ownedCountries, 3));
+        assertEquals(6, allCountries.get(0).getSoldiersCount());
         assertEquals(3, testPlayer.getSoldiersToPlace());
-
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(7, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(2, testPlayer.getSoldiersToPlace());
-
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(8, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(1, testPlayer.getSoldiersToPlace());
-
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(9, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(0, testPlayer.getSoldiersToPlace());
     }
 
     @Test
     void testAttackCountry() {
-        Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
+        Player testPlayer2 = new Player(BLUE, "testplayer02", new RandomBehavior());
         Country mockAttackCountry = setUpMockCountry(testPlayer2);
 
-        selectedCountries.add(mockAttackCountry);
-        selectedCountries.add(new Country("Spanien", 5, testPlayer));
+        allCountries.add(mockAttackCountry);
+        allCountries.add(new Country("Spanien", 5, testPlayer));
         ownedCountries = TestHelperBehavior.makeList(1, testPlayer);
         ownedCountries.add(mockAttackCountry);
 
-        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
+        testPlayer.getBehavior().attackCountry(allCountries, ownedCountries);
         verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
     }
 
@@ -74,12 +63,12 @@ class RandomBehaviorTest {
         Player ownTestPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
         Country mockAttackCountry = setUpMockCountry(ownTestPlayer);
 
-        selectedCountries.add(mockAttackCountry);
-        selectedCountries.add(new Country("Spanien", 5, ownTestPlayer));
+        allCountries.add(mockAttackCountry);
+        allCountries.add(new Country("Spanien", 5, ownTestPlayer));
         ownedCountries = TestHelperBehavior.makeList(1, ownTestPlayer);
         ownedCountries.add(mockAttackCountry);
 
-        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
+        testPlayer.getBehavior().attackCountry(allCountries, ownedCountries);
         verify(mockAttackCountry, times(0)).invade(anyObject(), anyInt(), anyInt());
 
     }
@@ -89,22 +78,22 @@ class RandomBehaviorTest {
         Player opponentPlayer = new Player(BLUE, "opponentPlayer", new UserBehavior());
         Country mockAttackCountry = setUpMockCountry(opponentPlayer);
 
-        selectedCountries.add(mockAttackCountry);
-        selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
+        allCountries.add(mockAttackCountry);
+        allCountries.add(new Country("Spanien", 5, opponentPlayer));
         ownedCountries = TestHelperBehavior.makeList(1, opponentPlayer);
         ownedCountries.add(mockAttackCountry);
 
-        testPlayer.getBehavior().attackCountry(selectedCountries, selectedCountries);
+        testPlayer.getBehavior().attackCountry(allCountries, allCountries);
         verify(mockAttackCountry, times(0)).invade(anyObject(), anyInt(), anyInt());
     }
 
     @Test
     void moveSoldiers() {
-        selectedCountries = TestHelperBehavior.makeList(2, testPlayer);
+        allCountries = TestHelperBehavior.makeList(2, testPlayer);
         ownedCountries = TestHelperBehavior.makeList(4, testPlayer);
-        ownedCountries.add(selectedCountries.get(0));
-        ownedCountries.add(selectedCountries.get(1));
+        ownedCountries.add(allCountries.get(0));
+        ownedCountries.add(allCountries.get(1));
 
-        assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
+        assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(allCountries, ownedCountries));
     }
 }

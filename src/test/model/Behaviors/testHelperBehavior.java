@@ -36,4 +36,10 @@ public class TestHelperBehavior {
         }
         return countries;
     }
+
+
+    public static Player setUpMockPlayer() {
+        Player mockPlayer = mock(Player.class);
+        return mockPlayer;
+    }
 }
