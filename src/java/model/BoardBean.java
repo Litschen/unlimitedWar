@@ -358,7 +358,7 @@ public class BoardBean {
         setFlag(Flag.NONE);
     }
 
-    private void eliminatePlayersAndCheckUserResult() {
+    protected void eliminatePlayersAndCheckUserResult() {
         boolean removed = players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
         if (removed) {
             if (players.size() == 1 && players.get(0).getBehavior() instanceof UserBehavior) {

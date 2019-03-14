@@ -1,5 +1,6 @@
 package model;
 
+import model.Behaviors.UserBehavior;
 import model.Enum.Flag;
 import model.Enum.Phase;
 import org.junit.jupiter.api.BeforeEach;
@@ -117,6 +118,35 @@ class BoardBeanTest {
         assertNull(testBoard.getFirstSelectedCountry());
         assertNull(testBoard.getSecondSelectedCountry());
         assertEquals(Flag.NONE, testBoard.getFlag());
+    }
+
+    @Test
+    void testEliminatePlayersAndCheckUserResultLose() {
+        Player user = testBoard.getPlayers().stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().get();
+        user.getOwnedCountries().clear();
+        assertEquals(4, testBoard.getPlayers().size());
+        assertEquals(Flag.NONE, testBoard.getFlag());
+
+        testBoard.eliminatePlayersAndCheckUserResult();
+        assertEquals(3, testBoard.getPlayers().size());
+        assertEquals(Flag.GAME_LOSE, testBoard.getFlag());
+    }
+
+    @Test
+    void testEliminatePlayersAndCheckUserResultWin() {
+        for (Player player : testBoard.getPlayers()){
+            player.getOwnedCountries().clear();
+        }
+
+        Player user = testBoard.getPlayers().stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().get();
+        user.getOwnedCountries().addAll(testBoard.getCountries());
+
+        assertEquals(4, testBoard.getPlayers().size());
+        assertEquals(Flag.NONE, testBoard.getFlag());
+
+        testBoard.eliminatePlayersAndCheckUserResult();
+        assertEquals(1, testBoard.getPlayers().size());
+        assertEquals(Flag.GAME_WIN, testBoard.getFlag());
     }
 }
 
