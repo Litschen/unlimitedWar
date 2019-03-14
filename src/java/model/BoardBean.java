@@ -110,13 +110,9 @@ public class BoardBean {
     private int getPlayerColor() {
         return ((int) Math.random() * playerColor.size());
     }
-
-
     //endregion
 
     //region methods to generate countries & set their properties
-
-
     /**
      * generates COUNTRY_COUNT_GENERATION countries random distributes
      * those random to all players and places START_SOLDIER_PER_PLAYER  owned countris of each player
@@ -141,7 +137,6 @@ public class BoardBean {
         Collections.shuffle(countries);
         setCountryAttributes();
     }
-
 
     /**
      * gives countries random names and sets their neighbor
@@ -194,7 +189,6 @@ public class BoardBean {
             countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
         }
     }
-
     //endregion
 
     /**
@@ -203,8 +197,6 @@ public class BoardBean {
      * (temporarily the user color is fixed)
      */
     private void generatePlayers() {
-
-
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
         currentPlayer = new Player(playerColor.remove(1), "Stalout", new UserBehavior());
@@ -242,7 +234,7 @@ public class BoardBean {
     /**
      * execute on user interaction according to current phase.
      *
-     * @param selectedCountry  country selected in gui
+     * @param selectedCountry country selected in gui
      */
     public void executeUserTurn(Country selectedCountry) {
         if (currentPhase == Phase.SETTINGPHASE) {
@@ -317,7 +309,6 @@ public class BoardBean {
         }
     }
 
-
     /**
      * Moves to the next Phase
      * resets the selected countries
@@ -340,14 +331,13 @@ public class BoardBean {
     /**
      * change the next player and delete the player without countries
      */
-
     private void cyclePlayer() {
         int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
         eliminatePlayersAndCheckUserResult();
         if (nextPlayerIndex >= players.size()) {
             nextPlayerIndex = 0;
         }
-        if(nextPlayerIndex == 0){
+        if (nextPlayerIndex == 0) {
             turnCount++;
         }
         currentPlayer = players.get(nextPlayerIndex);
