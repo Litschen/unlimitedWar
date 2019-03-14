@@ -45,6 +45,7 @@ class GameControllerTest {
 
     @Test
     void executeTurnIsCalledTest(){
+        when(mockRequest.getPathInfo()).thenReturn(NOT_EMPTY);
         when(mockRequest.getParameter(GameController.PARAM_NEXT_TURN)).thenReturn(NOT_EMPTY);
         when(mockBoard.currentPlayerIsUser()).thenReturn(false);
         try {
@@ -62,6 +63,7 @@ class GameControllerTest {
 
     @Test
     void moveToNextPhaseIsCalledTest(){
+        when(mockRequest.getPathInfo()).thenReturn(NOT_EMPTY);
         when(mockRequest.getParameter(GameController.PARAM_END)).thenReturn(NOT_EMPTY);
         when(mockBoard.currentPlayerIsUser()).thenReturn(false);
         try {
@@ -123,6 +125,21 @@ class GameControllerTest {
         try {
             controller.doPost(mockRequest, mockResponse);
             verify(mockBoard, times(1)).resetSelectedCountries();
+        } catch (ServletException | IOException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void testFinishGame(){
+        when(mockBoard.currentPlayerIsUser()).thenReturn(true);
+        when(mockRequest.getPathInfo()).thenReturn(GameController.PATH_RESULT);
+
+        try {
+            controller.doPost(mockRequest, mockResponse);
+            verify(mockBoard, times(1)).currentPlayerIsUser();
+            verifyNoMoreInteractions(mockBoard);
+            verify(mockResponse, times(1)).sendRedirect(anyString());
         } catch (ServletException | IOException e) {
             fail();
         }
