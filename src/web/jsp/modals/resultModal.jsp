@@ -15,8 +15,7 @@
                 </div>
             </c:if>
             <div class="modal-footer">
-                <button name="save" value="save" class="btn btn-primary">Save</button>
-                <button name="cancel" class="btn btn-secondary">Don't save</button>
+                <button class="btn btn-primary">Finish</button>
             </div>
         </form>
     </div>

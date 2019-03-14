@@ -25,7 +25,6 @@ public class GameController extends HttpServlet {
     public final static String PARAM_CANCEL = "cancel";
     public final static String PARAM_COUNTRY = "country";
     public final static String PARAM_NEXT_TURN = "nextTurn";
-    public final static String PARAM_SAVE = "save";
     public final static String SESSION_BOARD_NAME = "board";
     public static final String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/game.jsp";
     //endregion
@@ -73,13 +72,7 @@ public class GameController extends HttpServlet {
                     board.executeTurn();
                 } else if (request.getParameter(PARAM_END) != null) {
                     board.moveToNextPhase();
-                } else if (request.getPathInfo().equals(PATH_RESULT)) {
-                    request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
-                    if (request.getParameter(PARAM_SAVE) != null) {
-                        System.out.println("Save Result");
-                        // TODO: MS3 /F0410/ Spielresultat speichern
-                    }
-                } else if (board.currentPlayerIsUser()) {
+                } else if (board.currentPlayerIsUser() && !request.getPathInfo().equals(PATH_RESULT)) {
                     Country chosenCountry = extractSelectedCountry(request);
                     String path = request.getPathInfo();
 
@@ -94,7 +87,12 @@ public class GameController extends HttpServlet {
                     board.executeUserTurn(chosenCountry);
                 }
             }
-            dispatcher.forward(request, response);
+            if (request.getPathInfo().equals(PATH_RESULT)) {
+                request.getSession().setAttribute(SESSION_BOARD_NAME, null);
+                response.sendRedirect(request.getContextPath() + "/jsp/index.jsp");
+            } else {
+                dispatcher.forward(request, response);
+            }
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
