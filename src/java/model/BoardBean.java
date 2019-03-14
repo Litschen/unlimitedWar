@@ -115,6 +115,7 @@ public class BoardBean {
     //endregion
 
     //region methods to generate countries & set their properties
+
     /**
      * generates COUNTRY_COUNT_GENERATION countries random distributes
      * those random to all players and places START_SOLDIER_PER_PLAYER  owned countris of each player
@@ -358,15 +359,21 @@ public class BoardBean {
         setFlag(Flag.NONE);
     }
 
+    /**
+     * remove the players from the game which lost all their countries
+     * if the user has won / lost set the flag to show the message and save the result in the database
+     */
     protected void eliminatePlayersAndCheckUserResult() {
         boolean removed = players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
         if (removed) {
             if (players.size() == 1 && players.get(0).getBehavior() instanceof UserBehavior) {
                 setFlag(Flag.GAME_WIN);
+                // TODO: MS3 /F0410/ Spielresultat speichern
             } else {
                 boolean playerIn = players.stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().isPresent();
                 if (!playerIn) {
                     setFlag(Flag.GAME_LOSE);
+                    // TODO: MS3 /F0410/ Spielresultat speichern
                 }
             }
         }
