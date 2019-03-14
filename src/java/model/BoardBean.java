@@ -72,7 +72,9 @@ public class BoardBean {
     }
 
     public void setFlag(Flag flag) {
-        this.flag = flag;
+        if (this.flag != Flag.GAME_LOSE) {
+            this.flag = flag;
+        }
     }
 
     public Phase getCurrentPhase() {
