@@ -207,12 +207,12 @@ public class BoardBean {
 
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
-        currentPlayer = new Player(playerColor.remove(1), "Holger", new UserBehavior());
+        currentPlayer = new Player(playerColor.remove(1), "Stalout", new UserBehavior());
         players.add(currentPlayer);
 
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Franz", new RandomBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Sarah", new RandomBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Karmen", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
     }
 
     /**
