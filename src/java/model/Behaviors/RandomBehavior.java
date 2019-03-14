@@ -19,7 +19,7 @@ public class RandomBehavior implements IBehavior {
     //will move soldiers in x out of 10 cases
     private final static int MOVE_WILLINGNESS = 8;
 
-    private final static int MIN_DICE_RANGE = 1;
+    private final static int MIN_DICE_RANGE = 0;
     private final static int MAX_DICE_RANGE = 10;
     //end region
 
@@ -56,7 +56,6 @@ public class RandomBehavior implements IBehavior {
     @Override
     public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
         while (willAttack()) {
-            Collections.shuffle(ownedCountries);
             Country selectedCountry = ownedCountries.get(Dice.roll(0, ownedCountries.size() - 1));
             for (Country targetCountry : selectedCountry.getNeighboringCountries()) {
                 try {
@@ -85,7 +84,6 @@ public class RandomBehavior implements IBehavior {
     public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
         boolean hasMovedSoldiers = false;
         while (willMoveSoldiers() && !hasMovedSoldiers) {
-            Collections.shuffle(ownedCountries);
             Country selectedCountry = ownedCountries.get(Dice.roll(0, ownedCountries.size() - 1));
             if (selectedCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
                 Country selectedNeighbor = selectedCountry.getNeighboringCountries().get(Dice.roll(0,
