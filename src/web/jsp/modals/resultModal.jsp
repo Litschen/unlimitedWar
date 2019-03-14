@@ -1,6 +1,6 @@
 <c:if test="${board.flag == Flag.GAME_WIN || board.flag == Flag.GAME_LOSE}">
-    <div class="modal fade show">
-        <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Game/finish" method="post">
+    <div class="modal show" role="dialog">
+        <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Game/result" method="post">
             <c:if test="${board.flag == Flag.GAME_WIN}">
                 <div class="modal-header">
                     <h5 class="modal-title">You Win!</h5>

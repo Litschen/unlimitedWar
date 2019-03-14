@@ -18,12 +18,14 @@ public class GameController extends HttpServlet {
 
     //region path & param variables
     public final static String PATH_ATTACK = "/attack";
+    public final static String PATH_RESULT = "/result";
     public final static String PARAM_ATTACK_DICE = "attackDice";
     public final static String PARAM_ROLL = "roll";
     public final static String PARAM_END = "end";
     public final static String PARAM_CANCEL = "cancel";
     public final static String PARAM_COUNTRY = "country";
     public final static String PARAM_NEXT_TURN = "nextTurn";
+    public final static String PARAM_SAVE = "save";
     public final static String SESSION_BOARD_NAME = "board";
     public static final String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/game.jsp";
     //endregion
@@ -71,6 +73,12 @@ public class GameController extends HttpServlet {
                     board.executeTurn();
                 } else if (request.getParameter(PARAM_END) != null) {
                     board.moveToNextPhase();
+                } else if (request.getPathInfo().equals(PATH_RESULT)) {
+                    request.getRequestDispatcher("/jsp/index.jsp").forward(request,response);
+                    if (request.getParameter(PARAM_SAVE) != null) {
+                        System.out.println("Save Result");
+                        // TODO: MS3 /F0410/ Spielresultat speichern
+                    }
                 } else if (board.currentPlayerIsUser()) {
                     Country chosenCountry = extractSelectedCountry(request);
                     String path = request.getPathInfo();

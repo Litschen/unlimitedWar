@@ -257,6 +257,7 @@ public class BoardBean {
                 countryList.add(secondSelectedCountry);
                 currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries());
                 resetSelectedCountries();
+                eliminatePlayersAndCheckUserResult();
             } else {
                 setAttackAndDefendCountry(selectedCountry);
             }
@@ -342,7 +343,7 @@ public class BoardBean {
 
     private void cyclePlayer() {
         int nextPlayerIndex = players.indexOf(currentPlayer) + 1;
-        players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
+        eliminatePlayersAndCheckUserResult();
         if (nextPlayerIndex >= players.size()) {
             nextPlayerIndex = 0;
         }
@@ -363,5 +364,19 @@ public class BoardBean {
         setFirstSelectedCountry(null);
         setSecondSelectedCountry(null);
         setFlag(Flag.NONE);
+    }
+
+    private void eliminatePlayersAndCheckUserResult() {
+        boolean removed = players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
+        if (removed) {
+            if (players.size() == 1 && players.get(0).getBehavior() instanceof UserBehavior) {
+                setFlag(Flag.GAME_WIN);
+            } else {
+                boolean playerIn = players.stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().isPresent();
+                if (!playerIn) {
+                    setFlag(Flag.GAME_LOSE);
+                }
+            }
+        }
     }
 }
