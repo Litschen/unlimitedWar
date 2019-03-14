@@ -17,7 +17,7 @@ public class AggressiveBehavior implements IBehavior {
      * much as possible
      *
      * @param allCountries    ArrayList with all countries on the board
-     * @param ownedCountries of the current player
+     * @param ownedCountries  of the current player
      * @param soldiersToPlace amount to be placed
      * @return next Phase: attackphase
      */
@@ -35,6 +35,24 @@ public class AggressiveBehavior implements IBehavior {
      */
     @Override
     public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+        ArrayList<Country> canInvadeFromCountries = canAttackFrom(allCountries, ownedCountries);
+        while (canInvadeFromCountries.size() > 0) {
+            canInvadeFromCountries = canAttackFrom(ownedCountries, allCountries);
+            for (Country invadingCountry : canInvadeFromCountries) {
+                for (Country neighbor : invadingCountry.getNeighboringCountries()) {
+                    if (invadingCountry.canInvade(neighbor)) {
+                        try {
+                            int attackerDice = invadingCountry.maxAmountDiceThrowsAttacker();
+                            int defenderDice = neighbor.amountDiceThrowsDefender(attackerDice);
+                            invadingCountry.invade(neighbor, attackerDice, defenderDice);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+        }
         return Phase.MOVINGPHASE;
     }
 
@@ -49,5 +67,26 @@ public class AggressiveBehavior implements IBehavior {
     @Override
     public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
         return Phase.SETTINGPHASE;
+    }
+
+    /**
+     * Checks if there are any countries that can be invaded
+     * @param allCountries on the board
+     * @param ownedCountries by player of this behavior
+     * @return ArrayList of countries which can invade another.
+     */
+    private ArrayList<Country> canAttackFrom(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+        ArrayList<Country> canInvadeFrom = new ArrayList<>();
+        for (Country country : ownedCountries) {
+            int i = 0;
+            ArrayList<Country> neighbors = country.getNeighboringCountries();
+            while (i < neighbors.size() && !country.canInvade(neighbors.get(i)) ) {
+                i++;
+            }
+            if (i < neighbors.size()) {
+                canInvadeFrom.add(country);
+            }
+        }
+        return canInvadeFrom;
     }
 }
