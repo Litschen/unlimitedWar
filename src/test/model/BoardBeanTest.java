@@ -114,6 +114,9 @@ class BoardBeanTest {
         testBoard.setSecondSelectedCountry(new Country("c2", 6, player));
         testBoard.setFlag(Flag.ATTACK);
 
+        assertTrue(testBoard.getFirstSelectedCountry().isSelected());
+        assertTrue(testBoard.getSecondSelectedCountry().isSelected());
+
         testBoard.resetSelectedCountries();
         assertNull(testBoard.getFirstSelectedCountry());
         assertNull(testBoard.getSecondSelectedCountry());
