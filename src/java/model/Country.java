@@ -20,6 +20,7 @@ public class Country {
     private int soldiersCount;
     private Player owner;
     private ArrayList<Country> neighboringCountries;
+    private boolean selected;
     //endregion
 
     public Country(String name, int soldiersCount, @NotNull Player owner) {
@@ -27,6 +28,7 @@ public class Country {
         this.soldiersCount = soldiersCount;
         this.owner = owner;
         this.neighboringCountries = new ArrayList<>();
+        this.selected = false;
     }
 
     //region getter setter
@@ -56,6 +58,14 @@ public class Country {
 
     public ArrayList<Country> getNeighboringCountries() {
         return neighboringCountries;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
     //endregion
 
