@@ -26,8 +26,8 @@
                 for (int i = 1; i <= allCountries.size(); i++) {
                     Country currentCountry = allCountries.get(i - 1);
             %>
-            <button type="submit" name="country" value="<%=i -1%>"
-                    class="country country-<%=i%> <%=currentCountry.getOwner().getPlayerColor()%>" title="<%=currentCountry.getName()%>">
+            <button type="submit" name="country" value="<%=i -1%>" title="<%=currentCountry.getName()%>"
+                    class="country country-<%=i%> <%=currentCountry.isSelected() ? currentCountry.getOwner().getPlayerColor() + "-selected" : currentCountry.getOwner().getPlayerColor()%>">
                     <%=currentCountry.getSoldiersCount()%></button>
                 <% if (i % 4 == 0 && i < BoardBean.COUNTRY_COUNT_GENERATION) { %>
                     <br/>

@@ -5,8 +5,8 @@ package model;
  */
 class Casualties {
     //region data fields
-    private int casualtiesAttacker;
-    private int casualtiesDefender;
+    public static int casualtiesAttacker;
+    public static int casualtiesDefender;
     //endregion
 
     /**
@@ -16,8 +16,8 @@ class Casualties {
      * @param casualtiesDefender casualties inflicted upon the defender
      */
     Casualties(int casualtiesAttacker, int casualtiesDefender) {
-        this.casualtiesAttacker = casualtiesAttacker;
-        this.casualtiesDefender = casualtiesDefender;
+        Casualties.casualtiesAttacker = casualtiesAttacker;
+        Casualties.casualtiesDefender = casualtiesDefender;
     }
 
     //region getter setter

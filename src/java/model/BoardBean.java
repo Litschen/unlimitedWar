@@ -98,6 +98,11 @@ public class BoardBean {
     }
 
     public void setFirstSelectedCountry(Country firstSelectedCountry) {
+        if (firstSelectedCountry != null) {
+            firstSelectedCountry.setSelected(true);
+        } else if (this.firstSelectedCountry != null) {
+            this.firstSelectedCountry.setSelected(false);
+        }
         this.firstSelectedCountry = firstSelectedCountry;
     }
 
@@ -106,6 +111,11 @@ public class BoardBean {
     }
 
     public void setSecondSelectedCountry(Country secondSelectedCountry) {
+        if (secondSelectedCountry != null) {
+            secondSelectedCountry.setSelected(true);
+        } else if (this.secondSelectedCountry != null) {
+            this.secondSelectedCountry.setSelected(false);
+        }
         this.secondSelectedCountry = secondSelectedCountry;
     }
 
