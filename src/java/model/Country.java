@@ -3,6 +3,7 @@ package model;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Country {
 
@@ -19,7 +20,7 @@ public class Country {
     private String name;
     private int soldiersCount;
     private Player owner;
-    private ArrayList<Country> neighboringCountries;
+    private List<Country> neighboringCountries;
     private boolean selected;
     //endregion
 
@@ -56,7 +57,7 @@ public class Country {
         this.owner = owner;
     }
 
-    public ArrayList<Country> getNeighboringCountries() {
+    public List<Country> getNeighboringCountries() {
         return neighboringCountries;
     }
 

@@ -1,10 +1,11 @@
 package model;
 
+import model.Behaviors.AggressiveBehavior;
 import model.Behaviors.RandomBehavior;
 import model.Behaviors.UserBehavior;
 import model.Enum.Flag;
-import model.Enum.PlayerColor;
 import model.Enum.Phase;
+import model.Enum.PlayerColor;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,11 +52,11 @@ public class BoardBean {
     }
 
     //region getter setter
-    public ArrayList<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
-    public ArrayList<Country> getCountries() {
+    public List<Country> getCountries() {
         return countries;
     }
 
@@ -216,7 +217,7 @@ public class BoardBean {
         players.add(currentPlayer);
 
         players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new RandomBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new AggressiveBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
     }
 
@@ -374,7 +375,7 @@ public class BoardBean {
      * if the user has won / lost set the flag to show the message and save the result in the database
      */
     protected void eliminatePlayersAndCheckUserResult() {
-        boolean removed = players.removeIf(o -> ((Player) o).getOwnedCountries().size() <= 0);
+        boolean removed = players.removeIf(o -> ((Player) o).getOwnedCountries().isEmpty());
         if (removed) {
             if (players.size() == 1 && players.get(0).getBehavior() instanceof UserBehavior) {
                 setFlag(Flag.GAME_WIN);

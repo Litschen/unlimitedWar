@@ -2,14 +2,14 @@ package model.Behaviors;
 
 import model.Country;
 import model.Enum.Phase;
-import model.Interface.IBehavior;
+import model.Interface.Behavior;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * TODO in MS2
  */
-public class StrategicBehavior implements IBehavior {
+public class StrategicBehavior implements Behavior {
     /**
      * Places the specified amount of soldiers on own countries in way that makes strategic sense.
      *
@@ -19,7 +19,7 @@ public class StrategicBehavior implements IBehavior {
      * @return next phase: attack
      */
     @Override
-    public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
         return Phase.ATTACKPHASE;
     }
 
@@ -31,7 +31,7 @@ public class StrategicBehavior implements IBehavior {
      * @return next Phase: move
      */
     @Override
-    public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public Phase attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
         return Phase.MOVINGPHASE;
     }
 
@@ -43,7 +43,7 @@ public class StrategicBehavior implements IBehavior {
      * @return next Phase: set
      */
     @Override
-    public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
         return Phase.SETTINGPHASE;
     }
 }

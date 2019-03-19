@@ -2,12 +2,12 @@ package model.Behaviors;
 
 import model.Country;
 import model.Enum.Phase;
-import model.Interface.IBehavior;
+import model.Interface.Behavior;
 import model.Player;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class UserBehavior implements IBehavior {
+public class UserBehavior implements Behavior {
 
     /**
      * Puts one soldier on the destinationCountries[0] country. This is repeated until there are no soldiers to place
@@ -18,7 +18,7 @@ public class UserBehavior implements IBehavior {
      * @return phase set as long as soldierstoplace of the owner is greater than 0 otherwise attack phase
      */
     @Override
-    public Phase placeSoldiers(ArrayList<Country> destinationCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public Phase placeSoldiers(List<Country> destinationCountries, List<Country> ownedCountries, int soldiersToPlace) {
         Phase phase = Phase.SETTINGPHASE;
         Country destination = destinationCountries.get(0);
         Player owner = destination.getOwner();
@@ -44,7 +44,7 @@ public class UserBehavior implements IBehavior {
      * @return attackphase, next phase is set from controller.
      */
     @Override
-    public Phase attackCountry(ArrayList<Country> selectedCountries, ArrayList<Country> ownedCountries) {
+    public Phase attackCountry(List<Country> selectedCountries, List<Country> ownedCountries) {
         Country attackCountry = selectedCountries.get(0);
         Country defendCountry = selectedCountries.get(1);
 
@@ -64,7 +64,7 @@ public class UserBehavior implements IBehavior {
      * @return setting phase, next phase set in controller
      */
     @Override
-    public Phase moveSoldiers(ArrayList<Country> selectedCountries, ArrayList<Country> ownedCountries) {
+    public Phase moveSoldiers(List<Country> selectedCountries, List<Country> ownedCountries) {
         Phase newPhase = Phase.SETTINGPHASE;
         Country sourceCountry = selectedCountries.get(0);
         Country destinationCountry = selectedCountries.get(1);

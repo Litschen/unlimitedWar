@@ -3,13 +3,12 @@ package model.Behaviors;
 import model.Country;
 import model.Dice;
 import model.Enum.Phase;
-import model.Interface.IBehavior;
+import model.Interface.Behavior;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class RandomBehavior implements IBehavior {
+public class RandomBehavior implements Behavior {
 
     //region static variables
     //will try to attack in x out of 10 cases
@@ -33,7 +32,7 @@ public class RandomBehavior implements IBehavior {
      * @return next phase: attack
      */
     @Override
-    public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
         while (soldiersToPlace > 0) {
             Country country = ownedCountries.get(ThreadLocalRandom.current()
                     .nextInt(0, ownedCountries.size()));
@@ -54,7 +53,7 @@ public class RandomBehavior implements IBehavior {
      * @return next Phase: move
      */
     @Override
-    public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public Phase attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
         while (willAttack()) {
             Country selectedCountry = ownedCountries.get(Dice.roll(0, ownedCountries.size() - 1));
             for (Country targetCountry : selectedCountry.getNeighboringCountries()) {
@@ -81,7 +80,7 @@ public class RandomBehavior implements IBehavior {
      * @return next Phase: set
      */
     @Override
-    public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
         boolean hasMovedSoldiers = false;
         while (willMoveSoldiers() && !hasMovedSoldiers) {
             Country selectedCountry = ownedCountries.get(Dice.roll(0, ownedCountries.size() - 1));

@@ -6,7 +6,7 @@ import model.Enum.Phase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -93,7 +93,7 @@ class BoardBeanTest {
 
     @Test
     void testMoveToNextPhaseRemoveUser() {
-        ArrayList<Player> players = testBoard.getPlayers();
+        List<Player> players = testBoard.getPlayers();
         int amountPlayer = players.size();
         testBoard.setCurrentPhase(Phase.MOVINGPHASE);
 

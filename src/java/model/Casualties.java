@@ -5,8 +5,8 @@ package model;
  */
 class Casualties {
     //region data fields
-    public static int casualtiesAttacker;
-    public static int casualtiesDefender;
+    private static int casualtiesAttacker;
+    private static int casualtiesDefender;
     //endregion
 
     /**

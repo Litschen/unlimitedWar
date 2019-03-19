@@ -2,14 +2,15 @@ package model.Behaviors;
 
 import model.Country;
 import model.Enum.Phase;
-import model.Interface.IBehavior;
+import model.Interface.Behavior;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * TODO in MS2
  */
-public class AggressiveBehavior implements IBehavior {
+public class AggressiveBehavior implements Behavior {
 
 
     /**
@@ -22,7 +23,7 @@ public class AggressiveBehavior implements IBehavior {
      * @return next Phase: attackphase
      */
     @Override
-    public Phase placeSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries, int soldiersToPlace) {
+    public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
         return Phase.ATTACKPHASE;
     }
 
@@ -34,8 +35,8 @@ public class AggressiveBehavior implements IBehavior {
      * @return next Phase: movingphase
      */
     @Override
-    public Phase attackCountry(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-        ArrayList<Country> canInvadeFromCountries = canAttackFrom(allCountries, ownedCountries);
+    public Phase attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
+        List<Country> canInvadeFromCountries = canAttackFrom(allCountries, ownedCountries);
         while (canInvadeFromCountries.size() > 0) {
             canInvadeFromCountries = canAttackFrom(ownedCountries, allCountries);
             for (Country invadingCountry : canInvadeFromCountries) {
@@ -65,7 +66,7 @@ public class AggressiveBehavior implements IBehavior {
      * @return next Phase: settingphase
      */
     @Override
-    public Phase moveSoldiers(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
+    public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
         return Phase.SETTINGPHASE;
     }
 
@@ -75,11 +76,11 @@ public class AggressiveBehavior implements IBehavior {
      * @param ownedCountries by player of this behavior
      * @return ArrayList of countries which can invade another.
      */
-    private ArrayList<Country> canAttackFrom(ArrayList<Country> allCountries, ArrayList<Country> ownedCountries) {
-        ArrayList<Country> canInvadeFrom = new ArrayList<>();
+    private List<Country> canAttackFrom(List<Country> allCountries, List<Country> ownedCountries) {
+        List<Country> canInvadeFrom = new ArrayList<>();
         for (Country country : ownedCountries) {
             int i = 0;
-            ArrayList<Country> neighbors = country.getNeighboringCountries();
+            List<Country> neighbors = country.getNeighboringCountries();
             while (i < neighbors.size() && !country.canInvade(neighbors.get(i)) ) {
                 i++;
             }

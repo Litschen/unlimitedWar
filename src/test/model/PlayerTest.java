@@ -49,7 +49,7 @@ class PlayerTest {
         assertEquals(3, testPlayer.calculateSoldiersToPlace());
     }
 
-    private void addSoldiers(ArrayList<Country> owned, int amountOfCountries){
+    private void addSoldiers(List<Country> owned, int amountOfCountries){
         owned.clear();
 
         for (int i = 0; i < amountOfCountries; i++) {

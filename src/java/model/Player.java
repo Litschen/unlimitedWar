@@ -1,8 +1,9 @@
 package model;
 
-import model.Interface.IBehavior;
+import model.Interface.Behavior;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
 
@@ -14,12 +15,12 @@ public class Player {
     private Enum color;
     private String name;
     private int attackDiceCount;
-    private IBehavior behavior;
+    private Behavior behavior;
     private ArrayList<Country> ownedCountries;
     private int soldiersToPlace = 0;
     //endregion
 
-    public Player(Enum color, String name, IBehavior behavior) {
+    public Player(Enum color, String name, Behavior behavior) {
         this.color = color;
         this.name = name;
         this.behavior = behavior;
@@ -35,11 +36,11 @@ public class Player {
         return name;
     }
 
-    public IBehavior getBehavior() {
+    public Behavior getBehavior() {
         return behavior;
     }
 
-    public ArrayList<Country> getOwnedCountries() {
+    public List<Country> getOwnedCountries() {
         return ownedCountries;
     }
 

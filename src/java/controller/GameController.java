@@ -26,7 +26,7 @@ public class GameController extends HttpServlet {
     public final static String PARAM_COUNTRY = "country";
     public final static String PARAM_NEXT_TURN = "nextTurn";
     public final static String SESSION_BOARD_NAME = "board";
-    public static final String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/game.jsp";
+    public final static String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/game.jsp";
     //endregion
 
     /**
