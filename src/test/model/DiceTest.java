@@ -3,7 +3,10 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,23 +14,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DiceTest {
 
-    private int[] diceResults;
+    //private int[] diceResults;
+    private List<Integer> diceResults;
 
     private final int AMOUNT_THROWS = 100;
 
     @BeforeEach
     public void setUp() {
-        diceResults = new int[AMOUNT_THROWS];
+        diceResults = new ArrayList<>();
+        diceResults.add(AMOUNT_THROWS);
     }
 
     // ---------- roll(int amountOfDice) ----------
     @Test
     public void testRoll() {
+
         diceResults = Dice.roll(1);
-        assertEquals(1, diceResults.length);
+        assertEquals(1, diceResults.size());
 
         diceResults = Dice.roll(AMOUNT_THROWS);
-        assertEquals(AMOUNT_THROWS, diceResults.length);
+        assertEquals(AMOUNT_THROWS, diceResults.size());
 
         int previousResult = Dice.MAX_VALUE;
         for (int result : diceResults) {
@@ -40,7 +46,7 @@ class DiceTest {
     @Test
     public void testRollZeroDices() {
         diceResults = Dice.roll(0);
-        assertEquals(0, diceResults.length);
+        assertEquals(0, diceResults.size());
     }
 
     @Test
@@ -56,12 +62,12 @@ class DiceTest {
         int max = 20;
 
         for (int i = 0; i < AMOUNT_THROWS; i++) {
-            diceResults[i] = Dice.roll(min, max);
+            diceResults.add(i, Dice.roll(min, max));
         }
-        Arrays.sort(diceResults);
+        Collections.sort(diceResults);
 
-        assertEquals(min, diceResults[0]);
-        assertEquals(max, diceResults[diceResults.length - 1]);
+        assertEquals(min, diceResults.get(0));
+        assertEquals(max, diceResults.get(diceResults.size() - 1));
     }
 
     @Test
