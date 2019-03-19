@@ -5,6 +5,10 @@ import model.enums.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CountryTest {
@@ -16,9 +20,9 @@ public class CountryTest {
     @BeforeEach
     void setUp() {
         invadingCountry = new Country("countryTest", Board.START_SOLDIER_PER_PLAYER,
-                new Player(PlayerColor.values()[(int)(Math.random()*PlayerColor.values().length)], "test", new RandomBehavior()));
+                new Player(PlayerColor.values()[(int) (Math.random() * PlayerColor.values().length)], "test", new RandomBehavior()));
         defendingCountry = new Country("countryTest", Board.START_SOLDIER_PER_PLAYER,
-                new Player(PlayerColor.values()[(int)(Math.random()*PlayerColor.values().length)], "test", new RandomBehavior()));
+                new Player(PlayerColor.values()[(int) (Math.random() * PlayerColor.values().length)], "test", new RandomBehavior()));
         defendingCountry.getNeighboringCountries().add(invadingCountry);
         invadingCountry.getNeighboringCountries().add(defendingCountry);
     }
@@ -27,12 +31,12 @@ public class CountryTest {
     void testIsBordering() {
         assertTrue(invadingCountry.isBordering(defendingCountry));
         Board board = new Board();
-        for(Country country : board.getCountries()){
-            for(Country neighboring : country.getNeighboringCountries()){
+        for (Country country : board.getCountries()) {
+            for (Country neighboring : country.getNeighboringCountries()) {
                 assertTrue(neighboring.getNeighboringCountries().contains(country));
                 assertTrue(country.getNeighboringCountries().contains(neighboring));
-                assertFalse(country.getNeighboringCountries().contains(new Country("", 0,country.getOwner())));
-                assertFalse(neighboring.getNeighboringCountries().contains(new Country("", 0,country.getOwner())));
+                assertFalse(country.getNeighboringCountries().contains(new Country("", 0, country.getOwner())));
+                assertFalse(neighboring.getNeighboringCountries().contains(new Country("", 0, country.getOwner())));
                 assertFalse(neighboring.getNeighboringCountries().contains(null));
             }
         }
@@ -55,28 +59,30 @@ public class CountryTest {
 
     @Test
     void testCalculateCasualtiesInvaderVictory() {
-        Casualties casualties = invadingCountry.calculateCasualties(new int[]{6, 6, 6}, new int[]{1, 1});
+
+        Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(6, 6, 6), ListCalculateRoll(1, 1));
         assertEquals(0, casualties.getCasualtiesAttacker());
         assertEquals(2, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesDefenderVictory() {
-        Casualties casualties = invadingCountry.calculateCasualties(new int[]{1, 1, 1}, new int[]{6, 6});
+
+        Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(1, 1, 1), ListCalculateRoll(6, 6));
         assertEquals(2, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesStalemate() {
-        Casualties casualties = invadingCountry.calculateCasualties(new int[]{6, 6, 6}, new int[]{6, 6});
+        Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(6, 6, 6), ListCalculateRoll(6, 6));
         assertEquals(2, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesOneDefender() {
-        Casualties casualties = invadingCountry.calculateCasualties(new int[]{1, 1, 1}, new int[]{6});
+        Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(1, 1, 1), ListCalculateRoll(6));
         assertEquals(1, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }
@@ -106,8 +112,8 @@ public class CountryTest {
 
     @Test
     public void testMaxAttackerDiceCountException() {
-        int[] testNumber = new int[] {1,0,-30};
-        for(int test : testNumber){
+        int[] testNumber = new int[]{1, 0, -30};
+        for (int test : testNumber) {
             invadingCountry.setSoldiersCount(test);
             Exception exception = assertThrows(Exception.class, () -> invadingCountry.maxAmountDiceThrowsAttacker());
             assertEquals("could not calculate maxAttackerDiceCount", exception.getMessage());
@@ -160,6 +166,7 @@ public class CountryTest {
     void shiftSoldiersNull() {
         assertThrows(IllegalArgumentException.class, () -> defendingCountry.shiftSoldiers(soldiersToShift, null));
     }
+
     @Test
     void shiftSoldiersNotNeighboring() {
         removeNeighbors();
@@ -181,6 +188,7 @@ public class CountryTest {
         assertThrows(IllegalArgumentException.class, () -> invadingCountry.removeSoldiers(-10));
         assertThrows(IllegalArgumentException.class, () -> invadingCountry.removeSoldiers(invadingCountry.getSoldiersCount() + 4));
     }
+
     @Test
     void removeSoldiersValid() {
         invadingCountry.removeSoldiers(4);
@@ -221,4 +229,27 @@ public class CountryTest {
         invadingCountry.getNeighboringCountries().remove(defendingCountry);
         defendingCountry.getNeighboringCountries().remove(invadingCountry);
     }
+
+    // private method for test
+
+    private List<Integer> ListCalculateRoll(int input01, int input02, int input03) {
+        List<Integer> rollInputsDefender01;
+        return new ArrayList<>(Arrays.asList(input01, input02, input03));
+
+    }
+
+    private List<Integer> ListCalculateRoll(int input01, int input02) {
+
+        List<Integer> rollInputsDefender02;
+        return new ArrayList<>(Arrays.asList(input01, input02));
+
+    }
+
+    private List<Integer> ListCalculateRoll(int input01) {
+
+        List<Integer> rollInputsDefender02;
+        return new ArrayList<>(Arrays.asList(input01));
+
+    }
+    // end
 }
