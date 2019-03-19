@@ -4,13 +4,20 @@ import model.enums.EventType;
 import model.interfaces.Event;
 
 public class DiceEvent implements Event {
+
+    private int[] data;
+
+    public DiceEvent(int[] diceThrow){
+        this.data = diceThrow;
+    }
+
     @Override
     public int[] getEventData() {
-        return new int[0];
+        return data;
     }
 
     @Override
     public EventType getEventType() {
-        return null;
+        return EventType.DiceEvent;
     }
 }
