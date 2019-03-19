@@ -252,13 +252,13 @@ public class BoardBean {
      */
     public void executeUserTurn(Country selectedCountry) {
         if (currentPhase == Phase.SETTINGPHASE) {
-            ArrayList<Country> destination = new ArrayList<>();
+            List<Country> destination = new ArrayList<>();
             destination.add(selectedCountry);
             setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
             resetSelectedCountries();
         } else if (currentPhase == Phase.ATTACKPHASE) {
             if (firstSelectedCountry != null && secondSelectedCountry != null) {
-                ArrayList<Country> countryList = new ArrayList<>();
+                List<Country> countryList = new ArrayList<>();
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
                 currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries());
@@ -271,7 +271,7 @@ public class BoardBean {
             if (firstSelectedCountry == null || secondSelectedCountry == null) {
                 setMovingCountry(selectedCountry);
             } else {
-                ArrayList<Country> countryList = new ArrayList<>();
+                List<Country> countryList = new ArrayList<>();
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
                 Phase finishMove = currentPlayer.getBehavior().moveSoldiers(countryList, currentPlayer.getOwnedCountries());
