@@ -7,9 +7,11 @@ import model.interfaces.Event;
 public class CasualtiesEvent implements Event {
 
     private int casualties;
+    private EventType eventType;
 
-    public CasualtiesEvent(int casualties){
+    public CasualtiesEvent(int casualties, EventType eventType){
         this.casualties = casualties;
+        this.eventType = eventType;
     }
 
     @Override
@@ -19,6 +21,6 @@ public class CasualtiesEvent implements Event {
 
     @Override
     public EventType getEventType() {
-        return EventType.CasualtiesEvent;
+        return eventType;
     }
 }
