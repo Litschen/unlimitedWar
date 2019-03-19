@@ -15,14 +15,23 @@ public class PlayerDAO {
     private Connection con;
     private PreparedStatement st;
 
+    private String jdbcDriver;
+
     private final static String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
     private final static String user = "root";
     private final static String pw = "rootroot";
-    private final static String jdbcDriver = "com.mysql.jdbc.Driver";
     private final static String INSERT_PLAYER_QUERY = "INSERT INTO player (username, email, passwordUser) VALUES(?, ?, ?);";
     private final static String SELECT_PLAYER_QUERY = "SELECT username, email, passwordUser FROM player WHERE email = ?;";
     private final static String UPDATE_PLAYER_QUERY = "UPDATE player SET username = ?, email = ?, passwordUser = ? WHERE email = ?;";
     private final static String DELETE_PLAYER_QUERY = "DELETE FROM player WHERE email = ?;";
+
+    public PlayerDAO() {
+        jdbcDriver = "com.mysql.jdbc.Driver";
+    }
+
+    public PlayerDAO(String driver) {
+        jdbcDriver = driver;
+    }
 
     /**
      * get saved profile data of the user by the mail address
