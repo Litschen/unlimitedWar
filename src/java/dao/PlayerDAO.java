@@ -1,5 +1,6 @@
 package dao;
 
+import model.UserBean;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.ResultSet;
@@ -20,10 +21,10 @@ public class PlayerDAO {
     private final static String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
     private final static String user = "root";
     private final static String pw = "rootroot";
-    private final static String INSERT_PLAYER_QUERY = "INSERT INTO player (username, email, passwordUser) VALUES(?, ?, ?);";
-    private final static String SELECT_PLAYER_QUERY = "SELECT username, email, passwordUser FROM player WHERE email = ?;";
-    private final static String UPDATE_PLAYER_QUERY = "UPDATE player SET username = ?, email = ?, passwordUser = ? WHERE email = ?;";
-    private final static String DELETE_PLAYER_QUERY = "DELETE FROM player WHERE email = ?;";
+    private final static String INSERT_QUERY = "INSERT INTO player (username, email, password) VALUES(?, ?, ?);";
+    private final static String SELECT_QUERY = "SELECT username, email, password FROM player WHERE email = ?;";
+    private final static String UPDATE_QUERY = "UPDATE player SET username = ?, password = ? WHERE email = ?;";
+    private final static String DELETE_QUERY = "DELETE FROM player WHERE email = ?;";
 
     public PlayerDAO() {
         jdbcDriver = "com.mysql.jdbc.Driver";
@@ -39,68 +40,77 @@ public class PlayerDAO {
      *
      * @param mail of the user
      */
-    public void getPlayerByMail(String mail) {
+    public UserBean getPlayerByMail(String mail) {
+        UserBean user = null;
+
         try {
-            createConnection(SELECT_PLAYER_QUERY, Arrays.asList(mail));
+            createConnection(SELECT_QUERY, Arrays.asList(mail));
             rs = st.executeQuery();
+            if (rs.next()) {
+                user = new UserBean();
+                user.setName(rs.getString("username"));
+                user.setMail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+            }
             closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return user;
     }
 
     /**
      * register a new Player with username, mail and password
-     * TODO: implementation will be done in Milestone 3 /F0100/
      *
      * @param username the user's name
      * @param mail     the user's mail to log in
      * @param password the user's password to authenticate
      */
-    public void createNewPlayer(String username, String mail, String password) {
-        try {
-            createConnection(INSERT_PLAYER_QUERY, Arrays.asList(username, mail, password));
-            int row = st.executeUpdate();
-            closeConnection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public int createNewPlayer(String username, @NotNull String mail, String password) {
+        return manipulateData(INSERT_QUERY, Arrays.asList(username, mail, password));
     }
 
     /**
      * edit players username and / or password
      * Mail cannot be changed
-     * TODO: implementation will be done in Milestone 3 /F0130/
      *
      * @param username new username or old username to not change
      * @param password new password or old password to not change
      * @param mail     mail of the user
      */
-    public void updatePlayer(String username, String password, String mail) {
-        try {
-            createConnection(UPDATE_PLAYER_QUERY, Arrays.asList(username, password, mail));
-            int rows = st.executeUpdate();
-            closeConnection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public int updatePlayer(String username, @NotNull String mail, String password) {
+        return manipulateData(UPDATE_QUERY, Arrays.asList(username, password, mail));
     }
 
     /**
      * remove player from the database by mail
-     * TODO: implementation will be done in Milestone 3 /F0130/
      *
      * @param mail of the player
      */
-    public void deletePlayerByMail(String mail) {
+    public int deletePlayerByMail(@NotNull String mail) {
+        return manipulateData(DELETE_QUERY, Arrays.asList(mail));
+    }
+
+    /**
+     * prepare query execution by using createConnection() and execute it.
+     * close the connection at the end.
+     *
+     * @param query statement to execute
+     * @param args  arguments to fill the query
+     * @return affected rows
+     * */
+    private int manipulateData(@NotNull String query, List<String> args) {
+        int row = 0;
+
         try {
-            createConnection(DELETE_PLAYER_QUERY, Arrays.asList(mail));
-            rs = st.executeQuery();
-            // TODO MS3 /F0100/
+            createConnection(query, args);
+            row = st.executeUpdate();
             closeConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return row;
     }
 
     /**
@@ -108,7 +118,6 @@ public class PlayerDAO {
      *
      * @param sql  SQL-Query with placeholders for the PreparedStatement
      * @param args arguments to fill the placeholder in the SQL-Query
-     *             TODO: implementation will be done in Milestone 3 /F0130/
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -118,7 +127,8 @@ public class PlayerDAO {
         st = con.prepareStatement(sql);
 
         for (int i = 0; i < args.size(); i++) {
-            st.setString(i + 1, args.get(i));
+            String value = args.get(i) != null ? args.get(i) : "";
+            st.setString(i + 1, value);
         }
     }
 
