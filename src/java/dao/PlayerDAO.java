@@ -15,7 +15,7 @@ public class PlayerDAO {
     private Connection con;
     private PreparedStatement st;
 
-    private String jdbcDriver = "com.mysql.jdbc.Driver";
+    private String jdbcDriver;
 
     private final static String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
     private final static String user = "root";
@@ -25,7 +25,11 @@ public class PlayerDAO {
     private final static String UPDATE_PLAYER_QUERY = "UPDATE player SET username = ?, email = ?, passwordUser = ? WHERE email = ?;";
     private final static String DELETE_PLAYER_QUERY = "DELETE FROM player WHERE email = ?;";
 
-    public void setJdbcDriver(String driver){
+    public PlayerDAO() {
+        jdbcDriver = "com.mysql.jdbc.Driver";
+    }
+
+    public PlayerDAO(String driver) {
         jdbcDriver = driver;
     }
 
