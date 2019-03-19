@@ -1,7 +1,7 @@
-<c:if test="${board.flag == Flag.GAME_WIN || board.flag == Flag.GAME_LOSE}">
+<c:if test="${board.getCurrentTurn().getFlag() == Flag.GAME_WIN || board.getCurrentTurn().getFlag() == Flag.GAME_LOSE}">
     <div class="modal show" role="dialog">
         <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Game/result" method="post">
-            <c:if test="${board.flag == Flag.GAME_WIN}">
+            <c:if test="${board.getCurrentTurn().getFlag() == Flag.GAME_WIN}">
                 <div class="modal-header">
                     <h5 class="modal-title">You Win!</h5>
                 </div>
@@ -9,7 +9,7 @@
                     <div class="trophy"></div>
                 </div>
             </c:if>
-            <c:if test="${board.flag == Flag.GAME_LOSE}">
+            <c:if test="${board.getCurrentTurn().getFlag() == Flag.GAME_LOSE}">
                 <div class="modal-header">
                     <h5 class="modal-title">You Lose :(</h5>
                 </div>

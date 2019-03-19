@@ -6,8 +6,10 @@ import model.interfaces.Event;
 
 public class CasualtiesEvent implements Event {
 
+    //region data fields
     private int casualties;
     private EventType eventType;
+    //endregion
 
     public CasualtiesEvent(int casualties, EventType eventType){
         this.casualties = casualties;

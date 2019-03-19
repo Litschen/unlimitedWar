@@ -14,8 +14,6 @@ import java.io.IOException;
 @WebServlet(name = "GameController", urlPatterns = "/Game/*")
 public class GameController extends HttpServlet {
 
-    private Board board;
-
     //region path & param variables
     public final static String PATH_ATTACK = "/attack";
     public final static String PATH_RESULT = "/result";
@@ -27,6 +25,7 @@ public class GameController extends HttpServlet {
     public final static String PARAM_NEXT_TURN = "nextTurn";
     public final static String SESSION_BOARD_NAME = "board";
     public final static String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/game.jsp";
+    private Board board;
     //endregion
 
     /**
@@ -65,34 +64,36 @@ public class GameController extends HttpServlet {
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE);
+
         try {
             board = (Board) request.getSession().getAttribute(SESSION_BOARD_NAME);
             if (board != null) {
                 if (request.getParameter(PARAM_NEXT_TURN) != null) {
-                    board.executeTurn();
+                    board.getCurrentTurn().executeTurn();
                 } else if (request.getParameter(PARAM_END) != null) {
-                    board.moveToNextPhase();
-                } else if (board.currentPlayerIsUser() && !request.getPathInfo().equals(PATH_RESULT)) {
+                    board.getCurrentTurn().moveToNextPhase();
+                } else if (board.getCurrentTurn().currentPlayerIsUser() && !request.getPathInfo().equals(PATH_RESULT)) {
                     Country chosenCountry = extractSelectedCountry(request);
                     String path = request.getPathInfo();
 
                     // handle attack modal
                     if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_ROLL) != null) {
                         int attackDiceCount = request.getParameterMap().get(PARAM_ATTACK_DICE).length;
-                        board.getCurrentPlayer().setAttackDiceCount(attackDiceCount);
+                        board.getCurrentTurn().getCurrentPlayer().setAttackDiceCount(attackDiceCount);
                     } else if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_CANCEL) != null) {
-                        board.resetSelectedCountries();
+                        board.getCurrentTurn().resetSelectedCountries();
                     }
                     // handle phase
-                    board.executeUserTurn(chosenCountry);
+                    board.getCurrentTurn().executeUserTurn(chosenCountry);
                 }
             }
-            if (request.getPathInfo().equals(PATH_RESULT)) {
+            if (request.getPathInfo() != null && request.getPathInfo().equals(PATH_RESULT)) {
                 request.getSession().setAttribute(SESSION_BOARD_NAME, null);
                 response.sendRedirect(request.getContextPath() + "/jsp/index.jsp");
             } else {
                 dispatcher.forward(request, response);
             }
+            board.checkForNewTurn();
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }

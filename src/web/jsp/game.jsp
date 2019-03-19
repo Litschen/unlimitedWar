@@ -39,16 +39,16 @@
             <% }%>
         </div>
         <% session.setAttribute("board", board); %>
-        <c:if test="${board.currentPhase ==  Phase.SETTINGPHASE}">
-            <span>Soldiers to place: <c:out value="${board.currentPlayer.soldiersToPlace}"/></span>
+        <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SETTINGPHASE}">
+            <span>Soldiers to place: <c:out value="${board.getCurrentTurn().getCurrentPlayer().soldiersToPlace}"/></span>
         </c:if>
-        <c:if test="${board.currentPhase == Phase.ATTACKPHASE}">
+        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACKPHASE}">
             <button type="submit" name="end" class="btn btn-primary">End Attack Phase</button>
         </c:if>
-        <c:if test="${board.currentPhase == Phase.MOVINGPHASE && board.flag == Flag.MOVE}">
+        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVINGPHASE && board.getCurrentTurn().getFlag() == Flag.MOVE}">
             <button type="submit" name="move" class="btn btn-primary">Move a Soldier</button>
         </c:if>
-        <c:if test="${board.currentPhase == Phase.MOVINGPHASE}">
+        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVINGPHASE}">
             <button type="submit" name="end" class="btn btn-primary">Don't Move Soldiers</button>
         </c:if>
     </form>

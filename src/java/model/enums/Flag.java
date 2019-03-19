@@ -5,6 +5,6 @@ package model.enums;
  */
 public enum Flag {
 
-    ATTACK, MOVE, GAME_WIN, GAME_LOSE, NONE
+    ATTACK, MOVE, TURNEND, GAME_WIN, GAME_LOSE, NONE
 
 }

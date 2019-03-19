@@ -1,4 +1,4 @@
-<c:if test="${board.flag == Flag.ATTACK}">
+<c:if test="${board.getCurrentTurn().getFlag() == Flag.ATTACK}">
     <div class="modal show" role="dialog">
         <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Game/attack" method="post" name="attackForm">
             <div class="modal-header">
@@ -8,13 +8,13 @@
             <div class="modal-body row">
                 <div class="col">
                     <h6>Attacker</h6>
-                    <% for (int i = 0; i < board.getAttackDiceCount(); i++) { %>
+                    <% for (int i = 0; i < board.getCurrentTurn().getAttackDiceCount(); i++) { %>
                     <input type="checkbox" name="attackDice" class="dice" checked>
                     <% } %>
                 </div>
                 <div class="col">
                     <h6>Defender</h6>
-                    <% for (int i = 0; i < board.getDefendDiceCount(); i++) { %>
+                    <% for (int i = 0; i < board.getCurrentTurn().getDefendDiceCount(); i++) { %>
                     <input type="checkbox" name="defendDice" class="dice" checked disabled>
                     <% } %>
                 </div>
