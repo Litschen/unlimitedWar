@@ -29,7 +29,7 @@ public class Dice {
      * @param amountOfDice how many dice should be thrown
      * @return int array of results sorted descending
      */
-    public static int[] roll(int amountOfDice) {
+    public static List<Integer> roll(int amountOfDice) {
         if (amountOfDice < 0) {
             throw new IllegalArgumentException(INVALID_AMOUNT);
         }
@@ -41,7 +41,7 @@ public class Dice {
         Collections.sort(dices);
         Collections.reverse(dices);
 
-        return toIntArray(dices);
+        return dices;
     }
 
     /**
@@ -58,21 +58,6 @@ public class Dice {
             max = tmp;
         }
         return ThreadLocalRandom.current().nextInt(min, max + 1);
-    }
-
-    /**
-     * convert a List of Integer to an int array
-     *
-     * @param list list of integers
-     * @return int[] with all elements of the passed list
-     */
-    private static int[] toIntArray(List<Integer> list) {
-        int[] array = new int[list.size()];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = list.get(i);
-        }
-
-        return array;
     }
 
 }
