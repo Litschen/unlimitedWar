@@ -11,13 +11,13 @@ public class CountryTest {
 
     private Country invadingCountry;
     private Country defendingCountry;
-    private int soldiersToShift = BoardBean.START_SOLDIER_PER_PLAYER - Country.MIN_SOLDIERS_TO_STAY;
+    private int soldiersToShift = Board.START_SOLDIER_PER_PLAYER - Country.MIN_SOLDIERS_TO_STAY;
 
     @BeforeEach
     void setUp() {
-        invadingCountry = new Country("countryTest", BoardBean.START_SOLDIER_PER_PLAYER,
+        invadingCountry = new Country("countryTest", Board.START_SOLDIER_PER_PLAYER,
                 new Player(PlayerColor.values()[(int)(Math.random()*PlayerColor.values().length)], "test", new RandomBehavior()));
-        defendingCountry = new Country("countryTest", BoardBean.START_SOLDIER_PER_PLAYER,
+        defendingCountry = new Country("countryTest", Board.START_SOLDIER_PER_PLAYER,
                 new Player(PlayerColor.values()[(int)(Math.random()*PlayerColor.values().length)], "test", new RandomBehavior()));
         defendingCountry.getNeighboringCountries().add(invadingCountry);
         invadingCountry.getNeighboringCountries().add(defendingCountry);
@@ -26,8 +26,8 @@ public class CountryTest {
     @Test
     void testIsBordering() {
         assertTrue(invadingCountry.isBordering(defendingCountry));
-        BoardBean boardBean = new BoardBean();
-        for(Country country : boardBean.getCountries()){
+        Board board = new Board();
+        for(Country country : board.getCountries()){
             for(Country neighboring : country.getNeighboringCountries()){
                 assertTrue(neighboring.getNeighboringCountries().contains(country));
                 assertTrue(country.getNeighboringCountries().contains(neighboring));
@@ -139,7 +139,7 @@ public class CountryTest {
         defendingCountry.setOwner(invadingCountry.getOwner());
         assertTrue(invadingCountry.shiftSoldiers(soldiersToShift, defendingCountry));
         assertEquals(Country.MIN_SOLDIERS_TO_STAY, invadingCountry.getSoldiersCount());
-        assertEquals(BoardBean.START_SOLDIER_PER_PLAYER + soldiersToShift, defendingCountry.getSoldiersCount());
+        assertEquals(Board.START_SOLDIER_PER_PLAYER + soldiersToShift, defendingCountry.getSoldiersCount());
     }
 
     @Test
@@ -152,8 +152,8 @@ public class CountryTest {
     void shiftSoldiersNotSameOwner() {
         assertFalse(invadingCountry.shiftSoldiers(soldiersToShift, defendingCountry));
         assertFalse(defendingCountry.shiftSoldiers(soldiersToShift, invadingCountry));
-        assertEquals(BoardBean.START_SOLDIER_PER_PLAYER, defendingCountry.getSoldiersCount());
-        assertEquals(BoardBean.START_SOLDIER_PER_PLAYER, invadingCountry.getSoldiersCount());
+        assertEquals(Board.START_SOLDIER_PER_PLAYER, defendingCountry.getSoldiersCount());
+        assertEquals(Board.START_SOLDIER_PER_PLAYER, invadingCountry.getSoldiersCount());
     }
 
     @Test
@@ -164,8 +164,8 @@ public class CountryTest {
     void shiftSoldiersNotNeighboring() {
         removeNeighbors();
         assertFalse(defendingCountry.shiftSoldiers(soldiersToShift, invadingCountry));
-        assertEquals(BoardBean.START_SOLDIER_PER_PLAYER, invadingCountry.getSoldiersCount());
-        assertEquals(BoardBean.START_SOLDIER_PER_PLAYER, defendingCountry.getSoldiersCount());
+        assertEquals(Board.START_SOLDIER_PER_PLAYER, invadingCountry.getSoldiersCount());
+        assertEquals(Board.START_SOLDIER_PER_PLAYER, defendingCountry.getSoldiersCount());
     }
 
     @Test
@@ -184,7 +184,7 @@ public class CountryTest {
     @Test
     void removeSoldiersValid() {
         invadingCountry.removeSoldiers(4);
-        assertEquals(BoardBean.START_SOLDIER_PER_PLAYER - 4, invadingCountry.getSoldiersCount());
+        assertEquals(Board.START_SOLDIER_PER_PLAYER - 4, invadingCountry.getSoldiersCount());
     }
 
 

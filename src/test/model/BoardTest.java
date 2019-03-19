@@ -10,13 +10,13 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BoardBeanTest {
+class BoardTest {
 
-    private BoardBean testBoard;
+    private Board testBoard;
 
     @BeforeEach
     void setUp() {
-        testBoard = new BoardBean();
+        testBoard = new Board();
     }
 
     @Test
@@ -28,9 +28,9 @@ class BoardBeanTest {
             for (Country country : currentPlayer.getOwnedCountries()) {
                 soldierCount += country.getSoldiersCount();
             }
-            assertEquals(BoardBean.START_SOLDIER_PER_PLAYER, soldierCount);
+            assertEquals(Board.START_SOLDIER_PER_PLAYER, soldierCount);
         }
-        assertEquals(BoardBean.COUNTRY_COUNT_GENERATION, testBoard.getCountries().size());
+        assertEquals(Board.COUNTRY_COUNT_GENERATION, testBoard.getCountries().size());
     }
 
     /**

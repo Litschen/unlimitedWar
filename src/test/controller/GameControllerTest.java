@@ -1,6 +1,6 @@
 package controller;
 
-import model.BoardBean;
+import model.Board;
 import model.Country;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +21,7 @@ class GameControllerTest {
 
     private HttpServletRequest mockRequest;
     private HttpServletResponse mockResponse;
-    private BoardBean mockBoard;
+    private Board mockBoard;
     private HttpSession mockSession;
     private GameController controller = new GameController();
     private Country mockCountry;
@@ -31,7 +31,7 @@ class GameControllerTest {
     @BeforeEach
     void setUp(){
         mockRequest  = mock(HttpServletRequest.class);
-        mockBoard = mock(BoardBean.class);
+        mockBoard = mock(Board.class);
         mockResponse = mock(HttpServletResponse.class);
         mockSession = mock(HttpSession.class);
         when(mockRequest.getSession()).thenReturn(mockSession);

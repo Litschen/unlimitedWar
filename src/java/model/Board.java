@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class BoardBean {
+public class Board {
 
     //region static variables
     public final static int START_SOLDIER_PER_PLAYER = 12;
@@ -40,7 +40,7 @@ public class BoardBean {
     private List<PlayerColor> playerColor = new ArrayList<>();
     //endregion
 
-    public BoardBean() {
+    public Board() {
         players = new ArrayList<>();
         countries = new ArrayList<>();
         generatePlayers();

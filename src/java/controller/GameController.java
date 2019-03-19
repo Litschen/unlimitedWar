@@ -1,6 +1,6 @@
 package controller;
 
-import model.BoardBean;
+import model.Board;
 import model.Country;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +14,7 @@ import java.io.IOException;
 @WebServlet(name = "GameController", urlPatterns = "/Game/*")
 public class GameController extends HttpServlet {
 
-    private BoardBean board;
+    private Board board;
 
     //region path & param variables
     public final static String PATH_ATTACK = "/attack";
@@ -66,7 +66,7 @@ public class GameController extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE);
         try {
-            board = (BoardBean) request.getSession().getAttribute(SESSION_BOARD_NAME);
+            board = (Board) request.getSession().getAttribute(SESSION_BOARD_NAME);
             if (board != null) {
                 if (request.getParameter(PARAM_NEXT_TURN) != null) {
                     board.executeTurn();
@@ -99,10 +99,10 @@ public class GameController extends HttpServlet {
     }
 
     /**
-     * Gets the country from the BoardBean, which was selected on the GUI
+     * Gets the country from the Board, which was selected on the GUI
      *
      * @param request from game.jsp
-     * @return selected country from BoardBean
+     * @return selected country from Board
      */
     private Country extractSelectedCountry(HttpServletRequest request) {
         Country toReturn = null;
