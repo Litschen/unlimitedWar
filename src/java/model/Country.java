@@ -93,8 +93,12 @@ public class Country {
      */
     public void invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
         if (canInvade(defenderCountry)) {
-            int[] attackerRolls = Dice.roll(attackDiceCount);
-            int[] defenderRolls = Dice.roll(defendDiceCount);
+
+            List <Integer> attackerRolls;
+            List <Integer> defenderRolls;
+
+            attackerRolls = Dice.roll(attackDiceCount);
+            defenderRolls = Dice.roll(defendDiceCount);
 
             Casualties casualties = calculateCasualties(attackerRolls, defenderRolls);
             removeSoldiers(casualties.getCasualtiesAttacker());
@@ -166,10 +170,10 @@ public class Country {
      * @param diceThrowsDefender int[] of the dices thrown by the defender
      * @return Casualties object with saved casualties inflicted upon both sides
      */
-    public Casualties calculateCasualties(int[] diceThrowsAttacker, int[] diceThrowsDefender) {
+    public Casualties calculateCasualties( List <Integer> diceThrowsAttacker, List <Integer>  diceThrowsDefender) {
         Casualties casualties = new Casualties(0, 0);
-        for (int i = 0; i < diceThrowsDefender.length; i++) {
-            if (diceThrowsDefender[i] >= diceThrowsAttacker[i]) {
+        for (int i = 0; i < diceThrowsDefender.size(); i++) {
+            if (diceThrowsDefender.get(i) >= diceThrowsAttacker.get(i)) {
                 casualties.addCasualtiesAttacker();
             } else {
                 casualties.addCasualtiesDefender();
