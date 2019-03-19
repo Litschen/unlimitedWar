@@ -1,6 +1,6 @@
 package model;
 
-import model.Interface.Behavior;
+import model.interfaces.Behavior;
 
 import java.util.ArrayList;
 import java.util.List;

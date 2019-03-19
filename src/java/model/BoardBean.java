@@ -1,11 +1,11 @@
 package model;
 
-import model.Behaviors.AggressiveBehavior;
-import model.Behaviors.RandomBehavior;
-import model.Behaviors.UserBehavior;
-import model.Enum.Flag;
-import model.Enum.Phase;
-import model.Enum.PlayerColor;
+import model.behavior.AggressiveBehavior;
+import model.behavior.RandomBehavior;
+import model.behavior.UserBehavior;
+import model.enums.Flag;
+import model.enums.Phase;
+import model.enums.PlayerColor;
 
 import java.io.File;
 import java.io.IOException;

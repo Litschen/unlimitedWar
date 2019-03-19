@@ -1,8 +1,8 @@
 package model;
 
-import model.Behaviors.UserBehavior;
-import model.Enum.Flag;
-import model.Enum.Phase;
+import model.behavior.UserBehavior;
+import model.enums.Flag;
+import model.enums.Phase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

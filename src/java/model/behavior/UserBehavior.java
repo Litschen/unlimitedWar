@@ -1,8 +1,8 @@
-package model.Behaviors;
+package model.behavior;
 
 import model.Country;
-import model.Enum.Phase;
-import model.Interface.Behavior;
+import model.enums.Phase;
+import model.interfaces.Behavior;
 import model.Player;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package model.Behaviors;
+package model.behavior;
 
 import model.Country;
 import model.Player;

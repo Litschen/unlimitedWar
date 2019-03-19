@@ -1,7 +1,7 @@
 <%@ page import="model.Player" %>
 <%@ page import="model.Country" %>
-<%@page import="model.Enum.Phase" %>
-<%@page import="model.Enum.Flag" %>
+<%@page import="model.enums.Phase" %>
+<%@page import="model.enums.Flag" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.BoardBean" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>

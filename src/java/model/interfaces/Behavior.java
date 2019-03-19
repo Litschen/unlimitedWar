@@ -1,7 +1,7 @@
-package model.Interface;
+package model.interfaces;
 
 import model.Country;
-import model.Enum.Phase;
+import model.enums.Phase;
 
 import java.util.List;
 

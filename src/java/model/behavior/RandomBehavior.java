@@ -1,9 +1,9 @@
-package model.Behaviors;
+package model.behavior;
 
 import model.Country;
 import model.Dice;
-import model.Enum.Phase;
-import model.Interface.Behavior;
+import model.enums.Phase;
+import model.interfaces.Behavior;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;

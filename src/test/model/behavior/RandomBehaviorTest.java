@@ -1,4 +1,4 @@
-package model.Behaviors;
+package model.behavior;
 
 import model.Country;
 import model.Player;
@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static model.Enum.PlayerColor.BLUE;
+import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.*;

@@ -1,11 +1,9 @@
 package model;
 
-import model.Behaviors.RandomBehavior;
-import model.Enum.PlayerColor;
+import model.behavior.RandomBehavior;
+import model.enums.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
