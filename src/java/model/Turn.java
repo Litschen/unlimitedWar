@@ -6,9 +6,11 @@ import model.enums.Phase;
 import model.interfaces.Event;
 
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.List;
 
 public class Turn {
+
 
     //region data fields
     private List<Event> occuredEvents;
@@ -21,6 +23,7 @@ public class Turn {
     private Country secondSelectedCountry;
     private Flag flag;
     private Phase currentPhase = Phase.SETTINGPHASE;
+    public Board controller;
     //endregion
 
     public Turn(List<Player> players, List<Country> countries){
