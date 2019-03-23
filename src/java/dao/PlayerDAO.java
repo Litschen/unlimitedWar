@@ -41,22 +41,18 @@ public class PlayerDAO {
      *
      * @param mail of the user
      */
-    public UserBean getPlayerByMail(String mail) {
+    public UserBean getPlayerByMail(String mail) throws SQLException, ClassNotFoundException {
         UserBean user = null;
 
-        try {
-            createConnection(SELECT_QUERY, Arrays.asList(mail));
-            rs = st.executeQuery();
-            if (rs.next()) {
-                user = new UserBean();
-                user.setName(rs.getString("username"));
-                user.setMail(rs.getString("email"));
-                user.setPassword(rs.getString("password"));
-            }
-            closeConnection();
-        } catch (Exception e) {
-            e.printStackTrace();
+        createConnection(SELECT_QUERY, Arrays.asList(mail));
+        rs = st.executeQuery();
+        if (rs.next()) {
+            user = new UserBean();
+            user.setName(rs.getString("username"));
+            user.setMail(rs.getString("email"));
+            user.setPassword(rs.getString("password"));
         }
+        closeConnection();
 
         return user;
     }
@@ -68,7 +64,7 @@ public class PlayerDAO {
      * @param mail     the user's mail to log in
      * @param password the user's password to authenticate
      */
-    public int createNewPlayer(String username, @NotNull String mail, String password) {
+    public int createNewPlayer(String username, @NotNull String mail, String password) throws SQLException, ClassNotFoundException {
         return manipulateData(INSERT_QUERY, Arrays.asList(username, mail, password));
     }
 
@@ -80,7 +76,7 @@ public class PlayerDAO {
      * @param password new password or old password to not change
      * @param mail     mail of the user
      */
-    public int updatePlayer(String username, @NotNull String mail, String password) {
+    public int updatePlayer(String username, @NotNull String mail, String password) throws SQLException, ClassNotFoundException {
         return manipulateData(UPDATE_QUERY, Arrays.asList(username, password, mail));
     }
 
@@ -89,7 +85,7 @@ public class PlayerDAO {
      *
      * @param mail of the player
      */
-    public int deletePlayerByMail(@NotNull String mail) {
+    public int deletePlayerByMail(@NotNull String mail) throws SQLException, ClassNotFoundException {
         return manipulateData(DELETE_QUERY, Arrays.asList(mail));
     }
 
@@ -101,16 +97,10 @@ public class PlayerDAO {
      * @param args  arguments to fill the query
      * @return affected rows
      */
-    private int manipulateData(@NotNull String query, List<String> args) {
-        int row = 0;
-
-        try {
-            createConnection(query, args);
-            row = st.executeUpdate();
-            closeConnection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private int manipulateData(@NotNull String query, List<String> args) throws SQLException, ClassNotFoundException {
+        createConnection(query, args);
+        int row = st.executeUpdate();
+        closeConnection();
         return row;
     }
 

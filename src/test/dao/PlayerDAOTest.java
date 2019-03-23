@@ -39,7 +39,7 @@ class PlayerDAOTest {
     }
 
     @Test
-    void testPlayerDAO() {
+    void testPlayerDAO() throws Exception {
         int affectedRows;
         // ----- test insert -----
         affectedRows = testDAO.createNewPlayer(username, mail, password);
@@ -64,28 +64,27 @@ class PlayerDAOTest {
     }
 
     @Test
-    void testCreateNewPlayerDuplicateMail() {
+    void testCreateNewPlayerDuplicateMail() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
-        int createdRows = testDAO.createNewPlayer("user1", mail, "pwd1");
-        assertEquals(0, createdRows);
+        assertThrows(JdbcSQLException.class, () -> testDAO.createNewPlayer("user1", mail, "pwd1"));
     }
 
     @Test
-    void testCreateNewPlayerDuplicateName() {
+    void testCreateNewPlayerDuplicateName() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
         int createdRows = testDAO.createNewPlayer(username, "newUser@zhaw.ch", "pwd1");
         assertEquals(1, createdRows);
     }
 
     @Test
-    void testUpdateMail() {
+    void testUpdateMail() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
         int updatedRows = testDAO.updatePlayer(username, "newUser@zhaw.ch", password);
         assertEquals(0, updatedRows);
     }
 
     @Test
-    void testUpdateNameToTakenName() {
+    void testUpdateNameToTakenName() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
         testDAO.createNewPlayer("test", "test@zhaw.ch", "1234");
 
