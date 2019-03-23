@@ -80,7 +80,8 @@ class PlayerDAOTest {
     @Test
     void testUpdateMail() {
         testDAO.createNewPlayer(username, mail, password);
-        assertThrows(JdbcSQLException.class, () -> testDAO.updatePlayer(username, "newUser@zhaw.ch", password));
+        int updatedRows = testDAO.updatePlayer(username, "newUser@zhaw.ch", password);
+        assertEquals(0, updatedRows);
     }
 
     @Test
