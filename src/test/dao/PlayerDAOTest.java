@@ -1,9 +1,13 @@
 package dao;
 
 import model.UserBean;
+import org.h2.jdbc.JdbcSQLException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,9 +20,19 @@ class PlayerDAOTest {
     private String mail;
     private String password;
 
+    private final String createTable = "DROP TABLE Player IF EXISTS;" +
+            "CREATE TABLE Player(\n" +
+            "\tUsername varchar(50) NOT NULL,\n" +
+            "    Email varchar(50) NOT NULL,\n" +
+            "    Password varchar(100) NOT NULL,\n" +
+            "    \n" +
+            "    CONSTRAINT PK_Player PRIMARY KEY (Email)\n" +
+            ");";
+
     @BeforeEach
     void setUp() {
-        testDAO = new PlayerDAO("org.h2.Driver");
+        Connection con = TestHelperDAO.createH2Connection(createTable);
+        testDAO = new PlayerDAO(con);
         username = "user";
         mail = "user@zhaw.ch";
         password = "pwd";
@@ -60,13 +74,13 @@ class PlayerDAOTest {
     void testCreateNewPlayerDuplicateName() {
         testDAO.createNewPlayer(username, mail, password);
         int createdRows = testDAO.createNewPlayer(username, "newUser@zhaw.ch", "pwd1");
-        assertEquals(0, createdRows);
+        assertEquals(1, createdRows);
     }
 
     @Test
     void testUpdateMail() {
         testDAO.createNewPlayer(username, mail, password);
-        assertThrows(SQLException.class, () -> testDAO.updatePlayer(username, "newUser@zhaw.ch", password));
+        assertThrows(JdbcSQLException.class, () -> testDAO.updatePlayer(username, "newUser@zhaw.ch", password));
     }
 
     @Test
