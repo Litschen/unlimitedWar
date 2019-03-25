@@ -2,7 +2,9 @@ package model.interfaces;
 
 import model.enums.EventType;
 
+import java.util.List;
+
 public interface Event {
-    int[] getEventData();
+    List<Integer> getEventData();
     EventType getEventType();
 }
