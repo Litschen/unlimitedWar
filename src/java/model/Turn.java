@@ -123,17 +123,19 @@ public class Turn {
      * perform a AI turn, cycles Player in the end
      */
     public void executeTurn() {
-        if (currentPhase == Phase.SETTINGPHASE) {
-            currentPhase = currentPlayer.getBehavior().placeSoldiers(countries,
-                    currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace());
-        }
-        if (currentPhase == Phase.ATTACKPHASE) {
-            currentPhase = currentPlayer.getBehavior().
-                    attackCountry(countries, currentPlayer.getOwnedCountries()).getNewPhase();
-        }
-        if (currentPhase == Phase.MOVINGPHASE) {
-            currentPhase = currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
-            cyclePlayer();
+        if(!currentPlayerIsUser()){
+            if (currentPhase == Phase.SETTINGPHASE) {
+                currentPhase = currentPlayer.getBehavior().placeSoldiers(countries,
+                        currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace());
+            }
+            if (currentPhase == Phase.ATTACKPHASE) {
+                currentPhase = currentPlayer.getBehavior().
+                        attackCountry(countries, currentPlayer.getOwnedCountries()).getNewPhase();
+            }
+            if (currentPhase == Phase.MOVINGPHASE) {
+                currentPhase = currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
+                cyclePlayer();
+            }
         }
     }
 
