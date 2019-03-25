@@ -58,11 +58,12 @@ public class Board {
         return ((int) (Math.random() * playerColor.size()));
     }
 
-    public Turn getCurrentTurn(){
-        if(currentTurn.getFlag() == Flag.TURNEND){
+    public Turn getCurrentTurn() {
+        if (currentTurn.getFlag() == Flag.TURNEND) {
             currentTurn = new Turn(players, countries);
         }
-        return currentTurn;}
+        return currentTurn;
+    }
     //endregion
 
     //region methods to generate countries & set their properties
@@ -139,7 +140,7 @@ public class Board {
      */
     private void setFixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
         for (int i : neighborCountryIndex) {
-            countries.get(countryIndex).getNeighboringCountries().add(countries.get(i));
+            countries.get(countryIndex).addNeighboringCountries(Collections.singletonList(countries.get(i)));
         }
     }
     //endregion
