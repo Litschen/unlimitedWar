@@ -1,19 +1,19 @@
 package model;
 
 import model.behavior.UserBehavior;
+import model.enums.EventType;
 import model.enums.Flag;
 import model.enums.Phase;
 import model.interfaces.Event;
 
 import java.util.ArrayList;
-import java.util.BitSet;
 import java.util.List;
 
 public class Turn {
 
 
     //region data fields
-    private List<Event> occuredEvents;
+    private List<Event> occurredEvents;
     private List<Player> activePlayers;
     private List<Country> countries;
     private Player currentPlayer;
@@ -23,12 +23,12 @@ public class Turn {
     private Country secondSelectedCountry;
     private Flag flag;
     private Phase currentPhase = Phase.SETTINGPHASE;
-    public Board controller;
     //endregion
 
     public Turn(List<Player> players, List<Country> countries){
         this.activePlayers = players;
         this.countries = countries;
+        occurredEvents = new ArrayList<>();
         currentPlayer = activePlayers.get(0);
         if(currentPlayerIsUser()){
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
@@ -92,6 +92,24 @@ public class Turn {
         }
         this.secondSelectedCountry = secondSelectedCountry;
     }
+
+    public List<Event> getOccurredEvents() {
+        return occurredEvents;
+    }
+
+    public Event getLastEventOfType(EventType type){
+        boolean found = false;
+        List<Event> events = getOccurredEvents();
+        int index = events.size() - 1;
+        while(!found && index > 0){
+            index--;
+            found = events.get(index).getEventType() == type;
+        }
+        if(!found){
+            throw new IllegalArgumentException("No such event occured");
+        }
+        return events.remove(index);
+    }
     //endregion
 
     /**
@@ -110,7 +128,8 @@ public class Turn {
                     currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace());
         }
         if (currentPhase == Phase.ATTACKPHASE) {
-            currentPhase = currentPlayer.getBehavior().attackCountry(countries, currentPlayer.getOwnedCountries());
+            currentPhase = currentPlayer.getBehavior().
+                    attackCountry(countries, currentPlayer.getOwnedCountries()).getNewPhase();
         }
         if (currentPhase == Phase.MOVINGPHASE) {
             currentPhase = currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
@@ -134,7 +153,9 @@ public class Turn {
                 List<Country> countryList = new ArrayList<>();
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
-                currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries());
+                getOccurredEvents().addAll(
+                        currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries())
+                                .getOccurredEvents());
                 resetSelectedCountries();
                 eliminatePlayersAndCheckUserResult();
             } else {
@@ -219,17 +240,18 @@ public class Turn {
      * change the next player and delete the player without countries
      */
     private void cyclePlayer() {
+        resetSelectedCountries();
         int nextPlayerIndex = activePlayers.indexOf(currentPlayer) + 1;
         eliminatePlayersAndCheckUserResult();
         if (nextPlayerIndex >= activePlayers.size()) {
-            nextPlayerIndex = 0;
             setFlag(Flag.TURNEND);
         }
-        currentPlayer = activePlayers.get(nextPlayerIndex);
-        if (currentPlayerIsUser()) {
-            currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
+        else {
+            currentPlayer = activePlayers.get(nextPlayerIndex);
+            if (currentPlayerIsUser()) {
+                currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
+            }
         }
-        resetSelectedCountries();
     }
 
     /**
