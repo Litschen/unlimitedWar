@@ -3,8 +3,10 @@ package model;
 import model.behavior.AggressiveBehavior;
 import model.behavior.RandomBehavior;
 import model.behavior.UserBehavior;
+import model.enums.EventType;
 import model.enums.Flag;
 import model.enums.PlayerColor;
+import model.interfaces.Event;
 
 import java.io.File;
 import java.io.IOException;
@@ -155,5 +157,16 @@ public class Board {
         players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new RandomBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new AggressiveBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
+    }
+
+    public Event getEvent(EventType type) {
+        Event event = null;
+        try {
+            event = currentTurn.getLastEventOfType(type);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return event;
     }
 }

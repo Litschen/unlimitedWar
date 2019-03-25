@@ -1,0 +1,41 @@
+.event-container {
+    position: fixed;
+    top: 80px;
+    right: 10px;
+    max-width: 300px;
+    min-width: 200px;
+}
+
+.event {
+    color: #004085;
+    display: block;
+    width: min-content;
+    min-width: 200px;
+    min-height: 50px;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    background-color: #cce5ff;
+    border-radius: .25rem;
+    border: 1px solid #b8daff;
+}
+
+.event.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.event.fail {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.event .title {
+    font-size: .9rem;
+    font-weight: bold;
+}
+
+.event .content {
+    font-size: .75rem;
+}

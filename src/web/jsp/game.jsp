@@ -69,6 +69,7 @@
     <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
 </form>
 
+<%@include file="modals/event.jsp" %>
 <%@include file="modals/attackRoll.jsp" %>
 <%@include file="modals/resultModal.jsp" %>
 <%@include file="snippets/footer.jsp" %>
