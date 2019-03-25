@@ -97,6 +97,10 @@ public class Turn {
         return occurredEvents;
     }
 
+    public void addEvents(List<Event> events) {
+        occurredEvents.addAll(events);
+    }
+
     public Event getLastEventOfType(EventType type) {
         boolean found = false;
         List<Event> events = getOccurredEvents();
@@ -155,7 +159,7 @@ public class Turn {
                 List<Country> countryList = new ArrayList<>();
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
-                getOccurredEvents().addAll(
+                addEvents(
                         currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries())
                                 .getOccurredEvents());
                 resetSelectedCountries();

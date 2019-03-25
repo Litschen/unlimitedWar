@@ -53,7 +53,7 @@ public class UserBehavior implements Behavior {
         if (ownedCountries.contains(attackCountry) && attackCountry.canInvade(defendCountry)) {
             int attackDiceCount = attackCountry.getOwner().getAttackDiceCount();
             int defendDiceCount = defendCountry.amountDiceThrowsDefender(attackDiceCount);
-            result.getOccurredEvents().addAll( attackCountry.invade(defendCountry, attackDiceCount, defendDiceCount));
+            result.addEvents(attackCountry.invade(defendCountry, attackDiceCount, defendDiceCount));
         }
         return result;
     }

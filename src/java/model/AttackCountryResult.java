@@ -30,4 +30,8 @@ public class AttackCountryResult {
     public void addEvent(Event event){
         getOccurredEvents().add(event);
     }
+
+    public void addEvents(List<Event> events) {
+        occurredEvents.addAll(events);
+    }
 }
