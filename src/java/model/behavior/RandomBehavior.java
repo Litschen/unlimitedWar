@@ -11,11 +11,11 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomBehavior implements Behavior {
 
     //region static variables
-    //will try to attack in x out of 10 cases
+    // try to attack in x cases out of 10 cases
     private final static int AGGRESSIVENESS = 7;
-    //will continue to attack in x out of 10 cases
+    //continue to attack in x cases out of 10 cases
     private final static int STUBBORNNESS = 9;
-    //will move soldiers in x out of 10 cases
+    //move soldiers in x cases out of 10 cases
     private final static int MOVE_WILLINGNESS = 8;
 
     private final static int MIN_DICE_RANGE = 0;

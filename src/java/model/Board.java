@@ -147,7 +147,6 @@ public class Board {
      */
     private void generatePlayers() {
 
-        // ToDo: @crnjatin color random
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
         players.add(new Player(playerColor.remove(1), "Stalout", new UserBehavior()));

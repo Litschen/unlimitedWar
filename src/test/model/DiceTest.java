@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DiceTest {
 
-    //private int[] diceResults;
     private List<Integer> diceResults;
 
     private final int AMOUNT_THROWS = 100;

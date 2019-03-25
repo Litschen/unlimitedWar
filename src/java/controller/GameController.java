@@ -76,14 +76,14 @@ public class GameController extends HttpServlet {
                     Country chosenCountry = extractSelectedCountry(request);
                     String path = request.getPathInfo();
 
-                    // handle attack modal
+
                     if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_ROLL) != null) {
                         int attackDiceCount = request.getParameterMap().get(PARAM_ATTACK_DICE).length;
                         board.getCurrentTurn().getCurrentPlayer().setAttackDiceCount(attackDiceCount);
                     } else if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_CANCEL) != null) {
                         board.getCurrentTurn().resetSelectedCountries();
                     }
-                    // handle phase
+
                     board.getCurrentTurn().executeUserTurn(chosenCountry);
                 }
             }

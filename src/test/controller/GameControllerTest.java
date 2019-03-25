@@ -18,9 +18,9 @@ import static org.mockito.Mockito.*;
 
 class GameControllerTest {
 
-    private HttpServletRequest mockRequest; //
-    private HttpServletResponse mockResponse;//
-    private Board mockBoard;//
+    private HttpServletRequest mockRequest;
+    private HttpServletResponse mockResponse;
+    private Board mockBoard;
     private HttpSession mockSession;
     private GameController controller = new GameController();
     private Country mockCountry;
