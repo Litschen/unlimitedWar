@@ -3,7 +3,7 @@ package model;
 /**
  * Class to save casualties for attacker and defender during an invasion of a country
  */
-class Casualties {
+public class Casualties {
     //region data fields
     private static int casualtiesAttacker;
     private static int casualtiesDefender;
@@ -21,11 +21,11 @@ class Casualties {
     }
 
     //region getter setter
-    int getCasualtiesAttacker() {
+    public int getCasualtiesAttacker() {
         return casualtiesAttacker;
     }
 
-    int getCasualtiesDefender() {
+    public int getCasualtiesDefender() {
         return casualtiesDefender;
     }
     //endregion

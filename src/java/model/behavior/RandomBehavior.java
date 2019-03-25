@@ -1,5 +1,6 @@
 package model.behavior;
 
+import model.AttackCountryResult;
 import model.Country;
 import model.Dice;
 import model.enums.Phase;
@@ -53,7 +54,8 @@ public class RandomBehavior implements Behavior {
      * @return next Phase: move
      */
     @Override
-    public Phase attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
+    public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
+        AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
         while (willAttack()) {
             Country selectedCountry = ownedCountries.get(Dice.roll(0, ownedCountries.size() - 1));
             for (Country targetCountry : selectedCountry.getNeighboringCountries()) {
@@ -68,7 +70,7 @@ public class RandomBehavior implements Behavior {
                 }
             }
         }
-        return Phase.MOVINGPHASE;
+        return result;
     }
 
 

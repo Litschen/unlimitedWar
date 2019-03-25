@@ -3,23 +3,27 @@ package model.events;
 import model.enums.EventType;
 import model.interfaces.Event;
 
+import java.util.List;
+
 public class DiceEvent implements Event {
 
     //region data fields
-    private int[] data;
+    private List<Integer> data;
+    private EventType type;
     //endregion
 
-    public DiceEvent(int[] diceThrow){
+    public DiceEvent(List<Integer> diceThrow, EventType type){
         this.data = diceThrow;
+        this.type = type;
     }
 
     @Override
-    public int[] getEventData() {
+    public List<Integer> getEventData() {
         return data;
     }
 
     @Override
     public EventType getEventType() {
-        return EventType.DiceEvent;
+        return type;
     }
 }

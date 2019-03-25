@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Board {
 
@@ -37,7 +36,7 @@ public class Board {
         countries = new ArrayList<>();
         generatePlayers();
         generateCountries();
-        startTurn();
+        currentTurn = new Turn(players, countries);
     }
 
     //region getter setter
@@ -57,7 +56,11 @@ public class Board {
         return ((int) (Math.random() * playerColor.size()));
     }
 
-    public Turn getCurrentTurn(){return currentTurn;}
+    public Turn getCurrentTurn(){
+        if(currentTurn.getFlag() == Flag.TURNEND){
+            currentTurn = new Turn(players, countries);
+        }
+        return currentTurn;}
     //endregion
 
     //region methods to generate countries & set their properties
@@ -70,15 +73,14 @@ public class Board {
     private void generateCountries() {
         for (Player currentPlayer : players) {
             int countriesToGenerate = COUNTRY_COUNT_GENERATION / players.size();
-            int solidersToDistribute = START_SOLDIER_PER_PLAYER - countriesToGenerate;
+            int soldiersToDistribute = START_SOLDIER_PER_PLAYER - countriesToGenerate;
             for (int i = countriesToGenerate; i > 0; i--) {
                 if (i != 1) {
-                    int randomSoldierCount = ThreadLocalRandom.current()
-                            .nextInt(MIN_SOLDIER_GENERATION, solidersToDistribute + 1);
+                    int randomSoldierCount = Dice.roll(MIN_SOLDIER_GENERATION, soldiersToDistribute);
                     countries.add(new Country("", randomSoldierCount + 1, currentPlayer));
-                    solidersToDistribute -= randomSoldierCount;
+                    soldiersToDistribute -= randomSoldierCount;
                 } else {
-                    countries.add(new Country("", solidersToDistribute + 1, currentPlayer));
+                    countries.add(new Country("", soldiersToDistribute + 1, currentPlayer));
                 }
                 currentPlayer.getOwnedCountries().add(countries.get(countries.size() - 1));
             }
@@ -153,15 +155,5 @@ public class Board {
         players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new RandomBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new AggressiveBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
-    }
-
-    public void checkForNewTurn(){
-        if(getCurrentTurn().getFlag() == Flag.TURNEND){
-           startTurn();
-        }
-    }
-
-    public void startTurn(){
-        currentTurn = new Turn(players, countries);
     }
 }

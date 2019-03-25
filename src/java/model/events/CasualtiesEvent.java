@@ -1,28 +1,32 @@
 package model.events;
 
 
+import model.Casualties;
 import model.enums.EventType;
 import model.interfaces.Event;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CasualtiesEvent implements Event {
 
     //region data fields
-    private int casualties;
-    private EventType eventType;
+    private List<Integer> data;
     //endregion
 
-    public CasualtiesEvent(int casualties, EventType eventType){
-        this.casualties = casualties;
-        this.eventType = eventType;
+    public CasualtiesEvent(Casualties casualties){
+        data = new ArrayList<>();
+        data.add(casualties.getCasualtiesAttacker());
+        data.add(casualties.getCasualtiesDefender());
     }
 
     @Override
-    public int[] getEventData() {
-        return new int[]{casualties};
+    public List<Integer> getEventData() {
+        return data;
     }
 
     @Override
     public EventType getEventType() {
-        return eventType;
+        return EventType.CasualtiesEvent;
     }
 }

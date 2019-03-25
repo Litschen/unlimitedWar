@@ -1,5 +1,6 @@
 package model.interfaces;
 
+import model.AttackCountryResult;
 import model.Country;
 import model.enums.Phase;
 
@@ -20,7 +21,7 @@ public interface Behavior {
      * Can be used to attack other countries. Attack other countries as clever as possible,
      * until the number of soldiers falls to 1.
      */
-    Phase attackCountry(List<Country> allCountries, List<Country> ownedCountries);
+    AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries);
 
     /**
      * Can be used to move own soldiers in between own countries. Move soldiers as clever as possible,

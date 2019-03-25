@@ -1,5 +1,6 @@
 package model.behavior;
 
+import model.AttackCountryResult;
 import model.Country;
 import model.enums.Phase;
 import model.interfaces.Behavior;
@@ -31,8 +32,9 @@ public class StrategicBehavior implements Behavior {
      * @return next Phase: move
      */
     @Override
-    public Phase attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
-        return Phase.MOVINGPHASE;
+    public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
+        AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
+        return result;
     }
 
     /**

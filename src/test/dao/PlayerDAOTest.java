@@ -1,9 +1,13 @@
 package dao;
 
 import model.UserBean;
+import org.h2.jdbc.JdbcSQLException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,16 +20,26 @@ class PlayerDAOTest {
     private String mail;
     private String password;
 
+    private final String createTable = "DROP TABLE Player IF EXISTS;" +
+            "CREATE TABLE Player(\n" +
+            "\tUsername varchar(50) NOT NULL,\n" +
+            "    Email varchar(50) NOT NULL,\n" +
+            "    Password varchar(100) NOT NULL,\n" +
+            "    \n" +
+            "    CONSTRAINT PK_Player PRIMARY KEY (Email)\n" +
+            ");";
+
     @BeforeEach
     void setUp() {
-        testDAO = new PlayerDAO("org.h2.Driver");
+        Connection con = TestHelperDAO.createH2Connection(createTable);
+        testDAO = new PlayerDAO(con);
         username = "user";
         mail = "user@zhaw.ch";
         password = "pwd";
     }
 
     @Test
-    void testPlayerDAO() {
+    void testPlayerDAO() throws Exception {
         int affectedRows;
         // ----- test insert -----
         affectedRows = testDAO.createNewPlayer(username, mail, password);
@@ -50,27 +64,27 @@ class PlayerDAOTest {
     }
 
     @Test
-    void testCreateNewPlayerDuplicateMail() {
+    void testCreateNewPlayerDuplicateMail() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
-        int createdRows = testDAO.createNewPlayer("user1", mail, "pwd1");
-        assertEquals(0, createdRows);
+        assertThrows(JdbcSQLException.class, () -> testDAO.createNewPlayer("user1", mail, "pwd1"));
     }
 
     @Test
-    void testCreateNewPlayerDuplicateName() {
+    void testCreateNewPlayerDuplicateName() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
         int createdRows = testDAO.createNewPlayer(username, "newUser@zhaw.ch", "pwd1");
-        assertEquals(0, createdRows);
+        assertEquals(1, createdRows);
     }
 
     @Test
-    void testUpdateMail() {
+    void testUpdateMail() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
-        assertThrows(SQLException.class, () -> testDAO.updatePlayer(username, "newUser@zhaw.ch", password));
+        int updatedRows = testDAO.updatePlayer(username, "newUser@zhaw.ch", password);
+        assertEquals(0, updatedRows);
     }
 
     @Test
-    void testUpdateNameToTakenName() {
+    void testUpdateNameToTakenName() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
         testDAO.createNewPlayer("test", "test@zhaw.ch", "1234");
 
