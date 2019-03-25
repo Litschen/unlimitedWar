@@ -2,8 +2,10 @@ package model.behavior;
 
 import model.Country;
 import model.Player;
+import model.enums.PlayerColor;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.mock;
@@ -12,7 +14,7 @@ import static org.mockito.Mockito.when;
 public class TestHelperBehavior {
 
 
-    public static Country setUpMockCountry(Player player) {
+    public static Country getMockCountry(Player player) {
         Country mockCountry = mock(Country.class);
         when(mockCountry.getSoldiersCount()).thenReturn(5);
         when(mockCountry.canInvade(anyObject())).thenReturn(true);
@@ -32,14 +34,20 @@ public class TestHelperBehavior {
     public static ArrayList<Country> getMockCountryList(int numbersOfListElements, Player testPlayer) {
         ArrayList<Country> countries = new ArrayList<>();
         for (int i = 0; i < numbersOfListElements; i++) {
-            countries.add(setUpMockCountry(testPlayer));
+            countries.add(getMockCountry(testPlayer));
         }
         return countries;
     }
 
 
-    public static Player setUpMockPlayer() {
+    public static Player getMockPlayer() {
         Player mockPlayer = mock(Player.class);
         return mockPlayer;
+    }
+
+    public static void stubPlayerMethods(Player mockPlayer, List<Country> countries, int soldiersToPlace, PlayerColor color) {
+        when(mockPlayer.getOwnedCountries()).thenReturn(countries);
+        when(mockPlayer.getSoldiersToPlace()).thenReturn(soldiersToPlace);
+        when(mockPlayer.getPlayerColor()).thenReturn(color);
     }
 }

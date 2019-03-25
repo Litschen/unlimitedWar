@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static model.behavior.TestHelperBehavior.setUpMockCountry;
+import static model.behavior.TestHelperBehavior.getMockCountry;
 import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.anyInt;
@@ -56,7 +56,7 @@ class StrategicBehaviorTest {
     @Test
     void testAttackCountry() {
         Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
-        Country mockAttackCountry = setUpMockCountry(testPlayer2);
+        Country mockAttackCountry = getMockCountry(testPlayer2);
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, testPlayer));
@@ -72,7 +72,7 @@ class StrategicBehaviorTest {
         ownedCountries = TestHelperBehavior.getMockCountryList(5, testPlayer);
 
         Player opponentPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
-        Country attackCountry = TestHelperBehavior.setUpMockCountry(opponentPlayer);
+        Country attackCountry = TestHelperBehavior.getMockCountry(opponentPlayer);
         selectedCountries.add(attackCountry);
         selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
 

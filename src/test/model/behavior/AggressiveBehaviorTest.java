@@ -65,7 +65,7 @@ class AggressiveBehaviorTest {
     @Test
     void testAttackCountry() {
         Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
-        Country mockAttackCountry = TestHelperBehavior.setUpMockCountry(testPlayer2);
+        Country mockAttackCountry = TestHelperBehavior.getMockCountry(testPlayer2);
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, testPlayer));
@@ -81,7 +81,7 @@ class AggressiveBehaviorTest {
         ownedCountries = TestHelperBehavior.getMockCountryList(5, testPlayer);
 
         Player opponentPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
-        Country attackCountry = TestHelperBehavior.setUpMockCountry(opponentPlayer);
+        Country attackCountry = TestHelperBehavior.getMockCountry(opponentPlayer);
         selectedCountries.add(attackCountry);
         selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
 

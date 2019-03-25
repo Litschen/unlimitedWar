@@ -53,7 +53,7 @@ class UserBehaviorTest {
     @Test
     void testAttackCountry() {
         Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
-        Country mockAttackCountry = TestHelperBehavior.setUpMockCountry(testPlayer2);
+        Country mockAttackCountry = TestHelperBehavior.getMockCountry(testPlayer2);
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, testPlayer));
@@ -69,7 +69,7 @@ class UserBehaviorTest {
         ownedCountries = TestHelperBehavior.getMockCountryList(5, testPlayer);
 
         Player player = new Player(BLUE, "ownPlayer", new UserBehavior());
-        Country attackCountry = TestHelperBehavior.setUpMockCountry(player);
+        Country attackCountry = TestHelperBehavior.getMockCountry(player);
         selectedCountries.add(attackCountry);
         selectedCountries.add(ownedCountries.get(0));
 
