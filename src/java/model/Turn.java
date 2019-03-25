@@ -25,12 +25,12 @@ public class Turn {
     private Phase currentPhase = Phase.SETTINGPHASE;
     //endregion
 
-    public Turn(List<Player> players, List<Country> countries){
+    public Turn(List<Player> players, List<Country> countries) {
         this.activePlayers = players;
         this.countries = countries;
         occurredEvents = new ArrayList<>();
         currentPlayer = activePlayers.get(0);
-        if(currentPlayerIsUser()){
+        if (currentPlayerIsUser()) {
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
         }
     }
@@ -97,16 +97,16 @@ public class Turn {
         return occurredEvents;
     }
 
-    public Event getLastEventOfType(EventType type){
+    public Event getLastEventOfType(EventType type) {
         boolean found = false;
         List<Event> events = getOccurredEvents();
         int index = events.size() - 1;
-        while(!found && index > 0){
+        while (!found && index > 0) {
             index--;
             found = events.get(index).getEventType() == type;
         }
-        if(!found){
-            throw new IllegalArgumentException("No such event occured");
+        if (!found) {
+            throw new IllegalArgumentException("No such event occurred");
         }
         return events.remove(index);
     }
@@ -123,7 +123,7 @@ public class Turn {
      * perform a AI turn, cycles Player in the end
      */
     public void executeTurn() {
-        if(!currentPlayerIsUser()){
+        if (!currentPlayerIsUser()) {
             if (currentPhase == Phase.SETTINGPHASE) {
                 currentPhase = currentPlayer.getBehavior().placeSoldiers(countries,
                         currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace());
@@ -247,8 +247,7 @@ public class Turn {
         eliminatePlayersAndCheckUserResult();
         if (nextPlayerIndex >= activePlayers.size()) {
             setFlag(Flag.TURNEND);
-        }
-        else {
+        } else {
             currentPlayer = activePlayers.get(nextPlayerIndex);
             if (currentPlayerIsUser()) {
                 currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
@@ -264,7 +263,6 @@ public class Turn {
         setSecondSelectedCountry(null);
         setFlag(Flag.NONE);
     }
-
 
     /**
      * remove the players from the game which lost all their countries

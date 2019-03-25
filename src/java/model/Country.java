@@ -96,7 +96,7 @@ public class Country {
      * @param defendDiceCount amount of Dices the defender is using to defend
      */
     public List<Event> invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
-        List<Event> occuredEvents = new ArrayList<>();
+        List<Event> occurredEvents = new ArrayList<>();
         if (canInvade(defenderCountry)) {
 
             List <Integer> attackerRolls;
@@ -118,12 +118,12 @@ public class Country {
 
                 shiftSoldiers(attackDiceCount, defenderCountry);
             }
-            occuredEvents.add(new CasualtiesEvent(casualties));
-            occuredEvents.add(new DiceEvent(attackerRolls, EventType.AttackerDiceEvent));
-            occuredEvents.add(new DiceEvent(defenderRolls, EventType.DefenderDiceEvent));
+            occurredEvents.add(new CasualtiesEvent(casualties));
+            occurredEvents.add(new DiceEvent(attackerRolls, EventType.AttackerDiceEvent));
+            occurredEvents.add(new DiceEvent(defenderRolls, EventType.DefenderDiceEvent));
 
         }
-        return occuredEvents;
+        return occurredEvents;
     }
 
 

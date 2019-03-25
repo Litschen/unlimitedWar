@@ -63,7 +63,7 @@
         </ul>
     </aside>
 </div>
-<form method="post" action="<%=request.getContextPath()%>/Game/">
+<form method="post" action="<%=request.getContextPath()%>/Game/nextTurn">
     <%--Saves the board in the session --%>
     <% session.setAttribute("board", board); %>
     <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>

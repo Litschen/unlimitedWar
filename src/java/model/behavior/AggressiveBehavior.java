@@ -11,9 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * TODO in MS2
- */
 public class AggressiveBehavior implements Behavior {
 
 
@@ -24,7 +21,7 @@ public class AggressiveBehavior implements Behavior {
      * @param allCountries    ArrayList with all countries on the board
      * @param ownedCountries  of the current player
      * @param soldiersToPlace amount to be placed
-     * @return next Phase: attackphase
+     * @return next Phase: attack phase
      */
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
@@ -72,11 +69,11 @@ public class AggressiveBehavior implements Behavior {
         return maxEntry;
     }
 
-    private void checkIfAbleToAttackFurther(List<Country> invadeCoutnry, Country invadeFrom, Player owner) {
+    private void checkIfAbleToAttackFurther(List<Country> invadeCountry, Country invadeFrom, Player owner) {
         for (Country neighbor : invadeFrom.getNeighboringCountries()) {
-            if (!invadeCoutnry.contains(neighbor) && !neighbor.getOwner().equals(owner)) {
-                invadeCoutnry.add(neighbor);
-                checkIfAbleToAttackFurther(invadeCoutnry, neighbor, owner);
+            if (!invadeCountry.contains(neighbor) && !neighbor.getOwner().equals(owner)) {
+                invadeCountry.add(neighbor);
+                checkIfAbleToAttackFurther(invadeCountry, neighbor, owner);
             }
         }
     }
@@ -86,7 +83,7 @@ public class AggressiveBehavior implements Behavior {
      *
      * @param allCountries   ArrayList with all countries on the board
      * @param ownedCountries of the current player
-     * @return next Phase: movingphase
+     * @return next Phase: moving phase
      */
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
@@ -113,12 +110,12 @@ public class AggressiveBehavior implements Behavior {
     }
 
     /**
-     * Moves soldiers in between two ownded countires once per turn. Moves to so that the AggressiveBehavior can attack
+     * Moves soldiers in between two owned countries once per turn. Moves to so that the AggressiveBehavior can attack
      * in the next turn.
      *
      * @param allCountries   ArrayList with all countries on the board
      * @param ownedCountries of the current player
-     * @return next Phase: settingphase
+     * @return next Phase: setting phase
      */
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
