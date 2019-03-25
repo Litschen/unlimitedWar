@@ -1,5 +1,6 @@
 package model.behavior;
 
+import model.AttackCountryResult;
 import model.Country;
 import model.enums.Phase;
 import model.interfaces.Behavior;
@@ -35,10 +36,11 @@ public class AggressiveBehavior implements Behavior {
      * @return next Phase: movingphase
      */
     @Override
-    public Phase attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
-        List<Country> canInvadeFromCountries = canAttackFrom(allCountries, ownedCountries);
+    public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
+        AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
+        List<Country> canInvadeFromCountries = canAttackFrom(ownedCountries);
         while (canInvadeFromCountries.size() > 0) {
-            canInvadeFromCountries = canAttackFrom(ownedCountries, allCountries);
+            canInvadeFromCountries = canAttackFrom(allCountries);
             for (Country invadingCountry : canInvadeFromCountries) {
                 for (Country neighbor : invadingCountry.getNeighboringCountries()) {
                     if (invadingCountry.canInvade(neighbor)) {
@@ -54,7 +56,7 @@ public class AggressiveBehavior implements Behavior {
             }
 
         }
-        return Phase.MOVINGPHASE;
+        return result;
     }
 
     /**
@@ -72,11 +74,10 @@ public class AggressiveBehavior implements Behavior {
 
     /**
      * Checks if there are any countries that can be invaded
-     * @param allCountries on the board
      * @param ownedCountries by player of this behavior
      * @return ArrayList of countries which can invade another.
      */
-    private List<Country> canAttackFrom(List<Country> allCountries, List<Country> ownedCountries) {
+    private List<Country> canAttackFrom(List<Country> ownedCountries) {
         List<Country> canInvadeFrom = new ArrayList<>();
         for (Country country : ownedCountries) {
             int i = 0;

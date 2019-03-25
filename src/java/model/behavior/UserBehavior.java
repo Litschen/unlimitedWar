@@ -1,9 +1,10 @@
 package model.behavior;
 
+import model.AttackCountryResult;
 import model.Country;
+import model.Player;
 import model.enums.Phase;
 import model.interfaces.Behavior;
-import model.Player;
 
 import java.util.List;
 
@@ -44,16 +45,17 @@ public class UserBehavior implements Behavior {
      * @return attackphase, next phase is set from controller.
      */
     @Override
-    public Phase attackCountry(List<Country> selectedCountries, List<Country> ownedCountries) {
+    public AttackCountryResult attackCountry(List<Country> selectedCountries, List<Country> ownedCountries) {
+        AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
         Country attackCountry = selectedCountries.get(0);
         Country defendCountry = selectedCountries.get(1);
 
         if (ownedCountries.contains(attackCountry) && attackCountry.canInvade(defendCountry)) {
             int attackDiceCount = attackCountry.getOwner().getAttackDiceCount();
             int defendDiceCount = defendCountry.amountDiceThrowsDefender(attackDiceCount);
-            attackCountry.invade(defendCountry, attackDiceCount, defendDiceCount);
+            result.getOccurredEvents().addAll( attackCountry.invade(defendCountry, attackDiceCount, defendDiceCount));
         }
-        return Phase.ATTACKPHASE;
+        return result;
     }
 
     /**
