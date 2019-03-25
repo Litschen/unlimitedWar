@@ -93,7 +93,6 @@ public class GameController extends HttpServlet {
             } else {
                 dispatcher.forward(request, response);
             }
-            board.checkForNewTurn();
         } catch (ServletException | IOException e) {
             e.printStackTrace();
         }
