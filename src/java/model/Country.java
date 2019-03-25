@@ -1,5 +1,9 @@
 package model;
 
+import model.enums.EventType;
+import model.events.CasualtiesEvent;
+import model.events.DiceEvent;
+import model.interfaces.Event;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -91,7 +95,8 @@ public class Country {
      * @param attackDiceCount amount of Dices the attacker is using to attack the defenderCountry
      * @param defendDiceCount amount of Dices the defender is using to defend
      */
-    public void invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
+    public List<Event> invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
+        List<Event> occuredEvents = new ArrayList<>();
         if (canInvade(defenderCountry)) {
 
             List <Integer> attackerRolls;
@@ -101,6 +106,7 @@ public class Country {
             defenderRolls = Dice.roll(defendDiceCount);
 
             Casualties casualties = calculateCasualties(attackerRolls, defenderRolls);
+
             removeSoldiers(casualties.getCasualtiesAttacker());
             defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
 
@@ -112,7 +118,12 @@ public class Country {
 
                 shiftSoldiers(attackDiceCount, defenderCountry);
             }
+            occuredEvents.add(new CasualtiesEvent(casualties));
+            occuredEvents.add(new DiceEvent(attackerRolls, EventType.AttackerDiceEvent));
+            occuredEvents.add(new DiceEvent(defenderRolls, EventType.DefenderDiceEvent));
+
         }
+        return occuredEvents;
     }
 
 
