@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class DiceTest {
 
@@ -21,7 +19,6 @@ class DiceTest {
     @BeforeEach
     public void setUp() {
         diceResults = new ArrayList<>();
-        diceResults.add(AMOUNT_THROWS);
     }
 
     // ---------- roll(int amountOfDice) ----------
@@ -61,7 +58,7 @@ class DiceTest {
         int max = 20;
 
         for (int i = 0; i < AMOUNT_THROWS; i++) {
-            diceResults.add(i, Dice.roll(min, max));
+            diceResults.add(Dice.roll(min, max));
         }
         Collections.sort(diceResults);
 
