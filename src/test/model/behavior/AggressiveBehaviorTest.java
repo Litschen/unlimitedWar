@@ -7,17 +7,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.*;
-
-
-/*
-As information: the aggressive behavior is not implemented yet. Therefore, the tests do not success
- */
 
 class AggressiveBehaviorTest {
 
@@ -32,29 +30,36 @@ class AggressiveBehaviorTest {
         selectedCountries = new ArrayList<>();
     }
 
+    private void setUpToTestPlaceSoldiers(int numOfOwnedCountries, List<Integer> neighborsCount) {
+        ownedCountries = TestHelperBehavior.getCountryList(numOfOwnedCountries, testPlayer);
+
+        Player opponent = TestHelperBehavior.getMockPlayer();
+        for (int i = 0; i < neighborsCount.size(); i++) {
+            List<Country> opponentCountries = TestHelperBehavior.getMockCountryList(neighborsCount.get(i), opponent);
+            ownedCountries.get(i).addNeighboringCountries(opponentCountries);
+        }
+    }
+
     @Test
-    void placeSoldiers() {
-        selectedCountries = TestHelperBehavior.getCountryList(1, testPlayer);
-        ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
-        ownedCountries.add(selectedCountries.get(0));
+    void placeSoldiersSetOnBoth() {
+        this.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 4));
 
-        testPlayer.setSoldiersToPlace(3);
+        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 2);
+        assertEquals(6, ownedCountries.get(0).getSoldiersCount());
+        assertEquals(6, ownedCountries.get(1).getSoldiersCount());
 
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(6, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(2, testPlayer.getSoldiersToPlace());
+        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 3);
+        assertTrue(ownedCountries.get(0).getSoldiersCount() > 6);
+        assertTrue(ownedCountries.get(1).getSoldiersCount() > 6);
+    }
 
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(7, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(1, testPlayer.getSoldiersToPlace());
+    @Test
+    void placeSoldiersSetOnOne() {
+        this.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 0));
 
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(8, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(0, testPlayer.getSoldiersToPlace());
-
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(8, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(0, testPlayer.getSoldiersToPlace());
+        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 5);
+        assertEquals(10, ownedCountries.get(0).getSoldiersCount());
+        assertEquals(5, ownedCountries.get(1).getSoldiersCount());
     }
 
     @Test

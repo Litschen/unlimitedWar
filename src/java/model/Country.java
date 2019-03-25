@@ -65,6 +65,11 @@ public class Country {
         return neighboringCountries;
     }
 
+    // TODO: use this method instead of call getter & add neighbors
+    public void addNeighboringCountries(List<Country> neighboringCountries){
+        this.neighboringCountries.addAll(neighboringCountries);
+    }
+
     public boolean isSelected() {
         return selected;
     }
