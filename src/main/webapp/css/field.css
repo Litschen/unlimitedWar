@@ -62,7 +62,6 @@ aside {
 
 .red-selected {
     background-color: #FF5B6B;
-    box-shadow: 0 0 10px #dc3545 inset;
 }
 
 .blue {
@@ -72,7 +71,6 @@ aside {
 
 .blue-selected {
     background-color: #26A1FF;
-    box-shadow: 0 0 10px #007bff inset;
 }
 
 .yellow {
@@ -81,7 +79,6 @@ aside {
 
 .yellow-selected {
     background-color: #FFE72D;
-    box-shadow: 0 0 10px #ffc107 inset;
 }
 
 .green {
@@ -90,7 +87,6 @@ aside {
 
 .green-selected {
     background-color: #4ECD6B;
-    box-shadow: 0 0 10px #28a745 inset;
 }
 
 .country {
