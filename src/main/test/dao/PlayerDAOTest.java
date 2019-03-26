@@ -1,6 +1,6 @@
-package java.dao;
+package dao;
 
-import java.model.UserBean;
+import model.UserBean;
 import org.h2.jdbc.JdbcSQLException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

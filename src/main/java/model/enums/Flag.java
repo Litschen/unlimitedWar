@@ -1,4 +1,4 @@
-package java.model.enums;
+package model.enums;
 
 /**
  * Flags used to display modal windows in the view.

@@ -1,7 +1,7 @@
-package java.controller;
+package controller;
 
-import java.model.Board;
-import java.model.Country;
+import model.Board;
+import model.Country;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

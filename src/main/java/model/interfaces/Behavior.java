@@ -1,8 +1,8 @@
-package java.model.interfaces;
+package model.interfaces;
 
-import java.model.AttackCountryResult;
-import java.model.Country;
-import java.model.enums.Phase;
+import model.AttackCountryResult;
+import model.Country;
+import model.enums.Phase;
 
 import java.util.List;
 

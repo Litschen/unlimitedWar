@@ -1,10 +1,10 @@
-package java.model;
+package model;
 
-import java.model.behavior.UserBehavior;
-import java.model.enums.EventType;
-import java.model.enums.Flag;
-import java.model.enums.Phase;
-import java.model.interfaces.Event;
+import model.behavior.UserBehavior;
+import model.enums.EventType;
+import model.enums.Flag;
+import model.enums.Phase;
+import model.interfaces.Event;
 
 import java.util.ArrayList;
 import java.util.List;

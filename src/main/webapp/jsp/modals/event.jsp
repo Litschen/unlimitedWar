@@ -1,5 +1,5 @@
-<%@ page import="java.model.interfaces.Event" %>
-<%@ page import="java.model.enums.EventType" %>
+<%@ page import="model.interfaces.Event" %>
+<%@ page import="model.enums.EventType" %>
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/event.css">
 </head>

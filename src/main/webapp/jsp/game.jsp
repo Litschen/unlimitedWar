@@ -1,11 +1,11 @@
-<%@ page import="java.model.Board" %>
-<%@ page import="java.model.Country" %>
-<%@page import="java.model.Player" %>
-<%@page import="java.model.enums.Flag" %>
-<%@ page import="java.model.enums.Phase" %>
+<%@ page import="model.Board" %>
+<%@ page import="model.Country" %>
+<%@page import="model.Player" %>
+<%@page import="model.enums.Flag" %>
+<%@ page import="model.enums.Phase" %>
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="board" class="java.model.Board" scope="session"/>
+<jsp:useBean id="board" class="model.Board" scope="session"/>
 <jsp:setProperty name="board" property="*"/>
 <html lang="en">
 <head>

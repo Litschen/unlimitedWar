@@ -1,4 +1,4 @@
-package java.model;
+package model;
 
 /**
  * Class to save casualties for attacker and defender during an invasion of a country

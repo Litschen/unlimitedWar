@@ -1,6 +1,6 @@
-package java.dao;
+package dao;
 
-import java.model.UserBean;
+import model.UserBean;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.ResultSet;

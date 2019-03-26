@@ -1,9 +1,9 @@
-package java.model;
+package model;
 
-import java.model.enums.EventType;
-import java.model.events.CasualtiesEvent;
-import java.model.events.DiceEvent;
-import java.model.interfaces.Event;
+import model.enums.EventType;
+import model.events.CasualtiesEvent;
+import model.events.DiceEvent;
+import model.interfaces.Event;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

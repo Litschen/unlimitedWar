@@ -1,9 +1,9 @@
-package java.model.events;
+package model.events;
 
 
-import java.model.Casualties;
-import java.model.enums.EventType;
-import java.model.interfaces.Event;
+import model.Casualties;
+import model.enums.EventType;
+import model.interfaces.Event;
 
 import java.util.ArrayList;
 import java.util.List;

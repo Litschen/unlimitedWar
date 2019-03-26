@@ -1,7 +1,7 @@
-package java.model;
+package model;
 
-import java.model.enums.Phase;
-import java.model.interfaces.Event;
+import model.enums.Phase;
+import model.interfaces.Event;
 
 import java.util.ArrayList;
 import java.util.List;

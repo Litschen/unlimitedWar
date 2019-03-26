@@ -1,12 +1,12 @@
-package java.model;
+package model;
 
-import java.model.behavior.AggressiveBehavior;
-import java.model.behavior.RandomBehavior;
-import java.model.behavior.UserBehavior;
-import java.model.enums.EventType;
-import java.model.enums.Flag;
-import java.model.enums.PlayerColor;
-import java.model.interfaces.Event;
+import model.behavior.AggressiveBehavior;
+import model.behavior.RandomBehavior;
+import model.behavior.UserBehavior;
+import model.enums.EventType;
+import model.enums.Flag;
+import model.enums.PlayerColor;
+import model.interfaces.Event;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,7 +1,7 @@
-package java.model.events;
+package model.events;
 
-import java.model.enums.EventType;
-import java.model.interfaces.Event;
+import model.enums.EventType;
+import model.interfaces.Event;
 
 import java.util.List;
 

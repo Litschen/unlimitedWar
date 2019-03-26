@@ -1,10 +1,10 @@
-package java.model.behavior;
+package model.behavior;
 
-import java.model.AttackCountryResult;
-import java.model.Country;
-import java.model.Dice;
-import java.model.enums.Phase;
-import java.model.interfaces.Behavior;
+import model.AttackCountryResult;
+import model.Country;
+import model.Dice;
+import model.enums.Phase;
+import model.interfaces.Behavior;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;

@@ -1,9 +1,9 @@
-package java.controller;
+package controller;
 
-import java.model.Board;
-import java.model.Country;
-import java.model.Player;
-import java.model.Turn;
+import model.Board;
+import model.Country;
+import model.Player;
+import model.Turn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
