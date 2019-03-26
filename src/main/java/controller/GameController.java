@@ -28,28 +28,14 @@ public class GameController extends HttpServlet {
     private Board board;
     //endregion
 
-    /**
-     * process any post requests
-     *
-     * @param request  game.jsp
-     * @param response servlet response
-     * @throws ServletException
-     * @throws IOException
-     */
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * process get request
-     *
-     * @param request  game.jsp
-     * @param response servlet response
-     * @throws ServletException
-     * @throws IOException
-     */
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -98,12 +84,6 @@ public class GameController extends HttpServlet {
         }
     }
 
-    /**
-     * Gets the country from the Board, which was selected on the GUI
-     *
-     * @param request from game.jsp
-     * @return selected country from Board
-     */
     private Country extractSelectedCountry(HttpServletRequest request) {
         Country toReturn = null;
 

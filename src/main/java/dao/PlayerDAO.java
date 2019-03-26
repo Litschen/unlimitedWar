@@ -3,9 +3,9 @@ package dao;
 import model.UserBean;
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
@@ -45,34 +45,15 @@ public class PlayerDAO {
         return user;
     }
 
-    /**
-     * register a new Player with username, mail and password
-     *
-     * @param username the user's name
-     * @param mail     the user's mail to log in
-     * @param password the user's password to authenticate
-     */
     public int createNewPlayer(String username, @NotNull String mail, String password) throws SQLException, ClassNotFoundException {
         return manipulateData(INSERT_QUERY, Arrays.asList(username, mail, password));
     }
 
-    /**
-     * edit players username and / or password
-     * Mail cannot be changed
-     *
-     * @param username new username or old username to not change
-     * @param password new password or old password to not change
-     * @param mail     mail of the user
-     */
+
     public int updatePlayer(String username, @NotNull String mail, String password) throws SQLException, ClassNotFoundException {
         return manipulateData(UPDATE_QUERY, Arrays.asList(username, password, mail));
     }
 
-    /**
-     * remove player from the database by mail
-     *
-     * @param mail of the player
-     */
     public int deletePlayerByMail(@NotNull String mail) throws SQLException, ClassNotFoundException {
         return manipulateData(DELETE_QUERY, Arrays.asList(mail));
     }
@@ -91,14 +72,7 @@ public class PlayerDAO {
         return row;
     }
 
-    /**
-     * Create connection with Database and prepare injection
-     *
-     * @param sql  SQL-Query with placeholders for the PreparedStatement
-     * @param args arguments to fill the placeholder in the SQL-Query
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
+
     public void createConnection(String sql, @NotNull List<String> args) throws SQLException, ClassNotFoundException {
         st = con.prepareStatement(sql);
 
@@ -108,11 +82,6 @@ public class PlayerDAO {
         }
     }
 
-    /**
-     * Close connection to database
-     *
-     * @throws SQLException
-     */
     public void closeConnection() throws SQLException {
         if (rs != null) {
             rs.close();
