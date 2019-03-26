@@ -1,8 +1,9 @@
-package java.model.behavior;
+package model.behavior;
 
-import java.model.Country;
-import java.model.enums.Phase;
-import java.model.Player;
+
+import model.Country;
+import model.Player;
+import model.enums.Phase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.model.enums.PlayerColor.BLUE;
+import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.anyInt;

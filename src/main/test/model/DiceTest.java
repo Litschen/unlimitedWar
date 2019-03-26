@@ -27,7 +27,7 @@ class DiceTest {
         diceResults = Dice.roll(1);
         assertEquals(1, diceResults.size());
 
-        diceResults = java.model.Dice.roll(AMOUNT_THROWS);
+        diceResults = Dice.roll(AMOUNT_THROWS);
         assertEquals(AMOUNT_THROWS, diceResults.size());
 
         int previousResult = Dice.MAX_VALUE;

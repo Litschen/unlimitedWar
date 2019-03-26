@@ -1,8 +1,9 @@
-package java.model.behavior;
+package model.behavior;
 
-import java.model.Country;
-import java.model.Player;
-import java.model.enums.PlayerColor;
+import model.Country;
+import model.Player;
+import model.enums.PlayerColor;
+
 
 import java.util.ArrayList;
 import java.util.List;

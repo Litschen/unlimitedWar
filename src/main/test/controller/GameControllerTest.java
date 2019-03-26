@@ -24,7 +24,7 @@ class GameControllerTest {
     private HttpServletResponse mockResponse;
     private Board mockBoard;
     private HttpSession mockSession;
-    private GameController controller = new GameController();
+    private GameController controller = new controller.GameController();
     private Country mockCountry;
     private Turn mockTurn;
 

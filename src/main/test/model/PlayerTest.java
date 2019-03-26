@@ -1,7 +1,7 @@
-package java.model;
+package model;
 
-import java.model.behavior.RandomBehavior;
-import java.model.enums.PlayerColor;
+import model.behavior.RandomBehavior;
+import model.enums.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

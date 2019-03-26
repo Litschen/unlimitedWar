@@ -197,7 +197,7 @@ public class Turn {
      *
      * @param country which the player selects
      */
-    void setAttackAndDefendCountry(Country country) {
+    public void setAttackAndDefendCountry(Country country) {
         if (currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() >= Country.MIN_SOLDIERS_TO_INVADE) {
             setFirstSelectedCountry(country);
         } else {
@@ -281,7 +281,7 @@ public class Turn {
      * remove the players from the game which lost all their countries
      * if the user has won / lost set the flag to show the message and save the result in the database
      */
-    protected void eliminatePlayersAndCheckUserResult() {
+    public void eliminatePlayersAndCheckUserResult() {
         boolean removed = activePlayers.removeIf(o -> ((Player) o).getOwnedCountries().isEmpty());
         if (removed) {
             if (activePlayers.size() == 1 && activePlayers.get(0).getBehavior() instanceof UserBehavior) {

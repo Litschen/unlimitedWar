@@ -1,15 +1,14 @@
-package java.model.behavior;
+package model.behavior;
 
-import java.model.Country;
-import java.model.enums.Phase;
-import java.model.Player;
+import model.Country;
+import model.Player;
+import model.enums.Phase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static java.model.behavior.TestHelperBehavior.getMockCountry;
-import static java.model.enums.PlayerColor.BLUE;
+import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyObject;
@@ -56,7 +55,7 @@ class StrategicBehaviorTest {
     @Test
     void testAttackCountry() {
         Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
-        Country mockAttackCountry = getMockCountry(testPlayer2);
+        Country mockAttackCountry = TestHelperBehavior.getMockCountry(testPlayer2);
 
         selectedCountries.add(mockAttackCountry);
         selectedCountries.add(new Country("Spanien", 5, testPlayer));

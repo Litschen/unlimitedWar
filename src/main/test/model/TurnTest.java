@@ -1,9 +1,9 @@
-package java.model;
+package model;
 
-import java.model.behavior.TestHelperBehavior;
-import java.model.behavior.UserBehavior;
-import java.model.enums.Flag;
-import java.model.enums.Phase;
+import model.behavior.TestHelperBehavior;
+import model.behavior.UserBehavior;
+import model.enums.Flag;
+import model.enums.Phase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
