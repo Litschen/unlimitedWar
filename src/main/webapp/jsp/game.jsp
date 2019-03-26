@@ -1,6 +1,5 @@
 <%@ page import="model.Board" %>
 <%@ page import="model.Country" %>
-<%@page import="model.Player" %>
 <%@page import="model.enums.Flag" %>
 <%@ page import="model.enums.Phase" %>
 <%@ page import="java.util.List" %>
@@ -54,12 +53,11 @@
     </form>
     <aside>
         <ul class="card">
-            <% for (Player player : board.getPlayers()) { %>
-            <li class="list-group-item">
-                <span class="player-color <%= player.getPlayerColor() %>"></span>
-                <%= player.getPlayerName() %>
-            </li>
-            <% } %>
+            <c:forEach items="${board.getPlayers()}" var="player">
+                <li class="list-group-item ${player == board.getCurrentTurn().getCurrentPlayer() ? 'isCurrentPlayer' : ''}">
+                    <span class="player-color ${player.getPlayerColor()}"></span>
+                   ${player.getPlayerName()}</li>
+            </c:forEach>
         </ul>
     </aside>
 </div>
