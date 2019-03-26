@@ -37,6 +37,10 @@ aside {
     border-radius: 15px;
 }
 
+.isCurrentPlayer {
+    background-color: #e2e3e5;
+}
+
 .country {
     width: 35px;
     height: 30px;
