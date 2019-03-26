@@ -114,6 +114,15 @@ public class Turn {
         }
         return events.remove(index);
     }
+
+    public List<Player> getActivePlayers() {
+        return activePlayers;
+    }
+
+    public List<Country> getCountries() {
+        return countries;
+    }
+
     //endregion
 
     /**

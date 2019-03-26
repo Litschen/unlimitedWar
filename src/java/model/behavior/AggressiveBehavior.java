@@ -27,7 +27,6 @@ public class AggressiveBehavior implements Behavior {
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
         if (ownedCountries.size() > 0) {
             List<Country> countriesToSet = mostEffectiveCountry(ownedCountries, ownedCountries.get(0).getOwner());
-
             for (int i = 0; soldiersToPlace > 0 && countriesToSet.size() > 0; soldiersToPlace--) {
                 Country c = countriesToSet.get(i);
                 c.setSoldiersCount(c.getSoldiersCount() + 1);
@@ -90,7 +89,6 @@ public class AggressiveBehavior implements Behavior {
         AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
         List<Country> canInvadeFromCountries = canAttackFrom(ownedCountries);
         while (canInvadeFromCountries.size() > 0) {
-            canInvadeFromCountries = canAttackFrom(allCountries);
             for (Country invadingCountry : canInvadeFromCountries) {
                 for (Country neighbor : invadingCountry.getNeighboringCountries()) {
                     if (invadingCountry.canInvade(neighbor)) {
@@ -104,7 +102,7 @@ public class AggressiveBehavior implements Behavior {
                     }
                 }
             }
-
+            canInvadeFromCountries = canAttackFrom(allCountries);
         }
         return result;
     }
