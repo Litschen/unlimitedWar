@@ -295,17 +295,18 @@ public class Turn {
      * if the user has won / lost set the flag to show the message and save the result in the database
      */
     public void eliminatePlayersAndCheckUserResult() {
-        boolean removed = activePlayers.removeIf(o -> ((Player) o).getOwnedCountries().isEmpty());
-        if (removed) {
-            if (activePlayers.size() == 1 && activePlayers.get(0).getBehavior() instanceof UserBehavior) {
-                setFlag(Flag.GAME_WIN);
-                // TODO: MS3 /F0410/ Spielresultat speichern
-            } else {
-                boolean playerIn = activePlayers.stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().isPresent();
-                if (!playerIn) {
-                    setFlag(Flag.GAME_LOSE);
-                    // TODO: MS3 /F0410/ Spielresultat speichern
+        boolean hasRemovedPlayers = activePlayers.removeIf(o -> ((Player) o).getOwnedCountries().isEmpty());
+        if (hasRemovedPlayers) {
+            if (activePlayers.size() == 1) {
+                if(currentPlayerIsUser()){
+                    setFlag(Flag.GAME_WIN);
                 }
+                else{
+                    setFlag(Flag.GAME_LOSE);
+                }
+                // TODO: MS3 /F0410/ Spielresultat speichern
+            }
+
             }
         }
     }
