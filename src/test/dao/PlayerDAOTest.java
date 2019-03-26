@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -30,7 +31,7 @@ class PlayerDAOTest {
             ");";
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws SQLException, ClassNotFoundException {
         Connection con = TestHelperDAO.createH2Connection(createTable);
         testDAO = new PlayerDAO(con);
         username = "user";

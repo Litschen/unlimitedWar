@@ -16,23 +16,13 @@ public class PlayerDAO {
     private Connection con;
     private PreparedStatement st;
 
-    private Connection prefCon;
-
-    private final static String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-    private final static String dbURL = "jdbc:mysql://localhost:3306/Unlimited_War";
-    private final static String user = "root";
-    private final static String pw = "rootroot";
     private final static String INSERT_QUERY = "INSERT INTO player (username, email, password) VALUES(?, ?, ?);";
     private final static String SELECT_QUERY = "SELECT username, email, password FROM player WHERE email = ?;";
     private final static String UPDATE_QUERY = "UPDATE player SET username = ?, password = ? WHERE email = ?;";
     private final static String DELETE_QUERY = "DELETE FROM player WHERE email = ?;";
 
-    public PlayerDAO() {
-        prefCon = null;
-    }
-
     public PlayerDAO(Connection con) {
-        prefCon = con;
+        this.con = con;
     }
 
     /**
@@ -52,7 +42,6 @@ public class PlayerDAO {
             user.setMail(rs.getString("email"));
             user.setPassword(rs.getString("password"));
         }
-        closeConnection();
 
         return user;
     }
@@ -100,7 +89,6 @@ public class PlayerDAO {
     private int manipulateData(@NotNull String query, List<String> args) throws SQLException, ClassNotFoundException {
         createConnection(query, args);
         int row = st.executeUpdate();
-        closeConnection();
         return row;
     }
 
@@ -112,13 +100,7 @@ public class PlayerDAO {
      * @throws SQLException
      * @throws ClassNotFoundException
      */
-    private void createConnection(String sql, @NotNull List<String> args) throws SQLException, ClassNotFoundException {
-        if (prefCon == null) {
-            Class.forName(jdbcDriver);
-            con = DriverManager.getConnection(dbURL, user, pw);
-        } else {
-            con = prefCon;
-        }
+    public void createConnection(String sql, @NotNull List<String> args) throws SQLException, ClassNotFoundException {
         st = con.prepareStatement(sql);
 
         for (int i = 0; i < args.size(); i++) {
@@ -132,7 +114,7 @@ public class PlayerDAO {
      *
      * @throws SQLException
      */
-    private void closeConnection() throws SQLException {
+    public void closeConnection() throws SQLException {
         if (rs != null) {
             rs.close();
         }
