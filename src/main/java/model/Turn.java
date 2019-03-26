@@ -146,7 +146,7 @@ public class Turn {
     }
 
     /**
-     * perform a AI turn, cycles Player in the end
+     * perform a AI turn
      */
     public void executeTurn() {
         if (!currentPlayerIsUser()) {
@@ -166,8 +166,6 @@ public class Turn {
     }
 
     /**
-     * execute on user interaction according to current phase.
-     *
      * @param selectedCountry country selected in gui
      */
     public void executeUserTurn(Country selectedCountry) {
@@ -206,12 +204,6 @@ public class Turn {
         }
     }
 
-    /**
-     * indicates which country is attacking and which country is being attacked
-     * called from controller
-     *
-     * @param country which the player selects
-     */
     public void setAttackAndDefendCountry(Country country) {
         if (currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() >= Country.MIN_SOLDIERS_TO_INVADE) {
             setFirstSelectedCountry(country);
@@ -231,7 +223,7 @@ public class Turn {
     }
 
     /**
-     * save the two selected countries
+     * sets country which the user selected to move soldiers in  between
      *
      * @param country is the country which the player selects on GUI
      */
@@ -247,10 +239,6 @@ public class Turn {
         }
     }
 
-    /**
-     * Moves to the next Phase
-     * resets the selected countries
-     */
     public void moveToNextPhase() {
         Phase currentPhase = getCurrentPhase();
 
@@ -266,9 +254,6 @@ public class Turn {
         resetSelectedCountries();
     }
 
-    /**
-     * change the next player and delete the player without countries
-     */
     private void cyclePlayer() {
         resetSelectedCountries();
         int nextPlayerIndex = activePlayers.indexOf(currentPlayer) + 1;
@@ -283,9 +268,6 @@ public class Turn {
         }
     }
 
-    /**
-     * deselects the two selected countries
-     */
     public void resetSelectedCountries() {
         setFirstSelectedCountry(null);
         setSecondSelectedCountry(null);

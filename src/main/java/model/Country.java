@@ -80,26 +80,10 @@ public class Country {
     //endregion
 
 
-    /**
-     * Checks if the parameter country is a neighbor of the country from which this method was called.
-     *
-     * @param country to check if is neighbor
-     * @return true if country param is a neighbor otherwise false.
-     */
     public boolean isBordering(@NotNull Country country) {
         return neighboringCountries.contains(country);
     }
 
-
-    /**
-     * Country invades the param defenderCountry, this method handles everything concerning invasion,
-     * including: Calling calculateCasualties, processing said casualties,
-     * changing ownership of defenderCountry if necessary and shifting soldiers in that case
-     *
-     * @param defenderCountry country to be invaded, it defends itself against the invasion
-     * @param attackDiceCount amount of Dices the attacker is using to attack the defenderCountry
-     * @param defendDiceCount amount of Dices the defender is using to defend
-     */
     public List<Event> invade(Country defenderCountry, int attackDiceCount, int defendDiceCount) {
         List<Event> occurredEvents = new ArrayList<>();
         if (canInvade(defenderCountry)) {
@@ -133,9 +117,6 @@ public class Country {
 
 
     /**
-     * Calculates the maximum of Dices the Attacker can use to invade from this country
-     *
-     * @return maximum int of Dices
      * @throws Exception if the amount of Dices is below minimum allowed < ABSOLUTE_MIN_AMOUNT_THROWS
      */
     public int maxAmountDiceThrowsAttacker() throws Exception {
@@ -148,12 +129,6 @@ public class Country {
     }
 
 
-    /**
-     * Calculates the amount of dices the defender HAS to use to defend his country during an invasion
-     *
-     * @param amountAttacker dices the attacker is using to invade
-     * @return amount of dices to use
-     */
     public int amountDiceThrowsDefender(int amountAttacker) {
         int amountDefender = amountAttacker - 1;
         int soldiers = getSoldiersCount();
@@ -166,11 +141,6 @@ public class Country {
         return amountDefender;
     }
 
-    /**
-     * Removes the specified amount of Soldiers from this country
-     *
-     * @param amountOfSoldiers the be removed
-     */
     public void removeSoldiers(int amountOfSoldiers) {
         if(amountOfSoldiers < 0 || amountOfSoldiers > soldiersCount ){
             throw new IllegalArgumentException("Amount has to be at least 0 and max die amount of soldiers present on this country");
@@ -180,10 +150,6 @@ public class Country {
 
 
     /**
-     * Calculates the casualties inflicted upon the defender and attacker during an country invasion
-     *
-     * @param diceThrowsAttacker int[] of the dices thrown by the attacker
-     * @param diceThrowsDefender int[] of the dices thrown by the defender
      * @return Casualties object with saved casualties inflicted upon both sides
      */
     public Casualties calculateCasualties( List <Integer> diceThrowsAttacker, List <Integer>  diceThrowsDefender) {
@@ -198,23 +164,12 @@ public class Country {
         return casualties;
     }
 
-
-    /**
-     * Checks of the specified country can be invaded from calling country.
-     *
-     * @param country to check if can be invaded
-     * @return true if invasion is possible
-     */
     public boolean canInvade(Country country) {
         return soldiersCount >= MIN_SOLDIERS_TO_INVADE && isBordering(country) &&
                 owner != country.getOwner();
     }
 
     /**
-     * Shifts the specified amount of soldiers from calling country to destination param country
-     *
-     * @param amountSoldiers to be shifted
-     * @param destination    country the soldiers should be shifted to
      * @return true if shifted successful
      */
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {

@@ -24,14 +24,6 @@ public class RandomBehavior implements Behavior {
     //end region
 
 
-    /**
-     * Sets the all soldiers random on owned countries
-     *
-     * @param allCountries    ArrayList with all Countries on the board
-     * @param ownedCountries  all owned by current player
-     * @param soldiersToPlace number of soldiers to distribute
-     * @return next phase: attack
-     */
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
         while (soldiersToPlace > 0) {
@@ -46,13 +38,7 @@ public class RandomBehavior implements Behavior {
         return Phase.ATTACKPHASE;
     }
 
-    /**
-     * Decides random which enemy country to attack and if the behavior wants to continue attacking
-     *
-     * @param allCountries   ArrayList with all Countries on the naord
-     * @param ownedCountries are countries from current player
-     * @return next Phase: move
-     */
+
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
         AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
@@ -74,13 +60,6 @@ public class RandomBehavior implements Behavior {
     }
 
 
-    /**
-     *Decides random if and in between which countries a random amount of soldiers is moved.
-     *
-     * @param allCountries   ArrayList with all countries on the board
-     * @param ownedCountries all countries from current player
-     * @return next Phase: set
-     */
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
         boolean hasMovedSoldiers = false;
@@ -100,23 +79,14 @@ public class RandomBehavior implements Behavior {
         return Phase.SETTINGPHASE;
     }
 
-    /**
-     * @return true if behavior wants to attack
-     */
     private boolean willAttack() {
         return Dice.roll(MIN_DICE_RANGE, MAX_DICE_RANGE) <= AGGRESSIVENESS;
     }
 
-    /**
-     * @return true if behavior wants to continue attacking
-     */
     private boolean willContinueAttack() {
         return Dice.roll(MIN_DICE_RANGE, MAX_DICE_RANGE) <= STUBBORNNESS;
     }
 
-    /**
-     * @return true if behavior wants to move soldiers
-     */
     private boolean willMoveSoldiers() {
         return Dice.roll(MIN_DICE_RANGE, MAX_DICE_RANGE) <= MOVE_WILLINGNESS;
     }

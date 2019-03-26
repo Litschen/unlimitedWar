@@ -11,9 +11,6 @@ public class Casualties {
 
     /**
      * Save casualties for attacker and defender during an invasion of a country in this object
-     *
-     * @param casualtiesAttacker casualties inflicted upon the attacker
-     * @param casualtiesDefender casualties inflicted upon the defender
      */
     Casualties(int casualtiesAttacker, int casualtiesDefender) {
         Casualties.casualtiesAttacker = casualtiesAttacker;

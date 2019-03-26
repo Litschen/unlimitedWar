@@ -14,15 +14,6 @@ import java.util.Map;
 public class AggressiveBehavior implements Behavior {
 
 
-    /**
-     * New soldiers are placed on owned countries. The AggressiveBehavior set soldiers aggressive so it can attack as
-     * much as possible
-     *
-     * @param allCountries    ArrayList with all countries on the board
-     * @param ownedCountries  of the current player
-     * @param soldiersToPlace amount to be placed
-     * @return next Phase: attack phase
-     */
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
         if (ownedCountries.size() > 0) {
@@ -78,11 +69,7 @@ public class AggressiveBehavior implements Behavior {
     }
 
     /**
-     * Decides which country should be attacked. AggressiveBehavior attacks as long and often as possible
-     *
-     * @param allCountries   ArrayList with all countries on the board
-     * @param ownedCountries of the current player
-     * @return next Phase: moving phase
+     *  AggressiveBehavior attacks as long and often as possible
      */
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
@@ -107,14 +94,6 @@ public class AggressiveBehavior implements Behavior {
         return result;
     }
 
-    /**
-     * Moves soldiers in between two owned countries once per turn. Moves to so that the AggressiveBehavior can attack
-     * in the next turn.
-     *
-     * @param allCountries   ArrayList with all countries on the board
-     * @param ownedCountries of the current player
-     * @return next Phase: setting phase
-     */
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
         return Phase.SETTINGPHASE;

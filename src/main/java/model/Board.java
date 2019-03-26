@@ -68,11 +68,6 @@ public class Board {
 
     //region methods to generate countries & set their properties
 
-    /**
-     * generates COUNTRY_COUNT_GENERATION countries random distributes
-     * those random to all players and places START_SOLDIER_PER_PLAYER  owned countris of each player
-     * Calls setCountryAttributes
-     */
     private void generateCountries() {
         for (Player currentPlayer : players) {
             int countriesToGenerate = COUNTRY_COUNT_GENERATION / players.size();
@@ -110,9 +105,6 @@ public class Board {
         setNeighbors();
     }
 
-    /**
-     * Set the neighboring countries
-     */
     private void setNeighbors() {
         setFixedNeighbors(0, new int[]{1});
         setFixedNeighbors(1, new int[]{0, 6, 2});
