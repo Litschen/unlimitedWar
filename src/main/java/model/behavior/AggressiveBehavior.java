@@ -102,7 +102,7 @@ public class AggressiveBehavior implements Behavior {
                     }
                 }
             }
-            canInvadeFromCountries = canAttackFrom(allCountries);
+            canInvadeFromCountries = canAttackFrom(ownedCountries);
         }
         return result;
     }
