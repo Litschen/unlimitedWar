@@ -12,6 +12,10 @@ import java.util.List;
 public class Turn {
 
 
+    //region static variables
+    private static int TURNNUMBER = 0;
+    //endregion
+
     //region data fields
     private List<Event> occurredEvents;
     private List<Player> activePlayers;
@@ -23,6 +27,7 @@ public class Turn {
     private Country secondSelectedCountry;
     private Flag flag;
     private Phase currentPhase = Phase.SETTINGPHASE;
+    private int turnNumber;
     //endregion
 
     public Turn(List<Player> players, List<Country> countries) {
@@ -33,6 +38,8 @@ public class Turn {
         if (currentPlayerIsUser()) {
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
         }
+        turnNumber = TURNNUMBER;
+        TURNNUMBER += 1;
     }
 
 
@@ -121,6 +128,10 @@ public class Turn {
 
     public List<Country> getCountries() {
         return countries;
+    }
+
+    public int getTurnNumber() {
+        return turnNumber;
     }
 
     //endregion

@@ -8,7 +8,9 @@
     display: inline-block;
     background: #ffffff;
 }
-
+.turncounter{
+    text-align: center;
+}
 .form.vertical > button,
 .form.vertical > span {
     display: block;

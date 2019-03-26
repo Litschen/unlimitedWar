@@ -20,6 +20,7 @@
 
 <div class="wrapper">
     <form action="<%=request.getContextPath()%>/Game/selectedCountry" class="form vertical border rounded" method="post">
+        <p class="turncounter"><b>Turn: ${board.getCurrentTurn().getTurnNumber()}</b></p>
         <div class="field border rounded">
             <%  List<Country> allCountries = board.getCountries();
                 for (int i = 1; i <= allCountries.size(); i++) {
