@@ -160,8 +160,10 @@ public class Turn {
     public void executeUserTurn(Country selectedCountry) {
         if (currentPhase == Phase.SETTINGPHASE) {
             List<Country> destination = new ArrayList<>();
-            destination.add(selectedCountry);
-            setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
+            if (selectedCountry.getOwner().equals(currentPlayer)) {
+                destination.add(selectedCountry);
+                setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
+            }
             resetSelectedCountries();
         } else if (currentPhase == Phase.ATTACKPHASE) {
             if (firstSelectedCountry != null && secondSelectedCountry != null) {
