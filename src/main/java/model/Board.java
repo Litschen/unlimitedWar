@@ -153,14 +153,10 @@ public class Board {
         players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
     }
 
-    public Event getEvent(EventType type) {
-        Event event = null;
-        try {
-            event = currentTurn.getLastEventOfType(type);
-        } catch (Exception e){
-            e.printStackTrace();
-        }
+    public List<Event> getEvents() {
+        List<Event> occurredEvents = new ArrayList<>(currentTurn.getOccurredEvents());
 
-        return event;
+        currentTurn.getOccurredEvents().clear();
+        return occurredEvents;
     }
 }
