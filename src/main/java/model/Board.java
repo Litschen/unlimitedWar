@@ -65,6 +65,13 @@ public class Board {
         }
         return currentTurn;
     }
+
+    public List<Event> getEvents() {
+        List<Event> occurredEvents = new ArrayList<>(currentTurn.getOccurredEvents());
+
+        currentTurn.getOccurredEvents().clear();
+        return occurredEvents;
+    }
     //endregion
 
     //region methods to generate countries & set their properties
@@ -153,10 +160,5 @@ public class Board {
         players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
     }
 
-    public List<Event> getEvents() {
-        List<Event> occurredEvents = new ArrayList<>(currentTurn.getOccurredEvents());
 
-        currentTurn.getOccurredEvents().clear();
-        return occurredEvents;
-    }
 }

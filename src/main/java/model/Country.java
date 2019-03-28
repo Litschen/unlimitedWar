@@ -67,7 +67,7 @@ public class Country {
     }
 
     // TODO: use this method instead of call getter & add neighbors
-    public void addNeighboringCountries(List<Country> neighboringCountries){
+    public void addNeighboringCountries(List<Country> neighboringCountries) {
         this.neighboringCountries.addAll(neighboringCountries);
     }
 
@@ -81,6 +81,10 @@ public class Country {
     //endregion
 
 
+    /**
+     * @param country
+     * @return
+     */
     public boolean isBordering(@NotNull Country country) {
         return neighboringCountries.contains(country);
     }
@@ -89,8 +93,8 @@ public class Country {
         List<Event> occurredEvents = new ArrayList<>();
         if (canInvade(defenderCountry)) {
 
-            List <Integer> attackerRolls;
-            List <Integer> defenderRolls;
+            List<Integer> attackerRolls;
+            List<Integer> defenderRolls;
 
             attackerRolls = Dice.roll(attackDiceCount);
             defenderRolls = Dice.roll(defendDiceCount);
@@ -130,6 +134,11 @@ public class Country {
     }
 
 
+    /**
+     * Gives the number of defenders soldiers when it's been attacked by someone.
+     * @param amountAttacker the soldiers who attack from the opponent
+     * @return
+     */
     public int amountDiceThrowsDefender(int amountAttacker) {
         int amountDefender = amountAttacker - 1;
         int soldiers = getSoldiersCount();
@@ -142,8 +151,13 @@ public class Country {
         return amountDefender;
     }
 
+    /**
+     * Remove soldiers as long as the number of soldiers are bigger than 0 or the number to delete soldiers will not be negative
+     *
+     * @param amountOfSoldiers is the number of soldiers to be deleted
+     */
     public void removeSoldiers(int amountOfSoldiers) {
-        if(amountOfSoldiers < 0 || amountOfSoldiers > soldiersCount ){
+        if (amountOfSoldiers < 0 || amountOfSoldiers > soldiersCount) {
             throw new IllegalArgumentException("Amount has to be at least 0 and max die amount of soldiers present on this country");
         }
         soldiersCount -= amountOfSoldiers;
@@ -153,7 +167,7 @@ public class Country {
     /**
      * @return Casualties object with saved casualties inflicted upon both sides
      */
-    public Casualties calculateCasualties( List <Integer> diceThrowsAttacker, List <Integer>  diceThrowsDefender) {
+    public Casualties calculateCasualties(List<Integer> diceThrowsAttacker, List<Integer> diceThrowsDefender) {
         Casualties casualties = new Casualties(0, 0);
         for (int i = 0; i < diceThrowsDefender.size(); i++) {
             if (diceThrowsDefender.get(i) >= diceThrowsAttacker.get(i)) {
@@ -165,12 +179,23 @@ public class Country {
         return casualties;
     }
 
+    /**
+     * returns a boolean if a country can attack
+     *
+     * @param country which attacks
+     * @return true, if the number of soldiers is greater than or equal to
+     * the minimum number of opponents soldiers to invade, the land to attack
+     * is a neighboring country and not the own country from player
+     */
     public boolean canInvade(Country country) {
         return soldiersCount >= MIN_SOLDIERS_TO_INVADE && isBordering(country) &&
                 owner != country.getOwner();
     }
 
     /**
+     * Move the soldiers to another country, which is adjacent, number of amount Soldiers ist
+     * greater than 0 and  belongs to player.
+     *
      * @return true if shifted successful
      */
     public boolean shiftSoldiers(int amountSoldiers, Country destination) {
