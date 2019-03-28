@@ -1,7 +1,6 @@
 package dao;
 
 import model.UserBean;
-//import org.h2.jdbc.JdbcSQLException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +16,7 @@ class PlayerDAOTest {
     private String username;
     private String mail;
     private String password;
+    private Connection con;
 
     private final String createTable = "DROP TABLE Player IF EXISTS;" +
             "CREATE TABLE Player(\n" +
@@ -29,7 +29,7 @@ class PlayerDAOTest {
 
     @BeforeEach
     void setUp() throws SQLException, ClassNotFoundException {
-        Connection con = TestHelperDAO.createH2Connection(createTable);
+        con = TestHelperDAO.createH2Connection(createTable);
         testDAO = new PlayerDAO(con);
         username = "user";
         mail = "user@zhaw.ch";
@@ -59,12 +59,15 @@ class PlayerDAOTest {
         // ----- test delete -----
         affectedRows = testDAO.deletePlayerByMail(mail);
         assertEquals(1, affectedRows);
+
+        con.close();
     }
 
     @Test
     void testCreateNewPlayerDuplicateMail() throws Exception {
         testDAO.createNewPlayer(username, mail, password);
         //assertThrows(JdbcSQLException.class, () -> testDAO.createNewPlayer("user1", mail, "pwd1"));
+        con.close();
     }
 
     @Test
@@ -72,6 +75,7 @@ class PlayerDAOTest {
         testDAO.createNewPlayer(username, mail, password);
         int createdRows = testDAO.createNewPlayer(username, "newUser@zhaw.ch", "pwd1");
         assertEquals(1, createdRows);
+        con.close();
     }
 
     @Test
@@ -79,6 +83,7 @@ class PlayerDAOTest {
         testDAO.createNewPlayer(username, mail, password);
         int updatedRows = testDAO.updatePlayer(username, "newUser@zhaw.ch", password);
         assertEquals(0, updatedRows);
+        con.close();
     }
 
     @Test
@@ -88,6 +93,7 @@ class PlayerDAOTest {
 
         int updatedRows = testDAO.updatePlayer("test", mail, password);
         assertEquals(1, updatedRows);
+        con.close();
     }
 
 }

@@ -26,14 +26,13 @@ public class PlayerDAO {
 
     /**
      * get saved profile data of the user by the mail address
-     * TODO: implementation will be done in Milestone 3 /F0111/
      *
      * @param mail of the user
      */
     public UserBean getPlayerByMail(String mail) throws SQLException, ClassNotFoundException {
         UserBean user = null;
 
-        createConnection(SELECT_QUERY, Arrays.asList(mail));
+        setUpQuery(SELECT_QUERY, Arrays.asList(mail));
         rs = st.executeQuery();
         if (rs.next()) {
             user = new UserBean();
@@ -59,21 +58,24 @@ public class PlayerDAO {
     }
 
     /**
-     * prepare query execution by using createConnection() and execute it.
-     * close the connection at the end.
+     * prepare query execution by using setUpQuery() and execute it.
      *
      * @param query statement to execute
      * @param args  arguments to fill the query
      * @return affected rows
      */
-    private int manipulateData(@NotNull String query, List<String> args) throws SQLException, ClassNotFoundException {
-        createConnection(query, args);
+    private int manipulateData(@NotNull String query, List<String> args) throws SQLException {
+        setUpQuery(query, args);
         int row = st.executeUpdate();
         return row;
     }
 
-
-    public void createConnection(String sql, @NotNull List<String> args) throws SQLException, ClassNotFoundException {
+    /**
+     * prepares the statement and fills the query with the arguments
+     * @param sql  SQL-Query with ? as placeholder for user input values
+     * @param args list of values to fill the placeholders
+     */
+    private void setUpQuery(String sql, @NotNull List<String> args) throws SQLException {
         st = con.prepareStatement(sql);
 
         for (int i = 0; i < args.size(); i++) {
@@ -82,12 +84,11 @@ public class PlayerDAO {
         }
     }
 
-    public void closeConnection() throws SQLException {
+    public void closeStatement() throws SQLException {
         if (rs != null) {
             rs.close();
         }
         st.close();
-        con.close();
     }
 
 }
