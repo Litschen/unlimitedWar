@@ -2,6 +2,7 @@ package model;
 
 import model.behavior.AggressiveBehavior;
 import model.behavior.RandomBehavior;
+import model.behavior.StrategicBehavior;
 import model.behavior.UserBehavior;
 import model.enums.EventType;
 import model.enums.Flag;
@@ -147,7 +148,7 @@ public class Board {
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
         players.add(new Player(playerColor.remove(1), "Stalout", new UserBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new StrategicBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new AggressiveBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
     }

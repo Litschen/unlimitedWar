@@ -1,4 +1,4 @@
-package model;
+package model.helpers;
 
 import model.enums.Phase;
 import model.interfaces.Event;

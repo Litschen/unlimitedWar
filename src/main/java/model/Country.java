@@ -3,6 +3,7 @@ package model;
 import model.enums.EventType;
 import model.events.CasualtiesEvent;
 import model.events.DiceEvent;
+import model.helpers.Casualties;
 import model.interfaces.Event;
 import org.jetbrains.annotations.NotNull;
 

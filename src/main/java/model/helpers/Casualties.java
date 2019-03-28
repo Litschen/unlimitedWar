@@ -1,4 +1,4 @@
-package model;
+package model.helpers;
 
 /**
  * Class to save casualties for attacker and defender during an invasion of a country
@@ -12,7 +12,7 @@ public class Casualties {
     /**
      * Save casualties for attacker and defender during an invasion of a country in this object
      */
-    Casualties(int casualtiesAttacker, int casualtiesDefender) {
+    public Casualties(int casualtiesAttacker, int casualtiesDefender) {
         Casualties.casualtiesAttacker = casualtiesAttacker;
         Casualties.casualtiesDefender = casualtiesDefender;
     }
@@ -30,14 +30,14 @@ public class Casualties {
     /**
      * increase casualties of the attacker by one
      */
-    void addCasualtiesAttacker() {
+    public void addCasualtiesAttacker() {
         casualtiesAttacker += 1;
     }
 
     /**
      * Increase the casualties of the defender by one
      */
-    void addCasualtiesDefender() {
+    public void addCasualtiesDefender() {
         casualtiesDefender += 1;
     }
 

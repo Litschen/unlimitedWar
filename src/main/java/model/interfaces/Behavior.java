@@ -1,6 +1,6 @@
 package model.interfaces;
 
-import model.AttackCountryResult;
+import model.helpers.AttackCountryResult;
 import model.Country;
 import model.enums.Phase;
 

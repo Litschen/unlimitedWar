@@ -1,6 +1,7 @@
 package model;
 
 import model.enums.PlayerColor;
+import model.helpers.Casualties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,7 @@
 package model.events;
 
 
-import model.Casualties;
+import model.helpers.Casualties;
 import model.enums.EventType;
 import model.interfaces.Event;
 

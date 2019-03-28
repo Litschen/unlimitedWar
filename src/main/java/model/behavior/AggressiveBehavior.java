@@ -1,6 +1,6 @@
 package model.behavior;
 
-import model.AttackCountryResult;
+import model.helpers.AttackCountryResult;
 import model.Country;
 import model.Player;
 import model.enums.Phase;
