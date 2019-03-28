@@ -8,6 +8,7 @@ import model.helpers.AttackScoreComperator;
 import model.interfaces.Behavior;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,6 +20,17 @@ public class StrategicBehavior implements Behavior {
 
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
+        /*for (List<AttackScore> scores = rateCountries(ownedCountries);
+             !scores.isEmpty() && soldiersToPlace > 0;
+              scores = rateCountries(ownedCountries)) {
+
+            Collections.reverse(scores);
+            Country c = scores.get(0).getAttacker();
+            int setSoldiers = soldiersToPlace % 3 + 1;
+            c.setSoldiersCount(c.getSoldiersCount() + setSoldiers);
+            soldiersToPlace -= setSoldiers;
+        }*/
+
         return Phase.ATTACKPHASE;
     }
 
