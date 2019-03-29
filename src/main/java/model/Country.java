@@ -2,6 +2,7 @@ package model;
 
 import model.enums.EventType;
 import model.events.CasualtiesEvent;
+import model.events.ConquerEvent;
 import model.events.DiceEvent;
 import model.helpers.Casualties;
 import model.interfaces.Event;
@@ -111,6 +112,7 @@ public class Country {
                 owner.getOwnedCountries().add(defenderCountry);
 
                 shiftSoldiers(attackDiceCount, defenderCountry);
+                occurredEvents.add(new ConquerEvent(owner.getPlayerName()));
             }
             occurredEvents.add(new CasualtiesEvent(casualties));
             occurredEvents.add(new DiceEvent(attackerRolls, EventType.AttackerDiceEvent, owner.getPlayerName()));

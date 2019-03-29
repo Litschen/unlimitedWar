@@ -1,5 +1,5 @@
 package model.enums;
 
 public enum EventType {
-    CasualtiesEvent, AttackerDiceEvent, DefenderDiceEvent
+    CasualtiesEvent, AttackerDiceEvent, DefenderDiceEvent, ConquerEvent
 }
