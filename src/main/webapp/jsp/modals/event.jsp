@@ -14,7 +14,8 @@
                     Throw results:
                 </c:if>
                 <c:if test="${item.getEventType().equals(EventType.CasualtiesEvent)}">
-                    <h3 class="title">Lost soldiers (Attacker Defender)</h3>
+                    <h3 class="title">Lost soldiers</h3>
+                    Attacker : Defender<br>
                 </c:if>
                 <c:forEach items="${item.getEventData()}" var="data">
                     ${data}
