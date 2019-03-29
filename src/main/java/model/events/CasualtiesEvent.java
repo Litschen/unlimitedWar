@@ -10,14 +10,38 @@ import java.util.List;
 
 public class CasualtiesEvent implements Event {
 
+    private static final String TITLE = "Lost soldiers";
+    private static final String DATA_LABEL = "Attacker : Defender";
+
     //region data fields
+    private String playerName;
     private List<Integer> data;
     //endregion
 
-    public CasualtiesEvent(Casualties casualties){
+    public CasualtiesEvent(Casualties casualties) {
         data = new ArrayList<>();
         data.add(casualties.getCasualtiesAttacker());
         data.add(casualties.getCasualtiesDefender());
+    }
+
+    @Override
+    public String getTitle() {
+        return TITLE;
+    }
+
+    @Override
+    public void setPlayerName(String name) {
+        this.playerName = name;
+    }
+
+    @Override
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    @Override
+    public String getDataLabel() {
+        return DATA_LABEL;
     }
 
     @Override

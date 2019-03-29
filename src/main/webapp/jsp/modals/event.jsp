@@ -5,21 +5,22 @@
 <div class="event-container">
     <c:forEach items="${board.getEvents()}" var="item">
             <div class="event fade top show">
-                <c:if test="${item.getEventType().equals(EventType.AttackerDiceEvent)}">
-                    <h3 class="title">Attacker Dice Results</h3>
-                    Throw results:
-                </c:if>
-                <c:if test="${item.getEventType().equals(EventType.DefenderDiceEvent)}">
-                    <h3 class="title">Defender Dice Results</h3>
-                    Throw results:
+                <h3 class="title">${item.getTitle()}</h3>
+                <c:if test="${!item.getEventType().equals(EventType.CasualtiesEvent)}">
+                    ${item.getDataLabel()}
+                    <c:forEach items="${item.getEventData()}" var="data"> ${data} </c:forEach>
                 </c:if>
                 <c:if test="${item.getEventType().equals(EventType.CasualtiesEvent)}">
-                    <h3 class="title">Lost soldiers</h3>
-                    Attacker : Defender<br>
+                    <table class="casualties-result">
+                        <tr><th>Attacker</th><th>Defender</th></tr>
+                        <tr>
+                            <c:forEach items="${item.getEventData()}" var="data">
+                                <td>${data}</td>
+                            </c:forEach>
+                        </tr>
+                    </table>
                 </c:if>
-                <c:forEach items="${item.getEventData()}" var="data">
-                    ${data}
-                </c:forEach>
+
             </div>
     </c:forEach>
 </div>

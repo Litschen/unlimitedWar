@@ -39,3 +39,14 @@
 .event .content {
     font-size: .75rem;
 }
+
+.casualties-result {
+    color: inherit;
+    margin: 0 -10px;
+    border-spacing: 10px 0;
+    border-collapse: separate;
+}
+
+.casualties-result th {
+    font-weight: normal !important;
+}
