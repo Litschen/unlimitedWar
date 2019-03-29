@@ -20,7 +20,22 @@
 
 <div class="wrapper">
     <form action="<%=request.getContextPath()%>/Game/selectedCountry" class="form vertical border rounded" method="post">
-        <p class="turncounter"><b>Turn: ${board.getCurrentTurn().getTurnNumber()}</b></p>
+        <p>
+            <span class="current-phase">Phase:
+                <span class="emphasise">
+                    <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SETTINGPHASE}">
+                        Set
+                    </c:if>
+                    <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACKPHASE}">
+                        Attack
+                    </c:if>
+                    <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVINGPHASE}">
+                        Move
+                    </c:if>
+                </span>
+            </span>
+            <span class="turncounter">Turn: <span class="emphasise">${board.getCurrentTurn().getTurnNumber()}</span></span>
+        </p>
         <div class="field border rounded">
             <%  List<Country> allCountries = board.getCountries();
                 for (int i = 1; i <= allCountries.size(); i++) {
@@ -40,7 +55,7 @@
         </div>
         <% session.setAttribute("board", board); %>
         <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SETTINGPHASE}">
-            <span>Soldiers to place: <c:out value="${board.getCurrentTurn().getCurrentPlayer().soldiersToPlace}"/></span>
+            <span>Soldiers to place: <span class="emphasise"><c:out value="${board.getCurrentTurn().getCurrentPlayer().soldiersToPlace}"/></span></span>
         </c:if>
         <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACKPHASE}">
             <button type="submit" name="end" class="btn btn-primary">End Attack Phase</button>
@@ -55,18 +70,20 @@
     <aside>
         <ul class="card">
             <c:forEach items="${board.getPlayers()}" var="player">
-                <li class="list-group-item ${player == board.getCurrentTurn().getCurrentPlayer() ? 'isCurrentPlayer' : ''}">
+                <li class="list-group-item ${player == board.getCurrentTurn().getCurrentPlayer() ? 'current-player' : ''}">
                     <span class="player-color ${player.getPlayerColor()}"></span>
                    ${player.getPlayerName()}</li>
             </c:forEach>
         </ul>
     </aside>
+    <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SETTINGPHASE && !board.getCurrentTurn().currentPlayerIsUser()}">
+        <form method="post" action="<%=request.getContextPath()%>/Game/nextTurn" class="next-turn-btn">
+            <%--Saves the board in the session --%>
+            <% session.setAttribute("board", board); %>
+            <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
+        </form>
+    </c:if>
 </div>
-<form method="post" action="<%=request.getContextPath()%>/Game/nextTurn">
-    <%--Saves the board in the session --%>
-    <% session.setAttribute("board", board); %>
-    <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
-</form>
 
 <%@include file="modals/event.jsp" %>
 <%@include file="modals/attackRoll.jsp" %>

@@ -9,8 +9,12 @@
     background: #ffffff;
 }
 
+.emphasise {
+    font-weight: bold;
+}
+
 .turncounter {
-    text-align: center;
+    float: right;
 }
 
 .form.vertical > button,
@@ -41,8 +45,14 @@ aside {
     border-radius: 15px;
 }
 
-.isCurrentPlayer {
+.current-player {
+    font-weight: bold;
     background-color: #e2e3e5;
+}
+
+.next-turn-btn {
+    margin-top: 20px;
+    text-align: center;
 }
 
 .country {
