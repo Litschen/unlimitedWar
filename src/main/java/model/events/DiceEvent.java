@@ -16,9 +16,10 @@ public class DiceEvent implements Event {
     private EventType type;
     //endregion
 
-    public DiceEvent(List<Integer> diceThrow, EventType type) {
+    public DiceEvent(List<Integer> diceThrow, EventType type, String name) {
         this.data = diceThrow;
         this.type = type;
+        this.playerName = name;
     }
 
     @Override

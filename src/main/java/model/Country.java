@@ -113,8 +113,8 @@ public class Country {
                 shiftSoldiers(attackDiceCount, defenderCountry);
             }
             occurredEvents.add(new CasualtiesEvent(casualties));
-            occurredEvents.add(new DiceEvent(attackerRolls, EventType.AttackerDiceEvent));
-            occurredEvents.add(new DiceEvent(defenderRolls, EventType.DefenderDiceEvent));
+            occurredEvents.add(new DiceEvent(attackerRolls, EventType.AttackerDiceEvent, owner.getPlayerName()));
+            occurredEvents.add(new DiceEvent(defenderRolls, EventType.DefenderDiceEvent, defenderCountry.getOwner().getPlayerName()));
 
         }
         return occurredEvents;
