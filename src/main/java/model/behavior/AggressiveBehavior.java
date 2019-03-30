@@ -7,7 +7,10 @@ import model.helpers.AttackCountryResult;
 import model.helpers.MoveCountry;
 import model.interfaces.Behavior;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AggressiveBehavior implements Behavior {
 
@@ -100,8 +103,8 @@ public class AggressiveBehavior implements Behavior {
         List<MoveCountry> ListCountriesWithNeighbors = new ArrayList<>();
         for (Country currentCountry : ownedCountries) {
             for (Country neighborCountry : currentCountry.getNeighboringCountries()) {
-                if (neighborCountry.isBordering(neighborCountry)) { // hat das Land einen Nachbaren
-                    numberOfNeighbors++; //countent die Zahl nach oben
+                if (neighborCountry.isBordering(neighborCountry)) { // hat das Land einen Nachbaren          @Tina du luegsch of es land nachbar vo sicher selber isch?
+                    numberOfNeighbors++; //countent die Zahl nach oben           @Tina die zahl wird nie wieder uf null gesetzt => nöchst land fangt scho mit z.B 4 nachbare ah
                 }
                 ListCountriesWithNeighbors.add(new MoveCountry((numberOfNeighbors, currentCountry, neighborCountry));
                 // fügt der Land, die Nachbaren und den counter wie viel in die liste
@@ -111,7 +114,13 @@ public class AggressiveBehavior implements Behavior {
         return Phase.SETTINGPHASE;
     }
 
+    //@ Tina wieso returnt das int sötts nid MoveCountry zrug geh
     private int mostNeighbors(ArrayList<MoveCountry> listOfNeighbor) {
+        //@Tina min vorschlag war dass es mit emne Comperator machsch wie de AttackscoreComperator.java
+        //Dänn wär die funktion na:
+        //listOfNeighbor.sort(din super duper comperator);
+        //return listOfNeigbar.get(0);
+        //oder du lasch die funktion ganz weg wells nur no zwei ziele wäret ¯\_(ツ)_/¯ din entscheid
         int biggestNumberOfNeighbors = 0;
         for (int i = 0; i < listOfNeighbor.size(); i++) {
             // wie soll ich die Summen vergleichen?
