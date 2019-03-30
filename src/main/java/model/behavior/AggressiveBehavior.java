@@ -113,23 +113,29 @@ public class AggressiveBehavior implements Behavior {
                     // @manu Stimmt, ah dass hani gar net denkt. Has jetzt unter de erste for Schliefe ta, will ja mit
                     // jedem neue Land de counter uf 0 chumt.
                 }
-                ListCountriesWithNeighbors.add(new MoveCountry((numberOfNeighbors, currentCountry, neighborCountry));
+                ListCountriesWithNeighbors.add(new MoveCountry(numberOfNeighbors, currentCountry, neighborCountry));
             }
 
         }
 
         ListCountriesWithNeighbors.sort(new MoveComperator()); // Werte werden sortiert
 
+        //@Tina es isch nach grössi sortiert => es isch eindüütig wends zweite elemente eh anderi ahzahl wo neighbors het => nurmal über get(0) u get(1) überprüfe schetzi
         if (eindeutig){ // falls eindeutige Zahl. @manu: bin grad nöt sicher, wie ich es prüfe sötti. Ha was mit stream() gfunde, doch
             // so ganz ihlüchend, isch es nöt
             // ----------------------------------
             // @Manu: mis problem ist, wie ich die Methode shiftSoldiers sööti ufrüfe, wenn ich en ListCountriesWithNeighbors.get vo
             // MoveCountry isch, aber shiftSoldiers zu Country köhrt: (Ha allgemein no sporblem, sache vo versch. Objekt üfzrüefe)
-            Country selectedCountry = null;
+            //@Tina isch ja in MoveCountry gespeichertet
+            Country selectedCountry = null; //ListCountriesWithNeighbors.get(0).getNeigbor()
+            Country fromCountry = null; //ListCountriesWithNeighbors.get(0).getOwn();
             MoveCountry moveCountry = null;
+
+            //für was isch das?
             ListCountriesWithNeighbors.get(0);
 
-            selectedCountry.shiftSoldiers(moveCountry.getNumberOfNeighbors()); // funktioniert nöt
+
+            selectedCountry.shiftSoldiers(moveCountry.getNumberOfNeighbors(), fromCountry); // funktioniert nöt @Tina so würsch probiere z ahzahl vo nachbarländer zverschiebe das wetsch aber nid oder?
             return Phase.SETTINGPHASE;
 
         } else { // falls nicht eindeutig
