@@ -20,7 +20,7 @@ class DiceTest {
         diceResults = new ArrayList<>();
     }
 
-    // ---------- roll(int amountOfDice) ----------
+
     @Test
     public void testRoll() {
 

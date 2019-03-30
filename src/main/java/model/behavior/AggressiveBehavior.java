@@ -1,15 +1,13 @@
 package model.behavior;
 
-import model.helpers.AttackCountryResult;
 import model.Country;
 import model.Player;
 import model.enums.Phase;
+import model.helpers.AttackCountryResult;
+import model.helpers.MoveCountry;
 import model.interfaces.Behavior;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AggressiveBehavior implements Behavior {
 
@@ -69,7 +67,7 @@ public class AggressiveBehavior implements Behavior {
     }
 
     /**
-     *  AggressiveBehavior attacks as long and often as possible
+     * AggressiveBehavior attacks as long and often as possible
      */
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
@@ -96,7 +94,32 @@ public class AggressiveBehavior implements Behavior {
 
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
+
+        int numberOfNeighbors = 0;
+
+        List<MoveCountry> ListCountriesWithNeighbors = new ArrayList<>();
+        for (Country currentCountry : ownedCountries) {
+            for (Country neighborCountry : currentCountry.getNeighboringCountries()) {
+                if (neighborCountry.isBordering(neighborCountry)) { // hat das Land einen Nachbaren
+                    numberOfNeighbors++; //countent die Zahl nach oben
+                }
+                ListCountriesWithNeighbors.add(new MoveCountry((numberOfNeighbors, currentCountry, neighborCountry));
+                // fügt der Land, die Nachbaren und den counter wie viel in die liste
+            }
+        }
+
         return Phase.SETTINGPHASE;
+    }
+
+    private int mostNeighbors(ArrayList<MoveCountry> listOfNeighbor) {
+        int biggestNumberOfNeighbors = 0;
+        for (int i = 0; i < listOfNeighbor.size(); i++) {
+            // wie soll ich die Summen vergleichen?
+            if (listOfNeighbor.get(i) > biggestNumberOfNeighbors) {
+                biggestNumberOfNeighbors = listOfNeighbor.get(i);
+            }
+        }
+        return biggestNumberOfNeighbors;
     }
 
     /**
