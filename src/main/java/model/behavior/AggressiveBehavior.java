@@ -4,6 +4,7 @@ import model.Country;
 import model.Player;
 import model.enums.Phase;
 import model.helpers.AttackCountryResult;
+import model.helpers.MoveComperator;
 import model.helpers.MoveCountry;
 import model.interfaces.Behavior;
 
@@ -98,38 +99,49 @@ public class AggressiveBehavior implements Behavior {
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
 
-        int numberOfNeighbors = 0;
+        int numberOfNeighbors;
 
         List<MoveCountry> ListCountriesWithNeighbors = new ArrayList<>();
         for (Country currentCountry : ownedCountries) {
+            numberOfNeighbors = 0;
             for (Country neighborCountry : currentCountry.getNeighboringCountries()) {
-                if (neighborCountry.isBordering(neighborCountry)) { // hat das Land einen Nachbaren          @Tina du luegsch of es land nachbar vo sicher selber isch?
-                    numberOfNeighbors++; //countent die Zahl nach oben           @Tina die zahl wird nie wieder uf null gesetzt => nöchst land fangt scho mit z.B 4 nachbare ah
+                if (neighborCountry.getOwner() != currentCountry.getOwner()) {
+                    // @Tina du luegsch of es land nachbar vo sicher selber isch?
+                    // @manu das ergit wirklich kei sinn, so besser?
+                    numberOfNeighbors++;
+                     // @Tina die zahl wird nie wieder uf null gesetzt => nöchst land fangt scho mit z.B 4 nachbare ah
+                    // @manu Stimmt, ah dass hani gar net denkt. Has jetzt unter de erste for Schliefe ta, will ja mit
+                    // jedem neue Land de counter uf 0 chumt.
                 }
                 ListCountriesWithNeighbors.add(new MoveCountry((numberOfNeighbors, currentCountry, neighborCountry));
-                // fügt der Land, die Nachbaren und den counter wie viel in die liste
             }
+
         }
 
-        return Phase.SETTINGPHASE;
+        ListCountriesWithNeighbors.sort(new MoveComperator()); // Werte werden sortiert
+
+        if (eindeutig){ // falls eindeutige Zahl. @manu: bin grad nöt sicher, wie ich es prüfe sötti. Ha was mit stream() gfunde, doch
+            // so ganz ihlüchend, isch es nöt
+            // ----------------------------------
+            // @Manu: mis problem ist, wie ich die Methode shiftSoldiers sööti ufrüfe, wenn ich en ListCountriesWithNeighbors.get vo
+            // MoveCountry isch, aber shiftSoldiers zu Country köhrt: (Ha allgemein no sporblem, sache vo versch. Objekt üfzrüefe)
+            Country selectedCountry = null;
+            MoveCountry moveCountry = null;
+            ListCountriesWithNeighbors.get(0);
+
+            selectedCountry.shiftSoldiers(moveCountry.getNumberOfNeighbors()); // funktioniert nöt
+            return Phase.SETTINGPHASE;
+
+        } else { // falls nicht eindeutig
+
+            return Phase.SETTINGPHASE;
+        }
+
+
+
+
     }
 
-    //@ Tina wieso returnt das int sötts nid MoveCountry zrug geh
-    private int mostNeighbors(ArrayList<MoveCountry> listOfNeighbor) {
-        //@Tina min vorschlag war dass es mit emne Comperator machsch wie de AttackscoreComperator.java
-        //Dänn wär die funktion na:
-        //listOfNeighbor.sort(din super duper comperator);
-        //return listOfNeigbar.get(0);
-        //oder du lasch die funktion ganz weg wells nur no zwei ziele wäret ¯\_(ツ)_/¯ din entscheid
-        int biggestNumberOfNeighbors = 0;
-        for (int i = 0; i < listOfNeighbor.size(); i++) {
-            // wie soll ich die Summen vergleichen?
-            if (listOfNeighbor.get(i) > biggestNumberOfNeighbors) {
-                biggestNumberOfNeighbors = listOfNeighbor.get(i);
-            }
-        }
-        return biggestNumberOfNeighbors;
-    }
 
     /**
      * Checks if there are any countries that can be invaded
