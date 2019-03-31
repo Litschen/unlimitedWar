@@ -82,10 +82,6 @@ public class Country {
     //endregion
 
 
-    /**
-     * @param country
-     * @return
-     */
     public boolean isBordering(@NotNull Country country) {
         return neighboringCountries.contains(country);
     }

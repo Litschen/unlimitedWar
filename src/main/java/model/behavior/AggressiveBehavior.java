@@ -8,10 +8,7 @@ import model.helpers.MoveComperator;
 import model.helpers.MoveCountry;
 import model.interfaces.Behavior;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AggressiveBehavior implements Behavior {
 
@@ -98,54 +95,45 @@ public class AggressiveBehavior implements Behavior {
 
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
-
         int numberOfNeighbors;
-
-        List<MoveCountry> ListCountriesWithNeighbors = new ArrayList<>();
+        List<MoveCountry> CountriesWithNeighbors = new ArrayList<>();
         for (Country currentCountry : ownedCountries) {
             numberOfNeighbors = 0;
             for (Country neighborCountry : currentCountry.getNeighboringCountries()) {
                 if (neighborCountry.getOwner() != currentCountry.getOwner()) {
-                    // @Tina du luegsch of es land nachbar vo sicher selber isch?
-                    // @manu das ergit wirklich kei sinn, so besser?
                     numberOfNeighbors++;
-                     // @Tina die zahl wird nie wieder uf null gesetzt => nöchst land fangt scho mit z.B 4 nachbare ah
-                    // @manu Stimmt, ah dass hani gar net denkt. Has jetzt unter de erste for Schliefe ta, will ja mit
-                    // jedem neue Land de counter uf 0 chumt.
                 }
-                ListCountriesWithNeighbors.add(new MoveCountry(numberOfNeighbors, currentCountry, neighborCountry));
+                CountriesWithNeighbors.add(new MoveCountry(numberOfNeighbors, currentCountry, neighborCountry));
             }
-
         }
+        CountriesWithNeighbors.sort(new MoveComperator());
+        List<MoveCountry> ownCountryNeigbors = new ArrayList<>();
 
-        ListCountriesWithNeighbors.sort(new MoveComperator()); // Werte werden sortiert
+        // Vergelicht, ob die beiden erste Länder die gleiche Anzahl der Nachbaren haben. Falls nicht, dann ist get(0) das Land mit den meisten Nachbaren
+        if (CountriesWithNeighbors.get(0).getNumberOfNeighbors() != (CountriesWithNeighbors.get(1).getNumberOfNeighbors())) {
+            // Nunn mussen die angreznden, eigenen Länder betrachtete werden. Welcher von ihnen haben am meisten soldaten?
+            for (Country currentCountry : ownedCountries) { // Liste der eigenen Länder
+                if(currentCountry.isBordering(currentCountry)){ // Liste der eigenen, angrenzdenden Länder.
+                    for (Country currentCountryNeighbors : ownedCountries){
+                        ownCountryNeigbors.add(new MoveCountry(CountriesWithNeighbors.get(0).getNeighbor().getSoldiersCount(), currentCountryNeighbors, ownedCountries));
+                    }
+                }
+                Collections.list(ownCountryNeigbors);
+                // Move:
+                currentCountry.shiftSoldiers(MoveCountry.getNumberOfNeighbors(), fromCountry);
 
-        //@Tina es isch nach grössi sortiert => es isch eindüütig wends zweite elemente eh anderi ahzahl wo neighbors het => nurmal über get(0) u get(1) überprüfe schetzi
-        if (eindeutig){ // falls eindeutige Zahl. @manu: bin grad nöt sicher, wie ich es prüfe sötti. Ha was mit stream() gfunde, doch
-            // so ganz ihlüchend, isch es nöt
-            // ----------------------------------
-            // @Manu: mis problem ist, wie ich die Methode shiftSoldiers sööti ufrüfe, wenn ich en ListCountriesWithNeighbors.get vo
-            // MoveCountry isch, aber shiftSoldiers zu Country köhrt: (Ha allgemein no sporblem, sache vo versch. Objekt üfzrüefe)
-            //@Tina isch ja in MoveCountry gespeichertet
-            Country selectedCountry = null; //ListCountriesWithNeighbors.get(0).getNeigbor()
-            Country fromCountry = null; //ListCountriesWithNeighbors.get(0).getOwn();
-            MoveCountry moveCountry = null;
-
-            //für was isch das?
-            ListCountriesWithNeighbors.get(0);
-
-
-            selectedCountry.shiftSoldiers(moveCountry.getNumberOfNeighbors(), fromCountry); // funktioniert nöt @Tina so würsch probiere z ahzahl vo nachbarländer zverschiebe das wetsch aber nid oder?
+            }
             return Phase.SETTINGPHASE;
+            //@Tina isch ja in MoveCountry gespeichertet
+            CountriesWithNeighbors.get(0).getNumberOfNeighbors();
+            CountriesWithNeighbors.get(0).getOwn();
+            //für was isch das?
 
+            // funktioniert nöt @Tina so würsch probiere z ahzahl vo nachbarländer zverschiebe das wetsch aber nid oder?
         } else { // falls nicht eindeutig
 
             return Phase.SETTINGPHASE;
         }
-
-
-
-
     }
 
 
