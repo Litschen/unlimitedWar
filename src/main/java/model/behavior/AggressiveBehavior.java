@@ -8,7 +8,10 @@ import model.helpers.MoveComperator;
 import model.helpers.MoveCountry;
 import model.interfaces.Behavior;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AggressiveBehavior implements Behavior {
 
@@ -95,45 +98,63 @@ public class AggressiveBehavior implements Behavior {
 
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
+
         int numberOfNeighbors;
         List<MoveCountry> CountriesWithNeighbors = new ArrayList<>();
+        boolean wettichdas = false;
         for (Country currentCountry : ownedCountries) {
             numberOfNeighbors = 0;
             for (Country neighborCountry : currentCountry.getNeighboringCountries()) {
                 if (neighborCountry.getOwner() != currentCountry.getOwner()) {
                     numberOfNeighbors++;
-                }
-                CountriesWithNeighbors.add(new MoveCountry(numberOfNeighbors, currentCountry, neighborCountry));
-            }
-        }
-        CountriesWithNeighbors.sort(new MoveComperator());
-        List<MoveCountry> ownCountryNeigbors = new ArrayList<>();
+                } else {
+                    wettichdas = true;
 
-        // Vergelicht, ob die beiden erste Länder die gleiche Anzahl der Nachbaren haben. Falls nicht, dann ist get(0) das Land mit den meisten Nachbaren
-        if (CountriesWithNeighbors.get(0).getNumberOfNeighbors() != (CountriesWithNeighbors.get(1).getNumberOfNeighbors())) {
-            // Nunn mussen die angreznden, eigenen Länder betrachtete werden. Welcher von ihnen haben am meisten soldaten?
-            for (Country currentCountry : ownedCountries) { // Liste der eigenen Länder
-                if(currentCountry.isBordering(currentCountry)){ // Liste der eigenen, angrenzdenden Länder.
-                    for (Country currentCountryNeighbors : ownedCountries){
-                        ownCountryNeigbors.add(new MoveCountry(CountriesWithNeighbors.get(0).getNeighbor().getSoldiersCount(), currentCountryNeighbors, ownedCountries));
+                }
+            }
+            if (wettichdas) {
+                CountriesWithNeighbors.add(new MoveCountry(numberOfNeighbors, currentCountry, null));
+            }
+
+        }
+        if (!CountriesWithNeighbors.isEmpty()) {
+
+            CountriesWithNeighbors.sort(new MoveComperator());
+
+            if (CountriesWithNeighbors.get(0).getNumberOfNeighbors() != CountriesWithNeighbors.get(1).getNumberOfNeighbors()) {
+                for (Country currentCountry : CountriesWithNeighbors.get(0).getOwn().getNeighboringCountries()) { // Liste der eigenen Länder
+                    if (ownedCountries.contains(currentCountry)) {
+                        if (CountriesWithNeighbors.get(0).getNeighbor() == null || currentCountry.getSoldiersCount() > CountriesWithNeighbors.get(0).getNeighbor().getSoldiersCount()) {
+                            CountriesWithNeighbors.get(0).setNeighbor(currentCountry);
+                        }
                     }
                 }
-                Collections.list(ownCountryNeigbors);
-                // Move:
-                currentCountry.shiftSoldiers(MoveCountry.getNumberOfNeighbors(), fromCountry);
 
+                CountriesWithNeighbors.get(0).getNeighbor().shiftSoldiers(CountriesWithNeighbors.get(0).getNeighbor().getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY, CountriesWithNeighbors.get(0).getOwn());
             }
-            return Phase.SETTINGPHASE;
-            //@Tina isch ja in MoveCountry gespeichertet
-            CountriesWithNeighbors.get(0).getNumberOfNeighbors();
-            CountriesWithNeighbors.get(0).getOwn();
-            //für was isch das?
+        } else {
+            int index = 0;
+            int maxSoldiers = 0;
+            MoveCountry tmp;
 
-            // funktioniert nöt @Tina so würsch probiere z ahzahl vo nachbarländer zverschiebe das wetsch aber nid oder?
-        } else { // falls nicht eindeutig
+            while (CountriesWithNeighbors.size() > index + 1 && CountriesWithNeighbors.get(index).getNumberOfNeighbors() == CountriesWithNeighbors.get(index + 1).getNumberOfNeighbors()) {
+                int currentMax = 0;
+                int currentSoldiers = CountriesWithNeighbors.get(index).getOwn().getSoldiersCount();
+                Country tmpCountry;
 
-            return Phase.SETTINGPHASE;
+                // unsere nachbaren finden
+                // anzahl solsaten vergliechen
+                for (Country curreentCountry : CountriesWithNeighbors.get(index).getOwn().getNeighboringCountries()) {
+                    //if(ownedCountries.contains(currentCountry){
+
+                }
+            }
+
+
+            index++;
         }
+        return Phase.SETTINGPHASE;
+
     }
 
 
