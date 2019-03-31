@@ -9,7 +9,7 @@ public class MoveCountry {
     private Country neighbor;
 
 
-    public MoveCountry(int numberOfNeighbors, Country own, Country neighbor) {
+    public MoveCountry(int numberOfNeighbors, Country neighbor, Country own) {
         this.numberOfNeighbors = numberOfNeighbors;
         this.own = own;
         this.neighbor = neighbor;
@@ -26,7 +26,9 @@ public class MoveCountry {
     public Country getNeighbor() {
         return neighbor;
     }
-    
-    
-    
+
+
+    public void setNeighbor(Country neighbor) {
+        this.neighbor = neighbor;
+    }
 }
