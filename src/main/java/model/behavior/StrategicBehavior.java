@@ -88,14 +88,17 @@ public class StrategicBehavior implements Behavior {
             int destScore = scores.get(0).getScore();
 
             List<AttackScore> neighborScores = rateCountries(destCountryMap.get(dest));
-            Country src = neighborScores.get(0).getAttacker();
-            int srcScore = neighborScores.get(0).getScore();
+            if (!neighborScores.isEmpty()) {
+                Country src = neighborScores.get(0).getAttacker();
+                int srcScore = neighborScores.get(0).getScore();
 
-            if (destScore < srcScore) {
-                int scoreDiff = Math.abs(Math.abs(srcScore) - Math.abs(destScore));
-                int maxMoveSoldierCount = src.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
-                int soldiersToShift = scoreDiff < maxMoveSoldierCount ? scoreDiff : maxMoveSoldierCount;
-                src.shiftSoldiers(soldiersToShift, dest);
+                if (destScore < srcScore) {
+                    int scoreDiff = Math.abs(Math.abs(srcScore) - Math.abs(destScore));
+                    int maxMoveSoldierCount = src.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
+                    int soldiersToShift = scoreDiff < maxMoveSoldierCount ? scoreDiff : maxMoveSoldierCount;
+                    src.shiftSoldiers(soldiersToShift, dest);
+                }
+
             }
         }
 
