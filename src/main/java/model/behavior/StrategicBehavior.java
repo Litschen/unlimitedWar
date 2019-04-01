@@ -23,17 +23,17 @@ public class StrategicBehavior implements Behavior {
              !scores.isEmpty() && soldiersToPlace > 0;
              scores = rateCountries(ownedCountries)) {
 
-            Country c;
+            Country countryToPlaceSoldiers;
             int setSoldiers = soldiersToPlace % MAX_SCORE_TO_SET_DEFENSIVE + 1; // +1 to set at least 1 soldier
             AttackScore attackScore = scores.get(scores.size() - 1);  // get last element
 
             if (attackScore.getScore() <= MAX_SCORE_TO_SET_DEFENSIVE) {
-                c = attackScore.getAttacker();
+                countryToPlaceSoldiers = attackScore.getAttacker();
             } else {
-                c = scores.get(0).getAttacker();
+                countryToPlaceSoldiers = scores.get(0).getAttacker();
             }
 
-            c.setSoldiersCount(c.getSoldiersCount() + setSoldiers);
+            countryToPlaceSoldiers.setSoldiersCount(countryToPlaceSoldiers.getSoldiersCount() + setSoldiers);
             soldiersToPlace -= setSoldiers;
         }
 
@@ -110,12 +110,12 @@ public class StrategicBehavior implements Behavior {
 
         for (Country currentCountry : ownedCountries) {
             for (Country neighbor : currentCountry.getNeighboringCountries()) {
-                List<Country> c = new ArrayList<>();
+                List<Country> destCountry = new ArrayList<>();
                 if (currentCountry.getOwner() == neighbor.getOwner() && neighbor.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
-                    c.add(neighbor);
+                    destCountry.add(neighbor);
                 }
-                if (!c.isEmpty()) {
-                    countriesWithNeighbor.put(currentCountry, c);
+                if (!destCountry.isEmpty()) {
+                    countriesWithNeighbor.put(currentCountry, destCountry);
                 }
             }
         }

@@ -19,12 +19,12 @@ public class AggressiveBehavior implements Behavior {
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
         if (ownedCountries.size() > 0) {
-            List<Country> countriesToSet = mostEffectiveCountry(ownedCountries, ownedCountries.get(0).getOwner());
-            for (int i = 0; soldiersToPlace > 0 && countriesToSet.size() > 0; soldiersToPlace--) {
-                Country c = countriesToSet.get(i);
-                c.setSoldiersCount(c.getSoldiersCount() + 1);
+            List<Country> countriesToPlace = mostEffectiveCountry(ownedCountries, ownedCountries.get(0).getOwner());
+            for (int i = 0; soldiersToPlace > 0 && countriesToPlace.size() > 0; soldiersToPlace--) {
+                Country countryToPlaceSoldiers = countriesToPlace.get(i);
+                countryToPlaceSoldiers.setSoldiersCount(countryToPlaceSoldiers.getSoldiersCount() + 1);
                 i++;
-                if (i >= countriesToSet.size()) {
+                if (i >= countriesToPlace.size()) {
                     i = 0;
                 }
             }
