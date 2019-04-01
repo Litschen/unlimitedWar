@@ -101,19 +101,19 @@ public class AggressiveBehavior implements Behavior {
 
         int numberOfNeighbors;
         List<MoveCountry> CountriesWithNeighbors = new ArrayList<>();
-        boolean wettichdas = false;
+        boolean countryCanBeChecked;
         for (Country currentCountry : ownedCountries) {
+            countryCanBeChecked = false;
             numberOfNeighbors = 0;
             for (Country neighborCountry : currentCountry.getNeighboringCountries()) {
                 if (neighborCountry.getOwner() != currentCountry.getOwner()) {
                     numberOfNeighbors++;
-                } else {
-                    wettichdas = true;
-
+                } else if (neighborCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
+                    countryCanBeChecked = true;
                 }
             }
-            if (wettichdas) {
-                CountriesWithNeighbors.add(new MoveCountry(numberOfNeighbors, currentCountry, null));
+            if (countryCanBeChecked) {
+                CountriesWithNeighbors.add(new MoveCountry(numberOfNeighbors, null, currentCountry));
             }
 
         }
@@ -131,27 +131,32 @@ public class AggressiveBehavior implements Behavior {
                 }
 
                 CountriesWithNeighbors.get(0).getNeighbor().shiftSoldiers(CountriesWithNeighbors.get(0).getNeighbor().getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY, CountriesWithNeighbors.get(0).getOwn());
-            }
-        } else {
-            int index = 0;
-            int maxSoldiers = 0;
-            MoveCountry tmp;
+            } else {
+                int index = 0;
+                int maxSoldiers = 0;
+                MoveCountry tmp = null;
 
-            while (CountriesWithNeighbors.size() > index + 1 && CountriesWithNeighbors.get(index).getNumberOfNeighbors() == CountriesWithNeighbors.get(index + 1).getNumberOfNeighbors()) {
-                int currentMax = 0;
-                int currentSoldiers = CountriesWithNeighbors.get(index).getOwn().getSoldiersCount();
-                Country tmpCountry;
-
-                // unsere nachbaren finden
-                // anzahl solsaten vergliechen
-                for (Country curreentCountry : CountriesWithNeighbors.get(index).getOwn().getNeighboringCountries()) {
-                    //if(ownedCountries.contains(currentCountry){
-
+                while (CountriesWithNeighbors.size() > index + 1 && CountriesWithNeighbors.get(index).getNumberOfNeighbors() == CountriesWithNeighbors.get(index + 1).getNumberOfNeighbors()) {
+                    int currentMax = 0;
+                    int currentSoldiers = CountriesWithNeighbors.get(index).getOwn().getSoldiersCount();
+                    for (Country curreentCountry : CountriesWithNeighbors.get(index).getOwn().getNeighboringCountries()) {
+                        if (ownedCountries.contains(curreentCountry)) {
+                            if (currentMax < curreentCountry.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY + currentSoldiers) {
+                                currentMax = currentSoldiers + curreentCountry.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
+                                CountriesWithNeighbors.get(index).setNeighbor(curreentCountry);
+                            }
+                        }
+                    }
+                    if (currentMax > maxSoldiers) {
+                        tmp = CountriesWithNeighbors.get(index);
+                        maxSoldiers = currentMax;
+                    }
+                    index++;
+                }
+                if (tmp != null) {
+                    tmp.getNeighbor().shiftSoldiers(tmp.getNeighbor().getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY, tmp.getOwn());
                 }
             }
-
-
-            index++;
         }
         return Phase.SETTINGPHASE;
 
