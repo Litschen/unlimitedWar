@@ -154,10 +154,10 @@ public class Board {
 
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
-        players.add(new Player(playerColor.remove(1), "Stalout", new UserBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "LMao", new StrategicBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Hotler", new AggressiveBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Darfolini", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(1), "Felix", new UserBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Aline", new StrategicBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Nina", new AggressiveBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), "Max", new RandomBehavior()));
     }
 
 
