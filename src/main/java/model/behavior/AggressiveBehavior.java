@@ -134,7 +134,7 @@ public class AggressiveBehavior implements Behavior {
                 totalMaxSoldiers = currentCountryMaxSoldiers;
             }
             index++;
-        } while (countriesWithNeighbors.size() > index + 1 && moveCountry.getNumberOfNeighbors() == countriesWithNeighbors.get(index + 1).getNumberOfNeighbors());
+        } while (countriesWithNeighbors.size() > index && moveCountry.getNumberOfNeighbors() == countriesWithNeighbors.get(index - 1).getNumberOfNeighbors());
         return selectedMoveCountry;
     }
 
