@@ -53,14 +53,14 @@ public class StrategicBehavior implements Behavior {
                 AttackScore currentScore = scores.get(i);
                 Country attacker;
                 Country defender;
-                int attackerDice;
-                int defenderDice;
+                int attackerDice = 0;
+                int defenderDice = 0;
 
                 attacker = currentScore.getAttacker();
                 defender = currentScore.getDefender();
 
                 try {
-                    while (attacker.canInvade(defender)) {
+                    while (attacker.canInvade(defender) && attackerDice >= defenderDice) {
                         attackerDice = attacker.maxAmountDiceThrowsAttacker();
                         defenderDice = defender.amountDiceThrowsDefender(attackerDice);
                         attacker.invade(defender, attackerDice, defenderDice);
