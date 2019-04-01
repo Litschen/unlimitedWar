@@ -7,8 +7,7 @@ import model.helpers.AttackScore;
 import model.helpers.AttackScoreComperator;
 import model.interfaces.Behavior;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * TODO in MS2
@@ -80,9 +79,47 @@ public class StrategicBehavior implements Behavior {
 
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
+        Map<Country, List<Country>> destCountryMap = countryWithOwnNeighbor(ownedCountries);
+        List<AttackScore> scores = rateCountries(new ArrayList(destCountryMap.keySet()));
+
+        if (!scores.isEmpty()) {
+            Collections.reverse(scores);
+            Country dest = scores.get(0).getAttacker();
+            int destScore = scores.get(0).getScore();
+
+            List<AttackScore> neighborScores = rateCountries(destCountryMap.get(dest));
+            Country src = neighborScores.get(0).getAttacker();
+            int srcScore = neighborScores.get(0).getScore();
+
+            if (destScore < srcScore) {
+                int scoreDiff = Math.abs(Math.abs(srcScore) - Math.abs(destScore));
+                int maxMoveSoldierCount = src.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
+                int soldiersToShift = scoreDiff < maxMoveSoldierCount ? scoreDiff : maxMoveSoldierCount;
+                src.shiftSoldiers(soldiersToShift, dest);
+                System.out.println("shift: " + soldiersToShift);
+            }
+        }
+
         return Phase.SETTINGPHASE;
     }
 
+    private Map<Country, List<Country>> countryWithOwnNeighbor(List<Country> ownedCountries) {
+        Map<Country, List<Country>> countriesWithNeighbor = new HashMap<>();
+
+        for (Country currentCountry : ownedCountries) {
+            for (Country neighbor : currentCountry.getNeighboringCountries()) {
+                List<Country> c = new ArrayList<>();
+                if (currentCountry.getOwner() == neighbor.getOwner() && neighbor.getSoldiersCount() > 1) {
+                    c.add(neighbor);
+                }
+                if (!c.isEmpty()) {
+                    countriesWithNeighbor.put(currentCountry, c);
+                }
+            }
+        }
+
+        return countriesWithNeighbor;
+    }
 
     private List<AttackScore> rateCountries(List<Country> ownedCountries) {
         List<AttackScore> scores = new ArrayList<>();
