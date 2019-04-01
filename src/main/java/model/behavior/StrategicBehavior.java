@@ -24,7 +24,7 @@ public class StrategicBehavior implements Behavior {
              scores = rateCountries(ownedCountries)) {
 
             Country c;
-            int setSoldiers = soldiersToPlace % 3 + 1;
+            int setSoldiers = soldiersToPlace % MAX_SCORE_TO_SET_DEFENSIVE + 1; // +1 to set at least 1 soldier
             AttackScore attackScore = scores.get(scores.size() - 1);  // get last element
 
             if (attackScore.getScore() <= MAX_SCORE_TO_SET_DEFENSIVE) {
@@ -96,7 +96,6 @@ public class StrategicBehavior implements Behavior {
                 int maxMoveSoldierCount = src.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
                 int soldiersToShift = scoreDiff < maxMoveSoldierCount ? scoreDiff : maxMoveSoldierCount;
                 src.shiftSoldiers(soldiersToShift, dest);
-                System.out.println("shift: " + soldiersToShift);
             }
         }
 
@@ -109,7 +108,7 @@ public class StrategicBehavior implements Behavior {
         for (Country currentCountry : ownedCountries) {
             for (Country neighbor : currentCountry.getNeighboringCountries()) {
                 List<Country> c = new ArrayList<>();
-                if (currentCountry.getOwner() == neighbor.getOwner() && neighbor.getSoldiersCount() > 1) {
+                if (currentCountry.getOwner() == neighbor.getOwner() && neighbor.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
                     c.add(neighbor);
                 }
                 if (!c.isEmpty()) {
