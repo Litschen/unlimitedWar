@@ -98,10 +98,10 @@ public class AggressiveBehavior implements Behavior {
 
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
-        List<MoveCountry> CountriesWithNeighbors = createMoveCountryList(ownedCountries);
-        if (!CountriesWithNeighbors.isEmpty()) {
-            CountriesWithNeighbors.sort(new MoveComperator());
-            MoveCountry moveCountry = getMoveCountry(CountriesWithNeighbors, ownedCountries);
+        List<MoveCountry> countriesWithNeighbors = createMoveCountryList(ownedCountries);
+        if (!countriesWithNeighbors.isEmpty()) {
+            countriesWithNeighbors.sort(new MoveComperator());
+            MoveCountry moveCountry = getMoveCountry(countriesWithNeighbors, ownedCountries);
             if (moveCountry != null) {
                 moveCountry.getNeighbor().shiftSoldiers(moveCountry.getNeighbor().getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY, moveCountry.getOwn());
             }
