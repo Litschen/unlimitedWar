@@ -112,25 +112,26 @@ public class AggressiveBehavior implements Behavior {
 
     private MoveCountry getMoveCountry(List<MoveCountry> countriesWithNeighbors, List<Country> ownedCountries) {
         int index = 0;
-        int maxSoldiers = 0;
+        int totalMaxSoldiers = 0;
         MoveCountry selectedMoveCountry = null;
         MoveCountry moveCountry;
         do {
-            int currentMax = 0;
+            int currentCountryMaxSoldiers = 0;
             moveCountry = countriesWithNeighbors.get(index);
             Country ownCountry = moveCountry.getOwn();
             int currentSoldiers = ownCountry.getSoldiersCount();
             for (Country currentCountry : ownCountry.getNeighboringCountries()) {
                 if (ownedCountries.contains(currentCountry)) {
-                    if (currentMax < currentCountry.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY + currentSoldiers) {
-                        currentMax = currentSoldiers + currentCountry.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
+                    int currentCountryTmpMaxSoldiers = currentCountry.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY + currentSoldiers;
+                    if (currentCountryMaxSoldiers < currentCountryTmpMaxSoldiers) {
+                        currentCountryMaxSoldiers = currentCountryTmpMaxSoldiers;
                         moveCountry.setNeighbor(currentCountry);
                     }
                 }
             }
-            if (currentMax > maxSoldiers) {
+            if (currentCountryMaxSoldiers > totalMaxSoldiers) {
                 selectedMoveCountry = moveCountry;
-                maxSoldiers = currentMax;
+                totalMaxSoldiers = currentCountryMaxSoldiers;
             }
             index++;
         } while (countriesWithNeighbors.size() > index + 1 && moveCountry.getNumberOfNeighbors() == countriesWithNeighbors.get(index + 1).getNumberOfNeighbors());
