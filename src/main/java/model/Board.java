@@ -4,7 +4,6 @@ import model.behavior.AggressiveBehavior;
 import model.behavior.RandomBehavior;
 import model.behavior.StrategicBehavior;
 import model.behavior.UserBehavior;
-import model.enums.EventType;
 import model.enums.Flag;
 import model.enums.PlayerColor;
 import model.interfaces.Event;
@@ -32,6 +31,7 @@ public class Board {
     private List<Player> players;
     private List<Country> countries;
     private List<PlayerColor> playerColor = new ArrayList<>();
+    private int turnCounter = 1;
     //endregion
 
     public Board() {
@@ -39,7 +39,8 @@ public class Board {
         countries = new ArrayList<>();
         generatePlayers();
         generateCountries();
-        currentTurn = new Turn(players, countries);
+        currentTurn = new Turn(players, countries, turnCounter);
+        turnCounter++;
     }
 
     //region getter setter
@@ -61,7 +62,8 @@ public class Board {
 
     public Turn getCurrentTurn() {
         if (currentTurn.getFlag() == Flag.TURNEND) {
-            currentTurn = new Turn(players, countries);
+            currentTurn = new Turn(players, countries, turnCounter);
+            turnCounter++;
         }
         return currentTurn;
     }

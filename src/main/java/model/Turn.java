@@ -30,16 +30,16 @@ public class Turn {
     private int turnNumber;
     //endregion
 
-    public Turn(List<Player> players, List<Country> countries) {
+    public Turn(List<Player> players, List<Country> countries, int turnNumber) {
         this.activePlayers = players;
         this.countries = countries;
+        this.turnNumber = turnNumber;
         occurredEvents = new ArrayList<>();
         currentPlayer = activePlayers.get(0);
         if (currentPlayerIsUser()) {
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
         }
-        turnNumber = TURNNUMBER;
-        TURNNUMBER += 1;
+
     }
 
 

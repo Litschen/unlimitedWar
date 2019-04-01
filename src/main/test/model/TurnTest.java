@@ -38,7 +38,7 @@ class TurnTest {
         when(mockPlayer.getOwnedCountries()).thenReturn(countries);
         when(mockPlayer0.getOwnedCountries()).thenReturn(TestHelperBehavior.getCountryList(4, mockPlayer0));
 
-        turn = new Turn(mockPlayers, countries);
+        turn = new Turn(mockPlayers, countries, 0);
 
     }
 
