@@ -4,7 +4,7 @@ import model.Country;
 import model.Player;
 import model.enums.Phase;
 import model.helpers.AttackCountryResult;
-import model.helpers.MoveComperator;
+import model.helpers.MoveComparator;
 import model.helpers.MoveCountry;
 import model.interfaces.Behavior;
 
@@ -100,7 +100,7 @@ public class AggressiveBehavior implements Behavior {
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
         List<MoveCountry> countriesWithNeighbors = createMoveCountryList(ownedCountries);
         if (!countriesWithNeighbors.isEmpty()) {
-            countriesWithNeighbors.sort(new MoveComperator());
+            countriesWithNeighbors.sort(new MoveComparator());
             MoveCountry moveCountry = getMoveCountry(countriesWithNeighbors, ownedCountries);
             if (moveCountry != null) {
                 moveCountry.getNeighbor().shiftSoldiers(moveCountry.getNeighbor().getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY, moveCountry.getOwn());
@@ -113,7 +113,7 @@ public class AggressiveBehavior implements Behavior {
     private MoveCountry getMoveCountry(List<MoveCountry> countriesWithNeighbors, List<Country> ownedCountries) {
         int index = 0;
         int maxSoldiers = 0;
-        MoveCountry tmp = null;
+        MoveCountry selectedMoveCountry = null;
         MoveCountry moveCountry;
         do {
             int currentMax = 0;
@@ -129,29 +129,29 @@ public class AggressiveBehavior implements Behavior {
                 }
             }
             if (currentMax > maxSoldiers) {
-                tmp = moveCountry;
+                selectedMoveCountry = moveCountry;
                 maxSoldiers = currentMax;
             }
             index++;
         } while (countriesWithNeighbors.size() > index + 1 && moveCountry.getNumberOfNeighbors() == countriesWithNeighbors.get(index + 1).getNumberOfNeighbors());
-        return tmp;
+        return selectedMoveCountry;
     }
 
     private List<MoveCountry> createMoveCountryList(List<Country> ownedCountries) {
         List<MoveCountry> countriesWithNeighbors = new ArrayList<>();
-        boolean countryCanBeChecked;
+        boolean countryShouldBeAdded;
         int numberOfNeighbors;
         for (Country currentCountry : ownedCountries) {
-            countryCanBeChecked = false;
+            countryShouldBeAdded = false;
             numberOfNeighbors = 0;
             for (Country neighborCountry : currentCountry.getNeighboringCountries()) {
                 if (neighborCountry.getOwner() != currentCountry.getOwner()) {
                     numberOfNeighbors++;
                 } else if (neighborCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
-                    countryCanBeChecked = true;
+                    countryShouldBeAdded = true;
                 }
             }
-            if (countryCanBeChecked) {
+            if (countryShouldBeAdded) {
                 countriesWithNeighbors.add(new MoveCountry(numberOfNeighbors, null, currentCountry));
             }
         }

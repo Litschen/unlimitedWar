@@ -2,7 +2,7 @@ package model.helpers;
 
 import java.util.Comparator;
 
-public class MoveComperator implements Comparator<MoveCountry> {
+public class MoveComparator implements Comparator<MoveCountry> {
 
 
     @Override
