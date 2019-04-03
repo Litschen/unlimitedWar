@@ -19,26 +19,24 @@ class TurnTest {
 
     private Turn turn;
     private Player mockPlayer;
-    private Player mockPlayer0;
-    private Player mockPlayer1;
-    private List<Country> countries;
 
     @BeforeEach
     void setUp() {
 
         mockPlayer = mock(Player.class);
-        mockPlayer0 = mock(Player.class);
-        mockPlayer1 = mock(Player.class);
+        Player mockPlayer0 = mock(Player.class);
+        Player mockPlayer1 = mock(Player.class);
         List<Player> mockPlayers = new ArrayList<>();
         mockPlayers.add(mockPlayer);
         mockPlayers.add(mockPlayer0);
         mockPlayers.add(mockPlayer1);
         when(mockPlayer.getBehavior()).thenReturn(new UserBehavior());
-        countries = TestHelperBehavior.getCountryList(5, mockPlayer);
-        when(mockPlayer.getOwnedCountries()).thenReturn(countries);
+        when(mockPlayer.getOwnedCountries()).thenReturn(TestHelperBehavior.getCountryList(5, mockPlayer));
         when(mockPlayer0.getOwnedCountries()).thenReturn(TestHelperBehavior.getCountryList(4, mockPlayer0));
+        when(mockPlayer1.getOwnedCountries()).thenReturn(TestHelperBehavior.getCountryList(4, mockPlayer1));
 
-        turn = new Turn(mockPlayers, countries, 0);
+        turn = new Turn(mockPlayers, TestHelperBehavior.getCountryList(5, mockPlayer), 0);
+
 
     }
 
@@ -47,7 +45,7 @@ class TurnTest {
         Country testCountry = turn.getCurrentPlayer().getOwnedCountries().get(0);
         testCountry.setSoldiersCount(3);
 
-        Country testCountryDefend = turn.getActivePlayers().get(0).getOwnedCountries().get(1);
+        Country testCountryDefend = turn.getActivePlayers().get(1).getOwnedCountries().get(1);
         testCountry.getNeighboringCountries().add(testCountryDefend);
 
         assertNull(turn.getFirstSelectedCountry());
@@ -91,17 +89,15 @@ class TurnTest {
 
 
     @Test
-    void testMoveToNextPhaseRemoveUser() {
+    void testMoveToNextPhaseRemovePlayer() {
         List<Player> players = turn.getActivePlayers();
         int amountPlayer = players.size();
         turn.setCurrentPhase(Phase.MOVINGPHASE);
 
-        Player curPlayer = turn.getCurrentPlayer();
-        Player losePlayer = turn.getActivePlayers().get(1);
+        Player curPlayer = turn.getActivePlayers().get(1);
+        Player losePlayer = turn.getActivePlayers().get(0);
         curPlayer.getOwnedCountries().addAll(losePlayer.getOwnedCountries());
         losePlayer.getOwnedCountries().clear();
-
-        countries.clear();
 
         turn.moveToNextPhase();
 
@@ -127,16 +123,21 @@ class TurnTest {
 
     @Test
     void testEliminatePlayersAndCheckUserResultWin() {
+        Board board = new Board();
+        turn = board.getCurrentTurn();
+        Player user = null;
         for (Player player : turn.getActivePlayers()) {
-            player.getOwnedCountries().clear();
+            if (player.getBehavior() instanceof UserBehavior) {
+                user = player;
+            }
         }
-
-        Player user = turn.getActivePlayers().stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().get();
-        user.getOwnedCountries().addAll(turn.getCountries());
-
         assertEquals(4, turn.getActivePlayers().size());
         assertEquals(Flag.NONE, turn.getFlag());
-
+        for (Player player : turn.getActivePlayers()) {
+            if (player != user) {
+                player.getOwnedCountries().clear();
+            }
+        }
         turn.eliminatePlayersAndCheckUserResult();
         assertEquals(1, turn.getActivePlayers().size());
         assertEquals(Flag.GAME_WIN, turn.getFlag());
@@ -144,11 +145,21 @@ class TurnTest {
 
     @Test
     void testEliminatePlayersAndCheckUserResultLose() {
-        Player user = turn.getActivePlayers().stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().get();
-        user.getOwnedCountries().clear();
+        Board board = new Board();
+        turn = board.getCurrentTurn();
+        Player user = null;
+        for (Player player : turn.getActivePlayers()) {
+            if (player.getBehavior() instanceof UserBehavior) {
+                user = player;
+            }
+        }
         assertEquals(4, turn.getActivePlayers().size());
         assertEquals(Flag.NONE, turn.getFlag());
-
+        for (Player player : turn.getActivePlayers()) {
+            if (player == user) {
+                player.getOwnedCountries().clear();
+            }
+        }
         turn.eliminatePlayersAndCheckUserResult();
         assertEquals(3, turn.getActivePlayers().size());
         assertEquals(Flag.GAME_LOSE, turn.getFlag());

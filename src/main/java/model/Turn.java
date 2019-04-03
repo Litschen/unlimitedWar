@@ -1,7 +1,6 @@
 package model;
 
 import model.behavior.UserBehavior;
-import model.enums.EventType;
 import model.enums.Flag;
 import model.enums.Phase;
 import model.interfaces.Event;
@@ -39,7 +38,7 @@ public class Turn {
         if (currentPlayerIsUser()) {
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
         }
-
+        this.flag = Flag.NONE;
     }
 
 
@@ -110,26 +109,8 @@ public class Turn {
         occurredEvents.addAll(events);
     }
 
-    public Event getLastEventOfType(EventType type) {
-        boolean found = false;
-        List<Event> events = getOccurredEvents();
-        int index = events.size() - 1;
-        while (!found && index > 0) {
-            index--;
-            found = events.get(index).getEventType() == type;
-        }
-        if (!found) {
-            throw new IllegalArgumentException("No such event occurred");
-        }
-        return events.remove(index);
-    }
-
     public List<Player> getActivePlayers() {
         return activePlayers;
-    }
-
-    public List<Country> getCountries() {
-        return countries;
     }
 
     public int getTurnNumber() {
