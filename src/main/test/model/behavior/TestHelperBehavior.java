@@ -15,6 +15,13 @@ import static org.mockito.Mockito.when;
 public class TestHelperBehavior {
 
 
+    public static Country getMockCountry(Player player, int soldiers) {
+        Country mockCountry = getMockCountry(player);
+        when(mockCountry.getSoldiersCount()).thenReturn(soldiers);
+
+        return mockCountry;
+    }
+
     public static Country getMockCountry(Player player) {
         Country mockCountry = mock(Country.class);
         when(mockCountry.getSoldiersCount()).thenReturn(5);
@@ -38,6 +45,10 @@ public class TestHelperBehavior {
             countries.add(getMockCountry(testPlayer));
         }
         return countries;
+    }
+
+    public static void setNeighbor(Country c, ArrayList<Country> neighbors) {
+        when(c.getNeighboringCountries()).thenReturn(neighbors);
     }
 
 
