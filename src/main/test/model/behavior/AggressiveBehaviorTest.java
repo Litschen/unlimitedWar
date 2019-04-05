@@ -1,6 +1,5 @@
 package model.behavior;
 
-
 import model.Country;
 import model.Player;
 import model.enums.Phase;
@@ -91,12 +90,22 @@ class AggressiveBehaviorTest {
     }
 
     @Test
-    void moveSoldiers() {
-        selectedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
+    void testMoveSoldiers() {
         ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
-        ownedCountries.add(selectedCountries.get(0));
-        ownedCountries.add(selectedCountries.get(1));
 
-        assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
+        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().moveSoldiers(null, ownedCountries));
+        for (Country countryList : ownedCountries) {
+            assertEquals(5, countryList.getSoldiersCount());
+        }
+
+
     }
+
+    @Test
+    void testCanAttackFrom() {
+
+    }
+
+
 }
+

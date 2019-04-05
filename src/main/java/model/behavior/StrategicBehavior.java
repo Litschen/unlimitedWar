@@ -9,9 +9,7 @@ import model.interfaces.Behavior;
 
 import java.util.*;
 
-/**
- * TODO in MS2
- */
+
 public class StrategicBehavior implements Behavior {
 
     private final static int COUNTRY_IS_WEAK_DEFENDED_BONUS = -10;
