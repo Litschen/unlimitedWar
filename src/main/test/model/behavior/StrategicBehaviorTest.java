@@ -34,7 +34,7 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void placeSoldiersSetOnBoth() {
+    void testPlaceSoldiersSetOnBoth() {
         ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 4), testPlayer);
 
         testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 6);
@@ -43,7 +43,7 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void placeSoldiersSetOnOne() {
+    void testPlaceSoldiersSetOnOne() {
         ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(10, 0), testPlayer);
 
         testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 3);
@@ -56,7 +56,7 @@ class StrategicBehaviorTest {
      * ownedCountries[1]: county surrounded by 10 own countries
      * */
     @Test
-    void placeSoldiersSetOnCountryInDanger() {
+    void testPlaceSoldiersSetOnCountryInDanger() {
         ownedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
         Player opponent = TestHelperBehavior.getMockPlayer();
         ownedCountries.get(0).addNeighboringCountries(TestHelperBehavior.getCountryList(5, opponent));
@@ -95,12 +95,17 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void moveSoldiers() {
+    void testMoveSoldiers() {
         selectedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
         ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
         ownedCountries.add(selectedCountries.get(1));
 
         assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
+    }
+
+    @Test
+    void testMoveSoldiersNotPossible() {
+
     }
 }
