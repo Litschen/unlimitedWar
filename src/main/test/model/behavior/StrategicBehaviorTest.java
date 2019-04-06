@@ -54,7 +54,7 @@ class StrategicBehaviorTest {
     /**
      * ownedCountries[0]: county surrounded by 5 opponent countries
      * ownedCountries[1]: county surrounded by 10 own countries
-     * */
+     */
     @Test
     void testPlaceSoldiersSetOnCountryInDanger() {
         ownedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
@@ -96,16 +96,61 @@ class StrategicBehaviorTest {
 
     @Test
     void testMoveSoldiers() {
-        selectedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
-        ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
-        ownedCountries.add(selectedCountries.get(0));
-        ownedCountries.add(selectedCountries.get(1));
+        ownedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
+        TestHelperBehavior.countriesBorderingEachOther(ownedCountries);
 
-        assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
+        Player opponent = TestHelperBehavior.getMockPlayer();
+
+        Country src = ownedCountries.get(0);
+        src.setSoldiersCount(11);
+        src.addNeighboringCountries(TestHelperBehavior.getCountryList(5, opponent));
+
+        Country dest = ownedCountries.get(1);
+        dest.addNeighboringCountries(TestHelperBehavior.getCountryList(5, opponent));
+
+        testPlayer.getBehavior().moveSoldiers(null, ownedCountries);
+
+        assertEquals(8, src.getSoldiersCount());
+        assertEquals(8, dest.getSoldiersCount());
+    }
+
+    @Test
+    void testMoveSoldiersCheckBestOption() {
+        ownedCountries = TestHelperBehavior.getCountryList(3, testPlayer);
+        TestHelperBehavior.countriesBorderingEachOther(ownedCountries);
+
+        Player opponent = TestHelperBehavior.getMockPlayer();
+
+        Country src = ownedCountries.get(0);
+        src.setSoldiersCount(11);
+
+        for (Country country : ownedCountries){
+            country.addNeighboringCountries(TestHelperBehavior.getCountryList(2, opponent));
+        }
+
+        Country dest = ownedCountries.get(1);
+        dest.setSoldiersCount(4);
+        dest.addNeighboringCountries(TestHelperBehavior.getCountryList(2, opponent));
+
+        testPlayer.getBehavior().moveSoldiers(null, ownedCountries);
+
+        assertEquals(8, src.getSoldiersCount());
+        assertEquals(7, dest.getSoldiersCount());
     }
 
     @Test
     void testMoveSoldiersNotPossible() {
+        ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
 
+        Player opponent = TestHelperBehavior.getMockPlayer();
+        for (Country country : ownedCountries) {
+            country.addNeighboringCountries(TestHelperBehavior.getCountryList(4, opponent));
+        }
+
+        testPlayer.getBehavior().moveSoldiers(null, ownedCountries);
+
+        for (Country country : ownedCountries) {
+            assertEquals(5, country.getSoldiersCount());
+        }
     }
 }

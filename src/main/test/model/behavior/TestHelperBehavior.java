@@ -6,6 +6,7 @@ import model.enums.PlayerColor;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Matchers.anyObject;
@@ -73,5 +74,15 @@ public class TestHelperBehavior {
         }
 
         return ownedCountries;
+    }
+
+    public static void countriesBorderingEachOther(List<Country> countries) {
+        for (Country country : countries){
+            for (Country neighbor : countries){
+                if (!country.equals(neighbor)){
+                    country.addNeighboringCountries(Collections.singletonList(neighbor));
+                }
+            }
+        }
     }
 }
