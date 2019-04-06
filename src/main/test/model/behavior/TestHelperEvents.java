@@ -7,7 +7,6 @@ import model.events.DiceEvent;
 import model.interfaces.Event;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
@@ -17,7 +16,10 @@ public class TestHelperEvents {
 
     public static List<Event> mockInvadeEvents(boolean addConquerEvent) {
         List<EventType> eventsOnInvade = new ArrayList<>();
-        eventsOnInvade.addAll(Arrays.asList(EventType.CasualtiesEvent, EventType.AttackerDiceEvent, EventType.DefenderDiceEvent));
+        eventsOnInvade.add(EventType.CasualtiesEvent);
+        eventsOnInvade.add(EventType.AttackerDiceEvent);
+        eventsOnInvade.add(EventType.DefenderDiceEvent);
+
         if (addConquerEvent) {
             eventsOnInvade.add(EventType.ConquerEvent);
         }
