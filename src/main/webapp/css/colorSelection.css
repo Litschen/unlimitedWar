@@ -1,0 +1,55 @@
+.colorOptions {
+    text-align: center;
+}
+
+input[type='radio'].color-selection {
+    width: 10px;
+    height: 10px;
+    margin: 20px;
+    transition: all ease .2s;
+}
+
+input[type='radio'].color-selection:after {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    top: -20px;
+    left: -20px;
+    position: relative;
+    background-color: inherit;
+    content: '';
+    display: block;
+    border: 1px solid white;
+}
+
+.color-selection.RED {
+    background-color: #dc3545;
+}
+
+.color-selection.RED:checked {
+    box-shadow: 0 0 20px 15px #dc3545;
+}
+
+.color-selection.BLUE {
+    background-color: #007bff;
+}
+
+.color-selection.BLUE:checked {
+    box-shadow: 0 0 20px 15px #007bff;
+}
+
+.color-selection.YELLOW {
+    background-color: #ffc107;
+}
+
+.color-selection.YELLOW:checked {
+    box-shadow: 0 0 20px 15px #ffc107;
+}
+
+.color-selection.GREEN {
+    background-color: #28a745;
+}
+
+.color-selection.GREEN:checked {
+    box-shadow: 0 0 20px 15px #28a745;
+}
