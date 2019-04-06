@@ -183,7 +183,7 @@ public class CountryTest {
     void invade() {
         defendingCountry.setSoldiersCount(0);
         List<Event> events = invadingCountry.invade(defendingCountry, Country.ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER, 0);
-        List<Event> eventsMock = TestHelperEvents.mockInvadeEvents(false);
+        List<Event> eventsMock = TestHelperEvents.mockInvadeEvents(true);
 
         assertSame(defendingCountry.getOwner(), invadingCountry.getOwner());
         assertEquals(Country.ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER, defendingCountry.getSoldiersCount());

@@ -16,7 +16,8 @@ import static org.mockito.Mockito.when;
 public class TestHelperEvents {
 
     public static List<Event> mockInvadeEvents(boolean addConquerEvent) {
-        List<EventType> eventsOnInvade = Arrays.asList(EventType.CasualtiesEvent, EventType.AttackerDiceEvent, EventType.DefenderDiceEvent);
+        List<EventType> eventsOnInvade = new ArrayList<>();
+        eventsOnInvade.addAll(Arrays.asList(EventType.CasualtiesEvent, EventType.AttackerDiceEvent, EventType.DefenderDiceEvent));
         if (addConquerEvent) {
             eventsOnInvade.add(EventType.ConquerEvent);
         }
