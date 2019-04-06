@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PlayerDAO {
@@ -32,7 +33,7 @@ public class PlayerDAO {
     public UserBean getPlayerByMail(String mail) throws SQLException, ClassNotFoundException {
         UserBean user = null;
 
-        st = MySQLConnectionCreator.setUpQuery(con, SELECT_QUERY, Arrays.asList(mail));
+        st = MySQLConnectionCreator.setUpQuery(con, SELECT_QUERY, Collections.singletonList(mail));
         rs = st.executeQuery();
         if (rs.next()) {
             user = new UserBean();
@@ -54,7 +55,7 @@ public class PlayerDAO {
     }
 
     public int deletePlayerByMail(@NotNull String mail) throws SQLException, ClassNotFoundException {
-        return manipulateData(DELETE_QUERY, Arrays.asList(mail));
+        return manipulateData(DELETE_QUERY, Collections.singletonList(mail));
     }
 
     /**
@@ -66,8 +67,7 @@ public class PlayerDAO {
      */
     private int manipulateData(@NotNull String query, List<String> args) throws SQLException {
         st = MySQLConnectionCreator.setUpQuery(con, query, args);
-        int row = st.executeUpdate();
-        return row;
+        return st.executeUpdate();
     }
 
     public void closeStatement() throws SQLException {

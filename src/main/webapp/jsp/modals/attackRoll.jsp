@@ -3,7 +3,7 @@
         <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Game/attack" method="post" name="attackForm">
             <div class="modal-header">
                 <h5 class="modal-title">Select dices to attack</h5>
-                <button name="cancel" class="close"/>
+                <button name="cancel" class="close"></button>
             </div>
             <div class="modal-body row">
                 <div class="col">

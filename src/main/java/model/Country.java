@@ -135,7 +135,7 @@ public class Country {
     /**
      * Gives the number of defenders soldiers when it's been attacked by someone.
      * @param amountAttacker the soldiers who attack from the opponent
-     * @return
+     * @return dice amount of defender
      */
     public int amountDiceThrowsDefender(int amountAttacker) {
         int amountDefender = amountAttacker - 1;

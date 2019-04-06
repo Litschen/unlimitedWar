@@ -22,8 +22,6 @@ class GameControllerTest {
 
     private HttpServletRequest mockRequest;
     private HttpServletResponse mockResponse;
-    private Board mockBoard;
-    private HttpSession mockSession;
     private GameController controller = new controller.GameController();
     private Country mockCountry;
     private Turn mockTurn;
@@ -33,10 +31,10 @@ class GameControllerTest {
     @BeforeEach
     void setUp(){
         mockRequest  = mock(HttpServletRequest.class);
-        mockBoard = mock(Board.class);
+        Board mockBoard = mock(Board.class);
         mockTurn = mock(Turn.class);
         mockResponse = mock(HttpServletResponse.class);
-        mockSession = mock(HttpSession.class);
+        HttpSession mockSession = mock(HttpSession.class);
         when(mockRequest.getSession()).thenReturn(mockSession);
         when(mockRequest.getRequestDispatcher(GameController.PAGE_TO_LOAD_ON_COMPLETE))
                 .thenReturn(mock(RequestDispatcher.class));

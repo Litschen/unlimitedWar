@@ -11,6 +11,7 @@ import model.behavior.RandomBehavior;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -249,7 +250,7 @@ class CountryTest {
 
     private List<Integer> ListCalculateRoll(int input01) {
         List<Integer> rollInputsDefender02;
-        return new ArrayList<>(Arrays.asList(input01));
+        return new ArrayList<>(Collections.singletonList(input01));
     }
     // end
 }

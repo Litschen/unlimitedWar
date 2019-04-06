@@ -260,13 +260,13 @@ public class Turn {
      * if the user has won / lost set the flag to show the message and save the result in the database
      */
     public void eliminatePlayersAndCheckUserResult() {
-        boolean hasRemovedPlayers = activePlayers.removeIf(o -> ((Player) o).getOwnedCountries().isEmpty());
+        boolean hasRemovedPlayers = activePlayers.removeIf(o -> o.getOwnedCountries().isEmpty());
         if (hasRemovedPlayers) {
             if (activePlayers.size() == 1 && currentPlayerIsUser()) {
                 setFlag(Flag.GAME_WIN);
                 // TODO: @Tina MS3 /F0410/ Spielresultat speichern
             } else {
-                boolean playerIn = activePlayers.stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().isPresent();
+                boolean playerIn = activePlayers.stream().anyMatch(o -> o.getBehavior() instanceof UserBehavior);
                 if (!playerIn) {
                     setFlag(Flag.GAME_LOSE);
                     // TODO: @Tina MS3 /F0410/ Spielresultat speichern

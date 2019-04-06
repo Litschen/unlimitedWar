@@ -17,8 +17,7 @@ class PlayerTest {
 
     @BeforeEach
     void setUp() {
-        List<PlayerColor> colorPlayer = new ArrayList<>();
-        colorPlayer.addAll(Arrays.asList(PlayerColor.values()));
+        List<PlayerColor> colorPlayer = new ArrayList<>(Arrays.asList(PlayerColor.values()));
         testPlayer = new Player(colorPlayer.remove(1), "testPlayer", new RandomBehavior());
     }
 

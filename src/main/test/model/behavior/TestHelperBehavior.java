@@ -54,6 +54,7 @@ public class TestHelperBehavior {
 
     public static Player getMockPlayer() {
         Player mockPlayer = mock(Player.class);
+        stubPlayerMethods(mockPlayer, null, 0, PlayerColor.RED);
         return mockPlayer;
     }
 
