@@ -58,7 +58,7 @@ public class PlayerDAO {
     }
 
     /**
-     * prepare query execution by using setUpQuery() and execute it.
+     * prepare query by using setUpQuery() and execute it.
      *
      * @param query statement to execute
      * @param args  arguments to fill the query
@@ -71,16 +71,22 @@ public class PlayerDAO {
     }
 
     /**
-     * prepares the statement and fills the query with the arguments
+     * prepare the statement and replace all placeholders by the arguments
+     *
      * @param sql  SQL-Query with ? as placeholder for user input values
      * @param args list of values to fill the placeholders
      */
     private void setUpQuery(String sql, @NotNull List<String> args) throws SQLException {
         st = con.prepareStatement(sql);
 
-        for (int i = 0; i < args.size(); i++) {
-            String value = args.get(i) != null ? args.get(i) : "";
-            st.setString(i + 1, value);
+        int neededArguments = st.getParameterMetaData().getParameterCount();
+        if (neededArguments == args.size()) {
+            for (int i = 0; i < args.size(); i++) {
+                String value = args.get(i) != null ? args.get(i) : "";
+                st.setString(i + 1, value);
+            }
+        } else {
+            throw new IllegalArgumentException("Argument size not matching placeholders");
         }
     }
 
