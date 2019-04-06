@@ -9,7 +9,6 @@ import model.interfaces.Behavior;
 
 import java.util.*;
 
-
 public class StrategicBehavior implements Behavior {
 
     private final static int COUNTRY_IS_WEAK_DEFENDED_BONUS = -10;
@@ -96,12 +95,11 @@ public class StrategicBehavior implements Behavior {
                 int srcScore = neighborScores.get(0).getScore();
 
                 if (destScore < srcScore) {
-                    int scoreDiff = Math.abs(Math.abs(srcScore) - Math.abs(destScore));
+                    int solderisToMove = Math.abs(srcScore - destScore) / 2;
                     int maxMoveSoldierCount = src.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
-                    int soldiersToShift = scoreDiff < maxMoveSoldierCount ? scoreDiff : maxMoveSoldierCount;
+                    int soldiersToShift = solderisToMove < maxMoveSoldierCount ? solderisToMove : maxMoveSoldierCount;
                     src.shiftSoldiers(soldiersToShift, dest);
                 }
-
             }
         }
 
@@ -112,14 +110,15 @@ public class StrategicBehavior implements Behavior {
         Map<Country, List<Country>> countriesWithNeighbor = new HashMap<>();
 
         for (Country currentCountry : ownedCountries) {
+            List<Country> destCountry = new ArrayList<>();
+
             for (Country neighbor : currentCountry.getNeighboringCountries()) {
-                List<Country> destCountry = new ArrayList<>();
                 if (currentCountry.getOwner() == neighbor.getOwner() && neighbor.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
                     destCountry.add(neighbor);
                 }
-                if (!destCountry.isEmpty()) {
-                    countriesWithNeighbor.put(currentCountry, destCountry);
-                }
+            }
+            if (!destCountry.isEmpty()) {
+                countriesWithNeighbor.put(currentCountry, destCountry);
             }
         }
 
@@ -140,6 +139,4 @@ public class StrategicBehavior implements Behavior {
         scores.sort(new AttackScoreComperator());
         return scores;
     }
-
-
 }
