@@ -16,14 +16,14 @@ class PlayerTest {
     private Player testPlayer;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         List<PlayerColor> colorPlayer = new ArrayList<>();
         colorPlayer.addAll(Arrays.asList(PlayerColor.values()));
         testPlayer = new Player(colorPlayer.remove(1), "testPlayer", new RandomBehavior());
     }
 
     @Test
-    public void testCalculateSoldiersToPlace() {
+    void testCalculateSoldiersToPlace() {
         addSoldiers(testPlayer.getOwnedCountries(), 1);
         assertEquals(3, testPlayer.calculateSoldiersToPlace());
 
@@ -44,7 +44,7 @@ class PlayerTest {
     }
 
     @Test
-    public void testCalculateSoldiersToPlaceMin() {
+    void testCalculateSoldiersToPlaceMin() {
         //owned countries = 0
         assertEquals(3, testPlayer.calculateSoldiersToPlace());
     }

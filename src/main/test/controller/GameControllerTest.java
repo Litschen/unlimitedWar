@@ -48,7 +48,7 @@ class GameControllerTest {
     }
 
     @Test
-    void executeTurnIsCalledTest(){
+    void testExecuteTurnIsCalled(){
         when(mockRequest.getPathInfo()).thenReturn(NOT_EMPTY);
         when(mockRequest.getParameter(GameController.PARAM_NEXT_TURN)).thenReturn(NOT_EMPTY);
         when(mockTurn.currentPlayerIsUser()).thenReturn(false);
@@ -66,7 +66,7 @@ class GameControllerTest {
     }
 
     @Test
-    void moveToNextPhaseIsCalledTest(){
+    void testMoveToNextPhaseIsCalled(){
         when(mockRequest.getPathInfo()).thenReturn(NOT_EMPTY);
         when(mockRequest.getParameter(GameController.PARAM_END)).thenReturn(NOT_EMPTY);
         when(mockTurn.currentPlayerIsUser()).thenReturn(false);
@@ -84,7 +84,7 @@ class GameControllerTest {
     }
 
     @Test
-    void executeUserTurnIsCalledTest(){
+    void testExecuteUserTurnIsCalled(){
         when(mockTurn.currentPlayerIsUser()).thenReturn(true);
         when(mockRequest.getParameter(GameController.PARAM_COUNTRY)).thenReturn("1");
         when(mockRequest.getPathInfo()).thenReturn(NOT_EMPTY);
@@ -102,7 +102,7 @@ class GameControllerTest {
     }
 
     @Test
-    void attackDiceAreSetTest(){
+    void testAttackDiceAreSet(){
         Map<String, String[]> mockMap = mock(Map.class);
         Player mockPlayer = mock(Player.class);
 
@@ -122,7 +122,7 @@ class GameControllerTest {
     }
 
     @Test
-    void cancelAttackIsCalledTest(){
+    void testCancelAttackIsCalled(){
         when(mockTurn.currentPlayerIsUser()).thenReturn(true);
         when(mockRequest.getPathInfo()).thenReturn(GameController.PATH_ATTACK);
         when(mockRequest.getParameter(GameController.PARAM_CANCEL)).thenReturn(NOT_EMPTY);

@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-
 class TurnTest {
 
     private Turn turn;
@@ -36,8 +35,6 @@ class TurnTest {
         when(mockPlayer1.getOwnedCountries()).thenReturn(TestHelperBehavior.getCountryList(4, mockPlayer1));
 
         turn = new Turn(mockPlayers, TestHelperBehavior.getCountryList(5, mockPlayer), 0);
-
-
     }
 
     @Test
@@ -52,19 +49,16 @@ class TurnTest {
         assertNull(turn.getSecondSelectedCountry());
         assertSame(Flag.NONE, turn.getFlag());
 
-
         turn.setAttackAndDefendCountry(testCountry);
         assertSame(testCountry, turn.getFirstSelectedCountry());
         assertNull(turn.getSecondSelectedCountry());
         assertSame(turn.getFlag(), Flag.NONE);
-
 
         turn.setAttackAndDefendCountry(testCountryDefend);
         assertSame(testCountry, turn.getFirstSelectedCountry());
         assertSame(testCountryDefend, turn.getSecondSelectedCountry());
         assertSame(Flag.ATTACK, turn.getFlag());
     }
-
 
     @Test
     void testMoveToNextPhase() {
@@ -87,7 +81,6 @@ class TurnTest {
         assertEquals(amountPlayer, turn.getActivePlayers().size());
     }
 
-
     @Test
     void testMoveToNextPhaseRemovePlayer() {
         List<Player> players = turn.getActivePlayers();
@@ -103,8 +96,6 @@ class TurnTest {
 
         assertEquals(amountPlayer - 1, turn.getActivePlayers().size());
     }
-
-
 
     @Test
     void testResetSelectedCountries() {

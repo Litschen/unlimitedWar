@@ -16,13 +16,12 @@ class DiceTest {
     private final int AMOUNT_THROWS = 100;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         diceResults = new ArrayList<>();
     }
 
-
     @Test
-    public void testRoll() {
+    void testRoll() {
 
         diceResults = Dice.roll(1);
         assertEquals(1, diceResults.size());
@@ -39,20 +38,20 @@ class DiceTest {
     }
 
     @Test
-    public void testRollZeroDices() {
+    void testRollZeroDices() {
         diceResults = Dice.roll(0);
         assertEquals(0, diceResults.size());
     }
 
     @Test
-    public void testRollNegativeAmountOfDices() {
+    void testRollNegativeAmountOfDices() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> Dice.roll(-5));
         assertEquals("amount of dice has to be > 0", exception.getMessage());
     }
 
     // ---------- roll(int min, int max) ----------
     @Test
-    public void testRollRange() {
+    void testRollRange() {
         int min = 5;
         int max = 20;
 
@@ -66,7 +65,7 @@ class DiceTest {
     }
 
     @Test
-    public void testRollInverseRange() {
+    void testRollInverseRange() {
         int min = 1;
         int max = 10;
 
@@ -78,12 +77,12 @@ class DiceTest {
     }
 
     @Test
-    public void testRollRangeZero() {
+    void testRollRangeZero() {
         assertEquals(0, Dice.roll(0, 0));
     }
 
     @Test
-    public void testRollNegativeRange() {
+    void testRollNegativeRange() {
         int result;
         result = Dice.roll(-1, -15);
         assertTrue(result <= -1 && result >= -15);

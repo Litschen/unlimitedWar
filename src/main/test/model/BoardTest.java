@@ -45,7 +45,7 @@ class BoardTest {
     }
 
     @Test
-    void testEvents(){
+    void testGetEvents() {
         List<Event> events = TestHelperEvents.mockInvadeEvents(false);
         testBoard.getCurrentTurn().addEvents(events);
 

@@ -19,7 +19,7 @@ class UserBehaviorTest {
     private ArrayList<Country> ownedCountries;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         testPlayer = new Player(BLUE, "Jackob", new UserBehavior());
         ownedCountries = new ArrayList<>();
         selectedCountries = new ArrayList<>();

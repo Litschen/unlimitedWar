@@ -24,14 +24,14 @@ class AggressiveBehaviorTest {
     private ArrayList<Country> ownedCountries;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         testPlayer = new Player(BLUE, "Sony", new AggressiveBehavior());
         ownedCountries = new ArrayList<>();
         selectedCountries = new ArrayList<>();
     }
 
     @Test
-    void placeSoldiersSetOnBoth() {
+    void testPlaceSoldiersSetOnBoth() {
         ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 4), testPlayer);
 
         testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 2);
@@ -44,7 +44,7 @@ class AggressiveBehaviorTest {
     }
 
     @Test
-    void placeSoldiersSetOnOne() {
+    void testPlaceSoldiersSetOnOne() {
         ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 0), testPlayer);
 
         testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 5);
@@ -87,11 +87,6 @@ class AggressiveBehaviorTest {
         for (Country countryList : ownedCountries) {
             assertEquals(5, countryList.getSoldiersCount());
         }
-    }
-
-    @Test
-    void testCanAttackFrom() {
-
     }
 
 }

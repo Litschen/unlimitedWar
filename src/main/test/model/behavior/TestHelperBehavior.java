@@ -15,7 +15,6 @@ import static org.mockito.Mockito.when;
 
 public class TestHelperBehavior {
 
-
     public static Country getMockCountry(Player player, int soldiers) {
         Country mockCountry = getMockCountry(player);
         when(mockCountry.getSoldiersCount()).thenReturn(soldiers);

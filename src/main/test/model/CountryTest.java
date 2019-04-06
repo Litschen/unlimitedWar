@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CountryTest {
+class CountryTest {
 
     private Country invadingCountry;
     private Country defendingCountry;
@@ -44,7 +44,6 @@ public class CountryTest {
                 assertFalse(neighboring.getNeighboringCountries().contains(null));
             }
         }
-
     }
 
     @Test
@@ -63,7 +62,6 @@ public class CountryTest {
 
     @Test
     void testCalculateCasualtiesInvaderVictory() {
-
         Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(6, 6, 6), ListCalculateRoll(1, 1));
         assertEquals(0, casualties.getCasualtiesAttacker());
         assertEquals(2, casualties.getCasualtiesDefender());
@@ -71,7 +69,6 @@ public class CountryTest {
 
     @Test
     void testCalculateCasualtiesDefenderVictory() {
-
         Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(1, 1, 1), ListCalculateRoll(6, 6));
         assertEquals(2, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
@@ -91,9 +88,8 @@ public class CountryTest {
         assertEquals(0, casualties.getCasualtiesDefender());
     }
 
-
     @Test
-    public void testMaxAttackerDiceCount() {
+    void testMaxAttackerDiceCount() {
         try {
             invadingCountry.setSoldiersCount(2);
             assertEquals(1, invadingCountry.maxAmountDiceThrowsAttacker());
@@ -110,12 +106,10 @@ public class CountryTest {
         } catch (Exception e) {
             fail();
         }
-
-
     }
 
     @Test
-    public void testMaxAttackerDiceCountException() {
+    void testMaxAttackerDiceCountException() {
         int[] testNumber = new int[]{1, 0, -30};
         for (int test : testNumber) {
             invadingCountry.setSoldiersCount(test);
@@ -125,7 +119,7 @@ public class CountryTest {
     }
 
     @Test
-    public void testMaxDefenderDiceCount() {
+    void testMaxDefenderDiceCount() {
         defendingCountry.setSoldiersCount(10);
         assertEquals(1, defendingCountry.amountDiceThrowsDefender(1));
         assertEquals(1, defendingCountry.amountDiceThrowsDefender(1));
@@ -145,7 +139,7 @@ public class CountryTest {
     }
 
     @Test
-    void shiftSoldiersValid() {
+    void testShiftSoldiersValid() {
         defendingCountry.setOwner(invadingCountry.getOwner());
         assertTrue(invadingCountry.shiftSoldiers(soldiersToShift, defendingCountry));
         assertEquals(Country.MIN_SOLDIERS_TO_STAY, invadingCountry.getSoldiersCount());
@@ -153,13 +147,13 @@ public class CountryTest {
     }
 
     @Test
-    void shiftSoldiersToManySoldiers() {
+    void testShiftSoldiersToManySoldiers() {
         defendingCountry.setOwner(invadingCountry.getOwner());
         assertFalse(invadingCountry.shiftSoldiers(invadingCountry.getSoldiersCount(), defendingCountry));
     }
 
     @Test
-    void shiftSoldiersNotSameOwner() {
+    void testShiftSoldiersNotSameOwner() {
         assertFalse(invadingCountry.shiftSoldiers(soldiersToShift, defendingCountry));
         assertFalse(defendingCountry.shiftSoldiers(soldiersToShift, invadingCountry));
         assertEquals(Board.START_SOLDIER_PER_PLAYER, defendingCountry.getSoldiersCount());
@@ -167,12 +161,12 @@ public class CountryTest {
     }
 
     @Test
-    void shiftSoldiersNull() {
+    void testShiftSoldiersNull() {
         assertThrows(IllegalArgumentException.class, () -> defendingCountry.shiftSoldiers(soldiersToShift, null));
     }
 
     @Test
-    void shiftSoldiersNotNeighboring() {
+    void testShiftSoldiersNotNeighboring() {
         removeNeighbors();
         assertFalse(defendingCountry.shiftSoldiers(soldiersToShift, invadingCountry));
         assertEquals(Board.START_SOLDIER_PER_PLAYER, invadingCountry.getSoldiersCount());
@@ -180,7 +174,7 @@ public class CountryTest {
     }
 
     @Test
-    void invade() {
+    void testInvade() {
         defendingCountry.setSoldiersCount(0);
         List<Event> events = invadingCountry.invade(defendingCountry, Country.ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER, 0);
         List<Event> eventsMock = TestHelperEvents.mockInvadeEvents(true);
@@ -196,44 +190,43 @@ public class CountryTest {
     }
 
     @Test
-    void removeSoldiersIllegalArguments() {
+    void testRemoveSoldiersIllegalArguments() {
         assertThrows(IllegalArgumentException.class, () -> invadingCountry.removeSoldiers(-10));
         assertThrows(IllegalArgumentException.class, () -> invadingCountry.removeSoldiers(invadingCountry.getSoldiersCount() + 4));
     }
 
     @Test
-    void removeSoldiersValid() {
+    void testRemoveSoldiersValid() {
         invadingCountry.removeSoldiers(4);
         assertEquals(Board.START_SOLDIER_PER_PLAYER - 4, invadingCountry.getSoldiersCount());
     }
 
-
     @Test
-    void canInvadeValid() {
+    void testCanInvadeValid() {
         assertTrue(invadingCountry.canInvade(defendingCountry));
     }
 
     @Test
-    void canInvadeSameOwner() {
+    void testCanInvadeSameOwner() {
         defendingCountry.setOwner(invadingCountry.getOwner());
         assertFalse(invadingCountry.canInvade(defendingCountry));
     }
 
     @Test
-    void canInvadeNotNeighboring() {
+    void testCanInvadeNotNeighboring() {
         defendingCountry.setOwner(invadingCountry.getOwner());
         removeNeighbors();
         assertFalse(invadingCountry.canInvade(defendingCountry));
     }
 
     @Test
-    void canInvadeToFewSoldiers() {
+    void testCanInvadeToFewSoldiers() {
         invadingCountry.setSoldiersCount(Country.MIN_SOLDIERS_TO_STAY);
         assertFalse(invadingCountry.canInvade(defendingCountry));
     }
 
     @Test
-    void canInvadeNull() {
+    void testCanInvadeNull() {
         assertThrows(IllegalArgumentException.class, () -> invadingCountry.canInvade(null));
     }
 
@@ -243,7 +236,6 @@ public class CountryTest {
     }
 
     // private method for test
-
     private List<Integer> ListCalculateRoll(int input01, int input02, int input03) {
         List<Integer> rollInputsDefender01;
         return new ArrayList<>(Arrays.asList(input01, input02, input03));
@@ -251,17 +243,13 @@ public class CountryTest {
     }
 
     private List<Integer> ListCalculateRoll(int input01, int input02) {
-
         List<Integer> rollInputsDefender02;
         return new ArrayList<>(Arrays.asList(input01, input02));
-
     }
 
     private List<Integer> ListCalculateRoll(int input01) {
-
         List<Integer> rollInputsDefender02;
         return new ArrayList<>(Arrays.asList(input01));
-
     }
     // end
 }

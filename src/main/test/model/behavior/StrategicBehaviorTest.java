@@ -27,7 +27,7 @@ class StrategicBehaviorTest {
     private ArrayList<Country> ownedCountries;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         testPlayer = new Player(BLUE, "Mike", new StrategicBehavior());
         ownedCountries = new ArrayList<>();
         selectedCountries = new ArrayList<>();

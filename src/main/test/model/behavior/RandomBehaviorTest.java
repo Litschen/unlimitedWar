@@ -23,7 +23,7 @@ class RandomBehaviorTest {
     private Player mockPlayer;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         testPlayer = new Player(BLUE, "Lu", new RandomBehavior());
         ownedCountries = new ArrayList<>();
         allCountries = new ArrayList<>();
@@ -33,7 +33,7 @@ class RandomBehaviorTest {
     }
 
     @Test
-    void placeSoldiers() {
+    void testPlaceSoldiers() {
         ownedCountries = TestHelperBehavior.getCountryList(10, testPlayer);
         int sum = 0;
         int amountPerCountry = ownedCountries.get(0).getSoldiersCount();
@@ -64,7 +64,7 @@ class RandomBehaviorTest {
     }
 
     @Test
-    void moveSoldiers() {
+    void testMoveSoldiers() {
         when(invadingCountry.isBordering(defendingCountry)).thenReturn(true);
         when(invadingCountry.getSoldiersCount()).thenReturn(10);
 
