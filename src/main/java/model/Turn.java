@@ -262,16 +262,16 @@ public class Turn {
     public void eliminatePlayersAndCheckUserResult() {
         boolean hasRemovedPlayers = activePlayers.removeIf(o -> ((Player) o).getOwnedCountries().isEmpty());
         if (hasRemovedPlayers) {
-            if (activePlayers.size() == 1) {
-                if(currentPlayerIsUser()){
-                    setFlag(Flag.GAME_WIN);
-                }
-                else{
+            if (activePlayers.size() == 1 && currentPlayerIsUser()) {
+                setFlag(Flag.GAME_WIN);
+                // TODO: @Tina MS3 /F0410/ Spielresultat speichern
+            } else {
+                boolean playerIn = activePlayers.stream().filter(o -> ((Player) o).getBehavior() instanceof UserBehavior).findFirst().isPresent();
+                if (!playerIn) {
                     setFlag(Flag.GAME_LOSE);
+                    // TODO: @Tina MS3 /F0410/ Spielresultat speichern
                 }
-                // TODO: MS3 /F0410/ Spielresultat speichern
-            }
-
             }
         }
+    }
 }
