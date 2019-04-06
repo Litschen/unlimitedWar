@@ -17,12 +17,17 @@ public class StrategicBehavior implements Behavior {
 
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
-        for (List<AttackScore> scores = rateCountries(ownedCountries);
-             !scores.isEmpty() && soldiersToPlace > 0;
+        for (List<AttackScore> scores = rateCountries(ownedCountries);  // set up
+             !scores.isEmpty() && soldiersToPlace > 0;  // condition
              scores = rateCountries(ownedCountries)) {
 
             Country countryToPlaceSoldiers;
             int setSoldiers = soldiersToPlace % MAX_SCORE_TO_SET_DEFENSIVE + 1; // +1 to set at least 1 soldier
+
+            if (setSoldiers > soldiersToPlace){
+                setSoldiers = soldiersToPlace;
+            }
+
             AttackScore attackScore = scores.get(scores.size() - 1);  // get last element
 
             if (attackScore.getScore() <= MAX_SCORE_TO_SET_DEFENSIVE) {

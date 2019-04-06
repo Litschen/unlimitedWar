@@ -7,9 +7,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.*;
@@ -32,24 +34,37 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void placeSoldiers() {
-        selectedCountries = TestHelperBehavior.getCountryList(1, testPlayer);
-        ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
-        ownedCountries.add(selectedCountries.get(0));
+    void placeSoldiersSetOnBoth() {
+        ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 4), testPlayer);
 
-        testPlayer.setSoldiersToPlace(2);
+        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 6);
+        assertTrue(ownedCountries.get(0).getSoldiersCount() > 5);
+        assertTrue(ownedCountries.get(1).getSoldiersCount() > 5);
+    }
 
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(6, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(1, testPlayer.getSoldiersToPlace());
+    @Test
+    void placeSoldiersSetOnOne() {
+        ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(10, 0), testPlayer);
 
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(7, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(0, testPlayer.getSoldiersToPlace());
+        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 3);
+        assertEquals(8, ownedCountries.get(0).getSoldiersCount());
+        assertEquals(5, ownedCountries.get(1).getSoldiersCount());
+    }
 
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
-        assertEquals(7, selectedCountries.get(0).getSoldiersCount());
-        assertEquals(0, testPlayer.getSoldiersToPlace());
+    /**
+     * ownedCountries[0]: county surrounded by 5 opponent countries
+     * ownedCountries[1]: county surrounded by 10 own countries
+     * */
+    @Test
+    void placeSoldiersSetOnCountryInDanger() {
+        ownedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
+        Player opponent = TestHelperBehavior.getMockPlayer();
+        ownedCountries.get(0).addNeighboringCountries(TestHelperBehavior.getCountryList(5, opponent));
+        ownedCountries.get(1).addNeighboringCountries(TestHelperBehavior.getCountryList(10, testPlayer));
+
+        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 10);
+        assertEquals(15, ownedCountries.get(0).getSoldiersCount());
+        assertEquals(5, ownedCountries.get(1).getSoldiersCount());
     }
 
     @Test
