@@ -30,19 +30,9 @@ class AggressiveBehaviorTest {
         selectedCountries = new ArrayList<>();
     }
 
-    private void setUpToTestPlaceSoldiers(int numOfOwnedCountries, List<Integer> neighborsCount) {
-        ownedCountries = TestHelperBehavior.getCountryList(numOfOwnedCountries, testPlayer);
-
-        Player opponent = TestHelperBehavior.getMockPlayer();
-        for (int i = 0; i < neighborsCount.size(); i++) {
-            List<Country> opponentCountries = TestHelperBehavior.getMockCountryList(neighborsCount.get(i), opponent);
-            ownedCountries.get(i).addNeighboringCountries(opponentCountries);
-        }
-    }
-
     @Test
     void placeSoldiersSetOnBoth() {
-        this.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 4));
+        ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 4), testPlayer);
 
         testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 2);
         assertEquals(6, ownedCountries.get(0).getSoldiersCount());
@@ -55,7 +45,7 @@ class AggressiveBehaviorTest {
 
     @Test
     void placeSoldiersSetOnOne() {
-        this.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 0));
+        ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 0), testPlayer);
 
         testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 5);
         assertEquals(10, ownedCountries.get(0).getSoldiersCount());
@@ -97,15 +87,12 @@ class AggressiveBehaviorTest {
         for (Country countryList : ownedCountries) {
             assertEquals(5, countryList.getSoldiersCount());
         }
-
-
     }
 
     @Test
     void testCanAttackFrom() {
 
     }
-
 
 }
 

@@ -62,4 +62,16 @@ public class TestHelperBehavior {
         when(mockPlayer.getSoldiersToPlace()).thenReturn(soldiersToPlace);
         when(mockPlayer.getPlayerColor()).thenReturn(color);
     }
+
+    public static ArrayList<Country> setUpToTestPlaceSoldiers(int numOfOwnedCountries, List<Integer> neighborsCount, Player player) {
+        ArrayList<Country> ownedCountries = TestHelperBehavior.getCountryList(numOfOwnedCountries, player);
+
+        Player opponent = TestHelperBehavior.getMockPlayer();
+        for (int i = 0; i < neighborsCount.size(); i++) {
+            List<Country> opponentCountries = TestHelperBehavior.getMockCountryList(neighborsCount.get(i), opponent);
+            ownedCountries.get(i).addNeighboringCountries(opponentCountries);
+        }
+
+        return ownedCountries;
+    }
 }
