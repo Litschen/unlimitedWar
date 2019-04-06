@@ -1,7 +1,11 @@
 package model;
 
+import model.behavior.TestHelperEvents;
+import model.interfaces.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -40,6 +44,15 @@ class BoardTest {
         }
     }
 
+    @Test
+    void testEvents(){
+        List<Event> events = TestHelperEvents.mockInvadeEvents(false);
+        testBoard.getCurrentTurn().addEvents(events);
+
+        List<Event> returnedEvents = testBoard.getEvents();
+        assertEquals(events, returnedEvents);
+        assertTrue(testBoard.getCurrentTurn().getOccurredEvents().isEmpty());
+    }
 
 }
 

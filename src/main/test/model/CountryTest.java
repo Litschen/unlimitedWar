@@ -1,11 +1,14 @@
 package model;
 
+import model.behavior.TestHelperEvents;
 import model.enums.PlayerColor;
 import model.helpers.Casualties;
+import model.interfaces.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import model.behavior.RandomBehavior;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -179,9 +182,17 @@ public class CountryTest {
     @Test
     void invade() {
         defendingCountry.setSoldiersCount(0);
-        invadingCountry.invade(defendingCountry, Country.ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER, 0);
+        List<Event> events = invadingCountry.invade(defendingCountry, Country.ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER, 0);
+        List<Event> eventsMock = TestHelperEvents.mockInvadeEvents(false);
+
         assertSame(defendingCountry.getOwner(), invadingCountry.getOwner());
         assertEquals(Country.ABSOLUTE_MAX_AMOUNT_THROWS_ATTACKER, defendingCountry.getSoldiersCount());
+        assertEquals(4, events.size());
+
+        for (Event event : events) {
+            eventsMock.removeIf(mockEvent -> event.getEventType().equals(mockEvent.getEventType()));
+        }
+        assertTrue(eventsMock.isEmpty());
     }
 
     @Test
