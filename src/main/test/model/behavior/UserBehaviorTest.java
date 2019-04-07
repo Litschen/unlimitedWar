@@ -33,19 +33,19 @@ class UserBehaviorTest {
 
         testPlayer.setSoldiersToPlace(3);
 
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
+        assertEquals(Phase.SET, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
         assertEquals(6, selectedCountries.get(0).getSoldiersCount());
         assertEquals(2, testPlayer.getSoldiersToPlace());
 
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
+        assertEquals(Phase.SET, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
         assertEquals(7, selectedCountries.get(0).getSoldiersCount());
         assertEquals(1, testPlayer.getSoldiersToPlace());
 
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
+        assertEquals(Phase.ATTACK, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
         assertEquals(8, selectedCountries.get(0).getSoldiersCount());
         assertEquals(0, testPlayer.getSoldiersToPlace());
 
-        assertEquals(Phase.ATTACKPHASE, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
+        assertEquals(Phase.ATTACK, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
         assertEquals(8, selectedCountries.get(0).getSoldiersCount());
         assertEquals(0, testPlayer.getSoldiersToPlace());
     }
@@ -84,7 +84,7 @@ class UserBehaviorTest {
         ownedCountries.add(selectedCountries.get(0));
         ownedCountries.add(selectedCountries.get(1));
 
-        assertEquals(Phase.MOVINGPHASE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
+        assertEquals(Phase.MOVE, testPlayer.getBehavior().moveSoldiers(selectedCountries, ownedCountries));
     }
 
 }

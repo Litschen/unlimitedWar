@@ -61,7 +61,7 @@ public class Board {
     }
 
     public Turn getCurrentTurn() {
-        if (currentTurn.getFlag() == Flag.TURNEND) {
+        if (currentTurn.getFlag() == Flag.TURN_END) {
             currentTurn = new Turn(players, countries, turnCounter);
             turnCounter++;
         }
@@ -137,8 +137,8 @@ public class Board {
     /**
      * Sets pre-defined neighbor
      *
-     * @param countryIndex         index of country to set neighbors from countries Arraylist
-     * @param neighborCountryIndex array of indexes from countries Arraylist of all neighbors of the country above
+     * @param countryIndex         index of country to set neighbors from countries ArrayList
+     * @param neighborCountryIndex array of indexes from countries ArrayList of all neighbors of the country above
      */
     private void setFixedNeighbors(int countryIndex, int[] neighborCountryIndex) {
         for (int i : neighborCountryIndex) {

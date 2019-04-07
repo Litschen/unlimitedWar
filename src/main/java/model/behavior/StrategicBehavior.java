@@ -4,7 +4,7 @@ import model.Country;
 import model.enums.Phase;
 import model.helpers.AttackCountryResult;
 import model.helpers.AttackScore;
-import model.helpers.AttackScoreComperator;
+import model.helpers.AttackScoreComparator;
 import model.interfaces.Behavior;
 
 import java.util.*;
@@ -39,12 +39,12 @@ public class StrategicBehavior implements Behavior {
             soldiersToPlace -= setSoldiers;
         }
 
-        return Phase.ATTACKPHASE;
+        return Phase.ATTACK;
     }
 
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
-        AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
+        AttackCountryResult result = new AttackCountryResult(Phase.MOVE);
         List<AttackScore> scores = rateCountries(ownedCountries);
         scores.removeIf(attackScore -> attackScore.getAttacker().getSoldiersCount() == 1);
         int i = 0;
@@ -95,15 +95,15 @@ public class StrategicBehavior implements Behavior {
                 int srcScore = neighborScores.get(0).getScore();
 
                 if (destScore < srcScore) {
-                    int solderisToMove = Math.abs(srcScore - destScore) / 2;
+                    int soldiersToMove = Math.abs(srcScore - destScore) / 2;
                     int maxMoveSoldierCount = src.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
-                    int soldiersToShift = solderisToMove < maxMoveSoldierCount ? solderisToMove : maxMoveSoldierCount;
+                    int soldiersToShift = soldiersToMove < maxMoveSoldierCount ? soldiersToMove : maxMoveSoldierCount;
                     src.shiftSoldiers(soldiersToShift, dest);
                 }
             }
         }
 
-        return Phase.SETTINGPHASE;
+        return Phase.SET;
     }
 
     private Map<Country, List<Country>> countryWithOwnNeighbor(List<Country> ownedCountries) {
@@ -136,7 +136,7 @@ public class StrategicBehavior implements Behavior {
                 }
             }
         }
-        scores.sort(new AttackScoreComperator());
+        scores.sort(new AttackScoreComparator());
         return scores;
     }
 }

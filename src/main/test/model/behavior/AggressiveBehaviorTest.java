@@ -80,7 +80,7 @@ class AggressiveBehaviorTest {
     void testMoveSoldiers() {
         ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
 
-        assertEquals(Phase.SETTINGPHASE, testPlayer.getBehavior().moveSoldiers(null, ownedCountries));
+        assertEquals(Phase.SET, testPlayer.getBehavior().moveSoldiers(null, ownedCountries));
         for (Country countryList : ownedCountries) {
             assertEquals(5, countryList.getSoldiersCount());
         }

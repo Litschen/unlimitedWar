@@ -45,6 +45,6 @@ public class ConquerEvent implements Event {
 
     @Override
     public EventType getEventType() {
-        return EventType.ConquerEvent;
+        return EventType.CONQUER;
     }
 }

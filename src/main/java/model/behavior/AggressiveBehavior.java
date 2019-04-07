@@ -29,7 +29,7 @@ public class AggressiveBehavior implements Behavior {
                 }
             }
         }
-        return Phase.ATTACKPHASE;
+        return Phase.ATTACK;
     }
 
     /**
@@ -75,7 +75,7 @@ public class AggressiveBehavior implements Behavior {
      */
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
-        AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
+        AttackCountryResult result = new AttackCountryResult(Phase.MOVE);
         List<Country> canInvadeFromCountries = canAttackFrom(ownedCountries);
         while (canInvadeFromCountries.size() > 0) {
             for (Country invadingCountry : canInvadeFromCountries) {
@@ -106,7 +106,7 @@ public class AggressiveBehavior implements Behavior {
                 moveCountry.getNeighbor().shiftSoldiers(moveCountry.getNeighbor().getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY, moveCountry.getOwn());
             }
         }
-        return Phase.SETTINGPHASE;
+        return Phase.SET;
 
     }
 

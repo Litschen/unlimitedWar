@@ -62,20 +62,20 @@ class TurnTest {
 
     @Test
     void testMoveToNextPhase() {
-        turn.setCurrentPhase(Phase.SETTINGPHASE);
+        turn.setCurrentPhase(Phase.SET);
         Player p = turn.getCurrentPlayer();
         int amountPlayer = turn.getActivePlayers().size();
 
         turn.moveToNextPhase();
-        assertEquals(Phase.ATTACKPHASE, turn.getCurrentPhase());
+        assertEquals(Phase.ATTACK, turn.getCurrentPhase());
         assertEquals(p, turn.getCurrentPlayer());
 
         turn.moveToNextPhase();
-        assertEquals(Phase.MOVINGPHASE, turn.getCurrentPhase());
+        assertEquals(Phase.MOVE, turn.getCurrentPhase());
         assertEquals(p, turn.getCurrentPlayer());
 
         turn.moveToNextPhase();
-        assertEquals(Phase.SETTINGPHASE, turn.getCurrentPhase());
+        assertEquals(Phase.SET, turn.getCurrentPhase());
         assertNotEquals(p, turn.getCurrentPlayer());
 
         assertEquals(amountPlayer, turn.getActivePlayers().size());
@@ -85,7 +85,7 @@ class TurnTest {
     void testMoveToNextPhaseRemovePlayer() {
         List<Player> players = turn.getActivePlayers();
         int amountPlayer = players.size();
-        turn.setCurrentPhase(Phase.MOVINGPHASE);
+        turn.setCurrentPhase(Phase.MOVE);
 
         Player curPlayer = turn.getActivePlayers().get(1);
         Player losePlayer = turn.getActivePlayers().get(0);

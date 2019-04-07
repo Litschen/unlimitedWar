@@ -43,7 +43,7 @@ public class GameController extends HttpServlet {
     }
 
     /**
-     * Decideds whether its the AI or the users turn and calls the appropriate methods accordingly
+     * Decides whether its the AI or the users turn and calls the appropriate methods accordingly
      *
      * @param request  from game.jsp
      * @param response servlet response
