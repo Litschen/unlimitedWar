@@ -51,6 +51,6 @@ public class CasualtiesEvent implements Event {
 
     @Override
     public EventType getEventType() {
-        return EventType.CasualtiesEvent;
+        return EventType.CASUALTIES;
     }
 }

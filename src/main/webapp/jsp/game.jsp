@@ -23,13 +23,13 @@
         <p>
             <span class="current-phase">Phase:
                 <span class="emphasise">
-                    <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SETTINGPHASE}">
+                    <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SET}">
                         Set
                     </c:if>
-                    <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACKPHASE}">
+                    <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACK}">
                         Attack
                     </c:if>
-                    <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVINGPHASE}">
+                    <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVE}">
                         Move
                     </c:if>
                 </span>
@@ -54,16 +54,16 @@
             <% }%>
         </div>
         <% session.setAttribute("board", board); %>
-        <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SETTINGPHASE}">
+        <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SET}">
             <span>Soldiers to place: <span class="emphasise"><c:out value="${board.getCurrentTurn().getCurrentPlayer().soldiersToPlace}"/></span></span>
         </c:if>
-        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACKPHASE}">
+        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACK}">
             <button type="submit" name="end" class="btn btn-primary">End Attack Phase</button>
         </c:if>
-        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVINGPHASE && board.getCurrentTurn().getFlag() == Flag.MOVE}">
+        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVE && board.getCurrentTurn().getFlag() == Flag.MOVE}">
             <button type="submit" name="move" class="btn btn-primary">Move a Soldier</button>
         </c:if>
-        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVINGPHASE}">
+        <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVE}">
             <button type="submit" name="end" class="btn btn-primary">Don't Move Soldiers</button>
         </c:if>
     </form>
@@ -76,7 +76,7 @@
             </c:forEach>
         </ul>
     </aside>
-    <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SETTINGPHASE && !board.getCurrentTurn().currentPlayerIsUser()}">
+    <c:if test="${board.getCurrentTurn().getCurrentPhase() ==  Phase.SET && !board.getCurrentTurn().currentPlayerIsUser()}">
         <form method="post" action="<%=request.getContextPath()%>/Game/nextTurn" class="next-turn-btn">
             <%--Saves the board in the session --%>
             <% session.setAttribute("board", board); %>

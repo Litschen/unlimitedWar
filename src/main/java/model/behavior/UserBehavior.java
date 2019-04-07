@@ -16,11 +16,11 @@ public class UserBehavior implements Behavior {
      * @param destinationCountries on index 0 is the select country to place 1 soldier
      * @param ownedCountries       countries from current player
      * @param soldiersToPlace      unused
-     * @return phase set as long as soldierstoplace of the owner is greater than 0 otherwise attack phase
+     * @return phase set as long as soldiersToPlace of the owner is greater than 0 otherwise attack phase
      */
     @Override
     public Phase placeSoldiers(List<Country> destinationCountries, List<Country> ownedCountries, int soldiersToPlace) {
-        Phase phase = Phase.SETTINGPHASE;
+        Phase phase = Phase.SET;
         Country destination = destinationCountries.get(0);
         Player owner = destination.getOwner();
         if (owner.getSoldiersToPlace() > 0) {
@@ -28,11 +28,11 @@ public class UserBehavior implements Behavior {
                 destination.setSoldiersCount(destination.getSoldiersCount() + 1);
                 owner.setSoldiersToPlace(owner.getSoldiersToPlace() - 1);
                 if (owner.getSoldiersToPlace() == 0) {
-                    phase = Phase.ATTACKPHASE;
+                    phase = Phase.ATTACK;
                 }
             }
         } else {
-            phase = Phase.ATTACKPHASE;
+            phase = Phase.ATTACK;
         }
         return phase;
     }
@@ -42,11 +42,11 @@ public class UserBehavior implements Behavior {
      *
      * @param selectedCountries [0] attacks [1]
      * @param ownedCountries    of current player
-     * @return attackphase, next phase is set from controller.
+     * @return attackPhase, next phase is set from controller.
      */
     @Override
     public AttackCountryResult attackCountry(List<Country> selectedCountries, List<Country> ownedCountries) {
-        AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
+        AttackCountryResult result = new AttackCountryResult(Phase.MOVE);
         Country attackCountry = selectedCountries.get(0);
         Country defendCountry = selectedCountries.get(1);
 
@@ -59,7 +59,7 @@ public class UserBehavior implements Behavior {
     }
 
     /**
-     * Moves 1 soliders from selectedCountries[0] to selectedCountries[1] if possible
+     * Moves 1 soldiers from selectedCountries[0] to selectedCountries[1] if possible
      *
      * @param selectedCountries are countries the player has selected
      * @param ownedCountries    all countries from current player
@@ -67,13 +67,13 @@ public class UserBehavior implements Behavior {
      */
     @Override
     public Phase moveSoldiers(List<Country> selectedCountries, List<Country> ownedCountries) {
-        Phase newPhase = Phase.SETTINGPHASE;
+        Phase newPhase = Phase.SET;
         Country sourceCountry = selectedCountries.get(0);
         Country destinationCountry = selectedCountries.get(1);
         sourceCountry.shiftSoldiers(1, destinationCountry);
 
         if (sourceCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
-            newPhase = Phase.MOVINGPHASE;
+            newPhase = Phase.MOVE;
         }
         return newPhase;
     }

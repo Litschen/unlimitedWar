@@ -25,7 +25,7 @@ public class Turn {
     private Country firstSelectedCountry;
     private Country secondSelectedCountry;
     private Flag flag;
-    private Phase currentPhase = Phase.SETTINGPHASE;
+    private Phase currentPhase = Phase.SET;
     private int turnNumber;
     //endregion
 
@@ -131,15 +131,15 @@ public class Turn {
      */
     public void executeTurn() {
         if (!currentPlayerIsUser()) {
-            if (currentPhase == Phase.SETTINGPHASE) {
+            if (currentPhase == Phase.SET) {
                 currentPhase = currentPlayer.getBehavior().placeSoldiers(countries,
                         currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace());
             }
-            if (currentPhase == Phase.ATTACKPHASE) {
+            if (currentPhase == Phase.ATTACK) {
                 currentPhase = currentPlayer.getBehavior().
                         attackCountry(countries, currentPlayer.getOwnedCountries()).getNewPhase();
             }
-            if (currentPhase == Phase.MOVINGPHASE) {
+            if (currentPhase == Phase.MOVE) {
                 currentPhase = currentPlayer.getBehavior().moveSoldiers(countries, currentPlayer.getOwnedCountries());
                 cyclePlayer();
             }
@@ -150,14 +150,14 @@ public class Turn {
      * @param selectedCountry country selected in gui
      */
     public void executeUserTurn(Country selectedCountry) {
-        if (currentPhase == Phase.SETTINGPHASE) {
+        if (currentPhase == Phase.SET) {
             List<Country> destination = new ArrayList<>();
             if (selectedCountry.getOwner().equals(currentPlayer)) {
                 destination.add(selectedCountry);
                 setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
             }
             resetSelectedCountries();
-        } else if (currentPhase == Phase.ATTACKPHASE) {
+        } else if (currentPhase == Phase.ATTACK) {
             if (firstSelectedCountry != null && secondSelectedCountry != null) {
                 List<Country> countryList = new ArrayList<>();
                 countryList.add(firstSelectedCountry);
@@ -170,7 +170,7 @@ public class Turn {
             } else {
                 setAttackAndDefendCountry(selectedCountry);
             }
-        } else if (currentPhase == Phase.MOVINGPHASE) {
+        } else if (currentPhase == Phase.MOVE) {
             if (firstSelectedCountry == null || secondSelectedCountry == null) {
                 setMovingCountry(selectedCountry);
             } else {
@@ -178,7 +178,7 @@ public class Turn {
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
                 Phase finishMove = currentPlayer.getBehavior().moveSoldiers(countryList, currentPlayer.getOwnedCountries());
-                if (finishMove != Phase.MOVINGPHASE) {
+                if (finishMove != Phase.MOVE) {
                     setFlag(Flag.NONE);
                 }
             }
@@ -223,12 +223,12 @@ public class Turn {
     public void moveToNextPhase() {
         Phase currentPhase = getCurrentPhase();
 
-        if (currentPhase == Phase.SETTINGPHASE) {
-            setCurrentPhase(Phase.ATTACKPHASE);
-        } else if (currentPhase == Phase.ATTACKPHASE) {
-            setCurrentPhase(Phase.MOVINGPHASE);
-        } else if (currentPhase == Phase.MOVINGPHASE) {
-            setCurrentPhase(Phase.SETTINGPHASE);
+        if (currentPhase == Phase.SET) {
+            setCurrentPhase(Phase.ATTACK);
+        } else if (currentPhase == Phase.ATTACK) {
+            setCurrentPhase(Phase.MOVE);
+        } else if (currentPhase == Phase.MOVE) {
+            setCurrentPhase(Phase.SET);
             cyclePlayer();
         }
 
@@ -240,7 +240,7 @@ public class Turn {
         int nextPlayerIndex = activePlayers.indexOf(currentPlayer) + 1;
         eliminatePlayersAndCheckUserResult();
         if (nextPlayerIndex >= activePlayers.size()) {
-            setFlag(Flag.TURNEND);
+            setFlag(Flag.TURN_END);
         } else {
             currentPlayer = activePlayers.get(nextPlayerIndex);
             if (currentPlayerIsUser()) {

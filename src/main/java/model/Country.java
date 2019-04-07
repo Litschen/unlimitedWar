@@ -111,8 +111,8 @@ public class Country {
                 occurredEvents.add(new ConquerEvent(owner.getPlayerName()));
             }
             occurredEvents.add(new CasualtiesEvent(casualties));
-            occurredEvents.add(new DiceEvent(attackerRolls, EventType.AttackerDiceEvent, owner.getPlayerName()));
-            occurredEvents.add(new DiceEvent(defenderRolls, EventType.DefenderDiceEvent, defenderCountry.getOwner().getPlayerName()));
+            occurredEvents.add(new DiceEvent(attackerRolls, EventType.ATTACKER_DICE, owner.getPlayerName()));
+            occurredEvents.add(new DiceEvent(defenderRolls, EventType.DEFENDER_DICE, defenderCountry.getOwner().getPlayerName()));
 
         }
         return occurredEvents;

@@ -16,12 +16,12 @@ public class TestHelperEvents {
 
     public static List<Event> mockInvadeEvents(boolean addConquerEvent) {
         List<EventType> eventsOnInvade = new ArrayList<>();
-        eventsOnInvade.add(EventType.CasualtiesEvent);
-        eventsOnInvade.add(EventType.AttackerDiceEvent);
-        eventsOnInvade.add(EventType.DefenderDiceEvent);
+        eventsOnInvade.add(EventType.CASUALTIES);
+        eventsOnInvade.add(EventType.ATTACKER_DICE);
+        eventsOnInvade.add(EventType.DEFENDER_DICE);
 
         if (addConquerEvent) {
-            eventsOnInvade.add(EventType.ConquerEvent);
+            eventsOnInvade.add(EventType.CONQUER);
         }
         return mockEvents(eventsOnInvade);
     }
@@ -32,14 +32,14 @@ public class TestHelperEvents {
         for (EventType eventType : events) {
             Event mockEvent = null;
             switch (eventType) {
-                case CasualtiesEvent:
+                case CASUALTIES:
                     mockEvent = mock(CasualtiesEvent.class);
                     break;
-                case DefenderDiceEvent:
-                case AttackerDiceEvent:
+                case DEFENDER_DICE:
+                case ATTACKER_DICE:
                     mockEvent = mock(DiceEvent.class);
                     break;
-                case ConquerEvent:
+                case CONQUER:
                     mockEvent = mock(ConquerEvent.class);
                     break;
             }

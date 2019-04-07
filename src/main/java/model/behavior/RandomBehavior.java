@@ -35,13 +35,13 @@ public class RandomBehavior implements Behavior {
             soldiersToPlace = soldiersToPlace - placedSoldiers;
         }
 
-        return Phase.ATTACKPHASE;
+        return Phase.ATTACK;
     }
 
 
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
-        AttackCountryResult result = new AttackCountryResult(Phase.MOVINGPHASE);
+        AttackCountryResult result = new AttackCountryResult(Phase.MOVE);
         while (willAttack()) {
             Country selectedCountry = ownedCountries.get(Dice.roll(0, ownedCountries.size() - 1));
             for (Country targetCountry : selectedCountry.getNeighboringCountries()) {
@@ -76,7 +76,7 @@ public class RandomBehavior implements Behavior {
             }
 
         }
-        return Phase.SETTINGPHASE;
+        return Phase.SET;
     }
 
     private boolean willAttack() {
