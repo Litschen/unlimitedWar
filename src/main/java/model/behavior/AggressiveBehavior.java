@@ -96,6 +96,11 @@ public class AggressiveBehavior implements Behavior {
         return result;
     }
 
+    /**
+     * @param allCountries
+     * @param ownedCountries
+     * @return
+     */
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
         List<MoveCountry> countriesWithNeighbors = createMoveCountryList(ownedCountries);
@@ -110,6 +115,11 @@ public class AggressiveBehavior implements Behavior {
 
     }
 
+    /**
+     * @param countriesWithNeighbors
+     * @param ownedCountries
+     * @return
+     */
     private MoveCountry getMoveCountry(List<MoveCountry> countriesWithNeighbors, List<Country> ownedCountries) {
         int index = 0;
         int totalMaxSoldiers = 0;
@@ -138,6 +148,10 @@ public class AggressiveBehavior implements Behavior {
         return selectedMoveCountry;
     }
 
+    /** Create a list with numbers of Neighbors, from a country with his adjacent country
+     * @param ownedCountries List of countries
+     * @return List with numbers of Neighbors, country of destination and country of origin
+     */
     private List<MoveCountry> createMoveCountryList(List<Country> ownedCountries) {
         List<MoveCountry> countriesWithNeighbors = new ArrayList<>();
         boolean countryShouldBeAdded;

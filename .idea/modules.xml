@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Unlimited_War.iml" filepath="$PROJECT_DIR$/Unlimited_War.iml" />
-      <module fileurl="file://$PROJECT_DIR$/src/src.iml" filepath="$PROJECT_DIR$/src/src.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/unlimitedWar.iml" filepath="$PROJECT_DIR$/.idea/unlimitedWar.iml" />
     </modules>
   </component>
 </project>

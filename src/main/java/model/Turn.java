@@ -12,7 +12,7 @@ public class Turn {
 
 
     //region static variables
-    private static int TURNNUMBER = 0;
+    private static int TURNNUMBER = 1;
     //endregion
 
     //region data fields
