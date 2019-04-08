@@ -23,7 +23,7 @@ public class StrategicBehavior implements Behavior {
             Country countryToPlaceSoldiers;
             int setSoldiers = soldiersToPlace % MAX_SCORE_TO_SET_DEFENSIVE + 1; // +1 to set at least 1 soldier
 
-            if (setSoldiers > soldiersToPlace){
+            if (setSoldiers > soldiersToPlace) {
                 setSoldiers = soldiersToPlace;
             }
 
@@ -52,19 +52,17 @@ public class StrategicBehavior implements Behavior {
         if (!scores.isEmpty()) {
             do {
                 AttackScore currentScore = scores.get(i);
-                Country attacker;
-                Country defender;
-                int attackerDice = 0;
-                int defenderDice = 0;
-
-                attacker = currentScore.getAttacker();
-                defender = currentScore.getDefender();
-
+                Country attacker = currentScore.getAttacker();
+                Country defender = currentScore.getDefender();
+                int attackerDice;
+                int defenderDice;
                 try {
-                    while (attacker.canInvade(defender) && attackerDice >= defenderDice) {
+                    attackerDice = attacker.maxAmountDiceThrowsAttacker();
+                    defenderDice = defender.amountDiceThrowsDefender(attackerDice);
+                    while (attacker.canInvade(defender) && attackerDice > defenderDice) {
+                        attacker.invade(defender, attackerDice, defenderDice);
                         attackerDice = attacker.maxAmountDiceThrowsAttacker();
                         defenderDice = defender.amountDiceThrowsDefender(attackerDice);
-                        attacker.invade(defender, attackerDice, defenderDice);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

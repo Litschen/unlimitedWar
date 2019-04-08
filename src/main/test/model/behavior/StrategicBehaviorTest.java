@@ -2,11 +2,14 @@ package model.behavior;
 
 import model.Country;
 import model.Player;
+import model.enums.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -65,18 +68,51 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void testAttackCountry() {
-        Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
-        Country mockAttackCountry = TestHelperBehavior.getMockCountry(testPlayer2);
+    void testAttackCountryWeakDefend() {
+        List<Country> toBeInvaded = new ArrayList<>();
+        Country invadingCountry = Mockito.spy(new Country("", 100, testPlayer));
+        setupWeakDefended(invadingCountry, toBeInvaded);
 
-        selectedCountries.add(mockAttackCountry);
-        selectedCountries.add(new Country("Spanien", 5, testPlayer));
-        ownedCountries = TestHelperBehavior.getCountryList(1, testPlayer);
-        ownedCountries.add(mockAttackCountry);
 
-        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
+        for (int i = 0; i < 10; i++) {
+            testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
+            setupWeakDefended(invadingCountry, toBeInvaded);
+        }
+
+        verify(invadingCountry, atLeast(50)).invade(any(), anyInt(), anyInt());
+
     }
+
+    @Test
+    void testAttackCountryWeakest() {
+        List<Country> toBeInvaded = new ArrayList<>();
+        Country invadingCountry = Mockito.spy(new Country("", 100, testPlayer));
+        for (int i = 0; i < 10; i++) {
+            setupWeakest(invadingCountry, toBeInvaded);
+            testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
+
+        }
+
+        verify(invadingCountry, atLeast(10)).invade(any(), anyInt(), anyInt());
+
+    }
+
+    @Test
+    void testAttackCountryOnlyWithAdvantage() {
+        List<Country> toBeInvaded = new ArrayList<>();
+        Country invadingCountry = Mockito.spy(new Country("", 100, testPlayer));
+        for (int i = 0; i < 10; i++) {
+            setupWeakest(invadingCountry, toBeInvaded);
+            invadingCountry.setSoldiersCount(2);
+            testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
+
+        }
+
+        verify(invadingCountry, never()).invade(any(), anyInt(), anyInt());
+
+    }
+
+
 
     @Test
     void testAttackCountryNotOwnCountry() {
@@ -149,5 +185,31 @@ class StrategicBehaviorTest {
         for (Country country : ownedCountries) {
             assertEquals(5, country.getSoldiersCount());
         }
+    }
+
+    private void setupWeakDefended(Country invadingCountry, List<Country> toBeInvaded) {
+        Player defendingPlayer = new Player(PlayerColor.GREEN, "", new RandomBehavior());
+        invadingCountry.setSoldiersCount(100);
+        invadingCountry.getNeighboringCountries().clear();
+
+        toBeInvaded = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            toBeInvaded.add(new Country("", 1, defendingPlayer));
+        }
+        invadingCountry.addNeighboringCountries(toBeInvaded);
+        testPlayer.getOwnedCountries().clear();
+        testPlayer.getOwnedCountries().add(invadingCountry);
+    }
+
+    private void setupWeakest(Country invadingCountry, List<Country> toBeInvaded) {
+        setupWeakDefended(invadingCountry, toBeInvaded);
+        toBeInvaded = invadingCountry.getNeighboringCountries();
+        invadingCountry.setSoldiersCount(3);
+        for (Country country : toBeInvaded) {
+            country.setSoldiersCount(30);
+        }
+        toBeInvaded.get(toBeInvaded.size() - 1).setSoldiersCount(2);
+
     }
 }
