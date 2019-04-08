@@ -147,11 +147,6 @@ public class Board {
     }
     //endregion
 
-    /**
-     * Generates all Player with their respective personalities. The current player can choose a color,
-     * the rest is randomly assigned
-     * (temporarily the user color is fixed)
-     */
     private void generatePlayers() {
 
         playerColor.addAll(Arrays.asList(PlayerColor.values()));

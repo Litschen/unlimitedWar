@@ -20,12 +20,6 @@ public class MySQLConnectionCreator {
         return DriverManager.getConnection(dbURL, user, pw);
     }
 
-    /**
-     * prepare the statement and replace all placeholders by the arguments
-     *
-     * @param sql  SQL-Query with ? as placeholder for user input values
-     * @param args list of values to fill the placeholders
-     */
     public static PreparedStatement setUpQuery(Connection con, String sql, @NotNull List<String> args) throws SQLException {
         PreparedStatement st = con.prepareStatement(sql);
 

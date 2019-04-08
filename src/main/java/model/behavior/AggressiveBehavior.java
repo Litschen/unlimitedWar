@@ -70,9 +70,6 @@ public class AggressiveBehavior implements Behavior {
         }
     }
 
-    /**
-     * AggressiveBehavior attacks as long and often as possible
-     */
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
         AttackCountryResult result = new AttackCountryResult(Phase.MOVE);
@@ -161,9 +158,6 @@ public class AggressiveBehavior implements Behavior {
 
 
     /**
-     * Checks if there are any countries that can be invaded
-     *
-     * @param ownedCountries by player of this behavior
      * @return ArrayList of countries which can invade another.
      */
     private List<Country> canAttackFrom(List<Country> ownedCountries) {

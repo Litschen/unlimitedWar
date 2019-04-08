@@ -9,9 +9,6 @@ public class Casualties {
     private static int casualtiesDefender;
     //endregion
 
-    /**
-     * Save casualties for attacker and defender during an invasion of a country in this object
-     */
     public Casualties(int casualtiesAttacker, int casualtiesDefender) {
         Casualties.casualtiesAttacker = casualtiesAttacker;
         Casualties.casualtiesDefender = casualtiesDefender;
@@ -27,16 +24,10 @@ public class Casualties {
     }
     //endregion
 
-    /**
-     * increase casualties of the attacker by one
-     */
     public void addCasualtiesAttacker() {
         casualtiesAttacker += 1;
     }
 
-    /**
-     * Increase the casualties of the defender by one
-     */
     public void addCasualtiesDefender() {
         casualtiesDefender += 1;
     }
