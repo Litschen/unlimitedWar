@@ -77,7 +77,7 @@ public class AggressiveBehavior implements Behavior {
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
         AttackCountryResult result = new AttackCountryResult(Phase.MOVE);
         List<Country> canInvadeFromCountries = canAttackFrom(ownedCountries);
-        while (canInvadeFromCountries.size() > 0) {
+        while (!canInvadeFromCountries.isEmpty()) {
             for (Country invadingCountry : canInvadeFromCountries) {
                 for (Country neighbor : invadingCountry.getNeighboringCountries()) {
                     if (invadingCountry.canInvade(neighbor)) {
