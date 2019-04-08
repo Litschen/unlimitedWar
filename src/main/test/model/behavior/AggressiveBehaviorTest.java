@@ -72,16 +72,18 @@ class AggressiveBehaviorTest {
         verify(invadingCountry, atLeast(100)).invade(any(), anyInt(), anyInt());
 
         Country defendingCountry2 = new Country("", 1, defendingPlayer);
+        defendingCountry.getNeighboringCountries().add(defendingCountry2);
+        selectedCountries.add(defendingCountry2);
 
         for (int i = 0; i < 100; i++) {
             testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
             invadingCountry.setSoldiersCount(10);
-            defendingCountry.setSoldiersCount(10);
+            defendingCountry.setSoldiersCount(1);
             defendingCountry.setOwner(defendingPlayer);
             defendingPlayer.getOwnedCountries().add(defendingCountry);
 
 
-            defendingCountry2.setSoldiersCount(10);
+            defendingCountry2.setSoldiersCount(1);
             defendingCountry2.setOwner(defendingPlayer);
             defendingPlayer.getOwnedCountries().add(defendingCountry2);
 
