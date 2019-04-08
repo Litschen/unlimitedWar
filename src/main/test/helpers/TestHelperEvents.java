@@ -1,4 +1,4 @@
-package model.behavior;
+package helpers;
 
 import model.enums.EventType;
 import model.events.CasualtiesEvent;

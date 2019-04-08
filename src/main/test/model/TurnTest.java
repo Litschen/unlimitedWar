@@ -1,6 +1,6 @@
 package model;
 
-import model.behavior.TestHelperBehavior;
+import helpers.TestHelperBehavior;
 import model.behavior.UserBehavior;
 import model.enums.Flag;
 import model.enums.Phase;

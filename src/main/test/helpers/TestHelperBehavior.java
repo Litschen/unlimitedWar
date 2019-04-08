@@ -1,9 +1,8 @@
-package model.behavior;
+package helpers;
 
 import model.Country;
 import model.Player;
 import model.enums.PlayerColor;
-
 
 import java.util.ArrayList;
 import java.util.Collections;
