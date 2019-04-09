@@ -93,11 +93,7 @@ public class AggressiveBehavior implements Behavior {
         return result;
     }
 
-    /**
-     * @param allCountries
-     * @param ownedCountries
-     * @return
-     */
+
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
         List<MoveCountry> countriesWithNeighbors = createMoveCountryList(ownedCountries);
@@ -112,10 +108,10 @@ public class AggressiveBehavior implements Behavior {
 
     }
 
-    /**
+    /** Give a list of selected Countries, with values of the country, who has the largest number of mobile soldiers
      * @param countriesWithNeighbors
      * @param ownedCountries
-     * @return
+     * @return list of selected Countries
      */
     private MoveCountry getMoveCountry(List<MoveCountry> countriesWithNeighbors, List<Country> ownedCountries) {
         int index = 0;

@@ -3,6 +3,7 @@ package model.events;
 import model.enums.EventType;
 import model.interfaces.Event;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ConquerEvent implements Event {
@@ -42,7 +43,7 @@ public class ConquerEvent implements Event {
 
     @Override
     public List<Integer> getEventData() {
-        return null;
+        return Collections.emptyList();
     }
 
     @Override

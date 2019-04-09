@@ -102,8 +102,16 @@ class AggressiveBehaviorTest {
     @Test
     void testMoveSoldiers() {
         ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
+        Player opponentPlayer = TestHelperBehavior.getMockPlayer();
 
         assertEquals(Phase.SET, testPlayer.getBehavior().moveSoldiers(null, ownedCountries));
+
+        for (Country countryList : ownedCountries) {
+            countryList.addNeighboringCountries(TestHelperBehavior.getCountryList(3, opponentPlayer));
+            assertEquals(5, countryList.getSoldiersCount());
+        }
+
+
         for (Country countryList : ownedCountries) {
             assertEquals(5, countryList.getSoldiersCount());
         }
