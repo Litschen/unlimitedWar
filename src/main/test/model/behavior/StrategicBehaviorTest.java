@@ -191,6 +191,7 @@ class StrategicBehaviorTest {
         for (int i = 0; i < 5; i++) {
             toBeInvaded.add(new Country("", 1, defendingPlayer));
         }
+
         invadingCountry.addNeighboringCountries(toBeInvaded);
         testPlayer.getOwnedCountries().clear();
         testPlayer.getOwnedCountries().add(invadingCountry);
@@ -200,10 +201,11 @@ class StrategicBehaviorTest {
         setupWeakDefended(invadingCountry, toBeInvaded);
         toBeInvaded = invadingCountry.getNeighboringCountries();
         invadingCountry.setSoldiersCount(3);
+
         for (Country country : toBeInvaded) {
             country.setSoldiersCount(30);
         }
-        toBeInvaded.get(toBeInvaded.size() - 1).setSoldiersCount(2);
 
+        toBeInvaded.get(toBeInvaded.size() - 1).setSoldiersCount(2);
     }
 }
