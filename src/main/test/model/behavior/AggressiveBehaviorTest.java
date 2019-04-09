@@ -11,21 +11,24 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 class AggressiveBehaviorTest {
 
+
     private Player testPlayer;
+    private Player defendingPlayer;
     private ArrayList<Country> selectedCountries;
     private ArrayList<Country> ownedCountries;
 
     @BeforeEach
     void setUp() {
-        testPlayer = new Player(BLUE, "Sony", new AggressiveBehavior());
+        testPlayer = new Player(PlayerColor.BLUE, "Sony", new AggressiveBehavior());
+        defendingPlayer = new Player(PlayerColor.GREEN, "", new RandomBehavior());
         ownedCountries = new ArrayList<>();
         selectedCountries = new ArrayList<>();
     }
@@ -54,50 +57,42 @@ class AggressiveBehaviorTest {
 
     @Test
     void testAttackCountry() {
-        Country invadingCountry = Mockito.spy(new Country("", 10, testPlayer));
-        Player defendingPlayer = new Player(PlayerColor.GREEN, "", new RandomBehavior());
+        int loopCnt = 100;
+        int soldiersAttacker = 10;
+        int soldiersDefender = 10;
+
+
+        Country invadingCountry = Mockito.spy(new Country("", soldiersAttacker, testPlayer));
         Country defendingCountry = new Country("", 1, defendingPlayer);
-        defendingPlayer.getOwnedCountries().add(defendingCountry);
-        selectedCountries.add(defendingCountry);
-        invadingCountry.addNeighboringCountries(selectedCountries);
-        ownedCountries.add(invadingCountry);
-
-        for (int i = 0; i < 100; i++) {
-            testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-            invadingCountry.setSoldiersCount(10);
-            defendingCountry.setSoldiersCount(10);
-            defendingCountry.setOwner(defendingPlayer);
-            defendingPlayer.getOwnedCountries().add(defendingCountry);
-            testPlayer.getOwnedCountries().remove(defendingCountry);
-        }
-        verify(invadingCountry, atLeast(100)).invade(any(), anyInt(), anyInt());
-
         Country defendingCountry2 = new Country("", 1, defendingPlayer);
+
+        //attack as often as possible
+        selectedCountries.add(defendingCountry);
+        ownedCountries.add(invadingCountry);
+        invadingCountry.addNeighboringCountries(selectedCountries);
+
+        for (int i = 0; i < loopCnt; i++) {
+            resetForAttackCountry(soldiersAttacker, soldiersDefender);
+            testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
+        }
+        verify(invadingCountry, atLeast(loopCnt)).invade(any(), anyInt(), anyInt());
+
+        //attack a country further
         defendingCountry.getNeighboringCountries().add(defendingCountry2);
         selectedCountries.add(defendingCountry2);
-
-        for (int i = 0; i < 100; i++) {
+        soldiersDefender = 1;
+        for (int i = 0; i < loopCnt; i++) {
+            resetForAttackCountry(soldiersAttacker, soldiersDefender);
             testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-            invadingCountry.setSoldiersCount(10);
-            defendingCountry.setSoldiersCount(1);
-            defendingCountry.setOwner(defendingPlayer);
-            defendingPlayer.getOwnedCountries().add(defendingCountry);
-
-            defendingCountry2.setSoldiersCount(1);
-            defendingCountry2.setOwner(defendingPlayer);
-            defendingPlayer.getOwnedCountries().add(defendingCountry2);
-
-            testPlayer.getOwnedCountries().remove(defendingCountry2);
-            testPlayer.getOwnedCountries().remove(defendingCountry);
         }
-        verify(invadingCountry, atLeast(200)).invade(any(), anyInt(), anyInt());
+        verify(invadingCountry, atLeast(loopCnt * 2)).invade(any(), anyInt(), anyInt());
     }
 
     @Test
     void testAttackCountryNotOwnCountry() {
         ownedCountries = TestHelperBehavior.getMockCountryList(5, testPlayer);
 
-        Player opponentPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
+        Player opponentPlayer = new Player(PlayerColor.BLUE, "ownPlayer", new UserBehavior());
         Country attackCountry = TestHelperBehavior.getMockCountry(opponentPlayer);
         selectedCountries.add(attackCountry);
         selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
@@ -114,6 +109,25 @@ class AggressiveBehaviorTest {
         for (Country countryList : ownedCountries) {
             assertEquals(5, countryList.getSoldiersCount());
         }
+    }
+
+
+    private void resetForAttackCountry(int attacker, int defender) {
+        //attacker part
+        resetForAttackCountryPlayer(attacker, testPlayer, ownedCountries);
+        //defender part
+        resetForAttackCountryPlayer(defender, defendingPlayer, selectedCountries);
+
+    }
+
+    private void resetForAttackCountryPlayer(int soldiers, Player player, List<Country> countries) {
+        //attacker part
+        for (Country country : countries) {
+            country.setSoldiersCount(soldiers);
+            country.setOwner(player);
+        }
+        player.getOwnedCountries().clear();
+        player.getOwnedCountries().addAll(countries);
     }
 }
 
