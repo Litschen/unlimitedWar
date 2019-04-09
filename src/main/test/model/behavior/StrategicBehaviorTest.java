@@ -1,12 +1,16 @@
 package model.behavior;
 
+import helpers.TestHelperBehavior;
 import model.Country;
 import model.Player;
+import model.enums.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -65,17 +69,43 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void testAttackCountry() {
-        Player testPlayer2 = new Player(BLUE, "testplayer02", new UserBehavior());
-        Country mockAttackCountry = TestHelperBehavior.getMockCountry(testPlayer2);
+    void testAttackCountryWeakDefend() {
+        List<Country> toBeInvaded = new ArrayList<>();
+        Country invadingCountry = Mockito.spy(new Country("", 1, testPlayer));
 
-        selectedCountries.add(mockAttackCountry);
-        selectedCountries.add(new Country("Spanien", 5, testPlayer));
-        ownedCountries = TestHelperBehavior.getCountryList(1, testPlayer);
-        ownedCountries.add(mockAttackCountry);
+        for (int i = 0; i < 10; i++) {
+            setupWeakDefended(invadingCountry, 100, 1, 5);
+            testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
 
-        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-        verify(mockAttackCountry, times(1)).invade(anyObject(), anyInt(), anyInt());
+        }
+
+        verify(invadingCountry, atLeast(50)).invade(any(), anyInt(), anyInt());
+    }
+
+    @Test
+    void testAttackCountryWeakest() {
+        List<Country> toBeInvaded = new ArrayList<>();
+        Country invadingCountry = Mockito.spy(new Country("", 3, testPlayer));
+
+        for (int i = 0; i < 10; i++) {
+            toBeInvaded = setupWeakest(invadingCountry);
+            testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
+        }
+
+        verify(invadingCountry, atLeast(10)).invade(any(), anyInt(), anyInt());
+    }
+
+    @Test
+    void testAttackCountryOnlyWithAdvantage() {
+        List<Country> toBeInvaded;
+        Country invadingCountry = Mockito.spy(new Country("", 1, testPlayer));
+        for (int i = 0; i < 10; i++) {
+            toBeInvaded = setupWeakest(invadingCountry);
+            invadingCountry.setSoldiersCount(2);
+            testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
+        }
+
+        verify(invadingCountry, never()).invade(any(), anyInt(), anyInt());
     }
 
     @Test
@@ -121,7 +151,7 @@ class StrategicBehaviorTest {
         Country src = ownedCountries.get(0);
         src.setSoldiersCount(11);
 
-        for (Country country : ownedCountries){
+        for (Country country : ownedCountries) {
             country.addNeighboringCountries(TestHelperBehavior.getCountryList(2, opponent));
         }
 
@@ -149,5 +179,29 @@ class StrategicBehaviorTest {
         for (Country country : ownedCountries) {
             assertEquals(5, country.getSoldiersCount());
         }
+    }
+
+    private List<Country> setupWeakDefended(Country invadingCountry, int attacker, int defender, int countryCnt) {
+        Player defendingPlayer = new Player(PlayerColor.GREEN, "", new RandomBehavior());
+        invadingCountry.setSoldiersCount(attacker);
+        invadingCountry.getNeighboringCountries().clear();
+
+        List<Country> toBeInvaded = new ArrayList<>();
+
+        for (int i = 0; i < countryCnt; i++) {
+            toBeInvaded.add(new Country("", defender, defendingPlayer));
+        }
+
+        invadingCountry.addNeighboringCountries(toBeInvaded);
+        testPlayer.getOwnedCountries().clear();
+        testPlayer.getOwnedCountries().add(invadingCountry);
+
+        return toBeInvaded;
+    }
+
+    private List<Country> setupWeakest(Country invadingCountry) {
+        List<Country> toBeInvaded = setupWeakDefended(invadingCountry, 3, 30, 5);
+        toBeInvaded.get(toBeInvaded.size() - 1).setSoldiersCount(4);
+        return toBeInvaded;
     }
 }

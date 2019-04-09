@@ -1,8 +1,8 @@
 package model.events;
 
 
-import model.helpers.Casualties;
 import model.enums.EventType;
+import model.helpers.Casualties;
 import model.interfaces.Event;
 
 import java.util.ArrayList;
@@ -10,8 +10,10 @@ import java.util.List;
 
 public class CasualtiesEvent implements Event {
 
+    //region static variables
     private static final String TITLE = "Lost soldiers";
     private static final String DATA_LABEL = "Attacker : Defender";
+    //endregion
 
     //region data fields
     private String playerName;

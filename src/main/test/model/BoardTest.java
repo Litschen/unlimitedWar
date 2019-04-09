@@ -1,6 +1,6 @@
 package model;
 
-import model.behavior.TestHelperEvents;
+import helpers.TestHelperEvents;
 import model.interfaces.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

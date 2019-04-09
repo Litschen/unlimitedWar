@@ -10,11 +10,6 @@ import java.util.List;
 
 public class Turn {
 
-
-    //region static variables
-    private static int TURNNUMBER = 1;
-    //endregion
-
     //region data fields
     private List<Event> occurredEvents;
     private List<Player> activePlayers;
@@ -119,9 +114,6 @@ public class Turn {
 
     //endregion
 
-    /**
-     * @return true: when the current Player is a User
-     */
     public boolean currentPlayerIsUser() {
         return currentPlayer.getBehavior() instanceof UserBehavior;
     }
@@ -205,8 +197,6 @@ public class Turn {
 
     /**
      * sets country which the user selected to move soldiers in  between
-     *
-     * @param country is the country which the player selects on GUI
      */
     private void setMovingCountry(Country country) {
         if (firstSelectedCountry == null && currentPlayer.getOwnedCountries().contains(country) && country.getSoldiersCount() > 1) {

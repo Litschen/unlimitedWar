@@ -25,11 +25,6 @@ public class PlayerDAO {
         this.con = con;
     }
 
-    /**
-     * get saved profile data of the user by the mail address
-     *
-     * @param mail of the user
-     */
     public UserBean getPlayerByMail(String mail) throws SQLException, ClassNotFoundException {
         UserBean user = null;
 

@@ -7,8 +7,10 @@ import java.util.List;
 
 public class DiceEvent implements Event {
 
+    //region static variables
     private static final String TITLE = "Dice Results";
     private static final String DATA_LABEL = "Results: ";
+    //endregion
 
     //region data fields
     private String playerName;

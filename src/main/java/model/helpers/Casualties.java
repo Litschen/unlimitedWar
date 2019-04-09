@@ -5,16 +5,13 @@ package model.helpers;
  */
 public class Casualties {
     //region data fields
-    private static int casualtiesAttacker;
-    private static int casualtiesDefender;
+    private int casualtiesAttacker;
+    private int casualtiesDefender;
     //endregion
 
-    /**
-     * Save casualties for attacker and defender during an invasion of a country in this object
-     */
     public Casualties(int casualtiesAttacker, int casualtiesDefender) {
-        Casualties.casualtiesAttacker = casualtiesAttacker;
-        Casualties.casualtiesDefender = casualtiesDefender;
+        this.casualtiesAttacker = casualtiesAttacker;
+        this.casualtiesDefender = casualtiesDefender;
     }
 
     //region getter setter
@@ -27,16 +24,10 @@ public class Casualties {
     }
     //endregion
 
-    /**
-     * increase casualties of the attacker by one
-     */
     public void addCasualtiesAttacker() {
         casualtiesAttacker += 1;
     }
 
-    /**
-     * Increase the casualties of the defender by one
-     */
     public void addCasualtiesDefender() {
         casualtiesDefender += 1;
     }

@@ -75,7 +75,7 @@ public class GameController extends HttpServlet {
             }
             if (request.getPathInfo() != null && request.getPathInfo().equals(PATH_RESULT)) {
                 request.getSession().setAttribute(SESSION_BOARD_NAME, null);
-                response.sendRedirect(request.getContextPath() + "/jsp/index.jsp");
+                response.sendRedirect(request.getContextPath() + PAGE_TO_LOAD_ON_COMPLETE);
             } else {
                 dispatcher.forward(request, response);
             }

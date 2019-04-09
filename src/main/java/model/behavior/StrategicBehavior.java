@@ -11,8 +11,10 @@ import java.util.*;
 
 public class StrategicBehavior implements Behavior {
 
+    //region static variables
     private final static int COUNTRY_IS_WEAK_DEFENDED_BONUS = -10;
     private final static int MAX_SCORE_TO_SET_DEFENSIVE = 3;
+    //endregion
 
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
@@ -23,7 +25,7 @@ public class StrategicBehavior implements Behavior {
             Country countryToPlaceSoldiers;
             int setSoldiers = soldiersToPlace % MAX_SCORE_TO_SET_DEFENSIVE + 1; // +1 to set at least 1 soldier
 
-            if (setSoldiers > soldiersToPlace){
+            if (setSoldiers > soldiersToPlace) {
                 setSoldiers = soldiersToPlace;
             }
 
@@ -52,19 +54,18 @@ public class StrategicBehavior implements Behavior {
         if (!scores.isEmpty()) {
             do {
                 AttackScore currentScore = scores.get(i);
-                Country attacker;
-                Country defender;
-                int attackerDice = 0;
-                int defenderDice = 0;
-
-                attacker = currentScore.getAttacker();
-                defender = currentScore.getDefender();
+                Country attacker = currentScore.getAttacker();
+                Country defender = currentScore.getDefender();
 
                 try {
-                    while (attacker.canInvade(defender) && attackerDice >= defenderDice) {
-                        attackerDice = attacker.maxAmountDiceThrowsAttacker();
-                        defenderDice = defender.amountDiceThrowsDefender(attackerDice);
+                    int attackerDice = attacker.maxAmountDiceThrowsAttacker();
+                    int defenderDice = defender.amountDiceThrowsDefender(attackerDice);
+                    while (attacker.canInvade(defender) && attackerDice > defenderDice) {
                         attacker.invade(defender, attackerDice, defenderDice);
+                        if (attacker.canInvade(defender)) {
+                            attackerDice = attacker.maxAmountDiceThrowsAttacker();
+                            defenderDice = defender.amountDiceThrowsDefender(attackerDice);
+                        }
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -14,8 +14,6 @@ public class Dice {
     //endregion
 
     /**
-     * throw a dice (range MIN_VALUE - MAX_VALUE)
-     *
      * @return Random number in above range
      */
     public static int roll() {
@@ -23,9 +21,6 @@ public class Dice {
     }
 
     /**
-     * throw a given amount of dice range MIN_VALUE - MAX_VALUE)and save the results in an array.
-     * the results are sorted in descending order.
-     *
      * @param amountOfDice how many dice should be thrown
      * @return int array of results sorted descending
      */
@@ -45,11 +40,7 @@ public class Dice {
     }
 
     /**
-     * generate a random number between the passed min and max value (inclusive)
-     *
-     * @param min minimum value of the result
-     * @param max maximum value of the result
-     * @return generated number
+     * generate a random number between the passed min and max value (inclusive)r
      */
     public static int roll(int min, int max) {
         if (min > max) {

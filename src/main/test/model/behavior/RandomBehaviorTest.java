@@ -1,6 +1,7 @@
 package model.behavior;
 
 
+import helpers.TestHelperBehavior;
 import model.Country;
 import model.Player;
 import org.junit.jupiter.api.BeforeEach;

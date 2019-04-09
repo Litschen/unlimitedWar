@@ -1,13 +1,12 @@
 package model;
 
-import model.behavior.TestHelperEvents;
+import helpers.TestHelperEvents;
+import model.behavior.RandomBehavior;
 import model.enums.PlayerColor;
 import model.helpers.Casualties;
 import model.interfaces.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import model.behavior.RandomBehavior;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -7,8 +7,10 @@ import java.util.List;
 
 public class ConquerEvent implements Event {
 
+    //region static variables
     private static final String TITLE = "Attack Result";
     private static final String DATA_LABEL = "won the battle!";
+    //endregion
 
     //region data fields
     private String playerName;

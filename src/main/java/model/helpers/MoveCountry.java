@@ -4,9 +4,11 @@ import model.Country;
 
 public class MoveCountry {
 
+    //region datafields
     private int numberOfNeighbors;
     private Country own;
     private Country neighbor;
+    //endregion
 
 
     public MoveCountry(int numberOfNeighbors, Country neighbor, Country own) {
