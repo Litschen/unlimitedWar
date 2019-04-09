@@ -5,13 +5,13 @@ package model.helpers;
  */
 public class Casualties {
     //region data fields
-    private static int casualtiesAttacker;
-    private static int casualtiesDefender;
+    private int casualtiesAttacker;
+    private int casualtiesDefender;
     //endregion
 
     public Casualties(int casualtiesAttacker, int casualtiesDefender) {
-        Casualties.casualtiesAttacker = casualtiesAttacker;
-        Casualties.casualtiesDefender = casualtiesDefender;
+        this.casualtiesAttacker = casualtiesAttacker;
+        this.casualtiesDefender = casualtiesDefender;
     }
 
     //region getter setter
