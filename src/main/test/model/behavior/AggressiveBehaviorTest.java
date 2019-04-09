@@ -121,7 +121,6 @@ class AggressiveBehaviorTest {
     }
 
     private void resetForAttackCountryPlayer(int soldiers, Player player, List<Country> countries) {
-        //attacker part
         for (Country country : countries) {
             country.setSoldiersCount(soldiers);
             country.setOwner(player);
