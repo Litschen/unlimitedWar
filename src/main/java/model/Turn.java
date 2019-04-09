@@ -10,11 +10,6 @@ import java.util.List;
 
 public class Turn {
 
-
-    //region static variables
-    private static int TURNNUMBER = 0;
-    //endregion
-
     //region data fields
     private List<Event> occurredEvents;
     private List<Player> activePlayers;

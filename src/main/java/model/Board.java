@@ -12,10 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Board {
 
@@ -103,7 +100,7 @@ public class Board {
     private void setCountryAttributes() {
         try {
             List<String> countryNames = Files.readAllLines(
-                    new File(getClass().getClassLoader().getResource(RESOURCE_FILE).getPath()).toPath(), Charset.defaultCharset());
+                    new File(Objects.requireNonNull(getClass().getClassLoader().getResource(RESOURCE_FILE)).getPath()).toPath(), Charset.defaultCharset());
             Collections.shuffle(countryNames);
             for (Country country : countries) {
                 country.setName(countryNames.remove(0));

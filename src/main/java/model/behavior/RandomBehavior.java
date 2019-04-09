@@ -1,9 +1,9 @@
 package model.behavior;
 
-import model.helpers.AttackCountryResult;
 import model.Country;
 import model.Dice;
 import model.enums.Phase;
+import model.helpers.AttackCountryResult;
 import model.interfaces.Behavior;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class RandomBehavior implements Behavior {
 
     private final static int MIN_DICE_RANGE = 0;
     private final static int MAX_DICE_RANGE = 10;
-    //end region
+    //endregion
 
 
     @Override

@@ -11,8 +11,10 @@ import java.util.*;
 
 public class StrategicBehavior implements Behavior {
 
+    //region static variables
     private final static int COUNTRY_IS_WEAK_DEFENDED_BONUS = -10;
     private final static int MAX_SCORE_TO_SET_DEFENSIVE = 3;
+    //endregion
 
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
