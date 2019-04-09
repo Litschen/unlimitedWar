@@ -71,12 +71,12 @@ class StrategicBehaviorTest {
     @Test
     void testAttackCountryWeakDefend() {
         List<Country> toBeInvaded = new ArrayList<>();
-        Country invadingCountry = Mockito.spy(new Country("", 100, testPlayer));
-        setupWeakDefended(invadingCountry, toBeInvaded);
+        Country invadingCountry = Mockito.spy(new Country("", 1, testPlayer));
 
         for (int i = 0; i < 10; i++) {
+            setupWeakDefended(invadingCountry, 100, 1, 5);
             testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
-            setupWeakDefended(invadingCountry, toBeInvaded);
+
         }
 
         verify(invadingCountry, atLeast(50)).invade(any(), anyInt(), anyInt());
@@ -85,10 +85,10 @@ class StrategicBehaviorTest {
     @Test
     void testAttackCountryWeakest() {
         List<Country> toBeInvaded = new ArrayList<>();
-        Country invadingCountry = Mockito.spy(new Country("", 100, testPlayer));
+        Country invadingCountry = Mockito.spy(new Country("", 3, testPlayer));
 
         for (int i = 0; i < 10; i++) {
-            setupWeakest(invadingCountry, toBeInvaded);
+            toBeInvaded = setupWeakest(invadingCountry);
             testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
         }
 
@@ -97,10 +97,10 @@ class StrategicBehaviorTest {
 
     @Test
     void testAttackCountryOnlyWithAdvantage() {
-        List<Country> toBeInvaded = new ArrayList<>();
-        Country invadingCountry = Mockito.spy(new Country("", 100, testPlayer));
+        List<Country> toBeInvaded;
+        Country invadingCountry = Mockito.spy(new Country("", 1, testPlayer));
         for (int i = 0; i < 10; i++) {
-            setupWeakest(invadingCountry, toBeInvaded);
+            toBeInvaded = setupWeakest(invadingCountry);
             invadingCountry.setSoldiersCount(2);
             testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
         }
@@ -181,31 +181,29 @@ class StrategicBehaviorTest {
         }
     }
 
-    private void setupWeakDefended(Country invadingCountry, List<Country> toBeInvaded) {
+    private List<Country> setupWeakDefended(Country invadingCountry, int attacker, int defender, int countryCnt) {
         Player defendingPlayer = new Player(PlayerColor.GREEN, "", new RandomBehavior());
-        invadingCountry.setSoldiersCount(100);
+        invadingCountry.setSoldiersCount(attacker);
         invadingCountry.getNeighboringCountries().clear();
 
-        toBeInvaded = new ArrayList<>();
+        List<Country> toBeInvaded = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            toBeInvaded.add(new Country("", 1, defendingPlayer));
+        for (int i = 0; i < countryCnt; i++) {
+            toBeInvaded.add(new Country("", defender, defendingPlayer));
         }
 
         invadingCountry.addNeighboringCountries(toBeInvaded);
         testPlayer.getOwnedCountries().clear();
         testPlayer.getOwnedCountries().add(invadingCountry);
+
+        return toBeInvaded;
     }
 
-    private void setupWeakest(Country invadingCountry, List<Country> toBeInvaded) {
-        setupWeakDefended(invadingCountry, toBeInvaded);
-        toBeInvaded = invadingCountry.getNeighboringCountries();
-        invadingCountry.setSoldiersCount(3);
+    private List<Country> setupWeakest(Country invadingCountry) {
+        List<Country> toBeInvaded = setupWeakDefended(invadingCountry, 3, 30, 5);
+        toBeInvaded.get(toBeInvaded.size() - 1).setSoldiersCount(4);
 
-        for (Country country : toBeInvaded) {
-            country.setSoldiersCount(30);
-        }
 
-        toBeInvaded.get(toBeInvaded.size() - 1).setSoldiersCount(2);
+        return toBeInvaded;
     }
 }
