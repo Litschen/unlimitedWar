@@ -83,7 +83,6 @@ class AggressiveBehaviorTest {
             defendingCountry.setOwner(defendingPlayer);
             defendingPlayer.getOwnedCountries().add(defendingCountry);
 
-
             defendingCountry2.setSoldiersCount(1);
             defendingCountry2.setOwner(defendingPlayer);
             defendingPlayer.getOwnedCountries().add(defendingCountry2);
@@ -92,8 +91,6 @@ class AggressiveBehaviorTest {
             testPlayer.getOwnedCountries().remove(defendingCountry);
         }
         verify(invadingCountry, atLeast(200)).invade(any(), anyInt(), anyInt());
-
-
     }
 
     @Test
@@ -118,6 +115,5 @@ class AggressiveBehaviorTest {
             assertEquals(5, countryList.getSoldiersCount());
         }
     }
-
 }
 
