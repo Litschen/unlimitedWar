@@ -19,7 +19,6 @@ import static org.mockito.Mockito.*;
 
 class AggressiveBehaviorTest {
 
-
     private Player testPlayer;
     private Player defendingPlayer;
     private ArrayList<Country> selectedCountries;
@@ -60,7 +59,6 @@ class AggressiveBehaviorTest {
         int loopCnt = 100;
         int soldiersAttacker = 10;
         int soldiersDefender = 10;
-
 
         Country invadingCountry = Mockito.spy(new Country("", soldiersAttacker, testPlayer));
         Country defendingCountry = new Country("", 1, defendingPlayer);
@@ -110,7 +108,6 @@ class AggressiveBehaviorTest {
             assertEquals(5, countryList.getSoldiersCount());
         }
     }
-
 
     private void resetForAttackCountry(int attacker, int defender) {
         //attacker part

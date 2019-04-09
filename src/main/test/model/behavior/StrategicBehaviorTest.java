@@ -202,8 +202,6 @@ class StrategicBehaviorTest {
     private List<Country> setupWeakest(Country invadingCountry) {
         List<Country> toBeInvaded = setupWeakDefended(invadingCountry, 3, 30, 5);
         toBeInvaded.get(toBeInvaded.size() - 1).setSoldiersCount(4);
-
-
         return toBeInvaded;
     }
 }
