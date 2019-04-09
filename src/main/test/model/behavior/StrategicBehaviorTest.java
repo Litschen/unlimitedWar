@@ -74,28 +74,25 @@ class StrategicBehaviorTest {
         Country invadingCountry = Mockito.spy(new Country("", 100, testPlayer));
         setupWeakDefended(invadingCountry, toBeInvaded);
 
-
         for (int i = 0; i < 10; i++) {
             testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
             setupWeakDefended(invadingCountry, toBeInvaded);
         }
 
         verify(invadingCountry, atLeast(50)).invade(any(), anyInt(), anyInt());
-
     }
 
     @Test
     void testAttackCountryWeakest() {
         List<Country> toBeInvaded = new ArrayList<>();
         Country invadingCountry = Mockito.spy(new Country("", 100, testPlayer));
+
         for (int i = 0; i < 10; i++) {
             setupWeakest(invadingCountry, toBeInvaded);
             testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
-
         }
 
         verify(invadingCountry, atLeast(10)).invade(any(), anyInt(), anyInt());
-
     }
 
     @Test
@@ -106,14 +103,10 @@ class StrategicBehaviorTest {
             setupWeakest(invadingCountry, toBeInvaded);
             invadingCountry.setSoldiersCount(2);
             testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
-
         }
 
         verify(invadingCountry, never()).invade(any(), anyInt(), anyInt());
-
     }
-
-
 
     @Test
     void testAttackCountryNotOwnCountry() {
@@ -158,7 +151,7 @@ class StrategicBehaviorTest {
         Country src = ownedCountries.get(0);
         src.setSoldiersCount(11);
 
-        for (Country country : ownedCountries){
+        for (Country country : ownedCountries) {
             country.addNeighboringCountries(TestHelperBehavior.getCountryList(2, opponent));
         }
 
