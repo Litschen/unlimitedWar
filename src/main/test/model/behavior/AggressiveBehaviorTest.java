@@ -3,7 +3,6 @@ package model.behavior;
 import helpers.TestHelperBehavior;
 import model.Country;
 import model.Player;
-import model.enums.Phase;
 import model.enums.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -101,20 +100,34 @@ class AggressiveBehaviorTest {
 
     @Test
     void testMoveSoldiers() {
-        ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
+        ownedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
+        Player opponentPlayer = TestHelperBehavior.getMockPlayer();
+        TestHelperBehavior.countriesBorderingEachOther(ownedCountries);
+        ownedCountries.get(0).addNeighboringCountries(TestHelperBehavior.getCountryList(5, opponentPlayer));
+
+        testPlayer.getBehavior().moveSoldiers(null, ownedCountries);
+
+        assertEquals(9, ownedCountries.get(0).getSoldiersCount());
+        assertEquals(1, ownedCountries.get(1).getSoldiersCount());
+    }
+
+    @Test
+    void testMoveSoldiersOption() {
+        ArrayList<Country> ownedCountries1;
+        ownedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
+        ownedCountries1 = TestHelperBehavior.getCountryList(2, testPlayer);
+
         Player opponentPlayer = TestHelperBehavior.getMockPlayer();
 
-        assertEquals(Phase.SET, testPlayer.getBehavior().moveSoldiers(null, ownedCountries));
+        TestHelperBehavior.countriesBorderingEachOther(ownedCountries);
+        TestHelperBehavior.countriesBorderingEachOther(ownedCountries1);
 
-        for (Country countryList : ownedCountries) {
-            countryList.addNeighboringCountries(TestHelperBehavior.getCountryList(3, opponentPlayer));
-            assertEquals(5, countryList.getSoldiersCount());
-        }
+        ownedCountries.get(0).addNeighboringCountries(TestHelperBehavior.getCountryList(5, opponentPlayer));
+        ownedCountries.addAll(ownedCountries1);
+        testPlayer.getBehavior().moveSoldiers(null, ownedCountries);
 
+        assertEquals(9, ownedCountries.get(0).getSoldiersCount());
 
-        for (Country countryList : ownedCountries) {
-            assertEquals(5, countryList.getSoldiersCount());
-        }
     }
 
     private void resetForAttackCountry(int attacker, int defender) {
