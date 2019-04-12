@@ -89,8 +89,8 @@ class CountryTest {
     }
 
     @Test
-    void testMaxAttackerDiceCount() {
-        try {
+    void testMaxAttackerDiceCount() throws Exception{
+
             invadingCountry.setSoldiersCount(2);
             assertEquals(1, invadingCountry.maxAmountDiceThrowsAttacker());
 
@@ -103,9 +103,6 @@ class CountryTest {
             invadingCountry.setSoldiersCount(100);
             assertEquals(3, invadingCountry.maxAmountDiceThrowsAttacker());
 
-        } catch (Exception e) {
-            fail();
-        }
     }
 
     @Test
