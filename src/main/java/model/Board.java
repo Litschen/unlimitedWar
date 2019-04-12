@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Board {
 
@@ -21,6 +23,7 @@ public class Board {
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
     public final static String RESOURCE_FILE = "countryNames.txt";
+    private final static Logger LOGGER = Logger.getLogger(Board.class.getName());
     //endregion
 
     //region data fields
@@ -107,7 +110,7 @@ public class Board {
             }
 
         } catch (IOException | NullPointerException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, "Country Attributes could not be set", e);
         }
         setNeighbors();
     }
