@@ -12,9 +12,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AggressiveBehavior implements Behavior {
 
+    //region static Variables
+    private final static Logger LOGGER = Logger.getLogger(AggressiveBehavior.class.getName());
+    //endregion
 
     @Override
     public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
@@ -83,7 +88,7 @@ public class AggressiveBehavior implements Behavior {
                             int defenderDice = neighbor.amountDiceThrowsDefender(attackerDice);
                             invadingCountry.invade(neighbor, attackerDice, defenderDice);
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            LOGGER.log(Level.WARNING, "Could not calculate AttackerDice", e);
                         }
                     }
                 }

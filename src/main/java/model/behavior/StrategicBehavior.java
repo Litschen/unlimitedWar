@@ -8,12 +8,15 @@ import model.helpers.AttackScoreComparator;
 import model.interfaces.Behavior;
 
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class StrategicBehavior implements Behavior {
 
     //region static variables
     private final static int COUNTRY_IS_WEAK_DEFENDED_BONUS = -10;
     private final static int MAX_SCORE_TO_SET_DEFENSIVE = 3;
+    private final static Logger LOGGER = Logger.getLogger(StrategicBehavior.class.getName());
     //endregion
 
     @Override
@@ -68,7 +71,7 @@ public class StrategicBehavior implements Behavior {
                         }
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.WARNING, "Could not calculate AttackerDice", e);
                 }
                 i++;
                 processNextScore = false;
