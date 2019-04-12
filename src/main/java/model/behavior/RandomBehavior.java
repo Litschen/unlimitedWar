@@ -8,6 +8,8 @@ import model.interfaces.Behavior;
 
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RandomBehavior implements Behavior {
 
@@ -18,7 +20,7 @@ public class RandomBehavior implements Behavior {
     private final static int STUBBORNNESS = 9;
     //move soldiers in x cases out of 10 cases
     private final static int MOVE_WILLINGNESS = 8;
-
+    private final static Logger LOGGER = Logger.getLogger(RandomBehavior.class.getName());
     private final static int MIN_DICE_RANGE = 0;
     private final static int MAX_DICE_RANGE = 10;
     //endregion
@@ -52,7 +54,7 @@ public class RandomBehavior implements Behavior {
                         selectedCountry.invade(targetCountry, attackerDice, targetCountry.amountDiceThrowsDefender(attackerDice));
                     }
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    LOGGER.log(Level.WARNING, "Could not calculate AttackerDice", e);
                 }
             }
         }

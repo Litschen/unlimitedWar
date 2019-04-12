@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "GameController", urlPatterns = "/Game/*")
 public class GameController extends HttpServlet {
@@ -25,20 +27,19 @@ public class GameController extends HttpServlet {
     public final static String PARAM_NEXT_TURN = "nextTurn";
     public final static String SESSION_BOARD_NAME = "board";
     public final static String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/game.jsp";
+    private final static Logger LOGGER = Logger.getLogger(GameController.class.getName());
     private Board board;
     //endregion
 
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) {
         processRequest(request, response);
     }
 
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) {
         processRequest(request, response);
     }
 
@@ -58,10 +59,9 @@ public class GameController extends HttpServlet {
                     board.getCurrentTurn().executeTurn();
                 } else if (request.getParameter(PARAM_END) != null) {
                     board.getCurrentTurn().moveToNextPhase();
-                } else if (board.getCurrentTurn().currentPlayerIsUser() && !request.getPathInfo().equals(PATH_RESULT)) {
+                } else if (board.getCurrentTurn().currentPlayerIsUser() && request.getPathInfo() != null && !request.getPathInfo().equals(PATH_RESULT)) {
                     Country chosenCountry = extractSelectedCountry(request);
                     String path = request.getPathInfo();
-
 
                     if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_ROLL) != null) {
                         int attackDiceCount = request.getParameterMap().get(PARAM_ATTACK_DICE).length;
@@ -69,7 +69,6 @@ public class GameController extends HttpServlet {
                     } else if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_CANCEL) != null) {
                         board.getCurrentTurn().resetSelectedCountries();
                     }
-
                     board.getCurrentTurn().executeUserTurn(chosenCountry);
                 }
             }
@@ -79,19 +78,18 @@ public class GameController extends HttpServlet {
             } else {
                 dispatcher.forward(request, response);
             }
-        } catch (ServletException | IOException e) {
-            e.printStackTrace();
+        } catch (ServletException | IOException | NullPointerException e) {
+            LOGGER.log(Level.SEVERE, e.toString(), e);
         }
     }
 
     private Country extractSelectedCountry(HttpServletRequest request) {
         Country toReturn = null;
-
         try {
             int countryIndex = Integer.parseInt(request.getParameter(PARAM_COUNTRY));
             toReturn = board.getCountryById(countryIndex);
         } catch (NumberFormatException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.WARNING, e.toString(), e);
         }
         return toReturn;
     }
