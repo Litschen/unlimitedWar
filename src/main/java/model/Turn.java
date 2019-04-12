@@ -7,6 +7,8 @@ import model.interfaces.Event;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Turn {
 
@@ -22,6 +24,10 @@ public class Turn {
     private Flag flag;
     private Phase currentPhase = Phase.SET;
     private int turnNumber;
+    //endregion
+
+    //region static variables
+    private final static Logger LOGGER = Logger.getLogger(Turn.class.getName());
     //endregion
 
     public Turn(List<Player> players, List<Country> countries, int turnNumber) {
@@ -190,6 +196,7 @@ public class Turn {
                 attackDiceCount = firstSelectedCountry.maxAmountDiceThrowsAttacker();
                 defendDiceCount = secondSelectedCountry.amountDiceThrowsDefender(attackDiceCount);
             } catch (Exception e) {
+                LOGGER.log(Level.WARNING, "Attacking or defending country could not be set", e);
                 // TODO @huguemiz show error message on GUI
             }
         }
