@@ -17,10 +17,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
-/*
-As information: the strategic behavior is not implemented yet. Therefore, the tests do not success
- */
-
 class StrategicBehaviorTest {
 
     private Player testPlayer;
