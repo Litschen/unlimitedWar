@@ -40,7 +40,6 @@ public class RandomBehavior implements Behavior {
         return Phase.ATTACK;
     }
 
-
     @Override
     public AttackCountryResult attackCountry(List<Country> allCountries, List<Country> ownedCountries) {
         AttackCountryResult result = new AttackCountryResult(Phase.MOVE);
@@ -60,7 +59,6 @@ public class RandomBehavior implements Behavior {
         }
         return result;
     }
-
 
     @Override
     public Phase moveSoldiers(List<Country> allCountries, List<Country> ownedCountries) {
@@ -92,6 +90,5 @@ public class RandomBehavior implements Behavior {
     private boolean willMoveSoldiers() {
         return Dice.roll(MIN_DICE_RANGE, MAX_DICE_RANGE) <= MOVE_WILLINGNESS;
     }
-
 
 }
