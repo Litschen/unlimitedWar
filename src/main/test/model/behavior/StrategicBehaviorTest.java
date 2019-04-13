@@ -109,19 +109,6 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void testAttackCountryNotOwnCountry() {
-        ownedCountries = TestHelperBehavior.getMockCountryList(5, testPlayer);
-
-        Player opponentPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
-        Country attackCountry = TestHelperBehavior.getMockCountry(opponentPlayer);
-        selectedCountries.add(attackCountry);
-        selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
-
-        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-        verify(attackCountry, never()).invade(anyObject(), anyInt(), anyInt());
-    }
-
-    @Test
     void testMoveSoldiers() {
         ownedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
         TestHelperBehavior.countriesBorderingEachOther(ownedCountries);
