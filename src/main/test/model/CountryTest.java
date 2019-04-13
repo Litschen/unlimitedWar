@@ -1,5 +1,6 @@
 package model;
 
+import helpers.TestHelperCountry;
 import helpers.TestHelperEvents;
 import model.behavior.RandomBehavior;
 import model.enums.PlayerColor;
@@ -62,28 +63,28 @@ class CountryTest {
 
     @Test
     void testCalculateCasualtiesInvaderVictory() {
-        Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(6, 6, 6), ListCalculateRoll(1, 1));
+        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.CalculateRoll(6, 6,0) , TestHelperCountry.CalculateRoll(1, 1, 0));
         assertEquals(0, casualties.getCasualtiesAttacker());
         assertEquals(2, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesDefenderVictory() {
-        Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(1, 1, 1), ListCalculateRoll(6, 6));
+        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.CalculateRoll(1, 1, 1), TestHelperCountry.CalculateRoll(6, 6, 0));
         assertEquals(2, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesStalemate() {
-        Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(6, 6, 6), ListCalculateRoll(6, 6));
+        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.CalculateRoll(6, 6, 6), TestHelperCountry.CalculateRoll(6, 6, 0));
         assertEquals(2, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesOneDefender() {
-        Casualties casualties = invadingCountry.calculateCasualties(ListCalculateRoll(1, 1, 1), ListCalculateRoll(6));
+        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.CalculateRoll(1, 1, 1), TestHelperCountry.CalculateRoll(6, 0, 0));
         assertEquals(1, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }
@@ -232,21 +233,4 @@ class CountryTest {
         defendingCountry.getNeighboringCountries().remove(invadingCountry);
     }
 
-    // private method for test
-    private List<Integer> ListCalculateRoll(int input01, int input02, int input03) {
-        List<Integer> rollInputsDefender01;
-        return new ArrayList<>(Arrays.asList(input01, input02, input03));
-
-    }
-
-    private List<Integer> ListCalculateRoll(int input01, int input02) {
-        List<Integer> rollInputsDefender02;
-        return new ArrayList<>(Arrays.asList(input01, input02));
-    }
-
-    private List<Integer> ListCalculateRoll(int input01) {
-        List<Integer> rollInputsDefender02;
-        return new ArrayList<>(Collections.singletonList(input01));
-    }
-    // end
 }

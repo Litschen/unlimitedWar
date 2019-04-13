@@ -23,22 +23,22 @@ class PlayerTest {
 
     @Test
     void testCalculateSoldiersToPlace() {
-        addSoldiers(testPlayer.getOwnedCountries(), 1);
+        fellowCountries(testPlayer.getOwnedCountries(), 1);
         assertEquals(3, testPlayer.calculateSoldiersToPlace());
 
-        addSoldiers(testPlayer.getOwnedCountries(), 5);
+        fellowCountries(testPlayer.getOwnedCountries(), 5);
         assertEquals(3, testPlayer.calculateSoldiersToPlace());
 
-        addSoldiers(testPlayer.getOwnedCountries(), 10);
+        fellowCountries(testPlayer.getOwnedCountries(), 10);
         assertEquals(3, testPlayer.calculateSoldiersToPlace());
 
-        addSoldiers(testPlayer.getOwnedCountries(), 12);
+        fellowCountries(testPlayer.getOwnedCountries(), 12);
         assertEquals(4, testPlayer.calculateSoldiersToPlace());
 
-        addSoldiers(testPlayer.getOwnedCountries(), 12);
+        fellowCountries(testPlayer.getOwnedCountries(), 12);
         assertEquals(4, testPlayer.calculateSoldiersToPlace());
 
-        addSoldiers(testPlayer.getOwnedCountries(), 30);
+        fellowCountries(testPlayer.getOwnedCountries(), 30);
         assertEquals(10, testPlayer.calculateSoldiersToPlace());
     }
 
@@ -48,9 +48,8 @@ class PlayerTest {
         assertEquals(3, testPlayer.calculateSoldiersToPlace());
     }
 
-    private void addSoldiers(List<Country> owned, int amountOfCountries){
+    private void fellowCountries(List<Country> owned, int amountOfCountries){
         owned.clear();
-
         for (int i = 0; i < amountOfCountries; i++) {
             owned.add(new Country("test", 1, testPlayer));
         }
