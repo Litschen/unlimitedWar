@@ -4,7 +4,7 @@ import model.Country;
 
 public class MoveCountry {
 
-    //region datafields
+    //region data fields
     private int numberOfNeighbors;
     private Country own;
     private Country neighbor;

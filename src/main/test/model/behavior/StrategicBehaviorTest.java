@@ -20,14 +20,12 @@ import static org.mockito.Mockito.*;
 class StrategicBehaviorTest {
 
     private Player testPlayer;
-    private ArrayList<Country> selectedCountries;
     private ArrayList<Country> ownedCountries;
 
     @BeforeEach
     void setUp() {
         testPlayer = new Player(BLUE, "Mike", new StrategicBehavior());
         ownedCountries = new ArrayList<>();
-        selectedCountries = new ArrayList<>();
     }
 
     @Test

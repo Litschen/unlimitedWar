@@ -28,7 +28,7 @@ class PlayerDAOTest {
             ");";
 
     @BeforeEach
-    void setUp() throws SQLException, ClassNotFoundException {
+    void setUp() {
         con = TestHelperDAO.createH2Connection(createTable);
         testDAO = new PlayerDAO(con);
         username = "user";

@@ -3,7 +3,7 @@ package model.helpers;
 import model.Country;
 
 public class AttackScore {
-    //region datafields
+    //region data fields
     private int score;
     private Country attacker;
     private Country defender;
