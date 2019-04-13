@@ -27,8 +27,8 @@ class CountryTest {
                 new Player(PlayerColor.values()[(int) (Math.random() * PlayerColor.values().length)], "test", new RandomBehavior()));
         defendingCountry = new Country("countryTest", Board.START_SOLDIER_PER_PLAYER,
                 new Player(PlayerColor.values()[(int) (Math.random() * PlayerColor.values().length)], "test", new RandomBehavior()));
-        defendingCountry.getNeighboringCountries().add(invadingCountry);
-        invadingCountry.getNeighboringCountries().add(defendingCountry);
+        defendingCountry.addNeighboringCountry(invadingCountry);
+        invadingCountry.addNeighboringCountry(defendingCountry);
     }
 
     @Test

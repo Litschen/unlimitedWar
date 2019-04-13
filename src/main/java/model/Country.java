@@ -67,7 +67,10 @@ public class Country {
         return neighboringCountries;
     }
 
-    // TODO: use this method instead of call getter & add neighbors
+    public void addNeighboringCountry(Country neighboringCountry) {
+        this.neighboringCountries.add(neighboringCountry);
+    }
+
     public void addNeighboringCountries(List<Country> neighboringCountries) {
         this.neighboringCountries.addAll(neighboringCountries);
     }
