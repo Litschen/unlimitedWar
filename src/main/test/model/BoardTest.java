@@ -34,7 +34,7 @@ class BoardTest {
     }
 
     /**
-     * Only tests name setting, if bordering is set correctly is checked in CountrytTest
+     * Only tests name setting, if bordering is set correctly is checked in CountryTest
      */
     @Test
     void testSetCountryAttributes() {

@@ -12,7 +12,6 @@ public class TestHelperDAO {
     private final static Logger LOGGER = Logger.getLogger(TestHelperDAO.class.getName());
     //endregion
 
-
     public static Connection createH2Connection(String sql) {
         Connection con = null;
         try {

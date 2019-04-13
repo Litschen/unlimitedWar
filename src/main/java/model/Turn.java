@@ -197,7 +197,7 @@ public class Turn {
                 defendDiceCount = secondSelectedCountry.amountDiceThrowsDefender(attackDiceCount);
             } catch (Exception e) {
                 LOGGER.log(Level.WARNING, "Attacking or defending country could not be set", e);
-                // TODO @huguemiz show error message on GUI
+                // TODO @huguemiz MS3 /F0100/ show error message on GUI
             }
         }
     }

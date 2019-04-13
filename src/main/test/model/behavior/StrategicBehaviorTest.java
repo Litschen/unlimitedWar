@@ -17,21 +17,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
-/*
-As information: the strategic behavior is not implemented yet. Therefore, the tests do not success
- */
-
 class StrategicBehaviorTest {
 
     private Player testPlayer;
-    private ArrayList<Country> selectedCountries;
     private ArrayList<Country> ownedCountries;
 
     @BeforeEach
     void setUp() {
         testPlayer = new Player(BLUE, "Mike", new StrategicBehavior());
         ownedCountries = new ArrayList<>();
-        selectedCountries = new ArrayList<>();
     }
 
     @Test
@@ -84,7 +78,7 @@ class StrategicBehaviorTest {
 
     @Test
     void testAttackCountryWeakest() {
-        List<Country> toBeInvaded = new ArrayList<>();
+        List<Country> toBeInvaded;
         Country invadingCountry = Mockito.spy(new Country("", 3, testPlayer));
 
         for (int i = 0; i < 10; i++) {
@@ -106,19 +100,6 @@ class StrategicBehaviorTest {
         }
 
         verify(invadingCountry, never()).invade(any(), anyInt(), anyInt());
-    }
-
-    @Test
-    void testAttackCountryNotOwnCountry() {
-        ownedCountries = TestHelperBehavior.getMockCountryList(5, testPlayer);
-
-        Player opponentPlayer = new Player(BLUE, "ownPlayer", new UserBehavior());
-        Country attackCountry = TestHelperBehavior.getMockCountry(opponentPlayer);
-        selectedCountries.add(attackCountry);
-        selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
-
-        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-        verify(attackCountry, never()).invade(anyObject(), anyInt(), anyInt());
     }
 
     @Test

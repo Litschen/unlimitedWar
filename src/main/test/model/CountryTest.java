@@ -28,8 +28,8 @@ class CountryTest {
                 new Player(PlayerColor.values()[(int) (Math.random() * PlayerColor.values().length)], "test", new RandomBehavior()));
         defendingCountry = new Country("countryTest", Board.START_SOLDIER_PER_PLAYER,
                 new Player(PlayerColor.values()[(int) (Math.random() * PlayerColor.values().length)], "test", new RandomBehavior()));
-        defendingCountry.getNeighboringCountries().add(invadingCountry);
-        invadingCountry.getNeighboringCountries().add(defendingCountry);
+        defendingCountry.addNeighboringCountry(invadingCountry);
+        invadingCountry.addNeighboringCountry(defendingCountry);
     }
 
     @Test
@@ -90,20 +90,18 @@ class CountryTest {
     }
 
     @Test
-    void testMaxAttackerDiceCount() throws Exception{
+    void testMaxAttackerDiceCount() throws Exception {
+        invadingCountry.setSoldiersCount(2);
+        assertEquals(1, invadingCountry.maxAmountDiceThrowsAttacker());
 
-            invadingCountry.setSoldiersCount(2);
-            assertEquals(1, invadingCountry.maxAmountDiceThrowsAttacker());
+        invadingCountry.setSoldiersCount(3);
+        assertEquals(2, invadingCountry.maxAmountDiceThrowsAttacker());
 
-            invadingCountry.setSoldiersCount(3);
-            assertEquals(2, invadingCountry.maxAmountDiceThrowsAttacker());
+        invadingCountry.setSoldiersCount(4);
+        assertEquals(3, invadingCountry.maxAmountDiceThrowsAttacker());
 
-            invadingCountry.setSoldiersCount(4);
-            assertEquals(3, invadingCountry.maxAmountDiceThrowsAttacker());
-
-            invadingCountry.setSoldiersCount(100);
-            assertEquals(3, invadingCountry.maxAmountDiceThrowsAttacker());
-
+        invadingCountry.setSoldiersCount(100);
+        assertEquals(3, invadingCountry.maxAmountDiceThrowsAttacker());
     }
 
     @Test

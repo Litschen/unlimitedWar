@@ -31,7 +31,6 @@ public class GameController extends HttpServlet {
     private Board board;
     //endregion
 
-
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         processRequest(request, response);

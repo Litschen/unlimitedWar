@@ -77,7 +77,6 @@ public class Board {
     //endregion
 
     //region methods to generate countries & set their properties
-
     private void generateCountries() {
         for (Player currentPlayer : players) {
             int countriesToGenerate = COUNTRY_COUNT_GENERATION / players.size();
@@ -108,7 +107,6 @@ public class Board {
             for (Country country : countries) {
                 country.setName(countryNames.remove(0));
             }
-
         } catch (IOException | NullPointerException e) {
             LOGGER.log(Level.WARNING, "Country Attributes could not be set", e);
         }
@@ -148,7 +146,6 @@ public class Board {
     //endregion
 
     private void generatePlayers() {
-
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
         players.add(new Player(playerColor.remove(1), "Felix", new UserBehavior()));
@@ -156,6 +153,4 @@ public class Board {
         players.add(new Player(playerColor.remove(getPlayerColor()), "Max", new AggressiveBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Nina", new RandomBehavior()));
     }
-
-
 }

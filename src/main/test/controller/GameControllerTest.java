@@ -42,7 +42,7 @@ class GameControllerTest {
     }
 
     @Test
-    void testExecuteTurnIsCalled() throws Exception {
+    void testExecuteTurnIsCalled() {
         when(mockRequest.getPathInfo()).thenReturn(NOT_EMPTY);
         when(mockRequest.getParameter(GameController.PARAM_NEXT_TURN)).thenReturn(NOT_EMPTY);
         when(mockTurn.currentPlayerIsUser()).thenReturn(false);
@@ -56,7 +56,7 @@ class GameControllerTest {
     }
 
     @Test
-    void testMoveToNextPhaseIsCalled() throws Exception {
+    void testMoveToNextPhaseIsCalled() {
         when(mockRequest.getPathInfo()).thenReturn(NOT_EMPTY);
         when(mockRequest.getParameter(GameController.PARAM_END)).thenReturn(NOT_EMPTY);
         when(mockTurn.currentPlayerIsUser()).thenReturn(false);
@@ -67,11 +67,10 @@ class GameControllerTest {
         verify(mockTurn, times(2)).moveToNextPhase();
         verify(mockTurn, never()).executeUserTurn(any());
         verify(mockTurn, never()).executeTurn();
-
     }
 
     @Test
-    void testExecuteUserTurnIsCalled() throws Exception {
+    void testExecuteUserTurnIsCalled() {
         when(mockTurn.currentPlayerIsUser()).thenReturn(true);
         when(mockRequest.getParameter(GameController.PARAM_COUNTRY)).thenReturn("1");
         when(mockRequest.getPathInfo()).thenReturn(NOT_EMPTY);
@@ -81,11 +80,10 @@ class GameControllerTest {
         verify(mockTurn, times(1)).executeUserTurn(mockCountry);
         controller.doGet(mockRequest, mockResponse);
         verify(mockTurn, times(2)).executeUserTurn(mockCountry);
-
     }
 
     @Test
-    void testAttackDiceAreSet() throws Exception {
+    void testAttackDiceAreSet() {
         Map<String, String[]> mockMap = mock(Map.class);
         Player mockPlayer = mock(Player.class);
 
@@ -98,14 +96,13 @@ class GameControllerTest {
     }
 
     @Test
-    void testCancelAttackIsCalled() throws Exception {
+    void testCancelAttackIsCalled() {
         when(mockTurn.currentPlayerIsUser()).thenReturn(true);
         when(mockRequest.getPathInfo()).thenReturn(GameController.PATH_ATTACK);
         when(mockRequest.getParameter(GameController.PARAM_CANCEL)).thenReturn(NOT_EMPTY);
 
         controller.doPost(mockRequest, mockResponse);
         verify(mockTurn, times(1)).resetSelectedCountries();
-
     }
 
     @Test
@@ -117,6 +114,5 @@ class GameControllerTest {
         verify(mockTurn, times(1)).currentPlayerIsUser();
         verifyNoMoreInteractions(mockTurn);
         verify(mockResponse, times(1)).sendRedirect(anyString());
-
     }
 }

@@ -21,7 +21,6 @@ class TurnTest {
 
     @BeforeEach
     void setUp() {
-
         mockPlayer = mock(Player.class);
         Player mockPlayer0 = mock(Player.class);
         Player mockPlayer1 = mock(Player.class);
@@ -43,7 +42,7 @@ class TurnTest {
         testCountry.setSoldiersCount(3);
 
         Country testCountryDefend = turn.getActivePlayers().get(1).getOwnedCountries().get(1);
-        testCountry.getNeighboringCountries().add(testCountryDefend);
+        testCountry.addNeighboringCountry(testCountryDefend);
 
         assertNull(turn.getFirstSelectedCountry());
         assertNull(turn.getSecondSelectedCountry());

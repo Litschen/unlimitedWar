@@ -14,13 +14,6 @@ import static org.mockito.Mockito.when;
 
 public class TestHelperBehavior {
 
-    public static Country getMockCountry(Player player, int soldiers) {
-        Country mockCountry = getMockCountry(player);
-        when(mockCountry.getSoldiersCount()).thenReturn(soldiers);
-
-        return mockCountry;
-    }
-
     public static Country getMockCountry(Player player) {
         Country mockCountry = mock(Country.class);
         when(mockCountry.getSoldiersCount()).thenReturn(5);
@@ -45,11 +38,6 @@ public class TestHelperBehavior {
         }
         return countries;
     }
-
-    public static void setNeighbor(Country c, ArrayList<Country> neighbors) {
-        when(c.getNeighboringCountries()).thenReturn(neighbors);
-    }
-
 
     public static Player getMockPlayer() {
         Player mockPlayer = mock(Player.class);
@@ -76,9 +64,9 @@ public class TestHelperBehavior {
     }
 
     public static void countriesBorderingEachOther(List<Country> countries) {
-        for (Country country : countries){
-            for (Country neighbor : countries){
-                if (!country.equals(neighbor)){
+        for (Country country : countries) {
+            for (Country neighbor : countries) {
+                if (!country.equals(neighbor)) {
                     country.addNeighboringCountries(Collections.singletonList(neighbor));
                 }
             }

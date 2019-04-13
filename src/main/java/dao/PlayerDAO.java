@@ -25,7 +25,7 @@ public class PlayerDAO {
         this.con = con;
     }
 
-    public UserBean getPlayerByMail(String mail) throws SQLException, ClassNotFoundException {
+    public UserBean getPlayerByMail(String mail) throws SQLException {
         UserBean user = null;
 
         st = MySQLConnectionCreator.setUpQuery(con, SELECT_QUERY, Collections.singletonList(mail));
@@ -40,16 +40,16 @@ public class PlayerDAO {
         return user;
     }
 
-    public int createNewPlayer(String username, @NotNull String mail, String password) throws SQLException, ClassNotFoundException {
+    public int createNewPlayer(String username, @NotNull String mail, String password) throws SQLException {
         return manipulateData(INSERT_QUERY, Arrays.asList(username, mail, password));
     }
 
 
-    public int updatePlayer(String username, @NotNull String mail, String password) throws SQLException, ClassNotFoundException {
+    public int updatePlayer(String username, @NotNull String mail, String password) throws SQLException {
         return manipulateData(UPDATE_QUERY, Arrays.asList(username, password, mail));
     }
 
-    public int deletePlayerByMail(@NotNull String mail) throws SQLException, ClassNotFoundException {
+    public int deletePlayerByMail(@NotNull String mail) throws SQLException {
         return manipulateData(DELETE_QUERY, Collections.singletonList(mail));
     }
 

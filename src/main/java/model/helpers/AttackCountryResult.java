@@ -12,7 +12,7 @@ public class AttackCountryResult {
     private List<Event> occurredEvents;
     //endregion
 
-    public AttackCountryResult(Phase phase){
+    public AttackCountryResult(Phase phase) {
         occurredEvents = new ArrayList<>();
         newPhase = phase;
     }
@@ -26,10 +26,6 @@ public class AttackCountryResult {
         return occurredEvents;
     }
     //endregion
-
-    public void addEvent(Event event){
-        getOccurredEvents().add(event);
-    }
 
     public void addEvents(List<Event> events) {
         occurredEvents.addAll(events);

@@ -75,7 +75,7 @@ class AggressiveBehaviorTest {
         verify(invadingCountry, atLeast(loopCnt)).invade(any(), anyInt(), anyInt());
 
         //attack a country further
-        defendingCountry.getNeighboringCountries().add(defendingCountry2);
+        defendingCountry.addNeighboringCountry(defendingCountry2);
         selectedCountries.add(defendingCountry2);
         soldiersDefender = 1;
         for (int i = 0; i < loopCnt; i++) {
@@ -83,19 +83,6 @@ class AggressiveBehaviorTest {
             testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
         }
         verify(invadingCountry, atLeast(loopCnt * 2)).invade(any(), anyInt(), anyInt());
-    }
-
-    @Test
-    void testAttackCountryNotOwnCountry() {
-        ownedCountries = TestHelperBehavior.getMockCountryList(5, testPlayer);
-
-        Player opponentPlayer = new Player(PlayerColor.BLUE, "ownPlayer", new UserBehavior());
-        Country attackCountry = TestHelperBehavior.getMockCountry(opponentPlayer);
-        selectedCountries.add(attackCountry);
-        selectedCountries.add(new Country("Spanien", 5, opponentPlayer));
-
-        testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
-        verify(attackCountry, never()).invade(anyObject(), anyInt(), anyInt());
     }
 
     @Test

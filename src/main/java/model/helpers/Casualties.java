@@ -32,5 +32,4 @@ public class Casualties {
         casualtiesDefender += 1;
     }
 
-
 }
