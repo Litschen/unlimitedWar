@@ -9,9 +9,6 @@ import model.interfaces.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,28 +60,28 @@ class CountryTest {
 
     @Test
     void testCalculateCasualtiesInvaderVictory() {
-        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.CalculateRoll(6, 6,0) , TestHelperCountry.CalculateRoll(1, 1, 0));
+        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.setUpRolls(6, 2), TestHelperCountry.setUpRolls(1, 2));
         assertEquals(0, casualties.getCasualtiesAttacker());
         assertEquals(2, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesDefenderVictory() {
-        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.CalculateRoll(1, 1, 1), TestHelperCountry.CalculateRoll(6, 6, 0));
+        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.setUpRolls(1, 3), TestHelperCountry.setUpRolls(6, 2));
         assertEquals(2, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesStalemate() {
-        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.CalculateRoll(6, 6, 6), TestHelperCountry.CalculateRoll(6, 6, 0));
+        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.setUpRolls(6, 3), TestHelperCountry.setUpRolls(6, 2));
         assertEquals(2, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }
 
     @Test
     void testCalculateCasualtiesOneDefender() {
-        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.CalculateRoll(1, 1, 1), TestHelperCountry.CalculateRoll(6, 0, 0));
+        Casualties casualties = invadingCountry.calculateCasualties(TestHelperCountry.setUpRolls(1, 3), TestHelperCountry.setUpRolls(6, 1));
         assertEquals(1, casualties.getCasualtiesAttacker());
         assertEquals(0, casualties.getCasualtiesDefender());
     }

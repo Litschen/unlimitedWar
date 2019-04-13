@@ -6,14 +6,12 @@ import java.util.List;
 
 public class TestHelperCountry {
 
-    public static List<Integer> CalculateRoll(int firstDiceThrow, int secondDiceThrow, int thirdDiceRoll) {
-        if (secondDiceThrow == 0) {
-            return new ArrayList<>(Arrays.asList(firstDiceThrow, null, thirdDiceRoll));
-        } else if (thirdDiceRoll == 0) {
-            return new ArrayList<>(Arrays.asList(firstDiceThrow, secondDiceThrow, null));
-        } else {
-            return new ArrayList<>(Arrays.asList(firstDiceThrow, secondDiceThrow, thirdDiceRoll));
+    public static List<Integer> setUpRolls(int throwValue, int amountOfDice) {
+        List<Integer> throwResults = new ArrayList<>();
+        for (int i = 0; i < amountOfDice; i++) {
+            throwResults.add(throwValue);
         }
+        return throwResults;
     }
 }
 
