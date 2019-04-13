@@ -42,18 +42,15 @@ class PlayerDAOTest {
         affectedRows = testDAO.createNewPlayer(username, mail, password);
         assertEquals(1, affectedRows);
 
-
         // ----- test select -----
         UserBean user = testDAO.getPlayerByMail(mail);
         assertEquals(username, user.getName());
         assertEquals(mail, user.getMail());
         assertEquals(password, user.getPassword());
 
-
         // ----- test update -----
         affectedRows = testDAO.updatePlayer("new username", mail, password);
         assertEquals(1, affectedRows);
-
 
         // ----- test delete -----
         affectedRows = testDAO.deletePlayerByMail(mail);

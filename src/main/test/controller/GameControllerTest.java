@@ -67,7 +67,6 @@ class GameControllerTest {
         verify(mockTurn, times(2)).moveToNextPhase();
         verify(mockTurn, never()).executeUserTurn(any());
         verify(mockTurn, never()).executeTurn();
-
     }
 
     @Test
@@ -81,7 +80,6 @@ class GameControllerTest {
         verify(mockTurn, times(1)).executeUserTurn(mockCountry);
         controller.doGet(mockRequest, mockResponse);
         verify(mockTurn, times(2)).executeUserTurn(mockCountry);
-
     }
 
     @Test

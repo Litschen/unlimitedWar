@@ -21,7 +21,6 @@ class TurnTest {
 
     @BeforeEach
     void setUp() {
-
         mockPlayer = mock(Player.class);
         Player mockPlayer0 = mock(Player.class);
         Player mockPlayer1 = mock(Player.class);
