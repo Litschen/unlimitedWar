@@ -78,7 +78,7 @@ class StrategicBehaviorTest {
 
     @Test
     void testAttackCountryWeakest() {
-        List<Country> toBeInvaded = new ArrayList<>();
+        List<Country> toBeInvaded;
         Country invadingCountry = Mockito.spy(new Country("", 3, testPlayer));
 
         for (int i = 0; i < 10; i++) {
