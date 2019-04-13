@@ -12,7 +12,7 @@ public class AttackCountryResult {
     private List<Event> occurredEvents;
     //endregion
 
-    public AttackCountryResult(Phase phase){
+    public AttackCountryResult(Phase phase) {
         occurredEvents = new ArrayList<>();
         newPhase = phase;
     }

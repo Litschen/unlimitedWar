@@ -10,7 +10,6 @@ public class MoveCountry {
     private Country neighbor;
     //endregion
 
-
     public MoveCountry(int numberOfNeighbors, Country neighbor, Country own) {
         this.numberOfNeighbors = numberOfNeighbors;
         this.own = own;
@@ -28,7 +27,6 @@ public class MoveCountry {
     public Country getNeighbor() {
         return neighbor;
     }
-
 
     public void setNeighbor(Country neighbor) {
         this.neighbor = neighbor;
