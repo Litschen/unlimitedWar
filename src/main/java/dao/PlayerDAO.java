@@ -46,14 +46,18 @@ public class PlayerDAO {
         return user;
     }
 
-    public boolean suchPlayerExists(@NotNull String mail, @NotNull String password) {
+    public UserBean getValidatedUser(@NotNull String mail, @NotNull String password) {
         UserBean userToValidate = null;
         try {
             userToValidate = getPlayerByMail(mail);
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not validate user", e);
         }
-        return userToValidate != null && userToValidate.getPassword().equals(password);
+        if (userToValidate != null && !userToValidate.getPassword().equals(password)) {
+            userToValidate = null;
+        }
+
+        return userToValidate;
     }
 
     public int createNewPlayer(String username, @NotNull String mail, String password) throws SQLException {
