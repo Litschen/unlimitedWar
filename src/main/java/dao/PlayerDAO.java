@@ -12,14 +12,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class PlayerDAO {
-    private ResultSet rs;
+    //region static variables
+    private final static String INSERT_QUERY = "INSERT INTO player (username, email, password) VALUES(?, ?, ?);";
     private Connection con;
     private PreparedStatement st;
-
-    private final static String INSERT_QUERY = "INSERT INTO player (username, email, password) VALUES(?, ?, ?);";
+    //endregion
+    //region data fields
+    private ResultSet rs;
     private final static String SELECT_QUERY = "SELECT username, email, password FROM player WHERE email = ?;";
     private final static String UPDATE_QUERY = "UPDATE player SET username = ?, password = ? WHERE email = ?;";
     private final static String DELETE_QUERY = "DELETE FROM player WHERE email = ?;";
+    //endregion
 
     public PlayerDAO(Connection con) {
         this.con = con;
@@ -38,6 +41,11 @@ public class PlayerDAO {
         }
 
         return user;
+    }
+
+    //TODO @Schrema8 MS3 #4
+    public boolean suchPlayerExists(String mail, String password) {
+        return false;
     }
 
     public int createNewPlayer(String username, @NotNull String mail, String password) throws SQLException {
