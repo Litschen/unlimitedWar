@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PlayerDAO {
     //region static variables
@@ -22,6 +24,7 @@ public class PlayerDAO {
     private final static String SELECT_QUERY = "SELECT username, email, password FROM player WHERE email = ?;";
     private final static String UPDATE_QUERY = "UPDATE player SET username = ?, password = ? WHERE email = ?;";
     private final static String DELETE_QUERY = "DELETE FROM player WHERE email = ?;";
+    private final static Logger LOGGER = Logger.getLogger(PlayerDAO.class.getName());
     //endregion
 
     public PlayerDAO(Connection con) {
@@ -43,9 +46,14 @@ public class PlayerDAO {
         return user;
     }
 
-    //TODO @Schrema8 MS3 #4
     public boolean suchPlayerExists(String mail, String password) {
-        return false;
+        UserBean userToValidate = null;
+        try {
+            userToValidate = getPlayerByMail(mail);
+        } catch (SQLException e) {
+            LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not validate user", e);
+        }
+        return userToValidate != null && userToValidate.getPassword().equals(password);
     }
 
     public int createNewPlayer(String username, @NotNull String mail, String password) throws SQLException {
