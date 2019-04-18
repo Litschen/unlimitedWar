@@ -7,4 +7,8 @@
         <servlet-name>GameController</servlet-name>
         <url-pattern>/Game/*</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/SignIn</url-pattern>
+    </servlet-mapping>
 </web-app>
