@@ -26,6 +26,8 @@ public class UserController extends HttpServlet {
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
     private final static String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/index.jsp";
     private final static String PAGE_TO_LOAD_ON_ERROR = "/jsp/sign-in.jsp";
+    public final static String SIGNIN_ERROR_MESSAGE = "Could not sign in. Maybe you entered your password or Email wrong";
+    public static boolean displayErrorMessage = false;
     //region data fields
     private UserBean user = null;
     //endregion
@@ -38,7 +40,6 @@ public class UserController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-
         String mail = request.getParameter(MAIL_PARAMETER_NAME);
         String password = request.getParameter(PASSWORD_PARAMETER_NAME);
 
@@ -50,6 +51,7 @@ public class UserController extends HttpServlet {
         }
         RequestDispatcher requestDispatcher = (user != null) ?
                 request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE) : request.getRequestDispatcher(PAGE_TO_LOAD_ON_ERROR);
+        displayErrorMessage = user == null;
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

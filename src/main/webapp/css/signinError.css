@@ -1,0 +1,16 @@
+
+.alert {
+    background-color: #FF5B6B;
+    color: white;
+}
+
+.closebtn {
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
