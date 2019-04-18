@@ -19,15 +19,16 @@ import java.util.logging.Logger;
 @WebServlet(name = "UserController", urlPatterns = "/SignIn")
 public class UserController extends HttpServlet {
 
-    public final static String MAIL_PARAMETER_NAME = "mail";
-    //endregion
-    public final static String PASSWORD_PARAMETER_NAME = "password";
     //region static variables
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
     private final static String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/index.jsp";
     private final static String PAGE_TO_LOAD_ON_ERROR = "/jsp/sign-in.jsp";
     public final static String SIGNIN_ERROR_MESSAGE = "Could not sign in. Maybe you entered your password or Email wrong";
+    public final static String MAIL_PARAMETER_NAME = "mail";
+    public final static String PASSWORD_PARAMETER_NAME = "password";
     public static boolean displayErrorMessage = false;
+    //endregion
+
     //region data fields
     private UserBean user = null;
     //endregion
@@ -35,6 +36,10 @@ public class UserController extends HttpServlet {
     //region getter/setter
     public UserBean getUser() {
         return user;
+    }
+
+    public void setUser(UserBean user) {
+        this.user = user;
     }
     //endregion
 
