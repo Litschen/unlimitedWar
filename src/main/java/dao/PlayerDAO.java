@@ -46,7 +46,7 @@ public class PlayerDAO {
         return user;
     }
 
-    public boolean suchPlayerExists(String mail, String password) {
+    public boolean suchPlayerExists(@NotNull String mail, @NotNull String password) {
         UserBean userToValidate = null;
         try {
             userToValidate = getPlayerByMail(mail);
