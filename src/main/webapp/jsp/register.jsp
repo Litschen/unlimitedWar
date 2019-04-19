@@ -23,10 +23,13 @@
         <input type="password" id="inputPassword" class="mb-3 form-control" placeholder="Password" name ="pwd" required>
         <input type="password" id="inputConfirmPassword" class="mb-3 form-control" placeholder="Confirm Password" name ="confirm-pwd" required>
         <button name="register" class="btn btn-lg btn-primary btn-block">Register</button>
+    </form>
+    <form class="mb-3" action="<%=request.getContextPath()%>/user" method="post">
         <button name="cancel" class="btn btn-lg btn-block">Cancel</button>
     </form>
 </div>
 
+<%@include file="modals/registrationEvent.jsp" %>
 <%@include file="snippets/footer.jsp" %>
 </body>
 </html>

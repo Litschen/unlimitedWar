@@ -83,7 +83,7 @@ public class UserController extends HttpServlet {
                 request.getSession().setAttribute(SESSION_USER, user);
             }
 
-            // TODO: show events on GUI @huguemiz MS3
+            request.getSession().setAttribute("events", events);
             RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPageTo);
             dispatcher.forward(request, response);
         } catch (ServletException | IOException | SQLException e) {
