@@ -16,7 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-@WebServlet(name = "UserController", urlPatterns = "/SignIn")
+@WebServlet(name = "SignInController", urlPatterns = "/SignIn")
 public class SignInController extends HttpServlet {
 
     //region static variables
