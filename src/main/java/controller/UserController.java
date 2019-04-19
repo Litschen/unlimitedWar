@@ -80,7 +80,9 @@ public class UserController extends HttpServlet {
                     forwardPageTo = REGISTER_PAGE;
                 }
                 playerDAO.closeConnection();
-                request.getSession().setAttribute(SESSION_USER, user);
+                if (forwardPageTo.equals(HOME_PAGE)) {
+                    request.getSession().setAttribute(SESSION_USER, user);
+                }
             }
 
             request.getSession().setAttribute("events", events);
