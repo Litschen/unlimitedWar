@@ -15,13 +15,10 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@WebServlet(name = "UserController", urlPatterns = "/Register/*")
+@WebServlet(name = "UserController", urlPatterns = "/user/*")
 public class UserController extends HttpServlet {
 
     //region path & param variables
-    public final static String PATH_REGISTER = "/register";
-    public final static String PATH_EDIT = "/edit";
-
     // user data
     public final static String PARAM_NAME = "name";
     public final static String PARAM_MAIL = "mail";
@@ -37,6 +34,7 @@ public class UserController extends HttpServlet {
     public final static String USER_HOME_PAGE = "/jsp/index.jsp";
     public final static String LOGIN_PAGE = "/jsp/sign-in.jsp";
 
+    public final static String SESSION_USER = "user";
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
     private UserBean user;
     private PlayerDAO playerDAO;
@@ -56,21 +54,21 @@ public class UserController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher(USER_HOME_PAGE);
 
         try {
-            String path = request.getPathInfo();
-            if (path != null && path.equals(PATH_REGISTER)) {
-                if (request.getParameter(PARAM_REGISTER) != null) {
-                    setUpDBConnection();
-                    getUserDataFromInput(request);
-                    int result = playerDAO.createNewPlayer(user.getName(), user.getMail(), user.getPassword());
-                    checkSQLInjectionResult(result);
-                } else if (request.getParameter(PARAM_CANCEL) != null) {
-                    dispatcher = request.getRequestDispatcher(LOGIN_PAGE);
-                }
-            } else if (path != null && path.equals(PATH_EDIT) && request.getParameter(PARAM_SAVE) != null) {
+            if (request.getParameter(PARAM_CANCEL) != null) {
+                dispatcher = request.getRequestDispatcher(LOGIN_PAGE);
+            } else {
                 setUpDBConnection();
                 getUserDataFromInput(request);
-                int result = playerDAO.updatePlayer(user.getName(), user.getMail(), user.getPassword());
+                int result = 0;
+
+                if (request.getParameter(PARAM_REGISTER) != null) {
+                    result = playerDAO.createNewPlayer(user.getName(), user.getMail(), user.getPassword());
+                } else if (request.getParameter(PARAM_SAVE) != null) {
+                    result = playerDAO.updatePlayer(user.getName(), user.getMail(), user.getPassword());
+                }
+                playerDAO.closeConnection();
                 checkSQLInjectionResult(result);
+                request.getSession().setAttribute(SESSION_USER, user);
             }
             dispatcher.forward(request, response);
         } catch (ServletException | IOException | SQLException e) {

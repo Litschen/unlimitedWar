@@ -43,6 +43,8 @@ public class PlayerDAO {
             user.setPassword(rs.getString("password"));
         }
 
+        closeStatement();
+
         return user;
     }
 
@@ -64,7 +66,6 @@ public class PlayerDAO {
         return manipulateData(INSERT_QUERY, Arrays.asList(username, mail, password));
     }
 
-
     public int updatePlayer(String username, @NotNull String mail, String password) throws SQLException {
         return manipulateData(UPDATE_QUERY, Arrays.asList(username, password, mail));
     }
@@ -82,14 +83,20 @@ public class PlayerDAO {
      */
     private int manipulateData(@NotNull String query, List<String> args) throws SQLException {
         st = MySQLConnectionCreator.setUpQuery(con, query, args);
-        return st.executeUpdate();
+        int result = st.executeUpdate();
+        closeStatement();
+        return result;
     }
 
-    public void closeStatement() throws SQLException {
+    private void closeStatement() throws SQLException {
         if (rs != null) {
             rs.close();
         }
         st.close();
+    }
+
+    public void closeConnection() throws SQLException {
+        con.close();
     }
 
 }

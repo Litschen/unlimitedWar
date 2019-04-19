@@ -17,7 +17,7 @@
 
 <div class="homeBox border rounded">
     <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
-    <form class="mb-3" action="index.jsp">
+    <form class="mb-3" action="<%=request.getContextPath()%>/user" method="post">
         <input type="text" id="inputName" class="mb-3 form-control" placeholder="Username" name ="name" required autofocus>
         <input type="email" id="inputEmail" class="mb-3 form-control" placeholder="Email address" name ="mail" required>
         <input type="password" id="inputPassword" class="mb-3 form-control" placeholder="Password" name ="pwd" required>
