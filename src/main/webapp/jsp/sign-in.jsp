@@ -15,10 +15,10 @@
     <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
     <%@include file="modals/signinError.jsp" %>
     <form class="form-signin mb-3" action="<%=request.getContextPath()%>/SignIn" method="post">
-        <input type="email" id="inputEmail" class="mb-3 form-control" name="<%=UserController.MAIL_PARAMETER_NAME%>"
+        <input type="email" id="inputEmail" class="mb-3 form-control" name="<%=SignInController.MAIL_PARAMETER_NAME%>"
                placeholder="Email address" required autofocus>
         <input type="password" id="inputPassword" class="mb-3 form-control"
-               name="<%=UserController.PASSWORD_PARAMETER_NAME%>" placeholder="Password" required>
+               name="<%=SignInController.PASSWORD_PARAMETER_NAME%>" placeholder="Password" required>
         <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
     </form>
     <button class="btn btn-lg btn-block" onclick="window.location.href='register.jsp'">Register</button>

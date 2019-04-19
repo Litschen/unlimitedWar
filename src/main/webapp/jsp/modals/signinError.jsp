@@ -1,4 +1,4 @@
-<%@ page import="controller.UserController" %>
+<%@ page import="controller.SignInController" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/signinError.css">
@@ -6,6 +6,6 @@
 <c:if test="${UserController.DISPLAY_ERROR_MESSAGE}">
     <div class="alert">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-        <%=UserController.SIGNIN_ERROR_MESSAGE%>
+        <%=SignInController.SIGNIN_ERROR_MESSAGE%>
     </div>
 </c:if>
