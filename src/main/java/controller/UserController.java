@@ -3,6 +3,8 @@ package controller;
 import dao.MySQLConnectionCreator;
 import dao.PlayerDAO;
 import model.UserBean;
+import model.events.UserEvent;
+import model.interfaces.Event;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,14 +35,20 @@ public class UserController extends HttpServlet {
     public final static String PARAM_CANCEL = "cancel";
 
     // pages to load
-    public final static String USER_HOME_PAGE = "/jsp/index.jsp";
-    public final static String LOGIN_PAGE = "/jsp/sign-in.jsp";
+    public final static String HOME_PAGE = "/jsp/sign-in.jsp";
+    public final static String REGISTER_PAGE = "/jsp/register.jsp";
 
     public final static String SESSION_USER = "user";
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
     private UserBean user;
     private PlayerDAO playerDAO;
+    private List<Event> events;
     //endregion
+
+
+    public UserController() {
+        this.events = new ArrayList<>();
+    }
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -51,25 +61,30 @@ public class UserController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher(USER_HOME_PAGE);
+        String forwardPageTo = HOME_PAGE;
+        events.clear();
 
         try {
-            if (request.getParameter(PARAM_CANCEL) != null) {
-                dispatcher = request.getRequestDispatcher(LOGIN_PAGE);
-            } else {
+            if (request.getParameter(PARAM_CANCEL) == null) {
                 setUpDBConnection();
                 getUserDataFromInput(request);
-                int result = 0;
 
-                if (request.getParameter(PARAM_REGISTER) != null) {
-                    result = playerDAO.createNewPlayer(user.getName(), user.getMail(), user.getPassword());
-                } else if (request.getParameter(PARAM_SAVE) != null) {
-                    result = playerDAO.updatePlayer(user.getName(), user.getMail(), user.getPassword());
+                if (user.getMail() != null && !user.getMail().equals("")) {
+                    if (request.getParameter(PARAM_REGISTER) != null) {
+                        forwardPageTo = registerUser();
+                    } else if (request.getParameter(PARAM_SAVE) != null) {
+                        int result = playerDAO.updatePlayer(user.getName(), user.getMail(), user.getPassword());
+                        checkSQLInjectionResult(result);
+                    }
+                } else {
+                    forwardPageTo = REGISTER_PAGE;
                 }
                 playerDAO.closeConnection();
-                checkSQLInjectionResult(result);
                 request.getSession().setAttribute(SESSION_USER, user);
             }
+
+            // TODO: show events on GUI @huguemiz MS3
+            RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPageTo);
             dispatcher.forward(request, response);
         } catch (ServletException | IOException | SQLException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
@@ -92,12 +107,33 @@ public class UserController extends HttpServlet {
         String pwd = request.getParameter(PARAM_PASSWORD);
         if (pwd != null && pwd.equals(request.getParameter(PARAM_CONFIRM_PASSWORD))) {
             user.setPassword(request.getParameter(PARAM_PASSWORD));
+        } else {
+            events.add(new UserEvent("Password error", "You entered two different passwords!"));
         }
     }
 
-    private void checkSQLInjectionResult(int result) throws SQLException {
+    private String registerUser() {
+        String forwardPageTo = HOME_PAGE;
+        try {
+            UserBean userExisting = playerDAO.getPlayerByMail(user.getMail());
+
+            if (userExisting == null) {
+                int result = playerDAO.createNewPlayer(user.getName(), user.getMail(), user.getPassword());
+                checkSQLInjectionResult(result);
+            } else {
+                events.add(new UserEvent("Registration error", "Mail already in use!"));
+                forwardPageTo = REGISTER_PAGE;
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, e.toString(), e);
+        }
+
+        return forwardPageTo;
+    }
+
+    private void checkSQLInjectionResult(int result) {
         if (result != 1) {
-            throw new SQLException("Query result not 1");
+            events.add(new UserEvent("error", ""));
         }
     }
 }
