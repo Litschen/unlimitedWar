@@ -3,7 +3,7 @@
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/colorSelection.css">
 </head>
-<c:if test="${home.showColorModal}">
+<c:if test="${sessionScope.showColorModal}">
     <div class="modal show" role="dialog" style="display: block;">
         <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Home/colorSelection" method="post" name="colorForm">
             <div class="modal-header">

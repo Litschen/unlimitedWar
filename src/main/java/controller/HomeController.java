@@ -25,14 +25,9 @@ public class HomeController extends HttpServlet {
     public final static String GAME_PAGE = "/jsp/game.jsp";
     public final static String RESULTS_PAGE = "/jsp/results.jsp";
 
-    private boolean showColorModal = false;
 
-    public boolean isShowColorModal() {
-        return showColorModal;
-    }
-
-    public void setShowColorModal(boolean showColorModal) {
-        this.showColorModal = showColorModal;
+    private void setShowColorModal(HttpServletRequest request, boolean showColorModal) {
+        request.getSession().setAttribute("showColorModal", showColorModal);
     }
 
     @Override
@@ -53,10 +48,10 @@ public class HomeController extends HttpServlet {
             if (request.getParameter(PARAM_SHOW_RESULTS) != null) {
                 redirectPageTo = RESULTS_PAGE;
             } else if (request.getParameter(PARAM_START_GAME_MODAL) != null) {
-                setShowColorModal(true);
+                setShowColorModal(request, true);
             }
         } else if (PATH_COLOR_SELECTION.equals(path)) {
-            setShowColorModal(false);
+            setShowColorModal(request, false);
             boolean play = request.getParameter(PARAM_PLAY) != null;
             String color = request.getParameter(PARAM_SELECTED_COLOR);
             UserBean user = (UserBean) request.getSession().getAttribute("user");
