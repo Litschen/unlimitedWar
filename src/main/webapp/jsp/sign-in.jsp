@@ -1,4 +1,5 @@
 <!Doctype html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +12,11 @@
 
 <body>
 <%@include file="snippets/header.jsp" %>
+
+<c:if test="${sessionScope.user != null}">
+    <c:redirect url="./index.jsp"/>
+</c:if>
+
 <div class="homeBox border rounded">
     <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
     <%@include file="modals/signinError.jsp" %>

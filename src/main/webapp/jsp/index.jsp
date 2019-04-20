@@ -11,12 +11,14 @@
 </head>
 <body>
 <%@include file="snippets/header.jsp" %>
+<%@include file="snippets/signed-in.jsp" %>
 
-    <main>
-        <a href="${pageContext.request.contextPath}/jsp/game.jsp" class="btn btn-primary" role="button">Start game</a>
-        <a href="${pageContext.request.contextPath}/jsp/results.jsp" class="btn btn-primary" role="button">See
-            results</a>
-    </main>
+<main>
+    <form action="<%=request.getContextPath()%>/Home/action" method="post" name="homeForm">
+        <button name="selectColor" class="btn btn-primary">Start game</button>
+        <button name="results" class="btn btn-secondary">See results</button>
+    </form>
+</main>
 
 <%@include file="snippets/footer.jsp" %>
 </body>
