@@ -27,7 +27,7 @@
                name="<%=SignInController.PASSWORD_PARAMETER_NAME%>" placeholder="Password" required>
         <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
     </form>
-    <button class="btn btn-lg btn-block" onclick="window.location.href='register.jsp'">Register</button>
+    <button class="btn btn-lg btn-block" onclick="window.location.href='profile.jsp'">Register</button>
 </div>
 
 <%@include file="snippets/footer.jsp" %>
