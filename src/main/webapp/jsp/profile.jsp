@@ -16,7 +16,7 @@
 
 <body>
 <header class="navbar navbar-dark bg-color-white">
-    <a class="navbar-brand" href="index.jsp">
+    <a class="navbar-brand" href="./home.jsp">
         <img class="logo" rel="icon" src="../images/logo_transparent.png" alt="Unlimited War logo">
     </a>
     <h1>Unlimited War</h1>

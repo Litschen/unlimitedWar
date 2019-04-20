@@ -1,5 +1,5 @@
 <header class="navbar navbar-dark bg-color-white">
-    <a class="navbar-brand" href="../index.jsp">
+    <a class="navbar-brand" href="./home.jsp">
         <img class="logo" rel="icon" src="${pageContext.request.contextPath}/images/logo_transparent.png" alt="Unlimited War logo">
     </a>
     <h1>Unlimited War</h1>
@@ -7,7 +7,7 @@
         <img class="user" rel="icon" src="${pageContext.request.contextPath}/images/menu.png" alt="Menu Image"/>
         <ul class="dropdown-menu dropdown-menu-right">
             <li>
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/webapp/jsp/index.jsp">Home <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/home.png" alt="Home"/></a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/jsp/home.jsp">Home <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/home.png" alt="Home"/></a>
             </li>
             <li>
                 <a class="dropdown-item" href="${pageContext.request.contextPath}/webapp/jsp/profile.jsp">Profile <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/user.png" alt="Profile"/></a>

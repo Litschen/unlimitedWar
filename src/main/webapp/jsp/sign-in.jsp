@@ -14,7 +14,7 @@
 <%@include file="snippets/header.jsp" %>
 
 <c:if test="${sessionScope.user != null}">
-    <c:redirect url="./index.jsp"/>
+    <c:redirect url="./home.jsp"/>
 </c:if>
 
 <div class="homeBox border rounded">
