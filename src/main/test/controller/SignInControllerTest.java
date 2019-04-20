@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -38,6 +39,7 @@ class SignInControllerTest {
                 .thenReturn(mock(RequestDispatcher.class));
         when(mockRequest.getRequestDispatcher(SignInController.PAGE_TO_LOAD_ON_COMPLETE))
                 .thenReturn(mock(RequestDispatcher.class));
+        when(mockRequest.getSession()).thenReturn(mock(HttpSession.class));
     }
 
     @Test
