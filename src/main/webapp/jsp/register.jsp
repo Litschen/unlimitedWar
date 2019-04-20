@@ -5,7 +5,13 @@
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="../css/stylesheet.css">
     <link rel="stylesheet" href="../css/signin.css">
-    <title>Register for Unlimited War</title>
+
+    <c:if test="${sessionScope.user ==  null}">
+        <title>Register for Unlimited War</title>
+    </c:if>
+    <c:if test="${sessionScope.user !=  null}">
+        <title>Edit Profile</title>
+    </c:if>
 </head>
 
 <body>
@@ -27,7 +33,7 @@
 
     <form class="mb-3" action="<%=request.getContextPath()%>/user" method="post">
         <input type="text" class="mb-3 form-control" placeholder="Username" name ="name" value="${sessionScope.user.name}" required autofocus>
-        <input type="email" class="mb-3 form-control" placeholder="Email address" name ="mail" value="${sessionScope.user.mail}" required ${sessionScope.user == null ? "" : "disabled"}>
+        <input type="email" class="mb-3 form-control" placeholder="Email address" name ="mail" value="${sessionScope.user.mail}" required ${sessionScope.user == null ? "" : "readonly"}>
         <input type="password" class="mb-3 form-control" placeholder="Password" name ="pwd" value="${sessionScope.user.password}" required>
         <input type="password" class="mb-3 form-control" placeholder="Confirm Password" name ="confirm-pwd" value="${sessionScope.user.password}" required>
 
@@ -35,7 +41,7 @@
             <button name="register" class="btn btn-lg btn-primary btn-block">Register</button>
         </c:if>
         <c:if test="${sessionScope.user !=  null}">
-            <button name="edit" class="btn btn-lg btn-primary btn-block">Save</button>
+            <button name="save" class="btn btn-lg btn-primary btn-block">Save</button>
         </c:if>
     </form>
     <form class="mb-3" action="<%=request.getContextPath()%>/user" method="post">
