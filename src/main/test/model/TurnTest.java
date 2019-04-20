@@ -4,6 +4,7 @@ import helpers.TestHelperBehavior;
 import model.behavior.UserBehavior;
 import model.enums.Flag;
 import model.enums.Phase;
+import model.enums.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -113,7 +114,7 @@ class TurnTest {
 
     @Test
     void testEliminatePlayersAndCheckUserResultWin() {
-        Board board = new Board();
+        Board board = new Board(PlayerColor.BLUE, "Felix");
         turn = board.getCurrentTurn();
         Player user = null;
         for (Player player : turn.getActivePlayers()) {
@@ -135,7 +136,7 @@ class TurnTest {
 
     @Test
     void testEliminatePlayersAndCheckUserResultLose() {
-        Board board = new Board();
+        Board board = new Board(PlayerColor.BLUE, "Felix");
         turn = board.getCurrentTurn();
         Player user = null;
         for (Player player : turn.getActivePlayers()) {

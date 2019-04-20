@@ -1,6 +1,7 @@
 package model;
 
 import helpers.TestHelperEvents;
+import model.enums.PlayerColor;
 import model.interfaces.Event;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,7 @@ class BoardTest {
 
     @BeforeEach
     void setUp() {
-        testBoard = new Board();
+        testBoard = new Board(PlayerColor.BLUE, "Felix");
     }
 
     @Test

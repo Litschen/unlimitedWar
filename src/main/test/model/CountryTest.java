@@ -32,7 +32,7 @@ class CountryTest {
     @Test
     void testIsBordering() {
         assertTrue(invadingCountry.isBordering(defendingCountry));
-        Board board = new Board();
+        Board board = new Board(PlayerColor.BLUE, "Felix");
         for (Country country : board.getCountries()) {
             for (Country neighboring : country.getNeighboringCountries()) {
                 assertTrue(neighboring.getNeighboringCountries().contains(country));
