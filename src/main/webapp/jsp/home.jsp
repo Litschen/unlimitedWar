@@ -20,6 +20,7 @@
     </form>
 </main>
 
+<%@include file="modals/chooseColor.jsp" %>
 <%@include file="snippets/footer.jsp" %>
 </body>
 </html>
