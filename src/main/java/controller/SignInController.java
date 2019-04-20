@@ -3,6 +3,7 @@ package controller;
 import dao.MySQLConnectionCreator;
 import dao.PlayerDAO;
 import model.UserBean;
+import org.jetbrains.annotations.NotNull;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -38,7 +40,7 @@ public class SignInController extends HttpServlet {
         try {
             playerDAO = new PlayerDAO(MySQLConnectionCreator.getConnection());
         } catch (ClassNotFoundException | SQLException e) {
-            LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
         }
     }
 
@@ -46,9 +48,17 @@ public class SignInController extends HttpServlet {
     public UserBean getUser() {
         return user;
     }
-    public void setUser(UserBean user) {
+
+    //Session can be extracted from a request by using request.getSession()
+    public static UserBean getSessionUser(@NotNull HttpSession currentSession) {
+        return (UserBean) currentSession.getAttribute(UserController.SESSION_USER);
+    }
+
+    public void setSessionUser(UserBean user, @NotNull HttpSession currentSession) {
+        currentSession.setAttribute(UserController.SESSION_USER, user);
         this.user = user;
     }
+
 
     //added for testing purposes
     public PlayerDAO getPlayerDAO() {
@@ -63,7 +73,7 @@ public class SignInController extends HttpServlet {
         String password = request.getParameter(PASSWORD_PARAMETER_NAME);
 
         if (getPlayerDAO() != null) {
-            user = getPlayerDAO().getValidatedUser(mail, password);
+            setSessionUser(getPlayerDAO().getValidatedUser(mail, password), request.getSession());
         }
 
         RequestDispatcher requestDispatcher = (user != null) ?
