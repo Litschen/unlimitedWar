@@ -34,10 +34,10 @@ public class Board {
     private int turnCounter = 1;
     //endregion
 
-    public Board() {
+    public Board(PlayerColor color, String name) {
         players = new ArrayList<>();
         countries = new ArrayList<>();
-        generatePlayers();
+        generatePlayers(color, name);
         generateCountries();
         currentTurn = new Turn(players, countries, turnCounter);
         turnCounter++;
@@ -145,10 +145,10 @@ public class Board {
     }
     //endregion
 
-    private void generatePlayers() {
+    private void generatePlayers(PlayerColor color, String name) {
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
-        players.add(new Player(playerColor.remove(1), "Felix", new UserBehavior()));
+        players.add(new Player(playerColor.remove(playerColor.indexOf(color)), name, new UserBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Aline", new StrategicBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Max", new AggressiveBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Nina", new RandomBehavior()));

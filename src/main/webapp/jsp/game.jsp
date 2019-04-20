@@ -4,8 +4,6 @@
 <%@ page import="model.enums.Phase" %>
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="board" class="model.Board" scope="session"/>
-<jsp:setProperty name="board" property="*"/>
 <html lang="en">
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
@@ -19,6 +17,7 @@
 <%@include file="snippets/header.jsp" %>
 
 <div class="wrapper">
+    <% Board board = (Board) session.getAttribute("board"); %>
     <form action="<%=request.getContextPath()%>/Game/selectedCountry" class="form vertical border rounded" method="post">
         <p>
             <span class="current-phase">Phase:
