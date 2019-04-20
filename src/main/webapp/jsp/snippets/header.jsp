@@ -10,13 +10,13 @@
                 <a class="dropdown-item" href="${pageContext.request.contextPath}/jsp/home.jsp">Home <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/home.png" alt="Home"/></a>
             </li>
             <li>
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/webapp/jsp/profile.jsp">Profile <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/user.png" alt="Profile"/></a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/jsp/profile.jsp">Profile <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/user.png" alt="Profile"/></a>
             </li>
             <li>
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/webapp/jsp/results.jsp">Results <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/results.png" alt="Results"/></a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/jsp/results.jsp">Results <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/results.png" alt="Results"/></a>
             </li>
             <li>
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/webapp/jsp/sign-in.jsp">Log out <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/log-out2.png" alt="Logout"/></a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/jsp/sign-in.jsp">Log out <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/log-out2.png" alt="Logout"/></a>
             </li>
         </ul>
     </div>
