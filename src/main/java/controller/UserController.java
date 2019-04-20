@@ -36,7 +36,7 @@ public class UserController extends HttpServlet {
 
     // pages to load
     public final static String HOME_PAGE = "/jsp/sign-in.jsp";
-    public final static String REGISTER_PAGE = "/jsp/register.jsp";
+    public final static String REGISTER_PAGE = "/jsp/profile.jsp";
 
     public final static String SESSION_USER = "user";
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
@@ -86,9 +86,8 @@ public class UserController extends HttpServlet {
             }
 
             request.getSession().setAttribute("events", events);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(forwardPageTo);
-            dispatcher.forward(request, response);
-        } catch (ServletException | IOException | SQLException e) {
+            response.sendRedirect(request.getContextPath() + forwardPageTo);
+        } catch (IOException | SQLException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
         }
     }
