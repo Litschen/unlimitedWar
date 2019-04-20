@@ -1,0 +1,8 @@
+#signOutModal {
+    width: 25%;
+    margin: auto;
+}
+
+#signOutModal > .modal-dialog {
+    padding: 12px;
+}

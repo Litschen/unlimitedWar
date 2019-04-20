@@ -83,7 +83,7 @@
         </form>
     </c:if>
 </div>
-
+<%@include file="modals/confirmSignOut.jsp" %>
 <%@include file="modals/event.jsp" %>
 <%@include file="modals/attackRoll.jsp" %>
 <%@include file="modals/resultModal.jsp" %>

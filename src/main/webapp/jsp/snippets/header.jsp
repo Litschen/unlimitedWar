@@ -16,7 +16,9 @@
                 <a class="dropdown-item" href="${pageContext.request.contextPath}/jsp/results.jsp">Results <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/results.png" alt="Results"/></a>
             </li>
             <li>
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/jsp/sign-in.jsp">Log out <img class="menu-icon float-right" rel="icon" src="${pageContext.request.contextPath}/images/log-out2.png" alt="Logout"/></a>
+                <a class="dropdown-item" onclick="document.getElementById('signOutModal').style.display = 'block'">Log
+                    out <img class="menu-icon float-right" rel="icon"
+                             src="${pageContext.request.contextPath}/images/log-out2.png" alt="Logout"/></a>
             </li>
         </ul>
     </div>

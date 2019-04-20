@@ -37,6 +37,7 @@
     </tr>
     </tbody>
 </table>
+<%@include file="modals/confirmSignOut.jsp" %>
 <%@include file="snippets/footer.jsp" %>
 </body>
 </html>
