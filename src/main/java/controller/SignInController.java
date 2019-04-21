@@ -49,16 +49,10 @@ public class SignInController extends HttpServlet {
         return user;
     }
 
-    //Session can be extracted from a request by using request.getSession()
-    public static UserBean getSessionUser(@NotNull HttpSession currentSession) {
-        return (UserBean) currentSession.getAttribute(UserController.SESSION_USER);
-    }
-
-    public void setSessionUser(UserBean user, @NotNull HttpSession currentSession) {
-        currentSession.setAttribute(UserController.SESSION_USER, user);
+    public void setUser(UserBean user, @NotNull HttpSession currentSession) {
+        UserController.setSessionUser(currentSession, user);
         this.user = user;
     }
-
 
     //added for testing purposes
     public PlayerDAO getPlayerDAO() {
@@ -73,12 +67,13 @@ public class SignInController extends HttpServlet {
         String password = request.getParameter(PASSWORD_PARAMETER_NAME);
 
         if (getPlayerDAO() != null) {
-            setSessionUser(getPlayerDAO().getValidatedUser(mail, password), request.getSession());
+            setUser(getPlayerDAO().getValidatedUser(mail, password), request.getSession());
         }
 
         RequestDispatcher requestDispatcher = (user != null) ?
                 request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE) : request.getRequestDispatcher(PAGE_TO_LOAD_ON_ERROR);
         DISPLAY_ERROR_MESSAGE = user == null;
+
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException | IOException e) {

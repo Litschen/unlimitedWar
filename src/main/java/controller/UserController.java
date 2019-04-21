@@ -5,13 +5,13 @@ import dao.PlayerDAO;
 import model.UserBean;
 import model.events.UserEvent;
 import model.interfaces.Event;
+import org.jetbrains.annotations.NotNull;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -60,6 +60,14 @@ public class UserController extends HttpServlet {
         processRequest(request, response);
     }
 
+    public static UserBean getSessionUser(@NotNull HttpSession session) {
+        return (UserBean) session.getAttribute(SESSION_USER);
+    }
+
+    public static void setSessionUser(@NotNull HttpSession session, UserBean user) {
+        session.setAttribute(SESSION_USER, user);
+    }
+
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         String forwardPageTo = HOME_PAGE;
         events.clear();
@@ -81,7 +89,7 @@ public class UserController extends HttpServlet {
                 }
                 playerDAO.closeConnection();
                 if (forwardPageTo.equals(HOME_PAGE)) {
-                    request.getSession().setAttribute(SESSION_USER, user);
+                    setSessionUser(request.getSession(), user);
                 }
             }
 

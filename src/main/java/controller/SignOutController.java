@@ -19,7 +19,7 @@ public class SignOutController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        request.getSession().setAttribute(UserController.SESSION_USER, null);
+        UserController.setSessionUser(request.getSession(), null);
         try {
             request.getRequestDispatcher(PAGE_AFTER_SIGN_OUT).forward(request, response);
         } catch (ServletException | IOException e) {
