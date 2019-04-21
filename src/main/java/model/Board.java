@@ -152,5 +152,8 @@ public class Board {
         players.add(new Player(playerColor.remove(getPlayerColor()), "Aline", new StrategicBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Max", new AggressiveBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), "Nina", new RandomBehavior()));
+
+        Collections.shuffle(players);
+
     }
 }
