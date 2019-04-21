@@ -15,4 +15,8 @@
         <servlet-name>SignInController</servlet-name>
         <url-pattern>/SignIn</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ResultController</servlet-name>
+        <url-pattern>/Result</url-pattern>
+    </servlet-mapping>
 </web-app>
