@@ -13,8 +13,8 @@ public class ResultsDAO {
     private final Connection con;
     private PreparedStatement st;
 
-    private final static String INSERT_RESULT_QUERY = "INSERT INTO result (Outcome, Datum, REmail) VALUES(?, ?, ?);";
-    private final static String SELECT_RESULTS_QUERY = "SELECT outcome, datum FROM result WHERE remail = ?;";
+    private final static String INSERT_RESULT_QUERY = "INSERT INTO result (Outcome, Date , REmail) VALUES(?, ?, ?);";
+    private final static String SELECT_RESULTS_QUERY = "SELECT outcome, date FROM result WHERE remail = ?;";
 
     public ResultsDAO(Connection con) {
         this.con = con;

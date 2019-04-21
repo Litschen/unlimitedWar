@@ -8,6 +8,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.SQLException;
+import java.util.List;
 
 @WebServlet(name = "ResultController", urlPatterns = "/Result")
 public class ResultController extends HttpServlet {
@@ -20,16 +22,18 @@ public class ResultController extends HttpServlet {
     //region data fields
     private ResultBean result = null;
     private ResultsDAO resultDAO;
+    private List<ResultBean> getAllResultsOfUser;
     //endregion
 
     //region getter/setter
     public ResultBean getResult() {
         return result;
     }
-    public void setUser(ResultBean user) {
-        this.result = result;
-    }
 
+    public List<ResultBean> getAllResultsOfUser() throws SQLException {
+        return  resultDAO.getAllResultsOfUser(MAIL_PARAMETER_NAME);
+    }
+    // endregion
 
     //added for testing purposes
     public ResultsDAO getResultDAO() {
@@ -48,9 +52,6 @@ public class ResultController extends HttpServlet {
                 e.printStackTrace();
             }
         }
-
-
     }
-
 
 }
