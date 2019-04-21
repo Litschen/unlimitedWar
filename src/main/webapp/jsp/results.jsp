@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="controller.ResultController" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +13,7 @@
     <title>Results</title>
 </head>
 <body>
-<%@include file="snippets/header.jsp" %>
+
 <table id="resultsTable" class="table table-striped table-light">
     <thead>
     <tr>
@@ -20,24 +23,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <c:forEach items = "${(items.getAllResultsOfUser())}" var="data"> ${data}
         <th scope="row">1</th>
-        <td>06.12.2018</td>
+        <td>${data.getAllResultsOfUser().print()}</td>
         <td class="alert-success">Victory</td>
-    </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>06.12.2018</td>
-        <td class="alert-danger">Defeat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>07.12.2018</td>
-        <td class="alert-success">Victory</td>
+    </c:forEach>
     </tr>
     </tbody>
 </table>
-<%@include file="modals/confirmSignOut.jsp" %>
 <%@include file="snippets/footer.jsp" %>
 </body>
 </html>
