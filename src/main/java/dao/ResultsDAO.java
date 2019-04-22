@@ -2,11 +2,14 @@ package dao;
 
 import model.ResultBean;
 
-import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 public class ResultsDAO {
     private ResultSet rs;
@@ -14,7 +17,7 @@ public class ResultsDAO {
     private PreparedStatement st;
 
     private final static String INSERT_RESULT_QUERY = "INSERT INTO result (Outcome, Date , REmail) VALUES(?, ?, ?);";
-    private final static String SELECT_RESULTS_QUERY = "SELECT outcome, date FROM result WHERE remail = ?;";
+    private final static String SELECT_RESULTS_QUERY = "SELECT outcome, date FROM result WHERE remail = ? ORDER BY date DESC;";
 
     public ResultsDAO(Connection con) {
         this.con = con;
