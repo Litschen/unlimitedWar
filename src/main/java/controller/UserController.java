@@ -82,7 +82,7 @@ public class UserController extends HttpServlet {
                         forwardPageTo = registerUser();
                     } else if (request.getParameter(PARAM_SAVE) != null) {
                         int result = playerDAO.updatePlayer(user.getName(), user.getMail(), user.getPassword());
-                        checkSQLInjectionResult(result);
+                        checkIfOnlyOneRowChanged(result);
                     }
                 } else {
                     forwardPageTo = REGISTER_PAGE;
@@ -128,7 +128,7 @@ public class UserController extends HttpServlet {
 
             if (userExisting == null) {
                 int result = playerDAO.createNewPlayer(user.getName(), user.getMail(), user.getPassword());
-                checkSQLInjectionResult(result);
+                checkIfOnlyOneRowChanged(result);
             } else {
                 events.add(new UserEvent("Registration error", "Mail already in use!"));
                 forwardPageTo = REGISTER_PAGE;
@@ -140,7 +140,7 @@ public class UserController extends HttpServlet {
         return forwardPageTo;
     }
 
-    private void checkSQLInjectionResult(int result) {
+    private void checkIfOnlyOneRowChanged(int result) {
         if (result != 1) {
             events.add(new UserEvent("error", ""));
         }
