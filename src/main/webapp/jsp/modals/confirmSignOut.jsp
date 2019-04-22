@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="signOutModal" class="modal show" role="dialog" style="display: none;">
     <div class="modal-dialog modal-content">
         <div class="modal-header">

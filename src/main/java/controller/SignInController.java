@@ -36,26 +36,18 @@ public class SignInController extends HttpServlet {
     private PlayerDAO playerDAO;
     //endregion
 
-    public SignInController() {
-        try {
-            playerDAO = new PlayerDAO(MySQLConnectionCreator.getConnection());
-        } catch (ClassNotFoundException | SQLException e) {
-            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
-        }
-    }
-
     //region getter/setter
     public UserBean getUser() {
         return user;
     }
 
-    public void setUser(UserBean user, @NotNull HttpSession currentSession) {
+    private void setUser(UserBean user, @NotNull HttpSession currentSession) {
         UserController.setSessionUser(currentSession, user);
         this.user = user;
     }
 
     //added for testing purposes
-    public PlayerDAO getPlayerDAO() {
+    PlayerDAO getPlayerDAO() {
         return this.playerDAO;
     }
     //endregion
@@ -63,6 +55,8 @@ public class SignInController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        createDAO();
+
         String mail = request.getParameter(MAIL_PARAMETER_NAME);
         String password = request.getParameter(PASSWORD_PARAMETER_NAME);
 
@@ -78,6 +72,20 @@ public class SignInController extends HttpServlet {
             requestDispatcher.forward(request, response);
         } catch (ServletException | IOException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
+        } finally {
+            try {
+                getPlayerDAO().closeConnection();
+            } catch (SQLException e) {
+                LOGGER.log(Level.SEVERE, e.toString(), e);
+            }
+        }
+    }
+
+    void createDAO() {
+        try {
+            playerDAO = new PlayerDAO(MySQLConnectionCreator.getConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
         }
     }
 

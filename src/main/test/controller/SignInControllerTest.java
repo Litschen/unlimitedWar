@@ -33,6 +33,7 @@ class SignInControllerTest {
     void setUp() {
         mockPlayerDao = mock(PlayerDAO.class);
         when(controller.getPlayerDAO()).thenReturn(mockPlayerDao);
+        doNothing().when(controller).createDAO();
         mockRequest = mock(HttpServletRequest.class);
         mockResponse = mock(HttpServletResponse.class);
         when(mockRequest.getRequestDispatcher(SignInController.PAGE_TO_LOAD_ON_ERROR))
