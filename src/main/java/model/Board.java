@@ -151,9 +151,9 @@ public class Board {
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
         players.add(new Player(playerColor.remove(playerColor.indexOf(color)), name, new UserBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Aline", new StrategicBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Max", new AggressiveBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()), "Nina", new RandomBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()),name , new StrategicBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), name, new AggressiveBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), name, new RandomBehavior()));
 
         Collections.shuffle(players);
         setRandomNameOpponent();
