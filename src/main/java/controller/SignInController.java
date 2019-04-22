@@ -55,38 +55,31 @@ public class SignInController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        createDAO();
+        playerDAO = MySQLConnectionCreator.getPlayerDAO();
+        if (playerDAO != null) {
 
-        String mail = request.getParameter(MAIL_PARAMETER_NAME);
-        String password = request.getParameter(PASSWORD_PARAMETER_NAME);
+            String mail = request.getParameter(MAIL_PARAMETER_NAME);
+            String password = request.getParameter(PASSWORD_PARAMETER_NAME);
 
-        if (getPlayerDAO() != null) {
-            setUser(getPlayerDAO().getValidatedUser(mail, password), request.getSession());
-        }
+            if (getPlayerDAO() != null) {
+                setUser(getPlayerDAO().getValidatedUser(mail, password), request.getSession());
+            }
 
-        RequestDispatcher requestDispatcher = (user != null) ?
-                request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE) : request.getRequestDispatcher(PAGE_TO_LOAD_ON_ERROR);
-        DISPLAY_ERROR_MESSAGE = user == null;
+            RequestDispatcher requestDispatcher = (user != null) ?
+                    request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE) : request.getRequestDispatcher(PAGE_TO_LOAD_ON_ERROR);
+            DISPLAY_ERROR_MESSAGE = user == null;
 
-        try {
-            requestDispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
-            LOGGER.log(Level.SEVERE, e.toString(), e);
-        } finally {
             try {
-                getPlayerDAO().closeConnection();
-            } catch (SQLException e) {
+                requestDispatcher.forward(request, response);
+            } catch (ServletException | IOException e) {
                 LOGGER.log(Level.SEVERE, e.toString(), e);
+            } finally {
+                try {
+                    getPlayerDAO().closeConnection();
+                } catch (SQLException e) {
+                    LOGGER.log(Level.SEVERE, e.toString(), e);
+                }
             }
         }
     }
-
-    void createDAO() {
-        try {
-            playerDAO = new PlayerDAO(MySQLConnectionCreator.getConnection());
-        } catch (ClassNotFoundException | SQLException e) {
-            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
-        }
-    }
-
 }
