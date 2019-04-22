@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static jdk.internal.jline.TerminalFactory.WIN;
 
 @WebServlet(name = "ResultController", urlPatterns = "/Result")
 public class ResultController extends HttpServlet {
@@ -26,6 +25,7 @@ public class ResultController extends HttpServlet {
     //region static variables
     public final static String PATH_SAVE = "/Save";
     public final static String HOME_PAGE = "/jsp/home.jsp";
+    public final static String PARAM_SELECTED_WIN = "win";
     private final static Logger LOGGER = Logger.getLogger(ResultSet.class.getName());
     //endregion
 
@@ -66,7 +66,7 @@ public class ResultController extends HttpServlet {
         try{boolean outcome = false;
             UserBean user = (UserBean) request.getSession().getAttribute("user");
             String mail = user.getMail();
-            if( request.getParameter(WIN) != null){
+            if( request.getParameter(PARAM_SELECTED_WIN) != null){
                 outcome = true;
             }
             setUpDBConnection();
