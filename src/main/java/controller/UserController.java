@@ -39,7 +39,14 @@ public class UserController extends HttpServlet {
     public final static String REGISTER_PAGE = "/jsp/profile.jsp";
 
     public final static String SESSION_USER = "user";
+    public final static String SESSION_EVENTS = "events";
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
+
+    private final String EVENT_PWD_ERROR_TITLE = "Password error";
+    private final String EVENT_PWD_ERROR_MSG = "You entered two different passwords!";
+    private final String EVENT_REGISTER_ERROR_TITLE = "Registration error";
+    private final String EVENT_REGISTER_ERROR_MSG = "Mail already in use!";
+
     private UserBean user;
     private PlayerDAO playerDAO;
     private List<Event> events;
@@ -96,7 +103,7 @@ public class UserController extends HttpServlet {
                 }
             }
 
-            request.getSession().setAttribute("events", events);
+            request.getSession().setAttribute(SESSION_EVENTS, events);
             response.sendRedirect(request.getContextPath() + forwardPageTo);
         } catch (IOException | SQLException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
@@ -112,7 +119,7 @@ public class UserController extends HttpServlet {
         if (pwd != null && pwd.equals(request.getParameter(PARAM_CONFIRM_PASSWORD))) {
             user.setPassword(request.getParameter(PARAM_PASSWORD));
         } else {
-            events.add(new UserEvent("Password error", "You entered two different passwords!"));
+            events.add(new UserEvent(EVENT_PWD_ERROR_TITLE, EVENT_PWD_ERROR_MSG));
         }
     }
 
@@ -125,7 +132,7 @@ public class UserController extends HttpServlet {
                 int result = playerDAO.createNewPlayer(user.getName(), user.getMail(), user.getPassword());
                 checkIfOnlyOneRowChanged(result);
             } else {
-                events.add(new UserEvent("Registration error", "Mail already in use!"));
+                events.add(new UserEvent(EVENT_REGISTER_ERROR_TITLE, EVENT_REGISTER_ERROR_MSG));
                 forwardPageTo = REGISTER_PAGE;
             }
         } catch (SQLException e) {
