@@ -22,14 +22,13 @@
         <th scope="col">Date</th>
         <th scope="col">Outcome</th>
     </tr>
-    <% int counter = 1;%>
     </thead>
     <tbody>
-    <c:forEach items = "${result.getAllResultsOfUser(sessionScope.user)}" var="data">
+    <c:forEach items = "${result.getAllResultsOfUser(sessionScope.user)}" var="data" varStatus="status">
         <tr>
-            <th scope="row"><% counter ++;%></th>
-            <td class="alert-success">data.getDate()</td>
-            <td>${data.getOutcome()}</td>
+            <th scope="row">${status.count}</th>
+            <td>${data.getDate()}</td>
+            <td class="${data.getOutcome() ? 'alert-success' : 'alert-danger'}">${data.getOutcome() ? 'win':'lose'}</td>
         </tr>
     </c:forEach>
     </tbody>
