@@ -25,15 +25,15 @@
     <% int counter = 1;%>
     </thead>
     <tbody>
-    <c:forEach items = "${ResultController.getAllResultsOfUser()}" var="data">
-        <th scope="row"><% counter ++;%></th>
-        <td>${data.getOutcome()}</td>
-        <td class="alert-success">data.getDate()</td>
+    <c:forEach items = "${ResultController.getAllResultsOfUser(sessionScope.user)}" var="data">
+        <tr>
+            <th scope="row"><% counter ++;%></th>
+            <td class="alert-success">data.getDate()</td>
+            <td>${data.getOutcome()}</td>
+        </tr>
     </c:forEach>
-    </tr>
     </tbody>
 </table>
 <%@include file="snippets/footer.jsp" %>
-
 </body>
 </html>
