@@ -42,10 +42,10 @@ public class UserController extends HttpServlet {
     public final static String SESSION_EVENTS = "events";
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
 
-    private final String EVENT_PWD_ERROR_TITLE = "Password error";
-    private final String EVENT_PWD_ERROR_MSG = "You entered two different passwords!";
-    private final String EVENT_REGISTER_ERROR_TITLE = "Registration error";
-    private final String EVENT_REGISTER_ERROR_MSG = "Mail already in use!";
+    private final static String EVENT_PWD_ERROR_TITLE = "Password error";
+    private final static String EVENT_PWD_ERROR_MSG = "You entered two different passwords!";
+    private final static String EVENT_REGISTER_ERROR_TITLE = "Registration error";
+    private final static String EVENT_REGISTER_ERROR_MSG = "Mail already in use!";
 
     private UserBean user;
     private PlayerDAO playerDAO;
