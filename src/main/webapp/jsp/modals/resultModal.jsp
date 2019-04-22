@@ -1,6 +1,6 @@
 <c:if test="${board.getCurrentTurn().getFlag() == Flag.GAME_WIN || board.getCurrentTurn().getFlag() == Flag.GAME_LOSE}">
     <div class="modal show" role="dialog">
-        <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Game/result" method="post">
+        <form class="modal-dialog modal-content" action="<%=request.getContextPath()%>/Result/Save" method="post">
             <c:if test="${board.getCurrentTurn().getFlag() == Flag.GAME_WIN}">
                 <div class="modal-header">
                     <h5 class="modal-title">You Win!</h5>
