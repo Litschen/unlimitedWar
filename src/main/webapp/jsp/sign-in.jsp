@@ -11,14 +11,7 @@
 </head>
 
 <body>
-<header class="navbar navbar-dark bg-color-white">
-    <a class="navbar-brand" href="./home.jsp">
-        <img class="logo" rel="icon" src="../images/logo_transparent.png" alt="Unlimited War logo">
-    </a>
-    <h1>Unlimited War</h1>
-</header>
-
-
+<%@include file="snippets/header.jsp" %>
 <c:if test="${sessionScope.user != null}">
     <c:redirect url="./home.jsp"/>
 </c:if>

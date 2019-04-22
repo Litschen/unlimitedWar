@@ -19,7 +19,6 @@
         <button name="results" class="btn btn-secondary">See results</button>
     </form>
 </main>
-<%@include file="modals/confirmSignOut.jsp" %>
 <%@include file="modals/chooseColor.jsp" %>
 <%@include file="snippets/footer.jsp" %>
 </body>

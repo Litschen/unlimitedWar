@@ -13,7 +13,7 @@
     <title>Results</title>
 </head>
 <body>
-
+<%@include file="snippets/header.jsp" %>
 <table id="resultsTable" class="table table-striped table-light">
     <thead>
     <tr>
