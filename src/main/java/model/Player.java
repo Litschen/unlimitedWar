@@ -60,6 +60,8 @@ public class Player {
         this.attackDiceCount = attackDiceCount;
     }
 
+    public void setPlayerName(String name){ this.name = name; }
+
     //endregion
 
     public int calculateSoldiersToPlace() {

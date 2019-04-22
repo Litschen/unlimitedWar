@@ -22,7 +22,8 @@ public class Board {
     public final static int START_SOLDIER_PER_PLAYER = 12;
     public final static int MIN_SOLDIER_GENERATION = 0;
     public final static int COUNTRY_COUNT_GENERATION = 16;
-    public final static String RESOURCE_FILE = "countryNames.txt";
+    public final static String RESOURCE_FILE_COUNTRY = "countryNames.txt";
+    public final static String RESOURCE_FILE_NAME = "computerOpponentNames.txt";
     private final static Logger LOGGER = Logger.getLogger(Board.class.getName());
     //endregion
 
@@ -102,7 +103,7 @@ public class Board {
     private void setCountryAttributes() {
         try {
             List<String> countryNames = Files.readAllLines(
-                    new File(Objects.requireNonNull(getClass().getClassLoader().getResource(RESOURCE_FILE)).getPath()).toPath(), Charset.defaultCharset());
+                    new File(Objects.requireNonNull(getClass().getClassLoader().getResource(RESOURCE_FILE_COUNTRY)).getPath()).toPath(), Charset.defaultCharset());
             Collections.shuffle(countryNames);
             for (Country country : countries) {
                 country.setName(countryNames.remove(0));
@@ -146,6 +147,7 @@ public class Board {
     //endregion
 
     private void generatePlayers(PlayerColor color, String name) {
+
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
         players.add(new Player(playerColor.remove(playerColor.indexOf(color)), name, new UserBehavior()));
@@ -154,6 +156,20 @@ public class Board {
         players.add(new Player(playerColor.remove(getPlayerColor()), "Nina", new RandomBehavior()));
 
         Collections.shuffle(players);
+        setRandomNameOpponent();
 
+    }
+
+    private void setRandomNameOpponent(){
+        try {
+            List<String> opponentName = Files.readAllLines(
+                    new File(Objects.requireNonNull(getClass().getClassLoader().getResource(RESOURCE_FILE_NAME)).getPath()).toPath(), Charset.defaultCharset());
+            Collections.shuffle(opponentName);
+            for (Player player : players) {
+                player.setPlayerName(opponentName.remove(0));
+            }
+        } catch (IOException | NullPointerException e) {
+            LOGGER.log(Level.WARNING, "Country Attributes could not be set", e);
+        }
     }
 }

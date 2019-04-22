@@ -1,5 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="controller.ResultController" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="result" class="controller.ResultController" scope="session"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +13,6 @@
     <title>Results</title>
 </head>
 <body>
-<%@ include file="snippets/redirect-signed-out.jsp" %>
 
 <table id="resultsTable" class="table table-striped table-light">
     <thead>
@@ -24,14 +23,15 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items = "${(items.getAllResultsOfUser())}" var="data"> ${data}
+    <c:forEach items = "${(ResultController.getAllResultsOfUser())}" var="data">
         <th scope="row">1</th>
-        <td>${data.getAllResultsOfUser().print()}</td>
+        <td>${data}</td>
         <td class="alert-success">Victory</td>
     </c:forEach>
     </tr>
     </tbody>
 </table>
-<%@ include file="snippets/footer.jsp" %>
+<%@include file="snippets/footer.jsp" %>
+<%@include file="modals/resultModal.jsp" %>
 </body>
 </html>

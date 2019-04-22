@@ -6,14 +6,15 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cccdc448-d5d0-47e8-9b8a-24f06c89a6e3" name="default" comment="change name and add nameList of Computer opponent">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/src_war_exploded.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="cccdc448-d5d0-47e8-9b8a-24f06c89a6e3" name="default" comment="expanded testMoveSoldiers(), fix Null objects instead of nul&#10;&#10;&#10;- added additionally verification to testMoveSoldiers()&#10;&#10;- clean code, javadoc">
+      <change afterPath="$PROJECT_DIR$/src/main/test/controller/ResultControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/dao/ResultsDAOTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Turn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Turn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/behavior/AggressiveBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/behavior/AggressiveBehavior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/model/behavior/AggressiveBehaviorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/model/behavior/AggressiveBehaviorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/computerOpponentName.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/results.jsp" afterDir="false" />
     </list>
     <list id="b0b1db5b-6cea-4ddb-8c14-5f4c2cdb0fc4" name="dont commit" comment="" />
     <list id="9d57b577-2951-430d-8b67-4d657ef76f15" name="Revert &quot;Create ENUM ColorPlayer and random selection color&quot;" comment="Revert &quot;Create ENUM ColorPlayer and random selection color&quot;&#10;&#10;This reverts commit e0a97e45" />
@@ -40,19 +41,66 @@
     <expand />
     <select />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="ErrorTreeViewConfiguration">
     <option name="autoscrollToSource" value="true" />
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6243386">
+    <splitter split-orientation="horizontal" split-proportion="0.50158733">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/AggressiveBehaviorTest.java">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/results.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1568">
-                  <caret line="98" selection-start-line="98" selection-end-line="98" />
+                <state relative-caret-position="527">
+                  <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/resultModal.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="153">
+                  <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="527">
+                  <caret line="126" column="78" lean-forward="true" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="78" />
+                  <folding>
+                    <element signature="e#1619#1620#0" expanded="true" />
+                    <element signature="e#1666#1667#0" expanded="true" />
+                    <element signature="e#1764#1765#0" expanded="true" />
+                    <element signature="e#1813#1814#0" expanded="true" />
+                    <element signature="e#1910#1911#0" expanded="true" />
+                    <element signature="e#1959#1960#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/profile.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="663">
+                  <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/controller/ResultController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="493">
+                  <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -61,12 +109,39 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/behavior/StrategicBehavior.java">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dao/ResultsDAO.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="204">
-                  <caret line="78" column="29" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="29" />
+                <state relative-caret-position="391">
+                  <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/registrationEvent.jsp">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/model/UserBean.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/model/ResultBean.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="24" selection-start-line="24" selection-end-line="24" />
+                  <folding>
+                    <element signature="e#228#229#0" expanded="true" />
+                    <element signature="e#266#267#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -76,11 +151,38 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/behavior/AggressiveBehavior.java">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/game.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+                <state relative-caret-position="272">
+                  <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/model/Board.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2550">
+                  <caret line="172" column="9" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/sign-in.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="184">
+                  <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dao/PlayerDAO.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -89,19 +191,59 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/TestHelperBehavior.java">
+            <entry file="file://$PROJECT_DIR$/src/main/java/model/interfaces/Event.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="35" column="55" lean-forward="true" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
+                <state relative-caret-position="85">
+                  <caret line="7" selection-start-line="7" selection-end-line="7" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/interfaces/Behavior.java">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/computerOpponentNames.txt">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/model/Country.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+                <state relative-caret-position="578">
+                  <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+                  <folding>
+                    <element signature="e#1372#1373#0" expanded="true" />
+                    <element signature="e#1404#1405#0" expanded="true" />
+                    <element signature="e#1441#1442#0" expanded="true" />
+                    <element signature="e#1477#1478#0" expanded="true" />
+                    <element signature="e#1614#1615#0" expanded="true" />
+                    <element signature="e#1642#1643#0" expanded="true" />
+                    <element signature="e#1781#1782#0" expanded="true" />
+                    <element signature="e#1824#1825#0" expanded="true" />
+                    <element signature="e#1893#1894#0" expanded="true" />
+                    <element signature="e#1958#1959#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/signinError.jsp">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="731">
+                  <caret line="62" column="29" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="29" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/snippets/signed-in.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="102">
+                  <caret line="6" selection-start-line="6" selection-end-line="6" />
                 </state>
               </provider>
             </entry>
@@ -115,43 +257,43 @@
       <list>
         <option value="CSS File" />
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;button</find>
-      <find>:checked</find>
-      <find>addSoldiersToCountry</find>
-      <find>placeS</find>
-      <find>placeSoldierIs</find>
-      <find>NEX</find>
-      <find>nextTurn</find>
-      <find>next Turn</find>
-      <find>placeSoldiers</find>
-      <find>phase</find>
-      <find>exe</find>
-      <find>button</find>
-      <find>attackPhase</find>
-      <find>testMaxAttackerDiceCount_Invalid</find>
-      <find>testMaxAtt</find>
-      <find>new</find>
-      <find>PARAM_COUNTRY</find>
-      <find>finish</find>
-      <find>//</find>
-      <find>[</find>
-      <find>AttackScore</find>
-      <find>nei</find>
-      <find>new ran</find>
-      <find>attack</find>
-      <find>shi</find>
-      <find>moveCountry</find>
-      <find>counte</find>
-      <find>turn</find>
-      <find>canAttackFrom</find>
-      <find>TestHelperBehavior</find>
+      <find>RESOURCE_FILE</find>
+      <find>class=&quot;alert-success&quot;</find>
+      <find>PARAM_SHOW_RESULTS</find>
+      <find>get</find>
+      <find>getPl</find>
+      <find>INSERT INTO</find>
+      <find>boolean</find>
+      <find>mail</find>
+      <find>setPassword</find>
+      <find>getParameter</find>
+      <find>INSERT_QUERY</find>
+      <find>INSERT_RESULT_QUERY</find>
+      <find>closeConnec</find>
+      <find>new PlayerDAO</find>
+      <find>getEventData</find>
+      <find>do</find>
+      <find>getParam</find>
+      <find>result</find>
+      <find>generateP</find>
+      <find>param</find>
+      <find>inclu</find>
+      <find>getEvents</find>
+      <find>getTitle</find>
+      <find>getTit</find>
+      <find>include</find>
+      <find>countryNames</find>
+      <find>setNeighbors</find>
+      <find>email</find>
+      <find>profile.jsp</find>
+      <find>email a</find>
     </findStrings>
     <replaceStrings>
       <replace>black</replace>
@@ -165,21 +307,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/images/file.html" />
-        <option value="$PROJECT_DIR$/src/web/WEB-INF/index.jsp" />
-        <option value="$PROJECT_DIR$/src/web/jsp/snippets/header.jsp" />
-        <option value="$PROJECT_DIR$/src/web/index.jsp" />
-        <option value="$PROJECT_DIR$/src/web/css/field.css" />
-        <option value="$PROJECT_DIR$/src/java/controller/BoardBean.java" />
-        <option value="$PROJECT_DIR$/src/web/css/stylesheet.css" />
-        <option value="$PROJECT_DIR$/src/web/jsp/modals/attackRoll.jsp" />
-        <option value="$PROJECT_DIR$/src/web/css/icons.css" />
-        <option value="$PROJECT_DIR$/src/java/model/Dice.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Coordinates.java" />
-        <option value="$PROJECT_DIR$/src/web/jsp/game.jsp" />
-        <option value="$PROJECT_DIR$/src/java/model/Player.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Enum/ColorPlayer.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Enum/PlayerColor.java" />
         <option value="$PROJECT_DIR$/src/java/model/Behaviors/StrategicBehavior.java" />
         <option value="$PROJECT_DIR$/src/java/model/Behaviors/RandomBehavior.java" />
         <option value="$PROJECT_DIR$/src/java/model/Behaviors/AggressiveBehavior.java" />
@@ -211,11 +338,26 @@
         <option value="$PROJECT_DIR$/src/main/java/model/helpers/MoveCountry.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/helpers/MoveComperator.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Turn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/behavior/StrategicBehavior.java" />
         <option value="$PROJECT_DIR$/src/main/test/model/behavior/TestHelperBehavior.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/events/ConquerEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/behavior/AggressiveBehavior.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/behavior/RandomBehavior.java" />
+        <option value="$PROJECT_DIR$/src/main/test/controller/GameControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/test/model/behavior/AggressiveBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/CountryTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/helpers/TestHelperCountry.java" />
+        <option value="$PROJECT_DIR$/documents/40_Design/DB_Projekt_Unlimited War.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/SignInController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/ResultsDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/test/dao/ResultsDAOTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/controller/ResultControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/ResultController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Board.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/snippets/signed-in.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/results.jsp" />
       </list>
     </option>
   </component>
@@ -227,10 +369,10 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="794" />
-    <option name="y" value="82" />
-    <option name="width" value="1634" />
-    <option name="height" value="1756" />
+    <option name="x" value="475" />
+    <option name="y" value="-51" />
+    <option name="width" value="696" />
+    <option name="height" value="878" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -239,6 +381,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -249,11 +392,6 @@
             <path>
               <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
               <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
-              <item name="documents" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -275,39 +413,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="behavior" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="helpers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -315,7 +420,15 @@
               <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -323,27 +436,26 @@
               <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-              <item name="behavior" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554476329356" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555152606241" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="C:/Program Files/Java/ProjektUW/mockito-all-1.9.5.jar!/" />
@@ -352,13 +464,23 @@
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="controller" />
+      <recent name="dao" />
       <recent name="model.behavior" />
       <recent name="model" />
       <recent name="model.Behaviors" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web\jsp\modals" />
+      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\documents\30_Planung" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MacKenzie\Daten Aphra\workspace\unlimitedWar\documents\30_Planung" />
@@ -366,13 +488,6 @@
       <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web\jsp" />
       <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web" />
       <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web\WEB-INF" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web\jsp\modals" />
-      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\documents\30_Planung" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -387,7 +502,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AggressiveBehaviorTest.testMoveSoldiers">
+  <component name="RunManager" selected="Tomcat Server.Tomcat">
     <configuration name="AggressiveBehaviorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="unlimitedWar" />
       <extension name="coverage">
@@ -399,22 +514,6 @@
       <option name="PACKAGE_NAME" value="model.behavior" />
       <option name="MAIN_CLASS_NAME" value="model.behavior.AggressiveBehaviorTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AggressiveBehaviorTest.moveSoldiers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="unlimitedWar" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.behavior.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.behavior" />
-      <option name="MAIN_CLASS_NAME" value="model.behavior.AggressiveBehaviorTest" />
-      <option name="METHOD_NAME" value="moveSoldiers" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -435,7 +534,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StrategicBehaviorTest.moveSoldiers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AggressiveBehaviorTest.testMoveSoldiersOption" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="unlimitedWar" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.behavior.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model.behavior" />
+      <option name="MAIN_CLASS_NAME" value="model.behavior.AggressiveBehaviorTest" />
+      <option name="METHOD_NAME" value="testMoveSoldiersOption" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CountryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="unlimitedWar" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.CountryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StrategicBehaviorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="unlimitedWar" />
       <extension name="coverage">
         <pattern>
@@ -445,22 +575,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="model.behavior" />
       <option name="MAIN_CLASS_NAME" value="model.behavior.StrategicBehaviorTest" />
-      <option name="METHOD_NAME" value="moveSoldiers" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TurnTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="unlimitedWar" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.TurnTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -540,20 +654,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.TurnTest" />
-      <item itemvalue="JUnit.AggressiveBehaviorTest.moveSoldiers" />
       <item itemvalue="JUnit.AggressiveBehaviorTest" />
       <item itemvalue="JUnit.AggressiveBehaviorTest.testMoveSoldiers" />
-      <item itemvalue="JUnit.StrategicBehaviorTest.moveSoldiers" />
+      <item itemvalue="JUnit.AggressiveBehaviorTest.testMoveSoldiersOption" />
+      <item itemvalue="JUnit.CountryTest" />
+      <item itemvalue="JUnit.StrategicBehaviorTest" />
       <item itemvalue="Tomcat Server.Tomcat" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CountryTest" />
+        <item itemvalue="JUnit.StrategicBehaviorTest" />
         <item itemvalue="JUnit.AggressiveBehaviorTest.testMoveSoldiers" />
-        <item itemvalue="JUnit.StrategicBehaviorTest.moveSoldiers" />
+        <item itemvalue="JUnit.AggressiveBehaviorTest.testMoveSoldiersOption" />
         <item itemvalue="JUnit.AggressiveBehaviorTest" />
-        <item itemvalue="JUnit.AggressiveBehaviorTest.moveSoldiers" />
-        <item itemvalue="JUnit.TurnTest" />
       </list>
     </recent_temporary>
   </component>
@@ -629,76 +743,25 @@
       <workItem from="1554448050087" duration="2861000" />
       <workItem from="1554459205093" duration="2378000" />
       <workItem from="1554466803634" duration="8670000" />
-    </task>
-    <task id="LOCAL-00017" summary="add removeSoldiers()and setSoldiersCount()">
-      <created>1551467481916</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1551467481916</updated>
-    </task>
-    <task id="LOCAL-00018" summary="remove Javadoc of get and set">
-      <created>1551471294409</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1551471294409</updated>
-    </task>
-    <task id="LOCAL-00019" summary="improved shiftSoldiers() &#10;&#10;the move of the soldiers to the countries improved">
-      <created>1551515888505</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1551515888506</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Create ENUM ColorPlayer and random selection color">
-      <created>1551542728168</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1551542728168</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Rename method">
-      <created>1551543110736</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1551543110736</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Second try: Create Enum ColorPlayer and set method getRandomColor()">
-      <created>1551543576650</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1551543576650</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Player can move soldiers + format code">
-      <created>1551545496260</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1551545496260</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Create Test UserBehaviorTest">
-      <created>1551545847383</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1551545847383</updated>
-    </task>
-    <task id="LOCAL-00025" summary="set try and catch in attackCountry() method">
-      <created>1551568526568</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1551568526568</updated>
-    </task>
-    <task id="LOCAL-00026" summary="implements movePhase() and add MOVE_KEY">
-      <created>1551608550652</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1551608550652</updated>
+      <workItem from="1554627252104" duration="277000" />
+      <workItem from="1554627569593" duration="3055000" />
+      <workItem from="1554836843645" duration="317000" />
+      <workItem from="1554838726489" duration="4945000" />
+      <workItem from="1554874041020" duration="1034000" />
+      <workItem from="1554980093876" duration="1220000" />
+      <workItem from="1555072410752" duration="5829000" />
+      <workItem from="1555080683040" duration="500000" />
+      <workItem from="1555146173131" duration="4233000" />
+      <workItem from="1555227229702" duration="634000" />
+      <workItem from="1555228980182" duration="206000" />
+      <workItem from="1555229346044" duration="599000" />
+      <workItem from="1555326157654" duration="48000" />
+      <workItem from="1555326540615" duration="19000" />
+      <workItem from="1555752566383" duration="3729000" />
+      <workItem from="1555756418816" duration="8818000" />
+      <workItem from="1555770959266" duration="3506000" />
+      <workItem from="1555832213981" duration="14021000" />
+      <workItem from="1555911725627" duration="1871000" />
     </task>
     <task id="LOCAL-00027" summary="add method cancelMove()">
       <created>1551608905321</created>
@@ -973,43 +1036,113 @@
       <option name="project" value="LOCAL" />
       <updated>1554473618050</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="expanded testMoveSoldiers(), fix Null objects instead of nul&#10;&#10;&#10;- added additionally verification to testMoveSoldiers()&#10;&#10;- clean code, javadoc">
+      <created>1554844379950</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1554844379953</updated>
+    </task>
+    <task id="LOCAL-00067" summary="#51 fix Resource try/catch/log/throw/release">
+      <created>1555073345759</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1555073345760</updated>
+    </task>
+    <task id="LOCAL-00068" summary="#27 add and optimized test method for aggressive behavior">
+      <created>1555079091056</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1555079091056</updated>
+    </task>
+    <task id="LOCAL-00069" summary="add TestHelperCountry class and modify methods for this class">
+      <created>1555149191665</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1555149191666</updated>
+    </task>
+    <task id="LOCAL-00070" summary="#36 Update database @huguemiz&#10;&#10;- Datum set to date&#10;&#10;- id covert to auto increment">
+      <created>1555754640057</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1555754640059</updated>
+    </task>
+    <task id="LOCAL-00071" summary="#36 create class ResultController&#10;&#10;- save and send mail, outcome to SQL">
+      <created>1555770034056</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1555770034060</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Attempt view game result #34">
+      <created>1555837319221</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1555837319222</updated>
+    </task>
+    <task id="LOCAL-00073" summary="improved Code">
+      <created>1555837599041</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1555837599041</updated>
+    </task>
+    <task id="LOCAL-00074" summary="#22 make determination of the player order">
+      <created>1555842976646</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1555842976646</updated>
+    </task>
+    <task id="LOCAL-00075" summary="rename file">
+      <created>1555865871984</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1555865871984</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 12h 50m 19s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.13 at 11h 40m 14s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 14h 24m 37s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.13 at 11h 43m 26s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 14h 54m 28s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.13 at 11h 46m 08s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 14h 54m 59s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.13 at 11h 48m 11s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 15h 31m 53s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.13 at 11h 50m 52s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 15h 32m 21s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.13 at 11h 54m 37s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 15h 32m 32s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.13 at 11h 57m 56s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 16h 04m 06s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="StrategicBehaviorTest - 2019.04.13 at 12h 05m 53s.xml">
+      <configuration name="StrategicBehaviorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 16h 19m 30s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.13 at 12h 47m 44s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AggressiveBehaviorTest_testMoveSoldiers - 2019.04.05 at 16h 19m 41s.xml">
-      <configuration name="AggressiveBehaviorTest.testMoveSoldiers" configurationId="JUnit" />
+    <history-entry file="CountryTest - 2019.04.20 at 12h 37m 35s.xml">
+      <configuration name="CountryTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257091000" />
+    <option name="totallyTimeSpent" value="311952000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1021,10 +1154,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="34" width="1381" height="885" extended-state="6" />
+    <frame x="-8" y="32" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18442933" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1444563" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Web" order="3" side_tool="true" />
@@ -1033,20 +1166,20 @@
       <window_info id="Image Layers" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32885906" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4988662" weight="0.26490065" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3279003" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4988662" visible="true" weight="0.25886863" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.07019868" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3279003" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32694152" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4989339" weight="0.18278146" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4989339" weight="0.0397351" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32885906" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.18504314" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" show_stripe_button="false" weight="0.32956153" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4989339" weight="0.18145695" />
-      <window_info anchor="bottom" id="Application Servers" order="14" weight="0.32885906" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4989339" weight="0.18120806" />
+      <window_info anchor="bottom" id="Application Servers" order="14" weight="0.3279003" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1132,16 +1265,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="write testMethod in class UserBehaviorTest" />
-    <MESSAGE value="extends javadoc BoardBean" />
-    <MESSAGE value="improves test UserBehaviorTest" />
-    <MESSAGE value="Make Method give ArrayList in UserBehaviorTest" />
-    <MESSAGE value="improves test UserBahaviorTest" />
-    <MESSAGE value="extended: Move only neighboring countries" />
-    <MESSAGE value="BoardBeanTest remove Method" />
-    <MESSAGE value="remove  // TODO check if neighbour" />
-    <MESSAGE value="JavaDoc expanded by  setCountryAttributes()" />
-    <MESSAGE value=" #15 fix problem to randomize color of the computer opponents&#10; &#10; &#10;Colors from computer opponents are randomly selected. &#10;The color from user is temporarily blue." />
     <MESSAGE value="Test class turnTest created and adapted&#10;&#10;&#10;- adapted to the new folder structure" />
     <MESSAGE value="make void doPost and void doGet from protected to public&#10;&#10;Test class TurnTest could no access it, because it was not in the same package." />
     <MESSAGE value="relocated method's from BoardTest to TurnTest&#10;&#10;&#10;testSetAttackAndDefendCountry()&#10;testMoveToNextPhase() &#10;testMoveToNextPhaseRemoveUser()&#10;testResetSelectedCountries() &#10;testEliminatePlayersAndCheckUserResultLose() &#10;testEliminatePlayersAndCheckUserResultWin()" />
@@ -1157,7 +1280,17 @@
     <MESSAGE value="review fix @huguemiz" />
     <MESSAGE value="change name" />
     <MESSAGE value="write test aggressiveBehaviorTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="write test aggressiveBehaviorTest" />
+    <MESSAGE value="expanded testMoveSoldiers(), fix Null objects instead of nul&#10;&#10;&#10;- added additionally verification to testMoveSoldiers()&#10;&#10;- clean code, javadoc" />
+    <MESSAGE value="#51 fix Resource try/catch/log/throw/release" />
+    <MESSAGE value="#27 add and optimized test method for aggressive behavior" />
+    <MESSAGE value="add TestHelperCountry class and modify methods for this class" />
+    <MESSAGE value="#36 Update database @huguemiz&#10;&#10;- Datum set to date&#10;&#10;- id covert to auto increment" />
+    <MESSAGE value="#36 create class ResultController&#10;&#10;- save and send mail, outcome to SQL" />
+    <MESSAGE value="Attempt view game result #34" />
+    <MESSAGE value="improved Code" />
+    <MESSAGE value="#22 make determination of the player order" />
+    <MESSAGE value="rename file" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1204,313 +1337,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/model/behavior/AggressiveBehaviorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/model/behavior/RandomBehaviorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/model/behavior/TestHelperBehavior.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/model/behavior/UserBehaviorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/model/CountryTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/model/DiceTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/model/PlayerTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/model/TurnTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/model/behavior/StrategicBehaviorTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/test/dao/PlayerDAOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Dice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/dao/TestHelperDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/BoardTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/PlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/CountryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1273">
-          <caret line="120" column="9" lean-forward="true" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/javax/servlet/http/HttpServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="21" column="36" lean-forward="true" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/helpers/AttackScore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
-          <folding>
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/countryNames.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/PlayerDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/PlayerColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/Phase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/helpers/AttackScoreComperator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/helpers/MoveComperator.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/sign-in.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/helpers/Casualties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-77">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/UserBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="86" column="42" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/events/ConquerEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/events/CasualtiesEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/events/DiceEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/MySQLConnectionCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1846">
-          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Turn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-456">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/controller/GameControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/DiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/model/TurnTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="-1967">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/UserBehaviorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/behavior/UserBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/StrategicBehaviorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="709">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="32" column="58" selection-start-line="32" selection-start-column="58" selection-end-line="32" selection-end-column="58" />
-          <folding>
-            <element signature="e#1441#1442#0" expanded="true" />
-            <element signature="e#1477#1478#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
-            <element signature="e#1781#1782#0" expanded="true" />
-            <element signature="e#1824#1825#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/behavior/RandomBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="65" column="30" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
-          <folding>
-            <element signature="e#3534#3535#0" expanded="true" />
-            <element signature="e#3618#3619#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/helpers/MoveCountry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="28" />
-          <folding>
-            <element signature="e#401#402#0" expanded="true" />
-            <element signature="e#441#442#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="e#498#499#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#565#566#0" expanded="true" />
-            <element signature="e#615#616#0" expanded="true" />
-            <element signature="e#655#656#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/helpers/AttackCountryResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/RandomBehaviorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/interfaces/Behavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/Objects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="371" selection-start-line="371" selection-end-line="371" />
-          <folding>
-            <element signature="e#13945#13946#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="457" selection-start-line="457" selection-end-line="457" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/TestHelperBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="35" column="55" lean-forward="true" selection-start-line="35" selection-start-column="55" selection-end-line="35" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/behavior/StrategicBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="78" column="29" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1519,20 +1349,381 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/AggressiveBehaviorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1568">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        <state relative-caret-position="1955">
+          <caret line="115" column="62" selection-start-line="115" selection-start-column="46" selection-end-line="115" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/behavior/AggressiveBehavior.java">
+    <entry file="file://$PROJECT_DIR$/src/main/test/helpers/TestHelperBehavior.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        <state relative-caret-position="102">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/model/CountryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/helpers/TestHelperDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/model/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/helpers/TestHelperCountry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/helpers/Casualties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+          <folding>
+            <element signature="e#511#512#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/StrategicBehaviorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="187" selection-start-line="187" selection-end-line="187" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/countryNames.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/attackRoll.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/documents/40_Design/DB_Projekt_Unlimited War.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/javax/servlet/annotation/WebServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.logging/java/util/logging/Logger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="689" column="25" selection-start-line="689" selection-start-column="25" selection-end-line="689" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/home.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.sql/java/sql/ResultSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="258" column="12" selection-start-line="258" selection-start-column="12" selection-end-line="258" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/MySQLConnectionCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/javax/servlet/ServletRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/SignInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/ProjektUW/jstl-1.2.jar!/META-INF/c.tld">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="168" column="4" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/events/ConquerEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#911#912#0" expanded="true" />
+            <element signature="e#957#958#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/dao/PlayerDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/controller/ResultControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EventType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/controller/GameControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="108" column="44" lean-forward="true" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test/dao/ResultsDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="65" column="54" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/event.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/io/Serializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2635">
+          <caret line="178" column="17" selection-start-line="178" selection-start-column="17" selection-end-line="178" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/results.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/resultModal.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/profile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ResultController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ResultsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/registrationEvent.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/UserBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/ResultBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="e#228#229#0" expanded="true" />
+            <element signature="e#266#267#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/game.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2550">
+          <caret line="172" column="9" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/PlayerDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/interfaces/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/computerOpponentNames.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
+          <folding>
+            <element signature="e#1372#1373#0" expanded="true" />
+            <element signature="e#1404#1405#0" expanded="true" />
+            <element signature="e#1441#1442#0" expanded="true" />
+            <element signature="e#1477#1478#0" expanded="true" />
+            <element signature="e#1614#1615#0" expanded="true" />
+            <element signature="e#1642#1643#0" expanded="true" />
+            <element signature="e#1781#1782#0" expanded="true" />
+            <element signature="e#1824#1825#0" expanded="true" />
+            <element signature="e#1893#1894#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/signinError.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="62" column="29" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/snippets/signed-in.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/sign-in.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="126" column="78" lean-forward="true" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="78" />
+          <folding>
+            <element signature="e#1619#1620#0" expanded="true" />
+            <element signature="e#1666#1667#0" expanded="true" />
+            <element signature="e#1764#1765#0" expanded="true" />
+            <element signature="e#1813#1814#0" expanded="true" />
+            <element signature="e#1910#1911#0" expanded="true" />
+            <element signature="e#1959#1960#0" expanded="true" />
           </folding>
         </state>
       </provider>
