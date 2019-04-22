@@ -1,6 +1,5 @@
 package controller;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +20,8 @@ public class SignOutController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
         UserController.setSessionUser(request.getSession(), null);
         try {
-            request.getRequestDispatcher(PAGE_AFTER_SIGN_OUT).forward(request, response);
-        } catch (ServletException | IOException e) {
+            response.sendRedirect(request.getContextPath() + PAGE_AFTER_SIGN_OUT);
+        } catch (IOException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
         }
     }

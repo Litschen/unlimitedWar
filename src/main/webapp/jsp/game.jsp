@@ -1,6 +1,6 @@
 <%@ page import="model.Board" %>
 <%@ page import="model.Country" %>
-<%@page import="model.enums.Flag" %>
+<%@ page import="model.enums.Flag" %>
 <%@ page import="model.enums.Phase" %>
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -14,7 +14,7 @@
     <title>Play Unlimited War</title>
 </head>
 <body>
-<%@include file="snippets/header.jsp" %>
+<%@ include file="snippets/redirect-signed-out.jsp" %>
 
 <div class="wrapper">
     <% Board board = (Board) session.getAttribute("board"); %>
@@ -83,9 +83,9 @@
         </form>
     </c:if>
 </div>
-<%@include file="modals/event.jsp" %>
-<%@include file="modals/attackRoll.jsp" %>
-<%@include file="modals/resultModal.jsp" %>
-<%@include file="snippets/footer.jsp" %>
+<%@ include file="modals/event.jsp" %>
+<%@ include file="modals/attackRoll.jsp" %>
+<%@ include file="modals/resultModal.jsp" %>
+<%@ include file="snippets/footer.jsp" %>
 </body>
 </html>

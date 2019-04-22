@@ -1,5 +1,5 @@
 <!Doctype html>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.css">
@@ -15,15 +15,9 @@
 </head>
 
 <body>
-<header class="navbar navbar-dark bg-color-white">
-    <a class="navbar-brand" href="./home.jsp">
-        <img class="logo" rel="icon" src="../images/logo_transparent.png" alt="Unlimited War logo">
-    </a>
-    <h1>Unlimited War</h1>
-</header>
+<%@ include file="snippets/header.jsp" %>
 
 <div class="homeBox border rounded">
-
     <c:if test="${sessionScope.user ==  null}">
         <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
     </c:if>
@@ -48,7 +42,7 @@
         <button name="cancel" class="btn btn-lg btn-block">Cancel</button>
     </form>
 </div>
-<%@include file="modals/registrationEvent.jsp" %>
-<%@include file="snippets/footer.jsp" %>
+<%@ include file="modals/registrationEvent.jsp" %>
+<%@ include file="snippets/footer.jsp" %>
 </body>
 </html>

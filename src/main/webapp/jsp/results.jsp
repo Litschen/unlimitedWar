@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="controller.ResultController" %>
 
 <!DOCTYPE html>
@@ -13,7 +13,8 @@
     <title>Results</title>
 </head>
 <body>
-<%@include file="snippets/header.jsp" %>
+<%@ include file="snippets/redirect-signed-out.jsp" %>
+
 <table id="resultsTable" class="table table-striped table-light">
     <thead>
     <tr>
@@ -31,6 +32,6 @@
     </tr>
     </tbody>
 </table>
-<%@include file="snippets/footer.jsp" %>
+<%@ include file="snippets/footer.jsp" %>
 </body>
 </html>

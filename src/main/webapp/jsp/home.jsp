@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/stylesheet.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
@@ -10,8 +11,7 @@
     <title>Welcome to Unlimited War</title>
 </head>
 <body>
-<%@include file="snippets/header.jsp" %>
-<%@include file="snippets/signed-in.jsp" %>
+<%@ include file="snippets/redirect-signed-out.jsp" %>
 
 <main>
     <form action="<%=request.getContextPath()%>/Home/action" method="post" name="homeForm">
@@ -19,7 +19,7 @@
         <button name="results" class="btn btn-secondary">See results</button>
     </form>
 </main>
-<%@include file="modals/chooseColor.jsp" %>
-<%@include file="snippets/footer.jsp" %>
+<%@ include file="modals/chooseColor.jsp" %>
+<%@ include file="snippets/footer.jsp" %>
 </body>
 </html>
