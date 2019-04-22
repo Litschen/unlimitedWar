@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class ResultsDAO {
     private ResultSet rs;
@@ -73,4 +74,6 @@ public class ResultsDAO {
     public void closeConnection() throws SQLException {
         con.close();
     }
+
+
 }
