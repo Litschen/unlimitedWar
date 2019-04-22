@@ -151,7 +151,7 @@ public class Board {
         playerColor.addAll(Arrays.asList(PlayerColor.values()));
 
         players.add(new Player(playerColor.remove(playerColor.indexOf(color)), name, new UserBehavior()));
-        players.add(new Player(playerColor.remove(getPlayerColor()),name , new StrategicBehavior()));
+        players.add(new Player(playerColor.remove(getPlayerColor()), name, new StrategicBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), name, new AggressiveBehavior()));
         players.add(new Player(playerColor.remove(getPlayerColor()), name, new RandomBehavior()));
 
@@ -160,13 +160,15 @@ public class Board {
 
     }
 
-    private void setRandomNameOpponent(){
+    private void setRandomNameOpponent() {
         try {
             List<String> opponentName = Files.readAllLines(
                     new File(Objects.requireNonNull(getClass().getClassLoader().getResource(RESOURCE_FILE_NAME)).getPath()).toPath(), Charset.defaultCharset());
             Collections.shuffle(opponentName);
             for (Player player : players) {
-                player.setPlayerName(opponentName.remove(0));
+                if (!(player.getBehavior() instanceof UserBehavior)) {
+                    player.setPlayerName(opponentName.remove(0));
+                }
             }
         } catch (IOException | NullPointerException e) {
             LOGGER.log(Level.WARNING, "Country Attributes could not be set", e);
