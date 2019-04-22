@@ -8,15 +8,18 @@
                 <div class="modal-body">
                     <div class="trophy"></div>
                 </div>
+                <div class="modal-footer">
+                    <button name="win">Finish</button>
+                </div>
             </c:if>
             <c:if test="${board.getCurrentTurn().getFlag() == Flag.GAME_LOSE}">
                 <div class="modal-header">
                     <h5 class="modal-title">You Lose :(</h5>
                 </div>
-            </c:if>
-            <div class="modal-footer">
-                <button class="btn btn-primary">Finish</button>
-            </div>
+                <div class="modal-footer">
+                    <button name="lose">Finish</button>
+                </div>
+            </c:if >
         </form>
     </div>
 </c:if>
