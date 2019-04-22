@@ -1,5 +1,5 @@
 <!Doctype html>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,14 +11,11 @@
 </head>
 
 <body>
-<%@include file="snippets/header.jsp" %>
-<c:if test="${sessionScope.user != null}">
-    <c:redirect url="./home.jsp"/>
-</c:if>
+<%@ include file="snippets/redirect-signed-in.jsp" %>
 
 <div class="homeBox border rounded">
     <h1 class="h3 mb-3 font-weight-normal">Sign in</h1>
-    <%@include file="modals/signinError.jsp" %>
+    <%@ include file="modals/signinError.jsp" %>
     <form class="form-signin mb-3" action="<%=request.getContextPath()%>/SignIn" method="post">
         <input type="email" id="inputEmail" class="mb-3 form-control" name="<%=SignInController.MAIL_PARAMETER_NAME%>"
                placeholder="Email address" required autofocus>
@@ -29,6 +26,6 @@
     <button class="btn btn-lg btn-block" onclick="window.location.href='profile.jsp'">Register</button>
 </div>
 
-<%@include file="snippets/footer.jsp" %>
+<%@ include file="snippets/footer.jsp" %>
 </body>
 </html>
