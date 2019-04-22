@@ -25,7 +25,7 @@
     <% int counter = 1;%>
     </thead>
     <tbody>
-    <c:forEach items = "${ResultController.getAllResultsOfUser(sessionScope.user)}" var="data">
+    <c:forEach items = "${result.getAllResultsOfUser(sessionScope.user)}" var="data">
         <tr>
             <th scope="row"><% counter ++;%></th>
             <td class="alert-success">data.getDate()</td>
