@@ -261,14 +261,15 @@ public class Turn {
         if (hasRemovedPlayers) {
             if (activePlayers.size() == 1 && currentPlayerIsUser()) {
                 setFlag(Flag.GAME_WIN);
-                // TODO: @Tina MS3 /F0410/ Spielresultat speichern
+
             } else {
                 boolean playerIn = activePlayers.stream().anyMatch(o -> o.getBehavior() instanceof UserBehavior);
                 if (!playerIn) {
                     setFlag(Flag.GAME_LOSE);
-                    // TODO: @Tina MS3 /F0410/ Spielresultat speichern
                 }
             }
         }
     }
+
+
 }
