@@ -3,8 +3,6 @@ package controller;
 import model.Board;
 import model.Country;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,8 +47,6 @@ public class GameController extends HttpServlet {
      * @param response servlet response
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE);
-
         try {
             board = (Board) request.getSession().getAttribute(SESSION_BOARD_NAME);
             if (board != null) {
@@ -73,11 +69,9 @@ public class GameController extends HttpServlet {
             }
             if (request.getPathInfo() != null && request.getPathInfo().equals(PATH_RESULT)) {
                 request.getSession().setAttribute(SESSION_BOARD_NAME, null);
-                response.sendRedirect(request.getContextPath() + PAGE_TO_LOAD_ON_COMPLETE);
-            } else {
-                dispatcher.forward(request, response);
             }
-        } catch (ServletException | IOException | NullPointerException e) {
+            response.sendRedirect(request.getContextPath() + PAGE_TO_LOAD_ON_COMPLETE);
+        } catch (IOException | NullPointerException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
         }
     }

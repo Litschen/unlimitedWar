@@ -5,8 +5,6 @@ import dao.PlayerDAO;
 import model.UserBean;
 import org.jetbrains.annotations.NotNull;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
