@@ -34,6 +34,7 @@ public class SignInController extends HttpServlet {
     //region data fields
     private UserBean user = null;
     private PlayerDAO playerDAO;
+    private MySQLConnectionCreator connectionCreator = new MySQLConnectionCreator();
     //endregion
 
     //region getter/setter
@@ -46,8 +47,12 @@ public class SignInController extends HttpServlet {
         this.user = user;
     }
 
+    void setConnectionCreator(MySQLConnectionCreator connectionCreator) {
+        this.connectionCreator = connectionCreator;
+    }
+
     //added for testing purposes
-    PlayerDAO getPlayerDAO() {
+    private PlayerDAO getPlayerDAO() {
         return this.playerDAO;
     }
     //endregion
@@ -55,7 +60,7 @@ public class SignInController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        playerDAO = MySQLConnectionCreator.getPlayerDAO();
+        playerDAO = connectionCreator.getPlayerDAO();
         if (playerDAO != null) {
 
             String mail = request.getParameter(MAIL_PARAMETER_NAME);

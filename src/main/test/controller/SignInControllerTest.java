@@ -26,6 +26,7 @@ class SignInControllerTest {
     //region data fields
     private HttpServletRequest mockRequest;
     private HttpServletResponse mockResponse;
+    private MySQLConnectionCreator mockConnectionCreator;
     private SignInController controller = spy(new SignInController());
     private PlayerDAO mockPlayerDao;
     //endregion
@@ -33,8 +34,9 @@ class SignInControllerTest {
     @BeforeEach
     void setUp() {
         mockPlayerDao = mock(PlayerDAO.class);
-        when(controller.getPlayerDAO()).thenReturn(mockPlayerDao);
-//        doNothing().when(MySQLConnectionCreator).createDAO(); FIXME
+        mockConnectionCreator = mock(MySQLConnectionCreator.class);
+        controller.setConnectionCreator(mockConnectionCreator);
+        when(mockConnectionCreator.getPlayerDAO()).thenReturn(mockPlayerDao);
         mockRequest = mock(HttpServletRequest.class);
         mockResponse = mock(HttpServletResponse.class);
         when(mockRequest.getRequestDispatcher(SignInController.PAGE_TO_LOAD_ON_ERROR))

@@ -50,6 +50,7 @@ public class UserController extends HttpServlet {
     private UserBean user;
     private PlayerDAO playerDAO;
     private List<Event> events;
+    private MySQLConnectionCreator connectionCreator = new MySQLConnectionCreator();
     //endregion
 
 
@@ -75,13 +76,17 @@ public class UserController extends HttpServlet {
         session.setAttribute(SESSION_USER, user);
     }
 
+    void setConnectionCreator(MySQLConnectionCreator connectionCreator) {
+        this.connectionCreator = connectionCreator;
+    }
+
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         String forwardPageTo = HOME_PAGE;
         events.clear();
 
         try {
             if (request.getParameter(PARAM_CANCEL) == null) {
-                playerDAO = MySQLConnectionCreator.getPlayerDAO();
+                playerDAO = connectionCreator.getPlayerDAO();
 
                 if (playerDAO != null) {
                     getUserDataFromInput(request);
