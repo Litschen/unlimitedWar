@@ -43,7 +43,7 @@ h1 {
 }
 
 .dropdown-menu {
-    margin: 0;
+    margin: 0 !important;
 }
 
 .dropdown:hover .dropdown-menu {
