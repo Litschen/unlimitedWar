@@ -5,8 +5,6 @@ import dao.PlayerDAO;
 import model.UserBean;
 import org.jetbrains.annotations.NotNull;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -68,22 +66,19 @@ public class SignInController extends HttpServlet {
 
             if (getPlayerDAO() != null) {
                 setUser(getPlayerDAO().getValidatedUser(mail, password), request.getSession());
-            }
-
-            RequestDispatcher requestDispatcher = (user != null) ?
-                    request.getRequestDispatcher(PAGE_TO_LOAD_ON_COMPLETE) : request.getRequestDispatcher(PAGE_TO_LOAD_ON_ERROR);
-            DISPLAY_ERROR_MESSAGE = user == null;
-
-            try {
-                requestDispatcher.forward(request, response);
-            } catch (ServletException | IOException e) {
-                LOGGER.log(Level.SEVERE, e.toString(), e);
-            } finally {
                 try {
                     getPlayerDAO().closeConnection();
                 } catch (SQLException e) {
                     LOGGER.log(Level.SEVERE, e.toString(), e);
                 }
+            }
+
+            String pageToLoad = (user != null) ? PAGE_TO_LOAD_ON_COMPLETE : PAGE_TO_LOAD_ON_ERROR;
+            try {
+                response.sendRedirect(request.getContextPath() + pageToLoad);
+                DISPLAY_ERROR_MESSAGE = user == null;
+            } catch (IOException e) {
+                LOGGER.log(Level.SEVERE, e.toString(), e);
             }
         }
     }

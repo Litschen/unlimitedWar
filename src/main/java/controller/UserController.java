@@ -124,6 +124,7 @@ public class UserController extends HttpServlet {
         if (pwd != null && pwd.equals(request.getParameter(PARAM_CONFIRM_PASSWORD))) {
             user.setPassword(request.getParameter(PARAM_PASSWORD));
         } else {
+            user = new UserBean();
             events.add(new UserEvent(EVENT_PWD_ERROR_TITLE, EVENT_PWD_ERROR_MSG));
         }
     }
