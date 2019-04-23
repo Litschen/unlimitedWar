@@ -23,7 +23,7 @@ public class MySQLConnectionCreator {
         return DriverManager.getConnection(dbURL, user, pw);
     }
 
-    public static PlayerDAO getPlayerDAO() {
+    public PlayerDAO getPlayerDAO() {
         PlayerDAO playerDAO = null;
 
         try {
