@@ -18,7 +18,7 @@
             <div class="modal-body row colorOptions" style="text-align: center;">
                 <c:forEach items="${PlayerColor.values()}" var="color">
                     <div class="col">
-                        <input type="radio" name="selectedColor" value="${color}" class="color-selection ${color}" required onclick="enableSubmit()">
+                        <input type="radio" name="selectedColor" value="${color}" class="color-selection ${color}" onclick="enableSubmit()">
                     </div>
                 </c:forEach>
             </div>
