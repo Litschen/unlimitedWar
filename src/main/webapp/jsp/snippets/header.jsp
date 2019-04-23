@@ -24,7 +24,7 @@
                 </li>
             </ul>
 
-            <jsp:include page="modals/confirmSignOut.jsp"/>
+            <jsp:include page="${pageContext.request.contextPath}/jsp/modals/confirmSignOut.jsp"/>
         </div>
     </c:if>
 </header>
