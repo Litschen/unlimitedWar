@@ -35,8 +35,8 @@ public class UserController extends HttpServlet {
     public final static String PARAM_CANCEL = "cancel";
 
     // pages to load
-    public final static String HOME_PAGE = "/jsp/sign-in.jsp";
-    public final static String REGISTER_PAGE = "/jsp/profile.jsp";
+    public final static String HOME_PAGE = Pages.SIGN_IN;
+    public final static String REGISTER_PAGE = Pages.PROFILE;
 
     public final static String SESSION_USER = "user";
     public final static String SESSION_EVENTS = "events";

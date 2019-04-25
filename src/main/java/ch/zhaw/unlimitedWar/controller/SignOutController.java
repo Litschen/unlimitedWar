@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class SignOutController extends HttpServlet {
 
     //region static variables
-    public final static String PAGE_AFTER_SIGN_OUT = "/jsp/sign-in.jsp";
+    public final static String PAGE_AFTER_SIGN_OUT = Pages.SIGN_IN;
     private final static Logger LOGGER = Logger.getLogger(SignOutController.class.getName());
     //endregion
 
