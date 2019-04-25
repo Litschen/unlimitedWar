@@ -1,4 +1,4 @@
-<%@ page import="controller.SignInController" %>
+<%@ page import="ch.zhaw.unlimitedWar.controller.SignInController" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/signinError.css">

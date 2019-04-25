@@ -1,7 +1,7 @@
-<%@ page import="model.Board" %>
-<%@ page import="model.Country" %>
-<%@ page import="model.enums.Flag" %>
-<%@ page import="model.enums.Phase" %>
+<%@ page import="ch.zhaw.unlimitedWar.model.Board" %>
+<%@ page import="ch.zhaw.unlimitedWar.model.Country" %>
+<%@ page import="ch.zhaw.unlimitedWar.model.enums.Flag" %>
+<%@ page import="ch.zhaw.unlimitedWar.model.enums.Phase" %>
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">

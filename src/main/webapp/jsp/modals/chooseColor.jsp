@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="model.enums.PlayerColor" %>
+<%@ page import="ch.zhaw.unlimitedWar.model.enums.PlayerColor" %>
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/colorSelection.css">
 <script>

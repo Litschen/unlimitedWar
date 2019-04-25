@@ -1,4 +1,4 @@
-<%@ page import="model.enums.EventType" %>
+<%@ page import="ch.zhaw.unlimitedWar.model.enums.EventType" %>
 <head>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/event.css">
 </head>

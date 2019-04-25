@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="result" class="controller.ResultController" scope="session"/>
-<%@ page import="controller.ResultController" %>
+<jsp:useBean id="result" class="ch.zhaw.unlimitedWar.controller.ResultController" scope="session"/>
 
 <!DOCTYPE html>
 <html lang="en">
