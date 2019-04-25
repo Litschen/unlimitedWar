@@ -61,14 +61,12 @@ public class ResultController extends HttpServlet {
     }
 
     private void insertResult(HttpServletRequest request) {
-        try{boolean outcome = false;
-            UserBean user = (UserBean) request.getSession().getAttribute("user");
-            String mail = user.getMail();
-            if( request.getParameter(PARAM_SELECTED_WIN) != null){
-                outcome = true;
-            }
+        try{
+            UserBean user = UserController.getSessionUser(request.getSession());
+            boolean outcome = request.getParameter(PARAM_SELECTED_WIN) != null;
+
             setUpDBConnection();
-            resultDAO.saveResult(outcome, mail );
+            resultDAO.saveResult(outcome, user.getMail() );
             resultDAO.closeConnection();
         } catch (Exception e) {
             LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
