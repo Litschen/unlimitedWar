@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 class TurnTest {
@@ -119,13 +120,15 @@ class TurnTest {
     @Test
     void testEliminatePlayersAndCheckUserResultWin() {
         Board board = new Board(PlayerColor.BLUE, "Felix");
-        turn = board.getCurrentTurn();
+        turn = spy(board.getCurrentTurn());
+        when(turn.currentPlayerIsUser()).thenReturn(true);
         Player user = null;
         for (Player player : turn.getActivePlayers()) {
             if (player.getBehavior() instanceof UserBehavior) {
                 user = player;
             }
         }
+
         assertEquals(4, turn.getActivePlayers().size());
         assertEquals(Flag.NONE, turn.getFlag());
         for (Player player : turn.getActivePlayers()) {
