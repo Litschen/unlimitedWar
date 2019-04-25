@@ -1,5 +1,6 @@
 package ch.zhaw.unlimitedWar.model;
 
+import ch.zhaw.unlimitedWar.helpers.TestHelperBehavior;
 import ch.zhaw.unlimitedWar.model.behavior.RandomBehavior;
 import ch.zhaw.unlimitedWar.model.enums.PlayerColor;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,9 +8,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
 
 class PlayerTest {
 
@@ -40,6 +43,23 @@ class PlayerTest {
 
         fellowCountries(testPlayer.getOwnedCountries(), 30);
         assertEquals(10, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+    }
+
+    @Test
+    void testCalculateSoldiersToPlaceContinentBonus() {
+        fellowCountries(testPlayer.getOwnedCountries(), 1);
+        Continent continent = new Continent(10, testPlayer.getOwnedCountries(), "test");
+        assertEquals(10 + Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace(Collections.singletonList(continent)));
+
+    }
+
+    @Test
+    void testCalculateSoldiersToPlaceContinentNotOwned() {
+        fellowCountries(testPlayer.getOwnedCountries(), 1);
+        Continent continent = new Continent(10, testPlayer.getOwnedCountries(), "test");
+        continent.addCountry(TestHelperBehavior.getMockCountry(mock(Player.class)));
+        assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace(Collections.singletonList(continent)));
+
     }
 
     @Test
