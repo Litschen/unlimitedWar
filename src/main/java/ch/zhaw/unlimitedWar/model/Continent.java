@@ -38,18 +38,18 @@ public class Continent {
         this.name = name;
     }
 
-    private int getBonusForPlayer(Player player) {
+    public int getBonusForPlayer(Player player) {
         return 0;
     }
 
     //endregion
 
 
-    private void addCountry(Country country) {
+    public void addCountry(Country country) {
 
     }
 
-    private void addCountries(List<Country> countries) {
+    public void addCountries(List<Country> countries) {
 
     }
 
