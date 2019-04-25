@@ -39,7 +39,7 @@ public class ResultController extends HttpServlet {
         List<ResultBean> resultOfUser = new ArrayList <> ();
         try{
             setUpDBConnection();
-            resultOfUser.addAll(resultDAO.getAllResultsOfUser(user.getMail()));
+            resultOfUser.addAll(resultDAO.getAllResultOfUser(user.getMail()));
             resultDAO.closeConnection();
         }catch (Exception e){ LOGGER.log(Level.WARNING, DATABASE_ERROR, e);}
         return resultOfUser;
@@ -49,14 +49,12 @@ public class ResultController extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response){
 
-        String redirectPageTo = HOME_PAGE;
-        String path = request.getPathInfo();
-        if (PATH_SAVE.equals(path)) {
+        if (PATH_SAVE.equals(request.getPathInfo())) {
             insertResult(request);
         }
 
         try {
-            response.sendRedirect(request.getContextPath() + redirectPageTo);
+            response.sendRedirect(request.getContextPath() + HOME_PAGE);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
