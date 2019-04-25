@@ -219,7 +219,7 @@ public class Turn {
 
     public void moveToNextPhase() {
         Phase currentPhase = getCurrentPhase();
-
+        resetSelectedCountries();
         if (currentPhase == Phase.SET) {
             setCurrentPhase(Phase.ATTACK);
         } else if (currentPhase == Phase.ATTACK) {
@@ -228,8 +228,6 @@ public class Turn {
             setCurrentPhase(Phase.SET);
             cyclePlayer();
         }
-
-        resetSelectedCountries();
     }
 
     private void cyclePlayer() {
