@@ -17,7 +17,7 @@ public class CasualtiesEvent implements Event {
 
     //region data fields
     private String playerName;
-    private List<Integer> data;
+    private final List<Integer> data;
     //endregion
 
     public CasualtiesEvent(Casualties casualties) {

@@ -29,6 +29,10 @@ public class Board {
     public final static String RESOURCE_FILE_COUNTRY = "countryNames.txt";
     public final static String RESOURCE_FILE_NAME = "computerOpponentNames.txt";
     private final static Logger LOGGER = Logger.getLogger(Board.class.getName());
+    public final static String CONTINENT_TOP_LEFT_NAME = "North America";
+    public final static String CONTINENT_TOP_RIGHT_NAME = "Eurasia";
+    public final static String CONTINENT_BOTTOM_LEFT_NAME = "South America";
+    public final static String CONTINENT_BOTTOM_RIGHT_NAME = "Australia";
     //endregion
 
     //region data fields
@@ -43,6 +47,7 @@ public class Board {
     public Board(PlayerColor color, String name) {
         players = new ArrayList<>();
         countries = new ArrayList<>();
+        continents = new ArrayList<>();
         generatePlayers(color, name);
         generateCountries();
         currentTurn = new Turn(players, countries, turnCounter, continents);
@@ -100,6 +105,21 @@ public class Board {
         }
         Collections.shuffle(countries);
         setCountryAttributes();
+        addCountriesToContinents();
+    }
+
+    private void addCountriesToContinents() {
+        addCountriesToContinents(new int[]{4, 5, 6, 7}, new Continent(2, CONTINENT_TOP_LEFT_NAME));
+        addCountriesToContinents(new int[]{8, 9, 10, 11, 12, 13}, new Continent(4, CONTINENT_TOP_RIGHT_NAME));
+        addCountriesToContinents(new int[]{0, 1, 2, 3}, new Continent(2, CONTINENT_BOTTOM_LEFT_NAME));
+        addCountriesToContinents(new int[]{14, 15}, new Continent(1, CONTINENT_BOTTOM_RIGHT_NAME));
+    }
+
+    private void addCountriesToContinents(int[] indexes, Continent continent) {
+        continents.add(continent);
+        for (int i : indexes) {
+            continent.addCountry(countries.get(i));
+        }
     }
 
     /**

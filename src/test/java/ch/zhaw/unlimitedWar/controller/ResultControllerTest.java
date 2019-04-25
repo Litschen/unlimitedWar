@@ -17,5 +17,5 @@ class ResultControllerTest {
     }
 
     @Test
-    void testFinishGame() throws Exception {}
+    void testFinishGame() {}
 }

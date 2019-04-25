@@ -4,9 +4,9 @@ import ch.zhaw.unlimitedWar.model.Country;
 
 public class AttackScore {
     //region data fields
-    private int score;
-    private Country attacker;
-    private Country defender;
+    private final int score;
+    private final Country attacker;
+    private final Country defender;
     //endregion
 
     public AttackScore(int score, Country attacker, Country defender) {

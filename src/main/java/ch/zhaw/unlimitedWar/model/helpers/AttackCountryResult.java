@@ -9,7 +9,7 @@ import java.util.List;
 public class AttackCountryResult {
     //region data fields
     private Phase newPhase;
-    private List<Event> occurredEvents;
+    private final List<Event> occurredEvents;
     //endregion
 
     public AttackCountryResult(Phase phase) {

@@ -12,7 +12,7 @@ public class Player {
     //endregion
 
     //region data fields
-    private Enum color;
+    private final Enum color;
     private String name;
     private int attackDiceCount;
     private Behavior behavior;
@@ -65,7 +65,11 @@ public class Player {
     //endregion
 
     public int calculateSoldiersToPlace(List<Continent> continents) {
-        return Math.max(COUNTRY_WEIGHT, getOwnedCountries().size() / COUNTRY_WEIGHT);
+        int continentBoni = 0;
+        for (Continent continent : continents) {
+            continentBoni += continent.getBonusForPlayer(this);
+        }
+        return Math.max(COUNTRY_WEIGHT, getOwnedCountries().size() / COUNTRY_WEIGHT) + continentBoni;
     }
 
 }

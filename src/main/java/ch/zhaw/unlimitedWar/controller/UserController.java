@@ -30,16 +30,16 @@ public class UserController extends HttpServlet {
     public final static String PARAM_CONFIRM_PASSWORD = "confirm-pwd";
 
     // button actions
-    public final static String PARAM_REGISTER = "register";
-    public final static String PARAM_SAVE = "save";
-    public final static String PARAM_CANCEL = "cancel";
+    private final static String PARAM_REGISTER = "register";
+    private final static String PARAM_SAVE = "save";
+    private final static String PARAM_CANCEL = "cancel";
 
     // pages to load
-    public final static String HOME_PAGE = "/jsp/sign-in.jsp";
-    public final static String REGISTER_PAGE = "/jsp/profile.jsp";
+    private final static String HOME_PAGE = Pages.SIGN_IN;
+    private final static String REGISTER_PAGE = Pages.PROFILE;
 
-    public final static String SESSION_USER = "user";
-    public final static String SESSION_EVENTS = "events";
+    private final static String SESSION_USER = "user";
+    private final static String SESSION_EVENTS = "events";
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
 
     private final static String EVENT_PWD_ERROR_TITLE = "Password error";

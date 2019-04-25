@@ -15,7 +15,7 @@ public class DiceEvent implements Event {
     //region data fields
     private String playerName;
     private List<Integer> data;
-    private EventType type;
+    private final EventType type;
     //endregion
 
     public DiceEvent(List<Integer> diceThrow, EventType type, String name) {
