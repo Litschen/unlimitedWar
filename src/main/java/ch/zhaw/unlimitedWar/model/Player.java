@@ -12,7 +12,7 @@ public class Player {
     //endregion
 
     //region data fields
-    private Enum color;
+    private final Enum color;
     private String name;
     private int attackDiceCount;
     private Behavior behavior;
