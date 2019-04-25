@@ -7,8 +7,22 @@
     <groupId>ch.zhaw.unlimitedWar</groupId>
     <artifactId>unlimitedWar</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <build>
-        <defaultGoal>clean install</defaultGoal>
+        <directory>${basedir}/classes</directory>
+        <sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </testResource>
+        </testResources>
+        <defaultGoal>clean</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -17,6 +31,7 @@
                     <source>11</source>
                     <target>11</target>
                 </configuration>
+
             </plugin>
         </plugins>
 
