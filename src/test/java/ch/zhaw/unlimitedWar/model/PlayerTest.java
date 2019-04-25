@@ -45,7 +45,7 @@ class PlayerTest {
     @Test
     void testCalculateSoldiersToPlaceMin() {
         //owned countries = 0
-        assertEquals(3, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+        assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
     }
 
     private void fellowCountries(List<Country> owned, int amountOfCountries){
