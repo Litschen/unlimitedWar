@@ -21,9 +21,9 @@ public class HomeController extends HttpServlet {
     public final static String PARAM_SELECTED_COLOR = "selectedColor";
     public final static String PARAM_PLAY = "play";
 
-    public final static String HOME_PAGE = "/jsp/home.jsp";
-    public final static String GAME_PAGE = "/jsp/game.jsp";
-    public final static String RESULTS_PAGE = "/jsp/results.jsp";
+    public final static String HOME_PAGE = Pages.HOME;
+    public final static String GAME_PAGE = Pages.GAME;
+    public final static String RESULTS_PAGE = Pages.RESULTS;
 
 
     private void setShowColorModal(HttpServletRequest request, boolean showColorModal) {

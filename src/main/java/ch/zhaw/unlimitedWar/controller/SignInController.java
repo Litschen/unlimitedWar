@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 public class SignInController extends HttpServlet {
 
     //region static variables
-    public final static String PAGE_TO_LOAD_ON_COMPLETE = "/jsp/home.jsp";
-    public final static String PAGE_TO_LOAD_ON_ERROR = "/jsp/sign-in.jsp";
+    public final static String PAGE_TO_LOAD_ON_COMPLETE = Pages.HOME;
+    public final static String PAGE_TO_LOAD_ON_ERROR = Pages.SIGN_IN;
     public final static String SIGNIN_ERROR_MESSAGE = "Could not sign in. Maybe you entered your password or Email wrong";
     public final static String MAIL_PARAMETER_NAME = "mail";
     public final static String PASSWORD_PARAMETER_NAME = "password";
