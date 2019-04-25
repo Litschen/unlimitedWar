@@ -24,28 +24,28 @@ class PlayerTest {
     @Test
     void testCalculateSoldiersToPlace() {
         fellowCountries(testPlayer.getOwnedCountries(), 1);
-        assertEquals(3, testPlayer.calculateSoldiersToPlace());
+        assertEquals(3, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
 
         fellowCountries(testPlayer.getOwnedCountries(), 5);
-        assertEquals(3, testPlayer.calculateSoldiersToPlace());
+        assertEquals(3, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
 
         fellowCountries(testPlayer.getOwnedCountries(), 10);
-        assertEquals(3, testPlayer.calculateSoldiersToPlace());
+        assertEquals(3, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
 
         fellowCountries(testPlayer.getOwnedCountries(), 12);
-        assertEquals(4, testPlayer.calculateSoldiersToPlace());
+        assertEquals(4, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
 
         fellowCountries(testPlayer.getOwnedCountries(), 12);
-        assertEquals(4, testPlayer.calculateSoldiersToPlace());
+        assertEquals(4, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
 
         fellowCountries(testPlayer.getOwnedCountries(), 30);
-        assertEquals(10, testPlayer.calculateSoldiersToPlace());
+        assertEquals(10, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
     }
 
     @Test
     void testCalculateSoldiersToPlaceMin() {
         //owned countries = 0
-        assertEquals(3, testPlayer.calculateSoldiersToPlace());
+        assertEquals(3, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
     }
 
     private void fellowCountries(List<Country> owned, int amountOfCountries){
