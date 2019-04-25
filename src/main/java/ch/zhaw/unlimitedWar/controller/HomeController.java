@@ -13,7 +13,7 @@ import java.io.IOException;
 @WebServlet(name = "HomeController", urlPatterns = "/Home/*")
 public class HomeController extends HttpServlet {
 
-    public final static String PATH_ACTION = "/action";
+    private final static String PATH_ACTION = "/action";
     public final static String PARAM_SHOW_RESULTS = "results";
     public final static String PARAM_START_GAME_MODAL = "selectColor";
 
@@ -21,9 +21,9 @@ public class HomeController extends HttpServlet {
     public final static String PARAM_SELECTED_COLOR = "selectedColor";
     public final static String PARAM_PLAY = "play";
 
-    public final static String HOME_PAGE = Pages.HOME;
-    public final static String GAME_PAGE = Pages.GAME;
-    public final static String RESULTS_PAGE = Pages.RESULTS;
+    private final static String HOME_PAGE = Pages.HOME;
+    private final static String GAME_PAGE = Pages.GAME;
+    private final static String RESULTS_PAGE = Pages.RESULTS;
 
 
     private void setShowColorModal(HttpServletRequest request, boolean showColorModal) {

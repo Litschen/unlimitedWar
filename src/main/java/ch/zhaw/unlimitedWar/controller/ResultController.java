@@ -24,7 +24,7 @@ public class ResultController extends HttpServlet {
 
     //region static variables
     public final static String PATH_SAVE = "/Save";
-    public final static String HOME_PAGE = Pages.HOME;
+    private final static String HOME_PAGE = Pages.HOME;
     public final static String PARAM_SELECTED_WIN = "win";
     private final static Logger LOGGER = Logger.getLogger(ResultSet.class.getName());
     //endregion

@@ -8,10 +8,10 @@ import java.util.List;
 public class UserEvent implements Event {
 
     //region data fields
-    private String title;
-    private String label;
+    private final String title;
+    private final String label;
     private String userName;
-    private EventType type;
+    private final EventType type;
     //endregion
 
     public UserEvent(String title, String label) {
