@@ -27,6 +27,7 @@ public class ResultController extends HttpServlet {
     private final static String HOME_PAGE = Pages.HOME;
     public final static String PARAM_SELECTED_WIN = "win";
     private final static Logger LOGGER = Logger.getLogger(ResultSet.class.getName());
+    public static final String DATABASE_ERROR = "DATABASE ERROR: Could not establish connection";
     //endregion
 
     //region data fields
@@ -35,12 +36,12 @@ public class ResultController extends HttpServlet {
 
     //region getter/setter
     public List<ResultBean> getAllResultsOfUser(UserBean user){
-        List<ResultBean> resultOfUser = new ArrayList ();
+        List<ResultBean> resultOfUser = new ArrayList <> ();
         try{
             setUpDBConnection();
             resultOfUser.addAll(resultDAO.getAllResultsOfUser(user.getMail()));
             resultDAO.closeConnection();
-        }catch (Exception e){ LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not establish connection", e);}
+        }catch (Exception e){ LOGGER.log(Level.WARNING, DATABASE_ERROR, e);}
         return resultOfUser;
     }
 
@@ -52,13 +53,12 @@ public class ResultController extends HttpServlet {
         String path = request.getPathInfo();
         if (PATH_SAVE.equals(path)) {
             insertResult(request);
-            redirectPageTo = HOME_PAGE;
         }
 
         try {
             response.sendRedirect(request.getContextPath() + redirectPageTo);
         } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
     }
 
@@ -73,14 +73,14 @@ public class ResultController extends HttpServlet {
             resultDAO.saveResult(outcome, mail );
             resultDAO.closeConnection();
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
     }
     private void setUpDBConnection() {
         try {
             resultDAO = new ResultsDAO(MySQLConnectionCreator.getConnection());
         } catch (ClassNotFoundException | SQLException e) {
-            LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
     }
 
