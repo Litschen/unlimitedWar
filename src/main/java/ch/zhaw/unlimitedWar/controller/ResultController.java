@@ -39,7 +39,7 @@ public class ResultController extends HttpServlet {
         List<ResultBean> resultOfUser = new ArrayList <> ();
         try{
             setUpDBConnection();
-            resultOfUser.addAll(resultDAO.getAllResultOfUser(user.getMail()));
+            resultOfUser.addAll(resultDAO.getAllResultsOfUser(user.getMail()));
             resultDAO.closeConnection();
         }catch (Exception e){ LOGGER.log(Level.WARNING, DATABASE_ERROR, e);}
         return resultOfUser;
