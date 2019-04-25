@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BoardTest {
@@ -40,7 +41,7 @@ class BoardTest {
     @Test
     void testSetCountryAttributes() {
         for (Country currentCountry : testBoard.getCountries()) {
-            assertTrue(!currentCountry.getName().equals(""));
+            assertNotEquals("", currentCountry.getName());
             assertTrue(currentCountry.getName().length() > 1);
         }
     }
