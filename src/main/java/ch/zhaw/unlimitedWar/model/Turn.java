@@ -231,7 +231,6 @@ public class Turn {
     }
 
     private void cyclePlayer() {
-        resetSelectedCountries();
         int nextPlayerIndex = activePlayers.indexOf(currentPlayer) + 1;
         eliminatePlayersAndCheckUserResult();
         if (nextPlayerIndex >= activePlayers.size()) {
