@@ -35,6 +35,7 @@ public class Board {
     private Turn currentTurn;
     private List<Player> players;
     private List<Country> countries;
+    private List<Continent> continents;
     private List<PlayerColor> playerColor = new ArrayList<>();
     private int turnCounter = 1;
     //endregion
@@ -44,7 +45,7 @@ public class Board {
         countries = new ArrayList<>();
         generatePlayers(color, name);
         generateCountries();
-        currentTurn = new Turn(players, countries, turnCounter);
+        currentTurn = new Turn(players, countries, turnCounter, continents);
         turnCounter++;
     }
 
@@ -67,7 +68,7 @@ public class Board {
 
     public Turn getCurrentTurn() {
         if (currentTurn.getFlag() == Flag.TURN_END) {
-            currentTurn = new Turn(players, countries, turnCounter);
+            currentTurn = new Turn(players, countries, turnCounter, continents);
             turnCounter++;
         }
         return currentTurn;

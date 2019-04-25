@@ -16,6 +16,7 @@ public class Turn {
     private List<Event> occurredEvents;
     private List<Player> activePlayers;
     private List<Country> countries;
+    private List<Continent> continents;
     private Player currentPlayer;
     private int attackDiceCount;
     private int defendDiceCount;
@@ -30,14 +31,15 @@ public class Turn {
     private final static Logger LOGGER = Logger.getLogger(Turn.class.getName());
     //endregion
 
-    public Turn(List<Player> players, List<Country> countries, int turnNumber) {
+    public Turn(List<Player> players, List<Country> countries, int turnNumber, List<Continent> continents) {
         this.activePlayers = players;
         this.countries = countries;
+        this.continents = continents;
         this.turnNumber = turnNumber;
         occurredEvents = new ArrayList<>();
         currentPlayer = activePlayers.get(0);
         if (currentPlayerIsUser()) {
-            currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
+            currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace(continents));
         }
         this.flag = Flag.NONE;
     }
@@ -131,7 +133,7 @@ public class Turn {
         if (!currentPlayerIsUser()) {
             if (currentPhase == Phase.SET) {
                 currentPhase = currentPlayer.getBehavior().placeSoldiers(countries,
-                        currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace());
+                        currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace(continents));
             }
             if (currentPhase == Phase.ATTACK) {
                 currentPhase = currentPlayer.getBehavior().
@@ -238,7 +240,7 @@ public class Turn {
         } else {
             currentPlayer = activePlayers.get(nextPlayerIndex);
             if (currentPlayerIsUser()) {
-                currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace());
+                currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace(continents));
             }
         }
     }

@@ -64,7 +64,7 @@ public class Player {
 
     //endregion
 
-    public int calculateSoldiersToPlace() {
+    public int calculateSoldiersToPlace(List<Continent> continents) {
         return Math.max(COUNTRY_WEIGHT, getOwnedCountries().size() / COUNTRY_WEIGHT);
     }
 
