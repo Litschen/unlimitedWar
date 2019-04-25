@@ -1,6 +1,7 @@
 package ch.zhaw.unlimitedWar.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Continent {
@@ -26,10 +27,6 @@ public class Continent {
     //endregion
 
     //region getter setter
-    public List<Country> getCountries() {
-        return countries;
-    }
-
     public String getName() {
         return name;
     }
@@ -39,18 +36,23 @@ public class Continent {
     }
 
     public int getBonusForPlayer(Player player) {
-        return 0;
+        Iterator it = countries.iterator();
+        boolean samePlayer = true;
+        while (it.hasNext() && samePlayer) {
+            samePlayer = ((Country) it.next()).getOwner() == player;
+        }
+        return samePlayer ? soldierBonus : 0;
     }
 
     //endregion
 
 
     public void addCountry(Country country) {
-
+        this.countries.add(country);
     }
 
     public void addCountries(List<Country> countries) {
-
+        this.countries.addAll(countries);
     }
 
 }
