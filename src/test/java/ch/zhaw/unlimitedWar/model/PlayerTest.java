@@ -50,7 +50,6 @@ class PlayerTest {
         fellowCountries(testPlayer.getOwnedCountries(), 1);
         Continent continent = new Continent(10, testPlayer.getOwnedCountries(), "test");
         assertEquals(10 + Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace(Collections.singletonList(continent)));
-
     }
 
     @Test
@@ -59,7 +58,6 @@ class PlayerTest {
         Continent continent = new Continent(10, testPlayer.getOwnedCountries(), "test");
         continent.addCountry(TestHelperBehavior.getMockCountry(mock(Player.class)));
         assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace(Collections.singletonList(continent)));
-
     }
 
     @Test
@@ -68,7 +66,7 @@ class PlayerTest {
         assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
     }
 
-    private void fellowCountries(List<Country> owned, int amountOfCountries){
+    private void fellowCountries(List<Country> owned, int amountOfCountries) {
         owned.clear();
         for (int i = 0; i < amountOfCountries; i++) {
             owned.add(new Country("test", 1, testPlayer));
