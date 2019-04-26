@@ -47,6 +47,18 @@ class BoardTest {
     }
 
     @Test
+    void testSetCityAndCapital() {
+        for (Player player : testBoard.getPlayers()) {
+            List<Country> countries = player.getOwnedCountries();
+            int city = (int) countries.stream().filter(country -> country.isCity()).count();
+            int capital = (int) countries.stream().filter(country -> country.isCapital()).count();
+
+            assertEquals(2, city);
+            assertEquals(1, capital);
+        }
+    }
+
+    @Test
     void testGetEvents() {
         List<Event> events = TestHelperEvents.mockInvadeEvents(false);
         testBoard.getCurrentTurn().addEvents(events);
