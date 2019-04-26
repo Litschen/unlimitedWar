@@ -17,6 +17,6 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ResultController</servlet-name>
-        <url-pattern>/Result</url-pattern>
+        <url-pattern>/Result/*</url-pattern>
     </servlet-mapping>
 </web-app>
