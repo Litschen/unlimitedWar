@@ -38,10 +38,12 @@
         <div class="field border rounded">
             <c:forEach items="${board.getCurrentTurn().getContinents()}" var="continent">
                 <div class="continent-box" id="${continent.getName()}">
-                    <span class="bonus-box">
+                    <div class="bonus-box">
                             ${continent.getSoldierBonus()}
-                    </span>
-                        ${continent.getName()}
+                    </div>
+                    <p>
+                            ${continent.getName()}
+                    </p>
                 </div>
             </c:forEach>
             <%  List<Country> allCountries = board.getCountries();
