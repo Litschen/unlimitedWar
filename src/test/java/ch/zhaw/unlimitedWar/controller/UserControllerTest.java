@@ -23,18 +23,19 @@ public class UserControllerTest {
 
     private UserController controller = new UserController();
     private HttpServletRequest mockRequest;
+    private HttpSession mockSession;
     private HttpServletResponse mockResponse;
     private UserBean mockUser;
     private MySQLConnectionCreator mockConCreator;
     private PlayerDAO mockDAO;
 
     @BeforeEach
-    void setUp() throws SQLException {
+    void setUp() {
         mockUser = mock(UserBean.class);
+
         mockDAO = mock(PlayerDAO.class);
         mockConCreator = mock(MySQLConnectionCreator.class);
         when(mockConCreator.getPlayerDAO()).thenReturn(mockDAO);
-
         controller.setConnectionCreator(mockConCreator);
 
         mockRequest = mock(HttpServletRequest.class);
@@ -51,12 +52,9 @@ public class UserControllerTest {
         when(mockRequest.getParameter("save")).thenReturn("save");
         when(mockDAO.updatePlayer(anyString(), anyString(), anyString())).thenReturn(1);
 
-        HttpSession session = createMockSession();
-
-
         controller.doGet(mockRequest, mockResponse);
         verify(mockResponse, times(1)).sendRedirect(Pages.SIGN_IN);
-        verify(session, times(2)).setAttribute(anyString(), anyObject());
+        verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
     }
 
     @Test
@@ -66,26 +64,22 @@ public class UserControllerTest {
         when(mockRequest.getParameter("save")).thenReturn("save");
         when(mockDAO.updatePlayer(anyString(), anyString(), anyString())).thenReturn(2);
 
-        HttpSession session = createMockSession();
-
         controller.doGet(mockRequest, mockResponse);
         verify(mockResponse, times(1)).sendRedirect(Pages.SIGN_IN);
-        verify(session, times(2)).setAttribute(anyString(), anyObject());
+        verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
         assertEquals(1, controller.getEvents().size());
     }
 
     @Test
     void testCancel() throws IOException {
         when(mockRequest.getParameter("cancel")).thenReturn("b");
-        HttpSession mockSession = createMockSession();
 
         controller.doPost(mockRequest, mockResponse);
 
-        verify(mockResponse, times(1)).sendRedirect(Pages.SIGN_IN);
-
+        assertEquals(0, controller.getEvents().size());
         verify(mockRequest, times(1)).getSession();
         verify(mockSession, times(1)).setAttribute(anyString(), anyObject());
-        assertEquals(0, controller.getEvents().size());
+        verify(mockResponse, times(1)).sendRedirect(Pages.SIGN_IN);
     }
 
     @Test
@@ -116,7 +110,6 @@ public class UserControllerTest {
     @Test
     void testRegisterSuccess() throws IOException, SQLException {
         when(mockRequest.getParameter("register")).thenReturn("register");
-        HttpSession mockSession = createMockSession();
         when(mockDAO.getPlayerByMail(anyString())).thenReturn(null);
         when(mockDAO.createNewPlayer(anyString(), anyString(), anyString())).thenReturn(1);
         setUpUserParams();
@@ -130,9 +123,9 @@ public class UserControllerTest {
     @Test
     void testRegisterFail() throws IOException, SQLException {
         setUpUserParams();
+        when(mockRequest.getParameter("register")).thenReturn("register");
         when(mockDAO.getPlayerByMail(anyString())).thenReturn(mockUser);
 
-        when(mockRequest.getParameter("register")).thenReturn("register");
         controller.doPost(mockRequest, mockResponse);
 
         verify(mockResponse, times(1)).sendRedirect(Pages.PROFILE);
@@ -145,9 +138,8 @@ public class UserControllerTest {
         when(mockRequest.getParameter(UserController.PARAM_CONFIRM_PASSWORD)).thenReturn("a");
     }
 
-    private HttpSession createMockSession() {
-        HttpSession mockSession = mock(HttpSession.class);
+    private void createMockSession() {
+        mockSession = mock(HttpSession.class);
         when(mockRequest.getSession()).thenReturn(mockSession);
-        return mockSession;
     }
 }
