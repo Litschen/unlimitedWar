@@ -69,7 +69,12 @@ public class Player {
         for (Continent continent : continents) {
             continentBoni += continent.getBonusForPlayer(this);
         }
-        return Math.max(COUNTRY_WEIGHT, getOwnedCountries().size() / COUNTRY_WEIGHT) + continentBoni;
+
+        int countryCount = this.ownedCountries.size();
+        countryCount += this.ownedCountries.stream().filter(country -> country.isCity()).count();
+        int capitalCount = (int) this.ownedCountries.stream().filter(country -> country.isCapital()).count();
+
+        return Math.max(COUNTRY_WEIGHT, (countryCount / COUNTRY_WEIGHT)) + capitalCount + continentBoni;
     }
 
 }
