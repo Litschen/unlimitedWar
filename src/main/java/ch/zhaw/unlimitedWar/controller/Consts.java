@@ -1,6 +1,6 @@
 package ch.zhaw.unlimitedWar.controller;
 
-public class Pages {
+public class Consts {
 
     // Pages
     public final static String GAME = "/jsp/game.jsp";

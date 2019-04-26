@@ -3,7 +3,6 @@ package ch.zhaw.unlimitedWar.controller;
 import ch.zhaw.unlimitedWar.dao.MySQLConnectionCreator;
 import ch.zhaw.unlimitedWar.dao.PlayerDAO;
 import ch.zhaw.unlimitedWar.model.UserBean;
-import org.h2.store.Page;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +52,7 @@ public class UserControllerTest {
         when(mockDAO.updatePlayer(anyString(), anyString(), anyString())).thenReturn(1);
 
         controller.doGet(mockRequest, mockResponse);
-        verify(mockResponse, times(1)).sendRedirect(Pages.SIGN_IN);
+        verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
         verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
     }
 
@@ -65,7 +64,7 @@ public class UserControllerTest {
         when(mockDAO.updatePlayer(anyString(), anyString(), anyString())).thenReturn(2);
 
         controller.doGet(mockRequest, mockResponse);
-        verify(mockResponse, times(1)).sendRedirect(Pages.SIGN_IN);
+        verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
         verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
         assertEquals(1, controller.getEvents().size());
     }
@@ -79,7 +78,7 @@ public class UserControllerTest {
         assertEquals(0, controller.getEvents().size());
         verify(mockRequest, times(1)).getSession();
         verify(mockSession, times(1)).setAttribute(anyString(), anyObject());
-        verify(mockResponse, times(1)).sendRedirect(Pages.SIGN_IN);
+        verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
     }
 
     @Test
@@ -116,7 +115,7 @@ public class UserControllerTest {
 
         controller.doPost(mockRequest, mockResponse);
 
-        verify(mockResponse, times(1)).sendRedirect(Pages.SIGN_IN);
+        verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
         verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
     }
 
@@ -128,7 +127,7 @@ public class UserControllerTest {
 
         controller.doPost(mockRequest, mockResponse);
 
-        verify(mockResponse, times(1)).sendRedirect(Pages.PROFILE);
+        verify(mockResponse, times(1)).sendRedirect(Consts.PROFILE);
     }
 
     private void setUpUserParams() {

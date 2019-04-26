@@ -24,7 +24,7 @@ public class GameController extends HttpServlet {
     public final static String PARAM_COUNTRY = "country";
     public final static String PARAM_NEXT_TURN = "nextTurn";
     public final static String SESSION_BOARD_NAME = "board";
-    public final static String PAGE_TO_LOAD_ON_COMPLETE = Pages.GAME;
+    public final static String PAGE_TO_LOAD_ON_COMPLETE = Consts.GAME;
     private final static Logger LOGGER = Logger.getLogger(GameController.class.getName());
     private Board board;
     //endregion
