@@ -29,7 +29,11 @@ public class UserBean implements Serializable {
         return md5Password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String md5Password) {
+       this.md5Password = md5Password;
+    }
+
+    public void setPasswordFirstTime(String password){
         this.md5Password = getPasswordMD5Text(password);
     }
 
@@ -43,8 +47,6 @@ public class UserBean implements Serializable {
                 md5Password = "0" + md5Password;
             }
             return md5Password;
-
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
