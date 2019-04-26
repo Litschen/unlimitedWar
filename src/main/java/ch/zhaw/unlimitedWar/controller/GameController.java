@@ -23,7 +23,6 @@ public class GameController extends HttpServlet {
     public final static String PARAM_CANCEL = "cancel";
     public final static String PARAM_COUNTRY = "country";
     public final static String PARAM_NEXT_TURN = "nextTurn";
-    public final static String SESSION_BOARD_NAME = "board";
     public final static String PAGE_TO_LOAD_ON_COMPLETE = Consts.GAME;
     private final static Logger LOGGER = Logger.getLogger(GameController.class.getName());
     private Board board;
@@ -48,7 +47,7 @@ public class GameController extends HttpServlet {
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
-            board = (Board) request.getSession().getAttribute(SESSION_BOARD_NAME);
+            board = (Board) request.getSession().getAttribute(Consts.SESSION_BOARD);
             if (board != null) {
                 if (request.getParameter(PARAM_NEXT_TURN) != null) {
                     board.getCurrentTurn().executeTurn();
@@ -68,7 +67,7 @@ public class GameController extends HttpServlet {
                 }
             }
             if (request.getPathInfo() != null && request.getPathInfo().equals(PATH_RESULT)) {
-                request.getSession().setAttribute(SESSION_BOARD_NAME, null);
+                request.getSession().setAttribute(Consts.SESSION_BOARD, null);
             }
             response.sendRedirect(request.getContextPath() + PAGE_TO_LOAD_ON_COMPLETE);
         } catch (IOException | NullPointerException e) {

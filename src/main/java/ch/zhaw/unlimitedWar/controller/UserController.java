@@ -38,8 +38,6 @@ public class UserController extends HttpServlet {
     private final static String HOME_PAGE = Consts.SIGN_IN;
     private final static String REGISTER_PAGE = Consts.PROFILE;
 
-    private final static String SESSION_USER = "user";
-    private final static String SESSION_EVENTS = "events";
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
 
     private final static String EVENT_PWD_ERROR_TITLE = "Password error";
@@ -73,11 +71,11 @@ public class UserController extends HttpServlet {
     }
 
     public static UserBean getSessionUser(@NotNull HttpSession session) {
-        return (UserBean) session.getAttribute(SESSION_USER);
+        return (UserBean) session.getAttribute(Consts.SESSION_USER);
     }
 
     public static void setSessionUser(@NotNull HttpSession session, UserBean user) {
-        session.setAttribute(SESSION_USER, user);
+        session.setAttribute(Consts.SESSION_USER, user);
     }
 
     void setConnectionCreator(MySQLConnectionCreator connectionCreator) {
@@ -112,7 +110,7 @@ public class UserController extends HttpServlet {
                 }
             }
 
-            request.getSession().setAttribute(SESSION_EVENTS, events);
+            request.getSession().setAttribute(Consts.SESSION_EVENTS, events);
             response.sendRedirect(request.getContextPath() + forwardPageTo);
         } catch (IOException | SQLException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);

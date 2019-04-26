@@ -41,7 +41,7 @@ class GameControllerTest {
         when(mockRequest.getSession()).thenReturn(mockSession);
         when(mockRequest.getRequestDispatcher(GameController.PAGE_TO_LOAD_ON_COMPLETE))
                 .thenReturn(mock(RequestDispatcher.class));
-        when(mockSession.getAttribute(GameController.SESSION_BOARD_NAME)).thenReturn(mockBoard);
+        when(mockSession.getAttribute(Consts.SESSION_BOARD)).thenReturn(mockBoard);
         mockCountry = mock(Country.class);
         when(mockBoard.getCountryById(1)).thenReturn(mockCountry);
         when(mockRequest.getParameter(GameController.PARAM_COUNTRY)).thenReturn("1");

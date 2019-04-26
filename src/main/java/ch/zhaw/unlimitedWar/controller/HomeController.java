@@ -21,13 +21,8 @@ public class HomeController extends HttpServlet {
     public final static String PARAM_SELECTED_COLOR = "selectedColor";
     public final static String PARAM_PLAY = "play";
 
-    private final static String HOME_PAGE = Consts.HOME;
-    private final static String GAME_PAGE = Consts.GAME;
-    private final static String RESULTS_PAGE = Consts.RESULTS;
-
-
     private void setShowColorModal(HttpServletRequest request, boolean showColorModal) {
-        request.getSession().setAttribute("showColorModal", showColorModal);
+        request.getSession().setAttribute(Consts.SESSION_COLOR_MODAL, showColorModal);
     }
 
     @Override
@@ -41,12 +36,12 @@ public class HomeController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
-        String redirectPageTo = HOME_PAGE;
+        String redirectPageTo = Consts.HOME;
         String path = request.getPathInfo();
 
         if (PATH_ACTION.equals(path)) {
             if (request.getParameter(PARAM_SHOW_RESULTS) != null) {
-                redirectPageTo = RESULTS_PAGE;
+                redirectPageTo = Consts.RESULTS;
             } else if (request.getParameter(PARAM_START_GAME_MODAL) != null) {
                 setShowColorModal(request, true);
             }
@@ -54,12 +49,12 @@ public class HomeController extends HttpServlet {
             setShowColorModal(request, false);
             boolean play = request.getParameter(PARAM_PLAY) != null;
             String color = request.getParameter(PARAM_SELECTED_COLOR);
-            UserBean user = (UserBean) request.getSession().getAttribute("user");
+            UserBean user = (UserBean) request.getSession().getAttribute(Consts.SESSION_USER);
 
             if (user != null && color != null && play) {
                 Board board = new Board(PlayerColor.valueOf(color), user.getName());
-                request.getSession().setAttribute("board", board);
-                redirectPageTo = GAME_PAGE;
+                request.getSession().setAttribute(Consts.SESSION_BOARD, board);
+                redirectPageTo = Consts.GAME;
             }
         }
 

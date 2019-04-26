@@ -13,5 +13,6 @@ public class Consts {
     public final static String SESSION_USER = "user";
     public final static String SESSION_EVENTS = "events";
     public final static String SESSION_BOARD = "board";
+    public final static String SESSION_COLOR_MODAL = "showColorModal";
 
 }

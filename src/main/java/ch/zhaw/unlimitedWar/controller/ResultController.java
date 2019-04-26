@@ -24,7 +24,6 @@ public class ResultController extends HttpServlet {
 
     //region static variables
     public final static String PATH_SAVE = "/Save";
-    private final static String HOME_PAGE = Consts.HOME;
     public final static String PARAM_SELECTED_WIN = "win";
     private final static Logger LOGGER = Logger.getLogger(ResultSet.class.getName());
     public static final String DATABASE_ERROR = "DATABASE ERROR: Could not establish connection";
@@ -54,7 +53,7 @@ public class ResultController extends HttpServlet {
         }
 
         try {
-            response.sendRedirect(request.getContextPath() + HOME_PAGE);
+            response.sendRedirect(request.getContextPath() + Consts.HOME);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
