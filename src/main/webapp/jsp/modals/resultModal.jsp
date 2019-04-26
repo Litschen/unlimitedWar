@@ -9,7 +9,7 @@
                     <div class="trophy"></div>
                 </div>
                 <div class="modal-footer">
-                    <button name="win">Finish</button>
+                    <button name="win" class="btn btn-primary">Finish</button>
                 </div>
             </c:if>
             <c:if test="${board.getCurrentTurn().getFlag() == Flag.GAME_LOSE}">
@@ -17,7 +17,7 @@
                     <h5 class="modal-title">You Lose :(</h5>
                 </div>
                 <div class="modal-footer">
-                    <button name="lose">Finish</button>
+                    <button name="lose" class="btn btn-primary">Finish</button>
                 </div>
             </c:if >
         </form>

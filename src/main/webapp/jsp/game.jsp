@@ -51,7 +51,10 @@
                     Country currentCountry = allCountries.get(i - 1);
             %>
             <button type="submit" name="country" value="<%=i -1%>" title="<%=currentCountry.getName()%>"
-                    class="country country-<%=i%> <%=currentCountry.isSelected() ? currentCountry.getOwner().getPlayerColor() + "-selected" : currentCountry.getOwner().getPlayerColor()%>">
+                    class="country country-<%=i%>
+                           <%=currentCountry.isSelected() ? currentCountry.getOwner().getPlayerColor() + "-selected" : currentCountry.getOwner().getPlayerColor()%>
+                           <%=currentCountry.isCapital() ? "mark capital" : (currentCountry.isCity() ? "mark city" : "")%>
+                    ">
                     <%=currentCountry.getSoldiersCount()%></button>
                 <% if (i % 4 == 0 && i < Board.COUNTRY_COUNT_GENERATION) { %>
                     <br/>
