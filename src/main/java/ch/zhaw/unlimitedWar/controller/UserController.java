@@ -115,7 +115,7 @@ public class UserController extends HttpServlet {
         }
     }
 
-    private void getUserDataFromInput(HttpServletRequest request) {
+    void getUserDataFromInput(HttpServletRequest request) {
         user = new UserBean();
         user.setName(request.getParameter(PARAM_NAME));
         user.setMail(request.getParameter(PARAM_MAIL));
@@ -152,5 +152,13 @@ public class UserController extends HttpServlet {
         if (result != 1) {
             events.add(new UserEvent("error", ""));
         }
+    }
+
+    UserBean getUser() {
+        return user;
+    }
+
+    List<Event> getEvents() {
+        return events;
     }
 }
