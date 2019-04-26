@@ -38,7 +38,7 @@
         <div class="field border rounded">
             <c:forEach items="${board.getCurrentTurn().getContinents()}" var="continent">
                 <div class="continent-box" id="${continent.getName().replace(" ", "")}">
-                    <div class="bonus-box">
+                    <div class="bonus-box" style="color: ${continent.getTextColor()}">
                             ${continent.getSoldierBonus()}
                     </div>
                     <p>
