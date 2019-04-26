@@ -232,3 +232,25 @@ aside {
     left: 114px;
     background-color: black !important;
 }
+
+.continent-box {
+    background-color: #9e896d;
+    font-weight: bold;
+    width: fit-content;
+    font-size: 9px;
+}
+
+.bonus-box {
+    background-color: #c2a885;
+    width: 20px;
+    text-align: center;
+    display: block;
+    position: absolute;
+}
+
+.continent-box p {
+    margin-left: 25px;
+    margin-right: 10px;
+}
+
+
