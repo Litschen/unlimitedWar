@@ -7,7 +7,7 @@ import java.security.MessageDigest;
 public class UserBean implements Serializable {
     private String name;
     private String mail;
-    private String password;
+    private String md5Password;
 
     public String getName() {
         return name;
@@ -26,23 +26,23 @@ public class UserBean implements Serializable {
     }
 
     public String getPassword() {
-        return password;
+        return md5Password;
     }
 
     public void setPassword(String password) {
-        this.password = getPasswordMD5Text(password);
+        this.md5Password = getPasswordMD5Text(password);
     }
 
-    private static String getPasswordMD5Text(String password) {
+    public String getPasswordMD5Text(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(password.getBytes());
             BigInteger number = new BigInteger(1, messageDigest);
-            String hashtext = number.toString(16);
-            while (hashtext.length() < 23) {
-                hashtext = "0" + hashtext;
+            md5Password = number.toString(16);
+            while (md5Password.length() < 23) {
+                md5Password = "0" + md5Password;
             }
-            return hashtext;
+            return md5Password;
 
 
         } catch (Exception e) {
