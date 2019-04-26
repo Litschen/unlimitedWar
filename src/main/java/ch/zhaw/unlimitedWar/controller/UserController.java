@@ -47,6 +47,10 @@ public class UserController extends HttpServlet {
     private final static String EVENT_REGISTER_ERROR_TITLE = "Registration error";
     private final static String EVENT_REGISTER_ERROR_MSG = "Mail already in use!";
 
+    private final static String EVENT_PROFILE_DATA_TITLE = "Profile Data";
+    private final static String EVENT_PROFILE_DATA_SUCCESS_MSG = "Your profile data is saved!";
+    private final static String EVENT_PROFILE_DATA_ERROR_MSG = "Could not save your Data";
+
     private UserBean user;
     private PlayerDAO playerDAO;
     private List<Event> events;
@@ -149,8 +153,10 @@ public class UserController extends HttpServlet {
     }
 
     private void checkIfOnlyOneRowChanged(int result) {
-        if (result != 1) {
-            events.add(new UserEvent("error", ""));
+        if (result == 1) {
+            events.add(new UserEvent(EVENT_PROFILE_DATA_TITLE, EVENT_PROFILE_DATA_SUCCESS_MSG));
+        } else {
+            events.add(new UserEvent(EVENT_PROFILE_DATA_TITLE, EVENT_PROFILE_DATA_ERROR_MSG));
         }
     }
 
