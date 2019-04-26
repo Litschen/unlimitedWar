@@ -132,22 +132,22 @@ aside {
 }
 
 .country-5 {
-    top: 45px;
+    top: 49px;
     left: 15px;
 }
 
 .country-6 {
-    top: 10px;
+    top: 14px;
     left: 45px;
 }
 
 .country-7 {
-    top: 45px;
+    top: 49px;
     left: 50px;
 }
 
 .country-8 {
-    top: 10px;
+    top: 14px;
     left: 80px;
 }
 
@@ -202,7 +202,7 @@ aside {
 
 .connector1 {
     width: 25px;
-    height: 44px;
+    height: 40px;
     position: absolute;
     bottom: 74px;
     left: 70px;
@@ -234,14 +234,14 @@ aside {
 }
 
 .continent-box {
-    background-color: #9e896d;
+    background-color: #c3ae86;
     font-weight: bold;
     width: fit-content;
     font-size: 9px;
 }
 
 .bonus-box {
-    background-color: #c2a885;
+    background-color: #89705b;
     width: 20px;
     text-align: center;
     display: block;
