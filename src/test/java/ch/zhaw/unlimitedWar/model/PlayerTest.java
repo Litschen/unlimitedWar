@@ -67,10 +67,20 @@ class PlayerTest {
     }
 
     private void fellowCountries(List<Country> owned, int amountOfCountries) {
-        owned.clear();
-        for (int i = 0; i < amountOfCountries; i++) {
-            owned.add(new Country("test", 1, testPlayer));
-        }
+        fellowCountries(owned, amountOfCountries, false, false);
     }
 
+    private void fellowCountries(List<Country> owned, int amountOfCountries, boolean city, boolean capital) {
+        owned.clear();
+        for (int i = 0; i < amountOfCountries; i++) {
+            Country country = new Country("test", 1, testPlayer);
+            if (city) {
+                country.setCity(true);
+            }
+            if (capital) {
+                country.setCapital(true);
+            }
+            owned.add(country);
+        }
+    }
 }
