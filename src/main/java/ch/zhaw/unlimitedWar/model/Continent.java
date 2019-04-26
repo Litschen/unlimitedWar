@@ -1,7 +1,5 @@
 package ch.zhaw.unlimitedWar.model;
 
-import ch.zhaw.unlimitedWar.model.enums.PlayerColor;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -51,8 +49,14 @@ public class Continent {
     }
     //endregion
 
-    public PlayerColor getColorOfText() {
-        return PlayerColor.GREEN;
+    public String getTextColor() {
+        boolean samePlayer = true;
+        Player player = countries.get(0).getOwner();
+        Iterator it = countries.iterator();
+        while (it.hasNext() && samePlayer) {
+            samePlayer = ((Country) it.next()).getOwner() == player;
+        }
+        return samePlayer ? player.getPlayerColor().toString() : "black";
     }
 
     public void addCountry(Country country) {
