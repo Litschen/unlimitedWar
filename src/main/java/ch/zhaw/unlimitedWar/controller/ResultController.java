@@ -27,6 +27,7 @@ public class ResultController extends HttpServlet {
     private final static String HOME_PAGE = Pages.HOME;
     public final static String PARAM_SELECTED_WIN = "win";
     private final static Logger LOGGER = Logger.getLogger(ResultSet.class.getName());
+    public static final String DATABASE_ERROR = "DATABASE ERROR: Could not establish connection";
     //endregion
 
     //region data fields
@@ -35,12 +36,12 @@ public class ResultController extends HttpServlet {
 
     //region getter/setter
     public List<ResultBean> getAllResultsOfUser(UserBean user){
-        List<ResultBean> resultOfUser = new ArrayList ();
+        List<ResultBean> resultOfUser = new ArrayList <> ();
         try{
             setUpDBConnection();
             resultOfUser.addAll(resultDAO.getAllResultsOfUser(user.getMail()));
             resultDAO.closeConnection();
-        }catch (Exception e){ LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not establish connection", e);}
+        }catch (Exception e){ LOGGER.log(Level.WARNING, DATABASE_ERROR, e);}
         return resultOfUser;
     }
 
@@ -48,39 +49,34 @@ public class ResultController extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response){
 
-        String redirectPageTo = HOME_PAGE;
-        String path = request.getPathInfo();
-        if (PATH_SAVE.equals(path)) {
+        if (PATH_SAVE.equals(request.getPathInfo())) {
             insertResult(request);
-            redirectPageTo = HOME_PAGE;
         }
 
         try {
-            response.sendRedirect(request.getContextPath() + redirectPageTo);
+            response.sendRedirect(request.getContextPath() + HOME_PAGE);
         } catch (IOException e) {
-            LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
     }
 
     private void insertResult(HttpServletRequest request) {
-        try{boolean outcome = false;
-            UserBean user = (UserBean) request.getSession().getAttribute("user");
-            String mail = user.getMail();
-            if( request.getParameter(PARAM_SELECTED_WIN) != null){
-                outcome = true;
-            }
+        try{
+            UserBean user = UserController.getSessionUser(request.getSession());
+            boolean outcome = request.getParameter(PARAM_SELECTED_WIN) != null;
+
             setUpDBConnection();
-            resultDAO.saveResult(outcome, mail );
+            resultDAO.saveResult(outcome, user.getMail() );
             resultDAO.closeConnection();
         } catch (Exception e) {
-            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
     }
     private void setUpDBConnection() {
         try {
             resultDAO = new ResultsDAO(MySQLConnectionCreator.getConnection());
         } catch (ClassNotFoundException | SQLException e) {
-            LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
     }
 

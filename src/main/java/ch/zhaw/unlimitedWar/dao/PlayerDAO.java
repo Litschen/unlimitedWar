@@ -55,7 +55,7 @@ public class PlayerDAO {
         } catch (SQLException e) {
             LOGGER.log(Level.WARNING, "DATABASE ERROR: Could not validate user", e);
         }
-        if (userToValidate != null && !userToValidate.getPassword().equals(password)) {
+        if (userToValidate != null && !userToValidate.getPassword().equals(userToValidate.getPasswordMD5Text(password))) {
             userToValidate = null;
         }
 

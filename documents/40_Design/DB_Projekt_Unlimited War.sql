@@ -18,7 +18,7 @@ CREATE TABLE Player
 
     Username varchar(50)  NOT NULL,
     Email    varchar(50)  NOT NULL,
-    Password varchar(100) NOT NULL,
+    Password blob NOT NULL,
 
     CONSTRAINT PK_Player PRIMARY KEY (Email)
 );
@@ -55,19 +55,3 @@ INSERT INTO Result(Outcome, Date, REmail)
 VALUES (1, '2019-02-20', 'quen@gmail.com');
 INSERT INTO Result(Outcome, Date, REmail)
 VALUES (0, '2019-02-20', 'max@gmail.com');
-
-
--- Provisional update
-
-
--- Change username
-UPDATE
-    Player
-SET Username = 'maja'
-WHERE Email = 'lara@gmail.com';
--- Change Password
-UPDATE
-    Player
-SET Password = '321'
-WHERE Email = 'max@gmail.com';
-
