@@ -120,6 +120,10 @@ public class Turn {
         return turnNumber;
     }
 
+    public List<Continent> getContinents() {
+        return continents;
+    }
+
     //endregion
 
     public boolean currentPlayerIsUser() {
