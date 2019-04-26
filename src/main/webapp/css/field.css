@@ -253,4 +253,25 @@ aside {
     margin-right: 10px;
 }
 
+#Australia {
+    position: relative;
+    top: 97px;
+    left: 265px
+}
 
+#Eurasia {
+    position: relative;
+    left: 265px;
+    bottom: 28px;
+}
+
+#NorthAmerica {
+    position: relative;
+    left: 20px
+}
+
+#SouthAmerica {
+    position: relative;
+    top: 122px;
+    left: 65px
+}
