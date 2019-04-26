@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Continent {
+
+    public static final String STANDARD_TEXT_COLOR = "black";
+
     //region data fields
     private int soldierBonus;
     private List<Country> countries;
@@ -36,12 +39,7 @@ public class Continent {
     }
 
     public int getBonusForPlayer(Player player) {
-        Iterator it = countries.iterator();
-        boolean samePlayer = true;
-        while (it.hasNext() && samePlayer) {
-            samePlayer = ((Country) it.next()).getOwner() == player;
-        }
-        return samePlayer ? soldierBonus : 0;
+        return continentOwnedByOnePlayer(player) ? soldierBonus : 0;
     }
 
     public int getSoldierBonus() {
@@ -50,13 +48,8 @@ public class Continent {
     //endregion
 
     public String getTextColor() {
-        boolean samePlayer = true;
         Player player = countries.get(0).getOwner();
-        Iterator it = countries.iterator();
-        while (it.hasNext() && samePlayer) {
-            samePlayer = ((Country) it.next()).getOwner() == player;
-        }
-        return samePlayer ? player.getPlayerColor().toString() : "black";
+        return continentOwnedByOnePlayer(player) ? player.getPlayerColor().toString() : STANDARD_TEXT_COLOR;
     }
 
     public void addCountry(Country country) {
@@ -65,6 +58,15 @@ public class Continent {
 
     public void addCountries(List<Country> countries) {
         this.countries.addAll(countries);
+    }
+
+    private boolean continentOwnedByOnePlayer(Player player) {
+        boolean samePlayer = true;
+        Iterator it = countries.iterator();
+        while (it.hasNext() && samePlayer) {
+            samePlayer = ((Country) it.next()).getOwner() == player;
+        }
+        return samePlayer;
     }
 
 }
