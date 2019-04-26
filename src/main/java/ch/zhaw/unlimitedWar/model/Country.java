@@ -28,6 +28,8 @@ public class Country {
     private Player owner;
     private List<Country> neighboringCountries;
     private boolean selected;
+    private boolean capital;
+    private boolean city;
     //endregion
 
     public Country(String name, int soldiersCount, @NotNull Player owner) {
@@ -81,6 +83,23 @@ public class Country {
 
     public void setSelected(boolean selected) {
         this.selected = selected;
+    }
+
+    public boolean isCapital() {
+        return capital;
+    }
+
+    public void setCapital(boolean capital) {
+        this.capital = capital;
+        setCity(capital);
+    }
+
+    public boolean isCity() {
+        return city;
+    }
+
+    public void setCity(boolean city) {
+        this.city = city;
     }
     //endregion
 
