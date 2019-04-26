@@ -66,6 +66,33 @@ class PlayerTest {
         assertEquals(Player.COUNTRY_WEIGHT, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
     }
 
+    @Test
+    void testCalculateSoldiersToPlaceCapitalBonus() {
+        fellowCountries(testPlayer.getOwnedCountries(), 1, true, true);
+        assertEquals(Player.COUNTRY_WEIGHT + 1, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+
+        fellowCountries(testPlayer.getOwnedCountries(), 6, true, true);
+        assertEquals(10, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+
+        fellowCountries(testPlayer.getOwnedCountries(), 15, true, true);
+        assertEquals(25, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+    }
+
+    @Test
+    void testCalculateSoldiersToPlaceCityBonus() {
+        fellowCountries(testPlayer.getOwnedCountries(), 6, true, false);
+        assertEquals(4, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+
+        fellowCountries(testPlayer.getOwnedCountries(), 7, true, false);
+        assertEquals(4, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+
+        fellowCountries(testPlayer.getOwnedCountries(), 8, true, false);
+        assertEquals(5, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+
+        fellowCountries(testPlayer.getOwnedCountries(), 15, true, false);
+        assertEquals(10, testPlayer.calculateSoldiersToPlace(new ArrayList<>()));
+    }
+
     private void fellowCountries(List<Country> owned, int amountOfCountries) {
         fellowCountries(owned, amountOfCountries, false, false);
     }
