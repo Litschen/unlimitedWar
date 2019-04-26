@@ -1,5 +1,7 @@
 package ch.zhaw.unlimitedWar.model;
 
+import ch.zhaw.unlimitedWar.model.enums.PlayerColor;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,8 +46,14 @@ public class Continent {
         return samePlayer ? soldierBonus : 0;
     }
 
+    public int getSoldierBonus() {
+        return soldierBonus;
+    }
     //endregion
 
+    public PlayerColor getColorOfText() {
+        return PlayerColor.GREEN;
+    }
 
     public void addCountry(Country country) {
         this.countries.add(country);
