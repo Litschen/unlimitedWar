@@ -123,6 +123,7 @@ public class Country {
             removeSoldiers(casualties.getCasualtiesAttacker());
             defenderCountry.removeSoldiers(casualties.getCasualtiesDefender());
 
+            String defenderName = defenderCountry.getOwner().getPlayerName();
             if (defenderCountry.getSoldiersCount() <= 0) {
                 // switch owner of country
                 defenderCountry.getOwner().getOwnedCountries().remove(defenderCountry);
@@ -134,7 +135,7 @@ public class Country {
             }
             occurredEvents.add(new CasualtiesEvent(casualties));
             occurredEvents.add(new DiceEvent(attackerRolls, EventType.ATTACKER_DICE, owner.getPlayerName()));
-            occurredEvents.add(new DiceEvent(defenderRolls, EventType.DEFENDER_DICE, defenderCountry.getOwner().getPlayerName()));
+            occurredEvents.add(new DiceEvent(defenderRolls, EventType.DEFENDER_DICE, defenderName));
 
         }
         return occurredEvents;

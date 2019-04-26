@@ -102,6 +102,7 @@ public class Board {
                 }
                 currentPlayer.getOwnedCountries().add(countries.get(countries.size() - 1));
             }
+            setCityAndCapital(currentPlayer);
         }
         Collections.shuffle(countries);
         setCountryAttributes();
@@ -113,6 +114,10 @@ public class Board {
         addCountriesToContinents(new int[]{8, 9, 10, 11, 12, 13}, new Continent(4, CONTINENT_TOP_RIGHT_NAME));
         addCountriesToContinents(new int[]{0, 1, 2, 3}, new Continent(2, CONTINENT_BOTTOM_LEFT_NAME));
         addCountriesToContinents(new int[]{14, 15}, new Continent(1, CONTINENT_BOTTOM_RIGHT_NAME));
+    }
+
+    private void setCityAndCapital(Player player) {
+
     }
 
     private void addCountriesToContinents(int[] indexes, Continent continent) {
