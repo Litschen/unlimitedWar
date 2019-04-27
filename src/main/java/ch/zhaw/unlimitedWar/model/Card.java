@@ -23,4 +23,9 @@ public class Card {
         this.country = country;
     }
     // endregion
+
+    public int getCardBonus(Player player) {
+        int owningBonus = player.equals(country.getOwner()) ? OWNING_BONUS : 0;
+        return owningBonus + soldierBonus;
+    }
 }
