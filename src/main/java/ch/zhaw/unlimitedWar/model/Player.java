@@ -26,6 +26,7 @@ public class Player {
         this.name = name;
         this.behavior = behavior;
         this.ownedCountries = new ArrayList<>();
+        this.cards = new ArrayList<>();
     }
 
     //region getter setter
@@ -63,6 +64,9 @@ public class Player {
 
     public void setPlayerName(String name){ this.name = name; }
 
+    public List<Card> getCards() {
+        return cards;
+    }
     //endregion
 
     public int calculateSoldiersToPlace(List<Continent> continents) {
