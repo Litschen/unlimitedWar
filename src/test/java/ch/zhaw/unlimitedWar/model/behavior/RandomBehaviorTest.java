@@ -42,7 +42,7 @@ class RandomBehaviorTest {
         ownedCountries = TestHelperBehavior.getCountryList(10, testPlayer);
         int sum = 0;
         int amountPerCountry = ownedCountries.get(0).getSoldiersCount();
-        testPlayer.getBehavior().placeSoldiers(ownedCountries, ownedCountries, 10);
+        testPlayer.getBehavior().placeSoldiers(TestHelperBehavior.createPlaceSoldiers(ownedCountries, ownedCountries, 10));
 
         for (Country country : ownedCountries) {
             sum += country.getSoldiersCount();

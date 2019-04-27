@@ -1,9 +1,11 @@
 package ch.zhaw.unlimitedWar.model.behavior;
 
 import ch.zhaw.unlimitedWar.helpers.TestHelperBehavior;
+import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
 import ch.zhaw.unlimitedWar.model.enums.PlayerColor;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -36,7 +38,7 @@ class StrategicBehaviorTest {
     void testPlaceSoldiersSetOnBoth() {
         ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 4), testPlayer);
 
-        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 6);
+        testPlayer.getBehavior().placeSoldiers(TestHelperBehavior.createPlaceSoldiers(null, ownedCountries, 6));
         assertTrue(ownedCountries.get(0).getSoldiersCount() > 5);
         assertTrue(ownedCountries.get(1).getSoldiersCount() > 5);
     }
@@ -45,7 +47,7 @@ class StrategicBehaviorTest {
     void testPlaceSoldiersSetOnOne() {
         ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(10, 0), testPlayer);
 
-        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 3);
+        testPlayer.getBehavior().placeSoldiers(TestHelperBehavior.createPlaceSoldiers(null, ownedCountries, 3));
         assertEquals(8, ownedCountries.get(0).getSoldiersCount());
         assertEquals(5, ownedCountries.get(1).getSoldiersCount());
     }
@@ -61,7 +63,7 @@ class StrategicBehaviorTest {
         ownedCountries.get(0).addNeighboringCountries(TestHelperBehavior.getCountryList(5, opponent));
         ownedCountries.get(1).addNeighboringCountries(TestHelperBehavior.getCountryList(10, testPlayer));
 
-        testPlayer.getBehavior().placeSoldiers(null, ownedCountries, 10);
+        testPlayer.getBehavior().placeSoldiers(TestHelperBehavior.createPlaceSoldiers(null, ownedCountries, 10));
         assertEquals(15, ownedCountries.get(0).getSoldiersCount());
         assertEquals(5, ownedCountries.get(1).getSoldiersCount());
     }

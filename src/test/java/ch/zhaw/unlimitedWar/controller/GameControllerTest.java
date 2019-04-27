@@ -134,7 +134,7 @@ class GameControllerTest {
     @Test
     void testSelectCard() {
         Player playerSpy = setUpPlayerSpy(5);
-
+        when(mockTurn.getCurrentPlayer()).thenReturn(playerSpy);
         when(mockRequest.getPathInfo()).thenReturn(GameController.PATH_SELECT_CARD);
         when(mockRequest.getParameter(GameController.PARAM_COUNTRY_CARD)).thenReturn("1");
 
