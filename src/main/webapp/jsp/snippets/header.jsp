@@ -28,3 +28,5 @@
         </div>
     </c:if>
 </header>
+
+<jsp:include page="${pageContext.request.contextPath}/jsp/modals/event.jsp"/>

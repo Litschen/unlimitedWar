@@ -99,7 +99,6 @@
         </form>
     </c:if>
 </div>
-<%@ include file="modals/event.jsp" %>
 <%@ include file="modals/attackRoll.jsp" %>
 <%@ include file="modals/resultModal.jsp" %>
 <%@ include file="snippets/footer.jsp" %>
