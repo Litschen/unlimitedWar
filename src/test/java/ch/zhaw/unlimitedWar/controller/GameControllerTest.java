@@ -3,16 +3,24 @@ package ch.zhaw.unlimitedWar.controller;
 import ch.zhaw.unlimitedWar.model.Board;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
+import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Turn;
+import ch.zhaw.unlimitedWar.model.behavior.UserBehavior;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
+import static ch.zhaw.unlimitedWar.model.enums.PlayerColor.BLUE;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyString;
 import static org.mockito.Mockito.mock;
@@ -121,5 +129,32 @@ class GameControllerTest {
         verify(mockTurn, times(1)).currentPlayerIsUser();
         verifyNoMoreInteractions(mockTurn);
         verify(mockResponse, times(1)).sendRedirect(anyString());
+    }
+
+    @Test
+    void testSelectCard() {
+        Player playerSpy = setUpPlayerSpy(5);
+
+        when(mockRequest.getPathInfo()).thenReturn(GameController.PATH_SELECT_CARD);
+        when(mockRequest.getParameter(GameController.PARAM_COUNTRY_CARD)).thenReturn("1");
+
+        controller.doPost(mockRequest, mockResponse);
+
+        verify(playerSpy, times(1)).addSoldiersToPlace(anyInt());
+        verify(playerSpy, times(1)).removeCard(anyObject());
+    }
+
+    private Player setUpPlayerSpy(int solderisToPlace) {
+        Player spyPlayer = Mockito.spy(new Player(BLUE, "testPlayer", new UserBehavior()));
+        spyPlayer.setSoldiersToPlace(solderisToPlace);
+
+        List<Card> cards = new ArrayList<>();
+        cards.add(mock(Card.class));
+        cards.add(mock(Card.class));
+        cards.add(mock(Card.class));
+
+        Mockito.doReturn(cards).when(spyPlayer).getCards();
+
+        return spyPlayer;
     }
 }

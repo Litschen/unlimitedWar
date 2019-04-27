@@ -69,6 +69,14 @@ public class Player {
     }
     //endregion
 
+    public void addSoldiersToPlace(int additionalSoldiers) {
+
+    }
+
+    public void removeCard(Card card) {
+
+    }
+
     public int calculateSoldiersToPlace(List<Continent> continents) {
         int continentBoni = 0;
         for (Continent continent : continents) {
