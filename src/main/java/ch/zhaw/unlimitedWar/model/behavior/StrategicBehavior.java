@@ -48,7 +48,7 @@ public class StrategicBehavior implements Behavior {
             }
 
             countryToPlaceSoldiers.setSoldiersCount(countryToPlaceSoldiers.getSoldiersCount() + setSoldiers);
-            placeSoldiers.setSoldiersToPlace(placeSoldiers.getSoldiersToPlace() - setSoldiers);
+            soldiersToPlace -= setSoldiers;
         }
 
         return Phase.ATTACK;
