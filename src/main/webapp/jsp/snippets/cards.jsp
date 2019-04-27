@@ -12,6 +12,7 @@
             <button class="card country-card" name="country-card" value="${status.count - 1}">
                 <span>${card.name}</span>
                 <span class="card-bonus">${card.soldierBonus}</span>
+                <span class="${card.isPlayerOwner(curPlayer) ? 'owner' : ''}"></span>
             </button>
         </c:forEach>
     </form>
