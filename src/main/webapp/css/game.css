@@ -59,6 +59,7 @@ aside {
     padding: 0.75rem 1.25rem;
     display: inline-flex;
     outline: none;
+    text-align: left;
 }
 
 .country-card:hover {
