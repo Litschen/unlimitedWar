@@ -99,6 +99,7 @@
             <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
         </form>
     </c:if>
+    <%@ include file="snippets/cards.jsp" %>
 </div>
 <%@ include file="modals/attackRoll.jsp" %>
 <%@ include file="modals/resultModal.jsp" %>
