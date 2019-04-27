@@ -68,30 +68,31 @@ aside {
 }
 
 .mark:after {
+    content: '';
     display: block;
     position: relative;
-    width: 100%;
-    text-align: left;
     outline: none;
     pointer-events: none;
 }
 
-.country.capital:after,
-.country.capital::after {
-    content: '\2605';
-    color: #fff;
-    font-size: 12px;
-    top: -32px;
+.mark.capital:after,
+.mark.capital::after {
+    width: 10px;
+    height: 10px;
+    top: -29px;
     left: 1px;
+    background: url("../images/star.png") center;
+    background-size: 10px;
 }
 
-.country.city:after,
-.country.city::after {
-    content: '\2022';
-    color: #000;
-    font-size: 18px;
-    top: -34px;
+.mark.city:after,
+.mark.city::after {
+    width: 8px;
+    height: 8px;
+    top: -28px;
     left: 2px;
+    background-color: #000;
+    border-radius: 50%;
 }
 
 .red {
