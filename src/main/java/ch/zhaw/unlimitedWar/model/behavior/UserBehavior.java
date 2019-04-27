@@ -4,6 +4,7 @@ import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
 import ch.zhaw.unlimitedWar.model.helpers.AttackCountryResult;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import ch.zhaw.unlimitedWar.model.interfaces.Behavior;
 
 import java.util.List;
@@ -19,12 +20,14 @@ public class UserBehavior implements Behavior {
      * @return phase set as long as soldiersToPlace of the owner is greater than 0 otherwise attack phase
      */
     @Override
-    public Phase placeSoldiers(List<Country> destinationCountries, List<Country> ownedCountries, int soldiersToPlace) {
+    public Phase placeSoldiers(PlaceSoldiers placeSoldiers) {
+        List<Country> destinationCountries = placeSoldiers.getAllCountries();
+
         Phase phase = Phase.SET;
         Country destination = destinationCountries.get(0);
         Player owner = destination.getOwner();
         if (owner.getSoldiersToPlace() > 0) {
-            if (ownedCountries.contains(destination)) {
+            if (placeSoldiers.getOwnedCountries().contains(destination)) {
                 destination.setSoldiersCount(destination.getSoldiersCount() + 1);
                 owner.setSoldiersToPlace(owner.getSoldiersToPlace() - 1);
                 if (owner.getSoldiersToPlace() == 0) {

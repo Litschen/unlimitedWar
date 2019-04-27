@@ -3,6 +3,7 @@ package ch.zhaw.unlimitedWar.model.interfaces;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
 import ch.zhaw.unlimitedWar.model.helpers.AttackCountryResult;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface Behavior {
     /**
      * Can be used to set soldiers on own country. Place as many soldiers as possible on the map
      */
-    Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace);
+    Phase placeSoldiers(PlaceSoldiers placeSoldiers);
 
     /**
      * Can be used to attack other countries. Attack other countries as clever as possible,
