@@ -3,12 +3,14 @@ package ch.zhaw.unlimitedWar.controller;
 import ch.zhaw.unlimitedWar.model.Board;
 import ch.zhaw.unlimitedWar.model.UserBean;
 import ch.zhaw.unlimitedWar.model.enums.PlayerColor;
+import ch.zhaw.unlimitedWar.model.interfaces.Event;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "HomeController", urlPatterns = "/Home/*")
 public class HomeController extends HttpServlet {
@@ -36,6 +38,7 @@ public class HomeController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().setAttribute(Consts.SESSION_EVENTS, new ArrayList<Event>());
         String redirectPageTo = Consts.HOME;
         String path = request.getPathInfo();
 

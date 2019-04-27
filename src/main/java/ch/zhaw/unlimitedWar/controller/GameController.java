@@ -2,12 +2,14 @@ package ch.zhaw.unlimitedWar.controller;
 
 import ch.zhaw.unlimitedWar.model.Board;
 import ch.zhaw.unlimitedWar.model.Country;
+import ch.zhaw.unlimitedWar.model.interfaces.Event;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,6 +48,8 @@ public class GameController extends HttpServlet {
      * @param response servlet response
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().setAttribute(Consts.SESSION_EVENTS, new ArrayList<Event>());
+
         try {
             board = (Board) request.getSession().getAttribute(Consts.SESSION_BOARD);
             if (board != null) {
@@ -64,10 +68,8 @@ public class GameController extends HttpServlet {
                         board.getCurrentTurn().resetSelectedCountries();
                     }
                     board.getCurrentTurn().executeUserTurn(chosenCountry);
+                    request.getSession().setAttribute(Consts.SESSION_EVENTS, board.getEvents());
                 }
-            }
-            if (request.getPathInfo() != null && request.getPathInfo().equals(PATH_RESULT)) {
-                request.getSession().setAttribute(Consts.SESSION_BOARD, null);
             }
             response.sendRedirect(request.getContextPath() + PAGE_TO_LOAD_ON_COMPLETE);
         } catch (IOException | NullPointerException e) {

@@ -1,10 +1,13 @@
 package ch.zhaw.unlimitedWar.controller;
 
+import ch.zhaw.unlimitedWar.model.interfaces.Event;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,6 +21,7 @@ public class SignOutController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().setAttribute(Consts.SESSION_EVENTS, new ArrayList<Event>());
         UserController.setSessionUser(request.getSession(), null);
         try {
             response.sendRedirect(request.getContextPath() + PAGE_AFTER_SIGN_OUT);

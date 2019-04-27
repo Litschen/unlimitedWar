@@ -5,6 +5,7 @@ import ch.zhaw.unlimitedWar.dao.MySQLConnectionCreator;
 import ch.zhaw.unlimitedWar.dao.ResultsDAO;
 import ch.zhaw.unlimitedWar.model.ResultBean;
 import ch.zhaw.unlimitedWar.model.UserBean;
+import ch.zhaw.unlimitedWar.model.interfaces.Event;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,6 +48,7 @@ public class ResultController extends HttpServlet {
     // endregion
 
     public void doPost(HttpServletRequest request, HttpServletResponse response){
+        request.getSession().setAttribute(Consts.SESSION_EVENTS, new ArrayList<Event>());
 
         if (PATH_SAVE.equals(request.getPathInfo())) {
             insertResult(request);

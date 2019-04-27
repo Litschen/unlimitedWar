@@ -83,6 +83,7 @@ public class UserController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().setAttribute(Consts.SESSION_EVENTS, new ArrayList<Event>());
         String forwardPageTo = HOME_PAGE;
         events.clear();
 
