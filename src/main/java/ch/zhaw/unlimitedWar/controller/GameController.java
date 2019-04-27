@@ -1,7 +1,9 @@
 package ch.zhaw.unlimitedWar.controller;
 
 import ch.zhaw.unlimitedWar.model.Board;
+import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
+import ch.zhaw.unlimitedWar.model.Player;
 import ch.zhaw.unlimitedWar.model.interfaces.Event;
 
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import java.util.logging.Logger;
 public class GameController extends HttpServlet {
 
     //region path & param variables
+    public final static String PATH_SELECT_CARD = "/selectCard";
     public final static String PATH_ATTACK = "/attack";
     public final static String PATH_RESULT = "/result";
     public final static String PARAM_ATTACK_DICE = "attackDice";
@@ -24,6 +27,7 @@ public class GameController extends HttpServlet {
     public final static String PARAM_END = "end";
     public final static String PARAM_CANCEL = "cancel";
     public final static String PARAM_COUNTRY = "country";
+    public final static String PARAM_COUNTRY_CARD = "country-card";
     public final static String PARAM_NEXT_TURN = "nextTurn";
     public final static String PAGE_TO_LOAD_ON_COMPLETE = Consts.GAME;
     private final static Logger LOGGER = Logger.getLogger(GameController.class.getName());
@@ -53,7 +57,9 @@ public class GameController extends HttpServlet {
         try {
             board = (Board) request.getSession().getAttribute(Consts.SESSION_BOARD);
             if (board != null) {
-                if (request.getParameter(PARAM_NEXT_TURN) != null) {
+                if (PATH_SELECT_CARD.equals(request.getPathInfo())) {
+                    useCard(request);
+                } else if (request.getParameter(PARAM_NEXT_TURN) != null) {
                     board.getCurrentTurn().executeTurn();
                 } else if (request.getParameter(PARAM_END) != null) {
                     board.getCurrentTurn().moveToNextPhase();
@@ -86,6 +92,15 @@ public class GameController extends HttpServlet {
             LOGGER.log(Level.WARNING, e.toString(), e);
         }
         return toReturn;
+    }
+
+    private void useCard(HttpServletRequest request) {
+        Player currentPlayer = board.getCurrentTurn().getCurrentPlayer();
+        int cardIx = Integer.parseInt(request.getParameter(PARAM_COUNTRY_CARD));
+
+        Card card = currentPlayer.getCards().get(cardIx);
+        currentPlayer.addSoldiersToPlace(card.getCardBonus(currentPlayer));
+        currentPlayer.removeCard(card);
     }
 
 }

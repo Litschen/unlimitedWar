@@ -70,11 +70,16 @@ public class Player {
     //endregion
 
     public void addSoldiersToPlace(int additionalSoldiers) {
+        setSoldiersToPlace(soldiersToPlace + additionalSoldiers);
+    }
 
+    // TODO: #16 @crnjatin use this method to add cards
+    public void addCard(Card card) {
+        cards.add(card);
     }
 
     public void removeCard(Card card) {
-
+        cards.remove(card);
     }
 
     public int calculateSoldiersToPlace(List<Continent> continents) {
