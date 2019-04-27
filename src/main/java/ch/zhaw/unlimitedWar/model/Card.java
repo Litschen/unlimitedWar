@@ -34,7 +34,11 @@ public class Card {
     }
 
     public int getCardBonus(Player player) {
-        int owningBonus = player.equals(country.getOwner()) ? OWNING_BONUS : 0;
+        int owningBonus = isPlayerOwner(player) ? OWNING_BONUS : 0;
         return owningBonus + soldierBonus;
+    }
+
+    public boolean isPlayerOwner(Player player) {
+        return player.equals(country.getOwner());
     }
 }
