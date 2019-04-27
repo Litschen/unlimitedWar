@@ -53,7 +53,7 @@ public class UserControllerTest {
 
         controller.doGet(mockRequest, mockResponse);
         verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
-        verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
+        verify(mockSession, times(3)).setAttribute(anyString(), anyObject());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class UserControllerTest {
 
         controller.doGet(mockRequest, mockResponse);
         verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
-        verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
+        verify(mockSession, times(3)).setAttribute(anyString(), anyObject());
         assertEquals(1, controller.getEvents().size());
     }
 
@@ -76,8 +76,8 @@ public class UserControllerTest {
         controller.doPost(mockRequest, mockResponse);
 
         assertEquals(0, controller.getEvents().size());
-        verify(mockRequest, times(1)).getSession();
-        verify(mockSession, times(1)).setAttribute(anyString(), anyObject());
+        verify(mockRequest, times(2)).getSession();
+        verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
         verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
     }
 
@@ -116,7 +116,7 @@ public class UserControllerTest {
         controller.doPost(mockRequest, mockResponse);
 
         verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
-        verify(mockSession, times(2)).setAttribute(anyString(), anyObject());
+        verify(mockSession, times(3)).setAttribute(anyString(), anyObject());
     }
 
     @Test
