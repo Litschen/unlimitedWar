@@ -23,8 +23,8 @@ class AggressiveBehaviorTest {
 
     private Player testPlayer;
     private Player defendingPlayer;
-    private ArrayList<Country> selectedCountries;
-    private ArrayList<Country> ownedCountries;
+    private List<Country> selectedCountries;
+    private List<Country> ownedCountries;
 
     @BeforeEach
     void setUp() {
@@ -103,7 +103,7 @@ class AggressiveBehaviorTest {
 
     @Test
     void testMoveSoldiersOption() {
-        ArrayList<Country> ownedCountries1;
+        List<Country> ownedCountries1;
         ownedCountries = TestHelperBehavior.getCountryList(2, testPlayer);
         ownedCountries1 = TestHelperBehavior.getCountryList(2, testPlayer);
 

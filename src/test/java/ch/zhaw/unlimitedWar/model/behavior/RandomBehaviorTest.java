@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static ch.zhaw.unlimitedWar.model.enums.PlayerColor.BLUE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,8 +22,8 @@ import static org.mockito.Mockito.when;
 class RandomBehaviorTest {
 
     private Player testPlayer;
-    private ArrayList<Country> allCountries;
-    private ArrayList<Country> ownedCountries;
+    private List<Country> allCountries;
+    private List<Country> ownedCountries;
     private Country invadingCountry;
     private Country defendingCountry;
     private Player mockPlayer;

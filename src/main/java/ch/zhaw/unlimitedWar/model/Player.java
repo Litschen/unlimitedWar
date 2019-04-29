@@ -16,7 +16,7 @@ public class Player {
     private String name;
     private int attackDiceCount;
     private Behavior behavior;
-    private ArrayList<Country> ownedCountries;
+    private List<Country> ownedCountries;
     private List<Card> cards;
     private int soldiersToPlace = 0;
     //endregion

@@ -25,16 +25,16 @@ public class TestHelperBehavior {
         return mockCountry;
     }
 
-    public static ArrayList<Country> getCountryList(int numbersOfListElements, Player testPlayer) {
-        ArrayList<Country> list = new ArrayList<>();
+    public static List<Country> getCountryList(int numbersOfListElements, Player testPlayer) {
+        List<Country> list = new ArrayList<>();
         for (int i = 0; i < numbersOfListElements; i++) {
             list.add(i, new Country("Polen", 5, testPlayer));
         }
         return list;
     }
 
-    public static ArrayList<Country> getMockCountryList(int numbersOfListElements, Player testPlayer) {
-        ArrayList<Country> countries = new ArrayList<>();
+    public static List<Country> getMockCountryList(int numbersOfListElements, Player testPlayer) {
+        List<Country> countries = new ArrayList<>();
         for (int i = 0; i < numbersOfListElements; i++) {
             countries.add(getMockCountry(testPlayer));
         }
@@ -53,8 +53,8 @@ public class TestHelperBehavior {
         when(mockPlayer.getPlayerColor()).thenReturn(color);
     }
 
-    public static ArrayList<Country> setUpToTestPlaceSoldiers(int numOfOwnedCountries, List<Integer> neighborsCount, Player player) {
-        ArrayList<Country> ownedCountries = TestHelperBehavior.getCountryList(numOfOwnedCountries, player);
+    public static List<Country> setUpToTestPlaceSoldiers(int numOfOwnedCountries, List<Integer> neighborsCount, Player player) {
+        List<Country> ownedCountries = TestHelperBehavior.getCountryList(numOfOwnedCountries, player);
 
         Player opponent = TestHelperBehavior.getMockPlayer();
         for (int i = 0; i < neighborsCount.size(); i++) {

@@ -26,7 +26,7 @@ import static org.mockito.Mockito.verify;
 class StrategicBehaviorTest {
 
     private Player testPlayer;
-    private ArrayList<Country> ownedCountries;
+    private List<Country> ownedCountries;
 
     @BeforeEach
     void setUp() {
