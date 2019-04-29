@@ -10,7 +10,7 @@
 
         <c:forEach items="${curPlayer.getCards()}" var="card" varStatus="status">
             <button class="card country-card" name="country-card" value="${status.count - 1}">
-                <span>${card.name}</span>
+                <span>${card.cardName}</span>
                 <span class="card-bonus">${card.soldierBonus}</span>
                 <span class="${card.isPlayerOwner(curPlayer) ? 'owner' : ''}"></span>
             </button>

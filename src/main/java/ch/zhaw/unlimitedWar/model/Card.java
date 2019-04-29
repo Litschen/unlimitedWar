@@ -1,5 +1,7 @@
 package ch.zhaw.unlimitedWar.model;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Card {
     private final static int OWNING_BONUS = 1;
 
@@ -24,12 +26,12 @@ public class Card {
     }
     // endregion
 
-    public Card(Country country, int soldierBonus) {
+    public Card(@NotNull Country country, int soldierBonus) {
         this.country = country;
         this.soldierBonus = soldierBonus;
     }
 
-    public String getName() {
+    public String getCardName() {
         return country.getName();
     }
 
