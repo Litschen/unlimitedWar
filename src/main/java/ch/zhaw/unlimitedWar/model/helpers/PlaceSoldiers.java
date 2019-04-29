@@ -6,10 +6,10 @@ import ch.zhaw.unlimitedWar.model.Country;
 import java.util.List;
 
 public class PlaceSoldiers {
-    List<Country> allCountries;
-    List<Country> ownedCountries;
-    int soldiersToPlace;
-    List<Card> cards;
+    private List<Country> allCountries;
+    private List<Country> ownedCountries;
+    private int soldiersToPlace;
+    private List<Card> cards;
 
     public PlaceSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace, List<Card> cards) {
         this.allCountries = allCountries;
