@@ -35,12 +35,19 @@ class ResultControllerTest {
 
     }
 
-    @Test
-    void getListResult() {
-    }
 
     @Test
-    void getResultDAO() {
+    void testSaveResultIsCalled() throws Exception {
+
+        resultController.doPost(mockRequest,mockResponse);
+        when(mockRequest.getPathInfo()).thenReturn(ResultController.PATH_SAVE);
+        when(mockRequest.getSession()).thenReturn(httpSession);
+        when(httpSession.getAttribute(anyString())).thenReturn(userBean);
+        when(mockRequest.getParameter(anyString())).thenReturn(ResultController.PARAM_SELECTED_WIN);
+
+        doReturn(1).when(resultControllerspy).setUpDBConnection();
+        verify(resultDAOmock, times(1)).saveResult(anyBoolean(), anyString());
+
     }
 
 
