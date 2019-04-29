@@ -32,7 +32,7 @@ public class ResultsDAO {
         while (rs.next()) {
             ResultBean result = new ResultBean();
             result.setOutcome(rs.getBoolean(1));
-            result.setDate(rs.getDate(2));
+            result.setDate(rs.getDate(2).toLocalDate());
             results.add(result);
         }
         closeStatement();
