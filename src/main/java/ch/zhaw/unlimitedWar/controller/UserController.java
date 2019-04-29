@@ -35,13 +35,15 @@ public class UserController extends HttpServlet {
     private final static String PARAM_CANCEL = "cancel";
 
     // pages to load
-    private final static String HOME_PAGE = Pages.SIGN_IN;
-    private final static String REGISTER_PAGE = Pages.PROFILE;
+    private final static String HOME_PAGE = Consts.SIGN_IN;
+    private final static String REGISTER_PAGE = Consts.PROFILE;
 
-    private final static String SESSION_USER = "user";
-    private final static String SESSION_EVENTS = "events";
     private final static Logger LOGGER = Logger.getLogger(UserController.class.getName());
 
+    private final static String EVENT_NAME_ERROR_TITLE = "Name error";
+    private final static String EVENT_NAME_ERROR_MSG = "Name should not be empty!";
+    private final static String EVENT_MAIL_ERROR_TITLE = "Mail error";
+    private final static String EVENT_MAIL_ERROR_MSG = "Mail should not be empty!";
     private final static String EVENT_PWD_ERROR_TITLE = "Password error";
     private final static String EVENT_PWD_ERROR_MSG = "You entered two different passwords!";
     private final static String EVENT_REGISTER_ERROR_TITLE = "Registration error";
@@ -73,11 +75,11 @@ public class UserController extends HttpServlet {
     }
 
     public static UserBean getSessionUser(@NotNull HttpSession session) {
-        return (UserBean) session.getAttribute(SESSION_USER);
+        return (UserBean) session.getAttribute(Consts.SESSION_USER);
     }
 
     public static void setSessionUser(@NotNull HttpSession session, UserBean user) {
-        session.setAttribute(SESSION_USER, user);
+        session.setAttribute(Consts.SESSION_USER, user);
     }
 
     void setConnectionCreator(MySQLConnectionCreator connectionCreator) {
@@ -85,6 +87,7 @@ public class UserController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().setAttribute(Consts.SESSION_EVENTS, new ArrayList<Event>());
         String forwardPageTo = HOME_PAGE;
         events.clear();
 
@@ -93,9 +96,7 @@ public class UserController extends HttpServlet {
                 playerDAO = connectionCreator.getPlayerDAO();
 
                 if (playerDAO != null) {
-                    getUserDataFromInput(request);
-
-                    if (user.getMail() != null && !user.getMail().equals("")) {
+                    if (getUserDataFromInput(request)) {
                         if (request.getParameter(PARAM_REGISTER) != null) {
                             forwardPageTo = registerUser();
                         } else if (request.getParameter(PARAM_SAVE) != null) {
@@ -112,25 +113,39 @@ public class UserController extends HttpServlet {
                 }
             }
 
-            request.getSession().setAttribute(SESSION_EVENTS, events);
+            request.getSession().setAttribute(Consts.SESSION_EVENTS, events);
             response.sendRedirect(request.getContextPath() + forwardPageTo);
         } catch (IOException | SQLException e) {
             LOGGER.log(Level.SEVERE, e.toString(), e);
         }
     }
 
-    void getUserDataFromInput(HttpServletRequest request) {
+    boolean getUserDataFromInput(HttpServletRequest request) {
+        boolean valid = true;
+
         user = new UserBean();
         user.setName(request.getParameter(PARAM_NAME));
+        if(user.getName() == null || user.getName().equals("")){
+            valid = false;
+            events.add(new UserEvent(EVENT_NAME_ERROR_TITLE, EVENT_NAME_ERROR_MSG));
+        }
+
         user.setMail(request.getParameter(PARAM_MAIL));
+        if(user.getMail() == null || user.getMail().equals("")){
+            valid = false;
+            events.add(new UserEvent(EVENT_MAIL_ERROR_TITLE, EVENT_MAIL_ERROR_MSG));
+        }
 
         String pwd = request.getParameter(PARAM_PASSWORD);
         if (pwd != null && pwd.equals(request.getParameter(PARAM_CONFIRM_PASSWORD))) {
             user.setPasswordFirstTime(request.getParameter(PARAM_PASSWORD));
         } else {
+            valid = false;
             user = new UserBean();
             events.add(new UserEvent(EVENT_PWD_ERROR_TITLE, EVENT_PWD_ERROR_MSG));
         }
+
+        return valid;
     }
 
     private String registerUser() {

@@ -3,6 +3,7 @@ package ch.zhaw.unlimitedWar.controller;
 import ch.zhaw.unlimitedWar.dao.MySQLConnectionCreator;
 import ch.zhaw.unlimitedWar.dao.PlayerDAO;
 import ch.zhaw.unlimitedWar.model.UserBean;
+import ch.zhaw.unlimitedWar.model.interfaces.Event;
 import org.jetbrains.annotations.NotNull;
 
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,8 +22,8 @@ import java.util.logging.Logger;
 public class SignInController extends HttpServlet {
 
     //region static variables
-    public final static String PAGE_TO_LOAD_ON_COMPLETE = Pages.HOME;
-    public final static String PAGE_TO_LOAD_ON_ERROR = Pages.SIGN_IN;
+    public final static String PAGE_TO_LOAD_ON_COMPLETE = Consts.HOME;
+    public final static String PAGE_TO_LOAD_ON_ERROR = Consts.SIGN_IN;
     public final static String SIGNIN_ERROR_MESSAGE = "Could not sign in. Maybe you entered your password or Email wrong";
     public final static String MAIL_PARAMETER_NAME = "mail";
     public final static String PASSWORD_PARAMETER_NAME = "password";
@@ -58,6 +60,7 @@ public class SignInController extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        request.getSession().setAttribute(Consts.SESSION_EVENTS, new ArrayList<Event>());
         playerDAO = connectionCreator.getPlayerDAO();
         if (playerDAO != null) {
 

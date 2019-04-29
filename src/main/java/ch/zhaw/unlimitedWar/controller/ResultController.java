@@ -5,6 +5,7 @@ import ch.zhaw.unlimitedWar.dao.MySQLConnectionCreator;
 import ch.zhaw.unlimitedWar.dao.ResultsDAO;
 import ch.zhaw.unlimitedWar.model.ResultBean;
 import ch.zhaw.unlimitedWar.model.UserBean;
+import ch.zhaw.unlimitedWar.model.interfaces.Event;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,6 @@ public class ResultController extends HttpServlet {
 
     //region static variables
     public final static String PATH_SAVE = "/Save";
-    private final static String HOME_PAGE = Pages.HOME;
     public final static String PARAM_SELECTED_WIN = "win";
     private final static Logger LOGGER = Logger.getLogger(ResultSet.class.getName());
     public static final String DATABASE_ERROR = "DATABASE ERROR: Could not establish connection";
@@ -48,13 +48,14 @@ public class ResultController extends HttpServlet {
     // endregion
 
     public void doPost(HttpServletRequest request, HttpServletResponse response){
+        request.getSession().setAttribute(Consts.SESSION_EVENTS, new ArrayList<Event>());
 
         if (PATH_SAVE.equals(request.getPathInfo())) {
             insertResult(request);
         }
 
         try {
-            response.sendRedirect(request.getContextPath() + HOME_PAGE);
+            response.sendRedirect(request.getContextPath() + Consts.HOME);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }

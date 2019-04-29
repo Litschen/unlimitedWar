@@ -4,6 +4,7 @@ import ch.zhaw.unlimitedWar.helpers.TestHelperBehavior;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,19 +39,21 @@ class UserBehaviorTest {
 
         testPlayer.setSoldiersToPlace(3);
 
-        assertEquals(Phase.SET, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
+        PlaceSoldiers p = TestHelperBehavior.createPlaceSoldiers(selectedCountries, ownedCountries, 0);
+
+        assertEquals(Phase.SET, testPlayer.getBehavior().placeSoldiers(p));
         assertEquals(6, selectedCountries.get(0).getSoldiersCount());
         assertEquals(2, testPlayer.getSoldiersToPlace());
 
-        assertEquals(Phase.SET, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
+        assertEquals(Phase.SET, testPlayer.getBehavior().placeSoldiers(p));
         assertEquals(7, selectedCountries.get(0).getSoldiersCount());
         assertEquals(1, testPlayer.getSoldiersToPlace());
 
-        assertEquals(Phase.ATTACK, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
+        assertEquals(Phase.ATTACK, testPlayer.getBehavior().placeSoldiers(p));
         assertEquals(8, selectedCountries.get(0).getSoldiersCount());
         assertEquals(0, testPlayer.getSoldiersToPlace());
 
-        assertEquals(Phase.ATTACK, testPlayer.getBehavior().placeSoldiers(selectedCountries, ownedCountries, 0));
+        assertEquals(Phase.ATTACK, testPlayer.getBehavior().placeSoldiers(p));
         assertEquals(8, selectedCountries.get(0).getSoldiersCount());
         assertEquals(0, testPlayer.getSoldiersToPlace());
     }

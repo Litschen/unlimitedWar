@@ -3,6 +3,7 @@ package ch.zhaw.unlimitedWar.model;
 import ch.zhaw.unlimitedWar.model.behavior.UserBehavior;
 import ch.zhaw.unlimitedWar.model.enums.Flag;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import ch.zhaw.unlimitedWar.model.interfaces.Event;
 
 import java.util.ArrayList;
@@ -136,8 +137,10 @@ public class Turn {
     public void executeTurn() {
         if (!currentPlayerIsUser()) {
             if (currentPhase == Phase.SET) {
-                currentPhase = currentPlayer.getBehavior().placeSoldiers(countries,
-                        currentPlayer.getOwnedCountries(), currentPlayer.calculateSoldiersToPlace(continents));
+                int soldiersToPlace = currentPlayer.calculateSoldiersToPlace(continents);
+                List<Card> cards = currentPlayer.getCards();
+                PlaceSoldiers placeSoldiers = new PlaceSoldiers(countries, currentPlayer.getOwnedCountries(), soldiersToPlace, cards);
+                currentPhase = currentPlayer.getBehavior().placeSoldiers(placeSoldiers);
             }
             if (currentPhase == Phase.ATTACK) {
                 currentPhase = currentPlayer.getBehavior().
@@ -158,7 +161,9 @@ public class Turn {
             List<Country> destination = new ArrayList<>();
             if (selectedCountry.getOwner().equals(currentPlayer)) {
                 destination.add(selectedCountry);
-                setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(destination, currentPlayer.getOwnedCountries(), 1));
+                List<Card> cards = currentPlayer.getCards();
+                PlaceSoldiers placeSoldiers = new PlaceSoldiers(destination, currentPlayer.getOwnedCountries(), 0, cards);
+                setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(placeSoldiers));
             }
             resetSelectedCountries();
         } else if (currentPhase == Phase.ATTACK) {

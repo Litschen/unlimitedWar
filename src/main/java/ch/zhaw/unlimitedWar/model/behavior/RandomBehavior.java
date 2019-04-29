@@ -4,6 +4,7 @@ import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Dice;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
 import ch.zhaw.unlimitedWar.model.helpers.AttackCountryResult;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import ch.zhaw.unlimitedWar.model.interfaces.Behavior;
 
 import java.util.List;
@@ -27,7 +28,10 @@ public class RandomBehavior implements Behavior {
 
 
     @Override
-    public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
+    public Phase placeSoldiers(PlaceSoldiers placeSoldiers) {
+        List<Country> ownedCountries = placeSoldiers.getOwnedCountries();
+        int soldiersToPlace = placeSoldiers.getSoldiersToPlace();
+
         while (soldiersToPlace > 0) {
             Country country = ownedCountries.get(ThreadLocalRandom.current()
                     .nextInt(0, ownedCountries.size()));

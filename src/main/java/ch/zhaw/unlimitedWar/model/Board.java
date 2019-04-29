@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -117,7 +118,16 @@ public class Board {
     }
 
     private void setCityAndCapital(Player player) {
+        List<Country> countries = player.getOwnedCountries();
 
+        int cityIx = ThreadLocalRandom.current().nextInt(0, countries.size());
+        countries.get(cityIx).setCity(true);
+
+        int capitalIx = 0;
+        do {
+            capitalIx = ThreadLocalRandom.current().nextInt(0, countries.size());
+        } while (capitalIx == cityIx);
+        countries.get(capitalIx).setCapital(true);
     }
 
     private void addCountriesToContinents(int[] indexes, Continent continent) {

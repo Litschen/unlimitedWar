@@ -42,7 +42,6 @@
         <button name="cancel" class="btn btn-lg btn-block">Cancel</button>
     </form>
 </div>
-<%@ include file="modals/registrationEvent.jsp" %>
 <%@ include file="snippets/footer.jsp" %>
 </body>
 </html>

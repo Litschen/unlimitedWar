@@ -1,8 +1,10 @@
 package ch.zhaw.unlimitedWar.helpers;
 
+import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
 import ch.zhaw.unlimitedWar.model.enums.PlayerColor;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -71,5 +73,14 @@ public class TestHelperBehavior {
                 }
             }
         }
+    }
+
+    public static PlaceSoldiers createPlaceSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
+        return createPlaceSoldiers(allCountries, ownedCountries, soldiersToPlace, new ArrayList<Card>());
+    }
+
+    public static PlaceSoldiers createPlaceSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace, List<Card> cards) {
+        PlaceSoldiers placeSoldiers = new PlaceSoldiers(allCountries, ownedCountries, soldiersToPlace, cards);
+        return placeSoldiers;
     }
 }

@@ -1,57 +1,9 @@
-.wrapper {
-    width: 600px;
-    margin: 20px auto;
-}
-
-.form.vertical {
-    padding: 20px;
-    display: inline-block;
-    background: #ffffff;
-}
-
-.emphasise {
-    font-weight: bold;
-}
-
-.turncounter {
-    float: right;
-}
-
-.form.vertical > button,
-.form.vertical > span {
-    display: block;
-    margin-top: 20px;
-}
-
 .field {
     width: 350px;
     height: 200px;
     position: relative;
     background-color: #fff;
     border: 1px #000 solid;
-}
-
-aside {
-    width: 200px;
-    margin-left: 40px;
-    position: absolute;
-    display: inline-block;
-}
-
-.player-color {
-    height: 15px;
-    width: 15px;
-    display: inline-block;
-    border-radius: 15px;
-}
-
-.current-player {
-    font-weight: bold;
-    background-color: #e2e3e5;
-}
-
-.next-turn-btn {
-    margin-top: 20px;
 }
 
 .country {
@@ -68,73 +20,31 @@ aside {
 }
 
 .mark:after {
+    content: '';
     display: block;
     position: relative;
-    width: 100%;
-    text-align: left;
     outline: none;
     pointer-events: none;
 }
 
-.country.capital:after,
-.country.capital::after {
-    content: '\2605';
-    color: #fff;
-    font-size: 12px;
-    top: -32px;
+.mark.capital:after,
+.mark.capital::after {
+    width: 10px;
+    height: 10px;
+    top: -29px;
     left: 1px;
+    background: url("../images/star.png") center;
+    background-size: 10px;
 }
 
-.country.city:after,
-.country.city::after {
-    content: '\2022';
-    color: #000;
-    font-size: 18px;
-    top: -34px;
+.mark.city:after,
+.mark.city::after {
+    width: 8px;
+    height: 8px;
+    top: -28px;
     left: 2px;
-}
-
-.red {
-    background-color: #dc3545;
-}
-
-.red-selected {
-    background-color: #FF5B6B;
-}
-
-.blue {
-    background-color: #007bff;
-}
-
-.blue-selected {
-    background-color: #26A1FF;
-}
-
-.yellow {
-    background-color: #ffc107;
-}
-
-.yellow-selected {
-    background-color: #FFE72D;
-}
-
-.green {
-    background-color: #28a745;
-}
-
-.green-selected {
-    background-color: #4ECD6B;
-}
-
-.country {
-    border: none;
-    position: absolute;
-    width: 35px;
-    height: 30px;
-    padding: 2px 0 3px 0;
-    text-align: center;
-    box-sizing: content-box;
-    font: bold 24px 'Arial', sans-serif;
+    background-color: #000;
+    border-radius: 50%;
 }
 
 /* country positions */
@@ -260,6 +170,7 @@ aside {
     background-color: black !important;
 }
 
+/* continent */
 .continent-box {
     background-color: #c3ae86;
     font-weight: bold;

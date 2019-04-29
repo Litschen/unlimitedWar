@@ -9,6 +9,7 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/stylesheet.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/index.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/game.css">
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/field.css">
     <link rel="shortcut icon" type="image" href="${pageContext.request.contextPath}/images/logo_transparent.png">
     <title>Play Unlimited War</title>
@@ -98,8 +99,8 @@
             <button type="submit" class="btn btn-primary" name="nextTurn" value="execute">next Turn</button>
         </form>
     </c:if>
+    <%@ include file="snippets/cards.jsp" %>
 </div>
-<%@ include file="modals/event.jsp" %>
 <%@ include file="modals/attackRoll.jsp" %>
 <%@ include file="modals/resultModal.jsp" %>
 <%@ include file="snippets/footer.jsp" %>

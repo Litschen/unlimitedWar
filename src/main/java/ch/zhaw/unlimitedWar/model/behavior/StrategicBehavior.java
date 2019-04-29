@@ -5,6 +5,7 @@ import ch.zhaw.unlimitedWar.model.enums.Phase;
 import ch.zhaw.unlimitedWar.model.helpers.AttackCountryResult;
 import ch.zhaw.unlimitedWar.model.helpers.AttackScore;
 import ch.zhaw.unlimitedWar.model.helpers.AttackScoreComparator;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import ch.zhaw.unlimitedWar.model.interfaces.Behavior;
 
 import java.util.ArrayList;
@@ -24,10 +25,12 @@ public class StrategicBehavior implements Behavior {
     //endregion
 
     @Override
-    public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
-        for (List<AttackScore> scores = rateCountries(ownedCountries);  // set up
+    public Phase placeSoldiers(PlaceSoldiers placeSoldiers) {
+        int soldiersToPlace = placeSoldiers.getSoldiersToPlace();
+
+        for (List<AttackScore> scores = rateCountries(placeSoldiers.getOwnedCountries());  // set up
              !scores.isEmpty() && soldiersToPlace > 0;  // condition
-             scores = rateCountries(ownedCountries)) {
+             scores = rateCountries(placeSoldiers.getOwnedCountries())) {
 
             Country countryToPlaceSoldiers;
             int setSoldiers = soldiersToPlace % MAX_SCORE_TO_SET_DEFENSIVE + 1; // +1 to set at least 1 soldier

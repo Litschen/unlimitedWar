@@ -17,6 +17,7 @@ public class Player {
     private int attackDiceCount;
     private Behavior behavior;
     private ArrayList<Country> ownedCountries;
+    private List<Card> cards;
     private int soldiersToPlace = 0;
     //endregion
 
@@ -25,6 +26,7 @@ public class Player {
         this.name = name;
         this.behavior = behavior;
         this.ownedCountries = new ArrayList<>();
+        this.cards = new ArrayList<>();
     }
 
     //region getter setter
@@ -62,14 +64,35 @@ public class Player {
 
     public void setPlayerName(String name){ this.name = name; }
 
+    public List<Card> getCards() {
+        return cards;
+    }
     //endregion
+
+    public void addSoldiersToPlace(int additionalSoldiers) {
+        setSoldiersToPlace(soldiersToPlace + additionalSoldiers);
+    }
+
+    // TODO: #16 @crnjatin use this method to add cards
+    public void addCard(Card card) {
+        cards.add(card);
+    }
+
+    public void removeCard(Card card) {
+        cards.remove(card);
+    }
 
     public int calculateSoldiersToPlace(List<Continent> continents) {
         int continentBoni = 0;
         for (Continent continent : continents) {
             continentBoni += continent.getBonusForPlayer(this);
         }
-        return Math.max(COUNTRY_WEIGHT, getOwnedCountries().size() / COUNTRY_WEIGHT) + continentBoni;
+
+        int countryCount = this.ownedCountries.size();
+        countryCount += this.ownedCountries.stream().filter(country -> country.isCity()).count();
+        int capitalCount = (int) this.ownedCountries.stream().filter(country -> country.isCapital()).count();
+
+        return Math.max(COUNTRY_WEIGHT, (countryCount / COUNTRY_WEIGHT)) + capitalCount + continentBoni;
     }
 
 }

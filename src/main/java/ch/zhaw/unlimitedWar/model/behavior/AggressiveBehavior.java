@@ -6,6 +6,7 @@ import ch.zhaw.unlimitedWar.model.enums.Phase;
 import ch.zhaw.unlimitedWar.model.helpers.AttackCountryResult;
 import ch.zhaw.unlimitedWar.model.helpers.MoveComparator;
 import ch.zhaw.unlimitedWar.model.helpers.MoveCountry;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import ch.zhaw.unlimitedWar.model.interfaces.Behavior;
 
 import java.util.ArrayList;
@@ -22,7 +23,10 @@ public class AggressiveBehavior implements Behavior {
     //endregion
 
     @Override
-    public Phase placeSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
+    public Phase placeSoldiers(PlaceSoldiers placeSoldiers) {
+        List<Country> ownedCountries = placeSoldiers.getOwnedCountries();
+        int soldiersToPlace = placeSoldiers.getSoldiersToPlace();
+
         if (ownedCountries.size() > 0) {
             List<Country> countriesToPlace = mostEffectiveCountry(ownedCountries, ownedCountries.get(0).getOwner());
             for (int i = 0; soldiersToPlace > 0 && countriesToPlace.size() > 0; soldiersToPlace--) {
