@@ -2,13 +2,14 @@ package ch.zhaw.unlimitedWar.dao;
 
 import ch.zhaw.unlimitedWar.model.ResultBean;
 
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 public class ResultsDAO {
@@ -46,8 +47,7 @@ public class ResultsDAO {
      * @param mail    the mail address of the user
      */
     public void saveResult(boolean outcome, String mail) throws Exception {
-        Date now = new Date();
-        java.sql.Date playDate = new java.sql.Date(now.getTime());
+        Date playDate = Date.valueOf(LocalDate.now());
 
         st = con.prepareStatement(INSERT_RESULT_QUERY);
         st.setInt(1, outcome ? 1 : 0);

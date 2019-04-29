@@ -1,10 +1,10 @@
 package ch.zhaw.unlimitedWar.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ResultBean {
     private boolean outcome;
-    private Date date;
+    private LocalDate date;
 
     public boolean getOutcome() {
         return outcome;
@@ -14,11 +14,11 @@ public class ResultBean {
         this.outcome = outcome;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 }
