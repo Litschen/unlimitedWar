@@ -37,10 +37,10 @@ class UserBehaviorTest {
         selectedCountries = TestHelperBehavior.getCountryList(1, testPlayer);
         ownedCountries = TestHelperBehavior.getCountryList(4, testPlayer);
         ownedCountries.add(selectedCountries.get(0));
-
         testPlayer.setSoldiersToPlace(3);
 
-        PlaceSoldiers p = TestHelperBehavior.createPlaceSoldiers(selectedCountries, ownedCountries, 0);
+        PlaceSoldiers p = TestHelperBehavior.createPlaceSoldiers(testPlayer, ownedCountries, 3);
+        p.setAllCountries(selectedCountries);
 
         assertEquals(Phase.SET, testPlayer.getBehavior().placeSoldiers(p));
         assertEquals(6, selectedCountries.get(0).getSoldiersCount());

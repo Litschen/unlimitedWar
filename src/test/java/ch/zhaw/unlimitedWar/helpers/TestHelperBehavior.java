@@ -75,12 +75,8 @@ public class TestHelperBehavior {
         }
     }
 
-    public static PlaceSoldiers createPlaceSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace) {
-        return createPlaceSoldiers(allCountries, ownedCountries, soldiersToPlace, new ArrayList<Card>());
-    }
-
-    public static PlaceSoldiers createPlaceSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace, List<Card> cards) {
-        PlaceSoldiers placeSoldiers = new PlaceSoldiers(allCountries, ownedCountries, soldiersToPlace, cards);
-        return placeSoldiers;
+    public static PlaceSoldiers createPlaceSoldiers(Player player, List<Country> ownedCountries, int soldiersToPlace) {
+        player.addOwnedCountries(ownedCountries);
+        return new PlaceSoldiers(null, soldiersToPlace, player);
     }
 }

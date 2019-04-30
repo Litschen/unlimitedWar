@@ -69,6 +69,10 @@ public class Player {
     }
     //endregion
 
+    public void addOwnedCountries(List<Country> countries) {
+        this.ownedCountries.addAll(countries);
+    }
+
     public void addSoldiersToPlace(int additionalSoldiers) {
         setSoldiersToPlace(soldiersToPlace + additionalSoldiers);
     }

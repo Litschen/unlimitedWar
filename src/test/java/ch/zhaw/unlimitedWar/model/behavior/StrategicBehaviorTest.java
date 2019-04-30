@@ -38,7 +38,8 @@ class StrategicBehaviorTest {
     void testPlaceSoldiersSetOnBoth() {
         ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(4, 4), testPlayer);
 
-        testPlayer.getBehavior().placeSoldiers(TestHelperBehavior.createPlaceSoldiers(null, ownedCountries, 6));
+        PlaceSoldiers placeSoldiers = TestHelperBehavior.createPlaceSoldiers(testPlayer, ownedCountries, 6);
+        testPlayer.getBehavior().placeSoldiers(placeSoldiers);
         assertTrue(ownedCountries.get(0).getSoldiersCount() > 5);
         assertTrue(ownedCountries.get(1).getSoldiersCount() > 5);
     }
@@ -47,7 +48,8 @@ class StrategicBehaviorTest {
     void testPlaceSoldiersSetOnOne() {
         ownedCountries = TestHelperBehavior.setUpToTestPlaceSoldiers(2, Arrays.asList(10, 0), testPlayer);
 
-        testPlayer.getBehavior().placeSoldiers(TestHelperBehavior.createPlaceSoldiers(null, ownedCountries, 3));
+        PlaceSoldiers placeSoldiers = TestHelperBehavior.createPlaceSoldiers(testPlayer, ownedCountries, 3);
+        testPlayer.getBehavior().placeSoldiers(placeSoldiers);
         assertEquals(8, ownedCountries.get(0).getSoldiersCount());
         assertEquals(5, ownedCountries.get(1).getSoldiersCount());
     }
@@ -63,7 +65,9 @@ class StrategicBehaviorTest {
         ownedCountries.get(0).addNeighboringCountries(TestHelperBehavior.getCountryList(5, opponent));
         ownedCountries.get(1).addNeighboringCountries(TestHelperBehavior.getCountryList(10, testPlayer));
 
-        testPlayer.getBehavior().placeSoldiers(TestHelperBehavior.createPlaceSoldiers(null, ownedCountries, 10));
+        PlaceSoldiers placeSoldiers = TestHelperBehavior.createPlaceSoldiers(testPlayer, ownedCountries, 10);
+        testPlayer.getBehavior().placeSoldiers(placeSoldiers);
+
         assertEquals(15, ownedCountries.get(0).getSoldiersCount());
         assertEquals(5, ownedCountries.get(1).getSoldiersCount());
     }

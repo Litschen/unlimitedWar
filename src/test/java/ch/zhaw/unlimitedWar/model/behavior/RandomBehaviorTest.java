@@ -4,6 +4,7 @@ package ch.zhaw.unlimitedWar.model.behavior;
 import ch.zhaw.unlimitedWar.helpers.TestHelperBehavior;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
+import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,7 +44,8 @@ class RandomBehaviorTest {
         ownedCountries = TestHelperBehavior.getCountryList(10, testPlayer);
         int sum = 0;
         int amountPerCountry = ownedCountries.get(0).getSoldiersCount();
-        testPlayer.getBehavior().placeSoldiers(TestHelperBehavior.createPlaceSoldiers(ownedCountries, ownedCountries, 10));
+        PlaceSoldiers placeSoldiers = TestHelperBehavior.createPlaceSoldiers(testPlayer, ownedCountries, 10);
+        testPlayer.getBehavior().placeSoldiers(placeSoldiers);
 
         for (Country country : ownedCountries) {
             sum += country.getSoldiersCount();
