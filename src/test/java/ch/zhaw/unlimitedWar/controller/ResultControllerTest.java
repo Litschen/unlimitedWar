@@ -1,5 +1,7 @@
 package ch.zhaw.unlimitedWar.controller;
 
+import ch.zhaw.unlimitedWar.dao.MySQLConnectionCreator;
+import ch.zhaw.unlimitedWar.dao.PlayerDAO;
 import ch.zhaw.unlimitedWar.dao.ResultsDAO;
 import ch.zhaw.unlimitedWar.model.UserBean;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,6 +22,8 @@ class ResultControllerTest {
     private UserBean userBean;
     private HttpSession httpSession;
     private ResultController resultControllerspy;
+    private MySQLConnectionCreator mySQLConnectionCreatorMock;
+    private PlayerDAO mockPlayerDao;
 
     @BeforeEach
     void setUp() {
@@ -32,6 +36,8 @@ class ResultControllerTest {
         userBean = mock(UserBean.class);
         httpSession = mock(HttpSession.class);
         resultControllerspy = spy(new ResultController());
+        mySQLConnectionCreatorMock = new MySQLConnectionCreator();
+        mockPlayerDao = mock(PlayerDAO.class);
 
     }
 
@@ -47,18 +53,9 @@ class ResultControllerTest {
         resultController.doPost(mockRequest,mockResponse);
 
 
-       // doReturn(1).when(resultControllerspy).setUpDBConnection();
         verify(resultDAOmock, times(1)).saveResult(anyBoolean(), anyString());
 
     }
-
-
-
-
-
-
-
-
 
 
 }
