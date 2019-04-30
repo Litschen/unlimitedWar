@@ -138,8 +138,7 @@ public class Turn {
         if (!currentPlayerIsUser()) {
             if (currentPhase == Phase.SET) {
                 int soldiersToPlace = currentPlayer.calculateSoldiersToPlace(continents);
-                List<Card> cards = currentPlayer.getCards();
-                PlaceSoldiers placeSoldiers = new PlaceSoldiers(countries, currentPlayer.getOwnedCountries(), soldiersToPlace, cards);
+                PlaceSoldiers placeSoldiers = new PlaceSoldiers(countries, soldiersToPlace, currentPlayer);
                 currentPhase = currentPlayer.getBehavior().placeSoldiers(placeSoldiers);
             }
             if (currentPhase == Phase.ATTACK) {
@@ -161,8 +160,7 @@ public class Turn {
             List<Country> destination = new ArrayList<>();
             if (selectedCountry.getOwner().equals(currentPlayer)) {
                 destination.add(selectedCountry);
-                List<Card> cards = currentPlayer.getCards();
-                PlaceSoldiers placeSoldiers = new PlaceSoldiers(destination, currentPlayer.getOwnedCountries(), 0, cards);
+                PlaceSoldiers placeSoldiers = new PlaceSoldiers(destination, 0, currentPlayer);
                 setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(placeSoldiers));
             }
             resetSelectedCountries();
