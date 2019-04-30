@@ -51,6 +51,7 @@ public class PlaceSoldiers {
 
     public void setSoldiersToPlace(int soldiersToPlace) {
         this.soldiersToPlace = soldiersToPlace;
+        this.player.setSoldiersToPlace(soldiersToPlace);
     }
 
     public List<Card> getCards() {
