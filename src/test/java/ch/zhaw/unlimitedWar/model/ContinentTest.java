@@ -20,14 +20,14 @@ class ContinentTest {
     }
 
     @Test
-    void getTextColorPositiveTest() {
+    void testGetTextColorPositive() {
         continent.addCountries(TestHelperBehavior.getCountryList(5, player));
         assertEquals(player.getPlayerColor().toString(), continent.getTextColor());
 
     }
 
     @Test
-    void getTextColorNegativeTest() {
+    void testGetTextColorNegative() {
         continent.addCountries(TestHelperBehavior.getCountryList(5, player));
         continent.addCountries(TestHelperBehavior.getCountryList(5, TestHelperBehavior.getMockPlayer()));
         assertEquals(Continent.STANDARD_TEXT_COLOR, continent.getTextColor());
