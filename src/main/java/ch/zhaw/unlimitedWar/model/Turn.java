@@ -160,7 +160,7 @@ public class Turn {
             List<Country> destination = new ArrayList<>();
             if (selectedCountry.getOwner().equals(currentPlayer)) {
                 destination.add(selectedCountry);
-                PlaceSoldiers placeSoldiers = new PlaceSoldiers(destination, 0, currentPlayer);
+                PlaceSoldiers placeSoldiers = new PlaceSoldiers(destination, currentPlayer.getSoldiersToPlace(), currentPlayer);
                 setCurrentPhase(currentPlayer.getBehavior().placeSoldiers(placeSoldiers));
             }
             resetSelectedCountries();

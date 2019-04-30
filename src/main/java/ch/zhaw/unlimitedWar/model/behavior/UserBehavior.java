@@ -25,12 +25,11 @@ public class UserBehavior implements Behavior {
 
         Phase phase = Phase.SET;
         Country destination = destinationCountries.get(0);
-        Player owner = destination.getOwner();
-        if (owner.getSoldiersToPlace() > 0) {
+        if (placeSoldiers.getSoldiersToPlace() > 0) {
             if (placeSoldiers.getOwnedCountries().contains(destination)) {
                 destination.setSoldiersCount(destination.getSoldiersCount() + 1);
-                owner.setSoldiersToPlace(owner.getSoldiersToPlace() - 1);
-                if (owner.getSoldiersToPlace() == 0) {
+                placeSoldiers.setSoldiersToPlace(placeSoldiers.getSoldiersToPlace() - 1);
+                if (placeSoldiers.getSoldiersToPlace() == 0) {
                     phase = Phase.ATTACK;
                 }
             }
