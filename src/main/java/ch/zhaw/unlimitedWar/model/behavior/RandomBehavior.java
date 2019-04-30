@@ -55,6 +55,8 @@ public class RandomBehavior implements Behavior {
                     while (willContinueAttack() && selectedCountry.canInvade(targetCountry)) {
                         int attackerDice = selectedCountry.maxAmountDiceThrowsAttacker();
                         selectedCountry.invade(targetCountry, attackerDice, targetCountry.amountDiceThrowsDefender(attackerDice));
+                        selectedCountry.shiftSoldiers(Dice.roll(0,
+                                selectedCountry.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY), targetCountry);
                     }
                 } catch (Exception e) {
                     LOGGER.log(Level.WARNING, "Could not calculate AttackerDice", e);
