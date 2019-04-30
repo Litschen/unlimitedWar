@@ -25,6 +25,11 @@ public class PlayerDAO {
     private final static String UPDATE_QUERY = "UPDATE player SET username = ?, password = ? WHERE email = ?;";
     private final static String DELETE_QUERY = "DELETE FROM player WHERE email = ?;";
     private final static Logger LOGGER = Logger.getLogger(PlayerDAO.class.getName());
+
+    private final static String EXCEPTION_QUERY = "failed to execute query: ";
+    private final static String EXCEPTION_CLOSE_CONNECTION = "could not close connection";
+    private final static String EXCEPTION_CLOSE_STATEMENT = "could not close result set / statement";
+    private final static String EXCEPTION_READ_RESULT_SET = "invalid result set. can not get data";
     //endregion
 
     public PlayerDAO(Connection con) {
@@ -35,12 +40,23 @@ public class PlayerDAO {
         UserBean user = null;
 
         st = MySQLConnectionCreator.setUpQuery(con, SELECT_QUERY, Collections.singletonList(mail));
-        rs = st.executeQuery();
-        if (rs.next()) {
-            user = new UserBean();
-            user.setName(rs.getString("username"));
-            user.setMail(rs.getString("email"));
-            user.setPassword(rs.getString("password"));
+        try {
+            rs = st.executeQuery();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, EXCEPTION_QUERY + SELECT_QUERY, e);
+            throw new SQLException(e);
+        }
+
+        try {
+            if (rs.next()) {
+                user = new UserBean();
+                user.setName(rs.getString("username"));
+                user.setMail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, EXCEPTION_READ_RESULT_SET, e);
+            throw new SQLException(e);
         }
 
         closeStatement();
@@ -82,21 +98,38 @@ public class PlayerDAO {
      * @return affected rows
      */
     private int manipulateData(@NotNull String query, List<String> args) throws SQLException {
+        int result;
         st = MySQLConnectionCreator.setUpQuery(con, query, args);
-        int result = st.executeUpdate();
-        closeStatement();
+        try {
+            result = st.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, EXCEPTION_QUERY + query, e);
+            throw new SQLException(e);
+        } finally {
+            closeStatement();
+        }
         return result;
     }
 
     private void closeStatement() throws SQLException {
-        if (rs != null) {
-            rs.close();
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            st.close();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, EXCEPTION_CLOSE_STATEMENT, e);
+            throw new SQLException(e);
         }
-        st.close();
     }
 
     public void closeConnection() throws SQLException {
-        con.close();
+        try {
+            con.close();
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, EXCEPTION_CLOSE_CONNECTION, e);
+            throw new SQLException(e);
+        }
     }
 
 }
