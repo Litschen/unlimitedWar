@@ -62,9 +62,9 @@ public class Continent {
 
     private boolean continentOwnedByOnePlayer(Player player) {
         boolean samePlayer = true;
-        Iterator it = countries.iterator();
+        Iterator<Country> it = countries.iterator();
         while (it.hasNext() && samePlayer) {
-            samePlayer = ((Country) it.next()).getOwner() == player;
+            samePlayer = it.next().getOwner() == player;
         }
         return samePlayer;
     }
