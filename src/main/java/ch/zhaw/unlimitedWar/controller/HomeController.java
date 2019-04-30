@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet(name = "HomeController", urlPatterns = "/Home/*")
 public class HomeController extends HttpServlet {
@@ -22,6 +24,9 @@ public class HomeController extends HttpServlet {
     public final static String PATH_COLOR_SELECTION = "/colorSelection";
     public final static String PARAM_SELECTED_COLOR = "selectedColor";
     public final static String PARAM_PLAY = "play";
+
+    private final static Logger LOGGER = Logger.getLogger(HomeController.class.getName());
+    private final static String EXCEPTION_REDIRECT_RESPONSE = "failed to redirect response to ";
 
     private void setShowColorModal(HttpServletRequest request, boolean showColorModal) {
         request.getSession().setAttribute(Consts.SESSION_COLOR_MODAL, showColorModal);
@@ -64,7 +69,7 @@ public class HomeController extends HttpServlet {
         try {
             response.sendRedirect(request.getContextPath() + redirectPageTo);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, EXCEPTION_REDIRECT_RESPONSE + redirectPageTo, e);
         }
     }
 }
