@@ -26,14 +26,13 @@ class ResultControllerTest {
     private ResultController resultController;
     private UserBean userBean;
     private HttpSession httpSession;
-    private ResultController resultControllerspy;
     private MySQLConnectionCreator mySQLConnectionCreator;
     private ResultsDAO mockResultDAO;
     //endregion
 
     @BeforeEach
     void setUp() {
-        resultDAOmock = mock(ResultsDAO.class);
+        resultDAOMock = mock(ResultsDAO.class);
         mockRequest = mock(HttpServletRequest.class);
         when(mockRequest.getContextPath()).thenReturn("");
         mockResponse = mock(HttpServletResponse.class);
@@ -41,9 +40,8 @@ class ResultControllerTest {
         resultController = new ResultController();
         userBean = mock(UserBean.class);
         httpSession = mock(HttpSession.class);
-        resultControllerspy = spy(new ResultController());
-        mySQLConnectionCreatorMock = new MySQLConnectionCreator();
-        mockPlayerDao = mock(PlayerDAO.class);
+        mockResultDAO = mock(ResultsDAO.class);
+        mySQLConnectionCreator = mock(MySQLConnectionCreator.class);
 
     }
 
@@ -54,12 +52,15 @@ class ResultControllerTest {
         when(mockRequest.getPathInfo()).thenReturn(ResultController.PATH_SAVE);
         when(mockRequest.getSession()).thenReturn(httpSession);
         when(httpSession.getAttribute(anyString())).thenReturn(userBean);
-        when(userBean.getMail()).thenReturn("test@gmail.com");
-        when(mockRequest.getParameter(ResultController.PARAM_SELECTED_WIN)).thenReturn("xx");
-        resultController.doPost(mockRequest,mockResponse);
+        when(mySQLConnectionCreator.getResultDAO()).thenReturn(mockResultDAO);
+        when(userBean.getMail()).thenReturn(USER_MAIL);
+        when(mockRequest.getParameter(ResultController.PARAM_SELECTED_WIN)).thenReturn(PARAMETER_STRING);
+
+        mySQLConnectionCreator.getResultDAO();
+        resultController.doPost(mockRequest, mockResponse);
 
 
-        verify(resultDAOmock, times(1)).saveResult(anyBoolean(), anyString());
+        verify(resultDAOMock, times(1)).saveResult(anyBoolean(), anyString());
 
     }
 
