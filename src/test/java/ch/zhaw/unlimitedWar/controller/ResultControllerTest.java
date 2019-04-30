@@ -1,7 +1,6 @@
 package ch.zhaw.unlimitedWar.controller;
 
 import ch.zhaw.unlimitedWar.dao.MySQLConnectionCreator;
-import ch.zhaw.unlimitedWar.dao.PlayerDAO;
 import ch.zhaw.unlimitedWar.dao.ResultsDAO;
 import ch.zhaw.unlimitedWar.model.UserBean;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,15 +14,22 @@ import static org.mockito.Mockito.*;
 
 class ResultControllerTest {
 
-    private ResultsDAO resultDAOmock;
+    // region static variables
+    private final static String USER_MAIL = "test@gmail.com";
+    private final static String PARAMETER_STRING = "outcomeValues";
+    //endregion
+
+    //region data fields
+    private ResultsDAO resultDAOMock;
     private HttpServletRequest mockRequest;
     private HttpServletResponse mockResponse;
     private ResultController resultController;
     private UserBean userBean;
     private HttpSession httpSession;
     private ResultController resultControllerspy;
-    private MySQLConnectionCreator mySQLConnectionCreatorMock;
-    private PlayerDAO mockPlayerDao;
+    private MySQLConnectionCreator mySQLConnectionCreator;
+    private ResultsDAO mockResultDAO;
+    //endregion
 
     @BeforeEach
     void setUp() {
