@@ -69,6 +69,7 @@ class RandomBehaviorTest {
         }
 
         verify(invadingCountry, atLeastOnce()).invade(any(), anyInt(), anyInt());
+        verify(invadingCountry, atLeastOnce()).shiftSoldiers(anyInt(), any());
     }
 
     @Test
