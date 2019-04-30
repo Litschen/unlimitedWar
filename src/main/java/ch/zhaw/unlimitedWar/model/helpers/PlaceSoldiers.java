@@ -2,20 +2,31 @@ package ch.zhaw.unlimitedWar.model.helpers;
 
 import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
+import ch.zhaw.unlimitedWar.model.Player;
 
 import java.util.List;
 
 public class PlaceSoldiers {
+    private Player player;
     private List<Country> allCountries;
     private List<Country> ownedCountries;
     private int soldiersToPlace;
     private List<Card> cards;
 
-    public PlaceSoldiers(List<Country> allCountries, List<Country> ownedCountries, int soldiersToPlace, List<Card> cards) {
+    public PlaceSoldiers(List<Country> allCountries, int soldiersToPlace, Player player) {
         this.allCountries = allCountries;
-        this.ownedCountries = ownedCountries;
+        this.ownedCountries = player.getOwnedCountries();
         this.soldiersToPlace = soldiersToPlace;
-        this.cards = cards;
+        this.cards = player.getCards();
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public List<Country> getAllCountries() {
@@ -48,5 +59,9 @@ public class PlaceSoldiers {
 
     public void setCards(List<Card> cards) {
         this.cards = cards;
+    }
+
+    public boolean hasCards(){
+        return !cards.isEmpty();
     }
 }
