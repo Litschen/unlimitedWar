@@ -62,7 +62,4 @@ public class PlaceSoldiers {
         this.cards = cards;
     }
 
-    public boolean hasCards(){
-        return !cards.isEmpty();
-    }
 }
