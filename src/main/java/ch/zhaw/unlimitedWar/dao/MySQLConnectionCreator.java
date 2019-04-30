@@ -35,6 +35,18 @@ public class MySQLConnectionCreator {
         return playerDAO;
     }
 
+    public ResultsDAO getResultDAO() {
+        ResultsDAO resultDAO = null;
+
+        try {
+            resultDAO = new ResultsDAO(getConnection());
+        } catch (ClassNotFoundException | SQLException e) {
+            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
+        }
+
+        return resultDAO;
+    }
+
     public static PreparedStatement setUpQuery(Connection con, String sql, @NotNull List<String> args) throws SQLException {
         PreparedStatement st = con.prepareStatement(sql);
 
