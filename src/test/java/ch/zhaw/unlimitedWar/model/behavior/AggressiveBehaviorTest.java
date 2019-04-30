@@ -84,6 +84,7 @@ class AggressiveBehaviorTest {
             testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
         }
         verify(invadingCountry, atLeast(loopCnt)).invade(any(), anyInt(), anyInt());
+        verify(invadingCountry, atLeast(loopCnt)).shiftSoldiers(anyInt(), any());
 
         //attack a country further
         defendingCountry.addNeighboringCountry(defendingCountry2);
