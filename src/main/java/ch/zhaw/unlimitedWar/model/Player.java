@@ -89,10 +89,10 @@ public class Player {
         }
 
         int countryCount = this.ownedCountries.size();
-        countryCount += this.ownedCountries.stream().filter(country -> country.isCity()).count();
+        int cityCount = (int) this.ownedCountries.stream().filter(country -> country.isCity()).count();
         int capitalCount = (int) this.ownedCountries.stream().filter(country -> country.isCapital()).count();
 
-        return Math.max(COUNTRY_WEIGHT, (countryCount / COUNTRY_WEIGHT)) + capitalCount + continentBoni;
+        return Math.max(COUNTRY_WEIGHT, ((countryCount + cityCount) / COUNTRY_WEIGHT)) + capitalCount + continentBoni;
     }
 
 }
