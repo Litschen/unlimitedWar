@@ -39,13 +39,15 @@ class ResultControllerTest {
     @Test
     void testSaveResultIsCalled() throws Exception {
 
-        resultController.doPost(mockRequest,mockResponse);
         when(mockRequest.getPathInfo()).thenReturn(ResultController.PATH_SAVE);
         when(mockRequest.getSession()).thenReturn(httpSession);
         when(httpSession.getAttribute(anyString())).thenReturn(userBean);
-        when(mockRequest.getParameter(anyString())).thenReturn(ResultController.PARAM_SELECTED_WIN);
+        when(userBean.getMail()).thenReturn("test@gmail.com");
+        when(mockRequest.getParameter(ResultController.PARAM_SELECTED_WIN)).thenReturn("xx");
+        resultController.doPost(mockRequest,mockResponse);
 
-        doReturn(1).when(resultControllerspy).setUpDBConnection();
+
+       // doReturn(1).when(resultControllerspy).setUpDBConnection();
         verify(resultDAOmock, times(1)).saveResult(anyBoolean(), anyString());
 
     }
