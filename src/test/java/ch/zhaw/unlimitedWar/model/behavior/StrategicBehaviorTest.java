@@ -1,7 +1,6 @@
 package ch.zhaw.unlimitedWar.model.behavior;
 
 import ch.zhaw.unlimitedWar.helpers.TestHelperBehavior;
-import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
 import ch.zhaw.unlimitedWar.model.enums.PlayerColor;
@@ -87,7 +86,7 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void testAttackCountryWeakest() {
+    void testAttackCountryWeakestAndShift() {
         List<Country> toBeInvaded;
         Country invadingCountry = Mockito.spy(new Country("", 3, testPlayer));
 
@@ -97,6 +96,7 @@ class StrategicBehaviorTest {
         }
 
         verify(invadingCountry, atLeast(10)).invade(any(), anyInt(), anyInt());
+        verify(invadingCountry, atLeast(10)).shiftSoldiers(anyInt(), any());
     }
 
     @Test
