@@ -149,7 +149,7 @@ public class UserController extends HttpServlet {
 
         String pwd = request.getParameter(PARAM_PASSWORD);
         if (pwd != null && pwd.equals(request.getParameter(PARAM_CONFIRM_PASSWORD))) {
-            user.setPasswordFirstTime(request.getParameter(PARAM_PASSWORD));
+            user.setPasswordHash(request.getParameter(PARAM_PASSWORD));
         } else {
             valid = false;
             user = new UserBean();
@@ -194,7 +194,7 @@ public class UserController extends HttpServlet {
         return events;
     }
 
-    public static String getPasswordMD5Text(String password) {
+    public static String getPasswordHash(String password) {
         BigInteger number = BigInteger.valueOf(0);
         try {
             MessageDigest md = MessageDigest.getInstance(HASH_INSTANCE);

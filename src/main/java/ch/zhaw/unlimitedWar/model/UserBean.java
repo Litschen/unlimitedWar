@@ -2,7 +2,7 @@ package ch.zhaw.unlimitedWar.model;
 
 import java.io.Serializable;
 
-import static ch.zhaw.unlimitedWar.controller.UserController.getPasswordMD5Text;
+import static ch.zhaw.unlimitedWar.controller.UserController.getPasswordHash;
 
 public class UserBean implements Serializable {
 
@@ -37,8 +37,8 @@ public class UserBean implements Serializable {
        this.md5Password = md5Password;
     }
 
-    public void setPasswordFirstTime(String password){
-        this.md5Password = getPasswordMD5Text(password);
+    public void setPasswordHash(String password){
+        this.md5Password = getPasswordHash(password);
     }
 
 }
