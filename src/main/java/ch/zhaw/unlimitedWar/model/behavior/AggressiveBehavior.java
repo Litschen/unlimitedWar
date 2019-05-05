@@ -91,6 +91,13 @@ public class AggressiveBehavior implements Behavior {
                             int attackerDice = invadingCountry.maxAmountDiceThrowsAttacker();
                             int defenderDice = neighbor.amountDiceThrowsDefender(attackerDice);
                             invadingCountry.invade(neighbor, attackerDice, defenderDice);
+
+                            int invadingCountryCount = countInvadableCountries(invadingCountry);
+                            int neighborCount = countInvadableCountries(neighbor);
+                            if (neighborCount > invadingCountryCount) {
+                                invadingCountry.shiftSoldiers(invadingCountry.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY,
+                                        neighbor);
+                            }
                         } catch (Exception e) {
                             LOGGER.log(Level.WARNING, "Could not calculate AttackerDice", e);
                         }
@@ -113,6 +120,16 @@ public class AggressiveBehavior implements Behavior {
             }
         }
         return Phase.SET;
+    }
+
+    private int countInvadableCountries(Country country) {
+        int result = 0;
+        for (Country neighbor : country.getNeighboringCountries()) {
+            if (country.canInvade(neighbor)) {
+                result++;
+            }
+        }
+        return result;
     }
 
     /**
