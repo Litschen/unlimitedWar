@@ -13,11 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+
 
 @WebServlet(name = "UserController", urlPatterns = "/user/*")
 public class UserController extends HttpServlet {
@@ -57,6 +61,13 @@ public class UserController extends HttpServlet {
     private PlayerDAO playerDAO;
     private List<Event> events;
     private MySQLConnectionCreator connectionCreator = new MySQLConnectionCreator();
+
+    //region static variables
+    public static final String HASH_INSTANCE = "MD5";
+    public static final int SIGNUM_POSITIVE_VALUE = 1;
+    public static final int MD5_HASH_NUMBER = 16;
+    public static final String DATABASE_ERROR = "DATABASE ERROR: Could not establish connection";
+
     //endregion
 
 
@@ -181,5 +192,18 @@ public class UserController extends HttpServlet {
 
     List<Event> getEvents() {
         return events;
+    }
+
+    public static String getPasswordMD5Text(String password) {
+        BigInteger number = BigInteger.valueOf(0);
+        try {
+            MessageDigest md = MessageDigest.getInstance(HASH_INSTANCE);
+            byte[] messageDigest = md.digest(password.getBytes());
+            number = new BigInteger(SIGNUM_POSITIVE_VALUE, messageDigest);
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
+        }
+       return number.toString(MD5_HASH_NUMBER);
+
     }
 }
