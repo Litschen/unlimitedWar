@@ -24,6 +24,7 @@ public class ResultsDAO {
         this.con = con;
     }
 
+
     public List<ResultBean> getAllResultsOfUser(String mail) throws SQLException {
         List<ResultBean> results = new ArrayList<>();
 
@@ -76,6 +77,7 @@ public class ResultsDAO {
     public void closeConnection() throws SQLException {
         con.close();
     }
+
 
 
 }

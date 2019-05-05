@@ -56,9 +56,7 @@ class ResultControllerTest {
         when(userBean.getMail()).thenReturn(USER_MAIL);
         when(mockRequest.getParameter(ResultController.PARAM_SELECTED_WIN)).thenReturn(PARAMETER_STRING);
 
-        mySQLConnectionCreator.getResultDAO();
         resultController.doPost(mockRequest, mockResponse);
-
 
         verify(resultDAOMock, times(1)).saveResult(anyBoolean(), anyString());
 

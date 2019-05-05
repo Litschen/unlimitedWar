@@ -1,5 +1,6 @@
 package ch.zhaw.unlimitedWar.dao;
 
+import ch.zhaw.unlimitedWar.controller.UserController;
 import ch.zhaw.unlimitedWar.model.UserBean;
 import org.jetbrains.annotations.NotNull;
 

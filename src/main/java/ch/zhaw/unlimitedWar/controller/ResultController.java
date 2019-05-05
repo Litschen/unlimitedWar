@@ -27,6 +27,7 @@ public class ResultController extends HttpServlet {
     public final static String PATH_SAVE = "/Save";
     public final static String PARAM_SELECTED_WIN = "win";
     private final static Logger LOGGER = Logger.getLogger(ResultSet.class.getName());
+    private MySQLConnectionCreator connectionCreator = new MySQLConnectionCreator();
     public static final String DATABASE_ERROR = "DATABASE ERROR: Could not establish connection";
     //endregion
 
@@ -44,6 +45,8 @@ public class ResultController extends HttpServlet {
         }catch (Exception e){ LOGGER.log(Level.WARNING, DATABASE_ERROR, e);}
         return resultOfUser;
     }
+
+
 
     // endregion
 
@@ -73,8 +76,9 @@ public class ResultController extends HttpServlet {
             LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
         }
     }
-    private void setUpDBConnection() {
+    public void setUpDBConnection() {
         try {
+            connectionCreator.getResultDAO();
             resultDAO = new ResultsDAO(MySQLConnectionCreator.getConnection());
         } catch (ClassNotFoundException | SQLException e) {
             LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
