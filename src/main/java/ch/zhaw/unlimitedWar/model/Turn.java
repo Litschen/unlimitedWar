@@ -3,6 +3,7 @@ package ch.zhaw.unlimitedWar.model;
 import ch.zhaw.unlimitedWar.model.behavior.UserBehavior;
 import ch.zhaw.unlimitedWar.model.enums.Flag;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
+import ch.zhaw.unlimitedWar.model.events.UserEvent;
 import ch.zhaw.unlimitedWar.model.helpers.PlaceSoldiers;
 import ch.zhaw.unlimitedWar.model.interfaces.Event;
 
@@ -26,6 +27,9 @@ public class Turn {
     private Flag flag;
     private Phase currentPhase = Phase.SET;
     private int turnNumber;
+
+    public final static String SET_COUNTRY_ERROR = "Attacking or defending country could not be set";
+    public final static String SET_COUNTRY_ERROR_TITLE = "Attack failed";
     //endregion
 
     //region static variables
@@ -205,8 +209,8 @@ public class Turn {
                 attackDiceCount = firstSelectedCountry.maxAmountDiceThrowsAttacker();
                 defendDiceCount = secondSelectedCountry.amountDiceThrowsDefender(attackDiceCount);
             } catch (Exception e) {
-                LOGGER.log(Level.WARNING, "Attacking or defending country could not be set", e);
-                // TODO @huguemiz MS3 /F0100/ show error message on GUI
+                LOGGER.log(Level.WARNING, SET_COUNTRY_ERROR, e);
+                occurredEvents.add(new UserEvent(SET_COUNTRY_ERROR_TITLE, SET_COUNTRY_ERROR));
             }
         }
     }
