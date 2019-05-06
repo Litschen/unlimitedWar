@@ -76,6 +76,16 @@ public class StrategicBehavior implements Behavior {
                             attackerDice = attacker.maxAmountDiceThrowsAttacker();
                             defenderDice = defender.amountDiceThrowsDefender(attackerDice);
                         }
+                        if (attacker.getOwner() == defender.getOwner()) {
+                            int attackerScore = rateCountry(attacker);
+                            int defenderScore = rateCountry(defender);
+                            boolean shifted = true;
+                            while (shifted && defenderScore < attackerScore) {
+                                shifted = attacker.shiftSoldiers(1, defender);
+                                attackerScore = rateCountry(attacker);
+                                defenderScore = rateCountry(defender);
+                            }
+                        }
                     }
                 } catch (Exception e) {
                     LOGGER.log(Level.WARNING, "Could not calculate AttackerDice", e);
@@ -139,8 +149,8 @@ public class StrategicBehavior implements Behavior {
     private List<AttackScore> rateCountries(List<Country> ownedCountries) {
         List<AttackScore> scores = new ArrayList<>();
         for (Country currentCountry : ownedCountries) {
-            int score = rateCountry(currentCountry);
             for (Country neighbor : currentCountry.getNeighboringCountries()) {
+                int score = rateCountry(currentCountry);
                 if (neighbor.getOwner() != currentCountry.getOwner()) {
                     scores.add(new AttackScore(score, currentCountry, neighbor));
                 }
