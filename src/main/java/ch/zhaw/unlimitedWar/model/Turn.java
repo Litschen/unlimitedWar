@@ -166,13 +166,23 @@ public class Turn {
             resetSelectedCountries();
         } else if (currentPhase == Phase.ATTACK) {
             if (firstSelectedCountry != null && secondSelectedCountry != null) {
+                if (flag == Flag.MOVE_AFTER_INVASION) {
+                    List<Country> countryList = new ArrayList<>();
+                    countryList.add(firstSelectedCountry);
+                    countryList.add(secondSelectedCountry);
+                    currentPlayer.getBehavior().moveSoldiers(countryList, currentPlayer.getOwnedCountries());
+                }
                 List<Country> countryList = new ArrayList<>();
                 countryList.add(firstSelectedCountry);
                 countryList.add(secondSelectedCountry);
                 addEvents(
                         currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries())
                                 .getOccurredEvents());
-                resetSelectedCountries();
+                if (firstSelectedCountry.getOwner() == secondSelectedCountry.getOwner() && firstSelectedCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
+                    flag = Flag.MOVE_AFTER_INVASION;
+                } else {
+                    resetSelectedCountries();
+                }
                 eliminatePlayersAndCheckUserResult();
             } else {
                 setAttackAndDefendCountry(selectedCountry);
