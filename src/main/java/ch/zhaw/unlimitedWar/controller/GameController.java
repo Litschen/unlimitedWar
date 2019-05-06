@@ -4,6 +4,7 @@ import ch.zhaw.unlimitedWar.model.Board;
 import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
+import ch.zhaw.unlimitedWar.model.enums.Flag;
 import ch.zhaw.unlimitedWar.model.interfaces.Event;
 
 import javax.servlet.annotation.WebServlet;
@@ -62,7 +63,11 @@ public class GameController extends HttpServlet {
                 } else if (request.getParameter(PARAM_NEXT_TURN) != null) {
                     board.getCurrentTurn().executeTurn();
                 } else if (request.getParameter(PARAM_END) != null) {
-                    board.getCurrentTurn().moveToNextPhase();
+                    if (board.getCurrentTurn().getFlag() != Flag.MOVE_AFTER_INVASION) {
+                        board.getCurrentTurn().moveToNextPhase();
+                    } else {
+                        board.getCurrentTurn().resetSelectedCountries();
+                    }
                 } else if (board.getCurrentTurn().currentPlayerIsUser() && request.getPathInfo() != null && !request.getPathInfo().equals(PATH_RESULT)) {
                     Country chosenCountry = extractSelectedCountry(request);
                     String path = request.getPathInfo();
