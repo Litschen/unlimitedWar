@@ -21,6 +21,7 @@ import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 class StrategicBehaviorTest {
 
@@ -72,21 +73,23 @@ class StrategicBehaviorTest {
     }
 
     @Test
-    void testAttackCountryWeakDefend() {
+    void testAttackCountryWeakDefendAndShift() {
         List<Country> toBeInvaded = new ArrayList<>();
         Country invadingCountry = Mockito.spy(new Country("", 1, testPlayer));
-
+        when(invadingCountry.shiftSoldiers(anyInt(), any())).thenReturn(false);
         for (int i = 0; i < 10; i++) {
             setupWeakDefended(invadingCountry, 100, 1, 5);
             testPlayer.getBehavior().attackCountry(toBeInvaded, testPlayer.getOwnedCountries());
 
         }
 
+
         verify(invadingCountry, atLeast(50)).invade(any(), anyInt(), anyInt());
+        verify(invadingCountry, atLeast(50)).shiftSoldiers(anyInt(), any());
     }
 
     @Test
-    void testAttackCountryWeakestAndShift() {
+    void testAttackCountryWeakest() {
         List<Country> toBeInvaded;
         Country invadingCountry = Mockito.spy(new Country("", 3, testPlayer));
 
@@ -96,7 +99,6 @@ class StrategicBehaviorTest {
         }
 
         verify(invadingCountry, atLeast(10)).invade(any(), anyInt(), anyInt());
-        verify(invadingCountry, atLeast(10)).shiftSoldiers(anyInt(), any());
     }
 
     @Test
