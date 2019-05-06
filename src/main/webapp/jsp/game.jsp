@@ -72,13 +72,14 @@
                 <span>Soldiers to place: <span class="emphasise"><c:out
                         value="${board.getCurrentTurn().getCurrentPlayer().soldiersToPlace}"/></span></span>
             </c:if>
-            <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACK}">
+            <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.ATTACK && board.getCurrentTurn().getFlag() != Flag.MOVE_AFTER_INVASION}">
                 <button type="submit" name="end" class="btn btn-primary">End Attack Phase</button>
             </c:if>
-            <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVE && board.getCurrentTurn().getFlag() == Flag.MOVE}">
+            <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVE &&
+            board.getCurrentTurn().getFlag() == Flag.MOVE || board.getCurrentTurn().getFlag() == Flag.MOVE_AFTER_INVASION}">
                 <button type="submit" name="move" class="btn btn-primary">Move a Soldier</button>
             </c:if>
-            <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVE}">
+            <c:if test="${board.getCurrentTurn().getCurrentPhase() == Phase.MOVE || board.getCurrentTurn().getFlag() == Flag.MOVE_AFTER_INVASION}">
                 <button type="submit" name="end" class="btn btn-primary">Don't Move Soldiers</button>
             </c:if>
         </c:if>
