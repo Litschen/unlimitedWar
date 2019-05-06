@@ -5,6 +5,6 @@ package ch.zhaw.unlimitedWar.model.enums;
  */
 public enum Flag {
 
-    ATTACK, MOVE, TURN_END, GAME_WIN, GAME_LOSE, NONE
+    ATTACK, MOVE_AFTER_INVASION, MOVE, TURN_END, GAME_WIN, GAME_LOSE, NONE
 
 }
