@@ -1,5 +1,6 @@
 package ch.zhaw.unlimitedWar.model.behavior;
 
+import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
@@ -26,6 +27,13 @@ public class AggressiveBehavior implements Behavior {
     public Phase placeSoldiers(PlaceSoldiers placeSoldiers) {
         List<Country> ownedCountries = placeSoldiers.getOwnedCountries();
         int soldiersToPlace = placeSoldiers.getSoldiersToPlace();
+
+        List<Card> cards = placeSoldiers.getPlayer().getCards();
+        while (!cards.isEmpty()) {
+            Card card = cards.get(0);
+            soldiersToPlace += card.getCardBonus(placeSoldiers.getPlayer());
+            placeSoldiers.getPlayer().removeCard(card);
+        }
 
         if (ownedCountries.size() > 0) {
             List<Country> countriesToPlace = mostEffectiveCountry(ownedCountries, ownedCountries.get(0).getOwner());

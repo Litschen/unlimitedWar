@@ -65,6 +65,39 @@ class AggressiveBehaviorTest {
     }
 
     @Test
+    void testUseCardOnSet() {
+        Country countryOfCard = new Country("Test", 10, testPlayer);
+        PlaceSoldiers placeSoldiers = TestHelperBehavior.setUpPlaceSoldierWithCards(testPlayer, countryOfCard, 1, false, 1);
+
+        testPlayer.getBehavior().placeSoldiers(placeSoldiers);
+
+        assertEquals(0, testPlayer.getCards().size());
+        assertEquals(21, countryOfCard.getSoldiersCount());
+    }
+
+    @Test
+    void testUseCardOnSetWithOwningBonus() {
+        Country countryOfCard = new Country("Test", 10, testPlayer);
+        PlaceSoldiers placeSoldiers = TestHelperBehavior.setUpPlaceSoldierWithCards(testPlayer, countryOfCard, 1, true, 1);
+
+        testPlayer.getBehavior().placeSoldiers(placeSoldiers);
+
+        assertEquals(0, testPlayer.getCards().size());
+        assertEquals(22, countryOfCard.getSoldiersCount());
+    }
+
+    @Test
+    void testUseMultipleCardOnSet() {
+        Country countryOfCard = new Country("Test", 10, testPlayer);
+        PlaceSoldiers placeSoldiers = TestHelperBehavior.setUpPlaceSoldierWithCards(testPlayer, countryOfCard, 1, false, 5);
+
+        testPlayer.getBehavior().placeSoldiers(placeSoldiers);
+
+        assertEquals(0, testPlayer.getCards().size());
+        assertEquals(25, countryOfCard.getSoldiersCount());
+    }
+
+    @Test
     void testAttackCountry() {
         int loopCnt = 100;
         int soldiersAttacker = 10;

@@ -3,7 +3,7 @@ package ch.zhaw.unlimitedWar.model;
 import org.jetbrains.annotations.NotNull;
 
 public class Card {
-    private final static int OWNING_BONUS = 1;
+    public final static int OWNING_BONUS = 1;
 
     private int soldierBonus;
     private Country country;

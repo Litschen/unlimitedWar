@@ -79,4 +79,28 @@ public class TestHelperBehavior {
         player.addOwnedCountries(ownedCountries);
         return new PlaceSoldiers(null, soldiersToPlace, player);
     }
+
+    public static PlaceSoldiers setUpPlaceSoldierWithCards(Player player, Country countryOfCard, int bonus, boolean owning, int amountCards) {
+        player.getCards().clear();
+
+        for (int i = 0; i < amountCards; i++) {
+            player.addCard(createMockCard(countryOfCard, bonus, owning));
+        }
+        return TestHelperBehavior.createPlaceSoldiers(player, Collections.singletonList(countryOfCard), 10);
+    }
+
+    public static Card createMockCard(Country countryOfCard, int bonus, boolean owningBonus) {
+        Card card = mock(Card.class);
+        when(card.getCountry()).thenReturn(countryOfCard);
+        when(card.getCardName()).thenReturn("Test");
+        when(card.getSoldierBonus()).thenReturn(bonus);
+
+        if (owningBonus) {
+            when(card.getCardBonus(anyObject())).thenReturn(bonus + Card.OWNING_BONUS);
+        } else {
+            when(card.getCardBonus(anyObject())).thenReturn(bonus);
+        }
+
+        return card;
+    }
 }

@@ -11,13 +11,11 @@ public class PlaceSoldiers {
     private List<Country> allCountries;
     private List<Country> ownedCountries;
     private int soldiersToPlace;
-    private List<Card> cards;
 
     public PlaceSoldiers(List<Country> allCountries, int soldiersToPlace, Player player) {
         this.allCountries = allCountries;
         this.ownedCountries = player.getOwnedCountries();
         this.soldiersToPlace = soldiersToPlace;
-        this.cards = player.getCards();
         this.player = player;
     }
 
@@ -52,14 +50,6 @@ public class PlaceSoldiers {
     public void setSoldiersToPlace(int soldiersToPlace) {
         this.soldiersToPlace = soldiersToPlace;
         this.player.setSoldiersToPlace(soldiersToPlace);
-    }
-
-    public List<Card> getCards() {
-        return cards;
-    }
-
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
     }
 
 }
