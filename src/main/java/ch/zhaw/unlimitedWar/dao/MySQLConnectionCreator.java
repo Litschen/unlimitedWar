@@ -42,7 +42,7 @@ public class MySQLConnectionCreator {
         try {
             resultDAO = new ResultsDAO(getConnection());
         } catch (ClassNotFoundException | SQLException e) {
-            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, CONNECTION_ERROR, e);
         }
 
         return resultDAO;
