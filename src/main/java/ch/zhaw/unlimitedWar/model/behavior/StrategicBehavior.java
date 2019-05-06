@@ -139,15 +139,25 @@ public class StrategicBehavior implements Behavior {
     private List<AttackScore> rateCountries(List<Country> ownedCountries) {
         List<AttackScore> scores = new ArrayList<>();
         for (Country currentCountry : ownedCountries) {
+            int score = rateCountry(currentCountry);
             for (Country neighbor : currentCountry.getNeighboringCountries()) {
-                int attackScore = currentCountry.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
                 if (neighbor.getOwner() != currentCountry.getOwner()) {
-                    attackScore -= (neighbor.getSoldiersCount() == Country.MIN_SOLDIERS_TO_STAY) ? COUNTRY_IS_WEAK_DEFENDED_BONUS : neighbor.getSoldiersCount();
-                    scores.add(new AttackScore(attackScore, currentCountry, neighbor));
+                    scores.add(new AttackScore(score, currentCountry, neighbor));
                 }
             }
         }
         scores.sort(new AttackScoreComparator());
         return scores;
+    }
+
+    private int rateCountry(Country country) {
+        int score = country.getSoldiersCount() - Country.MIN_SOLDIERS_TO_STAY;
+        for (Country neighboringCountry : country.getNeighboringCountries()) {
+            if (neighboringCountry.getOwner() != country.getOwner()) {
+                score -= (neighboringCountry.getSoldiersCount() == Country.MIN_SOLDIERS_TO_STAY) ?
+                        COUNTRY_IS_WEAK_DEFENDED_BONUS : neighboringCountry.getSoldiersCount();
+            }
+        }
+        return score;
     }
 }
