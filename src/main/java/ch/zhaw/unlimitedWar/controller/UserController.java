@@ -105,9 +105,12 @@ public class UserController extends HttpServlet {
         try {
             if (request.getParameter(PARAM_CANCEL) == null) {
                 playerDAO = connectionCreator.getPlayerDAO();
+                UserBean tmpUser = new UserBean();
 
                 if (playerDAO != null) {
-                    if (getUserDataFromInput(request)) {
+                    tmpUser = getUserDataFromInput(request);
+                    if (events.isEmpty()) {
+                        user = tmpUser;
                         if (request.getParameter(PARAM_REGISTER) != null) {
                             forwardPageTo = registerUser();
                         } else if (request.getParameter(PARAM_SAVE) != null) {
@@ -121,6 +124,9 @@ public class UserController extends HttpServlet {
                 }
                 if (forwardPageTo.equals(HOME_PAGE)) {
                     setSessionUser(request.getSession(), user);
+                    request.getSession().setAttribute(Consts.SESSION_TMP_USER, null);
+                } else {
+                    request.getSession().setAttribute(Consts.SESSION_TMP_USER, tmpUser);
                 }
             }
 
@@ -131,32 +137,27 @@ public class UserController extends HttpServlet {
         }
     }
 
-    boolean getUserDataFromInput(HttpServletRequest request) {
-        boolean valid = true;
+    UserBean getUserDataFromInput(HttpServletRequest request) {
+        UserBean tmpUser = new UserBean();
 
-        user = new UserBean();
-        user.setName(request.getParameter(PARAM_NAME));
-        if(user.getName() == null || user.getName().equals("")){
-            valid = false;
+        tmpUser.setName(request.getParameter(PARAM_NAME));
+        if(tmpUser.getName() == null || tmpUser.getName().equals("")){
             events.add(new UserEvent(EVENT_NAME_ERROR_TITLE, EVENT_NAME_ERROR_MSG));
         }
 
-        user.setMail(request.getParameter(PARAM_MAIL));
-        if(user.getMail() == null || user.getMail().equals("")){
-            valid = false;
+        tmpUser.setMail(request.getParameter(PARAM_MAIL));
+        if(tmpUser.getMail() == null || tmpUser.getMail().equals("")){
             events.add(new UserEvent(EVENT_MAIL_ERROR_TITLE, EVENT_MAIL_ERROR_MSG));
         }
 
         String pwd = request.getParameter(PARAM_PASSWORD);
         if (pwd != null && pwd.equals(request.getParameter(PARAM_CONFIRM_PASSWORD))) {
-            user.setPasswordHash(request.getParameter(PARAM_PASSWORD));
+            tmpUser.setPasswordHash(request.getParameter(PARAM_PASSWORD));
         } else {
-            valid = false;
-            user = new UserBean();
             events.add(new UserEvent(EVENT_PWD_ERROR_TITLE, EVENT_PWD_ERROR_MSG));
         }
 
-        return valid;
+        return tmpUser;
     }
 
     private String registerUser() {
