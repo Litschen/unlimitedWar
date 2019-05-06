@@ -2,23 +2,23 @@ package ch.zhaw.unlimitedWar.dao;
 
 import ch.zhaw.unlimitedWar.model.ResultBean;
 
-import java.sql.Date;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class ResultsDAO {
-    private ResultSet rs;
-    private final Connection con;
-    private PreparedStatement st;
 
+    //region static variables
     private final static String INSERT_RESULT_QUERY = "INSERT INTO result (Outcome, Date , REmail) VALUES(?, ?, ?);";
     private final static String SELECT_RESULTS_QUERY = "SELECT outcome, date FROM result WHERE remail = ? ORDER BY date DESC;";
+    private final Connection con;
+    //endregion
+    //region data fields
+    private ResultSet rs;
+    private PreparedStatement st;
+    //endregion
 
     public ResultsDAO(Connection con) {
         this.con = con;
@@ -77,7 +77,4 @@ public class ResultsDAO {
     public void closeConnection() throws SQLException {
         con.close();
     }
-
-
-
 }
