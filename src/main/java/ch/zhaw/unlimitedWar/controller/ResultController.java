@@ -45,7 +45,9 @@ public class ResultController extends HttpServlet {
         return resultOfUser;
     }
 
-
+    void setMySQLConnectionCreator(MySQLConnectionCreator mySQLConnectionCreator){
+        this.connectionCreator = mySQLConnectionCreator;
+    }
 
     // endregion
 
@@ -77,10 +79,6 @@ public class ResultController extends HttpServlet {
     }
     public void setUpDBConnection() {
         resultDAO = connectionCreator.getResultDAO();
-    }
-
-    void setmySQLConnectionCreator(MySQLConnectionCreator mySQLConnectionCreator){
-        this.connectionCreator = mySQLConnectionCreator;
     }
 
 }
