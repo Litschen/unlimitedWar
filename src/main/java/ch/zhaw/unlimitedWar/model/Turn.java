@@ -28,8 +28,8 @@ public class Turn {
     private Phase currentPhase = Phase.SET;
     private int turnNumber;
 
-    public final static String SET_COUNTRY_ERROR = "Attacking or defending country could not be set";
-    public final static String SET_COUNTRY_ERROR_TITLE = "Attack failed";
+    private final static String SET_COUNTRY_ERROR = "Attacking or defending country could not be set";
+    private final static String SET_COUNTRY_ERROR_TITLE = "Attack failed";
     //endregion
 
     //region static variables

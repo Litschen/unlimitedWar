@@ -63,11 +63,10 @@ public class UserController extends HttpServlet {
     private MySQLConnectionCreator connectionCreator = new MySQLConnectionCreator();
 
     //region static variables
-    public static final String HASH_INSTANCE = "MD5";
-    public static final int SIGNUM_POSITIVE_VALUE = 1;
-    public static final int MD5_HASH_NUMBER = 16;
-    public static final String DATABASE_ERROR = "DATABASE ERROR: Could not establish connection";
-
+    private static final String HASH_INSTANCE = "MD5";
+    private static final int SIGNUM_POSITIVE_VALUE = 1;
+    private static final int MD5_HASH_NUMBER = 16;
+    private static final String DATABASE_ERROR = "DATABASE ERROR: Could not establish connection";
     //endregion
 
 

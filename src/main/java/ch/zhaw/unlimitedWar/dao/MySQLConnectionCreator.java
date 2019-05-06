@@ -19,7 +19,7 @@ public class MySQLConnectionCreator {
     private final static Logger LOGGER = Logger.getLogger(MySQLConnectionCreator.class.getName());
     public static final String CONNECTION_ERROR = "DATABASE ERROR: Could not establish connection";
 
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
+    private static Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName(jdbcDriver);
         return DriverManager.getConnection(dbURL, user, pw);
     }

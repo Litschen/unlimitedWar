@@ -18,7 +18,7 @@ class CardTest {
     }
 
     @Test
-    public void testGetCardName() {
+    void testGetCardName() {
         when(mockCountry.getName()).thenReturn("name");
 
         assertEquals("name", card.getCardName());
@@ -26,7 +26,7 @@ class CardTest {
     }
 
     @Test
-    public void testCardBonus() {
+    void testCardBonus() {
         Player player = mock(Player.class);
         when(mockCountry.getOwner()).thenReturn(null);
 
@@ -34,7 +34,7 @@ class CardTest {
     }
 
     @Test
-    public void testCardBonusWithOwningBonus() {
+    void testCardBonusWithOwningBonus() {
         Player player = mock(Player.class);
         when(mockCountry.getOwner()).thenReturn(player);
 
@@ -42,7 +42,7 @@ class CardTest {
     }
 
     @Test
-    public void testIsPlayerOwner() {
+    void testIsPlayerOwner() {
         Player player = mock(Player.class);
         when(mockCountry.getOwner()).thenReturn(player);
 
@@ -51,7 +51,7 @@ class CardTest {
     }
 
     @Test
-    public void testIsNotPlayerOwner() {
+    void testIsNotPlayerOwner() {
         Player player = mock(Player.class);
         when(mockCountry.getOwner()).thenReturn(null);
 
