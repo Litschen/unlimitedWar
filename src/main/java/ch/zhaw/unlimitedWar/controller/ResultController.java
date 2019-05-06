@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -77,12 +76,11 @@ public class ResultController extends HttpServlet {
         }
     }
     public void setUpDBConnection() {
-        try {
-            connectionCreator.getResultDAO();
-            resultDAO = new ResultsDAO(MySQLConnectionCreator.getConnection());
-        } catch (ClassNotFoundException | SQLException e) {
-            LOGGER.log(Level.SEVERE, DATABASE_ERROR, e);
-        }
+        resultDAO = connectionCreator.getResultDAO();
+    }
+
+    void setmySQLConnectionCreator(MySQLConnectionCreator mySQLConnectionCreator){
+        this.connectionCreator = mySQLConnectionCreator;
     }
 
 }

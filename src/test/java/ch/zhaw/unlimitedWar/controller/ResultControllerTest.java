@@ -35,7 +35,7 @@ class ResultControllerTest {
 
     @BeforeEach
     void setUp() {
-        resultDAOMock = mock(ResultsDAO.class);
+
         mockRequest = mock(HttpServletRequest.class);
         when(mockRequest.getContextPath()).thenReturn("");
         mockResponse = mock(HttpServletResponse.class);
@@ -61,12 +61,14 @@ class ResultControllerTest {
         when(userBean.getMail()).thenReturn(USER_MAIL);
         when(mockRequest.getParameter(ResultController.PARAM_SELECTED_WIN)).thenReturn(PARAMETER_STRING);
 
-       // when(mockResultDAO.getAllResultsOfUser(USER_MAIL)).thenReturn(Collections.singletonList(new ResultBean()));
+        resultController.setmySQLConnectionCreator(mySQLConnectionCreator);
         resultController.doPost(mockRequest, mockResponse);
 
         verify(resultDAOMock, times(1)).saveResult(anyBoolean(), anyString());
 
     }
+
+
 
 
 }
