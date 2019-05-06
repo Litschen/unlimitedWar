@@ -37,9 +37,8 @@ class PlayerDAOTest {
 
     @Test
     void testPlayerDAO() throws Exception {
-        int affectedRows;
         // ----- test insert -----
-        affectedRows = testDAO.createNewPlayer(username, mail, password);
+        int affectedRows = testDAO.createNewPlayer(username, mail, password);
         assertEquals(1, affectedRows);
 
         // ----- test select -----
