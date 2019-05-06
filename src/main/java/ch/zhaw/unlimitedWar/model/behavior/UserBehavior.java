@@ -13,10 +13,7 @@ public class UserBehavior implements Behavior {
 
     /**
      * Puts one soldier on the destinationCountries[0] country. This is repeated until there are no soldiers to place
-     *
-     * @param destinationCountries on index 0 is the select country to place 1 soldier
-     * @param ownedCountries       countries from current player
-     * @param soldiersToPlace      unused
+     * @param placeSoldiers  Object with Solders attribute, List whit all Countries and owned Countries
      * @return phase set as long as soldiersToPlace of the owner is greater than 0 otherwise attack phase
      */
     @Override
