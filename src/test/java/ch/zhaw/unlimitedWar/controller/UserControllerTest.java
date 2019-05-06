@@ -53,7 +53,7 @@ public class UserControllerTest {
 
         controller.doGet(mockRequest, mockResponse);
         verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
-        verify(mockSession, times(3)).setAttribute(anyString(), anyObject());
+        verify(mockSession, times(4)).setAttribute(anyString(), anyObject());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class UserControllerTest {
 
         controller.doGet(mockRequest, mockResponse);
         verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
-        verify(mockSession, times(3)).setAttribute(anyString(), anyObject());
+        verify(mockSession, times(4)).setAttribute(anyString(), anyObject());
         assertEquals(1, controller.getEvents().size());
     }
 
@@ -85,12 +85,12 @@ public class UserControllerTest {
     void testGetUserDataFromInputValid() throws IOException {
         setUpUserParams();
 
-        controller.getUserDataFromInput(mockRequest);
+        UserBean user = controller.getUserDataFromInput(mockRequest);
 
         assertEquals(0, controller.getEvents().size());
-        assertEquals("a", controller.getUser().getName());
-        assertEquals("a@a.a", controller.getUser().getMail());
-        assertNotNull(controller.getUser().getPassword());
+        assertEquals("a", user.getName());
+        assertEquals("a@a.a", user.getMail());
+        assertNotNull(user.getPassword());
     }
 
     @Test
@@ -98,12 +98,12 @@ public class UserControllerTest {
         setUpUserParams();
         when(mockRequest.getParameter(UserController.PARAM_PASSWORD)).thenReturn("b");
 
-        controller.getUserDataFromInput(mockRequest);
+        UserBean user = controller.getUserDataFromInput(mockRequest);
 
         assertEquals(1, controller.getEvents().size());
-        assertNull(controller.getUser().getName());
-        assertNull(controller.getUser().getMail());
-        assertNull(controller.getUser().getPassword());
+        assertEquals("a", user.getName());
+        assertEquals("a@a.a", user.getMail());
+        assertNull(user.getPassword());
     }
 
     @Test
@@ -116,7 +116,7 @@ public class UserControllerTest {
         controller.doPost(mockRequest, mockResponse);
 
         verify(mockResponse, times(1)).sendRedirect(Consts.SIGN_IN);
-        verify(mockSession, times(3)).setAttribute(anyString(), anyObject());
+        verify(mockSession, times(4)).setAttribute(anyString(), anyObject());
     }
 
     @Test
