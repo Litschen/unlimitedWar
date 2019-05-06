@@ -23,32 +23,28 @@ class ResultControllerTest {
     private final static String USER_MAIL = "test@gmail.com";
     private final static String PARAMETER_STRING = "outcomeValues";
     //endregion
-
     //region data fields
-    private ResultsDAO resultDAOMock;
     private HttpServletRequest mockRequest;
     private HttpServletResponse mockResponse;
     private ResultController resultController;
-    private UserBean userBean;
-    private HttpSession httpSession;
-    private MySQLConnectionCreator mySQLConnectionCreator;
+    private UserBean mockUserBean;
+    private HttpSession mockHttpSession;
+    private MySQLConnectionCreator mockMySQLConnectionCreator;
     private ResultsDAO mockResultDAO;
     //endregion
 
     @BeforeEach
     void setUp() {
-
         mockRequest = mock(HttpServletRequest.class);
         when(mockRequest.getContextPath()).thenReturn("");
         mockResponse = mock(HttpServletResponse.class);
         when(mockRequest.getSession()).thenReturn(mock(HttpSession.class));
         resultController = new ResultController();
-        userBean = mock(UserBean.class);
-        httpSession = mock(HttpSession.class);
+        mockUserBean = mock(UserBean.class);
+        mockHttpSession = mock(HttpSession.class);
         mockResultDAO = mock(ResultsDAO.class);
-        mySQLConnectionCreator = mock(MySQLConnectionCreator.class);
-        when(mySQLConnectionCreator.getResultDAO()).thenReturn(mockResultDAO);
-
+        mockMySQLConnectionCreator = mock(MySQLConnectionCreator.class);
+        when(mockMySQLConnectionCreator.getResultDAO()).thenReturn(mockResultDAO);
     }
 
 
@@ -57,13 +53,13 @@ class ResultControllerTest {
 
         //setup invalid parameter extraction
         when(mockRequest.getPathInfo()).thenReturn(ResultController.PATH_SAVE);
-        when(mockRequest.getSession()).thenReturn(httpSession);
-        when(httpSession.getAttribute(anyString())).thenReturn(userBean);
-        when(mySQLConnectionCreator.getResultDAO()).thenReturn(mockResultDAO);
-        when(userBean.getMail()).thenReturn(USER_MAIL);
+        when(mockRequest.getSession()).thenReturn(mockHttpSession);
+        when(mockHttpSession.getAttribute(anyString())).thenReturn(mockUserBean);
+        when(mockMySQLConnectionCreator.getResultDAO()).thenReturn(mockResultDAO);
+        when(mockUserBean.getMail()).thenReturn(USER_MAIL);
         when(mockRequest.getParameter(ResultController.PARAM_SELECTED_WIN)).thenReturn(PARAMETER_STRING);
 
-        resultController.setmySQLConnectionCreator(mySQLConnectionCreator);
+        resultController.setmySQLConnectionCreator(mockMySQLConnectionCreator);
         resultController.doPost(mockRequest, mockResponse);
 
         verify(mockResultDAO, times(1)).saveResult(anyBoolean(), anyString());
