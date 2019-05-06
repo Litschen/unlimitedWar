@@ -66,7 +66,7 @@ class ResultControllerTest {
         resultController.setmySQLConnectionCreator(mySQLConnectionCreator);
         resultController.doPost(mockRequest, mockResponse);
 
-        verify(resultDAOMock, times(1)).saveResult(anyBoolean(), anyString());
+        verify(mockResultDAO, times(1)).saveResult(anyBoolean(), anyString());
 
     }
 
