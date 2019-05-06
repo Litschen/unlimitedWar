@@ -2,7 +2,6 @@ package ch.zhaw.unlimitedWar.controller;
 
 import ch.zhaw.unlimitedWar.dao.MySQLConnectionCreator;
 import ch.zhaw.unlimitedWar.dao.ResultsDAO;
-import ch.zhaw.unlimitedWar.model.ResultBean;
 import ch.zhaw.unlimitedWar.model.UserBean;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,9 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.util.Collections;
-
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.anyBoolean;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 class ResultControllerTest {
 
