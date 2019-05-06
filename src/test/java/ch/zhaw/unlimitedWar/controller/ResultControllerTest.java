@@ -10,12 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static org.mockito.Mockito.anyBoolean;
-import static org.mockito.Mockito.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class ResultControllerTest {
 
@@ -36,15 +31,12 @@ class ResultControllerTest {
     @BeforeEach
     void setUp() {
         mockRequest = mock(HttpServletRequest.class);
-        when(mockRequest.getContextPath()).thenReturn("");
         mockResponse = mock(HttpServletResponse.class);
-        when(mockRequest.getSession()).thenReturn(mock(HttpSession.class));
-        resultController = new ResultController();
+        resultController = spy(new ResultController());
         mockUserBean = mock(UserBean.class);
         mockHttpSession = mock(HttpSession.class);
         mockResultDAO = mock(ResultsDAO.class);
         mockMySQLConnectionCreator = mock(MySQLConnectionCreator.class);
-        when(mockMySQLConnectionCreator.getResultDAO()).thenReturn(mockResultDAO);
     }
 
 
@@ -63,10 +55,6 @@ class ResultControllerTest {
         resultController.doPost(mockRequest, mockResponse);
 
         verify(mockResultDAO, times(1)).saveResult(anyBoolean(), anyString());
-
     }
-
-
-
 
 }
