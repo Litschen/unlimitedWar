@@ -34,6 +34,7 @@ public class Board {
     public final static String CONTINENT_TOP_RIGHT_NAME = "Eurasia";
     public final static String CONTINENT_BOTTOM_LEFT_NAME = "South America";
     public final static String CONTINENT_BOTTOM_RIGHT_NAME = "Australia";
+    public static final String ATTRIBUTES_NOT_SET_ERROR = "Country Attributes could not be set";
     //endregion
 
     //region data fields
@@ -149,7 +150,7 @@ public class Board {
                 country.setName(countryNames.remove(0));
             }
         } catch (IOException | NullPointerException e) {
-            LOGGER.log(Level.WARNING, "Country Attributes could not be set", e);
+            LOGGER.log(Level.WARNING, ATTRIBUTES_NOT_SET_ERROR, e);
         }
         setNeighbors();
     }
@@ -211,7 +212,7 @@ public class Board {
                 }
             }
         } catch (IOException | NullPointerException e) {
-            LOGGER.log(Level.WARNING, "Country Attributes could not be set", e);
+            LOGGER.log(Level.WARNING, ATTRIBUTES_NOT_SET_ERROR, e);
         }
     }
 }
