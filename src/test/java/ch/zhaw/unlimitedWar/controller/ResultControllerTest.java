@@ -2,6 +2,7 @@ package ch.zhaw.unlimitedWar.controller;
 
 import ch.zhaw.unlimitedWar.dao.MySQLConnectionCreator;
 import ch.zhaw.unlimitedWar.dao.ResultsDAO;
+import ch.zhaw.unlimitedWar.model.ResultBean;
 import ch.zhaw.unlimitedWar.model.UserBean;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import java.util.Collections;
 
 import static org.mockito.Mockito.*;
 
@@ -42,6 +45,7 @@ class ResultControllerTest {
         httpSession = mock(HttpSession.class);
         mockResultDAO = mock(ResultsDAO.class);
         mySQLConnectionCreator = mock(MySQLConnectionCreator.class);
+        when(mySQLConnectionCreator.getResultDAO()).thenReturn(mockResultDAO);
 
     }
 
@@ -49,6 +53,7 @@ class ResultControllerTest {
     @Test
     void testSaveResultIsCalled() throws Exception {
 
+        //setup invalid parameter extraction
         when(mockRequest.getPathInfo()).thenReturn(ResultController.PATH_SAVE);
         when(mockRequest.getSession()).thenReturn(httpSession);
         when(httpSession.getAttribute(anyString())).thenReturn(userBean);
@@ -56,6 +61,7 @@ class ResultControllerTest {
         when(userBean.getMail()).thenReturn(USER_MAIL);
         when(mockRequest.getParameter(ResultController.PARAM_SELECTED_WIN)).thenReturn(PARAMETER_STRING);
 
+       // when(mockResultDAO.getAllResultsOfUser(USER_MAIL)).thenReturn(Collections.singletonList(new ResultBean()));
         resultController.doPost(mockRequest, mockResponse);
 
         verify(resultDAOMock, times(1)).saveResult(anyBoolean(), anyString());
