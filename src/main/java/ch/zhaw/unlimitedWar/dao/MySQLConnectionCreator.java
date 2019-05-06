@@ -17,6 +17,7 @@ public class MySQLConnectionCreator {
     private final static String user = "root";
     private final static String pw = "rootroot";
     private final static Logger LOGGER = Logger.getLogger(MySQLConnectionCreator.class.getName());
+    public static final String CONNECTION_ERROR = "DATABASE ERROR: Could not establish connection";
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName(jdbcDriver);
@@ -29,7 +30,7 @@ public class MySQLConnectionCreator {
         try {
             playerDAO = new PlayerDAO(getConnection());
         } catch (ClassNotFoundException | SQLException e) {
-            LOGGER.log(Level.SEVERE, "DATABASE ERROR: Could not establish connection", e);
+            LOGGER.log(Level.SEVERE, CONNECTION_ERROR, e);
         }
 
         return playerDAO;
