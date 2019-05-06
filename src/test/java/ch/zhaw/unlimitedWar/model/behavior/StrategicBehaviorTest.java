@@ -150,7 +150,6 @@ class StrategicBehaviorTest {
 
         Country dest = ownedCountries.get(1);
         dest.setSoldiersCount(4);
-        dest.addNeighboringCountries(TestHelperBehavior.getCountryList(2, opponent));
 
         testPlayer.getBehavior().moveSoldiers(null, ownedCountries);
 
