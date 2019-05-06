@@ -18,12 +18,12 @@ import java.util.logging.Logger;
 public class HomeController extends HttpServlet {
 
     private final static String PATH_ACTION = "/action";
-    public final static String PARAM_SHOW_RESULTS = "results";
-    public final static String PARAM_START_GAME_MODAL = "selectColor";
+    private final static String PARAM_SHOW_RESULTS = "results";
+    private final static String PARAM_START_GAME_MODAL = "selectColor";
 
-    public final static String PATH_COLOR_SELECTION = "/colorSelection";
-    public final static String PARAM_SELECTED_COLOR = "selectedColor";
-    public final static String PARAM_PLAY = "play";
+    private final static String PATH_COLOR_SELECTION = "/colorSelection";
+    private final static String PARAM_SELECTED_COLOR = "selectedColor";
+    private final static String PARAM_PLAY = "play";
 
     private final static Logger LOGGER = Logger.getLogger(HomeController.class.getName());
     private final static String EXCEPTION_REDIRECT_RESPONSE = "failed to redirect response to ";
