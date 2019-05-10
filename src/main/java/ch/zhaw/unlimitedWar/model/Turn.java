@@ -43,6 +43,10 @@ public class Turn {
         this.turnNumber = turnNumber;
         occurredEvents = new ArrayList<>();
         currentPlayer = activePlayers.get(0);
+        currentPlayer.setPlayerGetCard(true);
+        for (Player activePlayer: this.activePlayers) {
+            activePlayer.setPlayerGetCard(true);
+        }
         if (currentPlayerIsUser()) {
             currentPlayer.setSoldiersToPlace(currentPlayer.calculateSoldiersToPlace(continents));
         }
