@@ -130,9 +130,9 @@ public class Country {
                 defenderCountry.setOwner(owner);
                 owner.getOwnedCountries().add(defenderCountry);
 
-               if(owner.getCanHaveCard()) {Card card = new Card(defenderCountry);
+               if(owner.getPlayerGetCard()) {Card card = new Card(defenderCountry);
                    owner.addCard(card);
-                   owner.setCanHaveCard(false);
+                   owner.setPlayerGetCard(false);
                }
 
                 shiftSoldiers(attackDiceCount, defenderCountry);
