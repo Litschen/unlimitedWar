@@ -3,7 +3,11 @@ package ch.zhaw.unlimitedWar.model;
 import org.jetbrains.annotations.NotNull;
 
 public class Card {
+    // region static variables
     public final static int OWNING_BONUS = 1;
+    private final static int MIN_BONUS = 1;
+    private final static int MAX_BONUS = 2;
+    // end
 
     private int soldierBonus;
     private Country country;
@@ -11,10 +15,6 @@ public class Card {
     // region getter setter
     public int getSoldierBonus() {
         return soldierBonus;
-    }
-
-    public void setSoldierBonus(int soldierBonus) {
-        this.soldierBonus = soldierBonus;
     }
 
     public Country getCountry() {
@@ -26,9 +26,9 @@ public class Card {
     }
     // endregion
 
-    public Card(@NotNull Country country, int soldierBonus) {
+    public Card(@NotNull Country country) {
         this.country = country;
-        this.soldierBonus = soldierBonus;
+        this.soldierBonus = randomSoldierBonus();
     }
 
     public String getCardName() {
@@ -42,5 +42,9 @@ public class Card {
 
     public boolean isPlayerOwner(Player player) {
         return player.equals(country.getOwner());
+    }
+
+    private int randomSoldierBonus() {
+        return Dice.roll(MIN_BONUS, MAX_BONUS);
     }
 }
