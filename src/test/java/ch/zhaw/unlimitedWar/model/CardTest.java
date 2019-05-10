@@ -14,7 +14,7 @@ class CardTest {
     @BeforeEach
     void setUp() {
         mockCountry = mock(Country.class);
-        card = new Card(mockCountry, 2);
+        card = new Card(mockCountry);
     }
 
     @Test
