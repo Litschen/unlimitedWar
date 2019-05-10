@@ -19,6 +19,7 @@ public class Player {
     private List<Country> ownedCountries;
     private List<Card> cards;
     private int soldiersToPlace = 0;
+    private boolean playerGetCard;
     //endregion
 
     public Player(Enum color, String name, Behavior behavior) {
@@ -27,6 +28,7 @@ public class Player {
         this.behavior = behavior;
         this.ownedCountries = new ArrayList<>();
         this.cards = new ArrayList<>();
+        this.playerGetCard = true;
     }
 
     //region getter setter
@@ -36,6 +38,10 @@ public class Player {
 
     public String getPlayerName() {
         return name;
+    }
+
+    public void setPlayerName(String name) {
+        this.name = name;
     }
 
     public Behavior getBehavior() {
@@ -62,7 +68,13 @@ public class Player {
         this.attackDiceCount = attackDiceCount;
     }
 
-    public void setPlayerName(String name){ this.name = name; }
+    public boolean getPlayerGetCard() {
+        return playerGetCard;
+    }
+
+    public void setPlayerGetCard(boolean playerGetCard) {
+        this.playerGetCard = playerGetCard;
+    }
 
     public List<Card> getCards() {
         return cards;
@@ -77,7 +89,6 @@ public class Player {
         setSoldiersToPlace(soldiersToPlace + additionalSoldiers);
     }
 
-    // TODO: #16 @crnjatin use this method to add cards
     public void addCard(Card card) {
         cards.add(card);
     }
