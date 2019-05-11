@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:if test="${board.getCurrentTurn().currentPlayerIsUser()}">
+<c:if test="${board.getCurrentTurn().currentPlayerIsUser() && board.getCurrentTurn().getCurrentPhase() ==  Phase.SET}">
     <form class="border rounded cards-container" action="<%=request.getContextPath()%>/Game/selectCard" method="post">
         <c:set var="curPlayer" value="${board.getCurrentTurn().getCurrentPlayer()}"></c:set>
 
