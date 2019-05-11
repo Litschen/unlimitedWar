@@ -54,6 +54,20 @@ class RandomBehaviorTest {
     }
 
     @Test
+    void testPlaceSoldiersWithCard() {
+        ownedCountries = TestHelperBehavior.getCountryList(10, testPlayer);
+        int sum = 0;
+        int amountPerCountry = ownedCountries.get(0).getSoldiersCount();
+        PlaceSoldiers placeSoldiers = TestHelperBehavior.createPlaceSoldiers(testPlayer, ownedCountries, 10);
+
+        for (int i = 0; i < 100; i++) {
+            testPlayer.getBehavior().placeSoldiers(placeSoldiers);
+        }
+
+        //assertEquals(ownedCountries.size() * amountPerCountry + 10, sum);
+    }
+
+    @Test
     void testAttackCountry() {
         when(invadingCountry.canInvade(defendingCountry)).thenReturn(true);
         when(invadingCountry.getSoldiersCount()).thenReturn(10);

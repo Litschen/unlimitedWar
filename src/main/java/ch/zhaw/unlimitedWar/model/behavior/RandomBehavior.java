@@ -1,5 +1,6 @@
 package ch.zhaw.unlimitedWar.model.behavior;
 
+import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Dice;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
@@ -16,6 +17,7 @@ public class RandomBehavior implements Behavior {
 
     //region static variables
     // try to attack in x cases out of 10 cases
+    private final static int USE_CARD = 3;
     private final static int AGGRESSIVENESS = 7;
     //continue to attack in x cases out of 10 cases
     private final static int STUBBORNNESS = 9;
@@ -31,6 +33,13 @@ public class RandomBehavior implements Behavior {
     public Phase placeSoldiers(PlaceSoldiers placeSoldiers) {
         List<Country> ownedCountries = placeSoldiers.getOwnedCountries();
         int soldiersToPlace = placeSoldiers.getSoldiersToPlace();
+
+        List<Card> cards = placeSoldiers.getPlayer().getCards();
+        if (!cards.isEmpty() && willUseCard()) {
+            Card card = cards.get(Dice.roll(0, cards.size() - 1));
+            soldiersToPlace += card.getCardBonus(placeSoldiers.getPlayer());
+            cards.remove(card);
+        }
 
         while (soldiersToPlace > 0) {
             Country country = ownedCountries.get(ThreadLocalRandom.current()
@@ -83,6 +92,10 @@ public class RandomBehavior implements Behavior {
 
         }
         return Phase.SET;
+    }
+
+    private boolean willUseCard() {
+        return Dice.roll(MIN_DICE_RANGE, MAX_DICE_RANGE) <= USE_CARD;
     }
 
     private boolean willAttack() {
