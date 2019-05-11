@@ -1,6 +1,8 @@
 package ch.zhaw.unlimitedWar.model.behavior;
 
+import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
+import ch.zhaw.unlimitedWar.model.Player;
 import ch.zhaw.unlimitedWar.model.enums.Phase;
 import ch.zhaw.unlimitedWar.model.helpers.AttackCountryResult;
 import ch.zhaw.unlimitedWar.model.helpers.AttackScore;
@@ -21,6 +23,7 @@ public class StrategicBehavior implements Behavior {
     //region static variables
     private final static int COUNTRY_IS_WEAK_DEFENDED_BONUS = -10;
     private final static int MAX_SCORE_TO_SET_DEFENSIVE = 3;
+    private final static int MAX_SCORE_TO_SET_CARD = 4;
     private final static Logger LOGGER = Logger.getLogger(StrategicBehavior.class.getName());
     //endregion
 
@@ -31,6 +34,14 @@ public class StrategicBehavior implements Behavior {
         for (List<AttackScore> scores = rateCountries(placeSoldiers.getOwnedCountries());  // set up
              !scores.isEmpty() && soldiersToPlace > 0;  // condition
              scores = rateCountries(placeSoldiers.getOwnedCountries())) {
+
+            List<Card> cards = placeSoldiers.getPlayer().getCards();
+            int cardIndex = useCard(scores, cards, placeSoldiers.getPlayer());
+            if (!cards.isEmpty() && cardIndex >= 0) {
+                Card card = cards.get(cardIndex);
+                soldiersToPlace += card.getCardBonus(placeSoldiers.getPlayer());
+                cards.remove(card);
+            }
 
             Country countryToPlaceSoldiers;
             int setSoldiers = soldiersToPlace % MAX_SCORE_TO_SET_DEFENSIVE + 1; // +1 to set at least 1 soldier
@@ -169,5 +180,21 @@ public class StrategicBehavior implements Behavior {
             }
         }
         return score;
+    }
+
+    private int useCard(List<AttackScore> scores, List<Card> cards, Player player) {
+        int cardIndex = -1;
+        if (!cards.isEmpty() && (scores.get(0).getScore() <= MAX_SCORE_TO_SET_CARD || player.getOwnedCountries().size() == 1)) {
+            Card cardToUse = cards.get(0);
+            cardIndex = 0;
+            for (Card card : cards) {
+                if (cardToUse.getCardBonus(player) < card.getCardBonus(player)) {
+                    cardToUse = card;
+                    cardIndex = cards.indexOf(cardToUse);
+                }
+            }
+        }
+
+        return cardIndex;
     }
 }
