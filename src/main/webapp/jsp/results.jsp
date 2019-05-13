@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="result" class="ch.zhaw.unlimitedWar.controller.ResultController" scope="session"/>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,11 @@
     <c:forEach items = "${result.getAllResultsOfUser(sessionScope.user)}" var="data" varStatus="status">
         <tr>
             <th scope="row">${status.count}</th>
-            <td>${data.getDate()}</td>
+            <td>
+                <fmt:parseDate value="${data.getDate()}" var="formatted" pattern="yyyy-MM-dd"/>
+                <fmt:setLocale value="de_DE"/>
+                <fmt:formatDate value="${formatted}"/>
+            </td>
             <td class="${data.getOutcome() ? 'alert-success' : 'alert-danger'}">${data.getOutcome() ? 'win':'lose'}</td>
         </tr>
     </c:forEach>
