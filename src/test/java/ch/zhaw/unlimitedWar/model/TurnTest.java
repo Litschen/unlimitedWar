@@ -16,8 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 class TurnTest {
@@ -39,7 +42,7 @@ class TurnTest {
         when(mockPlayer0.getOwnedCountries()).thenReturn(TestHelperBehavior.getCountryList(4, mockPlayer0));
         when(mockPlayer1.getOwnedCountries()).thenReturn(TestHelperBehavior.getCountryList(4, mockPlayer1));
 
-        turn = new Turn(mockPlayers, TestHelperBehavior.getCountryList(5, mockPlayer), 0, new ArrayList<>());
+        turn = spy(new Turn(mockPlayers, TestHelperBehavior.getCountryList(5, mockPlayer), 0, new ArrayList<>()));
     }
 
     @Test
@@ -161,5 +164,15 @@ class TurnTest {
         turn.eliminatePlayersAndCheckUserResult();
         assertEquals(3, turn.getActivePlayers().size());
         assertEquals(Flag.GAME_LOSE, turn.getFlag());
+    }
+
+    @Test
+    void testShiftDuringAttackPhase() {
+        when(turn.getFlag()).thenReturn(Flag.MOVE_AFTER_INVASION);
+        turn.setCurrentPhase(Phase.ATTACK);
+        turn.setFirstSelectedCountry(new Country("", 1, mockPlayer));
+        turn.setSecondSelectedCountry(new Country("", 1, mockPlayer));
+        turn.executeUserTurn(null);
+        verify(turn, times(1)).executeUserTurn(any());
     }
 }
