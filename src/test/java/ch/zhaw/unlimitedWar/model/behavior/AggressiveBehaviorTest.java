@@ -18,7 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.atMost;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 class AggressiveBehaviorTest {
 
@@ -112,12 +114,15 @@ class AggressiveBehaviorTest {
         ownedCountries.add(invadingCountry);
         invadingCountry.addNeighboringCountries(selectedCountries);
 
+        when(invadingCountry.shiftSoldiers(anyInt(), any())).thenReturn(false);
+
         for (int i = 0; i < loopCnt; i++) {
             resetForAttackCountry(soldiersAttacker, soldiersDefender);
             testPlayer.getBehavior().attackCountry(selectedCountries, ownedCountries);
         }
+
         verify(invadingCountry, atLeast(loopCnt)).invade(any(), anyInt(), anyInt());
-        verify(invadingCountry, atLeast(loopCnt)).shiftSoldiers(anyInt(), any());
+        verify(invadingCountry, atMost(loopCnt)).shiftSoldiers(anyInt(), any());
 
         //attack a country further
         defendingCountry.addNeighboringCountry(defendingCountry2);

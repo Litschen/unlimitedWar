@@ -101,8 +101,8 @@ class PlayerTest {
         owned.clear();
         for (int i = 0; i < amountOfCountries; i++) {
             Country country = new Country("test", 1, testPlayer);
-            country.setCity(city);
             country.setCapital(capital);
+            country.setCity(city);
             owned.add(country);
         }
     }
