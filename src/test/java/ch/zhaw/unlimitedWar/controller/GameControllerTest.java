@@ -1,11 +1,12 @@
 package ch.zhaw.unlimitedWar.controller;
 
 import ch.zhaw.unlimitedWar.model.Board;
+import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Country;
 import ch.zhaw.unlimitedWar.model.Player;
-import ch.zhaw.unlimitedWar.model.Card;
 import ch.zhaw.unlimitedWar.model.Turn;
 import ch.zhaw.unlimitedWar.model.behavior.UserBehavior;
+import ch.zhaw.unlimitedWar.model.enums.Flag;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -38,11 +39,12 @@ class GameControllerTest {
     private GameController controller = new ch.zhaw.unlimitedWar.controller.GameController();
     private Country mockCountry;
     private Turn mockTurn;
+    private Board mockBoard;
 
     @BeforeEach
     void setUp() {
         mockRequest = mock(HttpServletRequest.class);
-        Board mockBoard = mock(Board.class);
+        mockBoard = mock(Board.class);
         mockTurn = mock(Turn.class);
         mockResponse = mock(HttpServletResponse.class);
         HttpSession mockSession = mock(HttpSession.class);
@@ -142,6 +144,28 @@ class GameControllerTest {
 
         verify(playerSpy, times(1)).addSoldiersToPlace(anyInt());
         verify(playerSpy, times(1)).removeCard(anyObject());
+    }
+
+
+    @Test
+    void testMoveAfterAttackNextPhase() {
+        when(mockRequest.getParameter(GameController.PARAM_END)).thenReturn(" ");
+        when(mockTurn.getFlag()).thenReturn(Flag.NONE);
+        controller.doPost(mockRequest, mockResponse);
+        verify(mockTurn, times(1)).moveToNextPhase();
+    }
+
+    @Test
+    void testShiftAfterAttackOnlyWithMoveButton() {
+        when(mockTurn.currentPlayerIsUser()).thenReturn(true);
+        when(mockTurn.getFlag()).thenReturn(Flag.MOVE_AFTER_INVASION);
+        when(mockRequest.getPathInfo()).thenReturn(GameController.PATH_ATTACK);
+        when(mockRequest.getParameter(GameController.PARAM_MOVE)).thenReturn(null, NOT_EMPTY);
+        controller.doPost(mockRequest, mockResponse);
+        verify(mockTurn, times(0)).executeUserTurn(any());
+
+        controller.doPost(mockRequest, mockResponse);
+        verify(mockTurn, times(1)).executeUserTurn(any());
     }
 
     private Player setUpPlayerSpy(int solderisToPlace) {
