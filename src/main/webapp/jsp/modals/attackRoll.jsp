@@ -9,7 +9,7 @@
                 <div class="col">
                     <h6>Attacker</h6>
                     <% for (int i = 0; i < board.getCurrentTurn().getAttackDiceCount(); i++) { %>
-                    <input type="checkbox" name="attackDice" class="dice" checked>
+                    <input type="checkbox" name="attackDice" class="dice" checked <%= (i == 0) ? "disabled" : "" %>>
                     <% } %>
                 </div>
                 <div class="col">

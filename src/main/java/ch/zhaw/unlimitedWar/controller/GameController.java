@@ -73,7 +73,8 @@ public class GameController extends HttpServlet {
                     String path = request.getPathInfo();
 
                     if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_ROLL) != null) {
-                        int attackDiceCount = request.getParameterMap().get(PARAM_ATTACK_DICE).length;
+                        String[] dices = request.getParameterMap().get(PARAM_ATTACK_DICE);
+                        int attackDiceCount = dices != null ? dices.length +1 : 1;
                         board.getCurrentTurn().getCurrentPlayer().setAttackDiceCount(attackDiceCount);
                     } else if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_CANCEL) != null) {
                         board.getCurrentTurn().resetSelectedCountries();
