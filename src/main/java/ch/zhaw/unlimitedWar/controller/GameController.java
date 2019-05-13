@@ -32,6 +32,7 @@ public class GameController extends HttpServlet {
     public final static String PARAM_NEXT_TURN = "nextTurn";
     public final static String PAGE_TO_LOAD_ON_COMPLETE = Consts.GAME;
     private final static Logger LOGGER = Logger.getLogger(GameController.class.getName());
+    public final static String PARAM_MOVE = "move";
     private Board board;
     //endregion
 
@@ -79,7 +80,9 @@ public class GameController extends HttpServlet {
                     } else if (path.equals(PATH_ATTACK) && request.getParameter(PARAM_CANCEL) != null) {
                         board.getCurrentTurn().resetSelectedCountries();
                     }
-                    board.getCurrentTurn().executeUserTurn(chosenCountry);
+                    if (board.getCurrentTurn().getFlag() != Flag.MOVE_AFTER_INVASION || request.getParameter(PARAM_MOVE) != null) {
+                        board.getCurrentTurn().executeUserTurn(chosenCountry);
+                    }
                     request.getSession().setAttribute(Consts.SESSION_EVENTS, board.getEvents());
                 }
             }
