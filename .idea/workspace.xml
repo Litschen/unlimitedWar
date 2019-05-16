@@ -2,30 +2,45 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="unlimitedWar:war exploded" />
+      <artifact name="unlimitedWar" />
+      <artifact name="unlimitedWar" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cccdc448-d5d0-47e8-9b8a-24f06c89a6e3" name="default" comment="expanded testMoveSoldiers(), fix Null objects instead of nul&#10;&#10;&#10;- added additionally verification to testMoveSoldiers()&#10;&#10;- clean code, javadoc">
-      <change afterPath="$PROJECT_DIR$/src/main/test/controller/ResultControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/test/dao/ResultsDAOTest.java" afterDir="false" />
+    <list default="true" id="cccdc448-d5d0-47e8-9b8a-24f06c89a6e3" name="default" comment="-#55 #53 remove code duplication">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ResultController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/computerOpponentName.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/results.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/results.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documents/30_Planung/Wo51_Aufwanderfassung_PSIT2_Schreier_Manuel.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/documents/30_Planung/Wo51_Aufwanderfassung_PSIT2_Schreier_Manuel.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Turn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Turn.java" afterDir="false" />
     </list>
-    <list id="b0b1db5b-6cea-4ddb-8c14-5f4c2cdb0fc4" name="dont commit" comment="" />
-    <list id="9d57b577-2951-430d-8b67-4d657ef76f15" name="Revert &quot;Create ENUM ColorPlayer and random selection color&quot;" comment="Revert &quot;Create ENUM ColorPlayer and random selection color&quot;&#10;&#10;This reverts commit e0a97e45" />
+    <list id="b0b1db5b-6cea-4ddb-8c14-5f4c2cdb0fc4" name="dont commit" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ps_18_gruppe02.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ps_18_gruppe02.iml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/${B}/" />
+    <ignored path="$PROJECT_DIR$/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/ps_18_gruppe02$All_in_ps_18_gruppe02.ic" NAME="All in ps_18_gruppe02 Coverage Results" MODIFIED="1554712803740" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ps_18_gruppe02$TurnTest.ic" NAME="TurnTest Coverage Results" MODIFIED="1554293211325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>model.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="104" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -49,214 +64,114 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.50158733">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/results.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/resultModal.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="153">
-                  <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="126" column="78" lean-forward="true" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="78" />
-                  <folding>
-                    <element signature="e#1619#1620#0" expanded="true" />
-                    <element signature="e#1666#1667#0" expanded="true" />
-                    <element signature="e#1764#1765#0" expanded="true" />
-                    <element signature="e#1813#1814#0" expanded="true" />
-                    <element signature="e#1910#1911#0" expanded="true" />
-                    <element signature="e#1959#1960#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/profile.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="663">
-                  <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/controller/ResultController.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dao/ResultsDAO.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/registrationEvent.jsp">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/UserBean.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/ResultBean.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="24" selection-start-line="24" selection-end-line="24" />
-                  <folding>
-                    <element signature="e#228#229#0" expanded="true" />
-                    <element signature="e#266#267#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/game.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/Board.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2550">
-                  <caret line="172" column="9" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/sign-in.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="184">
-                  <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dao/PlayerDAO.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/interfaces/Event.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="85">
-                  <caret line="7" selection-start-line="7" selection-end-line="7" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/computerOpponentNames.txt">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/Country.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="578">
-                  <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
-                  <folding>
-                    <element signature="e#1372#1373#0" expanded="true" />
-                    <element signature="e#1404#1405#0" expanded="true" />
-                    <element signature="e#1441#1442#0" expanded="true" />
-                    <element signature="e#1477#1478#0" expanded="true" />
-                    <element signature="e#1614#1615#0" expanded="true" />
-                    <element signature="e#1642#1643#0" expanded="true" />
-                    <element signature="e#1781#1782#0" expanded="true" />
-                    <element signature="e#1824#1825#0" expanded="true" />
-                    <element signature="e#1893#1894#0" expanded="true" />
-                    <element signature="e#1958#1959#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/signinError.jsp">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="731">
-                  <caret line="62" column="29" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="29" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/snippets/signed-in.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" selection-start-line="6" selection-end-line="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1190">
+              <caret line="97" selection-start-line="97" selection-end-line="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/Consts.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/dao/PlayerDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/UserBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/GameController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1088">
+              <caret line="82" column="108" selection-start-line="82" selection-start-column="96" selection-end-line="82" selection-end-column="108" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/ResultController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="42" column="37" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Turn.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4148">
+              <caret line="282" column="37" selection-start-line="282" selection-start-column="29" selection-end-line="282" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1513">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/dao/ResultsDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
         <option value="Enum" />
+        <option value="package-info" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
       </list>
@@ -264,36 +179,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>RESOURCE_FILE</find>
-      <find>class=&quot;alert-success&quot;</find>
-      <find>PARAM_SHOW_RESULTS</find>
-      <find>get</find>
-      <find>getPl</find>
-      <find>INSERT INTO</find>
-      <find>boolean</find>
-      <find>mail</find>
-      <find>setPassword</find>
-      <find>getParameter</find>
-      <find>INSERT_QUERY</find>
-      <find>INSERT_RESULT_QUERY</find>
-      <find>closeConnec</find>
-      <find>new PlayerDAO</find>
-      <find>getEventData</find>
-      <find>do</find>
-      <find>getParam</find>
-      <find>result</find>
-      <find>generateP</find>
-      <find>param</find>
-      <find>inclu</find>
-      <find>getEvents</find>
-      <find>getTitle</find>
-      <find>getTit</find>
-      <find>include</find>
-      <find>countryNames</find>
-      <find>setNeighbors</find>
-      <find>email</find>
-      <find>profile.jsp</find>
-      <find>email a</find>
+      <find>rtl</find>
+      <find>tip</find>
+      <find>executeTurn</find>
+      <find>jsp</find>
+      <find>favicon</find>
+      <find>field.</find>
+      <find>.js&quot;</find>
+      <find>countr</find>
+      <find>action</find>
+      <find>§</find>
+      <find>getCount</find>
+      <find>board</find>
+      <find>guess</find>
+      <find>&lt;button</find>
+      <find>:checked</find>
+      <find>addSoldiersToCountry</find>
+      <find>placeS</find>
+      <find>placeSoldierIs</find>
+      <find>NEX</find>
+      <find>nextTurn</find>
+      <find>next Turn</find>
+      <find>placeSoldiers</find>
+      <find>phase</find>
+      <find>exe</find>
+      <find>button</find>
+      <find>attackPhase</find>
+      <find>testMaxAttackerDiceCount_Invalid</find>
+      <find>testMaxAtt</find>
+      <find>catch</find>
+      <find>e.print</find>
     </findStrings>
     <replaceStrings>
       <replace>black</replace>
@@ -302,62 +217,63 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/java/model/Behaviors/StrategicBehavior.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Behaviors/RandomBehavior.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Behaviors/AggressiveBehavior.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Interface/IBehavior.java" />
-        <option value="$PROJECT_DIR$/src/test/model/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/model/BoardBeanTest.java" />
-        <option value="$PROJECT_DIR$/src/test/model/Behaviors/AggressiveBehaviorTest.java" />
-        <option value="$PROJECT_DIR$/src/test/model/Behaviors/RandomBehaviorTest.java" />
-        <option value="$PROJECT_DIR$/src/test/model/Behaviors/StrategicBehaviorTest.java" />
-        <option value="$PROJECT_DIR$/src/java/model/BoardBean.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Country.java" />
-        <option value="$PROJECT_DIR$/src/test/model/CountryTest.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Behaviors/UserBehavior.java" />
-        <option value="$PROJECT_DIR$/src/java/dao/PlayerDAO.java" />
-        <option value="$PROJECT_DIR$/src/test/model/Behaviors/UserBehaviorTest.java" />
-        <option value="$PROJECT_DIR$/src/java/model/behavior/AggressiveBehavior.java" />
-        <option value="$PROJECT_DIR$/src/java/model/behavior/StrategicBehavior.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Turn.java" />
-        <option value="$PROJECT_DIR$/src/test/model/BoardTest.java" />
-        <option value="$PROJECT_DIR$/src/test/model/TurnTest.java" />
-        <option value="$PROJECT_DIR$/src/java/controller/GameController.java" />
-        <option value="$PROJECT_DIR$/src/java/model/behavior/RandomBehavior.java" />
-        <option value="$PROJECT_DIR$/src/java/model/Board.java" />
-        <option value="$PROJECT_DIR$/src/test/controller/GameControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/test/model/DiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/test/model/DiceTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/GameController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Country.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/helpers/MoveCountry.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/helpers/MoveComperator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Turn.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/behavior/StrategicBehavior.java" />
-        <option value="$PROJECT_DIR$/src/main/test/model/behavior/TestHelperBehavior.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/events/ConquerEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/behavior/AggressiveBehavior.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/behavior/RandomBehavior.java" />
-        <option value="$PROJECT_DIR$/src/main/test/controller/GameControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/test/model/behavior/AggressiveBehaviorTest.java" />
-        <option value="$PROJECT_DIR$/src/main/test/model/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/test/model/CountryTest.java" />
-        <option value="$PROJECT_DIR$/src/main/test/helpers/TestHelperCountry.java" />
-        <option value="$PROJECT_DIR$/documents/40_Design/DB_Projekt_Unlimited War.sql" />
         <option value="$PROJECT_DIR$/src/main/java/controller/SignInController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/ResultsDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/test/dao/ResultsDAOTest.java" />
-        <option value="$PROJECT_DIR$/src/main/test/controller/ResultControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controller/ResultController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/model/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/CountryTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/DiceTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/Board.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/snippets/signed-in.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/results.jsp" />
+        <option value="$PROJECT_DIR$/src/main/test/controller/GameControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/controller/ResultControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/controller/SignInControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/behavior/AggressiveBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/behavior/RandomBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/behavior/StrategicBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/behavior/UserBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/model/TurnTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/java/ch/zhaw/unlimitedWar/controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/ch/zhaw/unlimitedWar/model/behavior/UserBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/ch/zhaw/unlimitedWar/dao/PlayerDAOTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/ch/zhaw/unlimitedWar/model/BoardTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/ch/zhaw/unlimitedWar/model/CountryTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/ch/zhaw/unlimitedWar/model/behavior/AggressiveBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/ch/zhaw/unlimitedWar/model/behavior/RandomBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/ch/zhaw/unlimitedWar/model/behavior/StrategicBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/test/java/ch/zhaw/unlimitedWar/model/TurnTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/BoardTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/controller/SignInControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/helpers/AttackScoreComperator.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/css/field.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Continent.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/ContinentTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Player.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/behavior/RandomBehavior.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/behavior/RandomBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/behavior/AggressiveBehavior.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/behavior/StrategicBehavior.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/behavior/StrategicBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/enums/Flag.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/game.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/behavior/UserBehavior.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Board.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/ResultController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/controller/ResultControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/dao/MySQLConnectionCreator.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/dao/PlayerDAOTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/behavior/AggressiveBehaviorTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/controller/UserControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Turn.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/TurnTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/GameController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/controller/GameControllerTest.java" />
       </list>
     </option>
   </component>
@@ -368,81 +284,269 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="unlimitedWar" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="unlimitedWar" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="unlimitedWar" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="475" />
-    <option name="y" value="-51" />
-    <option name="width" value="696" />
-    <option name="height" value="878" />
+    <option name="x" value="-9" />
+    <option name="width" value="978" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <showExcludedFiles Scope="true" ProjectPane="true" />
       <autoscrollFromSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="documents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
               <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="unlimitedWar" type="b2602c69:ProjectViewProjectNode" />
-              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ps_18_gruppe02" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ps_18_gruppe02" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ch" type="462c0819:PsiDirectoryNode" />
+              <item name="zhaw" type="462c0819:PsiDirectoryNode" />
+              <item name="unlimitedWar" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="behavior" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -455,39 +559,43 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555152606241" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554874851103" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
-    <property name="last_opened_file_path" value="C:/Program Files/Java/ProjektUW/mockito-all-1.9.5.jar!/" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="extractMethod.generateAnnotations" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../_ADS/praktikas/ADS_Praktikum11" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Global Libraries" />
-    <property name="project.structure.proportion" value="0.15429688" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.file-colors" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="controller" />
-      <recent name="dao" />
-      <recent name="model.behavior" />
+      <recent name="ch.zhaw.unlimitedWar.model" />
       <recent name="model" />
       <recent name="model.Behaviors" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web\jsp\modals" />
-      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\documents\30_Planung" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Manuel\Documents\_ZHAW\Dokumente\_PSIT2\code\ps_18_gruppe02\.idea" />
+      <recent name="C:\Users\Manuel\Documents\_ZHAW\Dokumente\_PSIT2\code\ps_18_gruppe02" />
+      <recent name="C:\Users\Manuel\Documents\_ZHAW\Dokumente\_PSIT2\code\ps_18_gruppe02\src" />
+      <recent name="C:\Users\Manuel\Documents\_ZHAW\Dokumente\_PSIT2\code\ps_18_gruppe02\src\main\test\java\ch\zhaw\unlimitedWar" />
+      <recent name="C:\Users\Manuel\Documents\_ZHAW\Dokumente\_PSIT2\code\ps_18_gruppe02\src\main\test\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="java" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\MacKenzie\Daten Aphra\workspace\unlimitedWar\documents\30_Planung" />
-      <recent name="C:\Users\MacKenzie\Daten Aphra\workspace\workspace_PSIT\ProjektUnlimitedWar\documents\30_Planung" />
-      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web\jsp" />
-      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web" />
-      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web\WEB-INF" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\src\web\jsp\modals" />
+      <recent name="C:\zhaw\Projects\PSIT\Unlimited_War\documents\30_Planung" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -502,92 +610,85 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat">
-    <configuration name="AggressiveBehaviorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="unlimitedWar" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.behavior.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model.behavior" />
-      <option name="MAIN_CLASS_NAME" value="model.behavior.AggressiveBehaviorTest" />
-      <option name="TEST_OBJECT" value="class" />
+  <component name="RunManager" selected="Tomcat Server.App">
+    <configuration name="All in ps_18_gruppe02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ps_18_gruppe02" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AggressiveBehaviorTest.testMoveSoldiers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="unlimitedWar" />
+    <configuration name="GameControllerTest.testMoveAfterAttackNextPhase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ps_18_gruppe02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.behavior.*" />
+          <option name="PATTERN" value="ch.zhaw.unlimitedWar.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.behavior" />
-      <option name="MAIN_CLASS_NAME" value="model.behavior.AggressiveBehaviorTest" />
-      <option name="METHOD_NAME" value="testMoveSoldiers" />
+      <option name="PACKAGE_NAME" value="ch.zhaw.unlimitedWar.controller" />
+      <option name="MAIN_CLASS_NAME" value="ch.zhaw.unlimitedWar.controller.GameControllerTest" />
+      <option name="METHOD_NAME" value="testMoveAfterAttackNextPhase" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AggressiveBehaviorTest.testMoveSoldiersOption" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="unlimitedWar" />
+    <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ps_18_gruppe02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.behavior.*" />
+          <option name="PATTERN" value="ch.zhaw.unlimitedWar.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.behavior" />
-      <option name="MAIN_CLASS_NAME" value="model.behavior.AggressiveBehaviorTest" />
-      <option name="METHOD_NAME" value="testMoveSoldiersOption" />
+      <option name="PACKAGE_NAME" value="ch.zhaw.unlimitedWar.controller" />
+      <option name="MAIN_CLASS_NAME" value="ch.zhaw.unlimitedWar.controller.GameControllerTest" />
+      <option name="METHOD_NAME" value="testShiftAfterAttackOnlyWithMoveButton" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CountryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="unlimitedWar" />
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ps_18_gruppe02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="ch.zhaw.unlimitedWar.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.CountryTest" />
+      <option name="PACKAGE_NAME" value="ch.zhaw.unlimitedWar.model" />
+      <option name="MAIN_CLASS_NAME" value="ch.zhaw.unlimitedWar.model.PlayerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StrategicBehaviorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="unlimitedWar" />
+    <configuration name="TurnTest.testShiftDuringAttackPhase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ps_18_gruppe02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.behavior.*" />
+          <option name="PATTERN" value="ch.zhaw.unlimitedWar.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model.behavior" />
-      <option name="MAIN_CLASS_NAME" value="model.behavior.StrategicBehaviorTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="ch.zhaw.unlimitedWar.model" />
+      <option name="MAIN_CLASS_NAME" value="ch.zhaw.unlimitedWar.model.TurnTest" />
+      <option name="METHOD_NAME" value="testShiftDuringAttackPhase" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.341" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/unlimitedWar_war_exploded/" />
+    <configuration name="App" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.34" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="unlimitedWar:war exploded">
+        <artifact name="unlimitedWar">
           <settings>
-            <option name="CONTEXT_PATH" value="/unlimitedWar_war_exploded" />
+            <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
@@ -649,25 +750,26 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="unlimitedWar:war exploded" />
+          <artifact name="unlimitedWar" />
+          <artifact name="unlimitedWar" />
         </option>
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AggressiveBehaviorTest" />
-      <item itemvalue="JUnit.AggressiveBehaviorTest.testMoveSoldiers" />
-      <item itemvalue="JUnit.AggressiveBehaviorTest.testMoveSoldiersOption" />
-      <item itemvalue="JUnit.CountryTest" />
-      <item itemvalue="JUnit.StrategicBehaviorTest" />
-      <item itemvalue="Tomcat Server.Tomcat" />
+      <item itemvalue="JUnit.All in ps_18_gruppe02" />
+      <item itemvalue="JUnit.PlayerTest" />
+      <item itemvalue="JUnit.GameControllerTest.testMoveAfterAttackNextPhase" />
+      <item itemvalue="JUnit.TurnTest.testShiftDuringAttackPhase" />
+      <item itemvalue="JUnit.GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" />
+      <item itemvalue="Tomcat Server.App" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CountryTest" />
-        <item itemvalue="JUnit.StrategicBehaviorTest" />
-        <item itemvalue="JUnit.AggressiveBehaviorTest.testMoveSoldiers" />
-        <item itemvalue="JUnit.AggressiveBehaviorTest.testMoveSoldiersOption" />
-        <item itemvalue="JUnit.AggressiveBehaviorTest" />
+        <item itemvalue="JUnit.GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" />
+        <item itemvalue="JUnit.TurnTest.testShiftDuringAttackPhase" />
+        <item itemvalue="JUnit.GameControllerTest.testMoveAfterAttackNextPhase" />
+        <item itemvalue="JUnit.All in ps_18_gruppe02" />
+        <item itemvalue="JUnit.PlayerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -716,433 +818,430 @@
       <workItem from="1552202370094" duration="23106000" />
       <workItem from="1552294757859" duration="253000" />
       <workItem from="1552302463202" duration="16211000" />
-      <workItem from="1553175693248" duration="5502000" />
-      <workItem from="1553255527130" duration="526000" />
-      <workItem from="1553273944802" duration="3713000" />
-      <workItem from="1553280334103" duration="1824000" />
-      <workItem from="1553526889477" duration="1813000" />
-      <workItem from="1553532691586" duration="220000" />
-      <workItem from="1553540935218" duration="570000" />
-      <workItem from="1553600697948" duration="24000" />
-      <workItem from="1553721653512" duration="1464000" />
-      <workItem from="1553724204125" duration="162000" />
-      <workItem from="1553776107479" duration="246000" />
-      <workItem from="1553776391355" duration="6893000" />
-      <workItem from="1553859827650" duration="477000" />
-      <workItem from="1553868364151" duration="6212000" />
-      <workItem from="1553965926645" duration="15245000" />
-      <workItem from="1554022575618" duration="13696000" />
-      <workItem from="1554064826386" duration="1040000" />
-      <workItem from="1554065927113" duration="1153000" />
-      <workItem from="1554113582287" duration="14368000" />
-      <workItem from="1554139416453" duration="735000" />
-      <workItem from="1554145688750" duration="1757000" />
-      <workItem from="1554195632701" duration="4127000" />
-      <workItem from="1554355692358" duration="1641000" />
-      <workItem from="1554396001716" duration="2840000" />
-      <workItem from="1554448050087" duration="2861000" />
-      <workItem from="1554459205093" duration="2378000" />
-      <workItem from="1554466803634" duration="8670000" />
-      <workItem from="1554627252104" duration="277000" />
-      <workItem from="1554627569593" duration="3055000" />
-      <workItem from="1554836843645" duration="317000" />
-      <workItem from="1554838726489" duration="4945000" />
-      <workItem from="1554874041020" duration="1034000" />
-      <workItem from="1554980093876" duration="1220000" />
-      <workItem from="1555072410752" duration="5829000" />
-      <workItem from="1555080683040" duration="500000" />
-      <workItem from="1555146173131" duration="4233000" />
-      <workItem from="1555227229702" duration="634000" />
-      <workItem from="1555228980182" duration="206000" />
-      <workItem from="1555229346044" duration="599000" />
-      <workItem from="1555326157654" duration="48000" />
-      <workItem from="1555326540615" duration="19000" />
-      <workItem from="1555752566383" duration="3729000" />
-      <workItem from="1555756418816" duration="8818000" />
-      <workItem from="1555770959266" duration="3506000" />
-      <workItem from="1555832213981" duration="14021000" />
-      <workItem from="1555911725627" duration="1871000" />
+      <workItem from="1553591814668" duration="599000" />
+      <workItem from="1553592454984" duration="7854000" />
+      <workItem from="1553677227607" duration="1273000" />
+      <workItem from="1553763513345" duration="10239000" />
+      <workItem from="1553849971516" duration="5765000" />
+      <workItem from="1554097916057" duration="1321000" />
+      <workItem from="1554103907282" duration="13102000" />
+      <workItem from="1554195460058" duration="1529000" />
+      <workItem from="1554289962507" duration="23000" />
+      <workItem from="1554290130420" duration="52000" />
+      <workItem from="1554290514485" duration="4937000" />
+      <workItem from="1554703138630" duration="7297000" />
+      <workItem from="1554875589727" duration="749000" />
+      <workItem from="1554893897108" duration="11000" />
+      <workItem from="1554973072008" duration="67000" />
+      <workItem from="1554973360086" duration="1853000" />
+      <workItem from="1555069146746" duration="6562000" />
+      <workItem from="1555311184827" duration="1890000" />
+      <workItem from="1555485045849" duration="624000" />
+      <workItem from="1555502349116" duration="57000" />
+      <workItem from="1555923533050" duration="4252000" />
+      <workItem from="1555946922432" duration="7861000" />
+      <workItem from="1555968221929" duration="557000" />
+      <workItem from="1555968906427" duration="1066000" />
+      <workItem from="1556005449566" duration="6695000" />
+      <workItem from="1556028045182" duration="5403000" />
+      <workItem from="1556178686670" duration="1322000" />
+      <workItem from="1556180038565" duration="951000" />
+      <workItem from="1556181185383" duration="18582000" />
+      <workItem from="1556269435783" duration="12654000" />
+      <workItem from="1556296293979" duration="1387000" />
+      <workItem from="1556626513459" duration="36000" />
+      <workItem from="1556627069829" duration="42000" />
+      <workItem from="1556627160929" duration="6413000" />
+      <workItem from="1556790822178" duration="2897000" />
+      <workItem from="1557054546091" duration="5925000" />
+      <workItem from="1557060837170" duration="26000" />
+      <workItem from="1557129130158" duration="9507000" />
+      <workItem from="1557165327213" duration="6954000" />
+      <workItem from="1557294269491" duration="1070000" />
+      <workItem from="1557317356984" duration="806000" />
+      <workItem from="1557730125727" duration="7770000" />
+      <workItem from="1557918906228" duration="89000" />
     </task>
-    <task id="LOCAL-00027" summary="add method cancelMove()">
-      <created>1551608905321</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
+    <task id="LOCAL-00094" summary="-#13 created bare bones Continent class">
+      <created>1556195649762</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
       <option name="project" value="LOCAL" />
-      <updated>1551608905321</updated>
+      <updated>1556195649762</updated>
     </task>
-    <task id="LOCAL-00028" summary="remove javadoc: getDiceCount()">
-      <created>1551609004048</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
+    <task id="LOCAL-00095" summary="-#13 added List of Continents to signature of calculateSoldiersToPlace, created List of contients in board and turn">
+      <created>1556195931271</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
       <option name="project" value="LOCAL" />
-      <updated>1551609004048</updated>
+      <updated>1556195931271</updated>
     </task>
-    <task id="LOCAL-00029" summary="set up  setMoveSoldiersToCountry()">
-      <created>1551609104230</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
+    <task id="LOCAL-00096" summary="-#13 added where necessary empy arraylist of continents to calculateSoldierstoplace method">
+      <created>1556196059727</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
       <option name="project" value="LOCAL" />
-      <updated>1551609104230</updated>
+      <updated>1556196059727</updated>
     </task>
-    <task id="LOCAL-00030" summary="Update set random color on user">
-      <created>1551707812482</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
+    <task id="LOCAL-00097" summary="-#53 removed magic number, replaced with constant">
+      <created>1556196237343</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
       <option name="project" value="LOCAL" />
-      <updated>1551707812482</updated>
+      <updated>1556196237343</updated>
     </task>
-    <task id="LOCAL-00031" summary="updated time sheet (huguemiz)">
-      <created>1551708140447</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
+    <task id="LOCAL-00098" summary="-#13 changed accessmodifiers to public">
+      <created>1556196562704</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
       <option name="project" value="LOCAL" />
-      <updated>1551708140448</updated>
+      <updated>1556196562704</updated>
     </task>
-    <task id="LOCAL-00032" summary="updated time sheet (crnjatin)">
-      <created>1551708535785</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
+    <task id="LOCAL-00099" summary="-#13 added positve and negative testcase for continent bonus">
+      <created>1556196598826</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
       <option name="project" value="LOCAL" />
-      <updated>1551708535785</updated>
+      <updated>1556196598826</updated>
     </task>
-    <task id="LOCAL-00033" summary="Creat Testclass for Behaviors">
-      <created>1552030556191</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
+    <task id="LOCAL-00100" summary="-#13 added setup for continents, constants for continent names">
+      <created>1556197670272</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
       <option name="project" value="LOCAL" />
-      <updated>1552030556191</updated>
+      <updated>1556197670272</updated>
     </task>
-    <task id="LOCAL-00034" summary="rename Enum ColorPlayer to PlayerColor">
-      <created>1552031280176</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
+    <task id="LOCAL-00101" summary="-#13 change calculation of calculateSoldiersToPlace to include possible continentBoni">
+      <created>1556197986724</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
       <option name="project" value="LOCAL" />
-      <updated>1552031280176</updated>
+      <updated>1556197986724</updated>
     </task>
-    <task id="LOCAL-00035" summary="Modify Enum Random PlayerColor">
-      <created>1552049567611</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
+    <task id="LOCAL-00102" summary="-#13 implements getBonus for player, removed unnecessary getCountries">
+      <created>1556199250412</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
       <option name="project" value="LOCAL" />
-      <updated>1552049567611</updated>
+      <updated>1556199250412</updated>
     </task>
-    <task id="LOCAL-00036" summary="add Javadoc of aggressiveBehavior">
-      <created>1552065118777</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
+    <task id="LOCAL-00103" summary="-added protocol of milestone3">
+      <created>1556269516783</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
       <option name="project" value="LOCAL" />
-      <updated>1552065118777</updated>
+      <updated>1556269516783</updated>
     </task>
-    <task id="LOCAL-00037" summary="update Javadoc of aggressiveBehavior">
-      <created>1552069327308</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
+    <task id="LOCAL-00104" summary="-#13 added html structure for continents">
+      <created>1556277522013</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
       <option name="project" value="LOCAL" />
-      <updated>1552069327308</updated>
+      <updated>1556277522013</updated>
     </task>
-    <task id="LOCAL-00038" summary="add Javadoc on Behaviors">
-      <created>1552072057137</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
+    <task id="LOCAL-00105" summary="-#13 added getter for continents list">
+      <created>1556277552387</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
       <option name="project" value="LOCAL" />
-      <updated>1552072057137</updated>
+      <updated>1556277552387</updated>
     </task>
-    <task id="LOCAL-00039" summary="write testMethod in class UserBehaviorTest">
-      <created>1552212551154</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
+    <task id="LOCAL-00106" summary="-#13 added gettter for soldierBonus add textcolor to mark current owner of continent">
+      <created>1556277600857</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
       <option name="project" value="LOCAL" />
-      <updated>1552212551154</updated>
+      <updated>1556277600857</updated>
     </task>
-    <task id="LOCAL-00040" summary="extends javadoc BoardBean">
-      <created>1552217085168</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
+    <task id="LOCAL-00107" summary="-#13 changed span to div for soldierBonus, added p for name">
+      <created>1556279603288</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
       <option name="project" value="LOCAL" />
-      <updated>1552217085169</updated>
+      <updated>1556279603288</updated>
     </task>
-    <task id="LOCAL-00041" summary="improves test UserBehaviorTest">
-      <created>1552222303974</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
+    <task id="LOCAL-00108" summary="-#13 added styling for continent box, position not yet set">
+      <created>1556279633799</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
       <option name="project" value="LOCAL" />
-      <updated>1552222303974</updated>
+      <updated>1556279633799</updated>
     </task>
-    <task id="LOCAL-00042" summary="Make Method give ArrayList in UserBehaviorTest">
-      <created>1552222939505</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
+    <task id="LOCAL-00109" summary="-#13 replaced whitespace in name for id">
+      <created>1556280369505</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
       <option name="project" value="LOCAL" />
-      <updated>1552222939505</updated>
+      <updated>1556280369521</updated>
     </task>
-    <task id="LOCAL-00043" summary="improves test UserBahaviorTest">
-      <created>1552223302680</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
+    <task id="LOCAL-00110" summary="-#13 added position of continents">
+      <created>1556280391072</created>
+      <option name="number" value="00110" />
+      <option name="presentableId" value="LOCAL-00110" />
       <option name="project" value="LOCAL" />
-      <updated>1552223302680</updated>
+      <updated>1556280391072</updated>
     </task>
-    <task id="LOCAL-00044" summary="extended: Move only neighboring countries">
-      <created>1552224128624</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
+    <task id="LOCAL-00111" summary="-#13 added method to get the color in which the continent text should be displayed, renamed getColorOfText to getTextColor">
+      <created>1556280931666</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
       <option name="project" value="LOCAL" />
-      <updated>1552224128624</updated>
+      <updated>1556280931666</updated>
     </task>
-    <task id="LOCAL-00045" summary="BoardBeanTest remove Method">
-      <created>1552224619186</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
+    <task id="LOCAL-00112" summary="-#13 added style to display text in color of continent owner">
+      <created>1556280993305</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
       <option name="project" value="LOCAL" />
-      <updated>1552224619186</updated>
+      <updated>1556280993305</updated>
     </task>
-    <task id="LOCAL-00046" summary="remove  // TODO check if neighbour">
-      <created>1552238928360</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
+    <task id="LOCAL-00113" summary="-closes #13 reduced code duplication through implementation of continentOwnedByOnePlayer, extracted constant for standard text color #53">
+      <created>1556281229548</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
       <option name="project" value="LOCAL" />
-      <updated>1552238928360</updated>
+      <updated>1556281229548</updated>
     </task>
-    <task id="LOCAL-00047" summary="JavaDoc expanded by  setCountryAttributes()">
-      <created>1552238981476</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
+    <task id="LOCAL-00114" summary="-#13 changed color of the continent boxes, move North america down, fixed connector length">
+      <created>1556284788670</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
       <option name="project" value="LOCAL" />
-      <updated>1552238981476</updated>
+      <updated>1556284788671</updated>
     </task>
-    <task id="LOCAL-00048" summary=" #15 fix problem to randomize color of the computer opponents&#10; &#10; &#10;Colors from computer opponents are randomly selected. &#10;The color from user is temporarily blue.">
-      <created>1553278256724</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
+    <task id="LOCAL-00115" summary="-#13 implemented ContinentTest @huguemiz">
+      <created>1556628286478</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
       <option name="project" value="LOCAL" />
-      <updated>1553278256724</updated>
+      <updated>1556628286479</updated>
     </task>
-    <task id="LOCAL-00049" summary="Test class turnTest created and adapted&#10;&#10;&#10;- adapted to the new folder structure">
-      <created>1553281684636</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
+    <task id="LOCAL-00116" summary="-closes #13 removed unnecessary cast @huguemiz">
+      <created>1556628384360</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
       <option name="project" value="LOCAL" />
-      <updated>1553281684636</updated>
+      <updated>1556628384360</updated>
     </task>
-    <task id="LOCAL-00050" summary="make void doPost and void doGet from protected to public&#10;&#10;Test class TurnTest could no access it, because it was not in the same package.">
-      <created>1553281898885</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
+    <task id="LOCAL-00117" summary="-#13 renamed test Methods to compile to our naming scheme">
+      <created>1556628861534</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
       <option name="project" value="LOCAL" />
-      <updated>1553281898888</updated>
+      <updated>1556628861535</updated>
     </task>
-    <task id="LOCAL-00051" summary="relocated method's from BoardTest to TurnTest&#10;&#10;&#10;testSetAttackAndDefendCountry()&#10;testMoveToNextPhase() &#10;testMoveToNextPhaseRemoveUser()&#10;testResetSelectedCountries() &#10;testEliminatePlayersAndCheckUserResultLose() &#10;testEliminatePlayersAndCheckUserResultWin()">
-      <created>1553282079356</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
+    <task id="LOCAL-00118" summary="-#55 randombehavior shiftssoldiers after attacking">
+      <created>1556631377956</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
       <option name="project" value="LOCAL" />
-      <updated>1553282079356</updated>
+      <updated>1556631377956</updated>
     </task>
-    <task id="LOCAL-00052" summary="remove redundant comments">
-      <created>1553528151668</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
+    <task id="LOCAL-00119" summary="-#55 randombehavior test checks for shiftsoldiers method">
+      <created>1556631511366</created>
+      <option name="number" value="00119" />
+      <option name="presentableId" value="LOCAL-00119" />
       <option name="project" value="LOCAL" />
-      <updated>1553528151670</updated>
+      <updated>1556631511366</updated>
     </task>
-    <task id="LOCAL-00053" summary="extended javadoc in Country">
-      <created>1553791680557</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
+    <task id="LOCAL-00120" summary="-#55 tests if shiftssoldiers is called">
+      <created>1556632061270</created>
+      <option name="number" value="00120" />
+      <option name="presentableId" value="LOCAL-00120" />
       <option name="project" value="LOCAL" />
-      <updated>1553791680558</updated>
+      <updated>1556632061270</updated>
     </task>
-    <task id="LOCAL-00054" summary="#27 Try to program aggressive behavior.&#10;There are some bugs in the program and it is not complete yet&#10;&#10;- add help class&#10;- tries to write method to move">
-      <created>1553975572662</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
+    <task id="LOCAL-00121" summary="-#55 tested if behavior shifts after attack">
+      <created>1557056661380</created>
+      <option name="number" value="00121" />
+      <option name="presentableId" value="LOCAL-00121" />
       <option name="project" value="LOCAL" />
-      <updated>1553975572663</updated>
+      <updated>1557056661380</updated>
     </task>
-    <task id="LOCAL-00055" summary="#27 add MoveComperator class&#10;&#10;- is used to calculate the number of neighboring countries">
-      <created>1553979689678</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
+    <task id="LOCAL-00122" summary="-#55 aggressive behavior shifts if new country can attack more then old country">
+      <created>1557056795427</created>
+      <option name="number" value="00122" />
+      <option name="presentableId" value="LOCAL-00122" />
       <option name="project" value="LOCAL" />
-      <updated>1553979689678</updated>
+      <updated>1557056795427</updated>
     </task>
-    <task id="LOCAL-00056" summary="#27 Try to program aggressive behavior.&#10;&#10;There are some bugs in the program and it is not complete yet">
-      <created>1553979801982</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
+    <task id="LOCAL-00123" summary="-#55 created method rateCountry to for shifting during attack, rewrote rateCountries to use rateCountry as far as possible">
+      <created>1557130411670</created>
+      <option name="number" value="00123" />
+      <option name="presentableId" value="LOCAL-00123" />
       <option name="project" value="LOCAL" />
-      <updated>1553979801982</updated>
+      <updated>1557130411672</updated>
     </task>
-    <task id="LOCAL-00057" summary="#27 Try to program aggressive behavior.&#10;&#10;There are some bugs in the program and it is not complete yet">
-      <created>1554023013176</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
+    <task id="LOCAL-00124" summary="-#55 made changed affected testcase for shift check, implemented shift check">
+      <created>1557133772202</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
       <option name="project" value="LOCAL" />
-      <updated>1554023013178</updated>
+      <updated>1557133772202</updated>
     </task>
-    <task id="LOCAL-00058" summary="Move Country add method&#10;&#10;- add set method for Neighbor">
-      <created>1554035908487</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
+    <task id="LOCAL-00125" summary="-#55 implemented shift after attack">
+      <created>1557133792947</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
       <option name="project" value="LOCAL" />
-      <updated>1554035908487</updated>
+      <updated>1557133792947</updated>
     </task>
-    <task id="LOCAL-00059" summary="#27 Try to program aggressive behavior.&#10;&#10;There are some bugs in the program and it is not complete yet">
-      <created>1554036154543</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
+    <task id="LOCAL-00126" summary="-#55 added Flag for user shifting after attack">
+      <created>1557136571749</created>
+      <option name="number" value="00126" />
+      <option name="presentableId" value="LOCAL-00126" />
       <option name="project" value="LOCAL" />
-      <updated>1554036154543</updated>
+      <updated>1557136571749</updated>
     </task>
-    <task id="LOCAL-00060" summary="add Aufwanderfassung MS02">
-      <created>1554066237291</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
+    <task id="LOCAL-00127" summary="-#55 updated game.jsp to show correct buttons during attack">
+      <created>1557137500628</created>
+      <option name="number" value="00127" />
+      <option name="presentableId" value="LOCAL-00127" />
       <option name="project" value="LOCAL" />
-      <updated>1554066237292</updated>
+      <updated>1557137500628</updated>
     </task>
-    <task id="LOCAL-00061" summary="#27 Move method aggressive behavior implement&#10;&#10;need review">
-      <created>1554123558851</created>
-      <option name="number" value="00061" />
-      <option name="presentableId" value="LOCAL-00061" />
+    <task id="LOCAL-00128" summary="-#55 new flag MOVE_AFTER_INVASION gets set if successfully invaded, calls movesoliders with of userbehavior">
+      <created>1557138459753</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
       <option name="project" value="LOCAL" />
-      <updated>1554123558852</updated>
+      <updated>1557138459753</updated>
     </task>
-    <task id="LOCAL-00062" summary="change name and add nameList of Computer opponent">
-      <created>1554128038630</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
+    <task id="LOCAL-00129" summary="-#55 move to nextphase get only called if flag moveafterinvasion not set, otherwise selected countries get reseted">
+      <created>1557139039382</created>
+      <option name="number" value="00129" />
+      <option name="presentableId" value="LOCAL-00129" />
       <option name="project" value="LOCAL" />
-      <updated>1554128038630</updated>
+      <updated>1557139039383</updated>
     </task>
-    <task id="LOCAL-00063" summary="review fix @huguemiz">
-      <created>1554128677919</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
+    <task id="LOCAL-00130" summary="-#53 extracted constant error message">
+      <created>1557139305842</created>
+      <option name="number" value="00130" />
+      <option name="presentableId" value="LOCAL-00130" />
       <option name="project" value="LOCAL" />
-      <updated>1554128677919</updated>
+      <updated>1557139305842</updated>
     </task>
-    <task id="LOCAL-00064" summary="change name">
-      <created>1554128803892</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
+    <task id="LOCAL-00131" summary="-#55 #53 removed code duplication">
+      <created>1557139441787</created>
+      <option name="number" value="00131" />
+      <option name="presentableId" value="LOCAL-00131" />
       <option name="project" value="LOCAL" />
-      <updated>1554128803893</updated>
+      <updated>1557139441787</updated>
     </task>
-    <task id="LOCAL-00065" summary="write test aggressiveBehaviorTest">
-      <created>1554473618048</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
+    <task id="LOCAL-00132" summary="-#55 extracted constant error message">
+      <created>1557170675910</created>
+      <option name="number" value="00132" />
+      <option name="presentableId" value="LOCAL-00132" />
       <option name="project" value="LOCAL" />
-      <updated>1554473618050</updated>
+      <updated>1557170675911</updated>
     </task>
-    <task id="LOCAL-00066" summary="expanded testMoveSoldiers(), fix Null objects instead of nul&#10;&#10;&#10;- added additionally verification to testMoveSoldiers()&#10;&#10;- clean code, javadoc">
-      <created>1554844379950</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
+    <task id="LOCAL-00133" summary="-#55 replaced constant string">
+      <created>1557170768675</created>
+      <option name="number" value="00133" />
+      <option name="presentableId" value="LOCAL-00133" />
       <option name="project" value="LOCAL" />
-      <updated>1554844379953</updated>
+      <updated>1557170768675</updated>
     </task>
-    <task id="LOCAL-00067" summary="#51 fix Resource try/catch/log/throw/release">
-      <created>1555073345759</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
+    <task id="LOCAL-00134" summary="-#55 removed redundancy, declariation and assignment of int affectRows made into one line">
+      <created>1557171185595</created>
+      <option name="number" value="00134" />
+      <option name="presentableId" value="LOCAL-00134" />
       <option name="project" value="LOCAL" />
-      <updated>1555073345760</updated>
+      <updated>1557171185595</updated>
     </task>
-    <task id="LOCAL-00068" summary="#27 add and optimized test method for aggressive behavior">
-      <created>1555079091056</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
+    <task id="LOCAL-00135" summary="-#55 removed check if boolean true setCity/Capital to true, replaced with set to parameter boolean values">
+      <created>1557171877879</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
       <option name="project" value="LOCAL" />
-      <updated>1555079091056</updated>
+      <updated>1557171877879</updated>
     </task>
-    <task id="LOCAL-00069" summary="add TestHelperCountry class and modify methods for this class">
-      <created>1555149191665</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
+    <task id="LOCAL-00136" summary="-#55 renamed fellowCountries to createOwnedCountries">
+      <created>1557172099679</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
       <option name="project" value="LOCAL" />
-      <updated>1555149191666</updated>
+      <updated>1557172099679</updated>
     </task>
-    <task id="LOCAL-00070" summary="#36 Update database @huguemiz&#10;&#10;- Datum set to date&#10;&#10;- id covert to auto increment">
-      <created>1555754640057</created>
-      <option name="number" value="00070" />
-      <option name="presentableId" value="LOCAL-00070" />
+    <task id="LOCAL-00137" summary="-#55 removed mockito.*">
+      <created>1557172319025</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
       <option name="project" value="LOCAL" />
-      <updated>1555754640059</updated>
+      <updated>1557172319025</updated>
     </task>
-    <task id="LOCAL-00071" summary="#36 create class ResultController&#10;&#10;- save and send mail, outcome to SQL">
-      <created>1555770034056</created>
-      <option name="number" value="00071" />
-      <option name="presentableId" value="LOCAL-00071" />
+    <task id="LOCAL-00138" summary="-changed at least to atmost in testattackcountry, added that shift always returns false in this test">
+      <created>1557731039354</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
       <option name="project" value="LOCAL" />
-      <updated>1555770034060</updated>
+      <updated>1557731039355</updated>
     </task>
-    <task id="LOCAL-00072" summary="Attempt view game result #34">
-      <created>1555837319221</created>
-      <option name="number" value="00072" />
-      <option name="presentableId" value="LOCAL-00072" />
+    <task id="LOCAL-00139" summary="-rearragned createOwned countries, country.setcity afer setCapital because setCaptial has previously overwritten result of setCity">
+      <created>1557731690182</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
       <option name="project" value="LOCAL" />
-      <updated>1555837319222</updated>
+      <updated>1557731690182</updated>
     </task>
-    <task id="LOCAL-00073" summary="improved Code">
-      <created>1555837599041</created>
-      <option name="number" value="00073" />
-      <option name="presentableId" value="LOCAL-00073" />
+    <task id="LOCAL-00140" summary="-#55 added testcases to check if shiftSoldiers was called, turn is now a spy">
+      <created>1557732820725</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
       <option name="project" value="LOCAL" />
-      <updated>1555837599041</updated>
+      <updated>1557732820725</updated>
     </task>
-    <task id="LOCAL-00074" summary="#22 make determination of the player order">
-      <created>1555842976646</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
+    <task id="LOCAL-00141" summary="-closes #55 after attack soldiers are only shifted if user clicks on move a soldiers button not if clicked on any country">
+      <created>1557734853843</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
       <option name="project" value="LOCAL" />
-      <updated>1555842976646</updated>
+      <updated>1557734853843</updated>
     </task>
-    <task id="LOCAL-00075" summary="rename file">
-      <created>1555865871984</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
+    <task id="LOCAL-00142" summary="-#55 added testcase in gamecontroller for moving during attackphase only working with move button">
+      <created>1557735797062</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
       <option name="project" value="LOCAL" />
-      <updated>1555865871984</updated>
+      <updated>1557735797062</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <option name="localTasksCounter" value="143" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CountryTest - 2019.04.13 at 11h 40m 14s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 16m 21s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryTest - 2019.04.13 at 11h 43m 26s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="PlayerTest_testCalculateSoldiersToPlaceCityBonus - 2019.05.13 at 10h 16m 28s.xml">
+      <configuration name="PlayerTest.testCalculateSoldiersToPlaceCityBonus" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryTest - 2019.04.13 at 11h 46m 08s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 16m 35s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryTest - 2019.04.13 at 11h 48m 11s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 17m 35s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryTest - 2019.04.13 at 11h 50m 52s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 17m 42s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryTest - 2019.04.13 at 11h 54m 37s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 18m 06s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryTest - 2019.04.13 at 11h 57m 56s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 18m 50s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="StrategicBehaviorTest - 2019.04.13 at 12h 05m 53s.xml">
-      <configuration name="StrategicBehaviorTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 19m 06s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryTest - 2019.04.13 at 12h 47m 44s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 19m 52s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CountryTest - 2019.04.20 at 12h 37m 35s.xml">
-      <configuration name="CountryTest" configurationId="JUnit" />
+    <history-entry file="GameControllerTest_testShiftAfterAttackOnlyWithMoveButton - 2019.05.13 at 10h 22m 16s.xml">
+      <configuration name="GameControllerTest.testShiftAfterAttackOnlyWithMoveButton" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="311952000" />
+    <option name="totallyTimeSpent" value="325003000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1154,10 +1253,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1444563" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20604026" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="Web" order="3" side_tool="true" />
@@ -1166,20 +1264,60 @@
       <window_info id="Image Layers" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3279003" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4988662" visible="true" weight="0.25886863" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.07019868" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49932885" weight="0.04957507" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6120805" visible="true" weight="0.5495751" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6020134" weight="0.3753541" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32694152" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932885" weight="0.32577905" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4989339" weight="0.0397351" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32885906" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.18504314" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.68590605" weight="0.10764872" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286119" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.38791946" side_tool="true" visible="true" weight="0.5495751" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" show_stripe_button="false" weight="0.32956153" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4989339" weight="0.18120806" />
-      <window_info anchor="bottom" id="Application Servers" order="14" weight="0.3279003" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.490604" weight="0.25637394" />
+      <window_info anchor="bottom" id="Application Servers" order="14" weight="0.32885906" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="15" weight="0.3286119" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24966443" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Coverage" order="5" visible="true" weight="0.020134227" />
+      <window_info anchor="right" id="Database" order="6" weight="0.020134227" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Maven" order="8" weight="0.1590604" />
+      <window_info anchor="right" id="Capture Analysis" order="9" />
+      <window_info anchor="right" id="Theme Preview" order="10" />
+      <window_info anchor="right" id="JSF" order="11" />
+      <window_info anchor="right" id="CDI" order="12" />
+      <window_info anchor="right" id="Bean Validation" order="13" weight="0.3295302" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24867725" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Web" order="3" side_tool="true" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32885906" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4988662" visible="true" weight="0.24635762" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3231788" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32885906" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4989339" weight="0.39072847" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32885906" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.27325025" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" show_stripe_button="false" weight="0.32956153" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.25827813" />
+      <window_info anchor="bottom" id="Application Servers" order="14" weight="0.32885906" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1190,7 +1328,7 @@
       <window_info anchor="right" id="Maven" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -1217,17 +1355,6 @@
               <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
                 <collection />
               </option>
-              <option name="FILTERS">
-                <map>
-                  <entry key="user">
-                    <value>
-                      <list>
-                        <option value="me" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
               <option name="COLUMN_ORDER">
                 <list>
                   <option value="0" />
@@ -1250,13 +1377,7 @@
         </entry>
         <entry key="User">
           <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="me" />
-                </option>
-              </RecentGroup>
-            </list>
+            <list />
           </value>
         </entry>
       </map>
@@ -1264,33 +1385,37 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Test class turnTest created and adapted&#10;&#10;&#10;- adapted to the new folder structure" />
-    <MESSAGE value="make void doPost and void doGet from protected to public&#10;&#10;Test class TurnTest could no access it, because it was not in the same package." />
-    <MESSAGE value="relocated method's from BoardTest to TurnTest&#10;&#10;&#10;testSetAttackAndDefendCountry()&#10;testMoveToNextPhase() &#10;testMoveToNextPhaseRemoveUser()&#10;testResetSelectedCountries() &#10;testEliminatePlayersAndCheckUserResultLose() &#10;testEliminatePlayersAndCheckUserResultWin()" />
-    <MESSAGE value="remove redundant comments" />
-    <MESSAGE value="extended javadoc in Country" />
-    <MESSAGE value="#27 Try to program aggressive behavior.&#10;There are some bugs in the program and it is not complete yet&#10;&#10;- add help class&#10;- tries to write method to move" />
-    <MESSAGE value="#27 add MoveComperator class&#10;&#10;- is used to calculate the number of neighboring countries" />
-    <MESSAGE value="Move Country add method&#10;&#10;- add set method for Neighbor" />
-    <MESSAGE value="#27 Try to program aggressive behavior.&#10;&#10;There are some bugs in the program and it is not complete yet" />
-    <MESSAGE value="add Aufwanderfassung MS02" />
-    <MESSAGE value="#27 Move method aggressive behavior implement&#10;&#10;need review" />
-    <MESSAGE value="change name and add nameList of Computer opponent" />
-    <MESSAGE value="review fix @huguemiz" />
-    <MESSAGE value="change name" />
-    <MESSAGE value="write test aggressiveBehaviorTest" />
-    <MESSAGE value="expanded testMoveSoldiers(), fix Null objects instead of nul&#10;&#10;&#10;- added additionally verification to testMoveSoldiers()&#10;&#10;- clean code, javadoc" />
-    <MESSAGE value="#51 fix Resource try/catch/log/throw/release" />
-    <MESSAGE value="#27 add and optimized test method for aggressive behavior" />
-    <MESSAGE value="add TestHelperCountry class and modify methods for this class" />
-    <MESSAGE value="#36 Update database @huguemiz&#10;&#10;- Datum set to date&#10;&#10;- id covert to auto increment" />
-    <MESSAGE value="#36 create class ResultController&#10;&#10;- save and send mail, outcome to SQL" />
-    <MESSAGE value="Attempt view game result #34" />
-    <MESSAGE value="improved Code" />
-    <MESSAGE value="#22 make determination of the player order" />
-    <MESSAGE value="rename file" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename file" />
+    <MESSAGE value="-#55 randombehavior shiftssoldiers after attacking" />
+    <MESSAGE value="-#55 randombehavior test checks for shiftsoldiers method" />
+    <MESSAGE value="-#55 tests if shiftssoldiers is called" />
+    <MESSAGE value="-#55 tested if behavior shifts after attack" />
+    <MESSAGE value="-#55 aggressive behavior shifts if new country can attack more then old country" />
+    <MESSAGE value="-#55 created method rateCountry to for shifting during attack, rewrote rateCountries to use rateCountry as far as possible" />
+    <MESSAGE value="-#55 made changed affected testcase for shift check, implemented shift check" />
+    <MESSAGE value="-#55 implemented shift after attack" />
+    <MESSAGE value="-#55 added Flag for user shifting after attack" />
+    <MESSAGE value="-#55 updated game.jsp to show correct buttons during attack" />
+    <MESSAGE value="-#55 new flag MOVE_AFTER_INVASION gets set if successfully invaded, calls movesoliders with of userbehavior" />
+    <MESSAGE value="-#55 move to nextphase get only called if flag moveafterinvasion not set, otherwise selected countries get reseted" />
+    <MESSAGE value="-#53 extracted constant error message" />
+    <MESSAGE value="-#55 #53 removed code duplication" />
+    <MESSAGE value="-#55 extracted constant error message" />
+    <MESSAGE value="-#55 replaced constant string" />
+    <MESSAGE value="-#55 removed redundancy, declariation and assignment of int affectRows made into one line" />
+    <MESSAGE value="-#55 removed check if boolean true setCity/Capital to true, replaced with set to parameter boolean values" />
+    <MESSAGE value="-#55 renamed fellowCountries to createOwnedCountries" />
+    <MESSAGE value="-#55 removed mockito.*" />
+    <MESSAGE value="-changed at least to atmost in testattackcountry, added that shift always returns false in this test" />
+    <MESSAGE value="-rearragned createOwned countries, country.setcity afer setCapital because setCaptial has previously overwritten result of setCity" />
+    <MESSAGE value="-#55 added testcases to check if shiftSoldiers was called, turn is now a spy" />
+    <MESSAGE value="-closes #55 after attack soldiers are only shifted if user clicks on move a soldiers button not if clicked on any country" />
+    <MESSAGE value="-#55 added testcase in gamecontroller for moving during attackphase only working with move button" />
+    <option name="LAST_COMMIT_MESSAGE" value="-#55 added testcase in gamecontroller for moving during attackphase only working with move button" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1313,14 +1438,38 @@
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/PlayerTest.java</url>
+          <line>105</line>
+          <properties />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/GameController.java</url>
+          <line>73</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
-        <watch expression="destination" />
-        <watch expression="getOwner" />
+        <watch expression="players" language="JAVA" />
+        <watch expression="shiftScores" />
+        <watch expression="shiftScores.get(1)" />
+        <watch expression="board" language="JAVA" />
+      </configuration>
+      <configuration name="JUnit">
+        <watch expression="hasRemovedPlayers" />
+        <watch expression="scores.get(0)" />
+        <watch expression="dest" />
+        <watch expression="src" />
+        <watch expression="testPlayer.getOwnedCountries()" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ps_18_gruppe02$All_in_ps_18_gruppe02.ic" NAME="All in ps_18_gruppe02 Coverage Results" MODIFIED="1557730674377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
@@ -1337,9 +1486,205 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/TurnTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/helpers/AttackCountryResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1967">
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/helpers/AttackScore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#488#489#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#555#556#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/helpers/AttackScoreComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/helpers/Casualties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/helpers/MoveComparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/helpers/MoveCountry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/helpers/PlaceSoldiers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-35">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Continent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="44" column="30" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Dice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-137">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/ResultBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/DiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="59" column="49" lean-forward="true" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/CountryTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="228" lean-forward="true" selection-start-line="228" selection-end-line="228" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/ContinentTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="6" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/CardTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/BoardTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-290">
+          <caret line="24" column="34" lean-forward="true" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/behavior/UserBehaviorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/behavior/StrategicBehaviorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="175" column="111" selection-start-line="175" selection-start-column="101" selection-end-line="175" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/helpers/TestHelperEvents.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="46" column="39" selection-start-line="46" selection-start-column="27" selection-end-line="46" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/helpers/TestHelperDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/helpers/TestHelperCountry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/helpers/TestHelperBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/dao/ResultsDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/controller/ResultControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/SignInController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/SignOutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1347,384 +1692,198 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/AggressiveBehaviorTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/dao/PlayerDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1955">
-          <caret line="115" column="62" selection-start-line="115" selection-start-column="46" selection-end-line="115" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="663">
+          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/helpers/TestHelperBehavior.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/CountryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/helpers/TestHelperDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/controller/SignInControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/PlayerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/behavior/StrategicBehavior.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="53" column="31" selection-start-line="53" selection-start-column="31" selection-end-line="53" selection-end-column="31" />
+        <state relative-caret-position="-64">
+          <caret line="81" column="48" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/behavior/AggressiveBehavior.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="109" column="8" selection-start-line="109" selection-start-column="8" selection-end-line="109" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1049#1050#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/helpers/TestHelperCountry.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/behavior/AggressiveBehaviorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="24" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="24" />
+        <state relative-caret-position="88">
+          <caret line="90" column="9" selection-start-line="90" selection-start-column="9" selection-end-line="90" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/behavior/RandomBehaviorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="93" column="23" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1643#1644#0" expanded="true" />
+            <element signature="e#1679#1680#0" expanded="true" />
+            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#1784#1785#0" expanded="true" />
+            <element signature="e#1816#1817#0" expanded="true" />
+            <element signature="e#1844#1845#0" expanded="true" />
+            <element signature="e#1983#1984#0" expanded="true" />
+            <element signature="e#2026#2027#0" expanded="true" />
+            <element signature="e#2670#2671#0" expanded="true" />
+            <element signature="e#2697#2698#0" expanded="true" />
+            <element signature="e#2738#2739#0" expanded="true" />
+            <element signature="e#2770#2771#0" expanded="true" />
+            <element signature="e#2847#2848#0" expanded="true" />
+            <element signature="e#2908#2909#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/helpers/Casualties.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/PlayerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
-          <folding>
-            <element signature="e#511#512#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="232">
+          <caret line="94" lean-forward="true" selection-start-line="94" selection-end-line="94" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/model/behavior/StrategicBehaviorTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/controller/UserControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="187" selection-start-line="187" selection-end-line="187" />
+        <state relative-caret-position="351">
+          <caret line="130" column="5" lean-forward="true" selection-start-line="130" selection-start-column="5" selection-end-line="130" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/countryNames.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/attackRoll.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/HomeController.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/model/TurnTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="49" column="44" selection-start-line="49" selection-start-column="44" selection-end-line="49" selection-end-column="44" />
+        <state relative-caret-position="526">
+          <caret line="177" column="1" lean-forward="true" selection-start-line="177" selection-start-column="1" selection-end-line="177" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/documents/40_Design/DB_Projekt_Unlimited War.sql">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/extras/glassfish-embedded-all/3.1/glassfish-embedded-all-3.1.jar!/org/apache/catalina/connector/RequestFacade.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/javax/servlet/annotation/WebServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.logging/java/util/logging/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="689" column="25" selection-start-line="689" selection-start-column="25" selection-end-line="689" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/home.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.sql/java/sql/ResultSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="258" column="12" selection-start-line="258" selection-start-column="12" selection-end-line="258" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/MySQLConnectionCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/javax/servlet/ServletRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/SignInController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/ProjektUW/jstl-1.2.jar!/META-INF/c.tld">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="168" column="4" selection-start-line="168" selection-start-column="4" selection-end-line="168" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/events/ConquerEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#911#912#0" expanded="true" />
-            <element signature="e#957#958#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/dao/PlayerDAOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/controller/ResultControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/enums/EventType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/controller/GameControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="108" column="44" lean-forward="true" selection-start-line="108" selection-start-column="4" selection-end-line="108" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test/dao/ResultsDAOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="10" lean-forward="true" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/GameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="65" column="54" selection-start-line="65" selection-start-column="54" selection-end-line="65" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/event.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/io/Serializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2635">
-          <caret line="178" column="17" selection-start-line="178" selection-start-column="17" selection-end-line="178" selection-end-column="17" />
+        <state relative-caret-position="84">
+          <caret line="112" column="70" selection-start-line="112" selection-start-column="70" selection-end-line="112" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/results.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ch/zhaw/unlimitedWar/controller/GameControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+        <state relative-caret-position="166">
+          <caret line="163" column="53" lean-forward="true" selection-start-line="163" selection-start-column="53" selection-end-line="163" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/resultModal.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+        <state relative-caret-position="1190">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/profile.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/dao/PlayerDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
+        <state relative-caret-position="612">
+          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/ResultController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/UserBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+        <state relative-caret-position="442">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ResultsDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/GameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="31" column="20" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
+        <state relative-caret-position="1088">
+          <caret line="82" column="108" selection-start-line="82" selection-start-column="96" selection-end-line="82" selection-end-column="108" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="55" column="22" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/registrationEvent.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/UserBean.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/ResultController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        <state relative-caret-position="459">
+          <caret line="42" column="37" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/ResultBean.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/model/Turn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-          <folding>
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#266#267#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/game.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2550">
-          <caret line="172" column="9" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/PlayerDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
+        <state relative-caret-position="4148">
+          <caret line="282" column="37" selection-start-line="282" selection-start-column="29" selection-end-line="282" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/interfaces/Event.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="1513">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/computerOpponentNames.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Country.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/dao/ResultsDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
-          <folding>
-            <element signature="e#1372#1373#0" expanded="true" />
-            <element signature="e#1404#1405#0" expanded="true" />
-            <element signature="e#1441#1442#0" expanded="true" />
-            <element signature="e#1477#1478#0" expanded="true" />
-            <element signature="e#1614#1615#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
-            <element signature="e#1781#1782#0" expanded="true" />
-            <element signature="e#1824#1825#0" expanded="true" />
-            <element signature="e#1893#1894#0" expanded="true" />
-            <element signature="e#1958#1959#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="510">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/modals/signinError.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/model/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/ch/zhaw/unlimitedWar/controller/Consts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="62" column="29" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/snippets/signed-in.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/sign-in.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="126" column="78" lean-forward="true" selection-start-line="126" selection-start-column="10" selection-end-line="126" selection-end-column="78" />
-          <folding>
-            <element signature="e#1619#1620#0" expanded="true" />
-            <element signature="e#1666#1667#0" expanded="true" />
-            <element signature="e#1764#1765#0" expanded="true" />
-            <element signature="e#1813#1814#0" expanded="true" />
-            <element signature="e#1910#1911#0" expanded="true" />
-            <element signature="e#1959#1960#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1734,12 +1893,11 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>unlimitedWar:war exploded</last-edited>
+          <last-edited>unlimitedWar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1747,7 +1905,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Web2 (unlimitedWar)|Web</last-edited>
+          <last-edited>Detection</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1759,7 +1917,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>mockito-all-1.9.5</last-edited>
+          <last-edited>lib</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1783,12 +1941,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>unlimitedWar</last-edited>
+          <last-edited>Web|ps_18_gruppe02</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1796,7 +1953,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Java EE 6-Java EE 6</last-edited>
+          <last-edited>Maven: com.google.protobuf:protobuf-java:3.6.1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1818,5 +1975,9 @@
         </settings>
       </state>
     </states>
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="$PROJECT_DIR$" />
+    <option value="war:exploded" />
   </component>
 </project>

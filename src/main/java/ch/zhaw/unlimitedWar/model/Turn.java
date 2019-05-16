@@ -180,8 +180,7 @@ public class Turn {
                 if (flag == Flag.MOVE_AFTER_INVASION) {
                     currentPlayer.getBehavior().moveSoldiers(countryList, currentPlayer.getOwnedCountries());
                 }
-                addEvents(
-                        currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries())
+                addEvents(currentPlayer.getBehavior().attackCountry(countryList, currentPlayer.getOwnedCountries())
                                 .getOccurredEvents());
                 if (firstSelectedCountry.getOwner() == secondSelectedCountry.getOwner() && firstSelectedCountry.getSoldiersCount() > Country.MIN_SOLDIERS_TO_STAY) {
                     flag = Flag.MOVE_AFTER_INVASION;
