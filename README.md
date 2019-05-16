@@ -3,7 +3,7 @@
 A Risk-clone implemented using java and jsp. (not our choice was a requirement)
 
 # Who did this:
-M. Schreier, T, Crnjac, M. Huguenin => Group 02
+Manuel Schreier, T, Crnjac, M. Huguenin => Group 02
 
 # Why did you do this:
 We had to do a self chosen project for the course PSIT1 and 2.
